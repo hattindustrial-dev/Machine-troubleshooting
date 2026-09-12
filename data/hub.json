@@ -1,0 +1,2776 @@
+{
+  "modules": {
+    "pumps": {
+      "num": "01",
+      "name": "Pump Systems",
+      "file": "builtwright_pumps_combined_v1.html",
+      "tabs": {
+        "types": "Pump Types",
+        "compare": "Cent vs PD",
+        "chain": "System Chain",
+        "rotate": "Rotation Check",
+        "diagnose": "Diagnose",
+        "leaks": "Leak Detection",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "bearing": {
+      "num": "02",
+      "name": "Bearing Failure",
+      "file": "builtwright_bearing_module_v1.html",
+      "tabs": {
+        "types": "Bearing Types",
+        "diagnose": "Diagnose",
+        "lube": "Lubrication",
+        "install": "Installation",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "alignment": {
+      "num": "03",
+      "name": "Couplings and Alignment",
+      "file": "builtwright_coupling_alignment_v1.html",
+      "tabs": {
+        "types": "Coupling Types",
+        "why": "Why It Matters",
+        "misalign": "Misalignment",
+        "methods": "Methods",
+        "procedure": "Procedure",
+        "install": "Installation",
+        "troubleshoot": "Troubleshoot",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "seals": {
+      "num": "04",
+      "name": "Seals and Gaskets",
+      "file": "builtwright_seals_gaskets_v1.html",
+      "tabs": {
+        "sealtypes": "Seal Types",
+        "gaskets": "Gaskets",
+        "materials": "Materials",
+        "failure": "Failure Analysis",
+        "install": "Installation",
+        "compat": "Compatibility",
+        "troubleshoot": "Troubleshoot",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "lube": {
+      "num": "05",
+      "name": "Lubrication Systems",
+      "file": "builtwright_lubrication_v1.html",
+      "tabs": {
+        "types": "Lubricant Types",
+        "systems": "Centralized",
+        "contam": "Contamination",
+        "analysis": "Oil Analysis",
+        "application": "Application",
+        "troubleshoot": "Troubleshoot",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "pneu": {
+      "num": "06",
+      "name": "Pneumatics",
+      "file": "builtwright_pneumatics_v1.html",
+      "tabs": {
+        "overview": "Overview",
+        "valves": "Valves",
+        "actuators": "Actuators",
+        "symbols": "Symbols",
+        "airquality": "Air Quality",
+        "troubleshoot": "Troubleshoot",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "hydraulics": {
+      "num": "07",
+      "name": "Hydraulics",
+      "file": "builtwright_hydraulics_v1.html",
+      "tabs": {
+        "overview": "Overview",
+        "pumps": "Pumps",
+        "valves": "Valves",
+        "actuators": "Actuators",
+        "fluid": "Fluid",
+        "symbols": "Symbols",
+        "troubleshoot": "Troubleshoot",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "powertrans": {
+      "num": "08",
+      "name": "Power Transmission",
+      "file": "builtwright_power_transmission_v1.html",
+      "tabs": {
+        "overview": "Overview",
+        "belts": "Belts",
+        "chains": "Chains",
+        "tension": "Tensioning",
+        "alignment": "Alignment",
+        "failure": "Failure Analysis",
+        "troubleshoot": "Troubleshoot",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "gearbox": {
+      "num": "09",
+      "name": "Gearboxes",
+      "file": "builtwright_gearboxes_v1.html",
+      "tabs": {
+        "overview": "Overview",
+        "gears": "Gear Types",
+        "bearings": "Bearings and Seals",
+        "lube": "Lubrication",
+        "wear": "Wear Patterns",
+        "setup": "Backlash and Setup",
+        "troubleshoot": "Troubleshoot",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "motors": {
+      "num": "10",
+      "name": "Motors: Mechanical Side",
+      "file": "builtwright_motors_v1.html",
+      "tabs": {
+        "overview": "Overview",
+        "nameplate": "Nameplate",
+        "bearings": "Bearings",
+        "mounting": "Mounting",
+        "cooling": "Cooling and Heat",
+        "amps": "Amps as a Symptom",
+        "handoff": "The Handoff",
+        "troubleshoot": "Troubleshoot",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "vibration": {
+      "num": "11",
+      "name": "Vibration Fundamentals",
+      "file": "builtwright_vibration_v1.html",
+      "tabs": {
+        "overview": "Overview",
+        "measure": "Measurement",
+        "spectrum": "Reading a Spectrum",
+        "bearings": "Bearing Frequencies",
+        "trend": "Trending and Alarms",
+        "resonance": "Resonance",
+        "troubleshoot": "Troubleshoot",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "installation": {
+      "num": "13",
+      "name": "Installation and Foundations",
+      "file": "builtwright_installation_v1.html",
+      "tabs": {
+        "overview": "Overview",
+        "foundation": "Foundations",
+        "anchors": "Anchor Bolts",
+        "baseplate": "Baseplates and Levelling",
+        "grout": "Grouting",
+        "piping": "Piping and Connections",
+        "checklist": "Commissioning",
+        "troubleshoot": "Troubleshoot",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "safeguarding": {
+      "num": "14",
+      "name": "Machine Safeguarding and PSR",
+      "file": "builtwright_safeguarding_v1.html",
+      "tabs": {
+        "overview": "Overview",
+        "hazards": "Hazards",
+        "guards": "Guards",
+        "devices": "Safeguarding Devices",
+        "distances": "Distances and Openings",
+        "risk": "Risk Assessment",
+        "psr": "PSR in Ontario",
+        "troubleshoot": "Troubleshoot",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "conveyors": {
+      "num": "15",
+      "name": "Conveyors",
+      "file": "builtwright_conveyors_v1.html",
+      "tabs": {
+        "overview": "Overview",
+        "anatomy": "Belt Conveyor Anatomy",
+        "tracking": "Tracking",
+        "tension": "Tension and Take-up",
+        "splices": "Splices",
+        "damage": "Reading Belt Damage",
+        "troubleshoot": "Troubleshoot",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "rootcause": {
+      "num": "16",
+      "name": "Root Cause",
+      "file": "builtwright_root_cause_v1.html",
+      "tabs": {
+        "overview": "Overview",
+        "method": "The Method",
+        "evidence": "Evidence",
+        "reading": "Reading Failed Parts",
+        "whys": "Five Whys and Fishbone",
+        "traps": "Traps",
+        "examples": "Worked Examples",
+        "report": "Write One",
+        "troubleshoot": "Troubleshoot",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "fans": {
+      "num": "17",
+      "name": "Fans and Blowers",
+      "file": "builtwright_fans_v1.html",
+      "tabs": {
+        "overview": "Overview",
+        "types": "Fan Types",
+        "laws": "Fan Laws and the System",
+        "wheel": "Wheel, Balance, Clearance",
+        "drives": "Bearings and Drives",
+        "troubleshoot": "Troubleshoot",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "compressors": {
+      "num": "18",
+      "name": "Compressors",
+      "file": "builtwright_compressors_v1.html",
+      "tabs": {
+        "overview": "Overview",
+        "types": "Compressor Types",
+        "recip": "Reciprocating",
+        "screw": "Rotary Screw",
+        "controls": "Controls and Capacity",
+        "cooling": "Cooling and Condensate",
+        "troubleshoot": "Troubleshoot",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "clutches": {
+      "num": "19",
+      "name": "Clutches and Brakes",
+      "file": "builtwright_clutches_brakes_v1.html",
+      "tabs": {
+        "overview": "Overview",
+        "types": "Types",
+        "friction": "Friction Material and Wear",
+        "adjust": "Adjustment and Air Gap",
+        "holding": "Holding Brakes and Backstops",
+        "troubleshoot": "Troubleshoot",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "valves": {
+      "num": "20",
+      "name": "Process Valves and Actuators",
+      "file": "builtwright_process_valves_v1.html",
+      "tabs": {
+        "overview": "Overview",
+        "types": "Valve Types",
+        "actuators": "Actuators and Positioners",
+        "packing": "Packing, Seats, and Leaks",
+        "install": "Installation and Service",
+        "troubleshoot": "Troubleshoot",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "measurement": {
+      "num": "21",
+      "name": "Precision Measurement",
+      "file": "builtwright_precision_measurement_v1.html",
+      "tabs": {
+        "overview": "Overview",
+        "instruments": "Instruments",
+        "micrometer": "Reading a Micrometer",
+        "indicators": "Indicators",
+        "technique": "Technique",
+        "care": "Care and Calibration",
+        "troubleshoot": "Troubleshoot",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      }
+    },
+    "curriculum": {
+      "num": "D1",
+      "name": "Curriculum Map",
+      "file": "builtwright_curriculum_map_v1.html",
+      "tabs": {
+        "map": "Modules to Trade Standard",
+        "levels": "By Learner Level",
+        "paths": "Learning Paths"
+      }
+    },
+    "manager": {
+      "num": "D2",
+      "name": "Manager's Guide",
+      "file": "builtwright_manager_guide_v1.html",
+      "tabs": {
+        "what": "What It Is",
+        "deploy": "Deploying It",
+        "program": "A 12-Week Program",
+        "using": "Using the Tools",
+        "measure": "Measuring Results"
+      }
+    },
+    "reference": {
+      "num": "12",
+      "name": "Reference",
+      "file": "builtwright_reference_v1.html",
+      "tabs": {
+        "torque": "Torque",
+        "fits": "Fits and Clearances",
+        "align": "Alignment Tolerances",
+        "shims": "Shims and Gauges",
+        "lube": "Lubrication",
+        "pipe": "Pipe and Flange",
+        "electrical": "Motor Quick Ref",
+        "calc": "Calculators",
+        "units": "Conversions",
+        "standards": "Standards Cited"
+      }
+    }
+  },
+  "nodes": {
+    "heat": {
+      "q": "Where is the heat?",
+      "hint": "Use an infrared thermometer if you have one. Compare to the same point on an identical machine or to the last recorded baseline.",
+      "options": [
+        {
+          "label": "Bearing housing",
+          "next": "heat_bearing"
+        },
+        {
+          "label": "Pump casing or seal area",
+          "next": "heat_pump"
+        },
+        {
+          "label": "Coupling or the shaft between machines",
+          "next": "heat_coupling"
+        },
+        {
+          "label": "Gearbox",
+          "next": "heat_gearbox"
+        },
+        {
+          "label": "Motor body",
+          "next": "heat_motor"
+        },
+        {
+          "label": "Pneumatic solenoid, valve, or compressor",
+          "next": "heat_pneu"
+        },
+        {
+          "label": "Motor brake or clutch",
+          "next": "r_heat_brake"
+        }
+      ]
+    },
+    "heat_bearing": {
+      "q": "Did the heat start within a day or two of a grease PM?",
+      "hint": "Overgreasing is the most common cause of a bearing that ran fine for years and suddenly runs hot.",
+      "options": [
+        {
+          "label": "Yes, right after lubrication",
+          "next": "r_heat_overgrease",
+          "cls": "yes"
+        },
+        {
+          "label": "No, or not sure",
+          "next": "heat_bearing2",
+          "cls": "no"
+        }
+      ]
+    },
+    "heat_bearing2": {
+      "q": "Is there any new noise along with the heat?",
+      "hint": "Rumble, squeal, or a rhythmic click. Use the screwdriver stethoscope if the area is loud.",
+      "options": [
+        {
+          "label": "Yes, heat and noise together",
+          "next": "r_heat_bearing_noise",
+          "cls": "yes"
+        },
+        {
+          "label": "Heat only, running quietly",
+          "next": "r_heat_bearing_quiet",
+          "cls": "no"
+        }
+      ]
+    },
+    "r_heat_overgrease": {
+      "type": "route",
+      "module": "lube",
+      "tab": "troubleshoot",
+      "components": [
+        "bearing",
+        "lube"
+      ],
+      "title": "Overgreasing is the first suspect.",
+      "text": "A full cavity churns grease, generates heat, and can blow the seals. Do not add more grease. The lubrication troubleshoot tree walks the heat-after-relubrication branch: overgreasing versus pre-existing fault versus wrong product.",
+      "first": [
+        "Remove the relief plug or vent and let the bearing purge while running",
+        "Trend the temperature over the next hour; overgreasing heat falls as excess purges",
+        "Check the quantity actually applied against G = 0.005 × D × B"
+      ],
+      "also": [
+        {
+          "module": "bearing",
+          "tab": "lube",
+          "why": "Overgreasing explained, intervals, ultrasonic monitoring"
+        },
+        {
+          "module": "lube",
+          "tab": "application",
+          "why": "Correct grease quantity and interval"
+        },
+        {
+          "module": "reference",
+          "tab": "calc",
+          "why": "Grease quantity calculator"
+        },
+        {
+          "module": "rootcause",
+          "tab": "whys",
+          "why": "The worked Five Whys is this exact failure"
+        }
+      ]
+    },
+    "r_heat_bearing_noise": {
+      "type": "route",
+      "module": "bearing",
+      "tab": "diagnose",
+      "components": [
+        "bearing"
+      ],
+      "title": "Heat with noise points at the bearing itself.",
+      "text": "Take the rolling element path and enter through Heat. The tree separates running heat with noise (bearing damage, contamination, lubrication starvation) from post-PM heat.",
+      "first": [
+        "Note the sound type: squeal is starvation, rumble is surface damage, click is brinelling",
+        "Check for grease purge at the seals and any metal glitter in it",
+        "Confirm the fixing ring is on the drive side only on pillow block pairs"
+      ],
+      "also": [
+        {
+          "module": "lube",
+          "tab": "analysis",
+          "why": "Metal in grease or oil confirms wear"
+        },
+        {
+          "module": "alignment",
+          "tab": "why",
+          "why": "Misalignment overloads the coupling-end bearing first"
+        }
+      ]
+    },
+    "r_heat_bearing_quiet": {
+      "type": "route",
+      "module": "alignment",
+      "tab": "why",
+      "components": [
+        "bearing",
+        "alignment"
+      ],
+      "title": "Quiet heat on a bearing is often a load problem, not a bearing problem.",
+      "text": "Misalignment, pipe strain, soft foot, and axial preload from a fixing ring on the wrong side all load a bearing in a direction it was not designed for. It runs hot before it runs loud. If the hot bearing is the one nearest the coupling, treat alignment as the lead suspect.",
+      "first": [
+        "Which bearing is hot: coupling end suggests alignment, outboard end suggests axial preload or belt tension",
+        "Check soft foot and pipe strain before condemning the bearing",
+        "On pillow block pairs confirm the non-drive bearing can float axially"
+      ],
+      "also": [
+        {
+          "module": "bearing",
+          "tab": "diagnose",
+          "why": "Rolling element heat path"
+        },
+        {
+          "module": "bearing",
+          "tab": "install",
+          "why": "Fixing ring and thermal expansion"
+        },
+        {
+          "module": "alignment",
+          "tab": "procedure",
+          "why": "Soft foot first, always"
+        },
+        {
+          "module": "reference",
+          "tab": "align",
+          "why": "Tolerances by rpm"
+        },
+        {
+          "module": "measurement",
+          "tab": "indicators",
+          "why": "Indicator setup, sag, and the validity check"
+        }
+      ]
+    },
+    "heat_pump": {
+      "q": "Is the pump flow reduced or at zero?",
+      "hint": "A pump running against a closed or nearly closed discharge turns all its power into heat.",
+      "options": [
+        {
+          "label": "Yes, low or no flow",
+          "next": "r_heat_pump_deadhead",
+          "cls": "yes"
+        },
+        {
+          "label": "Flow is normal",
+          "next": "r_heat_pump_seal",
+          "cls": "no"
+        }
+      ]
+    },
+    "r_heat_pump_deadhead": {
+      "type": "route",
+      "module": "pumps",
+      "tab": "diagnose",
+      "components": [
+        "pump"
+      ],
+      "title": "Heat with low flow: the pump is running near shutoff or dead-headed.",
+      "text": "A centrifugal pump at shutoff heats the liquid in the casing rapidly and can flash it. A positive displacement pump against a closed discharge is an emergency: stop it. The diagnose tree branches at pump type first for this reason.",
+      "first": [
+        "Confirm discharge valve position and any downstream blockage",
+        "Positive displacement: check relief valve is present, set correctly, and not lifting continuously",
+        "Centrifugal: check minimum flow bypass if fitted"
+      ],
+      "also": [
+        {
+          "module": "pumps",
+          "tab": "compare",
+          "why": "Why PD against closed discharge is different"
+        },
+        {
+          "module": "seals",
+          "tab": "failure",
+          "why": "Seal faces fail fast at shutoff"
+        }
+      ]
+    },
+    "r_heat_pump_seal": {
+      "type": "route",
+      "module": "seals",
+      "tab": "failure",
+      "components": [
+        "pump",
+        "seal"
+      ],
+      "title": "Normal flow, hot seal area: seal face or flush problem.",
+      "text": "Mechanical seal faces need a film of liquid to survive. A blocked flush line, a seal plan that is not doing its job, or a seal that was run dry at startup all show up as heat at the gland with normal pump performance.",
+      "first": [
+        "Check flush or quench line flow and any orifice or filter in it",
+        "Look for a thermal damage signature on the faces if the seal has been pulled",
+        "Compression packing: heat with no leakage means the gland is too tight; 40 to 60 drops per minute is correct"
+      ],
+      "also": [
+        {
+          "module": "pumps",
+          "tab": "leaks",
+          "why": "Seal versus packing leakage norms"
+        },
+        {
+          "module": "seals",
+          "tab": "install",
+          "why": "Never run a mechanical seal dry"
+        }
+      ]
+    },
+    "heat_coupling": {
+      "type": "route",
+      "module": "alignment",
+      "tab": "misalign",
+      "components": [
+        "alignment"
+      ],
+      "title": "A hot coupling is absorbing misalignment.",
+      "text": "Flexible elements flex once per revolution when shafts are misaligned. That cyclic flexing is friction, and friction is heat. Elastomer spiders and grid couplings show it first. Gear couplings run hot when lubrication is gone.",
+      "first": [
+        "Infrared reading on the coupling versus the shaft on either side",
+        "Check for rubber dust or grid wear debris around the guard",
+        "Take a fresh alignment reading; compare to the last recorded values"
+      ],
+      "also": [
+        {
+          "module": "alignment",
+          "tab": "procedure",
+          "why": "Soft foot, then alignment, then recheck after torque"
+        },
+        {
+          "module": "alignment",
+          "tab": "types",
+          "why": "Which coupling types tolerate what"
+        }
+      ]
+    },
+    "heat_gearbox": {
+      "type": "route",
+      "module": "gearbox",
+      "tab": "troubleshoot",
+      "components": [
+        "gearbox",
+        "lube"
+      ],
+      "title": "Gearbox heat: oil first, then one bearing versus the whole housing.",
+      "text": "Overfill, low level, wrong viscosity, a blocked breather, or the box running above its thermal rating. The gearbox tree separates whole-housing heat from a single hot bearing, and worm boxes from helical, because normal for one is a fault for the other.",
+      "first": [
+        "Oil level with the machine stopped and settled",
+        "Oil condition: colour, smell, water crackle test",
+        "Breather clear and not painted over"
+      ],
+      "also": [
+        {
+          "module": "lube",
+          "tab": "types",
+          "why": "Gear oil EP additives and viscosity"
+        },
+        {
+          "module": "alignment",
+          "tab": "why",
+          "why": "Input shaft alignment loads the input bearing"
+        },
+        {
+          "module": "gearbox",
+          "tab": "lube",
+          "why": "Level, viscosity, and the sight glass lie"
+        }
+      ]
+    },
+    "heat_motor": {
+      "type": "route",
+      "module": "motors",
+      "tab": "troubleshoot",
+      "components": [
+        "motor",
+        "alignment",
+        "bearing"
+      ],
+      "title": "Hot motor: rule out the mechanical causes before calling it electrical.",
+      "text": "The motors tree separates one hot bearing from a uniformly hot frame, then amps, cooling, and VFD speed. The mechanical checks a millwright owns: is the driven load heavier than it should be, is the motor misaligned, are the motor bearings failing, is the cooling fan or fins blocked. Any of those raise current and heat with nothing wrong inside the motor.",
+      "first": [
+        "Uncouple and run the motor solo if safe: does the heat go away",
+        "Motor bearing sound and temperature at both ends",
+        "Fan cover and cooling fins clear of dust, product, and grease"
+      ],
+      "also": [
+        {
+          "module": "alignment",
+          "tab": "why",
+          "why": "Misalignment raises motor current"
+        },
+        {
+          "module": "bearing",
+          "tab": "diagnose",
+          "why": "Motor bearing failure path"
+        }
+      ]
+    },
+    "heat_pneu": {
+      "type": "route",
+      "module": "pneu",
+      "tab": "troubleshoot",
+      "components": [
+        "pneu"
+      ],
+      "title": "Hot solenoid or compressor.",
+      "text": "A solenoid too hot to hold is usually a partially stuck spool holding the plunger off its seat, or a coil on the wrong voltage. A hot compressor is usually a cooling, oil, or intake filter problem. Enter through Valve not shifting for solenoids, or the compressor branch for supply.",
+      "first": [
+        "Solenoid: listen for humming with the screwdriver stethoscope",
+        "Compressor: aftercooler fan and fins, oil level, intake filter"
+      ],
+      "also": [
+        {
+          "module": "pneu",
+          "tab": "valves",
+          "why": "Solenoid coil ratings and IP class"
+        },
+        {
+          "module": "pneu",
+          "tab": "airquality",
+          "why": "Temperature effects"
+        },
+        {
+          "module": "compressors",
+          "tab": "troubleshoot",
+          "why": "High discharge temperature trip"
+        }
+      ]
+    },
+    "r_heat_brake": {
+      "type": "route",
+      "module": "clutches",
+      "tab": "troubleshoot",
+      "components": [
+        "brake",
+        "motor"
+      ],
+      "title": "A hot brake is a dragging brake.",
+      "text": "Gap closed up by wear, a cocked armature, a coil or rectifier not fully releasing it, or a manual release lever half engaged. It is heating the motor and eating the lining.",
+      "first": [
+        "Infrared on the brake versus the motor",
+        "Three-point gap",
+        "Coil voltage and rectifier"
+      ],
+      "also": [
+        {
+          "module": "clutches",
+          "tab": "friction",
+          "why": "Glazing and wear limits"
+        }
+      ]
+    },
+    "noise": {
+      "q": "What does it sound like?",
+      "hint": "If you cannot hear it clearly over the plant, press a screwdriver tip to the housing and the handle to the bone behind your ear.",
+      "options": [
+        {
+          "label": "Squeal or whine",
+          "next": "noise_squeal"
+        },
+        {
+          "label": "Rumble or grinding",
+          "next": "r_noise_rumble"
+        },
+        {
+          "label": "Rhythmic click or knock",
+          "next": "noise_click"
+        },
+        {
+          "label": "Crackle, like gravel in the pump",
+          "next": "r_noise_cav"
+        },
+        {
+          "label": "Hiss",
+          "next": "r_noise_hiss"
+        },
+        {
+          "label": "Electrical hum or buzz",
+          "next": "noise_hum"
+        }
+      ]
+    },
+    "noise_squeal": {
+      "q": "Does it clear after a few minutes of running?",
+      "hint": "Squeal that clears is usually marginal lubrication. Squeal that persists is something else.",
+      "options": [
+        {
+          "label": "Yes, it clears",
+          "next": "r_noise_squeal_clears",
+          "cls": "yes"
+        },
+        {
+          "label": "No, it persists",
+          "next": "noise_squeal2",
+          "cls": "no"
+        }
+      ]
+    },
+    "noise_squeal2": {
+      "q": "Is this machine belt driven?",
+      "options": [
+        {
+          "label": "Yes",
+          "next": "r_noise_belt",
+          "cls": "yes"
+        },
+        {
+          "label": "No",
+          "next": "r_noise_squeal_persist",
+          "cls": "no"
+        }
+      ]
+    },
+    "r_noise_squeal_clears": {
+      "type": "route",
+      "module": "bearing",
+      "tab": "diagnose",
+      "components": [
+        "bearing",
+        "lube"
+      ],
+      "title": "Squeal that clears is lubrication starvation at startup.",
+      "text": "The bearing is running on a marginal film until it warms and the lubricant flows. It will not stay marginal forever. The bearing diagnose tree covers squeal that clears versus persists.",
+      "first": [
+        "Check the last grease date and quantity against the interval",
+        "Cold environment: is the grease grade too stiff for the startup temperature",
+        "Oil-lubricated: level, and whether the oil ring or collar is picking up"
+      ],
+      "also": [
+        {
+          "module": "lube",
+          "tab": "application",
+          "why": "Interval factors: temperature, vertical shaft, contamination"
+        },
+        {
+          "module": "lube",
+          "tab": "systems",
+          "why": "Oil ring minimum speed, splash level"
+        }
+      ]
+    },
+    "r_noise_squeal_persist": {
+      "type": "route",
+      "module": "bearing",
+      "tab": "diagnose",
+      "components": [
+        "bearing",
+        "seal"
+      ],
+      "title": "Persistent squeal: bearing, or something rubbing.",
+      "text": "A bearing squealing continuously is starved or damaged. A lip seal, labyrinth, or wear ring rubbing sounds similar. The bearing tree separates them by whether the sound tracks bearing temperature.",
+      "first": [
+        "Temperature at the bearing versus the seal area",
+        "Stop, lock out, rotate by hand: a rub is often felt as a drag point",
+        "Check for a dry-running lip seal after a shaft was replaced"
+      ],
+      "also": [
+        {
+          "module": "seals",
+          "tab": "sealtypes",
+          "why": "Lip and labyrinth seals"
+        },
+        {
+          "module": "pumps",
+          "tab": "rotate",
+          "why": "Independent rotation check finds the rub"
+        }
+      ]
+    },
+    "r_noise_belt": {
+      "type": "route",
+      "module": "powertrans",
+      "tab": "troubleshoot",
+      "components": [
+        "powertrans"
+      ],
+      "title": "Belt squeal is slip.",
+      "text": "Belt squeal under load is a tension or glazing problem. Check tension by deflection, look for glazed or cracked belts, and confirm sheave alignment with a straightedge. A squeal only on startup is a belt sized for running load and slipping on inertia.",
+      "first": [
+        "Deflection tension check per belt manufacturer",
+        "Sheave alignment and groove wear (a worn groove lets the belt bottom out)",
+        "Match sets on multi-belt drives: never replace one belt of a set"
+      ],
+      "also": [
+        {
+          "module": "bearing",
+          "tab": "diagnose",
+          "why": "Over-tensioned belts overload the bearings"
+        }
+      ]
+    },
+    "r_noise_rumble": {
+      "type": "route",
+      "module": "bearing",
+      "tab": "diagnose",
+      "components": [
+        "bearing",
+        "lube"
+      ],
+      "title": "Rumble is surface damage or contamination in a bearing.",
+      "text": "The diagnose tree asks whether the bearing is new or old. A new bearing rumbling is contamination or installation damage. An old bearing rumbling is fatigue spalling. Either way it is on a timer.",
+      "first": [
+        "Pull a grease or oil sample: metal glitter confirms it",
+        "Trend temperature and vibration daily until replacement",
+        "Check installation history: was it pressed on through the rolling elements"
+      ],
+      "also": [
+        {
+          "module": "lube",
+          "tab": "analysis",
+          "why": "Wear metals and ferrography"
+        },
+        {
+          "module": "bearing",
+          "tab": "install",
+          "why": "Correct fit-up so the replacement does not rumble too"
+        },
+        {
+          "module": "pumps",
+          "tab": "diagnose",
+          "why": "If it is a pump, the noise branch separates bearing from cavitation"
+        }
+      ]
+    },
+    "noise_click": {
+      "q": "Where is the click or knock coming from?",
+      "options": [
+        {
+          "label": "Bearing",
+          "next": "r_click_bearing"
+        },
+        {
+          "label": "Pump",
+          "next": "r_click_pump"
+        },
+        {
+          "label": "Coupling",
+          "next": "r_click_coupling"
+        },
+        {
+          "label": "Gearbox",
+          "next": "r_click_gearbox"
+        }
+      ]
+    },
+    "r_click_bearing": {
+      "type": "route",
+      "module": "bearing",
+      "tab": "diagnose",
+      "components": [
+        "bearing"
+      ],
+      "title": "A rhythmic click from a bearing is brinelling or a damaged element.",
+      "text": "One click per revolution or per element pass means a dent in a race or a flat on a roller. Brinelling comes from static overload, impact, or vibration while stationary. False brinelling comes from sitting idle on a vibrating base.",
+      "first": [
+        "Was this machine shipped, dropped, or hammered on during installation",
+        "Does it sit idle next to something that vibrates",
+        "Frequency of the click versus shaft speed"
+      ],
+      "also": [
+        {
+          "module": "bearing",
+          "tab": "install",
+          "why": "Never press through the rolling elements"
+        },
+        {
+          "module": "vibration",
+          "tab": "bearings",
+          "why": "Bearing defect frequencies and the four stages"
+        }
+      ]
+    },
+    "r_click_pump": {
+      "type": "route",
+      "module": "pumps",
+      "tab": "diagnose",
+      "components": [
+        "pump"
+      ],
+      "title": "Knocking in a pump: check valves, cavitation, or a loose impeller.",
+      "text": "Reciprocating pumps knock when a check valve is worn or slow. Centrifugal pumps knock from cavitation collapse or a loose impeller nut. The diagnose tree branches at pump type.",
+      "first": [
+        "Reciprocating: check valve branch under No flow and Knocking",
+        "Centrifugal: suction conditions and impeller security"
+      ],
+      "also": [
+        {
+          "module": "pumps",
+          "tab": "types",
+          "why": "Reciprocating versus rotary versus dynamic"
+        }
+      ]
+    },
+    "r_click_coupling": {
+      "type": "route",
+      "module": "alignment",
+      "tab": "types",
+      "components": [
+        "alignment"
+      ],
+      "title": "A coupling clicking or knocking is worn or loose.",
+      "text": "Worn grid, worn gear teeth, a spider with chunks missing, or a loose hub on a keyway all produce a knock at shaft speed, usually worst on startup and shutdown as the load reverses through the backlash.",
+      "first": [
+        "Lock out and check hub-to-shaft fit and keyway condition",
+        "Inspect the flexible element for wear debris",
+        "Take alignment readings; a worn coupling has usually been absorbing misalignment"
+      ],
+      "also": [
+        {
+          "module": "alignment",
+          "tab": "install",
+          "why": "Hub fit, keyway, DBSE"
+        },
+        {
+          "module": "alignment",
+          "tab": "misalign",
+          "why": "What each misalignment type does"
+        }
+      ]
+    },
+    "r_click_gearbox": {
+      "type": "route",
+      "module": "gearbox",
+      "tab": "troubleshoot",
+      "components": [
+        "gearbox"
+      ],
+      "title": "Gearbox knock: tooth damage or excessive backlash.",
+      "text": "A knock at output shaft speed is a damaged tooth on the output gear; at input speed it is the input pinion. Check backlash and inspect through the inspection cover with the box locked out.",
+      "first": [
+        "Oil sample and magnetic plug for chips",
+        "Backlash measurement against the manual",
+        "Bearing play at each shaft"
+      ],
+      "also": [
+        {
+          "module": "gearbox",
+          "tab": "wear",
+          "why": "Read the teeth"
+        },
+        {
+          "module": "gearbox",
+          "tab": "setup",
+          "why": "Measure backlash"
+        },
+        {
+          "module": "lube",
+          "tab": "analysis",
+          "why": "Wear metals identify which component"
+        }
+      ]
+    },
+    "r_noise_cav": {
+      "type": "route",
+      "module": "pumps",
+      "tab": "diagnose",
+      "components": [
+        "pump"
+      ],
+      "title": "Gravel-in-the-pump is cavitation.",
+      "text": "Vapour bubbles forming at the impeller eye and collapsing. The cause is on the suction side: not enough NPSH available. The system chain tab covers the suction side, the diagnose tree has the noise branch.",
+      "first": [
+        "Suction strainer, suction valve position, suction line for air leaks",
+        "Liquid temperature up or suction level down since it last ran clean",
+        "Pump running far to the right of BEP after a system change"
+      ],
+      "also": [
+        {
+          "module": "pumps",
+          "tab": "chain",
+          "why": "Walk the suction side"
+        },
+        {
+          "module": "seals",
+          "tab": "failure",
+          "why": "Cavitation destroys seal faces and impellers"
+        }
+      ]
+    },
+    "r_noise_hiss": {
+      "type": "route",
+      "module": "pneu",
+      "tab": "troubleshoot",
+      "components": [
+        "pneu"
+      ],
+      "title": "Hiss is compressed air escaping.",
+      "text": "Enter through Air leaking audibly. The tree covers fittings, valve exhaust ports, rod seals, and the search method when you cannot find it. In a loud plant use the screwdriver stethoscope or an ultrasonic detector.",
+      "first": [
+        "Is it continuous or only while an actuator moves",
+        "Valve exhaust port hissing at rest means internal leakage"
+      ],
+      "also": [
+        {
+          "module": "pneu",
+          "tab": "airquality",
+          "why": "Leakage runs 20 to 30 percent on unmanaged systems"
+        }
+      ]
+    },
+    "noise_hum": {
+      "q": "What is humming?",
+      "options": [
+        {
+          "label": "Pneumatic solenoid",
+          "next": "r_hum_solenoid"
+        },
+        {
+          "label": "Motor",
+          "next": "r_hum_motor"
+        }
+      ]
+    },
+    "r_hum_solenoid": {
+      "type": "route",
+      "module": "pneu",
+      "tab": "troubleshoot",
+      "components": [
+        "pneu"
+      ],
+      "title": "A humming solenoid has a stuck spool.",
+      "text": "The plunger cannot fully seat because the spool is not moving. The coil will burn out if left. Enter through Valve not shifting, then Solenoid hums.",
+      "first": [
+        "Contaminated or wet air is the usual root cause",
+        "Check the FRL filter bowl and the dryer dewpoint"
+      ],
+      "also": [
+        {
+          "module": "pneu",
+          "tab": "airquality",
+          "why": "Water is the primary enemy"
+        }
+      ]
+    },
+    "r_hum_motor": {
+      "type": "route",
+      "module": "motors",
+      "tab": "troubleshoot",
+      "components": [
+        "motor",
+        "alignment"
+      ],
+      "title": "Motor hum that changed is worth checking mechanically first.",
+      "text": "Do the instant-off test: hum that vanishes the instant power is cut is magnetic. A motor that started humming louder may have soft foot (frame distortion changes the air gap), a failing bearing letting the rotor drop, or single phasing. Soft foot is the millwright check.",
+      "first": [
+        "Soft foot check at all four feet",
+        "Bearing sound at both ends",
+        "Then hand it to the electrician with those results"
+      ],
+      "also": [
+        {
+          "module": "alignment",
+          "tab": "procedure",
+          "why": "Soft foot procedure"
+        }
+      ]
+    },
+    "vib": {
+      "q": "Did the vibration change recently, or has it been like this a long time?",
+      "hint": "Recent change means find what changed. Long-standing means trend it and understand the signature.",
+      "options": [
+        {
+          "label": "Recent change",
+          "next": "vib_recent"
+        },
+        {
+          "label": "Stable for a long time, or unknown",
+          "next": "r_vib_stable"
+        },
+        {
+          "label": "Sleeve or journal bearing machine",
+          "next": "r_vib_sleeve"
+        },
+        {
+          "label": "A fan",
+          "next": "r_vib_fan"
+        }
+      ]
+    },
+    "vib_recent": {
+      "q": "What changed around the time it started?",
+      "options": [
+        {
+          "label": "Maintenance, reinstall, or piping work",
+          "next": "r_vib_maint"
+        },
+        {
+          "label": "Process, load, or flow conditions",
+          "next": "r_vib_process"
+        },
+        {
+          "label": "Nothing I know of, it crept up",
+          "next": "r_vib_crept"
+        }
+      ]
+    },
+    "r_vib_maint": {
+      "type": "route",
+      "module": "alignment",
+      "tab": "troubleshoot",
+      "components": [
+        "alignment",
+        "bearing"
+      ],
+      "title": "Vibration after maintenance: alignment, soft foot, or pipe strain.",
+      "text": "The three things that get disturbed by maintenance and all show up as vibration. Soft foot is checked first, no exceptions. Pipe strain is found by taking readings before and after connecting the piping.",
+      "first": [
+        "Soft foot at every foot, under 0.002 inch",
+        "Alignment readings versus the recorded values",
+        "Readings with piping disconnected versus connected: any shift over 0.001 to 0.002 inch is pipe strain"
+      ],
+      "also": [
+        {
+          "module": "alignment",
+          "tab": "install",
+          "why": "Pipe strain check"
+        },
+        {
+          "module": "alignment",
+          "tab": "misalign",
+          "why": "Parallel is 2x, angular is 1x axial"
+        },
+        {
+          "module": "bearing",
+          "tab": "install",
+          "why": "Bearing installed wrong vibrates from day one"
+        },
+        {
+          "module": "reference",
+          "tab": "align",
+          "why": "Tolerances and the rim and face math"
+        },
+        {
+          "module": "installation",
+          "tab": "troubleshoot",
+          "why": "Pipe strain, voids, and anchors: the installation faults behind alignment that will not hold"
+        }
+      ]
+    },
+    "r_vib_process": {
+      "type": "route",
+      "module": "pumps",
+      "tab": "diagnose",
+      "components": [
+        "pump"
+      ],
+      "title": "Vibration that follows the process is hydraulic.",
+      "text": "Cavitation, running far off best efficiency point, entrained air, or recirculation. Fix the operating point and the vibration goes with it. The diagnose tree has the vibration branch under centrifugal.",
+      "first": [
+        "Where on the curve is it running now versus design",
+        "Suction conditions and NPSH margin",
+        "Discharge throttled far below design flow: recirculation"
+      ],
+      "also": [
+        {
+          "module": "pumps",
+          "tab": "compare",
+          "why": "How flow and system resistance interact"
+        }
+      ]
+    },
+    "r_vib_crept": {
+      "type": "route",
+      "module": "bearing",
+      "tab": "diagnose",
+      "components": [
+        "bearing",
+        "lube"
+      ],
+      "title": "Vibration that crept up is wear.",
+      "text": "A bearing developing surface damage, a coupling element degrading, or looseness growing. The bearing tree takes the recent change path under vibration. Lubricant analysis will often confirm it before you tear anything down.",
+      "first": [
+        "Oil or grease sample for wear metals",
+        "Coupling element inspection",
+        "Foundation bolts and baseplate grout"
+      ],
+      "also": [
+        {
+          "module": "lube",
+          "tab": "analysis",
+          "why": "Ferrography tells you what kind of wear"
+        },
+        {
+          "module": "alignment",
+          "tab": "types",
+          "why": "Coupling wear as a vibration source"
+        },
+        {
+          "module": "vibration",
+          "tab": "trend",
+          "why": "Baseline, alarms, and rate of change"
+        }
+      ]
+    },
+    "r_vib_stable": {
+      "type": "route",
+      "module": "vibration",
+      "tab": "troubleshoot",
+      "components": [
+        "bearing",
+        "alignment"
+      ],
+      "title": "Long-standing vibration needs a signature, not a guess.",
+      "text": "Take a spectrum, find 1x, and let the frequency family name the fault: synchronous, sub-synchronous, non-synchronous, harmonics, sidebands, or broadband. The vibration tree walks it from the reading to the cause.",
+      "first": [
+        "Get a baseline reading in three axes at each bearing and record it",
+        "Compare to identical machines",
+        "Do not act on a single reading; trend it"
+      ],
+      "also": [
+        {
+          "module": "alignment",
+          "tab": "misalign",
+          "why": "Vibration signature by misalignment type"
+        },
+        {
+          "module": "bearing",
+          "tab": "diagnose",
+          "why": "Stable baseline path"
+        },
+        {
+          "module": "installation",
+          "tab": "foundation",
+          "why": "Isolation joint and foundation mass"
+        }
+      ]
+    },
+    "r_vib_sleeve": {
+      "type": "route",
+      "module": "bearing",
+      "tab": "diagnose",
+      "components": [
+        "bearing",
+        "lube"
+      ],
+      "title": "Sleeve bearing vibration: oil whirl, or a collapsing oil wedge.",
+      "text": "The sleeve path in the bearing tree covers oil whirl (sub-synchronous, just under half speed), oil supply loss, and metal in the oil. An oil pressure drop on a pressure-fed sleeve bearing is a shutdown, not a watch item.",
+      "first": [
+        "Oil pressure and temperature trend",
+        "Clearance check at next opportunity",
+        "Vibration frequency: below running speed is whirl"
+      ],
+      "also": [
+        {
+          "module": "bearing",
+          "tab": "types",
+          "why": "How the oil wedge works"
+        },
+        {
+          "module": "lube",
+          "tab": "systems",
+          "why": "Recirculating oil system faults"
+        }
+      ]
+    },
+    "r_vib_fan": {
+      "type": "route",
+      "module": "fans",
+      "tab": "troubleshoot",
+      "components": [
+        "fan",
+        "bearing"
+      ],
+      "title": "Fan vibration: clean the wheel before anything else.",
+      "text": "Most fan vibration is buildup unbalance. Lock out, block the wheel against windmilling, open the housing, and look. Then the drive, then the bearings, then balance.",
+      "first": [
+        "Product on the blades",
+        "Belt tension and sheave gauge",
+        "Shaft play at the bearings"
+      ],
+      "also": [
+        {
+          "module": "fans",
+          "tab": "wheel",
+          "why": "Balance, buildup, and cone clearance"
+        },
+        {
+          "module": "powertrans",
+          "tab": "tension",
+          "why": "Over-tension loads the fan bearing"
+        }
+      ]
+    },
+    "leak": {
+      "q": "What is leaking, and where?",
+      "options": [
+        {
+          "label": "Compressed air",
+          "next": "r_leak_air"
+        },
+        {
+          "label": "Process fluid at a pump shaft",
+          "next": "leak_shaft"
+        },
+        {
+          "label": "At a flange or gasket joint",
+          "next": "r_leak_flange"
+        },
+        {
+          "label": "Oil or grease at a bearing housing or gearbox",
+          "next": "r_leak_lube"
+        },
+        {
+          "label": "Pneumatic cylinder rod",
+          "next": "r_leak_rod"
+        },
+        {
+          "label": "Hydraulic oil",
+          "next": "r_leak_hyd"
+        },
+        {
+          "label": "Process valve: stem or seat",
+          "next": "r_leak_valve"
+        }
+      ]
+    },
+    "r_leak_air": {
+      "type": "route",
+      "module": "pneu",
+      "tab": "troubleshoot",
+      "components": [
+        "pneu"
+      ],
+      "title": "Air leak: locate it, then fix the connection or the component.",
+      "text": "Enter through Air leaking audibly. Fittings, exhaust ports, rod seals, and the search method are all covered. Most air leaks are push-in fittings with the tube not bottomed out.",
+      "first": [
+        "Continuous or only during actuation",
+        "Ultrasonic detector, soapy water, or screwdriver stethoscope"
+      ],
+      "also": [
+        {
+          "module": "pneu",
+          "tab": "safety",
+          "why": "De-pressurise before pulling any fitting"
+        }
+      ]
+    },
+    "leak_shaft": {
+      "q": "Mechanical seal or compression packing?",
+      "hint": "Packing is supposed to leak. A mechanical seal is not.",
+      "options": [
+        {
+          "label": "Packing",
+          "next": "r_leak_packing"
+        },
+        {
+          "label": "Mechanical seal",
+          "next": "r_leak_mechseal"
+        }
+      ]
+    },
+    "r_leak_packing": {
+      "type": "route",
+      "module": "pumps",
+      "tab": "leaks",
+      "components": [
+        "pump",
+        "seal"
+      ],
+      "title": "Packing leakage is normal within limits.",
+      "text": "40 to 60 drops per minute is correct and is what cools and lubricates the packing. Zero drops means the gland is too tight and the sleeve is being burned. A stream means worn packing or a scored sleeve.",
+      "first": [
+        "Count the drops",
+        "Gland nut adjustment in small, even steps, both sides",
+        "Sleeve condition when the packing is next changed"
+      ],
+      "also": [
+        {
+          "module": "seals",
+          "tab": "sealtypes",
+          "why": "Compression packing detail"
+        }
+      ]
+    },
+    "r_leak_mechseal": {
+      "type": "route",
+      "module": "seals",
+      "tab": "troubleshoot",
+      "components": [
+        "pump",
+        "seal"
+      ],
+      "title": "A leaking mechanical seal has failed. The question is why.",
+      "text": "The failure analysis tab reads the evidence: thermal damage, chemical attack, installation damage, face wear pattern, fretting. Replacing without reading the old seal means the new one fails the same way.",
+      "first": [
+        "Keep the old seal and read the faces before ordering",
+        "Shaft runout under 0.002 inch TIR before the new one goes in",
+        "Did anyone run it dry, even briefly"
+      ],
+      "also": [
+        {
+          "module": "seals",
+          "tab": "install",
+          "why": "Cartridge clips, setting dimension, never lubricate faces"
+        },
+        {
+          "module": "rootcause",
+          "tab": "examples",
+          "why": "Third seal in a year: the worked example"
+        },
+        {
+          "module": "pumps",
+          "tab": "leaks",
+          "why": "Seal versus packing failure signatures"
+        },
+        {
+          "module": "alignment",
+          "tab": "why",
+          "why": "Misalignment makes the shaft describe an arc through the seal"
+        }
+      ]
+    },
+    "r_leak_flange": {
+      "type": "route",
+      "module": "seals",
+      "tab": "troubleshoot",
+      "components": [
+        "seal"
+      ],
+      "title": "Flange leak: the gasket, the faces, or the bolting.",
+      "text": "Extrusion means under or over torque. Blowout means wrong gasket for the pressure or reused gasket. Weeping after thermal cycling means the joint moved. Surface finish matters for spiral wound.",
+      "first": [
+        "Flange face condition and surface finish",
+        "Torque pattern and passes used last time",
+        "Gasket type against service and flange type"
+      ],
+      "also": [
+        {
+          "module": "seals",
+          "tab": "gaskets",
+          "why": "Gasket types and flange faces"
+        },
+        {
+          "module": "seals",
+          "tab": "install",
+          "why": "Star pattern, three passes minimum"
+        },
+        {
+          "module": "seals",
+          "tab": "compat",
+          "why": "Material against the fluid"
+        },
+        {
+          "module": "reference",
+          "tab": "pipe",
+          "why": "Bolt counts and star sequence"
+        }
+      ]
+    },
+    "r_leak_lube": {
+      "type": "route",
+      "module": "lube",
+      "tab": "troubleshoot",
+      "components": [
+        "lube",
+        "bearing",
+        "seal"
+      ],
+      "title": "Grease purging is normal. Oil leaking is not.",
+      "text": "The lubrication tree separates grease purge (relief path working as designed) from oil leakage at a lip seal, labyrinth, sight glass, or breather. Heavy grease purge right after a PM is overgreasing.",
+      "first": [
+        "Grease: how much and how soon after the PM",
+        "Oil: level dropping, and where it exits",
+        "Breather blocked pushes oil out of the seals"
+      ],
+      "also": [
+        {
+          "module": "seals",
+          "tab": "sealtypes",
+          "why": "Lip seal and labyrinth function"
+        },
+        {
+          "module": "lube",
+          "tab": "application",
+          "why": "Correct quantity"
+        }
+      ]
+    },
+    "r_leak_rod": {
+      "type": "route",
+      "module": "pneu",
+      "tab": "troubleshoot",
+      "components": [
+        "pneu",
+        "seal"
+      ],
+      "title": "Rod seal leak: inspect the rod before replacing the seal.",
+      "text": "A scored rod destroys new seals immediately. Side load from a misaligned mount wears rod seals fast. Enter the leak branch, rod seal.",
+      "first": [
+        "Rod surface under a fingernail: any score you can feel is too much",
+        "Mounting alignment and whether the load is applying a moment"
+      ],
+      "also": [
+        {
+          "module": "pneu",
+          "tab": "actuators",
+          "why": "Guided cylinders for side loads"
+        }
+      ]
+    },
+    "r_leak_hyd": {
+      "type": "route",
+      "module": "hydraulics",
+      "tab": "safety",
+      "components": [
+        "hydraulics"
+      ],
+      "title": "Hydraulic leak: pressure injection injury risk first.",
+      "text": "Do not feel for a hydraulic leak with your hand. Fluid at 200 bar through a pinhole will pass through skin and glove. Use cardboard to find the spray. Depressurise, lock out, and verify before touching the joint.",
+      "first": [
+        "Cardboard, not hands, to locate",
+        "Depressurise and verify zero before touching",
+        "Any injection injury is an emergency room visit regardless of how it looks"
+      ],
+      "also": [
+        {
+          "module": "hydraulics",
+          "tab": "troubleshoot",
+          "why": "Leak branch: fitting types, hoses, rod, shaft seal"
+        },
+        {
+          "module": "seals",
+          "tab": "compat",
+          "why": "Seal material against the hydraulic fluid"
+        }
+      ]
+    },
+    "r_leak_valve": {
+      "type": "route",
+      "module": "valves",
+      "tab": "troubleshoot",
+      "components": [
+        "valve"
+      ],
+      "title": "Valve leak: stem packing, or a seat that will not close.",
+      "text": "Stem: tighten the gland evenly, then repack with the stem inspected. Seat: check the actuator takes it fully closed before blaming the seat, and ask whether this isolation valve has been throttling.",
+      "first": [
+        "Gland load",
+        "Actuator stops and bench set",
+        "How the valve is actually used"
+      ],
+      "also": [
+        {
+          "module": "valves",
+          "tab": "packing",
+          "why": "Packing, seats, and leak classes"
+        },
+        {
+          "module": "seals",
+          "tab": "safety",
+          "why": "Opening a pressure boundary"
+        }
+      ]
+    },
+    "nomove": {
+      "q": "What is not producing?",
+      "options": [
+        {
+          "label": "Pump: no flow",
+          "next": "r_nomove_pump"
+        },
+        {
+          "label": "Pneumatic actuator will not move",
+          "next": "r_nomove_pneu"
+        },
+        {
+          "label": "Motor runs but the driven machine does not turn",
+          "next": "r_nomove_coupling"
+        },
+        {
+          "label": "Motor will not start or turn",
+          "next": "r_nomove_motor"
+        },
+        {
+          "label": "Centralized lubrication system: no delivery",
+          "next": "r_nomove_lube"
+        },
+        {
+          "label": "Hydraulic actuator",
+          "next": "r_nomove_hyd"
+        },
+        {
+          "label": "Brake will not release, or clutch will not engage",
+          "next": "r_nomove_brake"
+        },
+        {
+          "label": "Process valve will not stroke",
+          "next": "r_nomove_valve"
+        }
+      ]
+    },
+    "r_nomove_pump": {
+      "type": "route",
+      "module": "pumps",
+      "tab": "diagnose",
+      "components": [
+        "pump"
+      ],
+      "title": "No flow: prime, suction, rotation, or the pump itself.",
+      "text": "The diagnose tree branches by pump type. Centrifugal no flow is usually lost prime, closed suction, wrong rotation, or a sheared key. PD no flow is a check valve or a relief valve dumping everything back.",
+      "first": [
+        "Rotation direction versus the casing arrow",
+        "Suction valve and strainer",
+        "Is the shaft actually turning: independent rotation check"
+      ],
+      "also": [
+        {
+          "module": "pumps",
+          "tab": "rotate",
+          "why": "Independent rotation check procedure"
+        },
+        {
+          "module": "pumps",
+          "tab": "chain",
+          "why": "Walk the whole chain"
+        }
+      ]
+    },
+    "r_nomove_pneu": {
+      "type": "route",
+      "module": "pneu",
+      "tab": "troubleshoot",
+      "components": [
+        "pneu"
+      ],
+      "title": "No movement: pressure, valve, line, actuator, in that order.",
+      "text": "Enter through No movement. The tree brackets from the FRL gauge to the actuator port. Most no-movement faults are supply or valve, not the cylinder.",
+      "first": [
+        "Gauge at the FRL",
+        "Does the valve click when commanded"
+      ],
+      "also": [
+        {
+          "module": "pneu",
+          "tab": "overview",
+          "why": "The bracketing method"
+        }
+      ]
+    },
+    "r_nomove_coupling": {
+      "type": "route",
+      "module": "alignment",
+      "tab": "types",
+      "components": [
+        "alignment"
+      ],
+      "title": "Motor turns, machine does not: the coupling has let go.",
+      "text": "A sheared spider, a stripped grid, a hub spun on the shaft, or a sheared key. Lock out and look inside the guard. Then ask why it let go: overload or misalignment.",
+      "first": [
+        "Element condition and hub-to-shaft fit",
+        "Key and keyway",
+        "Alignment readings before reassembly"
+      ],
+      "also": [
+        {
+          "module": "pumps",
+          "tab": "rotate",
+          "why": "Check each element turns independently"
+        },
+        {
+          "module": "alignment",
+          "tab": "install",
+          "why": "Hub installation and keyway fit"
+        }
+      ]
+    },
+    "r_nomove_motor": {
+      "type": "route",
+      "module": "motors",
+      "tab": "troubleshoot",
+      "components": [
+        "motor",
+        "bearing"
+      ],
+      "title": "Motor will not turn: is it mechanical or electrical?",
+      "text": "The millwright check: lock out, uncouple, and try to turn the motor shaft by hand. If it is seized, it is a bearing. If it turns freely and still will not start powered, it is electrical. If the driven machine is seized, the motor was never the problem.",
+      "first": [
+        "Lock out, uncouple, turn each shaft by hand",
+        "Seized motor: bearing failure path",
+        "Seized driven machine: that machine's module"
+      ],
+      "also": [
+        {
+          "module": "bearing",
+          "tab": "diagnose",
+          "why": "Seized bearing"
+        },
+        {
+          "module": "pumps",
+          "tab": "rotate",
+          "why": "Independent rotation check"
+        }
+      ]
+    },
+    "r_nomove_lube": {
+      "type": "route",
+      "module": "lube",
+      "tab": "troubleshoot",
+      "components": [
+        "lube"
+      ],
+      "title": "Centralized system not delivering: the approach depends on the system type.",
+      "text": "Progressive: one blocked point stops everything downstream. Dual-line: each injector is independent, so no delivery anywhere is the pump or the reversing valve. The tree has a no-flow branch by system type.",
+      "first": [
+        "Identify the system type first",
+        "Progressive: find the blocked divider by the indicator pin",
+        "Reservoir level and pump output"
+      ],
+      "also": [
+        {
+          "module": "lube",
+          "tab": "systems",
+          "why": "Progressive versus dual-line"
+        }
+      ]
+    },
+    "r_nomove_hyd": {
+      "type": "route",
+      "module": "hydraulics",
+      "tab": "troubleshoot",
+      "components": [
+        "hydraulics"
+      ],
+      "title": "Hydraulic actuator not moving.",
+      "text": "The hydraulics tree brackets it: pump outlet at deadhead, then DCV, then actuator port, then heat survey. Lock out, support loads, bleed accumulators, and verify zero before opening any connection.",
+      "first": [
+        "Pump running and reservoir level",
+        "Relief valve set point and whether it is dumping",
+        "Directional valve shifting"
+      ],
+      "also": [
+        {
+          "module": "hydraulics",
+          "tab": "safety",
+          "why": "Injection injury, accumulators, suspended loads"
+        },
+        {
+          "module": "hydraulics",
+          "tab": "fluid",
+          "why": "Contamination is the root cause of most faults"
+        }
+      ]
+    },
+    "r_nomove_brake": {
+      "type": "route",
+      "module": "clutches",
+      "tab": "troubleshoot",
+      "components": [
+        "brake"
+      ],
+      "title": "Brake or clutch not moving: gap, lining, actuator.",
+      "text": "Load supported and locked out. Air gap at three points, lining thickness, then the coil voltage and rectifier, the air pressure, or the thruster stroke.",
+      "first": [
+        "Manual release lever position",
+        "Gap against nominal and maximum",
+        "Voltage at the coil when energised"
+      ],
+      "also": [
+        {
+          "module": "clutches",
+          "tab": "adjust",
+          "why": "Gap measurement and adjustment"
+        },
+        {
+          "module": "clutches",
+          "tab": "holding",
+          "why": "Holding brakes are safety devices"
+        }
+      ]
+    },
+    "r_nomove_valve": {
+      "type": "route",
+      "module": "valves",
+      "tab": "troubleshoot",
+      "components": [
+        "valve"
+      ],
+      "title": "Valve will not stroke: actuator first, then the valve.",
+      "text": "Air pressure at the actuator, positioner output, stops, hand-auto clutch on an electric actuator. If the actuator is fine, the valve is stiff or seized: packing, thermal binding, deposits, or years without moving.",
+      "first": [
+        "Actuator moves the stem when commanded",
+        "Packing gland load",
+        "When was it last exercised"
+      ],
+      "also": [
+        {
+          "module": "valves",
+          "tab": "actuators",
+          "why": "Actuators, positioners, and bench set"
+        }
+      ]
+    },
+    "low": {
+      "q": "What is below spec?",
+      "options": [
+        {
+          "label": "Pump flow or discharge pressure",
+          "next": "r_low_pump"
+        },
+        {
+          "label": "Pneumatic actuator slow or weak",
+          "next": "r_low_pneu"
+        },
+        {
+          "label": "Belt or chain drive losing speed under load",
+          "next": "r_low_belt"
+        },
+        {
+          "label": "Conveyor belt slipping, mistracking, or spilling",
+          "next": "r_conveyor"
+        },
+        {
+          "label": "Gearbox output",
+          "next": "r_low_gearbox"
+        },
+        {
+          "label": "Fan: not enough air",
+          "next": "r_low_fan"
+        },
+        {
+          "label": "Compressor cannot keep up",
+          "next": "r_low_comp"
+        }
+      ]
+    },
+    "r_low_pump": {
+      "type": "route",
+      "module": "pumps",
+      "tab": "diagnose",
+      "components": [
+        "pump"
+      ],
+      "title": "Low flow: the pump, the suction, or the system.",
+      "text": "Pumps create flow. The system creates pressure. Low discharge pressure with a centrifugal pump usually means the system has changed, or the pump has worn (wear rings, impeller). PD low flow is slip through worn clearances or a relief valve partially open.",
+      "first": [
+        "Compare current head and flow to the curve",
+        "Wear ring clearance on centrifugal",
+        "Relief valve setting and seat condition on PD"
+      ],
+      "also": [
+        {
+          "module": "pumps",
+          "tab": "compare",
+          "why": "Flow versus pressure, and why it matters here"
+        },
+        {
+          "module": "pumps",
+          "tab": "chain",
+          "why": "Suction side walk"
+        }
+      ]
+    },
+    "r_low_pneu": {
+      "type": "route",
+      "module": "pneu",
+      "tab": "troubleshoot",
+      "components": [
+        "pneu"
+      ],
+      "title": "Slow or weak: pressure under load, then flow controls, then tubing.",
+      "text": "Enter through Slow or weak. Set the regulator under load, not at rest. Undersized tubing between valve and cylinder is the fault that gets misdiagnosed as a valve or pressure problem.",
+      "first": [
+        "Gauge at the actuator port during the stroke",
+        "One direction or both"
+      ],
+      "also": [
+        {
+          "module": "pneu",
+          "tab": "airquality",
+          "why": "Tubing sizing and leakage"
+        }
+      ]
+    },
+    "r_low_belt": {
+      "type": "route",
+      "module": "powertrans",
+      "tab": "troubleshoot",
+      "components": [
+        "powertrans"
+      ],
+      "title": "Losing speed under load is slip.",
+      "text": "Belt tension, glazing, worn sheave grooves, or the wrong belt section. Chain: stretched chain riding up the sprocket teeth.",
+      "first": [
+        "Tension by deflection",
+        "Sheave groove gauge",
+        "Chain stretch measurement over a known number of pitches"
+      ],
+      "also": [
+        {
+          "module": "bearing",
+          "tab": "diagnose",
+          "why": "Over-tensioning to cure slip kills bearings"
+        },
+        {
+          "module": "reference",
+          "tab": "calc",
+          "why": "Belt ratio and deflection"
+        }
+      ]
+    },
+    "r_low_gearbox": {
+      "type": "route",
+      "module": "gearbox",
+      "tab": "troubleshoot",
+      "components": [
+        "gearbox"
+      ],
+      "title": "Gearbox output loss.",
+      "text": "A gearbox does not lose ratio; if output speed is low the input is low or something is slipping upstream. If output torque is low, look at heat and oil condition: a hot gearbox is losing power to friction.",
+      "first": [
+        "Input speed check",
+        "Oil condition and level"
+      ],
+      "also": [
+        {
+          "module": "lube",
+          "tab": "troubleshoot",
+          "why": "Oil-side faults"
+        }
+      ]
+    },
+    "r_conveyor": {
+      "type": "route",
+      "module": "conveyors",
+      "tab": "troubleshoot",
+      "components": [
+        "conveyor"
+      ],
+      "title": "Conveyor: slip, tracking, spillage, and belt damage have their own tree.",
+      "text": "Walk it running from outside the guards, mark the belt position, then lock out and block the take-up before touching anything. Causes (structure, pulleys, buildup, seized idlers, loading, splices) are fixed before any idler is adjusted.",
+      "first": [
+        "Is the belt running off at the same place on the conveyor, or the same place on the belt",
+        "Are all the idlers turning",
+        "Where is the take-up sitting"
+      ],
+      "also": [
+        {
+          "module": "conveyors",
+          "tab": "tracking",
+          "why": "The two rules and the adjustment order"
+        },
+        {
+          "module": "conveyors",
+          "tab": "safety",
+          "why": "Gravity take-up is stored energy"
+        },
+        {
+          "module": "powertrans",
+          "tab": "troubleshoot",
+          "why": "If it is the drive belt, not the conveyor belt"
+        }
+      ]
+    },
+    "r_low_fan": {
+      "type": "route",
+      "module": "fans",
+      "tab": "troubleshoot",
+      "components": [
+        "fan"
+      ],
+      "title": "Fan output down: the system moved before the fan did.",
+      "text": "Filters, dampers, and ducts change the operating point. If the system is unchanged, then rotation, cone clearance, and the wheel.",
+      "first": [
+        "Filter differential and damper positions",
+        "Rotation arrow",
+        "Wheel to inlet cone gap"
+      ],
+      "also": [
+        {
+          "module": "fans",
+          "tab": "laws",
+          "why": "Fan laws and the system curve"
+        }
+      ]
+    },
+    "r_low_comp": {
+      "type": "route",
+      "module": "compressors",
+      "tab": "troubleshoot",
+      "components": [
+        "compressor",
+        "pneu"
+      ],
+      "title": "Compressor cannot keep up: is it loading, and where is the air going.",
+      "text": "Read the controller. If it loads and output is normal, the plant is taking it all: leak survey first. If it will not load or output is low, the compressor tree.",
+      "first": [
+        "Controller fault log and loaded hours",
+        "Inlet valve opening on load",
+        "Leak survey downstream"
+      ],
+      "also": [
+        {
+          "module": "pneu",
+          "tab": "airquality",
+          "why": "Leakage is 20 to 30 percent on unmanaged systems"
+        },
+        {
+          "module": "compressors",
+          "tab": "controls",
+          "why": "Pressure band and set point"
+        }
+      ]
+    },
+    "erratic": {
+      "q": "What is erratic?",
+      "options": [
+        {
+          "label": "Pump surging or hunting",
+          "next": "r_err_pump"
+        },
+        {
+          "label": "Pneumatic cycle inconsistent or stalls",
+          "next": "r_err_pneu"
+        },
+        {
+          "label": "Pump output slowly drifting over hours",
+          "next": "r_err_slip"
+        },
+        {
+          "label": "Drive speed hunting",
+          "next": "r_err_belt"
+        }
+      ]
+    },
+    "r_err_pump": {
+      "type": "route",
+      "module": "pumps",
+      "tab": "diagnose",
+      "components": [
+        "pump"
+      ],
+      "title": "Surging is air, suction, or minimum flow.",
+      "text": "Air entering the suction line, a suction level dropping to vortex, or a centrifugal running below minimum continuous flow and recirculating. All three show as surging flow and pressure.",
+      "first": [
+        "Suction line joints for air ingress (watch for foam in the sight glass)",
+        "Suction level and vortex breaker",
+        "Operating point versus minimum flow"
+      ],
+      "also": [
+        {
+          "module": "pumps",
+          "tab": "chain",
+          "why": "Suction side"
+        },
+        {
+          "module": "seals",
+          "tab": "failure",
+          "why": "Air at the seal faces"
+        }
+      ]
+    },
+    "r_err_pneu": {
+      "type": "route",
+      "module": "pneu",
+      "tab": "troubleshoot",
+      "components": [
+        "pneu"
+      ],
+      "title": "Erratic pneumatic cycle: supply consistency, signal logic, or sensors.",
+      "text": "Enter through Erratic or intermittent, or through Cylinder moves but machine cycle does not advance. Sensor faults get misdiagnosed as pneumatic faults constantly.",
+      "first": [
+        "Gauge the pressure through a full cycle",
+        "Sensor LEDs at each end position"
+      ],
+      "also": []
+    },
+    "r_err_slip": {
+      "type": "route",
+      "module": "pumps",
+      "tab": "diagnose",
+      "components": [
+        "pump",
+        "alignment"
+      ],
+      "title": "Slow drift over hours: interval slip or thermal growth.",
+      "text": "The pumps module covers interval slip. Thermal growth on a hot service changes alignment as it warms: a pump aligned cold runs misaligned hot unless thermal growth was compensated.",
+      "first": [
+        "Was the alignment done cold with a thermal growth offset",
+        "Coupling condition",
+        "Readings hot versus cold"
+      ],
+      "also": [
+        {
+          "module": "alignment",
+          "tab": "methods",
+          "why": "Laser systems compensate for thermal growth"
+        }
+      ]
+    },
+    "r_err_belt": {
+      "type": "route",
+      "module": "powertrans",
+      "tab": "troubleshoot",
+      "components": [
+        "powertrans"
+      ],
+      "title": "Speed hunting on a belt or chain drive.",
+      "text": "Intermittent slip under varying load, a belt riding up and down a worn groove, or a variable-pitch sheave with a worn mechanism.",
+      "first": [
+        "Tension and groove condition",
+        "Load cycle versus the hunting"
+      ],
+      "also": []
+    },
+    "visible": {
+      "q": "What do you see?",
+      "options": [
+        {
+          "label": "Metal in the oil or on the magnetic plug",
+          "next": "r_vis_metal"
+        },
+        {
+          "label": "Milky, dark, or foamy oil",
+          "next": "r_vis_oil"
+        },
+        {
+          "label": "Grease purging heavily",
+          "next": "r_vis_purge"
+        },
+        {
+          "label": "Scored shaft, fretting, or discoloured bearing",
+          "next": "r_vis_bearing"
+        },
+        {
+          "label": "Gasket extruded or blown",
+          "next": "r_vis_gasket"
+        },
+        {
+          "label": "Coupling element cracked or shedding",
+          "next": "r_vis_coupling"
+        },
+        {
+          "label": "Guard off, interlock jumpered, or a light curtain taped",
+          "next": "r_vis_guard"
+        },
+        {
+          "label": "Rust or water at a pneumatic exhaust",
+          "next": "r_vis_water"
+        },
+        {
+          "label": "Damaged o-ring or seal (flat spot, spiral cut, chip)",
+          "next": "r_vis_oring"
+        }
+      ]
+    },
+    "r_vis_guard": {
+      "type": "route",
+      "module": "safeguarding",
+      "tab": "troubleshoot",
+      "components": [
+        "guard"
+      ],
+      "title": "A defeated safeguard is a symptom. Find the task or the nuisance behind it.",
+      "text": "Restore it now, and then find out why it was off: a PM task that needs the guard removed, a process that cannot be seen, nuisance trips, or a device that failed. Each has a design fix. Restoring the guard without the fix means it is off again tomorrow.",
+      "first": [
+        "What task needed it defeated",
+        "Is it tripping on nuisance (dust, alignment, a forklift)",
+        "Did the device fail and production could not wait"
+      ],
+      "also": [
+        {
+          "module": "safeguarding",
+          "tab": "guards",
+          "why": "Design the guard for the maintenance that will happen"
+        },
+        {
+          "module": "safeguarding",
+          "tab": "psr",
+          "why": "A modification to protective elements may need a PSR"
+        },
+        {
+          "module": "rootcause",
+          "tab": "examples",
+          "why": "The guard found off: the worked example"
+        }
+      ]
+    },
+    "r_vis_metal": {
+      "type": "route",
+      "module": "lube",
+      "tab": "analysis",
+      "components": [
+        "lube",
+        "bearing",
+        "gearbox"
+      ],
+      "title": "Metal in the oil: find out which metal.",
+      "text": "Iron is gears, races, and shafts. Copper and tin are bronze cages, bushings, and thrust washers. Silicon is dirt. Ferrography tells you the wear mechanism from particle shape. Elemental analysis tells you which component.",
+      "first": [
+        "Sample from the same point every time",
+        "Compare to the last sample, not to a generic limit",
+        "Magnetic plug: fine fuzz is normal, chips are not"
+      ],
+      "also": [
+        {
+          "module": "bearing",
+          "tab": "diagnose",
+          "why": "Sleeve bearing: metal in oil branch"
+        },
+        {
+          "module": "lube",
+          "tab": "troubleshoot",
+          "why": "Bearing failure patterns by wear type"
+        }
+      ]
+    },
+    "r_vis_oil": {
+      "type": "route",
+      "module": "lube",
+      "tab": "troubleshoot",
+      "components": [
+        "lube"
+      ],
+      "title": "Oil appearance tells you what got in.",
+      "text": "Milky is water. Dark is oxidation. Foamy is air ingestion or the wrong oil. Varnish is oxidation deposits. The oil appearance branch covers each.",
+      "first": [
+        "Crackle test for water",
+        "Smell for oxidation",
+        "Foam that persists versus clears"
+      ],
+      "also": [
+        {
+          "module": "lube",
+          "tab": "contam",
+          "why": "Water, oxidation, cross-contamination, microbial"
+        }
+      ]
+    },
+    "r_vis_purge": {
+      "type": "route",
+      "module": "lube",
+      "tab": "application",
+      "components": [
+        "lube",
+        "bearing"
+      ],
+      "title": "Heavy purge is overgreasing.",
+      "text": "A little purge at the seals is the relief path working. A lot, especially right after a PM, is too much grease. Overgreasing causes more bearing failures than undergreasing.",
+      "first": [
+        "Quantity applied versus G = 0.005 × D × B",
+        "Was the relief plug removed during greasing"
+      ],
+      "also": [
+        {
+          "module": "bearing",
+          "tab": "lube",
+          "why": "Overgreasing detail"
+        }
+      ]
+    },
+    "r_vis_bearing": {
+      "type": "route",
+      "module": "bearing",
+      "tab": "diagnose",
+      "components": [
+        "bearing",
+        "alignment"
+      ],
+      "title": "Read the failure pattern before ordering the replacement.",
+      "text": "Discolouration is heat. Fretting on the shaft or housing is a loose fit or the bearing walking. Scoring is contamination. A wear track off-centre on a race is misalignment. The pattern tells you the root cause; replacing without reading it repeats the failure.",
+      "first": [
+        "Photograph the races, elements, and shaft before cleaning anything",
+        "Shaft and housing fits measured against spec",
+        "Fixing ring position on pillow block pairs"
+      ],
+      "also": [
+        {
+          "module": "bearing",
+          "tab": "install",
+          "why": "Fits, fixing ring, thermal float"
+        },
+        {
+          "module": "seals",
+          "tab": "failure",
+          "why": "Fretting explained"
+        },
+        {
+          "module": "lube",
+          "tab": "troubleshoot",
+          "why": "Bearing failure patterns: thermal, abrasive, corrosion, smearing"
+        },
+        {
+          "module": "measurement",
+          "tab": "instruments",
+          "why": "Measuring the seat and the bore before the new bearing"
+        }
+      ]
+    },
+    "r_vis_gasket": {
+      "type": "route",
+      "module": "seals",
+      "tab": "failure",
+      "components": [
+        "seal"
+      ],
+      "title": "Extrusion is torque. Blowout is the wrong gasket.",
+      "text": "Under-torqued gaskets extrude outward under pressure. Over-torqued gaskets crush and extrude inward. Blowout is a gasket not rated for the pressure, or one that was reused.",
+      "first": [
+        "Torque values and pattern used",
+        "Gasket rating versus line pressure and temperature",
+        "Flange face flatness"
+      ],
+      "also": [
+        {
+          "module": "seals",
+          "tab": "gaskets",
+          "why": "Gasket types by service"
+        },
+        {
+          "module": "seals",
+          "tab": "install",
+          "why": "Star pattern and passes"
+        }
+      ]
+    },
+    "r_vis_coupling": {
+      "type": "route",
+      "module": "alignment",
+      "tab": "why",
+      "components": [
+        "alignment"
+      ],
+      "title": "A coupling shedding rubber or grid metal has been absorbing misalignment.",
+      "text": "Coupling elements are sacrificial. When one wears out early, the misalignment that wore it is still there and is also loading the bearings and seals on both machines. Replace the element, then find the misalignment.",
+      "first": [
+        "Alignment readings before the new element goes in",
+        "Soft foot",
+        "DBSE set correctly"
+      ],
+      "also": [
+        {
+          "module": "alignment",
+          "tab": "procedure",
+          "why": "Full procedure"
+        },
+        {
+          "module": "alignment",
+          "tab": "types",
+          "why": "Element wear by coupling type"
+        },
+        {
+          "module": "installation",
+          "tab": "piping",
+          "why": "Pipe strain check"
+        }
+      ]
+    },
+    "r_vis_water": {
+      "type": "route",
+      "module": "pneu",
+      "tab": "airquality",
+      "components": [
+        "pneu"
+      ],
+      "title": "Water at the point of use means the dryer or drains are not working.",
+      "text": "Rust in cylinders, water from exhausts, ice at orifices in winter. The air quality tab covers dryer types, dewpoint, drains, and what to check.",
+      "first": [
+        "Dryer dewpoint reading",
+        "Auto drains cycling",
+        "Bypass valve position"
+      ],
+      "also": [
+        {
+          "module": "pneu",
+          "tab": "troubleshoot",
+          "why": "Water or ice branch"
+        }
+      ]
+    },
+    "r_vis_oring": {
+      "type": "route",
+      "module": "seals",
+      "tab": "failure",
+      "components": [
+        "seal"
+      ],
+      "title": "The damage shape tells you what happened.",
+      "text": "Flat spot: pinched during assembly. Spiral cut: twisted going in. Chipped face: dropped. Swollen: chemical incompatibility. Hard and cracked: heat. Installation damage is the most common and the most avoidable.",
+      "first": [
+        "Lubricate the o-ring, not the seal faces, on assembly",
+        "Chamfers and lead-ins on the bore",
+        "Material against the fluid"
+      ],
+      "also": [
+        {
+          "module": "seals",
+          "tab": "install",
+          "why": "Installation steps"
+        },
+        {
+          "module": "seals",
+          "tab": "compat",
+          "why": "Compatibility table"
+        }
+      ]
+    },
+    "overload": {
+      "q": "With the machine locked out and uncoupled, does the driven machine turn freely by hand?",
+      "hint": "This one check splits the problem in half.",
+      "options": [
+        {
+          "label": "No, it is stiff or seized",
+          "next": "r_ovl_seized",
+          "cls": "no"
+        },
+        {
+          "label": "Yes, turns freely",
+          "next": "overload2",
+          "cls": "yes"
+        }
+      ]
+    },
+    "overload2": {
+      "q": "Is the driven machine a pump?",
+      "options": [
+        {
+          "label": "Yes",
+          "next": "r_ovl_pump",
+          "cls": "yes"
+        },
+        {
+          "label": "No",
+          "next": "r_ovl_other",
+          "cls": "no"
+        }
+      ]
+    },
+    "r_ovl_seized": {
+      "type": "route",
+      "module": "bearing",
+      "tab": "diagnose",
+      "components": [
+        "bearing"
+      ],
+      "title": "A seized or stiff driven machine is a bearing until proven otherwise.",
+      "text": "High amps and overload trips because the motor is dragging a failing bearing. Also possible: a rub, a seized seal, product packed in the casing. Turn each element independently to find which one drags.",
+      "first": [
+        "Independent rotation check on each element",
+        "Feel for a drag point versus uniform stiffness"
+      ],
+      "also": [
+        {
+          "module": "pumps",
+          "tab": "rotate",
+          "why": "Independent rotation check procedure"
+        },
+        {
+          "module": "seals",
+          "tab": "failure",
+          "why": "Seized seal faces"
+        }
+      ]
+    },
+    "r_ovl_pump": {
+      "type": "route",
+      "module": "pumps",
+      "tab": "diagnose",
+      "components": [
+        "pump"
+      ],
+      "title": "A pump pulling high amps is doing more work than designed.",
+      "text": "Centrifugal: running far to the right of the curve (discharge wide open, low head), or pumping a denser or more viscous liquid than designed. PD: viscosity up, or discharge restricted with the relief valve holding it. The diagnose tree covers heat and vibration branches that overlap with this.",
+      "first": [
+        "Discharge pressure versus design; wide open discharge overloads a centrifugal",
+        "Liquid density and temperature versus design",
+        "PD: relief valve set point and discharge restriction"
+      ],
+      "also": [
+        {
+          "module": "pumps",
+          "tab": "compare",
+          "why": "Why PD amps rise with discharge restriction and centrifugal amps rise with flow"
+        }
+      ]
+    },
+    "r_ovl_other": {
+      "type": "route",
+      "module": "alignment",
+      "tab": "why",
+      "components": [
+        "alignment",
+        "motor"
+      ],
+      "title": "Free-turning machine, high amps: misalignment, or the motor itself.",
+      "text": "Misalignment raises motor current measurably. Fix soft foot and alignment, then re-measure amps. If still high, it is the motor or the load profile, and the motors module (planned) covers the handoff to the electrician.",
+      "first": [
+        "Soft foot, then alignment, then amps again",
+        "Belt tension if belt driven: over-tension loads the motor bearings"
+      ],
+      "also": [
+        {
+          "module": "motors",
+          "tab": "amps",
+          "why": "Amps as a mechanical symptom"
+        },
+        {
+          "module": "powertrans",
+          "tab": "tension",
+          "why": "Over-tension loads the motor bearings"
+        }
+      ]
+    },
+    "smell": {
+      "q": "What does it smell like?",
+      "options": [
+        {
+          "label": "Burning or hot varnish",
+          "next": "r_smell_burn"
+        },
+        {
+          "label": "Sour, rotten egg, Monday morning smell",
+          "next": "r_smell_sour"
+        },
+        {
+          "label": "Fuel or solvent where there should not be any",
+          "next": "r_smell_solvent"
+        },
+        {
+          "label": "Hot electrical or ozone",
+          "next": "r_smell_elec"
+        }
+      ]
+    },
+    "r_smell_burn": {
+      "type": "route",
+      "module": "lube",
+      "tab": "contam",
+      "components": [
+        "lube",
+        "bearing",
+        "powertrans"
+      ],
+      "title": "Burning smell: oxidised oil, a slipping belt, or a bearing about to let go.",
+      "text": "Oxidised oil has a sharp varnish smell and turns dark. Belt slip smells like burning rubber. A bearing running to failure smells like hot metal and grease. Find which one with an infrared thermometer.",
+      "first": [
+        "Infrared survey of every bearing and the coupling",
+        "Oil colour and smell at the sight glass",
+        "Belt guard: rubber dust and heat"
+      ],
+      "also": [
+        {
+          "module": "bearing",
+          "tab": "diagnose",
+          "why": "Heat path"
+        },
+        {
+          "module": "powertrans",
+          "tab": "failure",
+          "why": "Glazed belts and slip"
+        }
+      ]
+    },
+    "r_smell_sour": {
+      "type": "route",
+      "module": "lube",
+      "tab": "contam",
+      "components": [
+        "lube"
+      ],
+      "title": "Sour smell is microbial growth in the oil or coolant.",
+      "text": "Bacteria living at the water and oil interface. Worst after a weekend shutdown when the system sits still. Tramp oil and water are the food. The contamination tab covers biocide intervals and tramp oil removal.",
+      "first": [
+        "Water content test",
+        "Tramp oil skimming",
+        "Biocide per the fluid supplier"
+      ],
+      "also": []
+    },
+    "r_smell_solvent": {
+      "type": "route",
+      "module": "seals",
+      "tab": "compat",
+      "components": [
+        "seal"
+      ],
+      "title": "A solvent smell where none should be: check what the seals are made of.",
+      "text": "A seal or hose that is incompatible with the fluid swells, softens, and lets it through. The compatibility table covers 19 fluids against five materials.",
+      "first": [
+        "Seal and hose material against the actual fluid",
+        "Look for swelling at any exposed elastomer"
+      ],
+      "also": [
+        {
+          "module": "seals",
+          "tab": "materials",
+          "why": "Material selection"
+        }
+      ]
+    },
+    "r_smell_elec": {
+      "type": "route",
+      "module": "motors",
+      "tab": "troubleshoot",
+      "components": [
+        "pneu",
+        "motor"
+      ],
+      "title": "Hot electrical: motor windings or a solenoid coil.",
+      "text": "A motor that smells of burnt insulation has failed windings: isolate it and find the mechanical cause before the rewind. A solenoid coil cooking from a stuck spool smells the same at the valve. Find it by nose and by infrared, then lock out.",
+      "first": [
+        "Which component is hot",
+        "Motor: the burnt-winding branch, then the handoff package",
+        "Solenoid: pneumatics, stuck spool branch"
+      ],
+      "also": [
+        {
+          "module": "motors",
+          "tab": "handoff",
+          "why": "What to give the electrician"
+        },
+        {
+          "module": "pneu",
+          "tab": "troubleshoot",
+          "why": "Solenoid hums: stuck spool"
+        }
+      ]
+    }
+  },
+  "symptoms": [
+    {
+      "id": "heat",
+      "icon": "ti-flame",
+      "name": "Running hot",
+      "sub": "Hotter than baseline, too hot to hold, paint discolouring"
+    },
+    {
+      "id": "noise",
+      "icon": "ti-volume",
+      "name": "New or changed noise",
+      "sub": "Squeal, rumble, knock, crackle, hiss, hum"
+    },
+    {
+      "id": "vib",
+      "icon": "ti-wave-sine",
+      "name": "Vibration",
+      "sub": "New, increasing, or unexplained"
+    },
+    {
+      "id": "leak",
+      "icon": "ti-droplet",
+      "name": "Leak",
+      "sub": "Air, oil, grease, process fluid, water"
+    },
+    {
+      "id": "nomove",
+      "icon": "ti-circle-off",
+      "name": "No output or no movement",
+      "sub": "Motor runs but nothing happens, or nothing runs at all"
+    },
+    {
+      "id": "low",
+      "icon": "ti-trending-down",
+      "name": "Low or falling output",
+      "sub": "Flow, pressure, force, or speed below spec"
+    },
+    {
+      "id": "erratic",
+      "icon": "ti-activity",
+      "name": "Erratic or intermittent",
+      "sub": "Surging, hunting, random stops, works sometimes"
+    },
+    {
+      "id": "visible",
+      "icon": "ti-eye",
+      "name": "Something looks wrong",
+      "sub": "Metal in oil, discoloured oil, scoring, cracked parts, rust"
+    },
+    {
+      "id": "overload",
+      "icon": "ti-bolt",
+      "name": "Motor overloading or tripping",
+      "sub": "High amps, overload trips, breaker trips on start"
+    },
+    {
+      "id": "smell",
+      "icon": "ti-wind",
+      "name": "Smell",
+      "sub": "Burning, hot oil, sour, solvent, ozone"
+    }
+  ]
+}

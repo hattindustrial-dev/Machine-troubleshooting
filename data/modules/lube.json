@@ -1,0 +1,777 @@
+{
+  "key": "lube",
+  "num": "05",
+  "name": "Lubrication Systems",
+  "source": "builtwright_lubrication_v1.html",
+  "tabs": [
+    {
+      "id": "types",
+      "label": "Lubricant Types"
+    },
+    {
+      "id": "systems",
+      "label": "Centralized"
+    },
+    {
+      "id": "contam",
+      "label": "Contamination"
+    },
+    {
+      "id": "analysis",
+      "label": "Oil Analysis"
+    },
+    {
+      "id": "application",
+      "label": "Application"
+    },
+    {
+      "id": "troubleshoot",
+      "label": "Troubleshoot"
+    },
+    {
+      "id": "selfcheck",
+      "label": "Self-Check"
+    },
+    {
+      "id": "safety",
+      "label": "Safety"
+    }
+  ],
+  "cards": {
+    "lubeData": {
+      "mineral": {
+        "icon": "ti-droplet-filled",
+        "name": "Mineral Oil",
+        "role": "Conventional petroleum-derived lubricant: the standard for most general industrial applications",
+        "body": "Mineral oil is refined from crude petroleum and is the most widely used lubricant base in industrial applications. Modern Group II and Group III mineral oils offer good oxidation stability, a wide range of available viscosity grades, and broad compatibility with elastomeric seals and paints. They are the cost-effective default choice when operating conditions do not demand the performance of synthetic lubricants.",
+        "tips": [
+          "Available in a wide range of ISO viscosity grades and formulations for virtually every industrial application.",
+          "Service life is shorter than synthetic oils at elevated temperatures. At operating temperatures above approximately 80 degrees Celsius continuously, synthetic oil should be considered.",
+          "Fully compatible with most elastomeric seal materials (nitrile, Viton). Check compatibility before using with EPDM or silicone seals.",
+          "Mixing different brands of mineral oil with the same viscosity grade and application type is generally acceptable but not ideal. Additive packages may interact. Top up with the same product where possible.",
+          "Store in a clean, dry, sealed container. Mineral oil absorbs water from the atmosphere and degrades in UV light over time."
+        ]
+      },
+      "synthetic": {
+        "icon": "ti-atom-2",
+        "name": "Synthetic Oil",
+        "role": "Engineered base fluids: extended service life, wide temperature range, and severe duty applications",
+        "body": "Synthetic lubricants are manufactured from chemically engineered base stocks rather than refined from crude oil. The most common industrial synthetic base is PAO (polyalphaolefin), which provides excellent viscosity index, low pour point, and superior oxidation stability compared to mineral oil. Synthetic oils are specified for high or low temperature extremes, extended drain intervals, energy efficiency requirements, and applications where mineral oil service life is inadequate.",
+        "tips": [
+          "Synthetic oils can extend drain intervals by 2 to 4 times compared to equivalent mineral oils in the same application, but only if oil analysis confirms the oil condition supports the extension.",
+          "PAO-based synthetics are compatible with most mineral oil seals and are miscible with mineral oil, allowing top-up with mineral oil in an emergency (though this reduces the performance advantage).",
+          "PAG (polyalkylene glycol) synthetics are not compatible with mineral oil and require dedicated systems. PAG provides excellent lubricity and is used in natural gas compressors and some gear applications.",
+          "Synthetic oils do not eliminate the need for contamination control. A synthetic oil with particles or water is still a contaminated lubricant.",
+          "The cost premium over mineral oil is real. Justify synthetic specification with actual operating conditions, not simply because synthetic sounds better."
+        ]
+      },
+      "hydraulic": {
+        "icon": "ti-git-merge",
+        "name": "Hydraulic Fluid",
+        "role": "Power transmission and control medium in hydraulic systems",
+        "body": "Hydraulic fluid serves as both the energy transmission medium and the lubricant for all moving components in the hydraulic system: pump, motor, valves, cylinders, and fittings. It must maintain precise viscosity across the operating temperature range, provide anti-wear protection for high-pressure components, resist oxidation and thermal degradation, and release entrained air quickly to prevent cavitation. Contamination control is more critical in hydraulic systems than in most other lubrication applications because control valves operate with clearances of just a few microns.",
+        "tips": [
+          "ISO VG 46 is the most common viscosity grade for industrial hydraulic systems operating in the 30 to 60 degree Celsius range. ISO VG 32 for cold climates, ISO VG 68 for hot ambient or high-pressure applications.",
+          "Cleanliness target is application-specific. Servo and proportional valve systems require ISO 4406 cleanliness of 15/13/10 or better. General industrial hydraulics typically require 17/15/12.",
+          "Hydraulic fluid must be filtered before introduction to the system. New fluid from the drum is typically ISO cleanliness 18/16/13 or dirtier.",
+          "Fire-resistant hydraulic fluids (water-glycol, phosphate ester, water-oil emulsion) are used in high fire-risk environments. They require different seals, paints, and maintenance procedures than mineral oil hydraulics. Never mix fire-resistant fluid with mineral oil hydraulic fluid.",
+          "Aeration (air in the fluid) causes spongy response, noise, heat, and accelerated oxidation. Check for air ingestion at pump inlet fittings, shaft seals, and reservoir return lines."
+        ]
+      },
+      "gear_oil": {
+        "icon": "ti-settings-2",
+        "name": "Gear Oil",
+        "role": "High load, high film strength lubrication for gear meshes and gear-lubricated bearings",
+        "body": "Gear oils are formulated with extreme pressure (EP) additive packages that activate under the very high contact stresses present in gear mesh zones. At the moment of tooth contact, local pressures can reach hundreds of thousands of psi: conditions where a standard lubricant film would be squeezed out entirely. EP additives form a sacrificial chemical film on the gear tooth surfaces that prevents metal-to-metal contact under these conditions. The trade-off is that EP additives are reactive and can attack certain metals and seal materials.",
+        "tips": [
+          "EP gear oils (GL-4, GL-5 per API classification) contain sulfur-phosphorus EP additives that are reactive with yellow metals (brass, bronze, copper). Do not use GL-5 gear oil in gearboxes with bronze components unless the manufacturer specifically approves it.",
+          "ISO VG 220 is the most common viscosity grade for enclosed industrial gearboxes operating at moderate temperatures. Consult the gearbox manufacturer specification.",
+          "Synthetic gear oils (PAO-based) offer substantially extended drain intervals and better performance at temperature extremes. Cost-justified for gearboxes with difficult access or critical applications.",
+          "Oil level in a splash-lubricated gearbox is critical. Too low: inadequate splash coverage of upper gears and bearings. Too high: excessive churning, foaming, elevated temperature, and seal leakage.",
+          "Gear oil changes are often neglected because the gearbox is enclosed and appears to be running normally. Oil analysis is the only reliable way to know the condition of the oil and the gearbox components without opening it."
+        ]
+      },
+      "grease": {
+        "icon": "ti-droplet-half-2",
+        "name": "Grease",
+        "role": "Semi-solid lubricant for bearings and components where oil retention is required",
+        "body": "Grease is a dispersion of a base oil in a thickener matrix (typically a metallic soap or complex soap). The thickener acts as a sponge, holding the base oil in place and releasing it gradually into the contact zone under shear and heat. Grease stays where it is put, making it ideal for bearings and components where a circulating oil system is impractical. The trade-off is that grease cannot carry away heat as effectively as oil and cannot flush out contamination.",
+        "tips": [
+          "Grease consistency (hardness) is rated by NLGI grade. NLGI 2 is the standard for most bearing applications. NLGI 1 is used for centralized systems or cold temperature service. NLGI 3 is used for high-temperature or vertical shaft applications.",
+          "Thickener type determines high-temperature performance, water resistance, and compatibility. Lithium complex is the most versatile and widely used. Polyurea is standard in electric motor bearings.",
+          "Never mix incompatible greases. The consequences range from softening (grease runs out of bearing) to hardening (grease blocks flow in centralized systems). See the Application tab for compatibility notes.",
+          "Grease has a limited ability to cool. High-speed bearings that generate significant heat should use oil lubrication, not grease.",
+          "Grease shelf life: most greases have a 2 to 5 year shelf life from manufacture date in sealed original containers. Rotate stock. Do not use grease that has separated (oil bleeding out of the thickener) or hardened."
+        ]
+      },
+      "dry_film": {
+        "icon": "ti-layers",
+        "name": "Dry Film and Solid Lubricants",
+        "role": "Lubricants for conditions where liquids and greases cannot function",
+        "body": "Dry film lubricants include molybdenum disulfide (MoS2), PTFE, graphite, and tungsten disulfide. They function by providing a layered crystal structure that shears easily under sliding contact, reducing friction without a liquid or semi-solid carrier. They are used in vacuum environments (where oil evaporates), very high temperatures (where oil or grease degrades), food contact applications (where oil is prohibited), assembly lubricants (preventing galling on fasteners and press-fit components), and as anti-seize compounds.",
+        "tips": [
+          "MoS2 (molybdenum disulfide) provides excellent load-carrying capacity and is used in extreme pressure applications, open gears, and as a break-in lubricant for new gear surfaces.",
+          "PTFE dry film lubricants (spray or bonded coatings) are used in food grade applications and where non-reactive lubrication is required. Low load-carrying capacity compared to MoS2.",
+          "Graphite is a dry film lubricant at ambient and moderate temperatures but requires moisture (humidity) to provide lubrication. In a vacuum or very dry environment, graphite performs poorly. Do not use graphite as a dry lubricant in vacuum applications.",
+          "Anti-seize compounds (typically containing copper, nickel, or MoS2 in a grease carrier) prevent galling and seizing of fasteners and press fits, particularly in high-temperature or corrosive environments. Apply to threads and bearing faces, not to the engaged threads of joints that must be torqued accurately (anti-seize changes the torque-to-clamp-load relationship).",
+          "WS2 (tungsten disulfide) has the lowest coefficient of friction of any known dry film lubricant and performs in vacuum and temperature extremes. Primarily used in aerospace and precision instrument applications."
+        ]
+      }
+    },
+    "systemData": {
+      "total_loss": {
+        "icon": "ti-arrow-down-circle",
+        "name": "Total Loss (Once-Through) System",
+        "role": "Lubricant is applied once and not recovered: common on chains, slides, and open gears",
+        "body": "In a total loss system, lubricant is dispensed to the lubrication point, does its job, and is either consumed, expelled from the contact zone, or wiped away. It is not collected and returned to a reservoir. Common applications include chain drives, open gear drives, slideways, and some bearing arrangements. The simplest form is manual application with an oil can or brush. Automated total loss systems use metering pumps to deliver precise quantities on a timed interval.",
+        "tips": [
+          "Total loss systems must be sized to deliver enough lubricant to maintain a film, but excessive delivery wastes lubricant and creates contamination in the environment around the equipment.",
+          "Chain lubrication: the oil must penetrate the chain link plates and rollers, not just coat the outside. Thin oils (ISO VG 32 to 68) penetrate better than thick oils. On high-speed chains, a dedicated chain oil with penetrating carriers is preferable.",
+          "Open gear lubricants are typically heavy, adhesive compounds (asphaltic or synthetic) that stick to the gear teeth and resist fling-off at operating speed. Application timing and quantity require adjustment based on ambient temperature: cold temperatures increase viscosity and may require pre-heating.",
+          "Slideway lubricants must have tackiness (stick-slip prevention) and appropriate viscosity for the slide speed. Using a general machine oil on slideways without stick-slip additives causes the stick-slip (chatter) that produces poor surface finish on machine tool work.",
+          "Monitoring total loss systems: check for dry or unlubricated points regularly. A metering valve that has blocked silently can starve a critical point without any visible indication at the lubrication reservoir."
+        ]
+      },
+      "recirculating": {
+        "icon": "ti-refresh",
+        "name": "Recirculating Oil System",
+        "role": "Oil is continuously circulated from a reservoir, through the lubrication points, filtered, and returned",
+        "body": "A recirculating system uses a pump, filter, heat exchanger (on large systems), and distribution manifold to continuously supply clean, temperature-controlled oil to multiple lubrication points, collect the returned oil, and condition it before recirculating. This is the most comprehensive lubrication approach for complex machinery: it provides cooling as well as lubrication, removes contamination continuously through the filter, and allows oil condition to be monitored at a single point.",
+        "tips": [
+          "The filter is the heart of the system. A blocked filter with a bypass valve allows unfiltered oil to reach critical components. Check filter differential pressure indicators on every PM visit.",
+          "Oil temperature control: most recirculating systems have a thermostatically controlled cooler. Oil that is too hot oxidises rapidly. Oil that is too cold has excessive viscosity and may not flow to remote lubrication points.",
+          "Low oil level alarms and low oil pressure alarms must be functional and must be responded to immediately. An undetected low level leads to pump cavitation and loss of lubrication simultaneously.",
+          "Foaming in the reservoir indicates air ingestion (check return line submergence and shaft seal condition), incorrect oil, or a contaminated or degraded oil that has lost its defoaming additive.",
+          "Recirculating systems should have a sampling valve in the return line (before the filter) for oil analysis. This gives the most representative sample of the oil condition and captures wear particles before they are removed by the filter."
+        ]
+      },
+      "oil_mist": {
+        "icon": "ti-cloud",
+        "name": "Oil Mist Lubrication System",
+        "role": "Compressed air carries atomised oil droplets to multiple bearing points through distribution piping",
+        "body": "An oil mist system uses a central mist generator to create a fine aerosol of oil droplets in a compressed air stream. The mist is distributed through small-bore piping to individual bearing housings, where reclassifier fittings coalesce the droplets into a film that lubricates the bearing surfaces. Oil mist provides very consistent, precisely metered lubrication with minimal oil consumption, and the positive pressure in the bearing housing from the air flow prevents contamination ingress.",
+        "tips": [
+          "Oil mist system pressure must be maintained positive at all bearing housings. If pressure drops (blocked piping, failed mist generator), bearings receive no lubrication. Pressure monitoring at the distribution manifold is essential.",
+          "Reclassifier fittings are sized for specific bearing types and speeds. The wrong reclassifier produces either too much or too little oil at the bearing. Do not substitute generic fittings.",
+          "Oil mist systems require periodic checks that all distribution lines are clear and all housings are receiving mist. A clear polycarbonate sight glass at each housing confirms mist flow visually.",
+          "Environmental concerns: oil mist that escapes from bearing housings is an inhalation and environmental hazard. Modern systems are designed as closed or purge-type to minimise emissions. Verify compliance with local environmental regulations.",
+          "Oil viscosity for mist systems is typically ISO VG 68 to 100. Too thick and the oil will not atomise correctly. Too thin and the film is inadequate for the bearing load."
+        ]
+      },
+      "auto_grease": {
+        "icon": "ti-git-branch",
+        "name": "Automatic Grease System",
+        "role": "Centralized pump distributes grease through metering valves to multiple points on a timed cycle",
+        "body": "Automatic grease systems use a central reservoir and pump to distribute grease through a network of distribution lines and metering injectors to multiple lubrication points. Two main system types are in use: progressive systems (metering valves operate in sequence and a blockage anywhere in the chain stops all downstream points) and parallel (dual-line) systems (each injector operates independently, so a single blocked injector affects only that point). Both types eliminate manual greasing of multiple points.",
+        "tips": [
+          "Progressive systems: a cycle indicator pin on the final valve in the sequence confirms the full cycle completed. If the indicator does not move, there is a blockage upstream. Find the blocked point before the bearing it feeds is starved.",
+          "Dual-line systems: each injector can be checked individually for operation. A stuck injector delivers no grease to its point. Check injectors by observing the indicator pin during a cycle.",
+          "Grease line blockages from cold grease, hardened grease, or contamination are the most common failure mode. Insulated or heated lines are used in cold climates to maintain pumpability.",
+          "The reservoir level must be checked and refilled on a schedule. An empty reservoir continues to pump air through the system without any indication at the lubrication points.",
+          "Grease consistency for centralized systems: NLGI 1 or 00 (semi-fluid) is typically required for reliable flow through small-bore distribution lines, particularly in cold environments. NLGI 2 may be used on short, straight runs in temperate climates. Confirm with the system manufacturer."
+        ]
+      },
+      "splash": {
+        "icon": "ti-ripple",
+        "name": "Splash Lubrication",
+        "role": "Rotating gear teeth or other components splash oil from a reservoir to lubricate gears and bearings",
+        "body": "Splash lubrication is the simplest enclosed lubrication system. One or more of the rotating components dip into a reservoir of oil at the bottom of the housing and splash oil onto the gear teeth, bearings, and housing walls as they rotate. No pump is required. The limitations are that splash coverage depends on rotation speed (too slow and coverage is poor; too fast and excessive churning and foaming occur) and that heat removal is limited.",
+        "tips": [
+          "Oil level is critical in splash systems. Too low: lower gears and bearings are not reached by the splash. Too high: upper components churn through oil, generating heat, foam, and excessive drag.",
+          "Check oil level with the machine stopped and the oil settled for several minutes. Reading level while running is unreliable.",
+          "Oil level sight glasses should be cleaned and inspected at every PM. A dirty or cloudy sight glass gives a false reading.",
+          "Splash-lubricated systems without oil cooling are limited in continuous power transmission capacity. If a gearbox runs hot in splash lubrication service, consider adding a cooling coil or upgrading to a circulating system.",
+          "Oil change intervals on splash systems are often longer than necessary in practice, but oil analysis is the correct basis for interval decisions. Drain from the lowest point to remove settled water and sludge, not just from a convenient drain plug."
+        ]
+      },
+      "oil_ring": {
+        "icon": "ti-ring",
+        "name": "Oil Ring and Oil Collar Lubrication",
+        "role": "A loose ring or collar rides on the shaft and dips into an oil reservoir to carry oil to the bearing",
+        "body": "An oil ring is a loose ring that rests on the shaft inside a bearing housing, with its lower portion submerged in an oil reservoir at the bottom of the housing. As the shaft rotates, friction between the shaft and ring causes the ring to rotate (more slowly than the shaft) and carry a film of oil up and over the top of the shaft, lubricating the bearing surfaces. Oil rings are used on sleeve and journal bearings in motors, generators, and some pump and compressor applications.",
+        "tips": [
+          "Oil ring systems are only effective above a minimum shaft speed. Below the minimum speed, the ring does not pick up and deliver enough oil to maintain the film. Check the manufacturer specification for the minimum speed for effective oil ring lubrication.",
+          "The oil ring must be free to rotate independently of the shaft. A ring that is stuck or dragging on the shaft walls does not deliver oil. Inspect ring condition and clearance to housing walls at every bearing inspection.",
+          "Oil viscosity is critical: too thick and the ring cannot carry the oil efficiently; too thin and the film on the shaft is inadequate. Use the manufacturer-specified viscosity grade.",
+          "Oil level in the reservoir must be maintained at the correct level. Too low and the ring does not contact the oil; too high and the ring is submerged too deeply, increasing drag and reducing rotation speed.",
+          "Oil rings on large motors and generators are a high-consequence lubrication point. These machines run for years between inspections and an oil ring failure can destroy a bearing and the shaft before the damage is detected externally."
+        ]
+      }
+    }
+  },
+  "trees": {
+    "diagNodes": {
+      "start": {
+        "q": "What is the presenting lubrication system problem?",
+        "hint": "Choose the symptom that best describes what you are observing.",
+        "options": [
+          {
+            "label": "Bearing or component running hot after relubrication",
+            "next": "hot_after_relube"
+          },
+          {
+            "label": "Oil or grease appearing where it should not be",
+            "next": "lube_leaking"
+          },
+          {
+            "label": "Oil is discoloured or abnormal in appearance",
+            "next": "oil_appearance"
+          },
+          {
+            "label": "Centralized system not delivering lubricant",
+            "next": "central_no_flow"
+          },
+          {
+            "label": "Bearing failed: suspected lubrication cause",
+            "next": "bearing_failed"
+          },
+          {
+            "label": "High particle count or oil analysis alarm",
+            "next": "oil_analysis_alarm"
+          }
+        ]
+      },
+      "hot_after_relube": {
+        "q": "When did the heat develop relative to the relubrication?",
+        "hint": "Timing is the key diagnostic clue here.",
+        "options": [
+          {
+            "label": "Within minutes to an hour of regreasing",
+            "next": "overgrease",
+            "cls": "no"
+          },
+          {
+            "label": "Bearing was already hot before relubrication",
+            "next": "hot_before",
+            "cls": "yes"
+          },
+          {
+            "label": "After an oil change or top-up",
+            "next": "wrong_oil"
+          }
+        ]
+      },
+      "overgrease": {
+        "type": "result",
+        "cls": "action",
+        "label": "overgreasing: purge and monitor",
+        "text": "Heat appearing within an hour of regreasing is the classic overgreasing signature.",
+        "sub": "Open the relief plug if present and run the equipment for 20 to 30 minutes to allow excess grease to purge. Temperature should normalise as the excess is displaced. For the next relubrication, calculate the correct quantity using the formula: G = 0.005 × D × B (grams, mm). Do not add more grease to a bearing that is running hot from overgreasing. See Module 02 for full bearing temperature guidance.",
+        "prevent": "Relief plug out during greasing. Quantity by formula on the PM sheet. Ultrasonic monitoring on critical points."
+      },
+      "hot_before": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "investigate root cause: lubrication not the only factor",
+        "text": "A bearing that was already hot before relubrication has a problem that lubrication alone will not fix.",
+        "sub": "Check: bearing load and alignment (Module 03), shaft runout, correct bearing for the application, and whether the operating conditions have changed. Lubricate correctly as part of the investigation but do not assume lubrication was the cause. Take an oil or grease sample from the bearing for analysis if possible before cleaning.",
+        "prevent": "Alignment, load, and bearing condition on the PM. Temperature trended so a rise is caught before a PM masks it."
+      },
+      "wrong_oil": {
+        "q": "Was the same lubricant product used as the previous fill?",
+        "hint": "Brand, viscosity grade, and type all matter.",
+        "options": [
+          {
+            "label": "No: different product used",
+            "next": "wrong_lube_type",
+            "cls": "no"
+          },
+          {
+            "label": "Yes: same product confirmed",
+            "next": "oil_level_check",
+            "cls": "yes"
+          }
+        ]
+      },
+      "wrong_lube_type": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "wrong lubricant: drain and refill",
+        "text": "A change in lubricant type, grade, or brand can cause immediate performance changes.",
+        "sub": "A higher viscosity oil increases churning losses and heat at operating speed. A lower viscosity oil reduces film thickness and increases heat from metal contact. An incompatible additive package can cause deposits or reduced protection. Drain the system, confirm the correct product against the equipment nameplate or manual, and refill. Document what was used and when for future reference.",
+        "prevent": "One product per application, labelled at the fill point and on the grease gun. Colour-coded dispensing. Incompatibility chart posted in the lube room."
+      },
+      "oil_level_check": {
+        "type": "result",
+        "cls": "action",
+        "label": "check oil level and cooler function",
+        "text": "Same lubricant, heat after a change: check level and heat removal.",
+        "sub": "Verify oil level against the sight glass or dipstick specification. Overfill causes churning and heat. Confirm the oil cooler (if present) is flowing coolant and the thermostat is opening. Check that the filter is not bypassing (differential pressure indicator). If all checks pass, take an oil sample for analysis: the oil may have been contaminated during the change.",
+        "prevent": "Level checked stopped and settled, on the PM. Cooler delta T logged."
+      },
+      "lube_leaking": {
+        "q": "What type of lubricant is leaking and from where?",
+        "hint": "The location and type of leak narrows the cause.",
+        "options": [
+          {
+            "label": "Grease purging from bearing housing seals",
+            "next": "grease_purge"
+          },
+          {
+            "label": "Oil leaking from gearbox or reservoir",
+            "next": "oil_leak"
+          },
+          {
+            "label": "Grease leaking from centralized system lines",
+            "next": "central_leak"
+          }
+        ]
+      },
+      "grease_purge": {
+        "type": "result",
+        "cls": "action",
+        "label": "overgreasing or seal failure",
+        "text": "Grease purging from housing seals is either overgreasing (excess grease finding its way out) or a failed housing seal.",
+        "sub": "If recent regreasing occurred: this is excess grease purging: normal if a relief plug was open, abnormal if it is coming out through the shaft seal. A seal that is blowing out grease has been subjected to excessive pressure from overgreasing. Reduce quantity on next interval. If no recent regreasing: the seal has failed and should be replaced. Inspect for contamination ingress at the seal location.",
+        "prevent": "Quantity by formula. Seal condition inspected when purge is heavier than usual."
+      },
+      "oil_leak": {
+        "type": "result",
+        "cls": "action",
+        "label": "identify leak source: seal, joint, or breather",
+        "text": "Oil leaking from an enclosed system needs a source identified before it becomes a serious loss.",
+        "sub": "Common sources: shaft seal wear or damage (inspect and replace), gasket failure at inspection covers or drain plugs (replace gasket, check flange surface condition), overfilled reservoir causing overflow through the breather (check level and correct), blocked breather causing positive pressure that forces oil past seals (replace desiccant breather). A leak rate that is increasing indicates a developing failure, not just a maintenance item.",
+        "prevent": "Breather condition on the PM. Level marks visible. Fix the leak, not just the level."
+      },
+      "central_leak": {
+        "type": "result",
+        "cls": "action",
+        "label": "inspect fittings and line connections",
+        "text": "Grease leaks in centralized system lines are almost always at fittings, injectors, or line terminations.",
+        "sub": "Check all compression fittings and push-to-connect fittings for proper seating. A fitting that was not fully seated during installation will weep immediately. An old fitting that has been cycled many times may have cracked ferrules. Replace any fitting that cannot be stopped by tightening to the correct torque. Do not overtighten: this deforms the ferrule and worsens the leak.",
+        "prevent": "Fittings and lines on the PM walk. Line routing protected from traffic and vibration."
+      },
+      "oil_appearance": {
+        "q": "What does the oil look like?",
+        "hint": "Colour and consistency are the primary visual indicators.",
+        "options": [
+          {
+            "label": "Milky, cloudy, or grey",
+            "next": "milky_oil"
+          },
+          {
+            "label": "Dark brown to black",
+            "next": "dark_oil"
+          },
+          {
+            "label": "Foamy or full of bubbles",
+            "next": "foamy_oil"
+          },
+          {
+            "label": "Varnish deposits or sludge visible",
+            "next": "varnish"
+          }
+        ]
+      },
+      "milky_oil": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "water contamination: change oil and find source",
+        "text": "Milky or cloudy oil has water emulsified through it. The lubricant film is severely compromised.",
+        "sub": "Change the oil immediately. Inspect and identify the water ingress source: condensation (common in seasonal temperature swings), failed seal allowing process water in, wash-down water through breather, or cooling water coil leak (on systems with internal coolers). Address the source before refilling. If the system has been running with milky oil, inspect bearings and gears for corrosion and wear damage before returning to service.",
+        "prevent": "Desiccant breather. Cooler pressure tested. Water content on the oil analysis."
+      },
+      "dark_oil": {
+        "type": "result",
+        "cls": "action",
+        "label": "oxidation or contamination: sample and analyse",
+        "text": "Dark oil indicates oxidation, contamination, or both.",
+        "sub": "Dark brown indicates moderate oxidation: the additive package is being depleted. Black indicates severe oxidation or carbon contamination. Take an oil sample for analysis (TAN, viscosity, wear metals) before deciding on action. If TAN has doubled from new oil baseline, change the oil. Investigate the cause of accelerated oxidation: operating temperature too high, extended interval, or contamination accelerating degradation.",
+        "prevent": "Operating temperature trended. Oil changed on analysis rather than on the calendar, and never later than the manufacturer interval."
+      },
+      "foamy_oil": {
+        "type": "result",
+        "cls": "action",
+        "label": "air ingestion or incorrect oil",
+        "text": "Foamy oil in a reservoir or gearbox has an air ingestion problem or the wrong oil.",
+        "sub": "Check: return lines are submerged below the oil surface in the reservoir (above-surface returns aerate the oil violently), all suction line fittings are tight (air ingestion at pump inlet), shaft seal on the pump is intact (air ingestion past a worn shaft seal), oil level is correct (low level causes pump to cavitate and ingest air). If the oil is correct and seals are intact, the foam inhibitor additive may be depleted: take a sample for analysis.",
+        "prevent": "Suction side sealed. Return below the surface. Correct oil grade on every top-up."
+      },
+      "varnish": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "oxidation deposits: flush and investigate root cause",
+        "text": "Varnish and sludge deposits indicate the oil has been operating beyond its service life or at excessive temperature.",
+        "sub": "Varnish in hydraulic systems is particularly serious: it can cause valve sticking and erratic machine behaviour. A standard oil change will not remove existing varnish deposits. A varnish removal flush using a dedicated varnish removal fluid or extended circulation with a flushing oil is required. After the flush, identify and address the root cause: operating temperature reduction, shorter oil change interval, or upgrade to a more oxidation-stable oil.",
+        "prevent": "Operating temperature brought down. Oil condition on analysis. Consider a varnish-resistant synthetic if the duty cannot change."
+      },
+      "central_no_flow": {
+        "q": "What type of centralized system is this?",
+        "hint": "The diagnostic approach differs by system type.",
+        "options": [
+          {
+            "label": "Progressive grease system",
+            "next": "prog_no_flow"
+          },
+          {
+            "label": "Dual-line (parallel) grease system",
+            "next": "dual_no_flow"
+          },
+          {
+            "label": "Recirculating oil system",
+            "next": "recirc_no_flow"
+          }
+        ]
+      },
+      "prog_no_flow": {
+        "type": "result",
+        "cls": "action",
+        "label": "find the blockage: check cycle indicator first",
+        "text": "On a progressive system, a single blocked injector or line stops all downstream points from receiving lubricant.",
+        "sub": "Check the cycle indicator on the final valve in the sequence. If it has not moved during a pump cycle, there is a blockage upstream. Work backward from the indicator toward the pump, checking each injector for movement. The last injector that moves and the first that does not bracket the blockage location. Check the feed line between those two injectors for a cold or hardened grease plug, a kinked line, or a blocked injector.",
+        "prevent": "Cycle indicator on the PM route. Filter on the reservoir fill. Line routing protected."
+      },
+      "dual_no_flow": {
+        "type": "result",
+        "cls": "action",
+        "label": "identify which injectors are not cycling",
+        "text": "On a dual-line system each injector is independent, so identify which specific points are not receiving grease.",
+        "sub": "Observe injector indicator pins during a pump cycle. Injectors that do not cycle have a blocked inlet (debris in the inlet strainer), internal seizure, or a broken line on the outlet side. Replace stuck injectors. Check line continuity from the injector to the lubrication point. Verify the main line pressure is reaching the specified operating pressure: low pressure affects all injectors.",
+        "prevent": "Injector cycling checked on the PM. Reservoir kept clean and filtered."
+      },
+      "recirc_no_flow": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "check pump, filter, and pressure",
+        "text": "A recirculating oil system with no flow has a pump failure, severe filter blockage, or a major line failure.",
+        "sub": "Check: pump running (motor energised, shaft rotating), filter differential pressure indicator (a fully blocked filter with bypass valve will still deliver oil, but dirty), suction line for blockage or air ingestion, discharge pressure gauge against normal operating range, and all distribution manifold valves for correct position. Loss of flow in a recirculating system is a shutdown condition for the equipment it serves.",
+        "prevent": "Pressure, filter differential, and pump condition on the PM. Low pressure alarm and trip."
+      },
+      "bearing_failed": {
+        "q": "What did the failed bearing look like?",
+        "hint": "The failure pattern points to the lubrication root cause.",
+        "options": [
+          {
+            "label": "Overheated: discolouration, annealed races",
+            "next": "bf_overheat"
+          },
+          {
+            "label": "Abrasive wear: dull, scratched races and rolling elements",
+            "next": "bf_abrasive"
+          },
+          {
+            "label": "Corrosion: rust pitting on races",
+            "next": "bf_corrosion"
+          },
+          {
+            "label": "Smearing: smooth, polished flat spots on rolling elements",
+            "next": "bf_smear"
+          }
+        ]
+      },
+      "bf_overheat": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "thermal failure: insufficient lubrication or overgreasing",
+        "text": "Overheated bearings show blue or brown heat discolouration of the races and rolling elements.",
+        "sub": "Two causes produce thermal bearing failure: insufficient lubrication (starvation, wrong grease type, blocked delivery) and overgreasing (churning heat). Distinguish by examining the failed bearing: starved bearings show smearing and adhesive wear before the heat damage. Overgreased bearings show heat damage without prior adhesive wear signatures. Review lubrication records and correct the quantity or delivery method for the replacement.",
+        "prevent": "Grease quantity and interval on the PM. Read the failed bearing to confirm which."
+      },
+      "bf_abrasive": {
+        "type": "result",
+        "cls": "action",
+        "label": "contamination: improve sealing and filtration",
+        "text": "Dull, scratched, or grooved races and rolling elements indicate abrasive particle contamination.",
+        "sub": "The particles entered the bearing through degraded seals, contaminated grease (dirty gun or container), or contaminated new lubricant. Improve bearing sealing, filter all grease before use, implement contamination control procedures at the lubrication point, and consider upgrading to a sealed bearing if the environment is persistently contaminated.",
+        "prevent": "Sealing upgraded for the environment. Grease and oil filtered at the point of use. Particle count on analysis."
+      },
+      "bf_corrosion": {
+        "type": "result",
+        "cls": "action",
+        "label": "water ingress: improve sealing and check lubricant",
+        "text": "Rust pitting on bearing races indicates water contamination of the lubricant.",
+        "sub": "Sources: condensation from temperature cycling, wash-down water through seals or breathers, or water-contaminated grease. Improve housing sealing, use a grease with good water resistance (lithium complex or calcium sulfonate thickener both have good water resistance), and check for and eliminate the water ingress path before installing the replacement bearing.",
+        "prevent": "Desiccant breather. Sealing suited to wash-down. Water content on analysis."
+      },
+      "bf_smear": {
+        "type": "result",
+        "cls": "action",
+        "label": "inadequate film at startup or low speed: review lubricant selection",
+        "text": "Smearing (smooth polished flat spots) on rolling elements indicates metal-to-metal contact during low-speed or startup conditions where the lubricant film had not fully formed.",
+        "sub": "Common in equipment with frequent start-stop cycles, very low operating speeds, or applications where the bearing was started under full load without prelubrication. Consider a higher viscosity grease, a grease with EP additives for boundary lubrication conditions, or a pre-lubrication procedure that ensures the bearing is fully lubricated before the machine is loaded.",
+        "prevent": "Lubricant viscosity and grade suited to the startup temperature and speed. Preload correct on lightly loaded bearings."
+      },
+      "oil_analysis_alarm": {
+        "q": "Which parameter triggered the alarm?",
+        "hint": "Different parameters point to different root causes.",
+        "options": [
+          {
+            "label": "High particle count (ISO cleanliness code)",
+            "next": "oa_particles"
+          },
+          {
+            "label": "High wear metals (iron, copper, chromium)",
+            "next": "oa_wear"
+          },
+          {
+            "label": "High water content",
+            "next": "milky_oil"
+          },
+          {
+            "label": "High TAN or viscosity change",
+            "next": "oa_condition"
+          }
+        ]
+      },
+      "oa_particles": {
+        "type": "result",
+        "cls": "action",
+        "label": "contamination ingression: identify source and filter",
+        "text": "A high particle count means contamination is entering faster than the filtration can remove it, or the filtration is not working.",
+        "sub": "Check: filter condition and differential pressure (a bypassing filter explains the count), breather condition (replace with desiccant breather if a standard breather is in use), seal condition at all shaft penetrations and inspection covers, and whether new oil was added recently (new oil is often dirtier than the system target). Install a portable filtration unit to bring the count down to target while investigating the ingression path.",
+        "prevent": "Breathers, seals, and fill practices reviewed. Filter carts for top-ups. Target cleanliness code set and trended."
+      },
+      "oa_wear": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "elevated wear: investigate component condition",
+        "text": "Rising wear metals indicate accelerated wear of specific components. Identify which component based on the element.",
+        "sub": "Iron: steel gears, shafts, bearing races. Copper/lead/tin: bronze or babbitt bearings, bushings. Chromium: chrome-plated components or certain bearing steels. Aluminium: pump housings, bearing cages. Silicon (elevated): dirt ingestion, not a wear metal but indicates contamination. A single high reading may be an anomaly. Two consecutive rising readings are a trend. Pull the equipment for inspection before the component fails completely.",
+        "prevent": "Sample interval shortened on the affected machine. Ferrography to identify the wear mechanism. Component inspection planned."
+      },
+      "oa_condition": {
+        "type": "result",
+        "cls": "action",
+        "label": "oil degradation: plan change interval and investigate cause",
+        "text": "Rising TAN or viscosity change indicates the oil is degrading faster than expected.",
+        "sub": "Rising TAN: oxidation is occurring. Check operating temperature, even a 5 to 10 degree increase in average temperature significantly accelerates oxidation. Consider shortening the change interval or upgrading to a more oxidation-stable product. Viscosity increase: oxidation thickening or contamination with a heavier product. Viscosity decrease: dilution with a lighter product or shear degradation of VI improver additives (common in hydraulic fluids with multigrade-type additives under high shear).",
+        "prevent": "Change interval reset from the analysis. Operating temperature reviewed if oxidation is early."
+      }
+    }
+  },
+  "selfcheck": {
+    "types": [
+      [
+        "Why is GL-5 gear oil a problem in a bronze worm gearbox?",
+        [
+          "Too thin",
+          "Active sulphur EP additives attack yellow metals",
+          "Too expensive",
+          "It foams"
+        ],
+        1,
+        "EP additives react with bronze. Use what the manufacturer specifies."
+      ],
+      [
+        "What does NLGI grade describe?",
+        [
+          "Grease base oil viscosity",
+          "Grease consistency (stiffness)",
+          "Additive package",
+          "Colour"
+        ],
+        1,
+        "NLGI 2 is the common general purpose consistency."
+      ],
+      [
+        "Which base oil group is PAO?",
+        [
+          "Group I",
+          "Group II",
+          "Group IV",
+          "Group V"
+        ],
+        2,
+        "PAO is Group IV synthetic; esters and PAGs are Group V."
+      ]
+    ],
+    "systems": [
+      [
+        "In a progressive centralized grease system, one blocked point does what?",
+        [
+          "Nothing to the others",
+          "Stops all downstream points",
+          "Speeds up the others",
+          "Trips the pump"
+        ],
+        1,
+        "Progressive dividers pass grease in sequence; a blockage stops the chain."
+      ],
+      [
+        "In a dual-line system, each injector is?",
+        [
+          "Dependent on the previous one",
+          "Independent",
+          "Manual",
+          "Timed by the last"
+        ],
+        1,
+        "Dual-line injectors operate independently, so one blockage does not stop the rest."
+      ],
+      [
+        "An oil ring lubricated bearing needs?",
+        [
+          "A pump",
+          "A minimum shaft speed for pickup",
+          "Grease",
+          "A cooler"
+        ],
+        1,
+        "Below a minimum speed the ring does not carry oil up."
+      ]
+    ],
+    "contam": [
+      [
+        "What does milky oil indicate?",
+        [
+          "Oxidation",
+          "Water contamination",
+          "Air",
+          "Varnish"
+        ],
+        1,
+        "Free water emulsifies and turns oil milky."
+      ],
+      [
+        "Oxidation rate roughly doubles for every?",
+        [
+          "5°C",
+          "10°C",
+          "20°C",
+          "50°C"
+        ],
+        1,
+        "Every 10°C above the design temperature halves oil life."
+      ],
+      [
+        "Is new oil from a drum clean enough to use as delivered?",
+        [
+          "Yes",
+          "No, filter it in",
+          "Only synthetic",
+          "Only if sealed"
+        ],
+        1,
+        "New oil is dirty oil. Filter it into the machine."
+      ],
+      [
+        "Lithium complex and polyurea greases are?",
+        [
+          "Fully compatible",
+          "Incompatible",
+          "The same thing",
+          "Compatible above 50°C"
+        ],
+        1,
+        "Mixing incompatible thickeners softens or hardens the grease."
+      ]
+    ],
+    "analysis": [
+      [
+        "What does TAN doubling from baseline indicate?",
+        [
+          "More additive",
+          "Oil degradation, change indicator",
+          "Water",
+          "Nothing"
+        ],
+        1,
+        "Rising acid number is oxidation; doubling from baseline is a change trigger."
+      ],
+      [
+        "What does ferrography tell you that elemental analysis does not?",
+        [
+          "How much iron",
+          "The type of wear from particle morphology",
+          "Water content",
+          "Viscosity"
+        ],
+        1,
+        "Particle shape shows the wear mechanism: cutting, sliding, fatigue."
+      ],
+      [
+        "Where should an oil sample be drawn?",
+        [
+          "From the drain plug",
+          "From the same live point every time, running or within minutes of shutdown",
+          "From the fill cap",
+          "From a new bottle"
+        ],
+        1,
+        "The drain plug collects sediment; a consistent live point gives a trend."
+      ]
+    ],
+    "application": [
+      [
+        "Grease quantity formula?",
+        [
+          "G = D × B",
+          "G = 0.005 × D × B",
+          "G = 0.05 × D",
+          "G = B"
+        ],
+        1,
+        "Grams from bearing OD and width in mm."
+      ],
+      [
+        "Oil change intervals should be based on?",
+        [
+          "Calendar",
+          "Oil analysis, within the manufacturer maximum",
+          "Colour",
+          "Hours only"
+        ],
+        1,
+        "Change on condition, not on the calendar, but not later than the maximum."
+      ]
+    ],
+    "troubleshoot": [
+      [
+        "Foamy oil most often means?",
+        [
+          "Water",
+          "Air ingestion or the wrong oil",
+          "Oxidation",
+          "Metal"
+        ],
+        1,
+        "Air on the suction side or an incompatible oil."
+      ],
+      [
+        "Varnish deposits on a proportional valve spool are caused by?",
+        [
+          "Water",
+          "Oxidation products from overheated oil",
+          "Dirt",
+          "Wrong viscosity"
+        ],
+        1,
+        "Varnish is oxidised oil depositing on surfaces and sticks fine spools."
+      ]
+    ],
+    "safety": [
+      [
+        "Where do oil-soaked rags go?",
+        [
+          "Any bin",
+          "A metal bin with a lid, emptied daily",
+          "On the floor",
+          "A plastic bag"
+        ],
+        1,
+        "Oily rags self-heat and ignite."
+      ],
+      [
+        "A centralized grease line must be what before it is opened?",
+        [
+          "Warm",
+          "Depressurised",
+          "Full",
+          "Cold"
+        ],
+        1,
+        "These systems run at 100 to 400 bar; injection risk is real."
+      ]
+    ]
+  },
+  "panels": {
+    "types": "<div class=\"bw-section-label\">Lubricant types: tap a type to learn more</div>\n\n    <div class=\"family-label\">Liquid lubricants</div>\n    <div class=\"card-grid\">\n      <div class=\"type-card\" onclick=\"selectLube('mineral')\" id=\"lcard-mineral\">\n        <div class=\"type-card-icon\"><i class=\"ti ti-droplet-filled\"></i></div>\n        <div class=\"type-card-name\">Mineral Oil</div>\n        <div class=\"type-card-sub\">Conventional, petroleum-derived</div>\n      </div>\n      <div class=\"type-card\" onclick=\"selectLube('synthetic')\" id=\"lcard-synthetic\">\n        <div class=\"type-card-icon\"><i class=\"ti ti-atom-2\"></i></div>\n        <div class=\"type-card-name\">Synthetic Oil</div>\n        <div class=\"type-card-sub\">PAO, ester, extended intervals</div>\n      </div>\n      <div class=\"type-card\" onclick=\"selectLube('hydraulic')\" id=\"lcard-hydraulic\">\n        <div class=\"type-card-icon\"><i class=\"ti ti-git-merge\"></i></div>\n        <div class=\"type-card-name\">Hydraulic Fluid</div>\n        <div class=\"type-card-sub\">Power transmission, control</div>\n      </div>\n      <div class=\"type-card\" onclick=\"selectLube('gear_oil')\" id=\"lcard-gear_oil\">\n        <div class=\"type-card-icon\"><i class=\"ti ti-settings-2\"></i></div>\n        <div class=\"type-card-name\">Gear Oil</div>\n        <div class=\"type-card-sub\">High load, EP additives</div>\n      </div>\n    </div>\n\n    <div class=\"family-label\">Semi-solid and solid lubricants</div>\n    <div class=\"card-grid\">\n      <div class=\"type-card\" onclick=\"selectLube('grease')\" id=\"lcard-grease\">\n        <div class=\"type-card-icon\"><i class=\"ti ti-droplet-half-2\"></i></div>\n        <div class=\"type-card-name\">Grease</div>\n        <div class=\"type-card-sub\">Bearings, slow to moderate speed</div>\n      </div>\n      <div class=\"type-card\" onclick=\"selectLube('dry_film')\" id=\"lcard-dry_film\">\n        <div class=\"type-card-icon\"><i class=\"ti ti-layers\"></i></div>\n        <div class=\"type-card-name\">Dry Film / Solid</div>\n        <div class=\"type-card-sub\">MoS2, PTFE, graphite</div>\n      </div>\n    </div>\n\n    <div id=\"lube-display\" style=\"margin-top:1rem;\"><div class=\"comp-placeholder\">select a lubricant type above</div></div>\n\n    <div class=\"adv-wrap\" id=\"adv-baseoil\">\n      <button class=\"adv-toggle\" onclick=\"toggleAdv('adv-baseoil')\">\n        <div class=\"adv-toggle-left\"><i class=\"ti ti-flask adv-toggle-icon\"></i><span class=\"adv-toggle-label\">Advanced: base oil chemistry, PAO, esters, and ISO viscosity grades</span></div>\n        <i class=\"ti ti-chevron-down adv-chevron\"></i>\n      </button>\n      <div class=\"adv-body\">\n        <p>All lubricants are built from a base oil plus an additive package. The base oil determines the fundamental properties: viscosity, viscosity index, pour point, oxidation stability, and volatility. The additives modify and extend those properties for specific applications.</p>\n        <div class=\"adv-step\"><div class=\"adv-num\">GI</div><div class=\"adv-step-body\"><strong>Group I base oils</strong> are solvent-refined mineral oils: the traditional refining process. They have the most impurities, the lowest oxidation stability, and the shortest service life. Largely replaced by Group II in most industrial lubricants.</div></div>\n        <div class=\"adv-step\"><div class=\"adv-num\">GII</div><div class=\"adv-step-body\"><strong>Group II base oils</strong> are hydrotreated mineral oils with lower impurity levels, better oxidation stability, and longer service life than Group I. The standard for most industrial and automotive lubricants today.</div></div>\n        <div class=\"adv-step\"><div class=\"adv-num\">GIII</div><div class=\"adv-step-body\"><strong>Group III base oils</strong> are severely hydrotreated mineral oils with very high purity and viscosity index. Often marketed as synthetic or semi-synthetic. Performance approaches Group IV in many applications.</div></div>\n        <div class=\"adv-step\"><div class=\"adv-num\">GIV</div><div class=\"adv-step-body\"><strong>Group IV: PAO (Polyalphaolefin)</strong> is a true synthetic base oil built from polymerised alpha-olefin molecules. Extremely uniform molecular structure gives excellent viscosity index, low pour point, and outstanding oxidation stability. PAO is the most common true synthetic in industrial use.</div></div>\n        <div class=\"adv-step\"><div class=\"adv-num\">GV</div><div class=\"adv-step-body\"><strong>Group V: Esters, PAG, and others</strong> cover all synthetic base oils that do not fit Groups I through IV. Esters (diesters, polyol esters) have excellent lubricity and solvency. PAG (polyalkylene glycol) is used in natural gas compressors, food grade, and some gear applications. Not compatible with mineral oils without checking: PAG in particular requires a dedicated system.</div></div>\n        <p><strong>ISO Viscosity Grades:</strong> Industrial lubricants use the ISO VG system. ISO VG 32, 46, 68, 100, 150, 220, 320 are the common grades for hydraulic and gear oils respectively. The number is the nominal kinematic viscosity in centistokes (cSt) at 40 degrees Celsius. A higher number means a thicker oil at that temperature. The correct grade for a given application is determined by the equipment manufacturer's specification and the operating temperature range. Never substitute a higher or lower ISO grade without checking the manufacturer specification.</p>\n        <p><strong>Viscosity Index (VI):</strong> describes how much the oil's viscosity changes with temperature. A high VI oil changes viscosity less across a temperature range than a low VI oil. Synthetic oils generally have higher VI than mineral oils, which is why they perform better across wider temperature ranges. Multigrade motor oils use VI improver additives to achieve a high VI from a lower base VI oil.</p>\n        <p><strong>Additive packages</strong> include anti-wear (AW) agents, extreme pressure (EP) agents, oxidation inhibitors, rust and corrosion inhibitors, foam inhibitors, demulsifiers, and viscosity index improvers. EP additives (typically sulfur-phosphorus compounds) activate under high contact stress to form a protective surface film. Do not assume all gear oils with the same viscosity grade are interchangeable: the additive packages differ and some are incompatible with certain metals or seals.</p>\n      </div>\n    </div>",
+    "systems": "<div class=\"bw-section-label\">Centralized lubrication systems: types and failure modes</div>\n    <div class=\"comp-detail\">\n      <div class=\"comp-detail-body\">Centralized lubrication systems deliver the correct amount of lubricant to multiple points automatically, on a timed or metered basis. When functioning correctly they eliminate human error from the lubrication task. When they fail, they do so silently: the equipment continues to run while lubrication points starve, and the damage accumulates invisibly until a bearing or component fails. Understanding how each system type works is essential to recognising when it is not working.</div>\n    </div>\n\n    <div class=\"family-label\">Tap a system type to learn more</div>\n    <div class=\"card-grid\">\n      <div class=\"type-card\" onclick=\"selectSystem('total_loss')\" id=\"syscard-total_loss\">\n        <div class=\"type-card-icon\"><i class=\"ti ti-arrow-down-circle\"></i></div>\n        <div class=\"type-card-name\">Total Loss (Once-Through)</div>\n        <div class=\"type-card-sub\">Lubricant dispensed and not recovered</div>\n      </div>\n      <div class=\"type-card\" onclick=\"selectSystem('recirculating')\" id=\"syscard-recirculating\">\n        <div class=\"type-card-icon\"><i class=\"ti ti-refresh\"></i></div>\n        <div class=\"type-card-name\">Recirculating Oil System</div>\n        <div class=\"type-card-sub\">Reservoir, pump, filter, return</div>\n      </div>\n      <div class=\"type-card\" onclick=\"selectSystem('oil_mist')\" id=\"syscard-oil_mist\">\n        <div class=\"type-card-icon\"><i class=\"ti ti-cloud\"></i></div>\n        <div class=\"type-card-name\">Oil Mist System</div>\n        <div class=\"type-card-sub\">Compressed air carrier, rolling element bearings</div>\n      </div>\n      <div class=\"type-card\" onclick=\"selectSystem('auto_grease')\" id=\"syscard-auto_grease\">\n        <div class=\"type-card-icon\"><i class=\"ti ti-git-branch\"></i></div>\n        <div class=\"type-card-name\">Automatic Grease System</div>\n        <div class=\"type-card-sub\">Progressive or dual-line distribution</div>\n      </div>\n      <div class=\"type-card\" onclick=\"selectSystem('splash')\" id=\"syscard-splash\">\n        <div class=\"type-card-icon\"><i class=\"ti ti-ripple\"></i></div>\n        <div class=\"type-card-name\">Splash Lubrication</div>\n        <div class=\"type-card-sub\">Gearboxes, simple enclosed systems</div>\n      </div>\n      <div class=\"type-card\" onclick=\"selectSystem('oil_ring')\" id=\"syscard-oil_ring\">\n        <div class=\"type-card-icon\"><i class=\"ti ti-ring\"></i></div>\n        <div class=\"type-card-name\">Oil Ring / Collar</div>\n        <div class=\"type-card-sub\">Sleeve bearings, slow shaft speeds</div>\n      </div>\n    </div>\n\n    <div id=\"system-display\" style=\"margin-top:1rem;\"><div class=\"comp-placeholder\">select a system type above</div></div>",
+    "contam": "<div class=\"bw-section-label\">Contamination: the primary cause of lubrication failure</div>\n    <div class=\"comp-detail\">\n      <div class=\"comp-detail-body\">Studies consistently show that 70 to 80 percent of premature component failures in lubricated machinery are contamination-related. The lubricant does not wear out: it gets contaminated. Particle contamination, water ingress, oxidation products, and wrong lubricant introduction each have distinct signatures and distinct consequences. Identifying the contamination type is the first step toward both remediation and prevention.</div>\n    </div>\n\n    <div class=\"contam-card\" onclick=\"toggleContam(this)\">\n      <div class=\"contam-card-header\"><div class=\"contam-card-title\"><i class=\"ti ti-grain\" style=\"color:#EF9F27;\"></i> Particle contamination</div><i class=\"ti ti-chevron-down contam-card-chevron\"></i></div>\n      <div class=\"contam-card-body\">\n        <p>Particle contamination is the most damaging and most common form of lubricant contamination. Particles smaller than the lubricant film thickness (often just a few microns) cause the most damage because they pass through filters, enter the contact zone, and embed in or scratch the bearing surfaces without being visible to the naked eye.</p>\n        <p><strong style=\"color:#e8e6df;\">Sources:</strong> ingression through breathers and seals, particles generated by internal wear (self-contamination), dirty maintenance practices (contaminated oil cans, funnels, work surfaces), and new oil that has not been filtered to the required cleanliness level before use.</p>\n        <ul>\n          <li>New oil from the drum is not clean. Most new oil from a drum is ISO cleanliness code 18/16/13 or dirtier. Many precision systems require 16/14/11 or better. Filter all new oil before introduction.</li>\n          <li>Breathers on reservoirs and gearboxes are the primary ingression point for airborne particles. Desiccant breathers with particulate filtration are one of the highest-return contamination control investments.</li>\n          <li>ISO 4406 cleanliness code reports particle counts at 4, 6, and 14 micron sizes. A code of 17/15/12 means fewer than 130,000 particles per mL greater than 4 microns, fewer than 32,000 greater than 6 microns, and fewer than 4,000 greater than 14 microns.</li>\n          <li>The Millipore patch test: pass a measured volume of oil through a membrane filter and examine the patch under magnification. The colour, density, and character of the deposit identifies contamination type and approximate level.</li>\n          <li>Each ISO cleanliness code step represents a doubling of particle count. Moving from code 18 to code 16 is a 4x reduction in particles: a significant improvement in bearing life.</li>\n        </ul>\n      </div>\n    </div>\n\n    <div class=\"contam-card\" onclick=\"toggleContam(this)\">\n      <div class=\"contam-card-header\"><div class=\"contam-card-title\"><i class=\"ti ti-droplet\" style=\"color:#85B7EB;\"></i> Water contamination</div><i class=\"ti ti-chevron-down contam-card-chevron\"></i></div>\n      <div class=\"contam-card-body\">\n        <p>Water in oil is destructive in multiple ways simultaneously. It reduces lubricant film strength, promotes corrosion of metal surfaces, accelerates oxidation of the base oil and additive depletion, supports microbial growth in some fluids, and at low temperatures can freeze in clearances and cause catastrophic seizure.</p>\n        <p><strong style=\"color:#e8e6df;\">Visual identification:</strong> dissolved water (below saturation) is invisible. Emulsified water gives the oil a milky or cloudy appearance. Free water settles to the bottom of a reservoir or sample bottle as a distinct water layer. The crackle test, placing a drop of oil on a hot plate, will produce crackling and spattering if water is present above approximately 500 ppm.</p>\n        <ul>\n          <li>Sources: condensation from thermal cycling (common in outdoor equipment and equipment with frequent start-stop cycles), process water ingress through failed seals, wash-down water through breathers, and steam condensate in steam-adjacent equipment.</li>\n          <li>Acceptable water content varies by application. For most rolling element bearing systems, less than 100 ppm (0.01 percent) is the target. For hydraulic systems, less than 200 to 500 ppm depending on the system pressure and sensitivity.</li>\n          <li>Milky oil in a gearbox is a red flag. The gear mesh and bearings are operating without adequate film strength. Change the oil, identify and fix the water ingress source, and inspect internal components before returning to service.</li>\n          <li>Desiccant breathers, improved shaft seals, and keeping reservoirs full (reducing air space for condensation) are the primary water ingress controls.</li>\n        </ul>\n      </div>\n    </div>\n\n    <div class=\"contam-card\" onclick=\"toggleContam(this)\">\n      <div class=\"contam-card-header\"><div class=\"contam-card-title\"><i class=\"ti ti-flame\" style=\"color:#F09595;\"></i> Oxidation and thermal degradation</div><i class=\"ti ti-chevron-down contam-card-chevron\"></i></div>\n      <div class=\"contam-card-body\">\n        <p>Oil oxidises when exposed to heat and oxygen over time. Oxidation produces acidic compounds and varnish (a hard, amber to brown lacquer-like deposit) that coats surfaces, restricts flow through orifices and valves, and accelerates further degradation. Thermal degradation at very high local temperatures (hot spots from inadequate lubrication, electrical discharge) produces carbon deposits and sludge rather than varnish.</p>\n        <p><strong style=\"color:#e8e6df;\">Visual identification:</strong> oxidised oil darkens progressively from amber to dark brown to black. Varnish deposits appear as hard, shiny, amber or brown coatings on metal surfaces inside reservoirs, on valve spools, and on bearing retainers. Sludge is soft and dark, settles in low-flow areas of the system.</p>\n        <ul>\n          <li>The rate of oxidation roughly doubles for every 10 degrees Celsius increase in operating temperature. An oil system running 10 degrees hotter than designed will consume its oxidation inhibitor package in roughly half the expected service interval.</li>\n          <li>Acid number (AN or TAN: total acid number) measured in oil analysis is the primary indicator of oxidation. Rising TAN indicates oxidation inhibitor depletion and acid accumulation. A TAN that has doubled from the new oil value is typically a change indicator.</li>\n          <li>Varnish deposits in hydraulic systems are particularly serious because they stick proportional valves and servo valves in intermediate positions, causing erratic or failed machine control.</li>\n          <li>Varnish potential index (MPC: membrane patch colorimetry) is an oil analysis test specifically designed to detect varnish precursors before deposits form.</li>\n        </ul>\n      </div>\n    </div>\n\n    <div class=\"contam-card\" onclick=\"toggleContam(this)\">\n      <div class=\"contam-card-header\"><div class=\"contam-card-title\"><i class=\"ti ti-mix\" style=\"color:#C589E8;\"></i> Cross-contamination: wrong lubricant</div><i class=\"ti ti-chevron-down contam-card-chevron\"></i></div>\n      <div class=\"contam-card-body\">\n        <p>Cross-contamination occurs when the wrong lubricant is introduced to a system, either by topping up with an incompatible product or by using contaminated dispensing equipment. The consequences range from additive package incompatibility (causing precipitation of additive compounds) to material incompatibility (certain synthetic base oils attacking elastomeric seals) to complete loss of the lubricant's required properties.</p>\n        <p><strong style=\"color:#e8e6df;\">Common scenarios:</strong> hydraulic fluid added to a gear oil system (additive packages differ significantly), PAG-based compressor oil mixed with a PAO or mineral oil system (PAG and mineral oil are not miscible), food grade lubricant contaminated with non-food-grade product in a food processing facility.</p>\n        <ul>\n          <li>Colour-coded dispensing equipment (dedicated containers, funnels, and hose ends for each lubricant) is the most effective prevention against cross-contamination in the field.</li>\n          <li>Lubricant identification tags or barcodes on equipment lube points eliminate reliance on memory when there are multiple lubricant types in a facility.</li>\n          <li>When cross-contamination is suspected, take a sample for analysis before draining. Knowing what got mixed in determines whether the system needs a flush or a simple drain and refill.</li>\n          <li>Never mix greases of different thickener types without confirming compatibility. Lithium complex and polyurea greases are incompatible: the mixture softens, loses structure, and runs out of the bearing housing.</li>\n          <li>When changing lubricant type or brand on a recirculating system, consult the new lubricant supplier about flush procedures. Some transitions require a flush oil run to remove residual additive incompatibility before filling with the new product.</li>\n        </ul>\n      </div>\n    </div>\n\n    <div class=\"contam-card\" onclick=\"toggleContam(this)\">\n      <div class=\"contam-card-header\"><div class=\"contam-card-title\"><i class=\"ti ti-bacterium\" style=\"color:#97C459;\"></i> Microbial contamination</div><i class=\"ti ti-chevron-down contam-card-chevron\"></i></div>\n      <div class=\"contam-card-body\">\n        <p>Microbial contamination (bacteria and fungi) occurs in water-containing fluid systems: primarily water-based metalworking fluids, water-glycol hydraulic fluids, and oil-water emulsion systems. Microbes consume additive components, produce acidic metabolic byproducts, and generate visible slime or biofilm. Microbial contamination in a pure mineral oil system is rare but possible if water is present.</p>\n        <p><strong style=\"color:#e8e6df;\">Visual and sensory identification:</strong> rotten or sulfurous smell, dark sludge deposits in the reservoir, rapid pH drop in monitored systems, and visible slime in low-flow areas. The Monday morning smell (foul odour when opening a machine that sat over a weekend) is a classic indicator of anaerobic bacterial activity.</p>\n        <ul>\n          <li>Biocide addition at the correct concentration and on the correct interval controls microbial populations in metalworking fluids. Underdosing allows resistant strains to establish. Overdosing may cause dermatitis in operators.</li>\n          <li>Maintaining the correct fluid concentration (monitored by refractometer for emulsion-type coolants) is the first line of defence. Dilute coolant is more susceptible to microbial growth.</li>\n          <li>Removing tramp oil (from machine slideways and hydraulics leaking into the coolant sump) removes the nutrient source for bacteria and significantly improves sump life.</li>\n          <li>Microbial contamination in a mineral oil system (rare) is evidenced by slime deposits, rapid oil darkening, and foul odour. Full drain, clean, and refill is required. Identify and eliminate the water source.</li>\n        </ul>\n      </div>\n    </div>\n      <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: the drum is not clean</strong>New oil arrives with a particle count that would fail most hydraulic and gearbox targets. It has been through a refinery, a tank farm, a truck, a drum, and a warehouse. Filter it into the machine through a transfer cart with a filter, and keep the drum sealed with a desiccant breather. Clean oil is made at the fill point.</div></div>",
+    "analysis": "<div class=\"bw-section-label\">Oil analysis: reading the evidence in the fluid</div>\n    <div class=\"comp-detail\">\n      <div class=\"comp-detail-body\">Oil analysis is a predictive maintenance tool that examines a sample of in-service lubricant to assess the condition of the oil, the condition of the machine, and the cleanliness of the system. A single analysis gives a snapshot. A series of samples trended over time gives a far more powerful picture, revealing gradual changes in wear rate or oil condition that would not be apparent from any single data point. The value of oil analysis is in the trend, not the number.</div>\n    </div>\n\n    <div class=\"bw-section-label\">How to sample correctly: the most overlooked step</div>\n    <div style=\"margin-bottom:1.25rem;\">\n      <div class=\"inst-step\"><div class=\"inst-num\">01</div><div class=\"inst-body\"><strong>Sample from the same location every time</strong><div class=\"inst-sub\">Results are only comparable if samples come from the same point in the system. The ideal sampling point is a dedicated sampling valve installed in a location with turbulent flow, typically in the return line before the filter. Never sample from the drain plug (gets sludge and settled contamination) or the top of the reservoir (gets surface scum and condensation). Consistent sampling location is the single most important factor in getting comparable trending data.</div></div></div>\n      <div class=\"inst-step\"><div class=\"inst-num\">02</div><div class=\"inst-body\"><strong>Sample while the machine is running or immediately after shutdown</strong><div class=\"inst-sub\">Wear particles and contaminants are suspended in the oil during operation. After shutdown they begin to settle. Sampling a machine that has been off for hours gives artificially clean particle count results. Sample during operation or within 15 minutes of shutdown for accurate results.</div></div></div>\n      <div class=\"inst-step\"><div class=\"inst-num\">03</div><div class=\"inst-body\"><strong>Use a clean, dedicated sampling kit</strong><div class=\"inst-sub\">Contaminating the sample during collection invalidates the result. Use a new sampling tube and bottle for each sample. Do not use a funnel or container that has been used for anything else. Flush the sampling port with a small amount of oil before taking the actual sample to purge any stagnant fluid from the sample line.</div></div></div>\n      <div class=\"inst-step\"><div class=\"inst-num\">04</div><div class=\"inst-body\"><strong>Record machine hours, lubricant hours, and any recent events</strong><div class=\"inst-sub\">The lab report is only useful if it is contextualised. Record: total machine hours, hours since last oil change, hours since last top-up and the quantity added, any abnormal operating conditions or incidents since the last sample, and any maintenance performed. This information allows the analyst to distinguish between a real trend and an anomaly caused by a recent event.</div></div></div>\n    </div>\n\n    <div class=\"bw-section-label\">Key oil analysis parameters: what each tells you</div>\n\n    <div class=\"analysis-row\">\n      <div class=\"analysis-row-header\"><div class=\"analysis-row-param\">Viscosity at 40°C and 100°C</div><span class=\"analysis-row-tag tag-condition\">Oil Condition</span></div>\n      <div class=\"analysis-row-body\">The most fundamental oil property. A viscosity significantly above the new oil value indicates oxidation, contamination with a higher viscosity product, or evaporation of lighter fractions. A viscosity significantly below the new oil value indicates dilution with a lighter fluid (fuel dilution in engine oils, solvent contamination, or addition of wrong product). A change of more than 10 percent from the new oil reference value warrants investigation.</div>\n    </div>\n\n    <div class=\"analysis-row\">\n      <div class=\"analysis-row-header\"><div class=\"analysis-row-param\">Total Acid Number (TAN)</div><span class=\"analysis-row-tag tag-condition\">Oil Condition</span></div>\n      <div class=\"analysis-row-body\">Measures the total acid content of the oil in mg KOH per gram of oil. New oil has a baseline TAN established from the product data sheet. Rising TAN indicates oxidation and additive depletion. A TAN that has doubled from the new oil baseline is typically a change indicator. In systems handling acidic process fluids, TAN can rise from external contamination rather than oil degradation: distinguish between the two when interpreting a high TAN result.</div>\n    </div>\n\n    <div class=\"analysis-row\">\n      <div class=\"analysis-row-header\"><div class=\"analysis-row-param\">Total Base Number (TBN)</div><span class=\"analysis-row-tag tag-condition\">Oil Condition</span></div>\n      <div class=\"analysis-row-body\">Relevant primarily for engine oils and other applications where acidic combustion products are neutralised by alkaline additives. TBN represents the oil's remaining capacity to neutralise acids. When TBN falls below approximately 50 percent of the new oil value (the exact limit depends on the application), the oil's acid-neutralising reserve is depleted and should be changed. TBN is not typically reported for hydraulic or gear oils.</div>\n    </div>\n\n    <div class=\"analysis-row\">\n      <div class=\"analysis-row-header\"><div class=\"analysis-row-param\">Particle Count: ISO 4406</div><span class=\"analysis-row-tag tag-contam\">Contamination</span></div>\n      <div class=\"analysis-row-body\">Reports the number of particles per millilitre at three size thresholds (greater than 4, 6, and 14 microns). Expressed as an ISO cleanliness code (e.g. 17/15/12). The target cleanliness code is application-specific: high-pressure servo hydraulics may require 15/13/10 or better, while a general gear oil system may accept 18/16/13. Each step in the ISO code represents a doubling of particle count: the scale is logarithmic, not linear.</div>\n    </div>\n\n    <div class=\"analysis-row\">\n      <div class=\"analysis-row-header\"><div class=\"analysis-row-param\">Water content: ppm or percent</div><span class=\"analysis-row-tag tag-contam\">Contamination</span></div>\n      <div class=\"analysis-row-body\">Measured by Karl Fischer titration (quantitative) or crackle test (qualitative field check). Acceptable limits vary by application. For most rolling element bearing systems the target is below 100 ppm. Hydraulic systems typically accept 200 to 500 ppm depending on pressure class. Gear oils are generally more tolerant but milky appearance (above approximately 1000 ppm emulsified water) always warrants action. Trending is essential: a slowly rising water content indicates a developing ingression path.</div>\n    </div>\n\n    <div class=\"analysis-row\">\n      <div class=\"analysis-row-header\"><div class=\"analysis-row-param\">Elemental spectroscopy: wear metals</div><span class=\"analysis-row-tag tag-wear\">Wear</span></div>\n      <div class=\"analysis-row-body\">ICP (inductively coupled plasma) spectroscopy identifies and quantifies metals dissolved or suspended in the oil. Iron, chromium, nickel, and copper indicate wear of steel, chrome-plated, or bronze components respectively. Aluminium may indicate wear of aluminium pump housings or bearing cages. Silicon indicates dirt ingestion (from soil or airborne particles). Lead and tin may indicate bearing alloy wear. Each element is tracked as a trend: a sudden increase in a wear metal indicates accelerated wear of the corresponding component.</div>\n    </div>\n\n    <div class=\"analysis-row\">\n      <div class=\"analysis-row-header\"><div class=\"analysis-row-param\">Ferrography: wear particle morphology</div><span class=\"analysis-row-tag tag-wear\">Wear</span></div>\n      <div class=\"analysis-row-body\">Ferrography captures and examines ferrous wear particles on a glass slide under a microscope. The shape, size, and surface characteristics of the particles indicate the type and severity of wear. Normal rubbing wear produces small, smooth particles. Cutting wear (abrasion) produces long, thin curled particles. Fatigue wear produces flat, angular platelets with surface pits. Severe sliding wear produces large, irregular particles with rough surfaces. Ferrography answers the question that spectroscopy cannot: what type of wear is occurring, not just how much metal is in the oil.</div>\n    </div>\n\n    <div class=\"analysis-row\">\n      <div class=\"analysis-row-header\"><div class=\"analysis-row-param\">Additive elements: phosphorus, zinc, calcium</div><span class=\"analysis-row-tag tag-fluid\">Fluid ID</span></div>\n      <div class=\"analysis-row-body\">Additive elements from the lubricant's additive package (zinc and phosphorus from ZDDP anti-wear additives, calcium from detergent/dispersant additives) deplete as the additives are consumed in service. A decrease in additive element concentrations relative to the new oil reference indicates additive depletion and reduced lubricant protection. This is particularly relevant for hydraulic fluids and gear oils with extended drain intervals.</div>\n    </div>",
+    "application": "<div class=\"bw-section-label\">Application and intervals: how much, how often</div>\n\n    <div class=\"callout-box\">\n      <div class=\"callout-box-header\">\n        <i class=\"ti ti-alert-hexagon callout-box-icon\"></i>\n        <div class=\"callout-box-title\">More lubricant is not better: this applies everywhere</div>\n      </div>\n      <div class=\"callout-box-body\">This is the single most common lubrication mistake across all equipment types. <strong>Overlubrication causes more failures than underlubrication in most industrial environments.</strong> Excess grease in a bearing housing causes churning, heat, accelerated oxidation, and eventual seal blowout. Excess oil in a gearbox causes foaming, elevated temperature, and seal leakage. The correct amount is a calculated quantity based on bearing size, housing volume, and application, not a judgement call made with a grease gun. When in doubt, calculate. When you cannot calculate, use less than you think you need and monitor the result.</div>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-calculator\"></i> Grease quantity calculation</div>\n      <div class=\"info-block-body\">The correct grease relubrication quantity for a rolling element bearing can be estimated from the following formula, which is used by most major bearing manufacturers:</div>\n      <div style=\"background:#111110; border:0.5px solid #3a3a36; border-radius:6px; padding:0.75rem 1rem; margin:0.6rem 0; font-family:'Share Tech Mono',monospace; font-size:12px; color:#EF9F27; line-height:1.8;\">\n        G = 0.005 × D × B<br>\n        G = grease quantity in grams<br>\n        D = bearing outside diameter in mm<br>\n        B = bearing width (total width) in mm\n      </div>\n      <div class=\"info-block-body\">This formula gives the quantity for a relubrication interval. For initial fill of a new or cleaned bearing housing, fill to 30 to 50 percent of the free space in the housing: never pack completely full. For a relief-plug equipped housing, apply the calculated quantity with the relief plug open and run the machine for 30 minutes to allow excess to purge before reinstalling the plug.</div>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-clock\"></i> Grease interval factors</div>\n      <div class=\"info-block-body\">A calendar-based interval applied uniformly to all bearings is an oversimplification that results in both over and undergreasing on different pieces of equipment. The correct interval depends on bearing size, operating speed, operating temperature, environmental conditions, and the grease type. The SKF and NSK grease interval calculators (available on their websites) take all these factors into account and should be used as the starting point for any PM interval setting.</div>\n      <ul class=\"info-block-tips\">\n        <li>Operating temperature is the single biggest interval modifier. A bearing running 15 degrees Celsius above the reference temperature needs roughly half the interval.</li>\n        <li>Vertical shaft bearings need more frequent greasing than horizontal shaft bearings because gravity works against grease retention in the contact zone.</li>\n        <li>Contaminated environments (dust, moisture, chemicals) require shorter intervals or sealed bearings with no regreasing required.</li>\n        <li>Ultrasonic lubrication monitoring removes the guesswork entirely: grease until the ultrasonic signal drops to baseline, then stop. This technique prevents both under and overgreasing regardless of what the PM schedule says.</li>\n        <li>Document every lubrication event: date, grease type, quantity, and any observations. This record is essential for root cause analysis when a bearing fails.</li>\n      </ul>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-droplet-filled\"></i> Oil change intervals</div>\n      <div class=\"info-block-body\">Oil change intervals should be based on oil analysis results, not on a fixed calendar schedule. A schedule-only approach changes oil that is still serviceable and misses oil that has degraded ahead of schedule due to abnormal conditions. Oil analysis allows extending intervals on lightly loaded, clean systems and shortening intervals when contamination or degradation is detected.</div>\n      <ul class=\"info-block-tips\">\n        <li>The manufacturer's recommended interval is a starting point based on average conditions. Adjust based on actual oil analysis data from your specific equipment and environment.</li>\n        <li>Initial oil change after commissioning a new gearbox or machine is important. Run-in wear produces a higher initial wear metal load that should be removed early. Follow the manufacturer's break-in oil change recommendation.</li>\n        <li>Top-up oil must be the same product as the in-service oil. Adding a different brand or grade dilutes the additive package and may introduce incompatible components.</li>\n        <li>When topping up a system, record the quantity added. Excessive top-up consumption indicates a leak that must be found and fixed, not just compensated for.</li>\n      </ul>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-alert-triangle\"></i> Grease compatibility: do not mix without checking</div>\n      <div class=\"info-block-body\">Greases are made from a base oil, a thickener, and an additive package. When two incompatible greases are mixed, the thickener structures can interact in ways that soften the combined mixture, causing it to lose structure and run out of the bearing, or in some cases harden excessively. Neither outcome is acceptable.</div>\n      <ul class=\"info-block-tips\">\n        <li>Lithium and lithium complex greases are compatible with each other but not with polyurea, calcium sulfonate, or aluminium complex greases.</li>\n        <li>Polyurea greases are widely used in electric motor bearings (pre-filled, sealed for life). Adding any other grease type to a polyurea-filled bearing is incompatible in most cases.</li>\n        <li>When changing grease type on a bearing that will be regreased, flush the old grease out completely before introducing the new product. Packing in new grease on top of old incompatible grease produces the worst of both worlds.</li>\n        <li>When in doubt, contact both grease manufacturers and request a compatibility statement. Do not rely on general compatibility charts alone: batch-to-batch variations can affect compatibility.</li>\n      </ul>\n    </div>\n      <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: weigh your grease gun once</strong>Pump ten strokes onto a kitchen scale. Divide by ten. Now you know what a stroke of your gun delivers, and the grease quantity formula turns into a stroke count. Write the number on the gun with a paint pen. Every gun is different, and a gun that delivers 1.5 g per stroke at room temperature delivers less in January.</div></div>",
+    "troubleshoot": "<div class=\"bw-section-label\">Lubrication system fault diagnosis</div>\n    <div class=\"progress-bar\"><div class=\"progress-fill\" id=\"lube-progress\" style=\"width:8%\"></div></div>\n    <div id=\"lube-tree\"></div>",
+    "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
+    "safety": "<div class=\"bw-section-label\">Lubrication safety: injection, fire, and the lube room</div>\n    <div class=\"callout-box red\"><div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">Lubricants are the safest looking materials in the plant, and they injure people every year.</div></div><div class=\"callout-box-body\">Grease guns inject. Hot oil burns. Oil mist and oil-soaked rags ignite. Spilled oil puts people on the floor. Centralized systems run at hundreds of bar. <strong>Treat lubrication as fluid handling, with the same rules as any other pressurised, flammable, slippery fluid.</strong></div></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-syringe\" style=\"color:#F09595;\"></i> Injection injury from grease guns and centralized systems</div><ul class=\"info-block-tips\"><li>A hand grease gun develops enough pressure to push grease through skin. Never test a coupler against a hand, never hold a hose end, and never clear a blocked fitting by pointing the gun at anything but the fitting.</li><li>Centralized grease systems (progressive, dual-line) run at 100 to 400 bar. A line that has been cut, a fitting that has cracked, or a blocked point that is being cleared can spray at injection pressure. Depressurise the line before opening it.</li><li>An injection wound looks like a puncture. It is a surgical emergency. Tell the triage staff it is a high pressure injection and what the material was.</li><li>Pneumatic and battery grease guns: coupler on the fitting before the trigger, hands behind the gun.</li></ul></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-flame\" style=\"color:#F09595;\"></i> Hot oil and fire</div><ul class=\"info-block-tips\"><li>Gearbox and hydraulic oil at 60 to 90°C burns on contact. Drain into a container that will not deform, and let it cool before handling.</li><li>Oil-soaked rags self-heat. Metal bin with a lid, emptied daily. A pile of oily rags in a corner is a fire waiting for a warm afternoon.</li><li>Oil mist lubrication systems and oil sprays near hot surfaces are ignition hazards. Mist collects on surfaces and in ducts.</li><li>Compressed air on an oil-soaked surface aerosolises it. Aerosolised oil is flammable and breathable.</li><li>Aerosol chain lubes and penetrating oils are flammable propellants. Not near hot work.</li></ul></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-hand-off\" style=\"color:#F09595;\"></i> Handling and skin</div><ul class=\"info-block-tips\"><li>Prolonged skin contact with mineral oils causes dermatitis and worse. Nitrile gloves for oil handling, and wash before eating. Used oil is dirtier than new oil in ways that matter to skin.</li><li>Some EP additives, some synthetics, and all used oils carry hazard warnings on the SDS. Read it for the products you handle every day, not just the exotic ones.</li><li>Oil on the floor is the plant's most common slip and fall. Clean it now, not at the end of the job. Absorbent on hand at every lube point.</li></ul></div>\n    <div class=\"info-block\"><div class=\"info-block-title\"><i class=\"ti ti-building-warehouse\"></i> Lube room and storage</div><ul class=\"info-block-tips\"><li>Drums stored on containment, indoors, labelled, with the lids on and the bungs tight. A drum open to the plant air is a drum full of dirt and water in a month.</li><li>Each product with its own dedicated pump, container, and grease gun, colour coded. Cross-contamination is a reliability problem and an incompatibility reaction is a chemical problem.</li><li>Reservoirs and tanks large enough to enter are confined spaces. Permit, atmosphere test, attendant.</li><li>Used oil is a regulated waste. Segregated, labelled, and collected by a licensed hauler. Never down a drain.</li><li>Spill kit sized for the largest container in the room, and everyone knows where it is.</li></ul></div>\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: the coupler goes on first</strong>A grease gun trigger pulled while the coupler is being lined up on a fitting sends a jet of grease at whatever is in front of it, at a pressure that goes through a glove. Coupler on, seated, hand clear, then the trigger. Every time, on every fitting, until it is a reflex.</div></div>"
+  }
+}

@@ -1,0 +1,554 @@
+{
+  "key": "bearing",
+  "num": "02",
+  "name": "Bearing Failure",
+  "source": "builtwright_bearing_module_v1.html",
+  "tabs": [
+    {
+      "id": "types",
+      "label": "Bearing Types"
+    },
+    {
+      "id": "diagnose",
+      "label": "Diagnose"
+    },
+    {
+      "id": "lube",
+      "label": "Lubrication"
+    },
+    {
+      "id": "install",
+      "label": "Installation"
+    },
+    {
+      "id": "selfcheck",
+      "label": "Self-Check"
+    },
+    {
+      "id": "safety",
+      "label": "Safety"
+    }
+  ],
+  "cards": {
+    "bearingData": {
+      "ball": {
+        "icon": "ti-circle-dot",
+        "name": "Ball Bearing",
+        "role": "Radial, axial, and combined loads at moderate to high speeds",
+        "body": "Deep groove ball bearings are the most common bearing type in industrial equipment. They handle both radial and axial loads, run quietly at high speeds, and require relatively little maintenance when properly lubricated. Angular contact ball bearings are designed specifically to carry combined radial and thrust loads in one direction and are typically used in pairs.",
+        "tips": [
+          "Most sensitive to: overgreasing, misalignment, contamination, and incorrect fit on shaft or in housing",
+          "Failure progression is usually gradual: increased noise, then heat, then vibration, then catastrophic failure",
+          "Deep groove ball bearings should not be used as the primary thrust bearing in applications with significant sustained axial load",
+          "Common failure signature: high-pitched squealing in early stages, transitioning to rumbling or grinding as damage progresses",
+          "Can often be diagnosed by feel: a failing ball bearing in a hand-rotated shaft will feel rough or have detectable clicks through one revolution"
+        ]
+      },
+      "roller": {
+        "icon": "ti-cylinder",
+        "name": "Cylindrical Roller Bearing",
+        "role": "High radial loads, moderate speeds, limited axial capacity",
+        "body": "Cylindrical roller bearings carry significantly higher radial loads than equivalent ball bearings because load is distributed along a line contact rather than a point. They are used where radial loads are heavy: large gearboxes, rolling mill equipment, and heavy conveyor drives. Most cylindrical roller bearing designs cannot carry thrust load and must be paired with a thrust or angular contact bearing in applications where axial loads are present.",
+        "tips": [
+          "Needle roller bearings are a sub-type with a very high length-to-diameter ratio, used where radial space is limited",
+          "Sensitive to shaft deflection: a deflecting shaft creates edge loading on the rollers, causing premature spalling at the roller ends",
+          "Failure signature: rumbling or growling at low frequencies, heavier and more pronounced than ball bearing noise",
+          "Higher load capacity means failures are often more sudden and catastrophic than ball bearing failures when they do occur",
+          "Check for skewing of rollers during inspection: rollers that are not parallel to the shaft axis indicate misalignment or cage damage"
+        ]
+      },
+      "tapered": {
+        "icon": "ti-triangle",
+        "name": "Tapered Roller Bearing",
+        "role": "Combined radial and thrust loads, used in pairs",
+        "body": "Tapered roller bearings are designed to carry simultaneous radial and axial loads. The geometry of the tapered rollers and races means the bearing generates an outward thrust component under radial load, which is why they are almost always used in pairs, mounted face-to-face or back-to-back, with the opposing bearing carrying the resulting thrust. Common applications include wheel hubs, gearbox shafts, and differential drives.",
+        "tips": [
+          "Preload and endplay are critical: too much preload causes heat and rapid wear, too little allows shaft movement and impact loading",
+          "Endplay is set during installation using shims or lock nuts. Always verify endplay with a dial indicator after assembly.",
+          "Failure signature: rumbling, increasing vibration, and heat. Often accompanied by a rhythmic component as damaged rollers pass over spalls.",
+          "Never replace only one bearing in a paired arrangement without inspecting the mating bearing. The surviving bearing has been running in an altered condition.",
+          "Back-to-back (DB) mounting handles moment loads better. Face-to-face (DF) mounting is more tolerant of shaft misalignment."
+        ]
+      },
+      "sleeve": {
+        "icon": "ti-ring",
+        "name": "Sleeve / Journal Bearing",
+        "role": "Very high loads and speeds on a hydrodynamic oil film",
+        "body": "Sleeve and journal bearings (also called plain bearings) operate entirely differently from rolling element bearings. There are no balls or rollers. The shaft (journal) rides on a pressurized film of oil that is generated by the rotation itself. This film is called the oil wedge: as the shaft rotates, it draws oil into a converging gap between the journal and bearing surface, building pressure that lifts the shaft off the bearing material entirely. When the oil wedge is fully established, there is no metal-to-metal contact at all. When properly supplied with clean oil at the correct pressure and viscosity, a journal bearing can outlast rolling element bearings significantly. When oil supply fails, the wedge collapses and failure is rapid and catastrophic.",
+        "tips": [
+          "Hydrodynamic film only forms above a minimum speed threshold. Startup and shutdown are the highest wear periods.",
+          "Oil pressure and flow are life-critical. A journal bearing with a blocked oil feed will fail within seconds to minutes under load.",
+          "Common failure types: wiping (oil starvation), fatigue (cyclic overload), erosion (oil velocity/contamination), and corrosion (water or acid in oil)",
+          "Diagnosis relies heavily on oil analysis, temperature monitoring, and shaft vibration rather than bearing noise",
+          "Clearance between journal and bearing surface is the critical dimension. Check clearance with plastigage or a dial indicator on the shaft during inspection."
+        ]
+      }
+    }
+  },
+  "trees": {
+    "diagNodes": {
+      "start": {
+        "q": "What type of bearing are you working with?",
+        "hint": "Select the bearing type to route to the correct diagnostic logic.",
+        "options": [
+          {
+            "label": "Rolling element: ball, roller, or tapered",
+            "next": "re_symptom"
+          },
+          {
+            "label": "Sleeve or journal bearing",
+            "next": "sj_symptom"
+          }
+        ]
+      },
+      "re_symptom": {
+        "q": "What is the primary symptom?",
+        "hint": "All three are equally valid starting points.",
+        "options": [
+          {
+            "label": "Sound: squealing, rumbling, clicking",
+            "next": "re_sound1"
+          },
+          {
+            "label": "Heat: housing hot to touch or thermally flagged",
+            "next": "re_heat1"
+          },
+          {
+            "label": "Vibration: felt or measured",
+            "next": "re_vibe1"
+          }
+        ]
+      },
+      "re_sound1": {
+        "q": "Describe the sound more specifically:",
+        "hint": "Character and pitch help narrow the failure mode.",
+        "options": [
+          {
+            "label": "High-pitched squeal, especially on startup",
+            "next": "re_squeal"
+          },
+          {
+            "label": "Rumbling or growling: low and continuous",
+            "next": "re_rumble1"
+          },
+          {
+            "label": "Rhythmic clicking or knocking at intervals",
+            "next": "re_click"
+          }
+        ]
+      },
+      "re_squeal": {
+        "q": "Does the squeal clear up after a few minutes of running?",
+        "hint": "A squeal that clears is different from one that persists.",
+        "options": [
+          {
+            "label": "Yes: clears after warm-up",
+            "next": "re_squeal_clears",
+            "cls": "yes"
+          },
+          {
+            "label": "No: persists at operating temperature",
+            "next": "re_squeal_persists",
+            "cls": "no"
+          }
+        ]
+      },
+      "re_squeal_clears": {
+        "type": "result",
+        "cls": "action",
+        "label": "likely overgreasing or cold grease",
+        "text": "A squeal that clears on warm-up is usually excess grease being displaced or cold grease reaching operating consistency.",
+        "sub": "Monitor bearing temperature after warm-up. If temperature returns to normal baseline and the squeal does not return, the bearing is likely fine. If the bearing was recently regreased, overgreasing is the most probable cause. Do not add more grease. If the squeal recurs on every cold start, verify grease type and quantity are correct for the application.",
+        "prevent": "Grease quantity by formula, interval by the manufacturer chart for speed and temperature. Grease grade suited to the cold start temperature."
+      },
+      "re_squeal_persists": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "race or rolling element damage",
+        "text": "A persistent squeal at operating temperature indicates damaged or dry contact between rolling elements and races.",
+        "sub": "Check lubrication first: is grease present and in reasonable condition? A dry bearing will squeal continuously. If lubrication appears adequate, the races or rolling elements are likely damaged (spalling, pitting, or contamination scoring). Plan bearing replacement. Continued operation accelerates damage and increases risk of sudden failure. Collect a grease sample if possible to look for metallic particles.",
+        "prevent": "Read the failed bearing: starvation, contamination, or load. Fix that before the new bearing goes in."
+      },
+      "re_rumble1": {
+        "q": "Is the bearing recently regreased or new?",
+        "hint": "Timing relative to maintenance helps distinguish contamination from wear.",
+        "options": [
+          {
+            "label": "Yes: within the last week",
+            "next": "re_rumble_new",
+            "cls": "yes"
+          },
+          {
+            "label": "No: has been running normally until now",
+            "next": "re_rumble_old",
+            "cls": "no"
+          }
+        ]
+      },
+      "re_rumble_new": {
+        "type": "result",
+        "cls": "action",
+        "label": "contamination during maintenance likely",
+        "text": "Rumbling in a recently serviced or new bearing strongly suggests contamination introduced during installation or regreasing.",
+        "sub": "Contamination (dirt, grit, metal particles) scoring the races produces a characteristic rumbling sound. If the bearing is new, inspect the installation: was it clean? Was the shaft seat clean? Was the housing bore clean? If the bearing was regreased, was the grease gun nozzle clean? Was the relief plug open during regreasing? If contamination is confirmed, the bearing will need replacement sooner than expected. Contamination damage is progressive.",
+        "prevent": "Clean installation: bearing stays sealed until it goes on, heated by induction or oil bath, pressed by the correct race, housing cleaned. Never through the rolling elements."
+      },
+      "re_rumble_old": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "wear or spalling: plan replacement",
+        "text": "Rumbling in a bearing that has been running normally indicates fatigue wear or spalling of the races or rolling elements.",
+        "sub": "Spalling (flaking of the hardened race surface) produces a continuous rumble that intensifies over time. This is end-of-life failure mode for a bearing that has reached or exceeded its rating. Identify root cause before installing the replacement: was the bearing correctly specified for the load? Was alignment correct? Was lubrication adequate? Replacing without addressing root cause produces the same failure again. Plan shutdown and replacement before the bearing fails catastrophically.",
+        "prevent": "Vibration and temperature trended so replacement is planned. Envelope readings catch the next one at stage 1."
+      },
+      "re_click": {
+        "type": "result",
+        "cls": "action",
+        "label": "inspect for brinelling or race damage",
+        "text": "Rhythmic clicking or knocking that occurs at a consistent interval tied to shaft rotation points to a discrete defect on a race or rolling element.",
+        "sub": "True brinelling (permanent indentation of races from static overload) and false brinelling (fretting from vibration while stationary) both produce a detectable click or knock as each rolling element passes over the indentation. Count the clicks per revolution and compare to the bearing geometry to estimate whether the defect is on the inner race, outer race, or a rolling element. The bearing requires replacement. Investigate whether the equipment was subjected to shock loading or prolonged storage vibration.",
+        "prevent": "Hubs installed with heat or a puller, never a hammer. Stored spares rotated periodically. Machines shipped with shafts locked."
+      },
+      "re_heat1": {
+        "q": "Was the bearing recently regreased or is this heat appearing after a PM?",
+        "hint": "Post-PM heat is often different in cause from heat that develops in a running bearing.",
+        "options": [
+          {
+            "label": "Yes: heat appeared after regreasing",
+            "next": "re_heat_postpm",
+            "cls": "yes"
+          },
+          {
+            "label": "No: heat has developed during normal operation",
+            "next": "re_heat_running",
+            "cls": "no"
+          }
+        ]
+      },
+      "re_heat_postpm": {
+        "type": "result",
+        "cls": "fix",
+        "label": "overgreasing: purge and monitor",
+        "text": "Heat after regreasing is the classic overgreasing signature.",
+        "sub": "Open the relief plug if present and run the equipment for 20 to 30 minutes to allow excess grease to purge. Temperature should drop to normal baseline as the excess is displaced. If temperature does not normalize within an hour, investigate further. For future PM: calculate the correct quantity for the specific bearing housing volume rather than estimating. Motor bearings are particularly prone to overgreasing because they are serviced by a wide range of personnel.",
+        "prevent": "Relief plug out during greasing. Quantity by G = 0.005 × D × B. Ultrasonic-assisted greasing on critical machines."
+      },
+      "re_heat_running": {
+        "q": "Is there any change in bearing noise along with the heat?",
+        "hint": "Heat alone is different from heat combined with noise.",
+        "options": [
+          {
+            "label": "Yes: noise has increased",
+            "next": "re_heat_noise",
+            "cls": "yes"
+          },
+          {
+            "label": "No: heat only, no significant noise change",
+            "next": "re_heat_only",
+            "cls": "no"
+          }
+        ]
+      },
+      "re_heat_noise": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "bearing failure in progress: plan immediate replacement",
+        "text": "Heat combined with increased noise indicates active bearing damage. The failure is progressing.",
+        "sub": "This bearing is past the point of corrective lubrication. Continued operation risks catastrophic failure. If the machine can be safely shut down without a process impact, do so now and replace the bearing. If it must continue running, increase monitoring frequency significantly (temperature and vibration checks every hour) and prepare for an emergency replacement. Document the failure for root cause analysis: check lubrication records, alignment history, and load conditions.",
+        "prevent": "Whatever the failed bearing shows. Alignment, grease quantity, contamination, or a load it was not designed for."
+      },
+      "re_heat_only": {
+        "type": "result",
+        "cls": "action",
+        "label": "check lubrication and alignment",
+        "text": "Heat without significant noise is often an early-stage lubrication or misalignment issue.",
+        "sub": "Check grease condition and quantity. Heat alone can indicate the lubricant is degraded and no longer providing adequate film. Also check alignment: a misaligned bearing runs hot before it becomes noisy. Use a thermal gun to compare both bearing housings on the same shaft. If one is significantly hotter, that is the loaded bearing. Trending the temperature over several days will tell you whether the condition is stable or progressing.",
+        "prevent": "Alignment after any work, with soft foot corrected. Fixing ring on the drive side only. Grease quantity by formula."
+      },
+      "re_vibe1": {
+        "q": "Is the vibration a recent change or has it always been present at this level?",
+        "hint": "A change from baseline is more significant than a steady-state vibration level.",
+        "options": [
+          {
+            "label": "Recent change: vibration has increased",
+            "next": "re_vibe_new",
+            "cls": "yes"
+          },
+          {
+            "label": "Always present at roughly this level",
+            "next": "re_vibe_old",
+            "cls": "no"
+          }
+        ]
+      },
+      "re_vibe_new": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "investigate immediately: bearing or alignment",
+        "text": "A recent increase in vibration is a significant indicator. Do not normalize it.",
+        "sub": "Most common causes in order: (1) misalignment (check coupling with dial indicators or laser tool), (2) imbalance (impeller fouling, coupling element chunk, loss of balance weight), (3) bearing wear beginning to generate vibration. If you have access to vibration analysis equipment, trending the frequency spectrum will help isolate the source. Without instruments, start with alignment and coupling inspection before condemning the bearing.",
+        "prevent": "Baseline reading after every rebuild. Alignment readings recorded. Route readings monthly."
+      },
+      "re_vibe_old": {
+        "type": "result",
+        "cls": "info",
+        "label": "establish baseline and monitor",
+        "text": "Steady-state vibration that has always been present may be acceptable for the machine design, or it may indicate a long-standing alignment or balance issue that has not yet caused a failure.",
+        "sub": "If there are no baseline measurements, establish them now with a handheld vibration meter or accelerometer. Record amplitude and frequency at each bearing housing. This becomes the baseline for future comparison. A vibration that has been present for a long time and is stable is less urgent than one that is increasing. However, review alignment and coupling condition if the source has never been investigated.",
+        "prevent": "Baseline established and trended. Route with the same points. Vibration Fundamentals module."
+      },
+      "sj_symptom": {
+        "q": "What is the primary symptom on the sleeve or journal bearing?",
+        "hint": "Journal bearing diagnosis relies more on oil condition and temperature than on noise.",
+        "options": [
+          {
+            "label": "High temperature or overheating",
+            "next": "sj_heat1"
+          },
+          {
+            "label": "Oil pressure drop or oil starvation alarm",
+            "next": "sj_oil1"
+          },
+          {
+            "label": "Vibration or shaft instability",
+            "next": "sj_vibe1"
+          },
+          {
+            "label": "Visible metal or debris in oil",
+            "next": "sj_metal"
+          }
+        ]
+      },
+      "sj_heat1": {
+        "q": "Is oil supply confirmed flowing to the bearing?",
+        "hint": "Check oil pressure gauge and flow indicator at the bearing supply line if instrumented.",
+        "options": [
+          {
+            "label": "No: oil supply appears reduced or absent",
+            "next": "sj_no_oil",
+            "cls": "no"
+          },
+          {
+            "label": "Yes: oil supply appears normal",
+            "next": "sj_heat_with_oil",
+            "cls": "yes"
+          }
+        ]
+      },
+      "sj_no_oil": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "shutdown immediately: oil starvation",
+        "text": "A journal bearing without adequate oil supply will fail within seconds to minutes under load.",
+        "sub": "Shut down the machine immediately if it is safe to do so. A wiped bearing (melted or displaced babbitt) is the likely outcome if operation has continued. Investigate the oil supply system: pump running? Filter blocked? Supply line restricted or broken? Oil level adequate in reservoir? After addressing the supply issue, inspect the bearing surface before restarting. Babbitt that has wiped even partially will have uneven clearance and will not run correctly.",
+        "prevent": "Oil pressure low alarm and trip on every pressure-fed sleeve bearing machine. Oil level and ring pickup on the PM for splash systems."
+      },
+      "sj_heat_with_oil": {
+        "type": "result",
+        "cls": "action",
+        "label": "check oil viscosity, clearance, and load",
+        "text": "Heat with adequate oil supply points to a film breakdown issue rather than starvation.",
+        "sub": "Possible causes: oil viscosity too low for the operating temperature (check oil specification vs actual temperature), clearance too tight (check journal-to-bearing clearance), overload condition (bearing carrying more than designed load), or oil contamination reducing lubricating ability. Take an oil sample for analysis. Check bearing clearance if possible. Review whether load conditions have changed.",
+        "prevent": "Oil grade against the bearing specification. Clearance measured at overhaul. Load path checked: alignment and pipe strain."
+      },
+      "sj_oil1": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "investigate oil system before continuing operation",
+        "text": "An oil pressure drop is an emergency condition for a journal bearing system.",
+        "sub": "Check: oil pump condition and output pressure, oil level in reservoir, all filters and strainers, relief valve setting and condition, any supply line leaks or restrictions. A pressure drop with no obvious external cause may indicate increased bearing clearance from wear (more oil flows through a worn bearing, reducing system pressure). Bearing inspection and clearance measurement is required.",
+        "prevent": "Oil system on the PM: filter, cooler, pump, pressure, level. Oil analysis on the interval."
+      },
+      "sj_vibe1": {
+        "type": "result",
+        "cls": "action",
+        "label": "oil whirl or whip: check clearance and oil supply",
+        "text": "Vibration or instability in a journal bearing is often caused by oil whirl, a condition where the oil film drives the shaft into a self-sustaining orbit.",
+        "sub": "Oil whirl typically occurs at approximately half the shaft rotational frequency. It can be confirmed with vibration spectrum analysis. Causes include excessive bearing clearance, low oil viscosity, light loading, or oil supply pressure too high. Oil whirl left unaddressed progresses to oil whip, which is a resonant condition and far more damaging. Check clearance, verify oil viscosity is correct, and consult bearing manufacturer specifications for the specific bearing geometry.",
+        "prevent": "Clearance and oil viscosity within specification. Alignment keeps the load where the bearing needs it."
+      },
+      "sj_metal": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "bearing surface damage: shutdown and inspect",
+        "text": "Metal particles in the oil from a journal bearing system mean the bearing surface is being physically removed.",
+        "sub": "This is not a condition that improves with continued operation. Shut down and inspect the bearing surface. Identify the failure mode from the pattern of damage: wiping (smooth smearing of babbitt, caused by overload or oil starvation), fatigue (pitting and cracking in a regular pattern, caused by cyclic overload), erosion (smooth pitting or grooving from high-velocity oil or contamination), or corrosion (rough pitting distributed across the surface from acid or water in oil). Each failure mode points to a different root cause that must be addressed before the replacement bearing is installed.",
+        "prevent": "Oil analysis trended. Clearance and alignment at overhaul. Find why the film failed before the new bearing goes in."
+      }
+    }
+  },
+  "selfcheck": {
+    "types": [
+      [
+        "What supports the shaft in a running sleeve (journal) bearing?",
+        [
+          "The bearing metal",
+          "A pressurised oil wedge",
+          "Rolling elements",
+          "A spring"
+        ],
+        1,
+        "As the shaft turns it draws oil into a converging gap, building pressure that lifts the shaft clear of the bearing material."
+      ],
+      [
+        "Which bearing type carries combined radial and thrust load and is set with preload or endplay?",
+        [
+          "Deep groove ball",
+          "Cylindrical roller",
+          "Tapered roller",
+          "Sleeve"
+        ],
+        2,
+        "Tapered rollers carry combined loads and are used in adjusted pairs."
+      ],
+      [
+        "Which bearing type carries the highest pure radial load for its size?",
+        [
+          "Deep groove ball",
+          "Cylindrical roller",
+          "Sleeve",
+          "Thrust ball"
+        ],
+        1,
+        "Line contact on a cylindrical roller carries more radial load than point contact on a ball."
+      ]
+    ],
+    "diagnose": [
+      [
+        "A bearing squeals at startup and clears after a few minutes. Most likely?",
+        [
+          "Race damage",
+          "Marginal lubrication or cold grease",
+          "Misalignment",
+          "Brinelling"
+        ],
+        1,
+        "Squeal that clears is the lubricant reaching operating consistency; persistent squeal is something else."
+      ],
+      [
+        "A bearing runs hot within a day of a grease PM. Most likely?",
+        [
+          "Undergreasing",
+          "Overgreasing",
+          "Misalignment",
+          "Contamination"
+        ],
+        1,
+        "A full cavity churns grease and generates heat. Do not add more; let it purge."
+      ],
+      [
+        "A rhythmic click once per revolution from a rolling element bearing suggests?",
+        [
+          "Lubrication starvation",
+          "Brinelling or a single race defect",
+          "Oil whirl",
+          "Overgreasing"
+        ],
+        1,
+        "A dent in a race or a flat on an element produces a click each time it passes through the load zone."
+      ],
+      [
+        "Oil pressure drops on a pressure-fed sleeve bearing machine. Correct response?",
+        [
+          "Watch it for a shift",
+          "Shut down immediately",
+          "Add oil",
+          "Increase speed"
+        ],
+        1,
+        "Loss of oil supply collapses the wedge and the bearing wipes in seconds."
+      ]
+    ],
+    "lube": [
+      [
+        "Which causes more bearing failures?",
+        [
+          "Undergreasing",
+          "Overgreasing",
+          "They are equal",
+          "Neither, contamination does"
+        ],
+        1,
+        "Overgreasing is the most misunderstood PM task and causes more failures than undergreasing."
+      ],
+      [
+        "What is the formula for grease quantity?",
+        [
+          "G = D × B",
+          "G = 0.005 × D × B (grams, mm)",
+          "G = 0.5 × D",
+          "G = B ÷ D"
+        ],
+        1,
+        "Bearing outside diameter times width times 0.005 gives grams."
+      ]
+    ],
+    "install": [
+      [
+        "On a pillow block pair, where does the fixing ring go?",
+        [
+          "Both bearings",
+          "Drive side only",
+          "Non-drive side only",
+          "Neither"
+        ],
+        1,
+        "One bearing locates; the other must float axially for thermal expansion."
+      ],
+      [
+        "How should a rolling element bearing be pressed on?",
+        [
+          "Through the outer race onto a shaft",
+          "Through the race that is being fitted, never through the rolling elements",
+          "With a hammer and drift",
+          "Any way that fits"
+        ],
+        1,
+        "Force through the rolling elements brinells the races."
+      ],
+      [
+        "What is the maximum temperature for heating a standard bearing for a shrink fit?",
+        [
+          "80°C",
+          "120°C",
+          "200°C",
+          "As hot as the heater goes"
+        ],
+        1,
+        "Above about 120°C the steel loses hardness and cages and seals are damaged."
+      ]
+    ],
+    "safety": [
+      [
+        "Why must a bearing be demagnetised after induction heating?",
+        [
+          "To cool it",
+          "A magnetised bearing attracts ferrous debris into the raceways",
+          "To reset the heater",
+          "It does not need to be"
+        ],
+        1,
+        "Residual magnetism collects wear particles inside the bearing."
+      ],
+      [
+        "A hand grease gun can inject grease through skin. True or false?",
+        [
+          "False, only air guns can",
+          "True",
+          "Only with synthetic grease",
+          "Only at the fitting"
+        ],
+        1,
+        "Hand guns produce pressures well above the injection threshold. Coupler on the fitting before the trigger."
+      ]
+    ]
+  },
+  "panels": {
+    "types": "<div class=\"bw-section-label\">Bearing types: tap a type to learn more</div>\n    <div class=\"card-grid\">\n      <div class=\"bearing-card\" onclick=\"selectBearing('ball')\" id=\"bcard-ball\">\n        <div class=\"bearing-card-icon\"><i class=\"ti ti-circle-dot\"></i></div>\n        <div class=\"bearing-card-name\">Ball Bearing</div>\n        <div class=\"bearing-card-sub\">Deep groove, angular contact</div>\n      </div>\n      <div class=\"bearing-card\" onclick=\"selectBearing('roller')\" id=\"bcard-roller\">\n        <div class=\"bearing-card-icon\"><i class=\"ti ti-cylinder\"></i></div>\n        <div class=\"bearing-card-name\">Roller Bearing</div>\n        <div class=\"bearing-card-sub\">Cylindrical, needle</div>\n      </div>\n      <div class=\"bearing-card\" onclick=\"selectBearing('tapered')\" id=\"bcard-tapered\">\n        <div class=\"bearing-card-icon\"><i class=\"ti ti-triangle\"></i></div>\n        <div class=\"bearing-card-name\">Tapered Roller</div>\n        <div class=\"bearing-card-sub\">Combined radial and thrust loads</div>\n      </div>\n      <div class=\"bearing-card\" onclick=\"selectBearing('sleeve')\" id=\"bcard-sleeve\">\n        <div class=\"bearing-card-icon\"><i class=\"ti ti-ring\"></i></div>\n        <div class=\"bearing-card-name\">Sleeve / Journal</div>\n        <div class=\"bearing-card-sub\">Plain, babbit, bronze bushing</div>\n      </div>\n    </div>\n    <div id=\"bearing-display\"><div class=\"comp-placeholder\">select a bearing type above</div></div>\n      <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-hash\"></i> Reading a bearing number</div>\n      <div class=\"info-block-body\">A standard bearing designation says what it is and how big it is. The first digit or digits are the type, the next the size series, and the last two are the bore code: multiply by five for the bore in millimetres from 04 upward (00 is 10 mm, 01 is 12, 02 is 15, 03 is 17). Suffixes carry the details that matter for replacement.</div>\n      <table class=\"ref-table\">\n        <tr><th>Example</th><th>Meaning</th></tr>\n        <tr><td>6205</td><td>6 = deep groove ball; 2 = light series; 05 = 25 mm bore. Common on small motors and pumps.</td></tr>\n        <tr><td>6309 C3</td><td>Deep groove ball, medium series, 45 mm bore, C3 (extra) internal clearance. The motor bearing.</td></tr>\n        <tr><td>NU 210</td><td>N = cylindrical roller; U = no ribs on the inner ring (free axial float); 2 = light series; 10 = 50 mm bore.</td></tr>\n        <tr><td>22220 E</td><td>2 = spherical roller; 22 = width series; 20 = 100 mm bore; E = high capacity design. Pillow blocks and fans.</td></tr>\n        <tr><td>7208 B</td><td>7 = angular contact ball; 2 = light; 08 = 40 mm bore; B = 40 degree contact angle. Thrust capacity.</td></tr>\n        <tr><td>32210</td><td>3 = tapered roller (metric series); 22 = width and angle series; 10 = 50 mm bore. Set in pairs with preload or endplay.</td></tr>\n        <tr><td>Suffixes: 2RS, 2Z, ZZ</td><td>Two rubber seals; two metal shields; two shields (maker dependent). Sealed for life, no regreasing.</td></tr>\n        <tr><td>Suffixes: C3, C4, CN</td><td>Internal clearance greater than normal, much greater, normal. Reference module has the values.</td></tr>\n        <tr><td>Suffixes: J, M, TN</td><td>Cage material: pressed steel, machined brass, polyamide. Brass for heat and shock; polyamide for speed and quiet; note polyamide has a temperature limit.</td></tr>\n        <tr><td>Prefixes and inch bearings</td><td>Inch tapered rollers use cone and cup numbers (for example LM11949 and LM11910) that do not encode size; look them up. Pillow block inserts (UC, SA) encode the shaft size in the last two digits the same way.</td></tr>\n      </table>\n      <ul class=\"info-block-tips\">\n        <li>Order by the full number including suffixes. A 6309 and a 6309 C3 are the same size and different bearings.</li>\n        <li>The number is stamped on the ring face. Read it before the bearing is cleaned and, if it is worn off, measure bore, OD, and width and match all three.</li>\n        <li>Interchange between makers is by the ISO designation; suffix letters differ by maker for the same feature.</li>\n      </ul>\n    </div>",
+    "diagnose": "<div class=\"bw-section-label\">Guided fault diagnosis</div>\n    <div class=\"progress-bar\"><div class=\"progress-fill\" id=\"diag-progress\" style=\"width:8%\"></div></div>\n    <div id=\"diag-container\"></div>\n      <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: two bearings, same shaft, compare them</strong>Infrared on both bearings of the same shaft, and a screwdriver on each housing. They see the same speed and the same lubricant; the one that is hotter or louder is the one with the problem, and the difference between them is a cleaner signal than either number alone. The same trick works across two identical machines side by side.</div></div>",
+    "lube": "<div class=\"bw-section-label\">Lubrication: the most common cause of bearing failure</div>\n    <div class=\"comp-detail\">\n      <div class=\"comp-detail-body\">The majority of rolling element bearing failures trace back to lubrication problems, and the most common of those is overgreasing, not undergreasing. More grease is not better. The rolling elements need to run through a film, not a reservoir. Understanding what the lubricant is actually doing inside the bearing changes how you approach every PM interval.</div>\n    </div>\n\n    <div class=\"lube-block\">\n      <div class=\"lube-block-title\"><i class=\"ti ti-droplet-filled\"></i> Grease lubrication</div>\n      <div class=\"lube-block-body\">Grease is the most common lubricant for rolling element bearings in industrial equipment. It provides a semi-solid film between rolling elements and races, seals against contaminants, and stays in place without a circulating system. The grease in a bearing is not consumed the way oil is. It is sheared, oxidized, and contaminated over time until it can no longer provide adequate film thickness.</div>\n      <ul class=\"lube-block-tips\">\n        <li>Grease quantity: most bearings should be filled to 30 to 50 percent of free space in the housing. Full packing causes churning and heat.</li>\n        <li>Regreasing: apply only enough to replenish degraded grease, not to pack the housing. A grease relief plug or purge fitting should be open during regreasing to allow old grease to exit.</li>\n        <li>Grease compatibility: mixing incompatible grease types (lithium vs calcium vs polyurea) can cause the lubricant to soften, harden, or separate. When changing grease type, purge the bearing completely first.</li>\n        <li>Temperature matters: grease has an operating temperature range. Exceeding it causes the thickener to break down and the oil to bleed out. Check grease specification against application temperature.</li>\n        <li>Grease colour is not a reliable indicator of condition. Black or dark grease is not automatically bad. Use intervals, temperature trends, and appearance together.</li>\n      </ul>\n    </div>\n\n    <div class=\"lube-block\">\n      <div class=\"lube-block-title\"><i class=\"ti ti-droplet\"></i> Oil lubrication</div>\n      <div class=\"lube-block-body\">Oil lubrication is used where grease cannot adequately manage heat, where continuous flushing of contaminants is needed, or where bearing speeds are too high for grease. Oil splash, bath, and circulating systems each have different maintenance requirements. Oil condition is easier to monitor than grease condition, which is one of its practical advantages.</div>\n      <ul class=\"lube-block-tips\">\n        <li>Oil level in splash or bath lubrication: too low means inadequate coverage, too high means churning and heat. Confirm the correct level marking for the specific housing design.</li>\n        <li>Oil change intervals are based on operating temperature and contamination, not just time. High-temperature applications need more frequent changes.</li>\n        <li>Milky oil indicates water ingress. Identify and eliminate the source before refilling. Water in bearing oil destroys the lubricating film rapidly.</li>\n        <li>On circulating systems, check filter condition and flow rate regularly. A blocked filter bypasses and sends unfiltered oil to the bearings.</li>\n      </ul>\n    </div>\n\n    <div class=\"lube-block\">\n      <div class=\"lube-block-title\"><i class=\"ti ti-alert-triangle\"></i> Overgreasing: the most misunderstood PM task</div>\n      <div class=\"lube-block-body\">Overgreasing is responsible for more bearing failures than undergreasing in most industrial environments. When a bearing housing is packed too full, the rolling elements are forced to churn through the excess grease. This generates heat, which accelerates oxidation of the lubricant, which accelerates bearing wear. The bearing runs hot, the grease darkens, the interval gets shortened, more grease is added, and the cycle continues.</div>\n      <ul class=\"lube-block-tips\">\n        <li>Signs of overgreasing: bearing housing is hot to the touch, grease purging out of seals or relief plugs, bearing noise that clears after a short run-in period as excess grease is displaced.</li>\n        <li>Motor bearings are particularly vulnerable because motors are often regreased by non-mechanical personnel following a \"when in doubt, grease it\" approach.</li>\n        <li>The correct amount is a measured addition, not a full purge. Know the bearing housing volume and apply the calculated quantity.</li>\n        <li>After regreasing, it is normal for bearing temperature to rise slightly as excess grease is worked through and displaced. Monitor for 30 to 60 minutes. Temperature should return to baseline.</li>\n        <li>If a bearing consistently runs hot after regreasing, suspect overgreasing before condemning the bearing.</li>\n      </ul>\n    </div>\n\n    <div class=\"lube-block\">\n      <div class=\"lube-block-title\"><i class=\"ti ti-clock\"></i> Intervals and condition monitoring</div>\n      <div class=\"lube-block-body\">Greasing intervals should be based on bearing size, speed, temperature, and environment, not on a fixed calendar schedule applied uniformly across all equipment. A conveyor idler bearing in a dusty environment needs more frequent attention than a low-speed fan bearing in a clean room.</div>\n      <ul class=\"lube-block-tips\">\n        <li>SKF, NSK, and other bearing manufacturers publish regreasing quantity and interval calculators. Use them as a starting point, then adjust based on observed condition.</li>\n        <li>Trending bearing temperature over time is one of the most reliable early indicators of lubrication degradation. A gradual rise in baseline temperature warrants inspection.</li>\n        <li>Ultrasonic lubrication monitoring allows greasing while running: add grease until the ultrasonic signal drops to a baseline level, then stop. This removes the guesswork from quantity.</li>\n        <li>Document what grease type, quantity, and date were applied. This information is essential when investigating a failure.</li>\n      </ul>\n    </div>",
+    "install": "<div class=\"bw-section-label\">Installation: most bearing failures begin here</div>\n    <div class=\"comp-detail\">\n      <div class=\"comp-detail-body\">A bearing that is correctly specified and correctly installed in a correctly aligned machine will last its rated service life under normal operating conditions. The majority of premature bearing failures are installation failures, not product failures. Heat damage from improper fitting, contamination during handling, and incorrect preload are all preventable at installation.</div>\n    </div>\n\n    <div class=\"callout-box\">\n      <div class=\"callout-box-header\">\n        <i class=\"ti ti-alert-hexagon callout-box-icon\"></i>\n        <div class=\"callout-box-title\">Fixing rings: drive side only</div>\n      </div>\n      <div class=\"callout-box-body\">On pillow block bearing assemblies with two housings on a common shaft, <strong>the fixing ring (locking collar or adapter) must be applied to the drive side bearing only.</strong> The non-drive side bearing must be left free to float axially. This allows the shaft to expand thermally during operation without generating axial load against the bearing races. If both bearings are fixed, thermal expansion has nowhere to go. The shaft will push against one or both bearings, generating axial load the bearing was not designed to carry. The result is accelerated wear, heat, and eventual failure that looks like a lubrication problem or overload but is actually a constraint problem created at installation.</div>\n      <ul class=\"callout-box-tips\">\n        <li>Drive side: fixing ring engaged, bearing locked to shaft</li>\n        <li>Non-drive side: fixing ring disengaged or absent, bearing free to slide axially in housing</li>\n        <li>When in doubt about which end is the drive side, follow the power: the drive side is the end closest to the coupling or sprocket</li>\n        <li>This rule applies to standard pillow block and flanged cartridge arrangements. Specific bearing types (angular contact, thrust bearings) have their own preload and constraint requirements</li>\n      </ul>\n    </div>\n\n    <div class=\"bw-section-label\">Installation procedure: rolling element bearings</div>\n    <div style=\"margin-bottom:1.5rem;\">\n      <div class=\"inst-step\">\n        <div class=\"inst-num\">01</div>\n        <div class=\"inst-body\"><strong>Inspect before installing</strong>\n          <div class=\"inst-sub\">Check the new bearing for damage from shipping or storage. Bearings should be stored horizontally in original packaging until the moment of installation. A bearing that has been stored vertically on a shelf for months may have brinelled (false brinelling from vibration) race surfaces before it ever sees a shaft.</div>\n        </div>\n      </div>\n      <div class=\"inst-step\">\n        <div class=\"inst-num\">02</div>\n        <div class=\"inst-body\"><strong>Clean the shaft and housing bore</strong>\n          <div class=\"inst-sub\">Remove all old lubricant, corrosion, and debris from the shaft seat and housing bore. Check shaft diameter and housing bore against the bearing specification. An undersized shaft causes the inner race to spin on the shaft (fretting, black powder at the bore). An oversized shaft can crack the inner race during installation.</div>\n        </div>\n      </div>\n      <div class=\"inst-step\">\n        <div class=\"inst-num\">03</div>\n        <div class=\"inst-body\"><strong>Apply force to the correct ring only</strong>\n          <div class=\"inst-sub\">When pressing a bearing onto a shaft, all force must be applied to the inner race. When pressing into a housing, all force must be applied to the outer race. Never drive force through the rolling elements. This is the most common installation error and it causes brinelling of the races immediately. Use a bearing installation tool, a sleeve of the correct diameter, or an induction heater for interference fits.</div>\n        </div>\n      </div>\n      <div class=\"inst-step\">\n        <div class=\"inst-num\">04</div>\n        <div class=\"inst-body\"><strong>Heat for interference fits: induction heater preferred</strong>\n          <div class=\"inst-sub\">For bearings with an interference fit on the shaft, heating the inner race allows it to expand for installation without force. An induction heater is the correct tool. A temperature of 80 to 100 degrees Celsius above ambient is typically sufficient. Do not exceed 120 degrees Celsius or you risk altering the metallurgy of the bearing. Never use an open flame to heat a bearing. Oil bath heating is acceptable if the oil temperature is controlled and measured.</div>\n        </div>\n      </div>\n      <div class=\"inst-step\">\n        <div class=\"inst-num\">05</div>\n        <div class=\"inst-body\"><strong>Check alignment before first run</strong>\n          <div class=\"inst-sub\">A newly installed bearing does not correct misalignment. Confirm shaft alignment to the driver before energizing. Rotate the assembly by hand after installation and feel for smooth, even resistance with no rough spots or tight points. Any roughness at this stage is an installation problem, not a bearing defect.</div>\n        </div>\n      </div>\n      <div class=\"inst-step\">\n        <div class=\"inst-num\">06</div>\n        <div class=\"inst-body\"><strong>Initial lubrication and run-in</strong>\n          <div class=\"inst-sub\">Apply the correct quantity of grease before first run. After startup, monitor bearing temperature for the first 30 to 60 minutes. A new bearing will run slightly warmer initially as grease distributes. Temperature should stabilize and then hold steady. If temperature continues to rise after the first hour of operation, shut down and investigate before damage progresses.</div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"bw-section-label\">Sleeve and journal bearing installation</div>\n    <div class=\"comp-detail\">\n      <div class=\"comp-detail-body\">Sleeve and journal bearings (plain bearings, babbitt bearings, bronze bushings) operate on a hydrodynamic oil film rather than rolling elements. As the shaft rotates, it draws oil into a converging gap between the journal and bearing surface, building pressure that lifts the shaft clear of the bearing material. This pressurized film is called the oil wedge, and it is the entire basis of how the bearing functions. Installation requires different considerations from rolling element bearings. The clearance between the journal (shaft) and the bearing surface is critical. Too tight prevents the oil wedge from forming correctly, causing overheating and seizure. Too loose allows the shaft to move within the bearing, causing vibration, oil whirl, and impact loading that degrades the bearing surface.</div>\n      <ul class=\"comp-detail-tips\">\n        <li>Clearance specification is typically expressed as a ratio of journal diameter. Consult the equipment manual for the specific value.</li>\n        <li>Babbitt bearings that are being replaced should be inspected for the failure mode before discarding: wiping (overload or oil starvation), cavitation erosion (oil supply issue), fatigue cracking (cyclic overload), or corrosion (water or acid contamination in the oil).</li>\n        <li>Oil supply holes and grooves must align correctly with the housing feed ports after installation. A sleeve installed 180 degrees out of orientation blocks the oil supply entirely.</li>\n        <li>Run-in is critical for sleeve bearings. Follow the equipment manufacturer's run-in procedure. Startup without adequate oil pressure is the most common cause of new sleeve bearing failure.</li>\n      </ul>\n    </div>\n      <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: the bearing stays in the box</strong>The bearing comes out of its packaging at the moment it goes onto the shaft, not before. A bearing sitting open on the bench for an hour has collected the grinding dust in the air, and that dust goes into the raceways. The packaging is clean; the shop is not.</div></div>",
+    "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
+    "safety": "<div class=\"bw-section-label\">Bearing work safety: heat, force, and pressure</div>\n    <div class=\"callout-box red\"><div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">Bearing work uses three things that hurt people: heat, force, and stored pressure.</div></div><div class=\"callout-box-body\">Induction heaters and oil baths put bearings at 110 to 120°C. Pullers and presses put tonnes of force into a component that can let go without warning. Grease guns generate enough pressure to inject grease through skin. <strong>None of this is exotic, and all of it goes wrong when the job is rushed.</strong></div></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-flame\" style=\"color:#F09595;\"></i> Heating bearings</div><ul class=\"info-block-tips\"><li>Induction heaters: strong magnetic field. Pacemakers and implanted devices stay clear. Nothing metallic in the field but the bearing and the yoke. Demagnetise the bearing after heating (most heaters do it automatically; confirm it did).</li><li>Temperature limit 120°C for standard bearings. Above that the steel loses hardness and the seals and cages are damaged. Use the heater's probe, not a guess.</li><li>Oil bath: oil at 110°C is a burn and a fire. Thermostat, lid, and a rack so the bearing is not on the bottom of the pan.</li><li>A heated bearing is handled with heat-resistant gloves and goes onto the shaft in one motion. Once it starts to cool it seizes where it is.</li><li>Never heat a bearing with a torch. Uneven heat, no temperature control, and a ruined bearing.</li></ul></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-arrows-diagonal\" style=\"color:#F09595;\"></i> Pulling and pressing</div><ul class=\"info-block-tips\"><li>A puller under load is a spring. Stand to the side, never in line with the jaws or the screw. Safety glasses at minimum; face shield on large pulls.</li><li>Hydraulic pullers and pushers: the hose and the fitting are hydraulic injection hazards. Same rules as the hydraulics module.</li><li>Never hammer a bearing on or off. It brinells the bearing, and a hammer on a hardened race can shatter it. Fragments travel.</li><li>Press: the bearing is supported on the race being pressed, square, with a sleeve. A cocked bearing under a press lets go sideways.</li><li>Shrink fits with dry ice or liquid nitrogen: cold burns and oxygen displacement in a closed area.</li></ul></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-syringe\" style=\"color:#F09595;\"></i> Grease guns</div><ul class=\"info-block-tips\"><li>A hand-operated grease gun produces pressures well above what is needed to inject grease through skin. Never hold a fitting or a hose end against a hand. Never test a gun against a finger.</li><li>A grease injection wound looks like nothing and needs emergency treatment. Tell the triage staff it is a high pressure injection.</li><li>Pneumatic and battery grease guns are worse. Coupler on the fitting, hands clear, and the gun pointed at the bearing.</li></ul></div>\n    <div class=\"info-block\"><div class=\"info-block-title\"><i class=\"ti ti-lock\"></i> Lockout and rotating shafts</div><ul class=\"info-block-tips\"><li>Checking bearing play by hand means hands on a shaft. Locked out, verified, and the driven side blocked.</li><li>Listening with a screwdriver on a running housing: hands clear of the coupling, the fan, and the guard openings. The screwdriver goes in; fingers do not.</li><li>Inspecting a bearing through a housing cover on a stopped machine: is it really stopped, and can it start. Lock it.</li></ul></div>\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: the bearing goes on once</strong>A heated bearing that stalls halfway down a shaft is a bearing that comes off with a puller and goes in the bin. Dry run the sequence cold: shaft clean and chamfered, bearing oriented, gloves on, where the shoulder is. Then heat it and do it once.</div></div>"
+  }
+}

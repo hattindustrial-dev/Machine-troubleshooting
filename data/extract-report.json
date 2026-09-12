@@ -1,0 +1,344 @@
+{
+  "generated_from": "2026-09-12",
+  "modules": [
+    {
+      "key": "pumps",
+      "cardSets": 2,
+      "results": 35,
+      "questions": 19,
+      "panels": 8,
+      "tabs": 8,
+      "skipped": [
+        {
+          "name": "history",
+          "reason": "runtime state"
+        },
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "bearing",
+      "cardSets": 1,
+      "results": 15,
+      "questions": 14,
+      "panels": 6,
+      "tabs": 6,
+      "skipped": [
+        {
+          "name": "diagHistory",
+          "reason": "runtime state"
+        },
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "alignment",
+      "cardSets": 1,
+      "results": 10,
+      "questions": 16,
+      "panels": 9,
+      "tabs": 9,
+      "skipped": [
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "seals",
+      "cardSets": 3,
+      "results": 13,
+      "questions": 19,
+      "panels": 9,
+      "tabs": 9,
+      "skipped": [
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "lube",
+      "cardSets": 2,
+      "results": 21,
+      "questions": 19,
+      "panels": 8,
+      "tabs": 8,
+      "skipped": [
+        {
+          "name": "diagHistory",
+          "reason": "runtime state"
+        },
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "pneu",
+      "cardSets": 4,
+      "results": 28,
+      "questions": 22,
+      "panels": 8,
+      "tabs": 8,
+      "skipped": [
+        {
+          "name": "diagHistory",
+          "reason": "runtime state"
+        },
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "hydraulics",
+      "cardSets": 5,
+      "results": 37,
+      "questions": 27,
+      "panels": 9,
+      "tabs": 9,
+      "skipped": [
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "powertrans",
+      "cardSets": 4,
+      "results": 23,
+      "questions": 25,
+      "panels": 9,
+      "tabs": 9,
+      "skipped": [
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "gearbox",
+      "cardSets": 3,
+      "results": 26,
+      "questions": 26,
+      "panels": 9,
+      "tabs": 9,
+      "skipped": [
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "motors",
+      "cardSets": 1,
+      "results": 28,
+      "questions": 23,
+      "panels": 10,
+      "tabs": 10,
+      "skipped": [
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "vibration",
+      "cardSets": 1,
+      "results": 16,
+      "questions": 22,
+      "panels": 9,
+      "tabs": 9,
+      "skipped": [
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "installation",
+      "cardSets": 2,
+      "results": 16,
+      "questions": 25,
+      "panels": 10,
+      "tabs": 10,
+      "skipped": [
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "safeguarding",
+      "cardSets": 3,
+      "results": 15,
+      "questions": 27,
+      "panels": 10,
+      "tabs": 10,
+      "skipped": [
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "conveyors",
+      "cardSets": 3,
+      "results": 16,
+      "questions": 21,
+      "panels": 9,
+      "tabs": 9,
+      "skipped": [
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "rootcause",
+      "cardSets": 3,
+      "results": 12,
+      "questions": 22,
+      "panels": 11,
+      "tabs": 11,
+      "skipped": [
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "fans",
+      "cardSets": 1,
+      "results": 15,
+      "questions": 17,
+      "panels": 8,
+      "tabs": 8,
+      "skipped": [
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "compressors",
+      "cardSets": 1,
+      "results": 17,
+      "questions": 21,
+      "panels": 9,
+      "tabs": 9,
+      "skipped": [
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "clutches",
+      "cardSets": 1,
+      "results": 12,
+      "questions": 17,
+      "panels": 8,
+      "tabs": 8,
+      "skipped": [
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "valves",
+      "cardSets": 1,
+      "results": 15,
+      "questions": 19,
+      "panels": 8,
+      "tabs": 8,
+      "skipped": [
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "measurement",
+      "cardSets": 1,
+      "results": 10,
+      "questions": 22,
+      "panels": 9,
+      "tabs": 9,
+      "skipped": [
+        {
+          "name": "scAnswered",
+          "reason": "runtime state"
+        }
+      ]
+    },
+    {
+      "key": "curriculum",
+      "cardSets": 0,
+      "results": 0,
+      "questions": 0,
+      "panels": 3,
+      "tabs": 3,
+      "skipped": []
+    },
+    {
+      "key": "manager",
+      "cardSets": 0,
+      "results": 0,
+      "questions": 0,
+      "panels": 5,
+      "tabs": 5,
+      "skipped": []
+    },
+    {
+      "key": "reference",
+      "cardSets": 1,
+      "results": 0,
+      "questions": 0,
+      "panels": 10,
+      "tabs": 10,
+      "skipped": []
+    }
+  ],
+  "shared": {
+    "hub": [
+      "modules",
+      "nodes",
+      "symptoms"
+    ],
+    "pm": [
+      "TASKS",
+      "COMP",
+      "INTERVALS"
+    ],
+    "search": [
+      "IDX",
+      "RANK"
+    ]
+  }
+}

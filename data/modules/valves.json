@@ -1,0 +1,622 @@
+{
+  "key": "valves",
+  "num": "20",
+  "name": "Process Valves and Actuators",
+  "source": "builtwright_process_valves_v1.html",
+  "tabs": [
+    {
+      "id": "overview",
+      "label": "Overview"
+    },
+    {
+      "id": "types",
+      "label": "Valve Types"
+    },
+    {
+      "id": "actuators",
+      "label": "Actuators and Positioners"
+    },
+    {
+      "id": "packing",
+      "label": "Packing, Seats, and Leaks"
+    },
+    {
+      "id": "install",
+      "label": "Installation and Service"
+    },
+    {
+      "id": "troubleshoot",
+      "label": "Troubleshoot"
+    },
+    {
+      "id": "selfcheck",
+      "label": "Self-Check"
+    },
+    {
+      "id": "safety",
+      "label": "Safety"
+    }
+  ],
+  "cards": {
+    "typeData": {
+      "gate": {
+        "icon": "ti-arrow-bar-up",
+        "name": "Gate valve",
+        "role": "A wedge or parallel gate lifts out of the flow. Full bore, low pressure drop, on-off only.",
+        "body": "The classic isolation valve on water, steam, and process lines. Fully open it is nearly a straight pipe; fully closed the gate seats on both sides. Partly open, the gate flutters and the seat wire-draws, so it is never a throttling valve. Rising stem (outside screw and yoke) shows position; non-rising stems do not. Multi-turn, slow, and large ones need a gear operator. Failures: seat leakage from throttling or debris, stem packing, a gate stuck in the seat by thermal binding (steam), and a stem that breaks when a stuck valve is forced.",
+        "tips": [
+          "On-off only. A gate valve left half open is being destroyed.",
+          "Thermal binding on steam: closed hot, contracts cold, will not open. Crack it a turn after cooling, or leave it cracked when isolating hot.",
+          "Exercise on a schedule; a valve that has not moved in years breaks when it does.",
+          "Backseat when fully open protects the packing on some designs."
+        ]
+      },
+      "ball": {
+        "icon": "ti-circle-dot",
+        "name": "Ball valve",
+        "role": "A bored ball rotates a quarter turn. Tight shutoff, fast, compact.",
+        "body": "Soft seats (PTFE) give bubble-tight shutoff on clean fluids up to the seat temperature limit; metal seated balls handle heat and solids. Floating ball (the ball is pushed onto the downstream seat by pressure) on smaller sizes; trunnion mounted on larger and higher pressure. Full bore or reduced bore. Three-way and multiport versions for diverting. Failures: seat damage from debris or over-pressure, stem seal leaks, a ball scored by solids, and a soft seat cooked by a temperature excursion. Fine for on-off; throttling with a standard ball valve cuts the seat.",
+        "tips": [
+          "Quarter turn: the lever in line with the pipe is open, across the pipe is closed. Confirm with the stem indicator, not the assumption; levers get refitted 90 degrees out.",
+          "Body cavity between the seats traps fluid; on services that expand (liquids that heat, liquefied gases) a cavity relief is required.",
+          "Characterised (V-port) balls exist for throttling; standard balls do not.",
+          "Fire-safe designs have a secondary metal seat behind the soft seat."
+        ]
+      },
+      "plug": {
+        "icon": "ti-cylinder",
+        "name": "Plug valve",
+        "role": "A tapered or cylindrical plug with a port rotates a quarter turn. Slurries, abrasives, corrosives.",
+        "body": "Lubricated plug valves inject sealant between plug and body to seal and to lubricate the turn; the sealant is a maintenance item. Sleeved and lined plug valves use a PTFE sleeve or a lining for a tight seal with no lubricant, common in chemical service. Eccentric plug valves are used for slurries and can throttle. Tight, compact, and the full-port ones pass solids that would jam a gate.",
+        "tips": [
+          "Lubricated plug: the sealant gun and the schedule are the maintenance.",
+          "A plug valve that is hard to turn is a plug seized in its taper; lubricate, do not force.",
+          "Lined valves: the lining is the pressure boundary against corrosion; a scratch is a failure."
+        ]
+      },
+      "butterfly": {
+        "icon": "ti-circle-half-2",
+        "name": "Butterfly valve",
+        "role": "A disc rotates a quarter turn on a shaft across the bore. Cheap, compact, light, and it can throttle.",
+        "body": "Resilient seated (a rubber liner the disc seals against) for water, air, and mild service; high performance (double or triple offset, metal or PTFE seat) for higher pressure, temperature, and tight shutoff. Wafer or lug body between flanges. The disc is always in the flow, so pressure drop is higher than a gate or ball, and the disc and shaft see the flow loads. Throttling is acceptable within a range (roughly 20 to 70 degrees open on most designs) and a characterised disc improves it.",
+        "tips": [
+          "Disc clearance to the pipe bore and to the flange gasket; open slightly before final tightening on wafer valves.",
+          "Liner damage from over-tightened flanges or from the disc edge on a resilient seat that has aged.",
+          "Shaft bearings and packing are the wear items on throttling service.",
+          "Shaft horizontal on slurries."
+        ]
+      },
+      "globe": {
+        "icon": "ti-adjustments",
+        "name": "Globe valve",
+        "role": "A plug or disc lifts off a seat in line with the flow. The throttling valve.",
+        "body": "Flow turns through the seat and past a plug shaped to give a controlled relationship between stem position and flow (linear, equal percentage, quick opening). Higher pressure drop than any other type, which is the point: it is built to take the pressure drop across the trim without damage. Manual globe valves throttle by hand; control valves are globe valves with a positioner and actuator. Failures: trim erosion, cavitation damage, seat leakage from wire drawing at low openings, stem packing from constant stroking, and a plug that sticks from packing friction or process deposits.",
+        "tips": [
+          "Directional: flow under the disc on most designs. The arrow.",
+          "Trim (plug and seat) is the replaceable part; body life is long.",
+          "Cavitation: a hiss or crackle and pitted trim; the valve is taking more pressure drop than its trim can handle without the liquid flashing. Anti-cavitation trim or a different pressure drop split.",
+          "A control valve working below about 10 percent open is oversized and will not control well."
+        ]
+      },
+      "diaphragm": {
+        "icon": "ti-wave-sine",
+        "name": "Diaphragm and pinch valves",
+        "role": "A flexible diaphragm or a pinched tube closes the flow. No packing, no stem in the fluid. Slurries, corrosives, sanitary.",
+        "body": "Diaphragm (weir or straight-through): a flexible diaphragm is pressed onto a weir or the body bottom by a compressor on the stem. The fluid sees only the body lining and the diaphragm; no packing, no crevices, and the body can be lined with rubber or PTFE. Sanitary and chemical service. Pinch valves squeeze a rubber tube closed; slurries and abrasives, and the tube is the only wetted part and the only wear part. Both throttle acceptably.",
+        "tips": [
+          "Diaphragm is the wear item and is replaced on a schedule; a failed diaphragm leaks to the bonnet and may show at the stem.",
+          "Temperature and chemical limits of the diaphragm or tube material govern.",
+          "Pinch valve tube life is the abrasive content and the cycle count; keep a spare tube."
+        ]
+      },
+      "check": {
+        "icon": "ti-arrow-right-circle",
+        "name": "Check (non-return) valves",
+        "role": "Flow one way. Swing, lift, tilting disc, dual plate wafer, and the water hammer they cause.",
+        "body": "Swing checks (a hinged disc) are the common ones; lift checks (a piston or ball on a seat) for smaller lines and vertical service; tilting disc and dual plate (spring loaded) close faster and slam less. A check that closes late, after reverse flow has started, slams: the disc hits the seat with the reversed flow behind it and the line sees a pressure spike. A check that does not seal lets a pump spin backward on shutdown and lets a head of liquid drain back. Failures: a worn hinge pin, a disc that has come off the arm (swing check disc in the downstream pump is a classic), a seat cut by debris, and a spring broken on a dual plate.",
+        "tips": [
+          "Orientation: swing checks horizontal or vertical upflow, never vertical downflow.",
+          "Slam on shutdown: a non-slam design (dual plate, silent check, or a dashpot) on pump discharges.",
+          "A passing check on a pump discharge is a pump that runs backward when it stops, and a coupling that can unscrew.",
+          "Disc and hinge pin inspected on the interval; a disc that has fallen off passes through everything downstream."
+        ]
+      },
+      "relief": {
+        "icon": "ti-gauge",
+        "name": "Pressure relief and safety valves",
+        "role": "Open at a set pressure to protect a vessel or system. Code devices: stamped, sized, tested, sealed, never gagged.",
+        "body": "Safety valves (pop action, for gas and steam), relief valves (proportional opening, for liquids), and safety relief valves (either). Sized for the worst case relieving load, set at or below the vessel maximum allowable working pressure, and stamped to ASME Section VIII or I with a CRN registration in Canada. Tested and reset by an authorised shop on the interval (TSSA), with the seal intact. Rupture discs as an alternative or in series. The Pneumatics, Hydraulics, and Compressors modules each have their own relief valve in the system, and the rules are the same.",
+        "tips": [
+          "Never gagged, never blocked in, never set higher than the vessel, never replaced with a different size without engineering.",
+          "Discharge piped to a safe location with no restriction and supported for reaction force.",
+          "A relief valve that lifts is telling you the system exceeded its setting; find out why.",
+          "Testing on live service by lifting the lever is a specific procedure with risk; shop testing is the norm."
+        ]
+      }
+    }
+  },
+  "trees": {
+    "diagNodes": {
+      "start": {
+        "q": "What is the valve doing?",
+        "hint": "Isolate upstream and downstream, drain, vent, and verify at the valve before it is opened.",
+        "options": [
+          {
+            "label": "Passes when closed (seat leak)",
+            "next": "seat1"
+          },
+          {
+            "label": "Leaks at the stem",
+            "next": "r_packing"
+          },
+          {
+            "label": "Will not open, close, or stroke fully",
+            "next": "stroke1"
+          },
+          {
+            "label": "Control valve hunts, sticks, or jumps",
+            "next": "ctrl1"
+          },
+          {
+            "label": "Noise: hiss, crackle, hammer",
+            "next": "noise1"
+          },
+          {
+            "label": "Check valve slams or passes",
+            "next": "r_check"
+          }
+        ]
+      },
+      "seat1": {
+        "q": "Does the actuator or handwheel take the closure element fully to the seat?",
+        "options": [
+          {
+            "label": "Not sure, or it stops short",
+            "next": "r_stops"
+          },
+          {
+            "label": "Yes, fully closed and still passing",
+            "next": "seat2"
+          }
+        ]
+      },
+      "seat2": {
+        "q": "Valve use and seat type?",
+        "options": [
+          {
+            "label": "An isolation valve that has been used to throttle",
+            "next": "r_wiredraw"
+          },
+          {
+            "label": "Soft seat, hot or abrasive service",
+            "next": "r_softseat"
+          },
+          {
+            "label": "Metal seat, debris or scoring",
+            "next": "r_metalseat"
+          }
+        ]
+      },
+      "r_stops": {
+        "type": "result",
+        "cls": "fix",
+        "label": "not reaching the seat: stops, bench set, or torque switch",
+        "text": "A valve that is not fully closed passes, and the actuator is the reason.",
+        "sub": "Rotary actuator stops set to the valve closed position. Diaphragm actuator bench set and air supply. Electric actuator torque and limit switch settings (the electrician). Handwheel valves: is it actually closed, or against a gate jammed on debris.",
+        "prevent": "Stroke test and stop check after any actuator work; bench set recorded."
+      },
+      "r_wiredraw": {
+        "type": "result",
+        "cls": "action",
+        "label": "wire drawn seat from throttling",
+        "text": "High velocity leakage past a nearly closed gate or ball cut a groove in the seat. It will never seal.",
+        "sub": "Replace the valve (or lap a gate seat if the groove is shallow). Put a globe or characterised butterfly in the throttling position and tag it. Tell the operators why.",
+        "prevent": "Throttling valves identified and tagged; isolation valves on-off only."
+      },
+      "r_softseat": {
+        "type": "result",
+        "cls": "action",
+        "label": "soft seat damaged",
+        "text": "Cut by debris, extruded by pressure, hardened by heat, or swollen by the fluid.",
+        "sub": "Seat kit. Then the cause: a strainer if debris, a temperature or fluid review if the material is wrong for the service (Seals module compatibility), a pressure review if extruded.",
+        "prevent": "Seat material matched to the service on the valve list; strainers upstream where debris is expected."
+      },
+      "r_metalseat": {
+        "type": "result",
+        "cls": "action",
+        "label": "metal seat scored or fouled",
+        "text": "Debris on the seat, or scoring from solids.",
+        "sub": "Cycle the valve to flush debris (with the process safe). If it still passes, lap or machine the seat. Strainer upstream. Body cavity flush on ball valves.",
+        "prevent": "Strainers; exercise schedule; seat inspection on the interval."
+      },
+      "r_packing": {
+        "type": "result",
+        "cls": "fix",
+        "label": "stem packing",
+        "text": "The most common valve leak.",
+        "sub": "Tighten the gland evenly, a flat at a time, until it stops. If the gland is bottomed or the leak returns, repack (isolated and depressurised). Inspect the stem for scoring; a scored stem is polished or replaced. Live-loaded packing on control valves. Old packing treated as asbestos.",
+        "prevent": "Gland load checked on the PM; live loading on valves that stroke constantly."
+      },
+      "stroke1": {
+        "q": "Actuator or valve?",
+        "hint": "Isolate the actuator from the stem if possible, or test the actuator against its signal with the process safe.",
+        "options": [
+          {
+            "label": "Actuator does not move the stem, or is slow",
+            "next": "act1"
+          },
+          {
+            "label": "Actuator is fine; the valve is stiff or seized",
+            "next": "r_seized"
+          }
+        ]
+      },
+      "act1": {
+        "q": "Actuator type?",
+        "options": [
+          {
+            "label": "Pneumatic",
+            "next": "r_pneu_act"
+          },
+          {
+            "label": "Electric",
+            "next": "r_elec_act"
+          },
+          {
+            "label": "Manual handwheel or gear operator",
+            "next": "r_seized"
+          }
+        ]
+      },
+      "r_pneu_act": {
+        "type": "result",
+        "cls": "action",
+        "label": "pneumatic actuator or air supply",
+        "text": "Air pressure, air quality, the positioner, or the actuator itself.",
+        "sub": "Pressure at the actuator under stroke. Filter regulator. Instrument air dewpoint (wet air sticks positioners). Positioner output against signal. Diaphragm or piston seal leaks (listen at the vent). Spring range. Solenoid or lock-up valve in the circuit. Pneumatics module for the air side.",
+        "prevent": "Instrument air quality maintained; positioner calibration on the interval."
+      },
+      "r_elec_act": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "electric actuator: torque and limit settings, or electrical",
+        "text": "Torque switch trips before the valve reaches its seat, a limit switch set short, the hand-auto clutch engaged, or a motor or control fault.",
+        "sub": "Hand-auto lever position. Torque and limit switch settings against the valve (the electrician and the actuator manual). Motor and control wiring: the handoff package from the Motors module. A torque trip on a valve that used to close is a valve getting stiffer; look at the valve.",
+        "prevent": "Actuator settings recorded; valve exercised so it does not stiffen."
+      },
+      "r_seized": {
+        "type": "result",
+        "cls": "action",
+        "label": "stiff or seized valve",
+        "text": "Packing too tight, a stem scored or bent, a gate thermally bound, a ball or plug seized in its seat by deposits or corrosion, or a valve that has not moved in years.",
+        "sub": "Packing gland backed off a little. Thermal binding on a hot line: let it cool and equalise, or warm it. Deposits: the process and the valve material. Do not force a large handwheel with a cheater bar; the stem breaks and the valve stays shut. Plan a removal and overhaul.",
+        "prevent": "Exercise schedule for isolation valves. Correct materials for the service."
+      },
+      "ctrl1": {
+        "q": "Stroke it in manual and watch the stem. What does it do?",
+        "options": [
+          {
+            "label": "Moves in jumps (stick-slip)",
+            "next": "r_stiction"
+          },
+          {
+            "label": "Lags the signal or overshoots",
+            "next": "r_positioner"
+          },
+          {
+            "label": "Cycles constantly (hunts) in auto",
+            "next": "r_hunt"
+          }
+        ]
+      },
+      "r_stiction": {
+        "type": "result",
+        "cls": "fix",
+        "label": "stiction: packing or deposits",
+        "text": "The stem grabs and releases, so the valve overshoots each small correction and the loop cycles.",
+        "sub": "Packing gland over-tightened: back it off to the minimum that seals; live-loaded packing. Stem deposits or scoring. Positioner gain may be masking it. A digital positioner reports stiction directly.",
+        "prevent": "Packing load set by procedure, not by feel; live loading on control valves."
+      },
+      "r_positioner": {
+        "type": "result",
+        "cls": "action",
+        "label": "positioner or air",
+        "text": "The positioner is not driving the stem to the signal promptly.",
+        "sub": "Calibration (zero and span). Air supply pressure and volume (a volume booster on large actuators). Positioner feedback linkage loose or worn. Wet or dirty instrument air. Bench set.",
+        "prevent": "Positioner calibration and linkage on the interval."
+      },
+      "r_hunt": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "hunting: tuning, sizing, or stiction",
+        "text": "A loop that cycles has a valve that cannot make small moves (stiction, oversized valve working near closed) or a controller tuned too aggressively.",
+        "sub": "Stroke test first (stiction). Valve opening at normal load: below about 10 percent is an oversized valve. Then the loop tuning, which is the instrument technician's side. Hand off with the stroke test results.",
+        "prevent": "Valve sized to work in the middle of its range; stiction eliminated before tuning."
+      },
+      "noise1": {
+        "q": "What kind?",
+        "options": [
+          {
+            "label": "Hiss or crackle at a control valve",
+            "next": "r_cavitation"
+          },
+          {
+            "label": "Bang on valve closure or pump stop",
+            "next": "r_hammer"
+          },
+          {
+            "label": "Chatter at a check or relief valve",
+            "next": "r_chatter"
+          }
+        ]
+      },
+      "r_cavitation": {
+        "type": "result",
+        "cls": "action",
+        "label": "cavitation or flashing in the trim",
+        "text": "The pressure drop across the trim takes the liquid below its vapour pressure; bubbles form and collapse on the trim and body.",
+        "sub": "Pitted trim on inspection. The valve is taking more pressure drop than its trim is designed for at that opening. Anti-cavitation trim, a different pressure drop split (two valves, or an orifice downstream), or a valve selected for the service. Pumps module for the same physics.",
+        "prevent": "Control valve sizing reviewed against actual process conditions."
+      },
+      "r_hammer": {
+        "type": "result",
+        "cls": "action",
+        "label": "water hammer",
+        "text": "A fast closure or a slamming check on a liquid line stops the column and the pressure spikes.",
+        "sub": "Slow the closure (actuator speed control, a slower stroke). Non-slam check valves on pump discharges. Surge tanks or dampers on long lines. Look for the damage: cracked fittings, broken supports, a check disc that has come off.",
+        "prevent": "Closure times specified; non-slam checks on pump discharges."
+      },
+      "r_chatter": {
+        "type": "result",
+        "cls": "action",
+        "label": "chatter",
+        "text": "A check valve fluttering in low flow, or a relief valve chattering near its set point.",
+        "sub": "Check valve: oversized for the flow (the disc never opens fully and flutters); a smaller valve or a spring assisted design. Relief valve: set point too close to operating pressure, inlet piping pressure drop too high, or outlet back-pressure; the relief valve shop and engineering.",
+        "prevent": "Check valves sized for the flow; relief valves set with margin and inlet piping per code."
+      },
+      "r_check": {
+        "type": "result",
+        "cls": "action",
+        "label": "check valve slam or pass",
+        "text": "Slam: closes late. Pass: seat or disc damage, or a disc off its arm.",
+        "sub": "Slam: a non-slam design, or a dashpot. Pass: inspect the disc, hinge pin, and seat; a disc that has come off is somewhere downstream. Orientation checked. A passing check on a pump discharge spins the pump backward on stop.",
+        "prevent": "Check valves inspected on the interval; non-slam designs where slam is known."
+      }
+    }
+  },
+  "selfcheck": {
+    "overview": [
+      [
+        "Using a gate valve to throttle?",
+        [
+          "Is fine",
+          "Wire-draws the seat; it will not seal again",
+          "Extends its life",
+          "Is recommended"
+        ],
+        1,
+        "Put a globe or characterised butterfly there."
+      ],
+      [
+        "The most common leak point on any valve?",
+        [
+          "Body",
+          "Stem packing",
+          "Seat",
+          "Flange"
+        ],
+        1,
+        "Tighten the gland evenly, then repack."
+      ]
+    ],
+    "types": [
+      [
+        "Which valve is built to take the pressure drop across its trim?",
+        [
+          "Gate",
+          "Ball",
+          "Globe",
+          "Butterfly"
+        ],
+        2,
+        "The throttling valve."
+      ],
+      [
+        "Swing check valves are installed?",
+        [
+          "Any orientation",
+          "Horizontal, or vertical with upward flow",
+          "Vertical downflow",
+          "Upside down"
+        ],
+        1,
+        "Never vertical downflow."
+      ],
+      [
+        "A ball valve body cavity on a service that expands needs?",
+        [
+          "Nothing",
+          "Cavity relief",
+          "A bigger ball",
+          "A soft seat"
+        ],
+        1,
+        "Trapped fluid between the seats."
+      ],
+      [
+        "Relief valves are?",
+        [
+          "Adjustable by anyone",
+          "Code stamped, tested by an authorised shop, never gagged",
+          "Optional",
+          "Set above vessel pressure"
+        ],
+        1,
+        "Sealed, and under TSSA."
+      ]
+    ],
+    "actuators": [
+      [
+        "Bench set is?",
+        [
+          "Torque",
+          "The air pressure range that strokes the actuator with no process load",
+          "The stroke length",
+          "A switch"
+        ],
+        1,
+        "Verified with a gauge."
+      ],
+      [
+        "A stem that moves in jumps during a stroke test shows?",
+        [
+          "Positioner lag",
+          "Stiction in the packing",
+          "Bench set drift",
+          "Air leak"
+        ],
+        1,
+        "Ten minutes at the valve replaces an hour of theory."
+      ],
+      [
+        "Fail position after actuator work is?",
+        [
+          "Assumed",
+          "Verified by removing the air or signal with the process safe",
+          "Set by the operator",
+          "Not important"
+        ],
+        1,
+        "A valve that fails the wrong way is a process incident."
+      ]
+    ],
+    "packing": [
+      [
+        "Gland nuts are tightened?",
+        [
+          "Fully",
+          "Evenly, a flat at a time, until the leak stops",
+          "Once",
+          "With a cheater"
+        ],
+        1,
+        "Over-tight is stiction."
+      ],
+      [
+        "A scored stem with a packing leak?",
+        [
+          "Repack",
+          "Polish or replace the stem; no packing fixes it",
+          "Tighten more",
+          "Ignore"
+        ],
+        1,
+        "The stem is the sealing surface."
+      ],
+      [
+        "Double block and bleed is?",
+        [
+          "One valve",
+          "Two valves in series with a bleed between",
+          "A relief valve",
+          "A check valve"
+        ],
+        1,
+        "A passing valve is detected and contained."
+      ]
+    ],
+    "install": [
+      [
+        "On wafer butterfly valves before final flange tightening?",
+        [
+          "Close fully",
+          "Open the disc slightly so it is not pinched",
+          "Remove the disc",
+          "Nothing"
+        ],
+        1,
+        "Disc clearance to the bore and gasket."
+      ],
+      [
+        "Isolation valves that are never moved?",
+        [
+          "Last forever",
+          "Seize, and break when forced",
+          "Improve",
+          "Need no PM"
+        ],
+        1,
+        "Exercise on a schedule."
+      ]
+    ],
+    "troubleshoot": [
+      [
+        "Valve passes when closed. First check?",
+        [
+          "The seat",
+          "Whether the actuator or handwheel takes it fully to the seat",
+          "The body",
+          "The gasket"
+        ],
+        1,
+        "Stops, bench set, torque switch."
+      ],
+      [
+        "A control valve working below 10% open is?",
+        [
+          "Correct",
+          "Oversized and will not control well",
+          "Undersized",
+          "Fine"
+        ],
+        1,
+        "Size to work in the middle of the range."
+      ]
+    ],
+    "safety": [
+      [
+        "A valve that has been used to throttle is an isolation for work next to it. True or false?",
+        [
+          "True",
+          "False: it is passing",
+          "True if closed",
+          "True with a tag"
+        ],
+        1,
+        "Double block and bleed on hazardous service."
+      ],
+      [
+        "Approaching a suspected steam packing leak?",
+        [
+          "By hand",
+          "From the side with a broom handle, not a hand",
+          "Head first",
+          "With a rag"
+        ],
+        1,
+        "Invisible near the gland; cuts flesh."
+      ],
+      [
+        "A large spring-return actuator is opened?",
+        [
+          "With a wrench",
+          "Per the manufacturer procedure for spring release, after air is isolated and vented",
+          "Quickly",
+          "With the air on"
+        ],
+        1,
+        "It can injure severely on disassembly."
+      ]
+    ]
+  },
+  "panels": {
+    "overview": "<div class=\"callout-box blue\">\n      <div class=\"callout-box-header\"><i class=\"ti ti-bulb callout-box-icon\"></i><div class=\"callout-box-title\">Isolation valves stop flow. Control valves throttle it. They fail differently and are chosen differently.</div></div>\n      <div class=\"callout-box-body\">An isolation valve (gate, ball, plug, butterfly used on-off) is fully open or fully closed, sees flow only at the ends of its travel, and fails by not sealing. A control valve (globe, or a butterfly or ball characterised for throttling) sits partly open all day, sees the full velocity and pressure drop across its trim, and fails by erosion, cavitation, and sticking. <strong>Using an isolation valve to throttle wears out its seat in months. Using a control valve to isolate leaves it passing.</strong> Most process valve problems in a plant are one of those two mistakes, a packing leak, or an actuator that cannot move the valve.</div>\n    </div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-list-numbers\"></i> The parts every valve has</div>\n      <ul class=\"info-block-tips\">\n        <li>Body: the pressure boundary, with end connections (flanged, threaded, welded, wafer, lug). Rated by pressure class (ASME 150, 300, 600 and up) and temperature.</li>\n        <li>Closure element: the disc, gate, ball, plug, or diaphragm that moves to open and close.</li>\n        <li>Seat: what the closure element seals against. Metal or soft (PTFE, elastomer). Soft seats seal tight and are limited by temperature and abrasion; metal seats survive heat and solids and leak a little.</li>\n        <li>Stem: connects the closure element to the actuator or handwheel. Rising or non-rising, rotary or linear.</li>\n        <li>Packing or seals: seal the stem where it passes out of the body. The most common leak point on any valve.</li>\n        <li>Bonnet: the removable top that gives access to the stem and packing. Bolted, threaded, or pressure sealed.</li>\n        <li>Actuator: handwheel, lever, gear operator, or a powered actuator (pneumatic, electric, hydraulic). Positioner and accessories on control valves.</li>\n      </ul>\n    </div>\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: the valve that gets used to throttle is the one that was closest</strong>An operator who needs to cut flow by half reaches for the nearest gate valve and cranks it halfway. Six months later it will not seal, and it gets replaced with another gate valve. The fix is a globe or a characterised butterfly in that spot and a tag that says throttling valve. Ask what each valve is actually used for before ordering the replacement.</div></div>",
+    "types": "<div class=\"bw-section-label\">Valve types: tap a type</div>\n    <div class=\"family-label\">Isolation</div>\n    <div class=\"card-grid\">\n      <div class=\"type-card\" onclick=\"selectType('gate')\" id=\"tcard-gate\"><div class=\"type-card-icon\"><i class=\"ti ti-arrow-bar-up\"></i></div><div class=\"type-card-name\">Gate</div><div class=\"type-card-sub\">Full bore, on-off only</div></div>\n      <div class=\"type-card\" onclick=\"selectType('ball')\" id=\"tcard-ball\"><div class=\"type-card-icon\"><i class=\"ti ti-circle-dot\"></i></div><div class=\"type-card-name\">Ball</div><div class=\"type-card-sub\">Quarter turn, tight shutoff</div></div>\n      <div class=\"type-card\" onclick=\"selectType('plug')\" id=\"tcard-plug\"><div class=\"type-card-icon\"><i class=\"ti ti-cylinder\"></i></div><div class=\"type-card-name\">Plug</div><div class=\"type-card-sub\">Quarter turn, slurries, lubricated or lined</div></div>\n      <div class=\"type-card\" onclick=\"selectType('butterfly')\" id=\"tcard-butterfly\"><div class=\"type-card-icon\"><i class=\"ti ti-circle-half-2\"></i></div><div class=\"type-card-name\">Butterfly</div><div class=\"type-card-sub\">Compact, cheap, isolation or throttling</div></div>\n    </div>\n    <div class=\"family-label\">Control and special</div>\n    <div class=\"card-grid\">\n      <div class=\"type-card\" onclick=\"selectType('globe')\" id=\"tcard-globe\"><div class=\"type-card-icon\"><i class=\"ti ti-adjustments\"></i></div><div class=\"type-card-name\">Globe</div><div class=\"type-card-sub\">The throttling valve</div></div>\n      <div class=\"type-card\" onclick=\"selectType('diaphragm')\" id=\"tcard-diaphragm\"><div class=\"type-card-icon\"><i class=\"ti ti-wave-sine\"></i></div><div class=\"type-card-name\">Diaphragm and pinch</div><div class=\"type-card-sub\">Slurries, corrosives, sanitary</div></div>\n      <div class=\"type-card\" onclick=\"selectType('check')\" id=\"tcard-check\"><div class=\"type-card-icon\"><i class=\"ti ti-arrow-right-circle\"></i></div><div class=\"type-card-name\">Check (non-return)</div><div class=\"type-card-sub\">Swing, lift, wafer, and water hammer</div></div>\n      <div class=\"type-card\" onclick=\"selectType('relief')\" id=\"tcard-relief\"><div class=\"type-card-icon\"><i class=\"ti ti-gauge\"></i></div><div class=\"type-card-name\">Pressure relief and safety</div><div class=\"type-card-sub\">Code stamped, tested, never gagged</div></div>\n    </div>\n    <div id=\"type-display\" style=\"margin-top:1rem;\"><div class=\"comp-placeholder\">select a type above</div></div>",
+    "actuators": "<div class=\"bw-section-label\">Actuators and positioners</div>\n    <table class=\"ref-table\">\n      <tr><th>Actuator</th><th>How</th><th>Fail position</th><th>What goes wrong</th></tr>\n      <tr><td>Pneumatic diaphragm (spring return)</td><td>Air on a diaphragm against a spring; linear, for globe valves</td><td>Fail open or fail closed by spring direction</td><td>Diaphragm leaks, spring range drifts, bench set wrong, air supply</td></tr>\n      <tr><td>Pneumatic piston (rack and pinion, scotch yoke)</td><td>Air on a piston; rotary, for ball, plug, butterfly</td><td>Spring return: fail to spring position. Double acting: fail last</td><td>Piston seals, spring fatigue, air quality, torque undersized for a stiff valve</td></tr>\n      <tr><td>Electric (motor operated)</td><td>Motor, gearbox, torque and limit switches</td><td>Fail last (stays where it was)</td><td>Limit and torque switch settings, hand-auto clutch, motor and control wiring (electrician)</td></tr>\n      <tr><td>Electro-hydraulic</td><td>Self-contained pump and cylinder</td><td>Configurable</td><td>Hydraulics module rules: oil, seals, pressure</td></tr>\n      <tr><td>Manual gear operator</td><td>Handwheel through a gearbox for large valves</td><td>Stays put</td><td>Gearbox lubrication, stop settings, a seized stem the gearbox cannot move</td></tr>\n    </table>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-target\"></i> Positioners and accessories on control valves</div>\n      <ul class=\"info-block-tips\">\n        <li>Positioner: takes the control signal (4 to 20 mA, or 3 to 15 psi on old loops) and drives the actuator until the stem is where the signal says. It closes the loop on stem position, overcoming packing friction and process forces. Digital positioners also report position, air supply, and valve health.</li>\n        <li>Bench set: the air pressure range over which the actuator spring strokes the valve with no process load. Set on the bench, verified with a gauge. A bench set that has drifted is a valve that does not reach the seat or does not fully open.</li>\n        <li>Air supply: filtered, regulated, dry instrument air at the pressure the actuator needs. A regulator turned down, a filter loaded, or wet air is a slow or sticking valve. Instrument air is dried to a lower dewpoint than plant air for this reason.</li>\n        <li>Solenoid valves, volume boosters, quick exhaust, and lock-up valves in the air circuit each have a function and each can fail. The loop drawing shows what is there.</li>\n        <li>Fail position is a safety decision: on loss of air or signal, does the valve open or close. It is chosen for the process and it is verified after any actuator work.</li>\n        <li>Limit switches and position feedback: a valve that reports closed and is not, or the reverse, is a control problem that looks like a valve problem.</li>\n      </ul>\n    </div>\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: stroke it and watch the gauge</strong>With the loop in manual and the process safe, stroke the valve 0 to 100 percent and back while watching the positioner output gauge and the stem. A stem that moves in jumps is stiction in the packing; a stem that lags the signal is a positioner or air supply problem; a stem that stops short of the seat is bench set or a stop. Ten minutes at the valve replaces an hour of theory.</div></div>",
+    "packing": "<div class=\"bw-section-label\">Packing, seats, and where valves leak</div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-droplet\"></i> Stem packing</div>\n      <ul class=\"info-block-tips\">\n        <li>Materials: PTFE (chevron or braided) for most services to about 230°C; flexible graphite for high temperature and steam; live-loaded packing (Belleville springs on the gland) for control valves that stroke constantly and for fugitive emission service.</li>\n        <li>Adjustment: the gland nuts are tightened evenly, a flat at a time, until the leak stops. Over-tightening on a control valve is stiction and a valve that hunts. On a manual valve it is a stem that cannot be turned.</li>\n        <li>Repacking: with the line isolated and depressurised, or on some valves with the backseat engaged (stem fully open to seal the bonnet), which is a specific procedure and not a habit. All old rings out, the stem inspected for scoring, new rings cut and installed with joints staggered, the gland tightened evenly.</li>\n        <li>Stem scoring is a packing leak that no packing fixes. Polish or replace the stem.</li>\n        <li>Old packing may be asbestos. Seals module Safety tab.</li>\n      </ul>\n    </div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-circle-off\"></i> Seat leakage</div>\n      <ul class=\"info-block-tips\">\n        <li>A valve that passes when closed has a damaged seat, a damaged closure element, debris on the seat, or an actuator that does not fully close it (stops, bench set, torque switch). Check the actuator before the valve.</li>\n        <li>Soft seats: cut by debris, extruded by over-pressure, hardened by heat, swollen by the wrong fluid. Replaced as a kit.</li>\n        <li>Metal seats: wire-drawn (a groove cut by high velocity leakage past a nearly closed valve), scored, or eroded. Lapped or machined; a gate valve seat is lapped in place with the gate.</li>\n        <li>Throttling with an isolation valve wire-draws the seat. That valve will never seal again.</li>\n        <li>Leak classes (ANSI/FCI 70-2) rate control valve seat leakage from Class I (no test) to Class VI (bubble tight). A valve is specified to a class; a Class IV valve is not expected to be bubble tight.</li>\n        <li>Double block and bleed for isolation of hazardous service: two valves in series with a bleed between, so a passing valve is detected and contained.</li>\n      </ul>\n    </div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-arrows-diagonal\"></i> Body, bonnet, and flange leaks</div>\n      <ul class=\"info-block-tips\">\n        <li>Bonnet gasket: replaced with the correct type and torqued in a pattern (Seals module). A bonnet leak on a pressure-seal bonnet is a specialist repair.</li>\n        <li>Flange leaks: gasket, face condition, and bolting; Seals and Reference modules.</li>\n        <li>Body erosion and corrosion: wall thickness on high velocity or corrosive service, ultrasonic thickness testing on the inspection interval.</li>\n      </ul>\n    </div>",
+    "install": "<div class=\"bw-section-label\">Installation and service</div>\n    <div class=\"info-block\">\n      <ul class=\"info-block-tips\">\n        <li>Flow direction: check valves, globe valves, and many control and butterfly valves are directional. The arrow on the body. A globe valve installed backward closes against the flow and the disc slams.</li>\n        <li>Orientation: gate and globe valves with the stem up where possible (debris does not collect in the bonnet, and the packing is not submerged). Swing checks in a horizontal line or a vertical line with upward flow only. Butterfly valves with the shaft horizontal on slurries so solids do not pack the lower bearing.</li>\n        <li>Clearance: a butterfly disc swings past the body face into the pipe. Pipe bore, lining, and flange gaskets must clear the disc. Open the valve slightly before final flange tightening on wafer valves so the disc is not pinched.</li>\n        <li>Flange bolting and gaskets per the Seals module; never spring a pipe to meet a valve.</li>\n        <li>Actuator mounting: bracket rigid, coupling to the stem aligned, stops set so the actuator cannot overtravel the valve. Rotary actuator stops set at the valve\\'s open and closed positions, not the actuator\\'s.</li>\n        <li>Stroke and fail position tested after installation with the loop in manual. Fail position verified by removing the air or signal.</li>\n        <li>Isolation valves exercised on a schedule: a gate valve that has not been moved in five years will not move, and when it does the stem or the gate will break. Partial stroke, then full stroke, under a procedure.</li>\n        <li>Records: valve tag, type, size, class, seat and packing material, actuator, bench set, fail position, and the last service. The valve list is the maintenance program.</li>\n      </ul>\n    </div>",
+    "troubleshoot": "<div class=\"bw-section-label\">Valve and actuator fault diagnosis</div>\n    <div class=\"adv-wrap\" id=\"adv-method\">\n      <button class=\"adv-toggle\" onclick=\"toggleAdv('adv-method')\">\n        <div class=\"adv-toggle-left\"><i class=\"ti ti-map-2 adv-toggle-icon\"></i><span class=\"adv-toggle-label\">Diagnostic methodology: actuator first, then the valve</span></div>\n        <i class=\"ti ti-chevron-down adv-chevron\"></i>\n      </button>\n      <div class=\"adv-body\">\n        <p><strong>Most valve complaints are actuator or air problems.</strong> Air pressure at the actuator, positioner output, stroke against signal, stops, bench set, fail position. If the actuator moves the stem correctly and the valve still misbehaves, then the valve.</p>\n        <p><strong>Then the valve, isolated and depressurised:</strong> stem travel by hand, packing condition and gland load, seat and closure element through the bonnet or by removal, stem scoring, body condition.</p>\n        <p><strong>Then the application:</strong> is an isolation valve throttling; is a control valve sized so it works at 10 percent open; is a soft seat on a service that is too hot; is a swing check on a pulsing line.</p>\n      </div>\n    </div>\n    <div class=\"progress-bar\"><div class=\"progress-fill\" id=\"pv-progress\" style=\"width:8%\"></div></div>\n    <div id=\"pv-tree\"></div>",
+    "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
+    "safety": "<div class=\"bw-section-label\">Valve safety: the process is on the other side</div>\n    <div class=\"callout-box red\">\n      <div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">A valve is a pressure boundary. Opening it up opens the process.</div></div>\n      <div class=\"callout-box-body\">Repacking, reseating, or removing a valve exposes whatever is in the line: pressure, temperature, chemistry. Isolation is upstream and downstream, drained, vented, and verified at the valve, with double block and bleed on hazardous service. <strong>A single valve that has been used to throttle is a valve that is passing, and it is not an isolation for the work on the valve next to it.</strong></div>\n    </div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\">\n      <ul class=\"info-block-tips\">\n        <li>Isolation for valve work: Pumps module Safety tab (process isolation), Seals module Safety tab (opening a joint). Verify zero at the valve, not somewhere else.</li>\n        <li>Backseating to repack a valve under pressure is a specific procedure for specific valves, with the risk that the backseat is worn. It is not a routine method.</li>\n        <li>Actuator stored energy: a spring-return actuator holds a compressed spring; a double-acting one holds air on one side. Isolate and vent the air; follow the manufacturer procedure for spring release before the actuator is opened. A large spring actuator can injure severely on disassembly.</li>\n        <li>Electric actuators: lockout at the actuator supply and the control circuit; the hand-auto clutch position. A motor operated valve that starts while a hand is on the handwheel spins it.</li>\n        <li>Fail position after work: verify by removing the air or signal, with the process safe, before returning the loop to auto. A valve that fails the wrong way is a process incident.</li>\n        <li>Relief valves: never gagged, never blocked in, never set above the vessel rating, tested and sealed by a qualified shop on the interval. Lifting a relief valve by hand to \"check it\" on live service is a specific procedure with a specific risk.</li>\n        <li>Water hammer: closing a valve fast on a long liquid line, or a check valve slamming, produces a pressure spike that breaks things. Close slowly; fit dashpots or non-slam checks where slam is a known issue.</li>\n        <li>Hot valves and steam: the body and the packing are at line temperature. Steam packing leaks are invisible near the gland and cut flesh at the exit; approach a steam leak from the side with a broom handle, not a hand.</li>\n        <li>Old packing and gaskets: asbestos until proven otherwise on pre-1990s valves.</li>\n      </ul>\n    </div>"
+  }
+}

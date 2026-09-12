@@ -1,0 +1,672 @@
+{
+  "key": "vibration",
+  "num": "11",
+  "name": "Vibration Fundamentals",
+  "source": "builtwright_vibration_v1.html",
+  "tabs": [
+    {
+      "id": "overview",
+      "label": "Overview"
+    },
+    {
+      "id": "measure",
+      "label": "Measurement"
+    },
+    {
+      "id": "spectrum",
+      "label": "Reading a Spectrum"
+    },
+    {
+      "id": "bearings",
+      "label": "Bearing Frequencies"
+    },
+    {
+      "id": "trend",
+      "label": "Trending and Alarms"
+    },
+    {
+      "id": "resonance",
+      "label": "Resonance"
+    },
+    {
+      "id": "troubleshoot",
+      "label": "Troubleshoot"
+    },
+    {
+      "id": "selfcheck",
+      "label": "Self-Check"
+    },
+    {
+      "id": "safety",
+      "label": "Safety"
+    }
+  ],
+  "cards": {
+    "patData": {
+      "unbalance": {
+        "icon": "ti-circle-half",
+        "name": "Unbalance",
+        "role": "A heavy spot on the rotor pulling it round once per revolution",
+        "body": "A single dominant peak at 1x, radial (horizontal usually highest), with a clean sine wave in the time waveform and little else in the spectrum. Amplitude rises with the square of speed. Phase is steady and the same at both ends of the rotor (static unbalance) or 180 degrees apart (couple unbalance). Causes: material buildup on a fan or impeller, erosion, a thrown balance weight, a missing blade, a bent shaft (which looks similar), a coupling hub out of balance.",
+        "tips": [
+          "Look at the rotor before balancing it. A fan wheel with product on one side is not a balancing job; it is a cleaning job.",
+          "Amplitude in H much greater than V on a horizontal machine is typical unbalance. H and V similar with high axial is something else.",
+          "A 1x that appeared after a rebuild is usually a coupling hub or a key.",
+          "Field balancing is a two-run process with a trial weight and phase; it is analyst work or a dedicated balancing instrument."
+        ]
+      },
+      "misalign": {
+        "icon": "ti-arrows-diff",
+        "name": "Misalignment",
+        "role": "Shafts not on the same line, fighting through the coupling twice per revolution",
+        "body": "Parallel (offset) misalignment: 2x radial dominant, often with 1x and 3x, highest at the coupling end of both machines. Angular misalignment: 1x axial dominant, with 2x and 3x axial, and phase 180 degrees apart across the coupling. Most real misalignment is both. A high 2x is the classic sign, and high axial at the coupling end confirms it. Also caused by soft foot, pipe strain, thermal growth, and a worn coupling absorbing what is left.",
+        "tips": [
+          "2x greater than 1x at the coupling-end bearings of both machines: misalignment until proven otherwise.",
+          "Axial at 1x on the coupling end: angular.",
+          "Check across the coupling: the same 2x on the motor DE and the pump inboard bearing.",
+          "Couplings and Alignment module: soft foot first, then readings, then recheck after torque."
+        ]
+      },
+      "bent": {
+        "icon": "ti-arrow-wave-right-up",
+        "name": "Bent Shaft",
+        "role": "The shaft itself is not straight, so it wobbles at 1x",
+        "body": "1x dominant, like unbalance, but with a high axial component and axial phase that is 180 degrees apart at the two ends of the shaft (the ends move in opposite directions). A bend near the coupling looks like misalignment; a bend mid-span looks like unbalance. Run-out with a dial indicator confirms it. Causes: thermal bow from a rotor left stationary hot, a hard rub, a shaft damaged in handling.",
+        "tips": [
+          "Dial indicator run-out on the shaft extension and mid-span if accessible.",
+          "Thermal bow on a large motor: run on turning gear or rotate by hand while cooling.",
+          "A bent shaft is straightened or replaced. Balancing it hides the symptom and loads the bearings."
+        ]
+      },
+      "loose": {
+        "icon": "ti-zoom-out-area",
+        "name": "Looseness",
+        "role": "Something that should be tight is not, and it rattles every revolution",
+        "body": "Structural looseness (base, feet, bolts, grout, cracked frame): 1x, 2x, 3x with vertical higher than horizontal at the loose point, and often a distorted time waveform. Rotating looseness (bearing loose in its housing or on the shaft, excessive clearance): a long series of harmonics, sometimes half-order harmonics (0.5x, 1.5x, 2.5x), and a truncated waveform as the loose part hits its limits. The spectrum looks busy and the amplitudes can be erratic reading to reading.",
+        "tips": [
+          "Vertical greater than horizontal at one foot: that foot or its bolt.",
+          "Compare the reading on the machine foot with the reading on the base under it. A big difference across the joint is a loose joint.",
+          "Half-order harmonics are rotating looseness: a bearing with too much clearance, a sleeve turning in a housing, a loose impeller.",
+          "Torque every fastener before anything else. Looseness is the cheapest fault to fix and the most embarrassing to miss."
+        ]
+      },
+      "bearing": {
+        "icon": "ti-circle-dot",
+        "name": "Rolling Element Bearing Defect",
+        "role": "Impacts at a rate set by the bearing geometry, never a whole multiple of running speed",
+        "body": "Non-synchronous peaks at BPFO, BPFI, BSF, or FTF, with harmonics as the defect grows. BPFI carries 1x sidebands; BSF carries FTF sidebands. Early stages appear only in the envelope spectrum or in acceleration above 1 kHz; later stages appear in velocity and eventually turn into a broadband haystack. The Bearing Frequencies tab has the formulas and the four stages.",
+        "tips": [
+          "Non-synchronous: if it is not at a whole number of orders, think bearing first.",
+          "Envelope spectrum finds it long before the velocity spectrum does.",
+          "Identify which bearing by amplitude: highest at the point nearest the defect.",
+          "The bearing failure module reads the failed bearing; the frequency tells you which race, and the race tells you the cause."
+        ]
+      },
+      "gear": {
+        "icon": "ti-settings",
+        "name": "Gear Mesh",
+        "role": "Tooth count times shaft speed, and its sidebands tell the story",
+        "body": "Gear mesh frequency (GMF) is the number of teeth on a gear times that gear's rpm, and it is the same for both gears in a mesh. Some GMF is always present. GMF with sidebands spaced at the speed of one shaft points at that shaft's gear: eccentricity, a damaged tooth, or a bearing letting it move. GMF rising over time is wear or misalignment. GMF harmonics (2 × GMF, 3 × GMF) rising is tooth profile wear or backlash. A hunting tooth frequency (very low, from a common factor in the tooth counts) is a specific damaged tooth pair meeting repeatedly.",
+        "tips": [
+          "Sideband spacing tells you which shaft. Sidebands at input speed: the pinion. At output speed: the gear.",
+          "A single damaged tooth shows as an impact once per revolution of that gear in the time waveform, and as a wide family of sidebands in the spectrum.",
+          "Tooth counts and ratios in the machine database make this readable. Without them, GMF is just a big unexplained peak.",
+          "Gearboxes module: wear patterns and backlash are what the spectrum is describing."
+        ]
+      },
+      "belt": {
+        "icon": "ti-circle-dashed",
+        "name": "Belt Drive",
+        "role": "The belt has its own frequency, below running speed, and it shows when the belt is the problem",
+        "body": "Belt frequency = belt speed divided by belt length, which is always lower than the speed of either sheave. A worn, damaged, or unmatched belt produces peaks at belt frequency and its harmonics (2x, 3x, 4x belt frequency), often with the second harmonic dominant. Sheave misalignment produces 1x of the driver or driven sheave, high in the axial direction. Sheave eccentricity or run-out produces 1x of that sheave, radial, in line with the belts. Belt resonance (the span flapping) shows as a peak that moves with tension.",
+        "tips": [
+          "Belt frequency = (π × sheave pitch diameter × sheave rpm) ÷ belt pitch length. Calculate it from the drive data and put it in the database.",
+          "A strobe on the belt shows a lump or a bad splice as a mark that appears to stand still.",
+          "Axial 1x on a belt drive: sheave alignment. Straightedge.",
+          "Power Transmission module for the belt and sheave inspection."
+        ]
+      },
+      "electrical": {
+        "icon": "ti-bolt",
+        "name": "Electrical",
+        "role": "Magnetic forces at twice line frequency, and rotor problems that beat with slip",
+        "body": "Twice line frequency (120 Hz at 60 Hz supply, 7200 cpm) is the magnetic force frequency on any AC motor. Some is normal. A high 120 Hz with the motor at 2-pole speed is close to 2x and easy to confuse; high resolution separates them. Causes of high 120 Hz: uneven air gap (soft foot, worn bearings, an eccentric rotor, a distorted frame), voltage unbalance, stator problems. Rotor bar problems: 1x with sidebands at pole pass frequency (slip × number of poles), a very close spacing that needs high resolution, and a beat you can hear as a slow wah-wah under load. The instant-off test settles all of it.",
+        "tips": [
+          "Stops the instant the power is cut: electrical. Decays: mechanical.",
+          "Soft foot is the mechanical cause of an electrical signature. Check it first.",
+          "Pole pass sidebands need thousands of lines of resolution and a loaded motor. Analyst work, but the wah-wah beat under load is audible.",
+          "Motors module: the handoff package for anything that survives the mechanical checks."
+        ]
+      },
+      "flow": {
+        "icon": "ti-wind",
+        "name": "Blade Pass, Vane Pass, and Cavitation",
+        "role": "Flow forces at blade count times speed, and turbulence that shows as noise",
+        "body": "Blade pass (fans) or vane pass (pumps) frequency is the number of blades or vanes times rpm. Some is normal. High blade pass: a blade too close to a cutwater or a housing obstruction, an uneven inlet, a damper partly closed, a bent blade, a diffuser gap out of spec. Cavitation and flow turbulence show as broadband energy (a raised, ragged floor, often in the higher frequency range) rather than discrete peaks, and they change with the process (valve position, suction level, temperature).",
+        "tips": [
+          "Count the blades or vanes and put it in the database. A large unexplained peak is often just blade pass on a machine whose blade count nobody wrote down.",
+          "Blade pass with sidebands at 1x: one blade is different (damaged, missing, or the rotor is eccentric in the housing).",
+          "Cavitation broadband that comes and goes with the discharge valve: pumps module, suction side.",
+          "Random broadband with a high 1x on a pump: recirculation, running far off the curve."
+        ]
+      },
+      "oilwhirl": {
+        "icon": "ti-droplet",
+        "name": "Oil Whirl and Oil Whip",
+        "role": "The oil wedge in a sleeve bearing driving the shaft round the clearance below running speed",
+        "body": "On a plain (sleeve or journal) bearing, the oil film can push the shaft around the bearing clearance at a little under half running speed: a sub-synchronous peak at 0.42 to 0.48x. That is oil whirl, and it is unstable and destructive. It happens on lightly loaded, high speed sleeve bearings with too much clearance or oil that is too thin or too cold. If the whirl frequency locks onto the rotor's first critical speed it becomes oil whip: violent, and it will not follow speed changes. Neither appears on rolling element bearings.",
+        "tips": [
+          "0.42 to 0.48x on a sleeve bearing machine: whirl. Stop and investigate; it does not settle down on its own.",
+          "Causes: bearing clearance too large (wear), bearing load too light (misalignment lifting the shaft, a design issue), oil viscosity or temperature wrong.",
+          "Fixes are bearing design (tilting pad, pressure dam, lemon bore), load, or oil. Analyst and bearing manufacturer territory.",
+          "Bearing failure module, sleeve bearing path: oil pressure, temperature, and metal in the oil."
+        ]
+      }
+    }
+  },
+  "trees": {
+    "diagNodes": {
+      "start": {
+        "q": "What do you have?",
+        "hint": "An overall reading from a pen meter, or a spectrum from an analyser.",
+        "options": [
+          {
+            "label": "Overall reading only, and it has risen",
+            "next": "overall1"
+          },
+          {
+            "label": "A spectrum: the dominant peak is at 1x",
+            "next": "r_1x"
+          },
+          {
+            "label": "Dominant at 2x, or 1x with high axial",
+            "next": "r_2x"
+          },
+          {
+            "label": "A series of harmonics: 1x, 2x, 3x, 4x and on",
+            "next": "r_harmonics"
+          },
+          {
+            "label": "Peaks below 1x",
+            "next": "sub1"
+          },
+          {
+            "label": "Peaks that are not whole multiples of 1x",
+            "next": "r_nonsync"
+          },
+          {
+            "label": "A big peak with sidebands either side",
+            "next": "side1"
+          },
+          {
+            "label": "A raised, ragged floor with no clear peaks",
+            "next": "r_broadband"
+          },
+          {
+            "label": "A peak near 120 Hz (7200 cpm)",
+            "next": "r_120"
+          }
+        ]
+      },
+      "overall1": {
+        "q": "How fast did it rise, and where?",
+        "hint": "Compare the trend at each point. The point with the biggest change is nearest the fault.",
+        "options": [
+          {
+            "label": "Slowly, over months, at one bearing",
+            "next": "r_overall_bearing"
+          },
+          {
+            "label": "Suddenly, after maintenance or a process change",
+            "next": "r_overall_sudden"
+          },
+          {
+            "label": "Everywhere on the machine at once",
+            "next": "r_overall_all"
+          },
+          {
+            "label": "Not sure the reading is good",
+            "next": "r_overall_bad"
+          }
+        ]
+      },
+      "r_overall_bearing": {
+        "type": "result",
+        "cls": "action",
+        "label": "developing fault at that bearing: get a spectrum",
+        "text": "A slow rise localised to one bearing is a bearing or a gear on that shaft wearing.",
+        "sub": "Take a spectrum and an envelope reading at that point. Screwdriver and infrared on the housing. If it is a bearing, the envelope will show the defect frequency and the four stages tell you how long you have. Bearing Failure module for the physical inspection.",
+        "prevent": "Envelope readings on every bearing point on the route, so the next one is caught at stage 1 instead of stage 3."
+      },
+      "r_overall_sudden": {
+        "type": "result",
+        "cls": "action",
+        "label": "something changed: find it",
+        "text": "A step change in vibration has a step change behind it.",
+        "sub": "After maintenance: soft foot, alignment, coupling, a loose fastener, a hub or sheave not seated, a belt set unmatched. After a process change: load, speed (VFD), flow (a valve, a damper), product on the rotor. The work order or the process log has the answer; the spectrum confirms which family.",
+        "prevent": "Baseline reading after every rebuild, before the machine goes back to production."
+      },
+      "r_overall_all": {
+        "type": "result",
+        "cls": "action",
+        "label": "whole machine: unbalance, base, or resonance",
+        "text": "A rise at every point at once is a force affecting the whole machine, or the whole machine has become easier to shake.",
+        "sub": "Unbalance (product on the rotor, a lost weight) raises 1x everywhere. A base problem (grout failed, anchor bolts loose, a crack) raises everything and shows highest in vertical. Resonance: a speed change (VFD) or a structural change (a pipe support removed, a platform added) moved a natural frequency onto a forcing frequency. Spectrum and a look at the base.",
+        "prevent": "Base inspection on the PM. Bump test after any structural change."
+      },
+      "r_overall_bad": {
+        "type": "result",
+        "cls": "fix",
+        "label": "check the reading before the machine",
+        "text": "A bad reading is more common than a bad machine.",
+        "sub": "Same point (the paint dot), clean flat metal, the magnet seated without rocking, the machine at normal speed and load and temperature, the same instrument. Take it three times. If it repeats, it is real.",
+        "prevent": "Paint dots at every point. Load and speed noted with every reading."
+      },
+      "r_1x": {
+        "type": "result",
+        "cls": "action",
+        "label": "1x dominant: unbalance, bent shaft, eccentricity, or a resonance amplifying any of them",
+        "text": "One clean peak at running speed, highest in the radial direction, is unbalance until something says otherwise.",
+        "sub": "Look at the rotor: buildup, erosion, a missing blade, a thrown weight. Clean it before balancing it. High axial with it: bent shaft or angular misalignment; check run-out. Same 1x on the coupling ends of both machines: misalignment. 1x that changes a lot with a small speed change: resonance. 1x on a belt drive: sheave run-out or eccentricity. A 1x that does not drop after a good balance: resonance or a structural problem.",
+        "prevent": "Rotor cleaning on the PM for fans and mixers. Balance after any blade or impeller work. Baseline after balancing."
+      },
+      "r_2x": {
+        "type": "result",
+        "cls": "action",
+        "label": "2x radial or 1x axial: misalignment",
+        "text": "A 2x greater than 1x, or a 1x that is highest in the axial direction, at the coupling-end bearings of both machines, is misalignment.",
+        "sub": "Soft foot on both machines first. Then alignment readings, corrected for thermal growth if the machine runs hot. Then the coupling: a worn element has been absorbing this and is due. Pipe strain if the readings change when the piping is connected. Couplings and Alignment module has the procedure and the vibration signatures by misalignment type.",
+        "prevent": "Alignment after any work on either machine, with soft foot corrected, readings recorded, and a baseline vibration reading after."
+      },
+      "r_harmonics": {
+        "type": "result",
+        "cls": "action",
+        "label": "harmonic series: looseness or severe misalignment",
+        "text": "Many peaks at 1x, 2x, 3x, 4x and beyond mean something is hitting its limits every revolution.",
+        "sub": "Structural looseness: vertical higher than horizontal, highest at one foot; torque the fasteners, check the base and grout, look for a cracked foot or frame. Rotating looseness: half-order harmonics (0.5x, 1.5x) and a truncated time waveform; a bearing loose in the housing or on the shaft, a sleeve turning, an impeller loose. Severe misalignment produces harmonics too, with a strong 2x. A bearing in stage 4 produces a harmonic-rich mess with a raised floor.",
+        "prevent": "Fastener torque on the PM. Bearing fits checked on every replacement."
+      },
+      "sub1": {
+        "q": "Where below 1x, and what kind of bearings?",
+        "options": [
+          {
+            "label": "0.42 to 0.48x on a sleeve bearing machine",
+            "next": "r_whirl"
+          },
+          {
+            "label": "Exactly 0.5x, with 1.5x and 2.5x",
+            "next": "r_halforder"
+          },
+          {
+            "label": "Belt frequency and its harmonics on a belt drive",
+            "next": "r_belt"
+          },
+          {
+            "label": "Cage frequency (about 0.4x) on a rolling element bearing",
+            "next": "r_cage"
+          }
+        ]
+      },
+      "r_whirl": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "oil whirl",
+        "text": "Sub-synchronous at just under half speed on a sleeve bearing is oil whirl. It is unstable and it destroys bearings.",
+        "sub": "Reduce speed if possible and investigate: bearing clearance (worn), bearing load (too light, misaligned), oil viscosity and temperature. If the frequency locks and stops following speed, it is oil whip and the machine comes down. Bearing manufacturer and analyst involvement. Bearing Failure module, sleeve path.",
+        "prevent": "Bearing clearance and oil condition on the PM for sleeve bearing machines. Alignment to keep the load where the bearing wants it."
+      },
+      "r_halforder": {
+        "type": "result",
+        "cls": "action",
+        "label": "half-order harmonics: rotating looseness",
+        "text": "Peaks at 0.5x, 1.5x, 2.5x with the integer harmonics mean a rotating part is loose enough to move in two different ways each revolution.",
+        "sub": "A bearing outer race loose in its housing or inner race loose on the shaft, a sleeve turning in a bore, a loose impeller or fan hub, excessive bearing clearance. Also a rub: a rotating part touching a stationary one intermittently. Lock out and check every fit on that shaft.",
+        "prevent": "Housing and shaft fits measured on every bearing change."
+      },
+      "r_belt": {
+        "type": "result",
+        "cls": "action",
+        "label": "belt drive problem",
+        "text": "Belt frequency (below the speed of either sheave) and its harmonics mean the belt itself is the source.",
+        "sub": "Worn, glazed, or damaged belt; an unmatched set; a bad splice; belt flap (span resonance) that changes with tension. Sheave alignment if 1x of a sheave is high in the axial direction. Sheave run-out if 1x of a sheave is high radially. Power Transmission module for the inspection.",
+        "prevent": "Belt frequency calculated and put in the database. Matched sets. Tension by gauge."
+      },
+      "r_cage": {
+        "type": "result",
+        "cls": "action",
+        "label": "cage frequency: bearing cage or advanced wear",
+        "text": "A peak at the fundamental train frequency (roughly 0.4x) on a rolling element bearing is the cage.",
+        "sub": "A damaged or worn cage, a bearing with elements skidding (too little load or too much lubricant), or a bearing far enough gone that the cage is moving irregularly. Envelope spectrum and a physical check. Plan the replacement.",
+        "prevent": "Correct grease quantity. Bearing selected for the load; a lightly loaded large bearing skids."
+      },
+      "r_nonsync": {
+        "type": "result",
+        "cls": "action",
+        "label": "non-synchronous: rolling element bearing",
+        "text": "A peak that is not a whole multiple of running speed, in the 3x to 15x range or higher, is a bearing defect frequency until proven otherwise.",
+        "sub": "Match it to BPFO, BPFI, BSF for the bearing number. With 1x sidebands: inner race. Clean with harmonics: outer race. With FTF sidebands: a ball or roller. Envelope spectrum confirms and shows the stage. Identify which bearing by amplitude at each point. Bearing Frequencies tab for the formulas and stages; Bearing Failure module for the inspection when it comes out. Also possible: another machine's running speed transmitted through the structure, or 120 Hz electrical.",
+        "prevent": "Bearing numbers in the database. Envelope readings on the route. Read the failed bearing to find the cause."
+      },
+      "side1": {
+        "q": "What is the big peak, and what is the sideband spacing?",
+        "options": [
+          {
+            "label": "Gear mesh frequency with sidebands at a shaft speed",
+            "next": "r_gear"
+          },
+          {
+            "label": "A bearing frequency with 1x sidebands",
+            "next": "r_nonsync"
+          },
+          {
+            "label": "120 Hz or 1x with very closely spaced sidebands",
+            "next": "r_polepass"
+          }
+        ]
+      },
+      "r_gear": {
+        "type": "result",
+        "cls": "action",
+        "label": "gear problem on the shaft matching the sideband spacing",
+        "text": "Gear mesh with sidebands at one shaft's speed points at the gear on that shaft.",
+        "sub": "Sidebands at input speed: the pinion. At output speed: the gear. Wide family of sidebands: a damaged tooth (look at the time waveform for an impact once per revolution of that gear). Rising GMF harmonics: tooth wear or backlash. Gearboxes module: inspection cover, wear patterns, backlash measurement, contact pattern.",
+        "prevent": "Tooth counts in the database. GMF band alarm. Oil analysis for iron alongside the vibration trend."
+      },
+      "r_polepass": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "rotor bar problem: electrical handoff",
+        "text": "Pole pass sidebands (slip times poles, a few Hz apart) on 1x or on 120 Hz are broken or cracked rotor bars, or a rotor with high resistance joints.",
+        "sub": "Instant-off test: it vanishes. Listen for the wah-wah beat under load. High resolution spectrum with the motor loaded. This is the electrician and the analyst; the handoff package from the Motors module. Rotor bars break from thermal cycling, usually too many starts.",
+        "prevent": "Starts per hour within the motor rating. Motor current signature analysis on critical motors."
+      },
+      "r_broadband": {
+        "type": "result",
+        "cls": "action",
+        "label": "broadband: cavitation, turbulence, rubbing, or a bearing in stage 4",
+        "text": "A raised, ragged floor without discrete peaks is random energy.",
+        "sub": "On a pump, changing with the process: cavitation or recirculation; pumps module, suction side and operating point. On any machine with a bearing that has been trending up: stage 4, the haystack, and it is days from failure. A rub produces broadband with harmonics and a truncated waveform. Turbulence in a fan from a bad inlet or a partly closed damper.",
+        "prevent": "Depends on which: NPSH margin, bearing route, inlet conditions."
+      },
+      "r_120": {
+        "type": "result",
+        "cls": "action",
+        "label": "120 Hz: electrical, or soft foot pretending to be",
+        "text": "Twice line frequency is the magnetic force frequency on any AC motor. Some is normal. High, or new, means the air gap is uneven or the supply is unbalanced.",
+        "sub": "Instant-off test: vanishes instantly. Soft foot check first, because a distorted frame makes an uneven air gap and that is a mechanical fix. Then worn bearings letting the rotor drop, an eccentric rotor, a bent shaft. If mechanically clear: the handoff package to the electrician for voltage balance and stator condition. On a 2-pole motor, 120 Hz is close to 2x; use enough resolution to separate them.",
+        "prevent": "Soft foot before every alignment. Phase monitoring on critical motors."
+      }
+    }
+  },
+  "selfcheck": {
+    "overview": [
+      [
+        "Which measure is the standard for severity on general machinery?",
+        [
+          "Displacement",
+          "Velocity (mm/s RMS)",
+          "Acceleration",
+          "Phase"
+        ],
+        1,
+        "Roughly flat across the useful range; ISO charts use it."
+      ],
+      [
+        "A medium machine on a rigid base at 3.5 mm/s RMS is in ISO zone?",
+        [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        2,
+        "Zone C: unsatisfactory long term, plan corrective action."
+      ],
+      [
+        "The usual trigger for investigation regardless of absolute level?",
+        [
+          "Any change",
+          "2.5 times baseline or a zone step",
+          "Only zone D",
+          "Noise"
+        ],
+        1,
+        "The change is the information."
+      ]
+    ],
+    "measure": [
+      [
+        "Points per bearing?",
+        [
+          "One",
+          "Three: horizontal, vertical, axial",
+          "Two",
+          "Five"
+        ],
+        1,
+        "Same points, marked, every time."
+      ],
+      [
+        "Minimum sensor mount for bearing frequencies?",
+        [
+          "Handheld probe",
+          "Magnet on clean flat metal",
+          "Any",
+          "Tape"
+        ],
+        1,
+        "A handheld probe cannot see above about 1 kHz."
+      ],
+      [
+        "Where should a sensor never be placed?",
+        [
+          "Bearing housing",
+          "Fan shroud, guard, or thin cover",
+          "End bell",
+          "Solid frame"
+        ],
+        1,
+        "They resonate and lie."
+      ]
+    ],
+    "spectrum": [
+      [
+        "A peak at 3.58x running speed is most likely?",
+        [
+          "Misalignment",
+          "A rolling element bearing defect",
+          "Unbalance",
+          "Looseness"
+        ],
+        1,
+        "Non-synchronous means bearing."
+      ],
+      [
+        "Small evenly spaced peaks either side of a large one are?",
+        [
+          "Noise",
+          "Sidebands: modulation at the sideband spacing",
+          "Harmonics",
+          "Resonance"
+        ],
+        1,
+        "Spacing tells you the source."
+      ],
+      [
+        "Dominant 2x radial at the coupling end of both machines?",
+        [
+          "Unbalance",
+          "Misalignment",
+          "Bearing",
+          "Electrical"
+        ],
+        1,
+        "Offset shafts fight through the coupling twice per revolution."
+      ],
+      [
+        "0.45x on a sleeve bearing machine?",
+        [
+          "Belt",
+          "Oil whirl",
+          "Looseness",
+          "Gear"
+        ],
+        1,
+        "Unstable and destructive."
+      ]
+    ],
+    "bearings": [
+      [
+        "BPFO plus BPFI equals?",
+        [
+          "Running speed",
+          "Ball count times running speed",
+          "FTF",
+          "Nothing"
+        ],
+        1,
+        "Useful check that two peaks are the same bearing."
+      ],
+      [
+        "BPFI comes with sidebands at?",
+        [
+          "FTF",
+          "1x",
+          "2x line frequency",
+          "GMF"
+        ],
+        1,
+        "The inner race defect moves through the load zone once per revolution."
+      ],
+      [
+        "At which stage does the overall velocity usually start to move?",
+        [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        2,
+        "Envelope finds stages 1 and 2."
+      ]
+    ],
+    "trend": [
+      [
+        "The baseline is taken?",
+        [
+          "At commissioning or after a rebuild, when known good",
+          "Any time",
+          "At failure",
+          "Never"
+        ],
+        0,
+        "Everything after is compared to it."
+      ],
+      [
+        "A reading that doubled in a month versus one that doubled in five years?",
+        [
+          "Equal",
+          "The month is urgent; the five years is wear",
+          "The five years is urgent",
+          "Neither matters"
+        ],
+        1,
+        "Rate of change matters more than level."
+      ]
+    ],
+    "resonance": [
+      [
+        "A bump test is done?",
+        [
+          "Running",
+          "Stopped and locked out",
+          "At half speed",
+          "On the coupling"
+        ],
+        1,
+        "Strike the structure and read the natural frequency."
+      ],
+      [
+        "Stiffening a structure moves its natural frequency?",
+        [
+          "Down",
+          "Up",
+          "Nowhere",
+          "Sideways"
+        ],
+        1,
+        "Mass moves it down; damping reduces amplification."
+      ],
+      [
+        "Vibration that changes a lot with a small VFD speed change suggests?",
+        [
+          "Unbalance",
+          "Resonance",
+          "Bearing",
+          "Electrical"
+        ],
+        1,
+        "Skip the speed band on the drive."
+      ]
+    ],
+    "troubleshoot": [
+      [
+        "A harmonic series with vertical higher than horizontal at one foot?",
+        [
+          "Unbalance",
+          "Structural looseness at that foot",
+          "Bearing",
+          "Misalignment"
+        ],
+        1,
+        "Torque the fasteners first."
+      ],
+      [
+        "Gear mesh with sidebands at input speed points at?",
+        [
+          "The gear",
+          "The pinion",
+          "The bearing",
+          "The coupling"
+        ],
+        1,
+        "Sideband spacing names the shaft."
+      ]
+    ],
+    "safety": [
+      [
+        "A reading point is inside a guard. You?",
+        [
+          "Reach through",
+          "Fit a stud or access port during a lockout",
+          "Skip it",
+          "Remove the guard"
+        ],
+        1,
+        "Never reach through a guard on a running machine."
+      ],
+      [
+        "The sensor cable near a running shaft?",
+        [
+          "Can drape over it",
+          "Stays short and in hand",
+          "Is fine on the floor",
+          "Does not matter"
+        ],
+        1,
+        "A cable on a shaft takes the analyser and your hand."
+      ]
+    ]
+  },
+  "panels": {
+    "overview": "<div class=\"callout-box blue\">\n      <div class=\"callout-box-header\"><i class=\"ti ti-bulb callout-box-icon\"></i><div class=\"callout-box-title\">What this module is for</div></div>\n      <div class=\"callout-box-body\">Three modules in this series (bearings, alignment, gearboxes) say things like \"parallel misalignment shows as 2x\" and \"bearing defects are non-synchronous\" without explaining what that means or how you would see it. This module fills that gap. It is not a vibration analyst course. It is what a millwright needs to take a good reading, read a basic spectrum, know what the analyst is talking about, and recognise when a machine is telling you something. <strong>A Category I or II vibration analyst certification is the next step for anyone who wants to own this. This module is the on-ramp.</strong></div>\n    </div>\n\n    <div class=\"bw-section-label\">What vibration is, and the three ways to measure it</div>\n    <div class=\"comp-detail\">\n      <div class=\"comp-detail-body\">A rotating machine vibrates because something in it produces a force that repeats every revolution, or every few revolutions, or every time a ball passes a defect. The vibration you measure at the bearing housing is the sum of all those forces, each at its own frequency. Separating them by frequency is the whole trick. The amplitude at each frequency tells you how big each force is. Change over time tells you which one is growing.</div>\n      <table class=\"ref-table\">\n        <tr><th>Measure</th><th>Units</th><th>Best for</th><th>Why</th></tr>\n        <tr><td>Displacement</td><td>micrometres, mils (peak to peak)</td><td>Low speed machines under 600 rpm, shaft movement on sleeve bearings, proximity probes</td><td>How far it moves. Large at low frequency, tiny at high frequency.</td></tr>\n        <tr><td>Velocity</td><td>mm/s, in/s (RMS or peak)</td><td>General machinery 600 to 60,000 cpm. The standard for severity.</td><td>How fast it moves. Roughly flat across the useful range, so one number means the same thing at any speed. ISO severity charts use velocity.</td></tr>\n        <tr><td>Acceleration</td><td>g, m/s²</td><td>High frequency: bearings, gear mesh, above about 1 kHz</td><td>How hard it is being shaken. Emphasises high frequency, where bearing and gear faults live.</td></tr>\n      </table>\n      <ul class=\"comp-detail-tips\">\n        <li>Velocity in mm/s RMS is the number to trend and compare. When someone says a machine is running at 4 mm/s, that is what they mean.</li>\n        <li>Frequency is in Hz (cycles per second), cpm (cycles per minute, which is Hz × 60), or orders (multiples of running speed). Orders are the most useful for diagnosis because 1x, 2x, and 3x mean the same thing on any machine regardless of its speed.</li>\n        <li>An overall reading is one number for the whole vibration at that point. A spectrum splits it by frequency. The overall tells you something changed. The spectrum tells you what.</li>\n        <li>Phase is the timing of the vibration relative to a reference mark on the shaft. It separates faults that look alike in the spectrum (unbalance versus a bent shaft, for example). It needs a tachometer reference and is an analyst tool.</li>\n      </ul>\n    </div>\n\n    <div class=\"bw-section-label\">Severity: what the numbers mean</div>\n    <div class=\"info-block\">\n      <div class=\"info-block-body\">ISO 20816 (formerly ISO 10816) gives velocity zones by machine size and foundation type. These are guidance for overall velocity in mm/s RMS at the bearing housing, and the machine's own baseline matters more than the chart. A machine that has run at 5 mm/s for ten years is different from one that went from 1 to 5 last month.</div>\n      <table class=\"ref-table\">\n        <tr><th>Zone</th><th>Meaning</th><th>Medium machines 15 to 300 kW, rigid base</th><th>Medium, flexible base</th><th>Large machines over 300 kW, rigid base</th></tr>\n        <tr><td>A</td><td>New machine condition</td><td>up to 1.4</td><td>up to 2.3</td><td>up to 2.3</td></tr>\n        <tr><td>B</td><td>Acceptable for unrestricted long term operation</td><td>1.4 to 2.8</td><td>2.3 to 4.5</td><td>2.3 to 4.5</td></tr>\n        <tr><td>C</td><td>Unsatisfactory for long term; plan corrective action</td><td>2.8 to 4.5</td><td>4.5 to 7.1</td><td>4.5 to 7.1</td></tr>\n        <tr><td>D</td><td>Severe enough to cause damage</td><td>over 4.5</td><td>over 7.1</td><td>over 7.1</td></tr>\n      </table>\n      <ul class=\"info-block-tips\">\n        <li>Rigid base: the machine's lowest natural frequency is above its running speed (bolted to a heavy concrete foundation). Flexible base: below (on a steel frame, on isolators). Most floor-mounted pumps and fans on concrete are rigid; most rooftop units and structural-steel-mounted machines are flexible.</li>\n        <li>Small machines under 15 kW have their own group with slightly lower limits. Reciprocating machines and machines with integral gearboxes have separate standards.</li>\n        <li>A change of 2.5 times the baseline, or a move from one zone to the next, is the usual trigger for investigation regardless of the absolute number.</li>\n      </ul>\n    </div>\n\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: the pen meter is enough to start</strong>A handheld vibration pen that gives overall velocity, used at the same three points on the same machines every month and written in the same logbook, catches the majority of developing failures. The spectrum analyser tells you what the fault is. The pen tells you there is one. Start with the pen, and get the analyser when the logbook is full.</div></div>",
+    "measure": "<div class=\"bw-section-label\">Taking a reading that means something</div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-target\"></i> Where</div>\n      <div class=\"info-block-body\">At each bearing, as close to the bearing as you can get, on solid metal, in three directions: horizontal (H), vertical (V), and axial (A). A pump and motor set has four bearings, so twelve points. The same twelve points every time, forever. Mark them with paint or a stamped dot.</div>\n      <ul class=\"info-block-tips\">\n        <li>Horizontal is usually the highest on a horizontal machine because the mounting is least stiff sideways. Unbalance shows most in H.</li>\n        <li>Vertical reflects the foundation and base. Looseness and soft foot show in V.</li>\n        <li>Axial is along the shaft. Misalignment, bent shafts, and thrust problems show in A. A high axial reading is always interesting.</li>\n        <li>Never measure on a fan shroud, a guard, a thin cover, or a bracket. They resonate and lie. Bearing housing, end bell, or a solid part of the frame directly over the bearing.</li>\n        <li>Motor NDE behind the fan shroud is the awkward one. Many shrouds have a slot for it; some plants weld a stud.</li>\n      </ul>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-magnet\"></i> How the sensor is attached</div>\n      <table class=\"ref-table\">\n        <tr><th>Mount</th><th>Usable to about</th><th>Notes</th></tr>\n        <tr><td>Stud (threaded into the housing)</td><td>10 kHz and above</td><td>The best. Permanent points on critical machines.</td></tr>\n        <tr><td>Adhesive pad or epoxy</td><td>5 to 8 kHz</td><td>Good for permanent points where drilling is not allowed.</td></tr>\n        <tr><td>Magnet, flat, on a clean flat surface</td><td>2 to 3 kHz</td><td>The standard route tool. Clean the surface. A magnet on paint, rust, or a curved surface rocks and reads garbage above 1 kHz.</td></tr>\n        <tr><td>Handheld probe (stinger)</td><td>500 to 1000 Hz</td><td>Overall velocity only. No good for bearing frequencies. Press firmly, perpendicular, and hold still.</td></tr>\n      </table>\n      <ul class=\"info-block-tips\">\n        <li>Bearing defect frequencies and their harmonics run from a few hundred Hz to several kHz. A magnet mount is the minimum for bearing diagnosis. A handheld probe cannot see them.</li>\n        <li>Same sensor, same mount, same point, same load, same speed. Any of those changing changes the reading and the trend is broken.</li>\n        <li>Machine at normal operating temperature and normal load. A cold, unloaded machine reads differently from the same machine in production.</li>\n        <li>Write down the speed, the load, and anything unusual with every reading. A spectrum without the running speed cannot be read in orders.</li>\n      </ul>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-settings\"></i> Analyser setup basics</div>\n      <ul class=\"info-block-tips\">\n        <li>Fmax (maximum frequency) set to cover what you want to see: for general faults, 10 to 20 times running speed; for bearings and gear mesh, 3 to 5 times the highest bearing or mesh frequency, often 5 to 10 kHz.</li>\n        <li>Resolution (lines): more lines separate close frequencies (sidebands, pole pass, close harmonics). 1600 to 3200 lines is typical for a route; more for diagnosis.</li>\n        <li>Averages: 4 to 8 averages smooth random noise. Overlap saves time.</li>\n        <li>Windowing: Hanning for routine spectra. Leave it there unless the analyst says otherwise.</li>\n        <li>Take a time waveform too. Impacts (a bearing defect, a broken tooth, looseness) are obvious in the waveform and can be lost in the spectrum.</li>\n      </ul>\n    </div>\n\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: the paint dot</strong>A spot of paint, a stamped centre punch mark, or a dab of nail polish at every measurement point. It costs nothing and it is the difference between a trend and a pile of numbers. Two people taking readings a centimetre apart on the same housing get different values. The dot fixes that.</div></div>",
+    "spectrum": "<div class=\"bw-section-label\">Reading a spectrum: frequency is the fingerprint</div>\n    <div class=\"comp-detail\">\n      <div class=\"comp-detail-body\">A spectrum is amplitude (vertical) against frequency (horizontal). Each peak is a force at that frequency. The first thing to do with any spectrum is find running speed (1x) and label the horizontal axis in orders. Then every peak falls into one of a few families, and each family has a short list of causes.</div>\n      <table class=\"ref-table\">\n        <tr><th>Family</th><th>Where the peaks are</th><th>What it usually is</th></tr>\n        <tr><td>Synchronous</td><td>Exact multiples of running speed: 1x, 2x, 3x</td><td>Unbalance, misalignment, bent shaft, looseness, eccentricity, blade pass, vane pass</td></tr>\n        <tr><td>Sub-synchronous</td><td>Below 1x: 0.5x, 0.42 to 0.48x, belt frequency</td><td>Oil whirl, looseness (half orders), belt problems, rubs, cage frequency (FTF)</td></tr>\n        <tr><td>Non-synchronous</td><td>Not a whole-number multiple of 1x, often 3x to 15x range and higher</td><td>Rolling element bearing defects (BPFO, BPFI, BSF), another machine's speed, electrical 2x line frequency</td></tr>\n        <tr><td>Harmonic series</td><td>Many peaks at 1x, 2x, 3x, 4x, and on</td><td>Looseness, impacts, severe misalignment, a truncated (clipped) waveform</td></tr>\n        <tr><td>Sidebands</td><td>Small peaks spaced evenly either side of a large one</td><td>Modulation: the large peak's source is being varied at the sideband spacing. Gear mesh with 1x sidebands is an eccentric or damaged gear. Bearing frequency with 1x sidebands is an inner race defect. 2x line frequency with pole pass sidebands is a rotor bar problem.</td></tr>\n        <tr><td>Broadband</td><td>A raised floor, a hump, no clear peaks</td><td>Cavitation, turbulence, late stage bearing failure, rubbing, random impacts</td></tr>\n      </table>\n    </div>\n\n    <div class=\"bw-section-label\">The classic patterns: tap to learn</div>\n    <div class=\"card-grid\">\n      <div class=\"type-card\" onclick=\"selectPat('unbalance')\" id=\"patcard-unbalance\"><div class=\"type-card-icon\"><i class=\"ti ti-circle-half\"></i></div><div class=\"type-card-name\">Unbalance</div><div class=\"type-card-sub\">1x radial, dominant, clean</div></div>\n      <div class=\"type-card\" onclick=\"selectPat('misalign')\" id=\"patcard-misalign\"><div class=\"type-card-icon\"><i class=\"ti ti-arrows-diff\"></i></div><div class=\"type-card-name\">Misalignment</div><div class=\"type-card-sub\">2x radial, 1x axial, across the coupling</div></div>\n      <div class=\"type-card\" onclick=\"selectPat('bent')\" id=\"patcard-bent\"><div class=\"type-card-icon\"><i class=\"ti ti-arrow-wave-right-up\"></i></div><div class=\"type-card-name\">Bent Shaft</div><div class=\"type-card-sub\">1x axial, opposite phase end to end</div></div>\n      <div class=\"type-card\" onclick=\"selectPat('loose')\" id=\"patcard-loose\"><div class=\"type-card-icon\"><i class=\"ti ti-zoom-out-area\"></i></div><div class=\"type-card-name\">Looseness</div><div class=\"type-card-sub\">Harmonics, half orders, vertical</div></div>\n      <div class=\"type-card\" onclick=\"selectPat('bearing')\" id=\"patcard-bearing\"><div class=\"type-card-icon\"><i class=\"ti ti-circle-dot\"></i></div><div class=\"type-card-name\">Rolling Element Bearing</div><div class=\"type-card-sub\">Non-synchronous, harmonics, sidebands</div></div>\n      <div class=\"type-card\" onclick=\"selectPat('gear')\" id=\"patcard-gear\"><div class=\"type-card-icon\"><i class=\"ti ti-settings\"></i></div><div class=\"type-card-name\">Gear Mesh</div><div class=\"type-card-sub\">Teeth × rpm, with sidebands</div></div>\n      <div class=\"type-card\" onclick=\"selectPat('belt')\" id=\"patcard-belt\"><div class=\"type-card-icon\"><i class=\"ti ti-circle-dashed\"></i></div><div class=\"type-card-name\">Belt Drive</div><div class=\"type-card-sub\">Belt frequency, sub-synchronous, harmonics</div></div>\n      <div class=\"type-card\" onclick=\"selectPat('electrical')\" id=\"patcard-electrical\"><div class=\"type-card-icon\"><i class=\"ti ti-bolt\"></i></div><div class=\"type-card-name\">Electrical</div><div class=\"type-card-sub\">120 Hz, pole pass sidebands, vanishes at power off</div></div>\n      <div class=\"type-card\" onclick=\"selectPat('flow')\" id=\"patcard-flow\"><div class=\"type-card-icon\"><i class=\"ti ti-wind\"></i></div><div class=\"type-card-name\">Blade Pass, Vane Pass, Cavitation</div><div class=\"type-card-sub\">Blades × rpm, and broadband</div></div>\n      <div class=\"type-card\" onclick=\"selectPat('oilwhirl')\" id=\"patcard-oilwhirl\"><div class=\"type-card-icon\"><i class=\"ti ti-droplet\"></i></div><div class=\"type-card-name\">Oil Whirl and Whip</div><div class=\"type-card-sub\">0.42 to 0.48x on sleeve bearings</div></div>\n    </div>\n    <div id=\"pat-display\" style=\"margin-top:1rem;\"><div class=\"comp-placeholder\">select a pattern above</div></div>\n\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: find 1x first</strong>Nothing in a spectrum makes sense until you know where running speed is. On a motor it is near 1800 or 3600 cpm (30 or 60 Hz) minus the slip. On a belt-driven fan it is the fan speed, which is the motor speed times the sheave ratio. On a gearbox output it is the input speed divided by the ratio. Mark 1x, then 2x, then 3x. Everything else is read relative to those.</div></div>",
+    "bearings": "<div class=\"bw-section-label\">Rolling element bearing frequencies and the four stages of failure</div>\n    <div class=\"info-block\">\n      <div class=\"info-block-body\">A rolling element bearing with a defect on a race produces an impact every time a ball or roller hits the defect. The rate of those impacts depends on the bearing geometry and the shaft speed, and it is never a whole multiple of running speed. That is what non-synchronous means, and it is why a peak at, say, 3.58x is a bearing and not a machine fault. Each bearing has four characteristic frequencies. Bearing manufacturers publish them, and analyser software has them in a database by bearing number.</div>\n      <div style=\"background:#111110; border:0.5px solid #3a3a36; border-radius:6px; padding:0.75rem 1rem; margin:0.6rem 0; font-family:'Share Tech Mono',monospace; font-size:12px; color:#EF9F27; line-height:1.9;\">\n        n = number of rolling elements, d = ball diameter, D = pitch diameter, φ = contact angle, f = shaft speed<br><br>\n        BPFO (outer race) = (n/2) × f × (1 - (d/D) cos φ)<br>\n        BPFI (inner race) = (n/2) × f × (1 + (d/D) cos φ)<br>\n        BSF (ball spin)   = (D/2d) × f × (1 - ((d/D) cos φ)²)<br>\n        FTF (cage)        = (f/2) × (1 - (d/D) cos φ)<br><br>\n        Rule of thumb without the geometry:<br>\n        BPFO ≈ 0.4 × n × f &nbsp;&nbsp; BPFI ≈ 0.6 × n × f &nbsp;&nbsp; FTF ≈ 0.4 × f<br>\n        Example: 8-ball bearing on a 1780 rpm shaft (29.7 Hz): BPFO ≈ 95 Hz (3.2x), BPFI ≈ 142 Hz (4.8x)\n      </div>\n      <ul class=\"info-block-tips\">\n        <li>BPFO and BPFI always add up to n × f. If you see two non-synchronous peaks and they sum to the ball count times running speed, they are the same bearing.</li>\n        <li>Inner race defects rotate with the shaft, so the impact moves in and out of the load zone once per revolution: BPFI comes with 1x sidebands. Outer race defects are stationary in the load zone: BPFO is usually clean, with harmonics.</li>\n        <li>Ball defects produce BSF, often at 2 × BSF because the defect hits both races, with FTF sidebands.</li>\n        <li>Cage frequency (FTF) alone, sub-synchronous, is a cage problem or a badly worn bearing.</li>\n        <li>The bearing number is on the nameplate or the drawing. With the number, the software gives exact frequencies. Without it, the rules of thumb get you close enough to know it is a bearing.</li>\n      </ul>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-stairs\"></i> The four stages</div>\n      <table class=\"ref-table\">\n        <tr><th>Stage</th><th>What is happening</th><th>What you see and hear</th><th>Remaining life, roughly</th></tr>\n        <tr><td>1</td><td>Microscopic subsurface cracks</td><td>Ultrasonic only (20 to 60 kHz). Enveloping, spike energy, HFD, or an ultrasonic gun pick it up. Nothing in the normal spectrum. Nothing audible.</td><td>10 to 20% of life left</td></tr>\n        <tr><td>2</td><td>Small pits forming, ringing the bearing components at their natural frequencies</td><td>A hump in the 500 Hz to 2 kHz range in acceleration. Enveloping shows the defect frequency clearly. Still quiet.</td><td>5 to 10%</td></tr>\n        <tr><td>3</td><td>Defects large enough to produce clear impacts</td><td>Discrete BPFO or BPFI peaks in the velocity spectrum, with harmonics, then sidebands. Audible with a screwdriver. Slight temperature rise.</td><td>1 to 5%</td></tr>\n        <tr><td>4</td><td>Defects spreading, geometry breaking down, clearances opening</td><td>Discrete peaks blur into a broadband hump (the haystack). 1x rises as looseness sets in. Hot. Noisy without help. Metal in the grease.</td><td>Hours to days</td></tr>\n      </table>\n      <ul class=\"info-block-tips\">\n        <li>Stage 3 is when most plants catch it and it is fine: weeks of notice, plan the change. Stage 4 is the emergency.</li>\n        <li>Enveloping (demodulation) filters out the low frequency machine vibration and looks only at the repetitive impacts. It finds stage 1 and 2 faults that the velocity spectrum cannot see. Every modern analyser has it; use it on every bearing point.</li>\n        <li>A bearing that goes straight from clean to stage 4 in a week was probably damaged on installation, or is being destroyed by something (fluting, contamination, a load it was not designed for).</li>\n      </ul>\n    </div>\n\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: envelope every bearing point, even when the overall is fine</strong>The overall velocity does not move until stage 3. The envelope spectrum moves at stage 1. On a route, collecting an envelope reading at every bearing takes an extra ten seconds per point and adds months to the warning. Set the analyser to take both automatically.</div></div>",
+    "trend": "<div class=\"bw-section-label\">Trending: the change is the information</div>\n    <div class=\"info-block\">\n      <div class=\"info-block-body\">A single reading tells you how a machine is running today against a chart made for machines in general. A trend tells you how this machine is running against how it ran last month and last year, and that is far more sensitive. A pump that has always run at 3.5 mm/s is fine at 3.5. The same pump at 3.5 after ten years at 1.5 is in trouble. The baseline is the first reading after commissioning or after a rebuild, taken when the machine is known good, and everything after is compared to it.</div>\n      <ul class=\"info-block-tips\">\n        <li>Baseline: three readings in the first few weeks after a rebuild, averaged. Not the first hour after start, when the bearings are still seating.</li>\n        <li>Alarm levels: an alert at roughly 2 times baseline (or the next ISO zone), a danger at 2.5 to 3 times baseline (or two zones up). Set them per machine, not plant-wide.</li>\n        <li>Band alarms: separate alarms on the 1x band, the 2x band, the bearing band, and the high frequency band. A rise in one band tells you what is changing before the overall moves.</li>\n        <li>Rate of change matters more than level. A reading that doubled in a month is urgent. A reading that doubled in five years is wear.</li>\n        <li>Collection interval: monthly for general machines, weekly for critical or known-problem machines, continuous (online) for the ones that stop the plant.</li>\n        <li>Keep the readings with the machine record, with the work orders. A trend that jumps and the work order that explains it (a bearing change, a realignment) is the history that makes the next call easy.</li>\n      </ul>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-list-check\"></i> A route in practice</div>\n      <ul class=\"info-block-tips\">\n        <li>List every machine with its bearings, points, speeds, bearing numbers, and gear tooth counts. This is the setup work that makes every later reading useful.</li>\n        <li>Same order, same points, same conditions, same person if possible.</li>\n        <li>Note anything unusual on the machine as you go: a new noise, a leak, a hot spot, a recent work order.</li>\n        <li>Review the trends after the route, not the raw readings. A reading is a number. A trend is a conversation with the machine.</li>\n        <li>Anything that has crossed an alarm gets a diagnostic reading: higher resolution, more averages, envelope, time waveform, and a look at the machine.</li>\n      </ul>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-arrows-exchange\"></i> When to hand off to an analyst</div>\n      <div class=\"info-block-body\">A Category II or III analyst reads the fine structure: phase, sideband families, resonance, rotor dynamics, electrical signatures. The millwright with a route and a trend brings them a machine that has changed, the readings that show it, and a first read on the family (synchronous, bearing, gear, electrical). That handoff is the same as the motor handoff: it turns a hunt into a confirmation.</div>\n      <ul class=\"info-block-tips\">\n        <li>Hand off: readings that have crossed alarm with no obvious mechanical cause after the basic checks (soft foot, alignment, tension, looseness, bearing condition by hand).</li>\n        <li>Hand off: anything with sidebands you cannot explain, anything electrical, anything on a sleeve bearing machine, anything that looks like resonance.</li>\n        <li>Do not hand off: a 1x rise on a fan with a visibly dirty wheel. Clean it, re-read it.</li>\n      </ul>\n    </div>\n\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: the logbook beats the software until the software has the logbook in it</strong>Plants buy analysers and never build the machine database, so every reading is an orphan. Before the analyser, build the list: machine, bearings, points, speeds, tooth counts, sheave ratios. It is a week of work and it is the whole program.</div></div>",
+    "resonance": "<div class=\"bw-section-label\">Resonance: when the structure amplifies the fault</div>\n    <div class=\"info-block\">\n      <div class=\"info-block-body\">Every structure has natural frequencies at which it likes to vibrate: a bell rings at its natural frequency when struck. If a machine produces a force at or near a natural frequency of its base, its frame, a pipe, or its own rotor, that force is amplified, sometimes by ten times or more. A small unbalance becomes a machine that shakes the building. The fault is small; the structure is the problem. Resonance is the reason two identical pumps on two identical bases can behave completely differently.</div>\n      <ul class=\"info-block-tips\">\n        <li>Signs: high vibration at one frequency that does not respond to the fix you expect (a balanced fan still shaking at 1x), vibration that changes a lot with a small speed change on a VFD, vibration much higher in one direction than the others at the same point, and a base or pipe that you can feel vibrating more than the machine.</li>\n        <li>Bump test: with the machine stopped and locked out, strike the structure with a soft-faced hammer while the analyser records. The peak in the resulting spectrum is the natural frequency. If it is within about 15 percent of running speed, 2x, blade pass, or any other forcing frequency, resonance is amplifying that force.</li>\n        <li>VFD sweep: run the machine slowly through its speed range and watch the overall. A sharp peak at one speed is a resonance. Program the drive to skip that speed band.</li>\n        <li>Critical speed is a rotor's own resonance: the shaft bows at that speed. Machines are designed to run well below the first critical (stiff shaft) or above it (flexible shaft, passing through it quickly on startup). A machine that shakes at one speed on run-up and is fine at running speed is passing through a critical.</li>\n      </ul>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-adjustments\"></i> Fixing resonance</div>\n      <div class=\"info-block-body\">Three levers: stiffness, mass, and damping. Stiffening a structure raises its natural frequency; adding mass lowers it; damping reduces the amplification without moving the frequency much. The goal is to move the natural frequency away from the forcing frequency by 15 to 20 percent, or to add enough damping that the amplification is tolerable.</div>\n      <ul class=\"info-block-tips\">\n        <li>Stiffen: gussets, a thicker base, grouting a hollow base, bracing a pipe, shortening an unsupported span. The most common and most effective fix on a fabricated steel base.</li>\n        <li>Mass: rare as a fix, because it lowers the frequency and usually you want it higher. Sometimes a mass on a pipe or a bracket moves a local resonance out of the way.</li>\n        <li>Damping: isolators, viscous dampers, constrained-layer damping on panels. Reduces the peak. Isolators under a machine also decouple it from the structure, which is a different but related fix.</li>\n        <li>Change the forcing frequency: skip the speed on a VFD, change the sheave ratio, change the blade count. Sometimes the cheapest option.</li>\n        <li>Reduce the force: balance better, align better. Resonance amplifies whatever is there; less input, less output.</li>\n      </ul>\n    </div>\n\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: feel the base, not just the machine</strong>Put your hand (or the sensor) on the base, the sole plate, the anchor bolts, and the nearest pipe. If any of them vibrate more than the bearing housing, the structure is part of the problem. A base that hums louder than the pump on it is a resonant base, and the twentieth balance job will not fix it.</div></div>",
+    "troubleshoot": "<div class=\"bw-section-label\">From reading to cause</div>\n    <div class=\"adv-wrap\" id=\"adv-method\">\n      <button class=\"adv-toggle\" onclick=\"toggleAdv('adv-method')\">\n        <div class=\"adv-toggle-left\"><i class=\"ti ti-map-2 adv-toggle-icon\"></i><span class=\"adv-toggle-label\">Diagnostic methodology: overall, then family, then the machine</span></div>\n        <i class=\"ti ti-chevron-down adv-chevron\"></i>\n      </button>\n      <div class=\"adv-body\">\n        <p><strong>1. Is it real, and is it new?</strong> Check the reading against the baseline and the trend. Check that the sensor was on the right point, on clean metal, with the machine at normal load and speed. A bad reading is more common than a bad machine.</p>\n        <p><strong>2. Find 1x.</strong> Running speed from a tachometer, a strobe, or the nameplate and the sheave ratio. Label the spectrum in orders.</p>\n        <p><strong>3. Which family?</strong> Synchronous (whole multiples of 1x), sub-synchronous, non-synchronous, harmonic series, sidebands, or broadband. The family narrows the cause to a handful.</p>\n        <p><strong>4. Which direction?</strong> Radial (H or V) versus axial. High axial says misalignment, bent shaft, or thrust. Vertical higher than horizontal says looseness or a base problem. Horizontal dominant says unbalance.</p>\n        <p><strong>5. Which bearing?</strong> Compare the same frequency at every point. The point with the highest amplitude is nearest the source. A fault across the coupling (high on both machines at the coupling end) is alignment.</p>\n        <p><strong>6. Go and look.</strong> The spectrum says unbalance; the fan wheel is caked with product. The spectrum says looseness; a foot bolt is loose. The spectrum says bearing; the bearing is hot and growling. The machine confirms the spectrum.</p>\n        <p><strong>7. Instant-off test</strong> for anything that could be electrical. Vanishes instantly: electrical. Decays: mechanical.</p>\n      </div>\n    </div>\n    <div class=\"progress-bar\"><div class=\"progress-fill\" id=\"vb-progress\" style=\"width:8%\"></div></div>\n    <div id=\"vb-tree\"></div>",
+    "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
+    "safety": "<div class=\"bw-section-label\">Safety: measuring on running machines</div>\n    <div class=\"callout-box red\">\n      <div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">Vibration readings are taken on running machines. That is the hazard.</div></div>\n      <div class=\"callout-box-body\">Every other module locks the machine out before hands go near it. This one puts a sensor on a bearing housing while the shaft is turning, next to the coupling, the fan, the belts, and the guard openings. <strong>The sensor goes where the guard allows it. If the reading point is inside a guard, the guard gets a stud or an access hole fitted during a lockout, not a hand reached through it during a route.</strong></div>\n    </div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\">\n      <div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-hand-off\" style=\"color:#F09595;\"></i> Hands, cables, and magnets</div>\n      <ul class=\"info-block-tips\">\n        <li>Never reach through, around, or under a guard to place a sensor. Fit a permanent stud or an access port during a lockout instead.</li>\n        <li>The sensor cable is a loose line next to rotating parts. Keep it short, keep it in hand, never let it drape over a shaft or a coupling. A cable wrapped on a shaft takes the analyser and your hand with it.</li>\n        <li>Magnet mounts are strong. Keep them away from the shaft, the coupling, and any rotating steel. A magnet that snaps onto a rotating part is a projectile.</li>\n        <li>Loose clothing, lanyards, gloves, and hair near a running shaft: the usual rule, with a reminder that vibration routes have you leaning close to machines for a living.</li>\n        <li>A handheld probe pressed on a housing is a stick next to a shaft. Firm grip, short reach, and know where the rotating parts are before you press.</li>\n      </ul>\n    </div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\">\n      <div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-lock\" style=\"color:#F09595;\"></i> Bump tests and stud installation</div>\n      <ul class=\"info-block-tips\">\n        <li>A bump test is done on a stopped, locked out machine. The hammer, the sensor placement, and the person all go near the machine only after lockout is verified.</li>\n        <li>Drilling and tapping a stud into a bearing housing is a lockout job with chip control: no swarf into the bearing or the guard.</li>\n        <li>Adhesive pads: the surface prep (solvent, abrasive) is done locked out.</li>\n      </ul>\n    </div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-flame\"></i> Heat, noise, and height</div>\n      <ul class=\"info-block-tips\">\n        <li>Bearing housings on a hot machine are hot. Gloves for the sensor, not for the shaft.</li>\n        <li>Hearing protection on the route. A vibration route is hours next to the loudest machines in the plant.</li>\n        <li>Reading points on fans, rooftop units, and overhead drives are at height. Fall protection and a plan for both hands being on the instrument.</li>\n        <li>A stage 4 bearing can let go. If a machine is in zone D and getting worse, the reading is taken from as far away as the cable allows, and the machine is scheduled down.</li>\n      </ul>\n    </div>"
+  }
+}

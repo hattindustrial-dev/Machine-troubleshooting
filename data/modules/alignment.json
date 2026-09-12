@@ -1,0 +1,517 @@
+{
+  "key": "alignment",
+  "num": "03",
+  "name": "Couplings and Alignment",
+  "source": "builtwright_coupling_alignment_v1.html",
+  "tabs": [
+    {
+      "id": "types",
+      "label": "Coupling Types"
+    },
+    {
+      "id": "why",
+      "label": "Why It Matters"
+    },
+    {
+      "id": "misalign",
+      "label": "Misalignment"
+    },
+    {
+      "id": "methods",
+      "label": "Methods"
+    },
+    {
+      "id": "procedure",
+      "label": "Procedure"
+    },
+    {
+      "id": "install",
+      "label": "Installation"
+    },
+    {
+      "id": "troubleshoot",
+      "label": "Troubleshoot"
+    },
+    {
+      "id": "selfcheck",
+      "label": "Self-Check"
+    },
+    {
+      "id": "safety",
+      "label": "Safety"
+    }
+  ],
+  "cards": {
+    "couplingData": {
+      "jaw": {
+        "icon": "ti-sun",
+        "name": "Jaw / Spider Coupling",
+        "role": "General purpose flexible coupling for moderate loads and speeds",
+        "body": "The jaw coupling is one of the most common flexible couplings in industrial use. Two metal hubs with interlocking jaws grip a polyurethane or rubber spider element between them. The spider transmits torque and absorbs shock and vibration. When the spider fails (cracking, chunking, compression set), the jaws will eventually contact metal-to-metal. The coupling still transmits torque at that point but with no vibration damping and significant shock transmission to bearings.",
+        "tips": [
+          "Spider material hardness (Shore A) affects performance: softer spiders damp more vibration but have lower torque capacity and higher misalignment sensitivity",
+          "Black rubber dust inside the coupling guard means the spider is degrading. Inspect and replace before metal-to-metal contact occurs.",
+          "Jaw couplings are NOT zero-backlash. For positioning applications, use a disc or bellows coupling.",
+          "Misalignment tolerance: typically 0.015 inches parallel, 1 degree angular. Always verify with manufacturer data for the specific size.",
+          "Spider element should be replaced on a schedule, not just when it fails. Degraded spiders that look intact may have lost significant torque capacity."
+        ]
+      },
+      "disc": {
+        "icon": "ti-circle-dashed",
+        "name": "Disc Coupling",
+        "role": "High precision, torsionally stiff, no lubrication required",
+        "body": "A disc coupling uses one or more thin, flexible metallic disc packs to transmit torque while accommodating misalignment through flexing of the discs. There is no elastomeric element, which means disc couplings are torsionally stiff (low backlash, accurate torque transmission) and require no lubrication. They are used in high-speed, high-precision applications: pumps, compressors, turbines, and servo drives.",
+        "tips": [
+          "Disc packs must be inspected regularly for cracks, which typically initiate at the bolt holes under cyclic flexing",
+          "A cracked disc pack can fail suddenly and catastrophically at speed. Do not defer replacement if cracks are found.",
+          "Disc couplings are sensitive to axial misalignment. Exceeding the axial travel limit overstresses the disc pack.",
+          "Bolt pattern orientation matters: follow the manufacturer assembly drawing exactly. An incorrectly oriented disc pack will fail prematurely.",
+          "Torsional stiffness means vibration from the driven equipment transmits back to the motor more readily than with a jaw coupling. Account for this in motor bearing selection."
+        ]
+      },
+      "grid": {
+        "icon": "ti-border-all",
+        "name": "Grid Coupling",
+        "role": "High torque capacity with shock and vibration damping",
+        "body": "A grid coupling uses a serpentine metal grid element that sits in grooves on both hubs. The grid flexes under load and provides excellent shock absorption and misalignment accommodation. It is used in heavy-duty applications such as large pumps, conveyors, and crushers where shock loads are common. Grid couplings require lubrication (grease) inside the cover and periodic inspection and regreasing.",
+        "tips": [
+          "Grid couplings require periodic regreasing. Check manufacturer PM interval. Dry grid coupling fails rapidly under shock load.",
+          "The grid element work-hardens over time and loses its shock-absorbing properties. Replace on schedule even if visually intact.",
+          "Grid couplings have a higher misalignment tolerance than disc couplings but still require proper alignment for rated service life",
+          "Cover seal condition matters: a leaking seal allows lubricant loss and contamination ingress. Inspect seals at every PM.",
+          "Higher torque capacity per size than jaw couplings, making them suitable for retrofit in space-constrained applications with high loads"
+        ]
+      },
+      "gear": {
+        "icon": "ti-settings-2",
+        "name": "Gear Coupling",
+        "role": "Maximum torque transmission for heavy duty applications",
+        "body": "A gear coupling transmits torque through meshing gear teeth on the hub and sleeve. It accommodates misalignment through the rocking and sliding action of the gear mesh. Gear couplings handle the highest torque loads of any flexible coupling type and are used in rolling mills, large gearboxes, and heavy industrial drives. They require lubrication and are sensitive to lubrication failure.",
+        "tips": [
+          "Gear couplings require regular regreasing or oil bath lubrication. Dry gear mesh wears extremely rapidly.",
+          "Wear pattern on gear teeth indicates misalignment type: even wear across the full tooth face is normal, edge loading indicates angular misalignment.",
+          "Gear couplings generate axial forces under misaligned conditions. These forces are transmitted to connected equipment bearings.",
+          "At high speeds, gear couplings require dynamic balancing. An unbalanced gear coupling is a significant vibration source.",
+          "Replacement requires matching the gear tooth profile and module of both the hub and sleeve. Mixing components from different manufacturers or generations can result in incorrect mesh."
+        ]
+      },
+      "rigid": {
+        "icon": "ti-minus",
+        "name": "Rigid Coupling",
+        "role": "Zero misalignment tolerance: used only where shafts are perfectly aligned",
+        "body": "A rigid coupling connects two shafts with no flexibility. It transmits torque, radial loads, and axial loads without any accommodation for misalignment. This means any misalignment between the two shafts is transmitted directly to the bearings as additional load. Rigid couplings are used only where the two shafts are supported in a common housing (such as a multi-stage pump or a gearbox output shaft connected to a short quill shaft) and can be guaranteed to remain in alignment.",
+        "tips": [
+          "Never use a rigid coupling where any relative movement between machine components is possible",
+          "A rigid coupling connecting two independently mounted machines will fail rapidly from misalignment-induced bearing overload",
+          "Flanged rigid couplings must be machined and balanced as an assembly if used at high speed",
+          "Rigid couplings are appropriate for spacer shafts inside gearboxes and between close-coupled pump stages",
+          "When a rigid coupling is found on an independently mounted machine, replace it with an appropriate flexible coupling and check bearing condition"
+        ]
+      },
+      "fluid": {
+        "icon": "ti-droplet-half-2",
+        "name": "Fluid Coupling",
+        "role": "Soft start, torque limiting, speed variation",
+        "body": "A fluid coupling transmits torque hydraulically using a working fluid (oil) between a pump impeller and a turbine runner. There is no mechanical connection between input and output, which means the output shaft can be stalled without damaging the motor, and startup torque is controlled. Fluid couplings are used on high-inertia loads (large fans, conveyors, crushers) where across-the-line starting would cause excessive mechanical stress or electrical demand.",
+        "tips": [
+          "Oil level and condition are critical. Low oil reduces torque transmission capacity and causes heat buildup.",
+          "A fluid coupling that slips excessively at full speed (high slip percentage) may have low oil or worn internal components",
+          "Fusible plugs in some fluid couplings will melt and dump the oil if the coupling overheats, protecting the driven equipment from overload. Inspect fusible plugs at every PM.",
+          "Fluid couplings do not accommodate shaft misalignment. Alignment between motor and driven shaft must still be maintained.",
+          "Operating temperature is a key performance indicator. A coupling running hotter than normal baseline indicates increased slip, which means increased load or reduced oil."
+        ]
+      }
+    }
+  },
+  "trees": {
+    "diagNodes": {
+      "start": {
+        "q": "What is happening?",
+        "hint": "Both machines locked out and verified before the guard comes off.",
+        "options": [
+          {
+            "label": "Alignment will not come in (corrections overshoot or chase)",
+            "next": "chase1"
+          },
+          {
+            "label": "Readings do not repeat",
+            "next": "r_repeat"
+          },
+          {
+            "label": "Aligned, then vibration or heat came back",
+            "next": "back1"
+          },
+          {
+            "label": "Coupling element wearing out early",
+            "next": "r_element"
+          },
+          {
+            "label": "Machine will not move for the correction",
+            "next": "move1"
+          }
+        ]
+      },
+      "chase1": {
+        "q": "Rim readings: does top plus bottom equal left plus right (within a few hundredths)?",
+        "hint": "The validity check. If it fails, nothing after it is true.",
+        "options": [
+          {
+            "label": "No, they do not add up",
+            "next": "r_validity",
+            "cls": "no"
+          },
+          {
+            "label": "Yes, valid readings",
+            "next": "chase2",
+            "cls": "yes"
+          }
+        ]
+      },
+      "chase2": {
+        "q": "Was soft foot checked and corrected on both machines before the first reading?",
+        "options": [
+          {
+            "label": "No, or not sure",
+            "next": "r_softfoot",
+            "cls": "no"
+          },
+          {
+            "label": "Yes, under 0.05 mm at every foot",
+            "next": "chase3",
+            "cls": "yes"
+          }
+        ]
+      },
+      "chase3": {
+        "q": "Do the readings change when the foot bolts are torqued, or when the piping is connected?",
+        "options": [
+          {
+            "label": "Change on torque",
+            "next": "r_softfoot"
+          },
+          {
+            "label": "Change when piping is connected",
+            "next": "r_pipestrain"
+          },
+          {
+            "label": "Stable, but the correction still overshoots",
+            "next": "r_math"
+          }
+        ]
+      },
+      "r_validity": {
+        "type": "result",
+        "cls": "action",
+        "label": "invalid readings: sag, looseness, or float",
+        "text": "Rim readings that do not sum are being corrupted by the setup.",
+        "sub": "Bracket sag not measured and corrected (Reference module has the method). Bracket or indicator loose. Shaft floating axially between readings: hold it against one end. Coupling hub run-out: rotate both shafts together. Tap the base; it must return to zero. Take the readings again.",
+        "prevent": "Sag measured on the bar before every job; validity check on every set of readings before a shim is cut."
+      },
+      "r_softfoot": {
+        "type": "result",
+        "cls": "fix",
+        "label": "soft foot",
+        "text": "A frame that twists when it is bolted down changes the alignment with every torque.",
+        "sub": "Loosen all feet. Indicator on each foot in turn while its bolt is loosened and tightened; any lift over 0.05 mm is shimmed. Clean under every foot to bare metal; remove old shims and burrs. Check for a bent foot or a springy stack. Then torque in a pattern and start the alignment again from rough.",
+        "prevent": "Soft foot on both machines before every alignment. No exceptions."
+      },
+      "r_pipestrain": {
+        "type": "result",
+        "cls": "action",
+        "label": "pipe strain",
+        "text": "The piping moves the machine when it is connected. It cannot be aligned out.",
+        "sub": "Readings with the piping disconnected, then connected: any change over 0.05 mm at the coupling is strain. Support the pipe on its hangers, correct the fit-up (Installation module, Piping tab), and recheck. Indicator on the casing while the flange bolts are tightened shows it directly.",
+        "prevent": "Pipe strain check recorded on every installation and after any piping work."
+      },
+      "r_math": {
+        "type": "result",
+        "cls": "fix",
+        "label": "correction arithmetic or sign convention",
+        "text": "Valid readings, no soft foot, no strain, and the correction still misses: the arithmetic or the sign is wrong.",
+        "sub": "Write down the convention before starting: which machine moves, which direction is positive, where the indicator is mounted. Redo the foot corrections with the rim and face formulas (Reference module, Alignment tab, and the calculator). On a laser system, check the dimensions entered (coupling to feet distances) against a tape.",
+        "prevent": "Sign convention and dimensions written on the job sheet before the first reading."
+      },
+      "r_repeat": {
+        "type": "result",
+        "cls": "action",
+        "label": "readings not repeating",
+        "text": "Two sets of readings that disagree mean the setup or the shaft is moving.",
+        "sub": "Bracket rigid, indicator plunger square, base tapped and returning to zero. Shaft axial float held against one end. Both shafts rotated together in the same direction each time. A worn coupling with backlash lets one shaft lag the other; take readings with the coupling element removed if the bracket allows. Temperature stable (a machine cooling down moves).",
+        "prevent": "Repeat the readings until two sets agree before any correction."
+      },
+      "back1": {
+        "q": "When did it come back?",
+        "options": [
+          {
+            "label": "Within hours, as the machine warmed up",
+            "next": "r_thermal"
+          },
+          {
+            "label": "Weeks or months later",
+            "next": "r_base"
+          },
+          {
+            "label": "Immediately, with the guard on and running",
+            "next": "r_validity"
+          }
+        ]
+      },
+      "r_thermal": {
+        "type": "result",
+        "cls": "action",
+        "label": "thermal growth",
+        "text": "Aligned cold, misaligned hot. The machine grew.",
+        "sub": "Thermal growth offsets from the manufacturer or calculated from shaft height and temperature rise (Reference module). Align cold with the offsets so it is aligned hot. Verify with a hot check immediately after shutdown.",
+        "prevent": "Thermal offsets recorded with the alignment on any machine that runs warm."
+      },
+      "r_base": {
+        "type": "result",
+        "cls": "action",
+        "label": "base or foundation moving",
+        "text": "An alignment that held and then drifted is a base that moved: grout, anchors, voids, or settlement.",
+        "sub": "Installation module, Troubleshoot tab: sound the baseplate, check anchor torque, look for cracked grout and pulled anchors. A recurring soft foot is the same story.",
+        "prevent": "Commissioning level and alignment record to compare against; anchor torque rechecked."
+      },
+      "r_element": {
+        "type": "result",
+        "cls": "action",
+        "label": "coupling absorbing misalignment",
+        "text": "A coupling element that wears out early has been doing the alignment's job.",
+        "sub": "The misalignment is still there and is also loading the bearings and seals. Replace the element, then soft foot, then a full alignment to the tolerance for the speed. Check DBSE and hub fit. Rubber dust or grid debris under the guard is the sign.",
+        "prevent": "Alignment readings recorded so a shift is visible; coupling inspection on the PM."
+      },
+      "move1": {
+        "q": "Which direction will not move?",
+        "options": [
+          {
+            "label": "Horizontal: foot bolts bind on the holes",
+            "next": "r_holes"
+          },
+          {
+            "label": "Vertical: no shim room, or too many shims already",
+            "next": "r_shimroom"
+          }
+        ]
+      },
+      "r_holes": {
+        "type": "result",
+        "cls": "fix",
+        "label": "no lateral clearance",
+        "text": "The bolts are hard against the sides of the foot holes.",
+        "sub": "Foot holes need 2 to 3 mm of clearance around the bolt. Enlarge the holes in the machine feet, or reposition the base studs. Never bend a bolt.",
+        "prevent": "Hole clearance checked before the base is grouted."
+      },
+      "r_shimroom": {
+        "type": "result",
+        "cls": "fix",
+        "label": "wrong starting shim allowance",
+        "text": "One machine sits too high or too low for the shim range.",
+        "sub": "The movable machine starts on about 3 mm (1/8 in) of shim so it can go up or down. Too little: nothing to take out. Too many thin shims: a springy stack that reads as soft foot; replace with one thick shim. Beyond the shim range, the pads are machined or a spacer plate is fitted.",
+        "prevent": "Shaft heights checked against the base design before grout."
+      }
+    }
+  },
+  "selfcheck": {
+    "types": [
+      [
+        "Which coupling type absorbs misalignment with an elastomer element and needs no lubrication?",
+        [
+          "Gear",
+          "Grid",
+          "Jaw (spider)",
+          "Rigid"
+        ],
+        2,
+        "Jaw couplings use an elastomer spider; gear and grid couplings need lubrication."
+      ],
+      [
+        "A fluid coupling is used mainly to?",
+        [
+          "Correct misalignment",
+          "Provide a soft start and overload protection",
+          "Allow axial float",
+          "Replace a gearbox"
+        ],
+        1,
+        "Fluid couplings transmit torque through oil and let the motor start against a heavy inertia load."
+      ]
+    ],
+    "why": [
+      [
+        "Roughly what share of rotating equipment failures have misalignment as a contributing cause?",
+        [
+          "5%",
+          "20%",
+          "Over 50%",
+          "90%"
+        ],
+        2,
+        "Misalignment loads bearings, seals, and couplings in directions they were not designed for."
+      ],
+      [
+        "What does misalignment do to a mechanical seal?",
+        [
+          "Nothing",
+          "The shaft describes an arc through the seal faces and destroys them",
+          "It improves flush flow",
+          "It reduces face wear"
+        ],
+        1,
+        "The seal faces see a wobble every revolution."
+      ]
+    ],
+    "misalign": [
+      [
+        "Parallel (offset) misalignment typically shows in vibration as?",
+        [
+          "1x axial",
+          "2x radial",
+          "Sub-synchronous",
+          "Broadband"
+        ],
+        1,
+        "Offset shafts fight through the coupling twice per revolution."
+      ],
+      [
+        "Angular misalignment typically shows in vibration as?",
+        [
+          "1x axial",
+          "2x radial only",
+          "0.5x",
+          "Bearing frequencies"
+        ],
+        0,
+        "Angular misalignment produces high 1x in the axial direction with phase reversed across the coupling."
+      ],
+      [
+        "What is DBSE?",
+        [
+          "Distance between shaft ends",
+          "Dial indicator sag error",
+          "Deflection at bearing support end",
+          "Drive belt speed estimate"
+        ],
+        0,
+        "DBSE is set at coupling installation and matters for element fit and axial float."
+      ]
+    ],
+    "methods": [
+      [
+        "Which method requires correction for bracket sag?",
+        [
+          "Straightedge",
+          "Laser",
+          "Dial indicator rim and face",
+          "Feeler gauge"
+        ],
+        2,
+        "Indicator brackets sag under their own weight; measure and correct for it."
+      ],
+      [
+        "Which method automatically compensates for sag and thermal growth?",
+        [
+          "Straightedge",
+          "Laser alignment",
+          "Feeler gauge",
+          "Reverse dial without software"
+        ],
+        1,
+        "Laser systems calculate corrections and accept thermal growth targets."
+      ]
+    ],
+    "procedure": [
+      [
+        "What is always the first step of an alignment?",
+        [
+          "Rough alignment",
+          "Take readings",
+          "Soft foot check",
+          "Torque the feet"
+        ],
+        2,
+        "Soft foot first, no exceptions. Less than 0.002 in is acceptable."
+      ],
+      [
+        "Vertical corrections are made by?",
+        [
+          "Moving the motor sideways",
+          "Shimming under the feet",
+          "Adjusting the coupling",
+          "Loosening the base"
+        ],
+        1,
+        "Vertical is shims; horizontal is lateral moves with jacking bolts."
+      ],
+      [
+        "After the final correction and torque, what should happen?",
+        [
+          "Start the machine",
+          "Recheck the readings",
+          "Remove the shims",
+          "Nothing more"
+        ],
+        1,
+        "Torquing the feet can move the machine. Verify after torque."
+      ]
+    ],
+    "install": [
+      [
+        "How do you check for pipe strain?",
+        [
+          "Look at the pipe",
+          "Take alignment readings before and after connecting the piping",
+          "Torque the flange bolts",
+          "Run the pump and listen"
+        ],
+        1,
+        "Any shift over 0.001 to 0.002 in when the piping is connected is pipe strain."
+      ],
+      [
+        "When installing a coupling hub, why support the shaft?",
+        [
+          "To keep it clean",
+          "To protect the bearings from the pressing force",
+          "To measure DBSE",
+          "It is not necessary"
+        ],
+        1,
+        "Pressing a hub on an unsupported shaft loads the bearing through the rolling elements."
+      ]
+    ],
+    "safety": [
+      [
+        "When rotating shafts for readings, where do hands go?",
+        [
+          "In the coupling gap",
+          "On the coupling hub or a bar in a designed spot, never between the hubs",
+          "On the shims",
+          "Anywhere convenient"
+        ],
+        1,
+        "A hand in the gap when the shaft turns is a crushed hand."
+      ],
+      [
+        "Before a hand goes under a motor foot to place a shim, the motor must be?",
+        [
+          "Lifted by crane",
+          "Stable on snugged foot bolts, not on jacking bolts alone",
+          "Running",
+          "Uncoupled"
+        ],
+        1,
+        "Never leave a machine sitting on jacking bolts alone."
+      ]
+    ]
+  },
+  "panels": {
+    "types": "<div class=\"bw-section-label\">Coupling types: tap a type to learn more</div>\n    <div class=\"card-grid\">\n      <div class=\"type-card\" onclick=\"selectCoupling('jaw')\" id=\"ccard-jaw\">\n        <div class=\"type-card-icon\"><i class=\"ti ti-sun\"></i></div>\n        <div class=\"type-card-name\">Jaw / Spider</div>\n        <div class=\"type-card-sub\">Flexible, shock-absorbing</div>\n      </div>\n      <div class=\"type-card\" onclick=\"selectCoupling('disc')\" id=\"ccard-disc\">\n        <div class=\"type-card-icon\"><i class=\"ti ti-circle-dashed\"></i></div>\n        <div class=\"type-card-name\">Disc Coupling</div>\n        <div class=\"type-card-sub\">High precision, torsionally stiff</div>\n      </div>\n      <div class=\"type-card\" onclick=\"selectCoupling('grid')\" id=\"ccard-grid\">\n        <div class=\"type-card-icon\"><i class=\"ti ti-border-all\"></i></div>\n        <div class=\"type-card-name\">Grid Coupling</div>\n        <div class=\"type-card-sub\">High torque, shock dampening</div>\n      </div>\n      <div class=\"type-card\" onclick=\"selectCoupling('gear')\" id=\"ccard-gear\">\n        <div class=\"type-card-icon\"><i class=\"ti ti-settings-2\"></i></div>\n        <div class=\"type-card-name\">Gear Coupling</div>\n        <div class=\"type-card-sub\">Heavy duty, high torque</div>\n      </div>\n      <div class=\"type-card\" onclick=\"selectCoupling('rigid')\" id=\"ccard-rigid\">\n        <div class=\"type-card-icon\"><i class=\"ti ti-minus\"></i></div>\n        <div class=\"type-card-name\">Rigid Coupling</div>\n        <div class=\"type-card-sub\">No misalignment tolerance</div>\n      </div>\n      <div class=\"type-card\" onclick=\"selectCoupling('fluid')\" id=\"ccard-fluid\">\n        <div class=\"type-card-icon\"><i class=\"ti ti-droplet-half-2\"></i></div>\n        <div class=\"type-card-name\">Fluid Coupling</div>\n        <div class=\"type-card-sub\">Soft start, torque limiting</div>\n      </div>\n    </div>\n    <div id=\"coupling-display\"><div class=\"comp-placeholder\">select a coupling type above</div></div>",
+    "why": "<div class=\"bw-section-label\">What misalignment actually does</div>\n    <div class=\"comp-detail\">\n      <div class=\"comp-detail-body\">Misalignment is cited as a root cause in the majority of premature bearing, seal, and coupling failures in rotating machinery. Understanding why requires thinking about what happens inside the machine rather than just what is visible at the coupling. A misaligned machine is not simply running slightly imperfectly. It is applying forces that were never part of the design intent, on every single revolution, for every hour it operates.</div>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-circle-dot\"></i> What it does to bearings</div>\n      <div class=\"info-block-body\">Bearings are designed to carry specific load directions. A radial bearing carries radial load. A thrust bearing carries axial load. Misalignment imposes load in directions the bearing was not designed to handle, or concentrates load on one side of the race rather than distributing it evenly. The result is accelerated fatigue of the race surface, elevated operating temperature, and a service life that can be a fraction of the rated life. When the bearing fails, it looks like a lubrication failure or an overload failure, because the misalignment itself is rarely visible by the time the bearing is on the bench.</div>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-ripple\"></i> What it does to seals</div>\n      <div class=\"info-block-body\">Mechanical seals and shaft seals are designed to operate with the shaft running true. Misalignment causes the shaft to describe an arc rather than rotate on a fixed axis, which means the seal faces are constantly being deflected and released on every revolution. This generates heat at the seal faces, causes uneven wear, and eventually destroys the sealing surface. A mechanical seal that leaks shortly after installation, with no obvious installation error, is often the result of misalignment that was present before the seal was installed.</div>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-link\"></i> What it does to the coupling</div>\n      <div class=\"info-block-body\">A flexible coupling can accommodate a small amount of misalignment. This is not the same as saying misalignment is acceptable. The coupling's flexible element (spider, disc pack, grid) is compensating for the misalignment on every revolution. It is being cyclically loaded and unloaded, compressed and released. The heat and fatigue generated by this cycle degrades the flexible element far faster than it would degrade in a correctly aligned machine. Black rubber dust inside the coupling guard is not just a coupling problem. It is a misalignment indicator.</div>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-wave-sine\"></i> What it does to the whole machine</div>\n      <div class=\"info-block-body\">Misalignment generates a vibration signature that travels through the machine frame and into connected equipment. In a pump system, vibration from a misaligned coupling can cause cavitation-like symptoms, accelerate wear on impeller wear rings, and transmit into piping, loosening flanged connections over time. It also increases the load on the motor, raising current draw and operating temperature. A machine that consistently trips its motor overload, runs hot, or chews through couplings and bearings is very often a misalignment problem wearing a different mask.</div>\n      <ul class=\"info-block-tips\">\n        <li>Industry data consistently shows that 50 percent or more of rotating equipment failures have misalignment as a contributing cause</li>\n        <li>The cost of a laser alignment job is a fraction of the cost of a bearing replacement, a seal replacement, and an unplanned shutdown</li>\n        <li>Alignment should be verified after any bearing replacement, any coupling replacement, any base repair, and any time the machine is moved or reconnected to piping</li>\n        <li>Thermal growth: a machine aligned cold may be misaligned at operating temperature if thermal growth was not accounted for. Critical machines should be aligned at operating temperature or with calculated thermal offsets.</li>\n      </ul>\n    </div>",
+    "misalign": "<div class=\"bw-section-label\">Types of misalignment: tap each to see diagram and detail</div>\n\n    <div class=\"misalign-grid\">\n      <div class=\"misalign-card\" onclick=\"selectMisalign('parallel')\" id=\"mcard-parallel\">\n        <div class=\"misalign-card-title\"><i class=\"ti ti-arrows-left-right\"></i> Parallel</div>\n        <div class=\"misalign-card-sub\">Shaft centrelines parallel but offset</div>\n      </div>\n      <div class=\"misalign-card\" onclick=\"selectMisalign('angular')\" id=\"mcard-angular\">\n        <div class=\"misalign-card-title\"><i class=\"ti ti-angle\"></i> Angular</div>\n        <div class=\"misalign-card-sub\">Shaft centrelines intersect at an angle</div>\n      </div>\n      <div class=\"misalign-card\" onclick=\"selectMisalign('axial')\" id=\"mcard-axial\">\n        <div class=\"misalign-card-title\"><i class=\"ti ti-arrows-horizontal\"></i> Axial</div>\n        <div class=\"misalign-card-sub\">Shafts too close or too far apart</div>\n      </div>\n      <div class=\"misalign-card\" onclick=\"selectMisalign('combined')\" id=\"mcard-combined\">\n        <div class=\"misalign-card-title\"><i class=\"ti ti-topology-complex\"></i> Combined</div>\n        <div class=\"misalign-card-sub\">Parallel and angular simultaneously</div>\n      </div>\n    </div>\n\n    <!-- Parallel misalignment -->\n    <div class=\"misalign-detail\" id=\"mdetail-parallel\">\n      <div class=\"svg-wrap\">\n        <svg width=\"480\" height=\"110\" viewBox=\"0 0 480 110\" xmlns=\"http://www.w3.org/2000/svg\">\n          <!-- Motor shaft -->\n          <rect x=\"20\" y=\"30\" width=\"160\" height=\"18\" rx=\"3\" fill=\"#3a3a36\" stroke=\"#BA7517\" stroke-width=\"1\"/>\n          <text x=\"100\" y=\"23\" fill=\"#888780\" font-family=\"Share Tech Mono\" font-size=\"10\" text-anchor=\"middle\">MOTOR SHAFT</text>\n          <!-- Coupling gap -->\n          <line x1=\"184\" y1=\"20\" x2=\"184\" y2=\"90\" stroke=\"#3a3a36\" stroke-width=\"1\" stroke-dasharray=\"4,3\"/>\n          <line x1=\"296\" y1=\"20\" x2=\"296\" y2=\"90\" stroke=\"#3a3a36\" stroke-width=\"1\" stroke-dasharray=\"4,3\"/>\n          <!-- Offset arrow -->\n          <line x1=\"240\" y1=\"39\" x2=\"240\" y2=\"63\" stroke=\"#EF9F27\" stroke-width=\"1.5\" marker-end=\"url(#arr)\" marker-start=\"url(#arrr)\"/>\n          <text x=\"255\" y=\"54\" fill=\"#EF9F27\" font-family=\"Share Tech Mono\" font-size=\"9\">offset</text>\n          <!-- Pump shaft -->\n          <rect x=\"300\" y=\"52\" width=\"160\" height=\"18\" rx=\"3\" fill=\"#3a3a36\" stroke=\"#378ADD\" stroke-width=\"1\"/>\n          <text x=\"380\" y=\"85\" fill=\"#888780\" font-family=\"Share Tech Mono\" font-size=\"10\" text-anchor=\"middle\">PUMP SHAFT</text>\n          <!-- Centreline motor -->\n          <line x1=\"20\" y1=\"39\" x2=\"184\" y2=\"39\" stroke=\"#BA7517\" stroke-width=\"1\" stroke-dasharray=\"6,3\"/>\n          <!-- Centreline pump -->\n          <line x1=\"296\" y1=\"61\" x2=\"460\" y2=\"61\" stroke=\"#378ADD\" stroke-width=\"1\" stroke-dasharray=\"6,3\"/>\n          <defs>\n            <marker id=\"arr\" markerWidth=\"6\" markerHeight=\"6\" refX=\"3\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L6,3 L0,6 Z\" fill=\"#EF9F27\"/></marker>\n            <marker id=\"arrr\" markerWidth=\"6\" markerHeight=\"6\" refX=\"3\" refY=\"3\" orient=\"auto-start-reverse\"><path d=\"M0,0 L6,3 L0,6 Z\" fill=\"#EF9F27\"/></marker>\n          </defs>\n        </svg>\n        <div class=\"svg-caption\">Parallel (offset) misalignment: centrelines parallel but not coincident</div>\n      </div>\n      <div class=\"comp-detail\">\n        <div class=\"comp-detail-body\">Parallel misalignment (also called offset misalignment) means the two shaft centrelines are parallel to each other but not on the same axis. Looking at the coupling end-on, one shaft is displaced vertically, horizontally, or both relative to the other. This is measured as the perpendicular distance between the two centrelines and is corrected by moving one machine up, down, left, or right (shimming and lateral adjustment).</div>\n        <ul class=\"comp-detail-tips\">\n          <li>Generates a vibration at 2x rotational frequency, which is a useful diagnostic indicator</li>\n          <li>Causes the coupling flexible element to deflect twice per revolution (once at top, once at bottom of the offset cycle)</li>\n          <li>Vertical parallel misalignment is corrected with shims under the machine feet</li>\n          <li>Horizontal parallel misalignment is corrected by lateral movement of the machine on its base</li>\n          <li>Acceptable tolerance depends on coupling type and shaft speed. Always refer to the coupling manufacturer's specification.</li>\n        </ul>\n      </div>\n    </div>\n\n    <!-- Angular misalignment -->\n    <div class=\"misalign-detail\" id=\"mdetail-angular\">\n      <div class=\"svg-wrap\">\n        <svg width=\"480\" height=\"110\" viewBox=\"0 0 480 110\" xmlns=\"http://www.w3.org/2000/svg\">\n          <!-- Motor shaft -->\n          <rect x=\"20\" y=\"38\" width=\"160\" height=\"18\" rx=\"3\" fill=\"#3a3a36\" stroke=\"#BA7517\" stroke-width=\"1\"/>\n          <text x=\"100\" y=\"30\" fill=\"#888780\" font-family=\"Share Tech Mono\" font-size=\"10\" text-anchor=\"middle\">MOTOR SHAFT</text>\n          <!-- Pump shaft angled -->\n          <g transform=\"rotate(-7, 296, 47)\">\n            <rect x=\"296\" y=\"38\" width=\"160\" height=\"18\" rx=\"3\" fill=\"#3a3a36\" stroke=\"#378ADD\" stroke-width=\"1\"/>\n          </g>\n          <text x=\"390\" y=\"90\" fill=\"#888780\" font-family=\"Share Tech Mono\" font-size=\"10\" text-anchor=\"middle\">PUMP SHAFT</text>\n          <!-- Centreline motor -->\n          <line x1=\"20\" y1=\"47\" x2=\"290\" y2=\"47\" stroke=\"#BA7517\" stroke-width=\"1\" stroke-dasharray=\"6,3\"/>\n          <!-- Centreline pump angled -->\n          <line x1=\"296\" y1=\"47\" x2=\"460\" y2=\"68\" stroke=\"#378ADD\" stroke-width=\"1\" stroke-dasharray=\"6,3\"/>\n          <!-- Angle indicator -->\n          <path d=\"M 296,47 A 40,40 0 0,1 334,52\" fill=\"none\" stroke=\"#EF9F27\" stroke-width=\"1.5\"/>\n          <text x=\"318\" y=\"44\" fill=\"#EF9F27\" font-family=\"Share Tech Mono\" font-size=\"9\">angle</text>\n          <!-- Coupling gap lines -->\n          <line x1=\"184\" y1=\"25\" x2=\"184\" y2=\"85\" stroke=\"#3a3a36\" stroke-width=\"1\" stroke-dasharray=\"4,3\"/>\n          <line x1=\"296\" y1=\"25\" x2=\"296\" y2=\"85\" stroke=\"#3a3a36\" stroke-width=\"1\" stroke-dasharray=\"4,3\"/>\n        </svg>\n        <div class=\"svg-caption\">Angular misalignment: centrelines meet at an angle across the coupling</div>\n      </div>\n      <div class=\"comp-detail\">\n        <div class=\"comp-detail-body\">Angular misalignment means the two shaft centrelines are not parallel. They converge or diverge across the coupling gap. This is measured as the difference in gap between the near and far sides of the coupling face as the shafts are rotated, expressed as thousandths of an inch per inch of coupling diameter (or mm per 100mm). It is corrected by raising or lowering one end of the machine (shimming the front feet vs rear feet differently) or by pivoting the machine laterally.</div>\n        <ul class=\"comp-detail-tips\">\n          <li>Generates a vibration at 1x rotational frequency in the axial direction, which helps distinguish it from parallel misalignment</li>\n          <li>Causes the coupling to flex once per revolution as the gap opens and closes</li>\n          <li>In a flanged coupling, angular misalignment causes the bolts on one side to be in tension while the other side is loose. Check flange bolt torque as an indicator.</li>\n          <li>Angular misalignment is often present alongside parallel misalignment. Correcting one without the other is common and leaves the machine still misaligned.</li>\n          <li>When shimming to correct angular misalignment, moving one end of the machine affects the other end. Work iteratively and check both ends after each adjustment.</li>\n        </ul>\n      </div>\n    </div>\n\n    <!-- Axial misalignment -->\n    <div class=\"misalign-detail\" id=\"mdetail-axial\">\n      <div class=\"svg-wrap\">\n        <svg width=\"480\" height=\"90\" viewBox=\"0 0 480 90\" xmlns=\"http://www.w3.org/2000/svg\">\n          <!-- Motor shaft -->\n          <rect x=\"20\" y=\"33\" width=\"185\" height=\"18\" rx=\"3\" fill=\"#3a3a36\" stroke=\"#BA7517\" stroke-width=\"1\"/>\n          <text x=\"110\" y=\"25\" fill=\"#888780\" font-family=\"Share Tech Mono\" font-size=\"10\" text-anchor=\"middle\">MOTOR SHAFT</text>\n          <!-- Pump shaft too close -->\n          <rect x=\"255\" y=\"33\" width=\"200\" height=\"18\" rx=\"3\" fill=\"#3a3a36\" stroke=\"#378ADD\" stroke-width=\"1\"/>\n          <text x=\"355\" y=\"25\" fill=\"#888780\" font-family=\"Share Tech Mono\" font-size=\"10\" text-anchor=\"middle\">PUMP SHAFT</text>\n          <!-- Gap too small indicator -->\n          <line x1=\"205\" y1=\"42\" x2=\"255\" y2=\"42\" stroke=\"#EF9F27\" stroke-width=\"2\"/>\n          <line x1=\"205\" y1=\"34\" x2=\"205\" y2=\"50\" stroke=\"#EF9F27\" stroke-width=\"1.5\"/>\n          <line x1=\"255\" y1=\"34\" x2=\"255\" y2=\"50\" stroke=\"#EF9F27\" stroke-width=\"1.5\"/>\n          <text x=\"230\" y=\"62\" fill=\"#EF9F27\" font-family=\"Share Tech Mono\" font-size=\"9\" text-anchor=\"middle\">gap too small</text>\n          <!-- Centrelines -->\n          <line x1=\"20\" y1=\"42\" x2=\"460\" y2=\"42\" stroke=\"#5F5E5A\" stroke-width=\"1\" stroke-dasharray=\"6,3\"/>\n        </svg>\n        <div class=\"svg-caption\">Axial misalignment: shafts too close together (or too far apart)</div>\n      </div>\n      <div class=\"comp-detail\">\n        <div class=\"comp-detail-body\">Axial spacing refers to the gap between the two shaft ends across the coupling. Most flexible couplings require a specific gap, called the DBSE (distance between shaft ends), to function correctly. Too little gap means the shaft ends or coupling hubs can contact under thermal expansion or axial load. Too much gap means the coupling flexible element is stretched beyond its design range. Either condition causes abnormal loading and accelerated wear.</div>\n        <ul class=\"comp-detail-tips\">\n          <li>DBSE is specified by the coupling manufacturer. Measure and confirm before final installation.</li>\n          <li>Thermal expansion: shafts grow toward each other at operating temperature. Account for this when setting the cold gap.</li>\n          <li>Jaw couplings with a spider element have a specific recommended gap range. Consult the manufacturer data sheet.</li>\n          <li>Axial load from incorrect gap is transferred directly to the bearing thrust faces. This is a common undiagnosed cause of thrust bearing failure in pump applications.</li>\n          <li>On equipment with fixed axial positions (some gearboxes, motors with thrust bearings), adjusting DBSE requires moving one machine. Confirm which machine is the reference before adjusting.</li>\n        </ul>\n      </div>\n    </div>\n\n    <!-- Combined misalignment -->\n    <div class=\"misalign-detail\" id=\"mdetail-combined\">\n      <div class=\"svg-wrap\">\n        <svg width=\"480\" height=\"120\" viewBox=\"0 0 480 120\" xmlns=\"http://www.w3.org/2000/svg\">\n          <!-- Motor shaft -->\n          <rect x=\"20\" y=\"32\" width=\"160\" height=\"18\" rx=\"3\" fill=\"#3a3a36\" stroke=\"#BA7517\" stroke-width=\"1\"/>\n          <text x=\"100\" y=\"24\" fill=\"#888780\" font-family=\"Share Tech Mono\" font-size=\"10\" text-anchor=\"middle\">MOTOR SHAFT</text>\n          <!-- Pump shaft: offset AND angled -->\n          <g transform=\"rotate(-6, 296, 60)\">\n            <rect x=\"296\" y=\"52\" width=\"160\" height=\"18\" rx=\"3\" fill=\"#3a3a36\" stroke=\"#378ADD\" stroke-width=\"1\"/>\n          </g>\n          <text x=\"380\" y=\"105\" fill=\"#888780\" font-family=\"Share Tech Mono\" font-size=\"10\" text-anchor=\"middle\">PUMP SHAFT</text>\n          <!-- Centreline motor -->\n          <line x1=\"20\" y1=\"41\" x2=\"184\" y2=\"41\" stroke=\"#BA7517\" stroke-width=\"1\" stroke-dasharray=\"6,3\"/>\n          <!-- Centreline pump angled and offset -->\n          <line x1=\"296\" y1=\"61\" x2=\"460\" y2=\"78\" stroke=\"#378ADD\" stroke-width=\"1\" stroke-dasharray=\"6,3\"/>\n          <!-- Offset arrow -->\n          <line x1=\"240\" y1=\"41\" x2=\"240\" y2=\"61\" stroke=\"#EF9F27\" stroke-width=\"1.5\" stroke-dasharray=\"3,2\"/>\n          <text x=\"248\" y=\"53\" fill=\"#EF9F27\" font-family=\"Share Tech Mono\" font-size=\"8\">offset</text>\n          <!-- Angle arc -->\n          <path d=\"M 296,61 A 35,35 0 0,1 328,66\" fill=\"none\" stroke=\"#F09595\" stroke-width=\"1.5\"/>\n          <text x=\"310\" y=\"56\" fill=\"#F09595\" font-family=\"Share Tech Mono\" font-size=\"8\">angle</text>\n          <!-- Gap lines -->\n          <line x1=\"184\" y1=\"20\" x2=\"184\" y2=\"100\" stroke=\"#3a3a36\" stroke-width=\"1\" stroke-dasharray=\"4,3\"/>\n          <line x1=\"296\" y1=\"20\" x2=\"296\" y2=\"100\" stroke=\"#3a3a36\" stroke-width=\"1\" stroke-dasharray=\"4,3\"/>\n        </svg>\n        <div class=\"svg-caption\">Combined misalignment: parallel offset and angular simultaneously (most common in practice)</div>\n      </div>\n      <div class=\"comp-detail\">\n        <div class=\"comp-detail-body\">In practice, pure parallel or pure angular misalignment is rare. Most misaligned machines have both conditions present simultaneously. This is important because correcting one type of misalignment affects the other. Shimming to correct angular misalignment changes the parallel offset, and vice versa. The correct approach is to address both simultaneously through an iterative process, checking and adjusting until both conditions are within tolerance at the same time.</div>\n        <ul class=\"comp-detail-tips\">\n          <li>Always correct soft foot before attempting to correct parallel or angular misalignment. Soft foot makes alignment readings unstable and corrections unpredictable.</li>\n          <li>The standard sequence is: soft foot first, then rough alignment by eye, then fine alignment with instruments, then verify after coupling bolts are torqued.</li>\n          <li>A laser alignment system solves both parallel and angular simultaneously and shows the correction required at each foot in real time.</li>\n          <li>Even with a laser tool, always recheck after tightening coupling bolts and connecting piping. Pipe strain can pull a machine out of alignment after the tool is removed.</li>\n        </ul>\n      </div>\n    </div>",
+    "methods": "<div class=\"bw-section-label\">Alignment methods: from basic to precision</div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-ruler\"></i> Straightedge and feeler gauge</div>\n      <div class=\"info-block-body\">The most basic alignment check. A straightedge laid across the two coupling hubs shows gross parallel misalignment. Feeler gauges measure the gap across the coupling face to indicate angular misalignment. This method is useful for rough alignment during initial installation or to confirm that a machine is not grossly out before applying instruments. It cannot achieve precision alignment and should not be relied on as a final check for anything other than the lowest-speed, most forgiving applications.</div>\n      <ul class=\"info-block-tips\">\n        <li>Useful for: initial rough alignment, quick field check, confirming gross misalignment before pulling a machine</li>\n        <li>Not suitable for: final alignment on anything running above roughly 1000 RPM, or any application with close coupling tolerances</li>\n        <li>Cannot account for soft foot, shaft sag, or thermal growth</li>\n      </ul>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-circle-dot\"></i> Dial indicator: rim and face method</div>\n      <div class=\"info-block-body\">A dial indicator (or two) mounted on one shaft, reading off the rim and face of the other coupling hub. As the shafts are rotated together, the indicator records the total indicated runout (TIR) in both the radial (parallel) and axial (angular) directions. The readings are then used to calculate the required corrections at each machine foot. This is the traditional precision alignment method and is still widely used. It requires understanding of the math involved and careful attention to indicator setup to produce reliable results.</div>\n      <ul class=\"info-block-tips\">\n        <li>Useful for: precision alignment where laser equipment is not available, verifying laser alignment results, shaft runout measurement</li>\n        <li>Requires: accurate indicator mounting with no sag in the indicator bracket, rotating both shafts together, and correct application of the correction math</li>\n        <li>Bracket sag is a common error: the weight of the bracket deflects the indicator reading. Measure bracket sag and apply as a correction factor.</li>\n        <li>Takes more time and skill than laser alignment but produces equivalent results when done correctly</li>\n      </ul>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-scan\"></i> Laser alignment</div>\n      <div class=\"info-block-body\">A laser alignment system uses two sensor heads, one mounted on each shaft, that communicate wirelessly and calculate the exact position of each shaft relative to the other in real time. The system displays the misalignment condition and the exact shim changes and lateral moves required at each foot. Modern laser tools compensate automatically for bracket sag, thermal growth, and shaft sag. They are faster, more accurate, and easier to use correctly than dial indicators, and the real-time feedback makes iterative correction straightforward.</div>\n      <ul class=\"info-block-tips\">\n        <li>Useful for: all precision alignment work, machines with thermal growth requirements, high-speed applications, and any situation where documentation of alignment condition is required</li>\n        <li>Still requires correct soft foot correction before use</li>\n        <li>The tool is only as good as the setup. Loose sensor mounts, contaminated shaft surfaces, and shaft endplay all affect accuracy.</li>\n        <li>Most systems produce a printable alignment report, which is valuable for maintenance records and for comparing alignment condition over time</li>\n        <li>Common brands: Pruftechnik ROTALIGN, SKF TKSA series, Fluke 830, Fixturlaser</li>\n      </ul>\n    </div>\n      <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: the laser checks the laser</strong>A laser alignment system gives an answer to the micron and it is only as good as the dimensions typed into it and the brackets clamped to the shafts. Measure the coupling-to-feet distances with a tape, not from memory, and tap the brackets. When the laser says something that does not match what your eyes see at the coupling, believe your eyes and find the input error.</div></div>",
+    "procedure": "<div class=\"bw-section-label\">Alignment procedure: correct sequence is everything</div>\n\n    <div class=\"callout-box\">\n      <div class=\"callout-box-header\">\n        <i class=\"ti ti-alert-hexagon callout-box-icon\"></i>\n        <div class=\"callout-box-title\">Soft foot: always first, no exceptions</div>\n      </div>\n      <div class=\"callout-box-body\">Soft foot is a condition where one or more of the machine feet does not sit flat and stable on the base. When a foot bolt is tightened, it distorts the machine frame, which shifts the shaft position. Attempting precision alignment on a machine with soft foot is a waste of time. The readings will be inconsistent and the corrections will not hold. <strong>Always check and correct soft foot before any alignment work.</strong> Loosen all foot bolts and retighten one at a time while monitoring the shaft position with a dial indicator. Any foot that causes the shaft to move when its bolt is tightened has soft foot and requires shimming to correct.</div>\n      <ul class=\"callout-tips\">\n        <li>Acceptable soft foot: less than 0.002 inches (0.05mm) of shaft movement when any single foot bolt is tightened or loosened</li>\n        <li>Angular soft foot (one corner of the foot, not the whole foot) is harder to detect and correct than parallel soft foot</li>\n        <li>Never use more than three to four shims under any foot. Excessive shimming stacks create instability. If more correction is needed, machine a new base surface.</li>\n        <li>Recheck soft foot after every significant base or grout repair</li>\n      </ul>\n    </div>\n\n    <div class=\"bw-section-label\">Overview: the alignment sequence</div>\n    <div style=\"margin-bottom:1.25rem;\">\n      <div class=\"inst-step\">\n        <div class=\"inst-num\">01</div>\n        <div class=\"inst-body\"><strong>Correct soft foot</strong>\n          <div class=\"inst-sub\">As described above. Do not proceed until soft foot is within tolerance at all feet.</div>\n        </div>\n      </div>\n      <div class=\"inst-step\">\n        <div class=\"inst-num\">02</div>\n        <div class=\"inst-body\"><strong>Rough alignment by eye or straightedge</strong>\n          <div class=\"inst-sub\">Get the machine close before applying instruments. A grossly misaligned machine wastes instrument time and can exceed the range of the measurement tool. Use a straightedge across the coupling hubs to get parallel misalignment within approximately 1mm. Set DBSE (coupling gap) to the specified dimension.</div>\n        </div>\n      </div>\n      <div class=\"inst-step\">\n        <div class=\"inst-num\">03</div>\n        <div class=\"inst-body\"><strong>Take alignment readings</strong>\n          <div class=\"inst-sub\">With dial indicators or laser system, take readings in all four positions (top, bottom, left, right) for both parallel and angular conditions. Confirm readings are repeatable by taking two full sets and comparing.</div>\n        </div>\n      </div>\n      <div class=\"inst-step\">\n        <div class=\"inst-num\">04</div>\n        <div class=\"inst-body\"><strong>Calculate and apply vertical corrections (shimming)</strong>\n          <div class=\"inst-sub\">Vertical corrections are made by adding or removing shims under the machine feet. Calculate the required shim change at the front and rear feet independently. Angular misalignment requires different shim changes at each end. Parallel misalignment requires equal shim changes at both ends.</div>\n        </div>\n      </div>\n      <div class=\"inst-step\">\n        <div class=\"inst-num\">05</div>\n        <div class=\"inst-body\"><strong>Apply horizontal corrections (lateral moves)</strong>\n          <div class=\"inst-sub\">Move the machine laterally on its base using alignment jacking screws or a jack and drift. Lateral corrections follow the same logic as vertical corrections. Recheck soft foot after any lateral move.</div>\n        </div>\n      </div>\n      <div class=\"inst-step\">\n        <div class=\"inst-num\">06</div>\n        <div class=\"inst-body\"><strong>Verify, torque coupling, and recheck</strong>\n          <div class=\"inst-sub\">After corrections are within tolerance, torque all foot bolts to specification and recheck alignment. Coupling bolt torque and pipe connection can shift alignment. Always take a final reading with everything connected and torqued before signing off.</div>\n        </div>\n      </div>\n    </div>\n\n    <!-- ADVANCED SECTION: collapsible -->\n    <div class=\"adv-wrap\" id=\"adv-dialindicator\">\n      <button class=\"adv-toggle\" onclick=\"toggleAdv('adv-dialindicator')\">\n        <div class=\"adv-toggle-left\"><i class=\"ti ti-circle-dot adv-toggle-icon\"></i><span class=\"adv-toggle-label\">Advanced: dial indicator rim and face procedure with correction math</span></div>\n        <i class=\"ti ti-chevron-down adv-chevron\"></i>\n      </button>\n      <div class=\"adv-body\">\n        <p>The rim and face method uses one or two dial indicators to measure both the parallel (radial) and angular (face) misalignment simultaneously. The indicator reading at the rim (side of the coupling hub) measures parallel offset. The indicator reading at the face (end of the coupling hub) measures angular misalignment.</p>\n\n        <div class=\"adv-step\"><div class=\"adv-num\">01</div><div class=\"adv-step-body\"><strong>Mount the indicator bracket</strong> on the driver shaft (motor). One indicator reads the rim of the driven coupling hub (pump side). The second reads the face. Ensure the bracket has no detectable sag. Measure sag by mounting the bracket horizontally and rotating 180 degrees. Half the difference between top and bottom readings is the sag correction value.</div></div>\n\n        <div class=\"adv-step\"><div class=\"adv-num\">02</div><div class=\"adv-step-body\"><strong>Zero both indicators at the 12 o'clock position.</strong> Rotate both shafts together (they must rotate as one unit) to 3, 6, and 9 o'clock. Record the rim and face readings at each position. A full set of four readings (12, 3, 6, 9) gives you the complete picture.</div></div>\n\n        <div class=\"adv-step\"><div class=\"adv-num\">03</div><div class=\"adv-step-body\"><strong>Apply sag correction to rim readings.</strong> Subtract the sag value from the 6 o'clock rim reading before doing the math.</div></div>\n\n        <div class=\"adv-step\"><div class=\"adv-num\">04</div><div class=\"adv-step-body\"><strong>Calculate vertical parallel offset (shimming required):</strong>\n          <div class=\"math-block\">\n            Vertical offset = (Rim reading at 6 o'clock: sag correction) / 2<br>\n            Positive value = pump shaft is HIGH relative to motor shaft<br>\n            Negative value = pump shaft is LOW: add shims\n          </div>\n        </div></div>\n\n        <div class=\"adv-step\"><div class=\"adv-num\">05</div><div class=\"adv-step-body\"><strong>Calculate angular misalignment from face readings:</strong>\n          <div class=\"math-block\">\n            Angular gap difference = Face reading at 6 o'clock (with sign)<br>\n            Shim correction at rear feet = (Gap difference / Coupling diameter) × Distance from coupling to rear feet<br>\n            Shim correction at front feet = (Gap difference / Coupling diameter) × Distance from coupling to front feet\n          </div>\n          A positive face reading at 6 o'clock means the gap is wider at the bottom: the rear of the motor needs to come UP (add shims at rear feet).\n        </div></div>\n\n        <div class=\"adv-step\"><div class=\"adv-num\">06</div><div class=\"adv-step-body\"><strong>Horizontal corrections</strong> follow identical math using the 3 and 9 o'clock readings for rim (parallel) and face (angular). Positive at 3 o'clock means the pump shaft is to the right of the motor shaft centreline.</div></div>\n\n        <div class=\"adv-step\"><div class=\"adv-num\">07</div><div class=\"adv-step-body\"><strong>Typical acceptable tolerances</strong> for dial indicator alignment:\n          <div class=\"math-block\">\n            Parallel offset:  ≤ 0.002\" TIR (0.05mm) for most industrial applications<br>\n            Angular:          ≤ 0.001\" per inch of coupling diameter<br>\n            High-speed (&gt;3600 RPM): tighten both to ≤ 0.001\" TIR<br>\n            Always defer to the coupling manufacturer's published tolerance\n          </div>\n        </div></div>\n\n        <p style=\"margin-top:0.5rem;\">These calculations assume a standard two-indicator rim-and-face setup. Reverse dial indicator setups use different math. If you are using a reverse dial arrangement, the correction formulas change. Consult a dedicated alignment reference or your laser system's manual for the reverse dial procedure.</p>\n      </div>\n    </div>\n      <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: rough it in by eye before the indicators go on</strong>A machine that is 2 mm out will run the indicators off their range and waste an hour. Straightedge across the hubs, feeler in the gap, move it until it looks right, then set the indicators. The precision tools are for the last half millimetre.</div></div>",
+    "install": "<div class=\"bw-section-label\">Installation: fit, keyways, and assembly sequence</div>\n    <div class=\"comp-detail\">\n      <div class=\"comp-detail-body\">Coupling installation is where alignment problems are created or prevented. A hub that is not fully seated on the shaft, a keyway with excessive clearance, or a flexible element installed incorrectly will produce misalignment that no amount of machine adjustment can fully correct. Get the installation right before touching the alignment instruments.</div>\n    </div>\n\n    <div style=\"margin-bottom:1.5rem;\">\n      <div class=\"inst-step\">\n        <div class=\"inst-num\">01</div>\n        <div class=\"inst-body\"><strong>Inspect shaft and hub bore</strong>\n          <div class=\"inst-sub\">Check shaft diameter against hub bore specification. An interference fit hub requires heating or pressing. A clearance fit hub slides on but must be secured by a keyway and set screw or locking collar. Measure shaft runout at the coupling seat before installing. Maximum acceptable TIR for most applications is 0.001 to 0.002 inches. Runout at the shaft transfers directly to the coupling as apparent misalignment.</div>\n        </div>\n      </div>\n      <div class=\"inst-step\">\n        <div class=\"inst-num\">02</div>\n        <div class=\"inst-body\"><strong>Keyway fit</strong>\n          <div class=\"inst-sub\">The key should be a snug sliding fit in the shaft keyway and a light interference fit in the hub keyway. A loose key allows the hub to rock on the shaft, generating fretting and apparent misalignment under load. A key that is too tight can crack the hub during installation. Never use oversized keys as a repair for a worn keyway. Machine the keyway to the next standard size or sleeve the shaft.</div>\n        </div>\n      </div>\n      <div class=\"inst-step\">\n        <div class=\"inst-num\">03</div>\n        <div class=\"inst-body\"><strong>Hub installation: support the shaft</strong>\n          <div class=\"inst-sub\">When pressing or driving a coupling hub onto a shaft, the axial force must be reacted at the shaft, not transmitted through the bearings. Support the far end of the shaft against the installation force. Pressing a hub onto a shaft without supporting the far end drives the force through the bearing, causing brinelling of the races. Use a hub installation tool or a threaded draw bolt through the shaft end where geometry allows.</div>\n        </div>\n      </div>\n      <div class=\"inst-step\">\n        <div class=\"inst-num\">04</div>\n        <div class=\"inst-body\"><strong>Set DBSE before final hub seating</strong>\n          <div class=\"inst-sub\">Confirm the distance between shaft ends matches the coupling manufacturer's specified DBSE before torquing hubs to final position. Once both hubs are fully seated, DBSE can only be changed by repositioning a machine. Measure DBSE with a vernier caliper or rule and compare to the data sheet value.</div>\n        </div>\n      </div>\n      <div class=\"inst-step\">\n        <div class=\"inst-num\">05</div>\n        <div class=\"inst-body\"><strong>Install flexible element last</strong>\n          <div class=\"inst-sub\">On jaw, disc, and grid couplings, install the flexible element after both hubs are seated and the machine has been aligned. Installing the element before alignment forces you to work against its resistance and can introduce pre-load into the element. On disc couplings, confirm the disc pack bolt pattern is oriented correctly per the manufacturer's instruction before torquing.</div>\n        </div>\n      </div>\n      <div class=\"inst-step\">\n        <div class=\"inst-num\">06</div>\n        <div class=\"inst-body\"><strong>Torque sequence and final check</strong>\n          <div class=\"inst-sub\">Torque all coupling bolts in a star pattern to the manufacturer's specification. Under-torqued coupling bolts back off under vibration and create fretting at the interface. Over-torqued bolts stretch and lose clamping force. After torquing, rotate the assembly by hand one full revolution and feel for any tight spots or resistance changes. Any resistance that was not present before the coupling was assembled indicates a problem: recheck hub seating, flexible element condition, and DBSE.</div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-refresh\"></i> After connection: pipe strain check</div>\n      <div class=\"info-block-body\">One of the most commonly skipped steps in pump and compressor installation is checking alignment after connecting the process piping. Pipe strain (stress in the connected piping pulling or pushing on the machine nozzles) can shift a perfectly aligned machine by several thousandths of an inch. The check is simple: take alignment readings with piping disconnected, then connect the piping and take readings again. Any change greater than 0.001 to 0.002 inches indicates pipe strain that must be corrected at the piping, not by realigning the machine.</div>\n      <ul class=\"info-block-tips\">\n        <li>Pipe strain is most common on large bore, rigid piping systems and on high-temperature lines that grow significantly during operation</li>\n        <li>The correct fix is to add pipe supports, expansion loops, or flexible connections to relieve the strain at the nozzle</li>\n        <li>Never force piping into alignment with the machine nozzle. The strain goes somewhere, and that somewhere is the machine bearings and casing.</li>\n      </ul>\n    </div>",
+    "troubleshoot": "<div class=\"bw-section-label\">Alignment fault diagnosis</div>\n    <div class=\"adv-wrap\" id=\"adv-method\">\n      <button class=\"adv-toggle\" onclick=\"toggleAdv('adv-method')\">\n        <div class=\"adv-toggle-left\"><i class=\"ti ti-map-2 adv-toggle-icon\"></i><span class=\"adv-toggle-label\">Diagnostic methodology</span></div>\n        <i class=\"ti ti-chevron-down adv-chevron\"></i>\n      </button>\n      <div class=\"adv-body\"><p><strong>Every alignment that will not come in has one of five causes:</strong> invalid readings (sag, a loose bracket, axial float), soft foot, pipe strain, the arithmetic, or thermal growth. Check them in that order. The validity check on rim readings (top plus bottom equals left plus right) is the first thing, because if it fails nothing after it means anything. Then soft foot on both machines. Then readings with the piping off and on. Then the sign convention and the dimensions. Then whether the machine runs hot.</p><p>A laser system removes the arithmetic and the sag and leaves every other cause in place.</p></div>\n    </div>\n    <div class=\"progress-bar\"><div class=\"progress-fill\" id=\"al-progress\" style=\"width:8%\"></div></div>\n    <div id=\"al-tree\"></div>",
+    "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
+    "safety": "<div class=\"bw-section-label\">Alignment safety: pinch points, moving machines, and the coupling gap</div>\n    <div class=\"callout-box red\"><div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">Alignment puts your hands on shafts, in the coupling gap, and under machine feet.</div></div><div class=\"callout-box-body\">Every step of an alignment involves either turning a shaft by hand, reaching into a coupling to fit a bracket, or moving a motor on its base with a bar or jacking bolts. <strong>The machine is locked out and verified before the guard comes off, and it stays that way until the guard goes back on.</strong></div></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-lock\" style=\"color:#F09595;\"></i> Lockout for alignment work</div><ul class=\"info-block-tips\"><li>Both machines locked out and verified: the motor, and anything that can turn the driven machine (process flow, gravity, a windmilling fan, another drive on the same shaft).</li><li>The coupling guard comes off after lockout and goes back on before the lock. No exceptions for a quick reading.</li><li>Rotating shafts for readings: turn by the coupling hub or a bar in a designed spot, never with fingers between the hubs or in the coupling gap. A hand in the gap when the shaft turns is a crushed hand.</li><li>Remote and automatic starts: a machine on a PLC or a level control can start on its own. Isolation is at the source, not at the stop button.</li><li>Regulation 851, section 75 for lockout; sections 24 and 25 for guards.</li></ul></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-arrows-move\" style=\"color:#F09595;\"></i> Moving the machine</div><ul class=\"info-block-tips\"><li>A motor on its base is heavy. Horizontal moves use jacking bolts or a bar with a fulcrum. Hands never between the motor foot and anything solid.</li><li>Vertical moves: the motor is supported on jacking bolts or on the loosened foot bolts, not on a hand or a shim being slid in. Shims go in and out with the foot bolt snugged on the other feet and the motor stable.</li><li>Never leave a machine sitting on jacking bolts alone. Foot bolts snug before hands go under it.</li><li>Large motors and pumps are lifted for base work. Rigging rules apply.</li></ul></div>\n    <div class=\"info-block\"><div class=\"info-block-title\"><i class=\"ti ti-ruler-measure\"></i> Tools and instruments</div><ul class=\"info-block-tips\"><li>Dial indicator brackets clamp to the shaft or hub. A bracket that comes loose while the shaft is turned falls into the coupling. Check it before every rotation.</li><li>Laser alignment systems are Class 2 lasers: safe for brief exposure, but do not stare into the beam and do not point it at anyone.</li><li>Feeler gauges and straightedges in a running coupling: never. Rough alignment is done locked out like everything else.</li><li>Hot alignment checks on a running machine (thermal growth) use non-contact methods or are done immediately after shutdown with the machine locked. A hot casing burns.</li></ul></div>\n    <div class=\"info-block\"><div class=\"info-block-title\"><i class=\"ti ti-player-play\"></i> Restart</div><ul class=\"info-block-tips\"><li>Guard on, all tools and shims accounted for, foot bolts torqued, alignment readings recorded.</li><li>First start with everyone clear of the coupling and the guard. Listen and watch before anyone approaches.</li><li>Recheck after torque and after the first run. Then the lock comes off the paperwork too.</li></ul></div>\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: count the shims</strong>Every shim that goes under a foot is written down. Every shim that comes out is written down. At the end the count matches. A shim left on the base finds its way under the next motor, and a shim in the coupling guard finds its way into the coupling.</div></div>"
+  }
+}

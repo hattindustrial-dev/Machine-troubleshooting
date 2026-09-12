@@ -1,0 +1,862 @@
+{
+  "key": "safeguarding",
+  "num": "14",
+  "name": "Machine Safeguarding and PSR",
+  "source": "builtwright_safeguarding_v1.html",
+  "tabs": [
+    {
+      "id": "overview",
+      "label": "Overview"
+    },
+    {
+      "id": "hazards",
+      "label": "Hazards"
+    },
+    {
+      "id": "guards",
+      "label": "Guards"
+    },
+    {
+      "id": "devices",
+      "label": "Safeguarding Devices"
+    },
+    {
+      "id": "distances",
+      "label": "Distances and Openings"
+    },
+    {
+      "id": "risk",
+      "label": "Risk Assessment"
+    },
+    {
+      "id": "psr",
+      "label": "PSR in Ontario"
+    },
+    {
+      "id": "troubleshoot",
+      "label": "Troubleshoot"
+    },
+    {
+      "id": "selfcheck",
+      "label": "Self-Check"
+    },
+    {
+      "id": "safety",
+      "label": "Safety"
+    }
+  ],
+  "cards": {
+    "hazData": {
+      "nip": {
+        "icon": "ti-circle-dashed",
+        "name": "In-running Nip Point",
+        "role": "Two surfaces moving toward each other, or one moving toward a fixed surface, that pull material in",
+        "body": "Belt entering a sheave, chain entering a sprocket, a roller against a roller, a conveyor belt onto a pulley, a gear mesh, a rope onto a drum. Anything caught at the nip is drawn in with the full force of the drive and there is no reaction time. Nip points are the classic millwright hazard because they are on every drive in the plant, and they are the specific subject of Regulation 851 section 25.",
+        "tips": [
+          "Guard the nip on both sides: where the belt enters and where it leaves, and the return run.",
+          "Nip guards on conveyors at every pulley, including tail and snub pulleys.",
+          "A nip is a nip at any speed. Slow conveyors amputate fingers.",
+          "Section 25: in-running nip hazards are guarded or otherwise protected. No exceptions for slow or small."
+        ]
+      },
+      "shear": {
+        "icon": "ti-scissors",
+        "name": "Shear",
+        "role": "Two edges passing close together",
+        "body": "A cutting action between a moving edge and a fixed one, or two moving edges: a guillotine, a die, a sliding table past a frame, a rotating blade past a fixed blade, a reciprocating part past its housing. The gap can be small enough to admit only a finger and still remove it.",
+        "tips": [
+          "Look for any moving part that passes within about 25 mm of a fixed part.",
+          "Shear points on linear axes and slides are easy to miss because nothing rotates.",
+          "Guard the approach so nothing can be in the gap when it closes."
+        ]
+      },
+      "crush": {
+        "icon": "ti-arrows-minimize",
+        "name": "Crush",
+        "role": "A gap that closes with force",
+        "body": "A press ram, a clamp, a cylinder stroking to a stop, a hoist descending, a scissor lift, a machine part moving to a fixed structure, a load being set down. The gap closes with the force of the actuator or the weight of the load, and the person is in it.",
+        "tips": [
+          "Cylinders on pneumatics and hydraulics create crush points at both ends of the stroke.",
+          "Minimum gaps to avoid crushing (ISO 13854): 500 mm for a body, 300 mm head, 180 mm leg, 100 mm hand and fist, 25 mm finger. A gap that will close to less than these with a person in it is a crush hazard.",
+          "Gravity crush (a raised part that can fall) is present with the power off. Blocks, pins, and props."
+        ]
+      },
+      "entangle": {
+        "icon": "ti-rotate",
+        "name": "Entanglement",
+        "role": "Rotating parts that catch and wrap",
+        "body": "Shafts, couplings, keys, set screws, collars, shaft ends, chucks, spindles, augers, mixers. A smooth shaft can entangle a glove or a sleeve; a projecting key or set screw will entangle anything. A wrap on a shaft does not stop; it pulls the person into the machine. Regulation 851 section 24 covers exposed moving parts.",
+        "tips": [
+          "Every projecting key, set screw, and shaft end is guarded or flush.",
+          "Couplings under a guard that encloses them fully, including the return side.",
+          "Rotating shafts at any speed are entanglement hazards. A shaft turning at 20 rpm with a projecting key will wrap a sleeve.",
+          "Gloves near rotating parts are the entanglement mechanism, not the protection."
+        ]
+      },
+      "eject": {
+        "icon": "ti-arrow-big-right",
+        "name": "Ejection and Impact",
+        "role": "Parts thrown by the machine, or machine parts striking a person",
+        "body": "A broken belt, a thrown chain, a workpiece flung from a chuck, a grinding wheel burst, a coupling element let go, a key at 3600 rpm, swarf and chips, a robot arm moving through a space, a gantry crossing an aisle. Ejection needs a barrier strong enough to stop the part; impact needs a barrier or a distance that keeps the person out of the path.",
+        "tips": [
+          "Guards for ejection are sized for the energy of the part: polycarbonate of the right thickness, steel plate, or mesh with a backing.",
+          "Impact from moving machine parts is a distance guarding and fencing question.",
+          "Robots and automated cells are fenced to the reach and speed of the arm, with interlocked access."
+        ]
+      },
+      "cut": {
+        "icon": "ti-cut",
+        "name": "Cutting and Puncture",
+        "role": "Blades, sharp edges, and projections",
+        "body": "Saw blades, knives, slitters, sharp sheet edges, projecting bolt ends, anchor bolts on an open foundation, expanded metal edges on a guard. Cutting hazards on tools are guarded at the point of operation; sharp edges and projections on the machine itself are removed, capped, or guarded.",
+        "tips": [
+          "A guard with sharp edges is a hazard the guard created. Deburr.",
+          "Point of operation guarding on cutting tools is its own discipline (adjustable, self-adjusting guards).",
+          "Projecting bolt ends and anchor bolts are capped."
+        ]
+      },
+      "energy": {
+        "icon": "ti-bolt",
+        "name": "Stored and Residual Energy",
+        "role": "Energy that stays after the machine is stopped",
+        "body": "Raised loads, compressed springs, charged accumulators, pressurised lines, spinning flywheels, capacitors, hot surfaces, a conveyor on an incline, a counterweight. The machine is off and the energy is still there. Safeguarding covers it during operation; lockout covers it during maintenance; both need to account for it.",
+        "tips": [
+          "Every module in this series has a Safety tab that starts here.",
+          "Safeguarding devices that stop the machine do not release stored energy. A door interlock stops the motor; the raised platen stays raised.",
+          "Guard locking holds an interlocked door closed until stored energy has dissipated (a spindle coasting down, for example)."
+        ]
+      },
+      "other": {
+        "icon": "ti-flame",
+        "name": "Non-mechanical Hazards",
+        "role": "Heat, electricity, noise, chemicals, radiation, ergonomics",
+        "body": "A hazard walk that only looks at moving parts misses half the list. Hot surfaces, electrical enclosures, noise from exhausts and impacts, chemical exposure at the process, laser and UV sources, fumes, dust, lighting, and the ergonomics of the operator position and the maintenance access. These go on the same list with the same risk assessment and often the same PSR.",
+        "tips": [
+          "Hot surfaces above about 60°C are guarded or insulated where contact is possible.",
+          "Noise above 85 dBA is a control requirement, not just a PPE requirement.",
+          "Ergonomics: a guard that forces an awkward reach creates a long-term injury to prevent a short-term one."
+        ]
+      }
+    },
+    "guardData": {
+      "fixed": {
+        "icon": "ti-lock",
+        "name": "Fixed Guard",
+        "role": "A barrier fastened in place that needs a tool to remove. The first choice for any hazard that does not need frequent access.",
+        "body": "A fixed guard has no moving parts and no interlock. It is bolted, screwed, or welded, and removing it needs a tool and time, which is the point: nobody removes it casually. It is the most reliable safeguard because it has nothing to fail. It is the right choice for drives, couplings, shafts, and any hazard where access is needed only for maintenance under lockout.",
+        "tips": [
+          "Fasteners need a tool and stay captive.",
+          "Openings sized per the distance table.",
+          "Full enclosure, including the back and underside.",
+          "If it has to come off more than a few times a year for a task, it should have a door or a port, and the door should be interlocked."
+        ]
+      },
+      "interlocked": {
+        "icon": "ti-door",
+        "name": "Interlocked Guard",
+        "role": "A guard that opens without a tool, with a switch that stops the hazard when it opens.",
+        "body": "A door, hatch, or panel with an interlock switch wired through a safety relay. Opening the guard sends a stop; the machine cannot run with it open. Used where access is needed regularly: clearing, loading, adjustment. The interlock does not prevent access to a hazard that is still moving (a coasting spindle, a descending load), which is what guard locking is for.",
+        "tips": [
+          "Two channels on the switch, monitored by a safety relay, for Category 3.",
+          "Coded switches (magnetic, RFID) resist defeat with a screwdriver or a spare actuator.",
+          "Opening the guard must not restart the machine on closing. Restart is a separate, deliberate action.",
+          "Interlocks are tested on a schedule and after any work on the circuit."
+        ]
+      },
+      "locking": {
+        "icon": "ti-lock-access",
+        "name": "Interlocked Guard with Guard Locking",
+        "role": "The door stays locked until the hazard has stopped.",
+        "body": "A solenoid lock holds the door closed and releases only when the safety system confirms the hazard has stopped: a speed monitor, a timer proven against the coast-down time, or a standstill detector. Required where the hazard continues after the stop signal (spindles, flywheels, rolls, anything with inertia) and where a process would be damaged by an uncontrolled stop. Also used for whole-body access to cells so nobody can be locked in with a restarted machine.",
+        "tips": [
+          "The unlock condition is proven: measured coast-down plus margin, or an actual standstill signal.",
+          "Whole-body access: an escape release inside the cell, and a mechanism (key, trapped key, presence sensing inside) that prevents restart with someone inside.",
+          "A locking interlock that is released by a timer alone is only as safe as the timer setting and the machine's worst-case coast-down."
+        ]
+      },
+      "adjustable": {
+        "icon": "ti-adjustments",
+        "name": "Adjustable and Self-adjusting Guards",
+        "role": "Point-of-operation guards that move with the work or are set by the operator.",
+        "body": "Saw blade guards that ride on the material, drill press guards that telescope, feed guards on shears and brakes. They cover as much of the hazard as the operation allows and rely on the operator to set them correctly or on the workpiece to move them. Lower on the hierarchy than fixed or interlocked because they depend on use, and they are often the only practical option at a point of operation.",
+        "tips": [
+          "Operators trained on the setting, and the setting checked on the PM.",
+          "A self-adjusting guard that sticks or is tied back is a common finding.",
+          "Where an adjustable guard cannot cover the hazard, a device (two-hand, curtain) supplements it."
+        ]
+      },
+      "distance": {
+        "icon": "ti-ruler-measure",
+        "name": "Distance Guarding and Fencing",
+        "role": "Keep the person far enough away that they cannot reach the hazard.",
+        "body": "Perimeter fencing around a cell, a tunnel guard over a conveyor, a fixed barrier at a distance. The reach tables in ISO 13857 and Z432 set the height and distance of the fence relative to the hazard so nobody can reach over, under, through, or around. Access points are interlocked gates, and whole-body access is handled with guard locking and anti-restart measures.",
+        "tips": [
+          "Fence height and setback from the Z432 reach-over tables; 1400 mm is a common minimum with the hazard well inside, and it goes up as the hazard gets closer or higher.",
+          "Reach under: the gap at the bottom of a fence is an opening and follows the opening table.",
+          "Gates interlocked; gaps at hinges and posts within the opening limits.",
+          "Awareness of what is inside: a fence around a cell with a nip point at the gate is a fence around a nip point."
+        ]
+      },
+      "awareness": {
+        "icon": "ti-alert-triangle",
+        "name": "Awareness Barriers, Signs, and Markings",
+        "role": "Not a guard. Sometimes the only thing that fits, and it must be recognised as the bottom of the hierarchy.",
+        "body": "A rope, a chain, a painted line, a sign. An awareness barrier tells a person they are approaching a hazard; it does not stop them. It is acceptable only where the risk assessment shows a low residual risk after other controls, or where a guard is impossible and the hazard is low. A sign on a missing guard is not a control.",
+        "tips": [
+          "Regulation 851 requires guarding, not warnings, for the hazards it lists.",
+          "Awareness barriers are for the outer zone of a cell, the approach to a low-risk area, or a supplement to guarding.",
+          "If an awareness barrier is the only control on a nip, crush, or entanglement hazard, the risk assessment is wrong or was never done."
+        ]
+      }
+    },
+    "devData": {
+      "lightcurtain": {
+        "icon": "ti-line-dashed",
+        "name": "Light Curtains (AOPD)",
+        "role": "A plane of infrared beams; breaking a beam sends a stop.",
+        "body": "A transmitter and receiver column create a plane of beams at a resolution (14, 30, 70 mm and larger). Anything breaking a beam of the resolution size or larger triggers a stop through a safety relay. Used at loading stations, presses, cells, and anywhere a physical guard would block the work. The curtain protects only its plane and only if it is mounted far enough from the hazard for the machine to stop before a hand arrives (Distances tab).",
+        "tips": [
+          "Safety distance calculated from measured stopping time, not assumed.",
+          "Reaching over, under, and around must be prevented by mounting or additional guarding.",
+          "Muting (temporarily disabling the curtain to let material through) is a designed function with its own sensors and logic, never tape.",
+          "Dust, mist, and misalignment cause nuisance trips. Alignment indicators on the columns; clean the windows on the PM.",
+          "Blanking (ignoring a fixed obstruction in the field) increases the effective resolution and the required distance."
+        ]
+      },
+      "scanner": {
+        "icon": "ti-radar",
+        "name": "Laser Scanners and Safety Mats",
+        "role": "Presence sensing over an area rather than a plane.",
+        "body": "A safety laser scanner sweeps a configurable area and stops the machine when something enters the protective field; a warning field further out can slow it. Safety mats detect weight on the floor. Both protect a zone, and both are used where the approach path is not a simple plane: around mobile equipment, in front of a cell, under a robot. Scanners are configured with fields matched to the stopping distance; mats are sized so the person is on the mat before they can reach the hazard.",
+        "tips": [
+          "Scanner field configuration is a safety function: documented, password protected, verified after any change.",
+          "Scanner fields are calculated with the same S = K × T + C logic, with C for reach over the field edge (typically 850 mm for a horizontal field at floor level, or a formula based on mounting height).",
+          "Mats: check for cuts, edge damage, and trip wiring on the PM. A dead zone on a mat is an unprotected zone.",
+          "Scanners get dirty and misaligned. Nuisance trips are a maintenance item before they become a bypass."
+        ]
+      },
+      "twohand": {
+        "icon": "ti-hand-two-fingers",
+        "name": "Two-hand Control",
+        "role": "Both hands on buttons, so neither is in the hazard, until the cycle is at a safe point.",
+        "body": "Two buttons that must be pressed within a short window of each other (typically 0.5 s) and held until the hazardous motion is complete or has passed the point where a hand could reach it. Protects the operator only; anyone else needs other safeguarding. Buttons shrouded and spaced so they cannot be pressed by one hand and an elbow, an arm and a knee, or tied down.",
+        "tips": [
+          "Anti-tie-down and anti-repeat are logic functions in the safety relay, not optional.",
+          "Distance from the buttons to the hazard per the formula, so releasing and reaching cannot beat the stop.",
+          "Protects one person. A second person at the machine needs a curtain, a guard, or their own two-hand station with both required to cycle.",
+          "Hand shrouds inspected: a broken shroud is a defeated control."
+        ]
+      },
+      "interlock": {
+        "icon": "ti-toggle-right",
+        "name": "Interlock Switches",
+        "role": "The switch on the guard that tells the safety system the guard is open.",
+        "body": "Mechanical tongue switches (a coded key on the door enters the switch), magnetic switches (a coded magnet), RFID coded switches (a unique electronic code), hinge switches (in the hinge itself), and position switches with positive-opening contacts. Coded switches resist defeat by a spare actuator or a screwdriver. Positive-opening (positive break) contacts are forced open by the actuator so a welded contact cannot hold the circuit closed. Two channels for Category 3.",
+        "tips": [
+          "Positive opening contacts, marked with the arrow-in-circle symbol, for any interlock in a safety circuit.",
+          "Coded (unique) actuators where defeat is a foreseeable temptation. High-coded RFID resists defeat by a spare key from the drawer.",
+          "Mounting so the switch cannot be actuated by hand from outside the guard, and so the guard cannot be closed with the actuator removed.",
+          "Solenoid locking versions for guard locking; check the locked and unlocked states are both monitored."
+        ]
+      },
+      "estop": {
+        "icon": "ti-hand-stop",
+        "name": "Emergency Stops",
+        "role": "A complementary measure. Required, and not a safeguard.",
+        "body": "The red mushroom button on a yellow background, latching, that removes power from the hazardous motion when pressed. An e-stop depends on a person seeing the problem and reaching the button, which is why it is not a safeguard: it does not prevent the accident, it limits it. Every machine has them, within reach of every operator position and every point where a person could be trapped, and they are wired through safety-rated logic like any other safety function.",
+        "tips": [
+          "Stop category matters: Category 0 removes power immediately (coasting), Category 1 brakes to a stop then removes power, Category 2 stops and holds power (not for e-stops).",
+          "Latching: the button stays pressed until manually reset, and reset does not restart the machine.",
+          "E-stop coverage checked on the PM and in every PSR: can every person at every position reach one.",
+          "Pull-cord e-stops on conveyors: tension, switch function, and the cord not being used as a handrail."
+        ]
+      },
+      "enabling": {
+        "icon": "ti-hand-click",
+        "name": "Enabling Devices and Hold-to-run",
+        "role": "For setup, teaching, inching, and threading: the person holds a control to permit motion, at reduced speed.",
+        "body": "A three-position enabling switch (released off, mid-position on, squeezed hard off) or a hold-to-run button permits motion only while held, usually at a reduced speed and with the guards open. This is the designed alternative to defeating an interlock for a task. The person is in control of the motion, can stop it by letting go or by squeezing in panic, and the reduced speed gives them time.",
+        "tips": [
+          "Reduced speed for enabling modes: typically 250 mm/s for robots (ISO 10218), and machine-specific limits for other equipment.",
+          "Mode selection is a safety function: key switch or password, and the mode is displayed.",
+          "The task that needed the interlock defeated is the task that needs an enabling mode designed."
+        ]
+      },
+      "logic": {
+        "icon": "ti-cpu",
+        "name": "Safety Relays and Safety PLCs",
+        "role": "The monitored logic that turns a switch or a beam into a reliable stop.",
+        "body": "A safety relay takes two channels from an interlock, curtain, or e-stop, checks they agree, checks its own output contactors dropped out (via the feedback loop from the contactor mirror contacts), and only then allows a reset. A safety PLC does the same for many inputs and outputs with configurable logic, and is used on machines with several safety functions and modes. Both are certified to a Performance Level and are the reason a two-channel interlock achieves Category 3 instead of just having two wires.",
+        "tips": [
+          "Feedback loop from the contactor mirror contacts is what detects a welded contactor. Without it, the circuit is not Category 3.",
+          "Reset is manual and deliberate (a button released and pressed), never automatic on guard closure for a guard someone could be behind.",
+          "Safety PLC programs are validated and version controlled. A change to one is a change to every safety function on the machine.",
+          "A standard PLC in the stop path is not a safety device. The safety logic removes power independently of it."
+        ]
+      }
+    }
+  },
+  "trees": {
+    "diagNodes": {
+      "start": {
+        "q": "What is the safeguarding problem?",
+        "hint": "The defeated safeguard is a symptom. Find the task or the nuisance behind it.",
+        "options": [
+          {
+            "label": "Guard found removed or left off",
+            "next": "off1"
+          },
+          {
+            "label": "Interlock jumpered, or curtain muted with tape",
+            "next": "defeat1"
+          },
+          {
+            "label": "Nuisance stops from a curtain, scanner, or interlock",
+            "next": "nuisance1"
+          },
+          {
+            "label": "E-stop does not stop the machine, or stops it wrong",
+            "next": "r_estop"
+          },
+          {
+            "label": "New or moved machine: is a PSR required?",
+            "next": "psr1"
+          },
+          {
+            "label": "Guard opening or distance: is it compliant?",
+            "next": "r_opening"
+          },
+          {
+            "label": "Machine needs access for a task with the guard open",
+            "next": "r_task_mode"
+          }
+        ]
+      },
+      "off1": {
+        "q": "Why was the guard removed?",
+        "options": [
+          {
+            "label": "For a PM task (greasing, tensioning, inspection)",
+            "next": "r_off_pm"
+          },
+          {
+            "label": "To see the process",
+            "next": "r_off_see"
+          },
+          {
+            "label": "It was damaged or does not fit since a change",
+            "next": "r_off_damaged"
+          },
+          {
+            "label": "Nobody knows",
+            "next": "r_off_unknown"
+          }
+        ]
+      },
+      "r_off_pm": {
+        "type": "result",
+        "cls": "fix",
+        "label": "guard designed without maintenance access",
+        "text": "The task is legitimate; the guard made it impossible with the guard on.",
+        "sub": "Add what the task needs: a remote grease fitting block, a tension check port, an inspection window, a hinged and interlocked access door. Then the guard stays on and the task gets done. Put the guard back now, properly fastened, and schedule the modification.",
+        "prevent": "Guard design reviewed against the PM task list before fabrication. Every guard has a way to do the routine tasks through it."
+      },
+      "r_off_see": {
+        "type": "result",
+        "cls": "fix",
+        "label": "no visibility",
+        "text": "The operator needs to watch the process and the guard blocks the view.",
+        "sub": "Polycarbonate window (correct grade for any ejection risk) or mesh panel in the sight line. A camera where a window is impractical. Restore the guard and fit the window.",
+        "prevent": "Sight lines identified in the hazard walk."
+      },
+      "r_off_damaged": {
+        "type": "result",
+        "cls": "action",
+        "label": "damaged or obsolete guard",
+        "text": "The guard was hit, bent, or no longer fits after a modification, so it was set aside.",
+        "sub": "A modified machine needs its guarding reviewed (and may need a PSR if the protective elements changed). Rebuild the guard to Z432 for the machine as it is now, with openings per the table and captive fasteners. Until it is on, the hazard is unguarded: interim barrier and a stop on the task that exposes someone.",
+        "prevent": "Machine modifications go through a change review that includes guarding."
+      },
+      "r_off_unknown": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "unknown reason: treat as a systemic finding",
+        "text": "A guard off with no known reason means guards are coming off routinely and nobody is noticing.",
+        "sub": "Restore it, then audit: walk every drive in the area. Guard colour consistent so a missing one is visible. Guard checks on the operator start-of-shift list. Talk to the crew about what tasks are pushing guards off, without blame; the answers are the design fixes.",
+        "prevent": "Guard inspection on every PM and every shift start. Guards painted a single plant colour."
+      },
+      "defeat1": {
+        "q": "What task or problem was the bypass solving?",
+        "options": [
+          {
+            "label": "A task needs the guard open with the machine moving (threading, adjusting, teaching)",
+            "next": "r_task_mode"
+          },
+          {
+            "label": "Nuisance trips were stopping production",
+            "next": "nuisance1"
+          },
+          {
+            "label": "The interlock or device failed and production could not wait",
+            "next": "r_failed_device"
+          }
+        ]
+      },
+      "r_task_mode": {
+        "type": "result",
+        "cls": "action",
+        "label": "design a mode for the task",
+        "text": "A task that needs motion with the guard open needs a designed reduced-risk mode, not a jumper.",
+        "sub": "Hold-to-run at reduced speed, an enabling device, or inching control, selected by a key or password mode switch, with the guard interlock still monitored so full speed cannot resume with the door open. This is a safety system modification: risk assessed, designed by someone qualified on the system, validated, and documented. In Ontario a change to the protective elements may need a PSR.",
+        "prevent": "Every task that needs guard-open motion identified in the risk assessment before the machine is commissioned."
+      },
+      "r_failed_device": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "safeguard failed, bypassed to keep running",
+        "text": "The machine ran unguarded because the safeguard broke and the fix was slower than a jumper.",
+        "sub": "Remove the bypass. The machine does not run without its safeguarding; that is the regulation and the risk. Repair the device (spare interlock switches and curtain columns in stock for critical machines). Functional test every safety function before restart.",
+        "prevent": "Critical spares for safety devices. A written rule, backed by management, that a failed safeguard stops the machine."
+      },
+      "nuisance1": {
+        "q": "What is tripping it?",
+        "options": [
+          {
+            "label": "Curtain or scanner: dust, mist, forklift traffic, misalignment",
+            "next": "r_nuisance_optical"
+          },
+          {
+            "label": "Interlock: vibration, misaligned actuator, loose door",
+            "next": "r_nuisance_interlock"
+          },
+          {
+            "label": "Trips at random, no visible cause",
+            "next": "r_nuisance_circuit"
+          }
+        ]
+      },
+      "r_nuisance_optical": {
+        "type": "result",
+        "cls": "fix",
+        "label": "optical device: alignment, contamination, or field configuration",
+        "text": "Curtains and scanners trip on what they see, and they see dust, mist, and a forklift crossing the warning field.",
+        "sub": "Clean the windows and columns; add air purge shrouds in dusty areas. Check alignment with the built-in indicators. Review the scanner field shape: a warning field that crosses a forklift aisle stops the line every time a truck passes. Reconfigure (documented and validated) so the field covers the approach to the hazard and not the aisle.",
+        "prevent": "Optical safety devices on the PM: clean, aligned, fields reviewed after any layout change."
+      },
+      "r_nuisance_interlock": {
+        "type": "result",
+        "cls": "fix",
+        "label": "interlock mechanics",
+        "text": "A door that vibrates open a millimetre, an actuator that does not fully enter the switch, or a worn hinge switch trips the interlock intermittently.",
+        "sub": "Door latch and hinge condition. Actuator alignment and approach. Switch mounting rigid. Coded magnetic or RFID switches tolerate more misalignment than tongue switches. Do not fix it by taping the actuator into the switch.",
+        "prevent": "Interlock switch and door mechanics on the PM."
+      },
+      "r_nuisance_circuit": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "safety circuit fault: diagnose, do not reset",
+        "text": "Random trips with no visible cause are the safety relay or safety PLC detecting a fault: a channel disagreement, a feedback fault, a wiring intermittent.",
+        "sub": "Read the relay or PLC diagnostic. Check every input device two-channel agreement, contactor feedback, and the wiring for chafe and moisture. This is the safety system telling you something in it is failing. Resetting until it stays reset is how a machine ends up with one channel doing the work of two.",
+        "prevent": "Safety circuit diagnostics reviewed on every trip, and logged."
+      },
+      "r_estop": {
+        "type": "result",
+        "cls": "escalate",
+        "label": "e-stop function fault",
+        "text": "An e-stop that does not stop, stops only part of the machine, or restarts the machine on reset is a safety circuit fault.",
+        "sub": "Lock out and test every e-stop on the machine. Confirm each removes power from every hazardous motion (a machine with two drives and an e-stop wired to one is half stopped). Confirm the stop category is correct for the machine: a coasting stop on a machine that needs braking is wrong. Confirm reset does not restart. Repair by someone qualified on the safety system; retest everything.",
+        "prevent": "E-stop test on the PM and after any electrical work. Coverage checked in every PSR."
+      },
+      "psr1": {
+        "q": "What has changed?",
+        "options": [
+          {
+            "label": "New machine with guarding, or moved to a new location",
+            "next": "r_psr_yes"
+          },
+          {
+            "label": "Existing machine, guarding or controls modified",
+            "next": "r_psr_modified"
+          },
+          {
+            "label": "New racking, or racking reconfigured",
+            "next": "r_psr_rack"
+          },
+          {
+            "label": "Machine unchanged, just curious",
+            "next": "r_psr_no"
+          }
+        ]
+      },
+      "r_psr_yes": {
+        "type": "result",
+        "cls": "action",
+        "label": "PSR likely required: circumstance 7 (protective elements)",
+        "text": "A new or relocated machine whose guarding is what protects the worker falls under the machine guarding circumstance in the section 7 table.",
+        "sub": "Check the section 7 exemptions: a manufacturer certification to a listed standard with installation per the manufacturer may exempt it. If not exempt, engage a professional engineer before starting the machine, and do the millwright homework (PSR tab): hazard list, guard measurements, stop times, photos, drawings. The report's measures are completed before startup.",
+        "prevent": "PSR requirement checked at the purchase and planning stage, not the day before startup."
+      },
+      "r_psr_modified": {
+        "type": "result",
+        "cls": "action",
+        "label": "modification to protective elements triggers a review",
+        "text": "Changing the guards, the interlocks, the safety controls, or the process the machine runs can require a new PSR even if one was done originally.",
+        "sub": "Document what changed. If the protective elements or the hazards changed, the exemption for a previously reviewed apparatus does not apply and a new review is needed for the changed elements. The Ministry of Labour PSR guideline and the engineer decide the scope.",
+        "prevent": "Change control on machines includes a PSR trigger check."
+      },
+      "r_psr_rack": {
+        "type": "result",
+        "cls": "action",
+        "label": "PSR likely required: circumstance 3 (racking)",
+        "text": "New rack or a reconfigured rack is a rack or stacking structure under the section 7 table, reviewed against CSA A344.",
+        "sub": "Engineer review against the rack drawings and A344: configuration, capacity, anchoring, plumb, load signage, damage, and the installation against the design. The field inspection is millwright work; Rack Grid and PSR Inspector are built for it.",
+        "prevent": "Rack changes (beam levels, uprights, loads) go through the same review as machine changes."
+      },
+      "r_psr_no": {
+        "type": "result",
+        "cls": "fix",
+        "label": "no change, no new review",
+        "text": "An unchanged machine with an existing PSR does not need a new one.",
+        "sub": "Confirm the existing report is on file and its measures were completed. Confirm nothing has actually changed: moved, re-guarded, re-controlled, or re-purposed. If the file cannot be found, the plant cannot demonstrate compliance, and that is a problem worth solving before an inspector asks.",
+        "prevent": "PSR reports filed with the equipment record and referenced in the change control process."
+      },
+      "r_opening": {
+        "type": "result",
+        "cls": "action",
+        "label": "measure the opening and the distance",
+        "text": "An opening is compliant if the distance from it to the nearest hazard meets the table for that opening size.",
+        "sub": "Measure the largest dimension of the opening (slot or square rule). Measure straight-line distance from the opening to the nearest hazard behind it. Compare to the Distances and Openings table. Common failures: mesh with 25 mm openings within 120 mm of a nip; a gap at a hinge or a post; a gap under a fence. Fix by reducing the opening (finer mesh, a filler plate) or increasing the distance (relocating the guard face).",
+        "prevent": "Opening and distance measured and recorded on every guard at commissioning."
+      }
+    }
+  },
+  "selfcheck": {
+    "overview": [
+      [
+        "Which is highest on the hierarchy of controls?",
+        [
+          "A warning sign",
+          "A lockout procedure",
+          "A fixed guard",
+          "Designing the hazard out"
+        ],
+        3,
+        "Elimination first; guards and devices are engineering controls below it."
+      ],
+      [
+        "A sign on a missing guard is?",
+        [
+          "A control",
+          "Not a control",
+          "Adequate for slow machines",
+          "A guard"
+        ],
+        1,
+        "Regulation 851 requires guarding for the hazards it lists."
+      ],
+      [
+        "The Canadian standard for machine safeguarding?",
+        [
+          "CSA Z460",
+          "CSA Z432",
+          "CSA Z462",
+          "CSA B51"
+        ],
+        1,
+        "Z460 is lockout; Z462 is electrical safety."
+      ]
+    ],
+    "hazards": [
+      [
+        "A belt entering a sheave is?",
+        [
+          "A shear point",
+          "An in-running nip point",
+          "A crush point",
+          "Not a hazard at low speed"
+        ],
+        1,
+        "A nip is a nip at any speed. Section 25."
+      ],
+      [
+        "A projecting key on a slow rotating shaft is?",
+        [
+          "Safe below 100 rpm",
+          "An entanglement hazard at any speed",
+          "Only a hazard with gloves",
+          "Fine if painted"
+        ],
+        1,
+        "It wraps a sleeve at 20 rpm."
+      ],
+      [
+        "Which mode of operation is most often missed in a hazard walk?",
+        [
+          "Normal running",
+          "Jam clearing and maintenance",
+          "Startup",
+          "Shutdown"
+        ],
+        1,
+        "The tasks nobody planned for are where people get hurt."
+      ]
+    ],
+    "guards": [
+      [
+        "A fixed guard must?",
+        [
+          "Open by hand",
+          "Need a tool to remove, with captive fasteners",
+          "Be transparent",
+          "Be hinged"
+        ],
+        1,
+        "Nobody removes it casually."
+      ],
+      [
+        "When is guard locking required on an interlocked door?",
+        [
+          "Always",
+          "When the hazard continues after the stop signal (coasting, inertia)",
+          "Never",
+          "Only on robots"
+        ],
+        1,
+        "The door stays locked until standstill is proven."
+      ],
+      [
+        "A guard that comes off for a grease fitting is fixed by?",
+        [
+          "Discipline",
+          "Bringing the fitting outside the guard",
+          "A sign",
+          "Removing the fitting"
+        ],
+        1,
+        "Design for the maintenance that will happen."
+      ]
+    ],
+    "devices": [
+      [
+        "An interlock wired to a standard PLC stop input is?",
+        [
+          "Category 3",
+          "Not a safety circuit; it needs safety-rated logic",
+          "Category 4",
+          "Acceptable if tested"
+        ],
+        1,
+        "A standard PLC is not a safety device."
+      ],
+      [
+        "What detects a welded contactor in a Category 3 circuit?",
+        [
+          "The PLC",
+          "The feedback loop from the contactor mirror contacts to the safety relay",
+          "The operator",
+          "The fuse"
+        ],
+        1,
+        "Without it, two wires are not two channels."
+      ],
+      [
+        "An emergency stop is?",
+        [
+          "A safeguard",
+          "A complementary measure: required, but it does not prevent the accident",
+          "Optional",
+          "A guard"
+        ],
+        1,
+        "It depends on a person seeing and reaching."
+      ],
+      [
+        "Two-hand control protects?",
+        [
+          "Everyone near the machine",
+          "The operator only",
+          "The maintainer",
+          "The product"
+        ],
+        1,
+        "Anyone else needs their own safeguarding."
+      ]
+    ],
+    "distances": [
+      [
+        "A 25 mm slot opening in a guard needs the hazard at least how far behind it?",
+        [
+          "25 mm",
+          "120 mm",
+          "850 mm",
+          "200 mm"
+        ],
+        2,
+        "Over 20 mm slot admits a hand to the wrist: 850 mm."
+      ],
+      [
+        "Light curtain distance formula?",
+        [
+          "S = K + T + C",
+          "S = K × T + C",
+          "S = T ÷ K",
+          "S = C only"
+        ],
+        1,
+        "K 1600 mm/s, T total stopping time, C penetration factor."
+      ],
+      [
+        "T in the safety distance formula includes?",
+        [
+          "Only the curtain response",
+          "Curtain response, logic response, and measured machine stopping time",
+          "The drive ramp setting",
+          "Nothing measured"
+        ],
+        1,
+        "A stop-time measurement is part of every curtain installation."
+      ],
+      [
+        "A 30 mm resolution curtain has a C of?",
+        [
+          "0",
+          "128 mm",
+          "30 mm",
+          "850 mm"
+        ],
+        1,
+        "C = 8 × (30 minus 14)."
+      ]
+    ],
+    "risk": [
+      [
+        "S2 F2 P2 in the ISO 13849 risk graph gives a required PL of?",
+        [
+          "a",
+          "c",
+          "e",
+          "b"
+        ],
+        2,
+        "Serious harm, frequent exposure, scarcely avoidable."
+      ],
+      [
+        "Risk is assessed by?",
+        [
+          "Machine only",
+          "Task, in every mode",
+          "Operator only",
+          "Nameplate"
+        ],
+        1,
+        "The same nip is a different risk during a jam clearance."
+      ]
+    ],
+    "psr": [
+      [
+        "A PSR under Regulation 851 section 7 is conducted by?",
+        [
+          "A millwright",
+          "A professional engineer",
+          "The supervisor",
+          "The manufacturer"
+        ],
+        1,
+        "Signed and sealed report; measures completed before startup."
+      ],
+      [
+        "Which two section 7 circumstances are the everyday ones in a manufacturing plant?",
+        [
+          "Foundries and flammables",
+          "Racking and machine guarding",
+          "Dust and cranes",
+          "Ventilation and hoists"
+        ],
+        1,
+        "The millwright's field knowledge is the substance of both."
+      ],
+      [
+        "A machine with a PSR is moved to a new location. New review?",
+        [
+          "Never needed",
+          "Likely, because the installation and possibly the protective elements changed",
+          "Only if it breaks",
+          "Only after a year"
+        ],
+        1,
+        "The previously-reviewed exemption does not cover modified elements."
+      ],
+      [
+        "What does a millwright bring to a PSR?",
+        [
+          "Coffee",
+          "Hazard list, guard measurements, stop times, photos, drawings",
+          "Nothing",
+          "A guess"
+        ],
+        1,
+        "The homework turns a day into an afternoon."
+      ]
+    ],
+    "troubleshoot": [
+      [
+        "A jumpered interlock is?",
+        [
+          "The problem",
+          "A symptom of a task or a nuisance the safeguard created",
+          "Normal",
+          "Acceptable with a sign"
+        ],
+        1,
+        "Find the task; design a mode for it."
+      ],
+      [
+        "A safety relay that trips at random should be?",
+        [
+          "Reset until it stays reset",
+          "Diagnosed: it is detecting a fault",
+          "Bypassed",
+          "Ignored"
+        ],
+        1,
+        "Resetting is how one channel ends up doing the work of two."
+      ]
+    ],
+    "safety": [
+      [
+        "Functional testing of a light curtain is done with?",
+        [
+          "A hand",
+          "A test rod, never a body part",
+          "A foot",
+          "Nothing"
+        ],
+        1,
+        "The tester is at the hazard."
+      ],
+      [
+        "An interlocked guard is a lockout. True or false?",
+        [
+          "True",
+          "False: maintenance inside a machine is done under lockout",
+          "True with guard locking",
+          "True if tested"
+        ],
+        1,
+        "The interlock is a production safeguard and a backup, not the isolation."
+      ]
+    ]
+  },
+  "panels": {
+    "overview": "<div class=\"callout-box blue\">\n      <div class=\"callout-box-header\"><i class=\"ti ti-bulb callout-box-icon\"></i><div class=\"callout-box-title\">Safeguarding is a machine system, and millwrights build it, modify it, and defeat it</div></div>\n      <div class=\"callout-box-body\">Every guard in the plant was made by someone in the trade. Every interlock was wired to a machine a millwright installed. Every guard that is missing was taken off by someone who needed to get at the machine and did not put it back. <strong>This module covers what the law requires in Ontario, what the standards say a guard has to be, how to size an opening or a distance, how a risk assessment decides what level of safeguarding is needed, and what a pre-start health and safety review is and when one is required.</strong> It is written for the person who has to make the guard, not for the engineer who signs the report, and the two need to understand each other.</div>\n    </div>\n\n    <div class=\"bw-section-label\">The hierarchy of controls, applied to machines</div>\n    <div class=\"info-block\">\n      <table class=\"ref-table\">\n        <tr><th>Level</th><th>What it means for a machine</th><th>Example</th></tr>\n        <tr><td>1. Eliminate</td><td>Design the hazard out</td><td>Replace a nip point with a drive that has no exposed rotating parts; move the operator task away from the hazard</td></tr>\n        <tr><td>2. Substitute</td><td>A less hazardous version of the same thing</td><td>Lower pressure, lower speed, smaller stored energy, a safer process</td></tr>\n        <tr><td>3. Engineering controls: guards and devices</td><td>Physical barriers and safeguarding devices that do not depend on the person</td><td>Fixed guards, interlocked guards, light curtains, two-hand controls</td></tr>\n        <tr><td>4. Awareness</td><td>Warnings, signs, markings, awareness barriers</td><td>Signage on a guard, floor marking, an awareness rope</td></tr>\n        <tr><td>5. Administrative controls and PPE</td><td>Procedures, training, lockout, personal protective equipment</td><td>Lockout procedure, safe work practice, gloves and glasses</td></tr>\n      </table>\n      <ul class=\"info-block-tips\">\n        <li>The higher on the list, the better the control. A sign is not a guard. A procedure is not a guard. Lockout protects maintenance; it does not protect the operator during production.</li>\n        <li>Guards and devices are the millwright's territory. The design decision (which level, which type) comes from the risk assessment, and the construction comes from the standard.</li>\n        <li>Ontario Regulation 851 sections 24, 25, 26, 28, 31, and 32 set the legal minimum for machine guarding in industrial establishments. CSA Z432 is the standard that says how to meet it. ISO 12100, 13849, 13857, and 14120 are the international standards Z432 draws from.</li>\n      </ul>\n    </div>\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: the guard that gets left off was designed wrong</strong>A guard that takes twenty bolts and two people to remove, and has to come off for a five-minute belt check, will be found leaning against the wall. That is a design failure, not a discipline failure. An inspection window, a hinged and interlocked access door, or a tension check port makes the guard something people leave on. Build guards for the maintenance that will happen, not the maintenance that should.</div></div>",
+    "hazards": "<div class=\"bw-section-label\">Mechanical hazards: tap a type</div>\n    <div class=\"card-grid\">\n      <div class=\"type-card\" onclick=\"selectHaz('nip')\" id=\"hcard-nip\"><div class=\"type-card-icon\"><i class=\"ti ti-circle-dashed\"></i></div><div class=\"type-card-name\">In-running nip</div><div class=\"type-card-sub\">Belt on sheave, chain on sprocket, rolls</div></div>\n      <div class=\"type-card\" onclick=\"selectHaz('shear')\" id=\"hcard-shear\"><div class=\"type-card-icon\"><i class=\"ti ti-scissors\"></i></div><div class=\"type-card-name\">Shear</div><div class=\"type-card-sub\">Two edges passing</div></div>\n      <div class=\"type-card\" onclick=\"selectHaz('crush')\" id=\"hcard-crush\"><div class=\"type-card-icon\"><i class=\"ti ti-arrows-minimize\"></i></div><div class=\"type-card-name\">Crush</div><div class=\"type-card-sub\">Closing gap, press, ram</div></div>\n      <div class=\"type-card\" onclick=\"selectHaz('entangle')\" id=\"hcard-entangle\"><div class=\"type-card-icon\"><i class=\"ti ti-rotate\"></i></div><div class=\"type-card-name\">Entanglement</div><div class=\"type-card-sub\">Rotating shafts, couplings, keys</div></div>\n      <div class=\"type-card\" onclick=\"selectHaz('eject')\" id=\"hcard-eject\"><div class=\"type-card-icon\"><i class=\"ti ti-arrow-big-right\"></i></div><div class=\"type-card-name\">Ejection and impact</div><div class=\"type-card-sub\">Thrown parts, moving machine parts</div></div>\n      <div class=\"type-card\" onclick=\"selectHaz('cut')\" id=\"hcard-cut\"><div class=\"type-card-icon\"><i class=\"ti ti-cut\"></i></div><div class=\"type-card-name\">Cutting and puncture</div><div class=\"type-card-sub\">Blades, sharp edges, projections</div></div>\n      <div class=\"type-card\" onclick=\"selectHaz('energy')\" id=\"hcard-energy\"><div class=\"type-card-icon\"><i class=\"ti ti-bolt\"></i></div><div class=\"type-card-name\">Stored and residual energy</div><div class=\"type-card-sub\">Gravity, springs, pressure, inertia</div></div>\n      <div class=\"type-card\" onclick=\"selectHaz('other')\" id=\"hcard-other\"><div class=\"type-card-icon\"><i class=\"ti ti-flame\"></i></div><div class=\"type-card-name\">Non-mechanical</div><div class=\"type-card-sub\">Heat, electrical, noise, chemical, ergonomic</div></div>\n    </div>\n    <div id=\"haz-display\" style=\"margin-top:1rem;\"><div class=\"comp-placeholder\">select a hazard type above</div></div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-eye\"></i> Hazard identification: how to walk a machine</div>\n      <ul class=\"info-block-tips\">\n        <li>Walk it in every mode: normal running, setup, changeover, cleaning, jam clearing, maintenance. The hazards that hurt people are the ones present during the tasks nobody planned for.</li>\n        <li>Follow the energy: every motor, every cylinder, every spring, every raised load, every pressurised line. Where does each one move something, and where could a person be when it does.</li>\n        <li>Look at the pinch points at the machine's own scale: a 5 mm gap that closes is a fingertip; a 100 mm gap is a hand; a 500 mm gap is a body.</li>\n        <li>Ask who reaches in, where, and why. The reasons are the tasks that need a safe method, not a sign.</li>\n        <li>Photograph and list every hazard with its location, the task that exposes someone to it, and the current control. That list is the input to the risk assessment and the PSR.</li>\n      </ul>\n    </div>",
+    "guards": "<div class=\"bw-section-label\">Guard types: tap a type</div>\n    <div class=\"card-grid\">\n      <div class=\"type-card\" onclick=\"selectGuard('fixed')\" id=\"gcard-fixed\"><div class=\"type-card-icon\"><i class=\"ti ti-lock\"></i></div><div class=\"type-card-name\">Fixed guard</div><div class=\"type-card-sub\">Needs a tool to remove. The default.</div></div>\n      <div class=\"type-card\" onclick=\"selectGuard('interlocked')\" id=\"gcard-interlocked\"><div class=\"type-card-icon\"><i class=\"ti ti-door\"></i></div><div class=\"type-card-name\">Interlocked guard</div><div class=\"type-card-sub\">Opens without a tool, stops the hazard</div></div>\n      <div class=\"type-card\" onclick=\"selectGuard('locking')\" id=\"gcard-locking\"><div class=\"type-card-icon\"><i class=\"ti ti-lock-access\"></i></div><div class=\"type-card-name\">Interlocked with guard locking</div><div class=\"type-card-sub\">Stays locked until the hazard is gone</div></div>\n      <div class=\"type-card\" onclick=\"selectGuard('adjustable')\" id=\"gcard-adjustable\"><div class=\"type-card-icon\"><i class=\"ti ti-adjustments\"></i></div><div class=\"type-card-name\">Adjustable and self-adjusting</div><div class=\"type-card-sub\">Saw guards, feed guards</div></div>\n      <div class=\"type-card\" onclick=\"selectGuard('distance')\" id=\"gcard-distance\"><div class=\"type-card-icon\"><i class=\"ti ti-ruler-measure\"></i></div><div class=\"type-card-name\">Distance guarding and fencing</div><div class=\"type-card-sub\">Keep people far enough away</div></div>\n      <div class=\"type-card\" onclick=\"selectGuard('awareness')\" id=\"gcard-awareness\"><div class=\"type-card-icon\"><i class=\"ti ti-alert-triangle\"></i></div><div class=\"type-card-name\">Awareness barriers</div><div class=\"type-card-sub\">Not a guard. Sometimes all that fits.</div></div>\n    </div>\n    <div id=\"guard-display\" style=\"margin-top:1rem;\"><div class=\"comp-placeholder\">select a guard type above</div></div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-hammer\"></i> Guard construction: what the standard asks for</div>\n      <ul class=\"info-block-tips\">\n        <li>Strong enough to withstand the forces it may see: a person leaning or falling on it, ejected parts, the machine itself. Expanded metal, welded wire mesh, sheet, polycarbonate, or perforated plate on a frame. Plastic sheet that flexes into a hazard is not a guard.</li>\n        <li>No new hazards: rounded edges, no sharp corners, no pinch at the hinge, no projections, no trap between guard and machine.</li>\n        <li>Openings sized to the reach distance to the nearest hazard (Distances and Openings tab). Small openings near the hazard; larger openings only far from it.</li>\n        <li>Fixed guards are fastened with fasteners that need a tool and that stay captive to the guard or the machine when it is opened, so they are not lost and the guard goes back on.</li>\n        <li>Full enclosure of the hazard, including the return side, the underside, and the ends. A belt guard that covers the front and leaves the back open is half a guard.</li>\n        <li>Visibility: mesh or clear panels where the operator needs to see the process. A guard that has to be removed to see the process will be.</li>\n        <li>Maintenance access designed in: inspection windows, hinged doors (interlocked if they open without a tool), tension check ports, grease fitting extensions to the outside.</li>\n        <li>Labelled and painted: a consistent guard colour makes a missing guard obvious from across the plant.</li>\n      </ul>\n    </div>\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: bring the grease fitting outside</strong>The most common reason a guard is off during operation is a grease fitting behind it. A length of hose and a remote fitting block on the outside of the guard removes the reason. Same for oil sight glasses: a window in the guard in line with the glass. Design the guard so the PM can be done through it.</div></div>",
+    "devices": "<div class=\"bw-section-label\">Safeguarding devices: tap a type</div>\n    <div class=\"card-grid\">\n      <div class=\"type-card\" onclick=\"selectDev('lightcurtain')\" id=\"dcard-lightcurtain\"><div class=\"type-card-icon\"><i class=\"ti ti-line-dashed\"></i></div><div class=\"type-card-name\">Light curtains</div><div class=\"type-card-sub\">Presence sensing across an opening</div></div>\n      <div class=\"type-card\" onclick=\"selectDev('scanner')\" id=\"dcard-scanner\"><div class=\"type-card-icon\"><i class=\"ti ti-radar\"></i></div><div class=\"type-card-name\">Laser scanners and mats</div><div class=\"type-card-sub\">Presence sensing in an area</div></div>\n      <div class=\"type-card\" onclick=\"selectDev('twohand')\" id=\"dcard-twohand\"><div class=\"type-card-icon\"><i class=\"ti ti-hand-two-fingers\"></i></div><div class=\"type-card-name\">Two-hand control</div><div class=\"type-card-sub\">Both hands busy, both hands safe</div></div>\n      <div class=\"type-card\" onclick=\"selectDev('interlock')\" id=\"dcard-interlock\"><div class=\"type-card-icon\"><i class=\"ti ti-toggle-right\"></i></div><div class=\"type-card-name\">Interlock switches</div><div class=\"type-card-sub\">Mechanical, magnetic, RFID coded</div></div>\n      <div class=\"type-card\" onclick=\"selectDev('estop')\" id=\"dcard-estop\"><div class=\"type-card-icon\"><i class=\"ti ti-hand-stop\"></i></div><div class=\"type-card-name\">Emergency stops</div><div class=\"type-card-sub\">Not a safeguard. Still required.</div></div>\n      <div class=\"type-card\" onclick=\"selectDev('enabling')\" id=\"dcard-enabling\"><div class=\"type-card-icon\"><i class=\"ti ti-hand-click\"></i></div><div class=\"type-card-name\">Enabling devices and hold-to-run</div><div class=\"type-card-sub\">For setup and inching</div></div>\n      <div class=\"type-card\" onclick=\"selectDev('logic')\" id=\"dcard-logic\"><div class=\"type-card-icon\"><i class=\"ti ti-cpu\"></i></div><div class=\"type-card-name\">Safety relays and safety PLCs</div><div class=\"type-card-sub\">The logic that makes the device work</div></div>\n    </div>\n    <div id=\"dev-display\" style=\"margin-top:1rem;\"><div class=\"comp-placeholder\">select a device type above</div></div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-shield-check\"></i> Performance level and categories: the short version</div>\n      <div class=\"info-block-body\">ISO 13849-1 rates a safety function by how reliably it performs. Performance Level (PL) a through e is the required reliability from the risk assessment; Category B, 1, 2, 3, 4 is the circuit architecture that achieves it. A single switch and a contactor is Category 1 and gets you PL c at best. Two channels, monitored, with a safety relay is Category 3 or 4 and reaches PL d or e. The risk assessment decides the required PL. The design and the components decide what is delivered.</div>\n      <ul class=\"info-block-tips\">\n        <li>Category 3: a single fault does not cause loss of the safety function, and most faults are detected. Two channels (two contacts on the interlock, two contactors), monitored by a safety relay. The common target for guarding on production machines.</li>\n        <li>Category 4: as 3, plus a single fault is detected at or before the next demand and an accumulation of faults does not cause loss of the function. The target where the harm is severe and frequent.</li>\n        <li>An interlock switch, a safety relay, and two contactors with mirror contacts fed back to the relay is the standard Category 3 guard circuit. A millwright wires the switch and the contactors; the electrician and the safety system designer own the circuit.</li>\n        <li>Never add an interlock to a machine by wiring it into the PLC stop input. A standard PLC is not a safety device. The interlock goes through a safety relay or safety PLC that removes power from the actuators.</li>\n      </ul>\n    </div>",
+    "distances": "<div class=\"bw-section-label\">Safe distances and guard openings (from ISO 13857 and Z432)</div>\n    <div class=\"ref-note\">A guard opening is safe if the hazard is far enough behind it that a body part small enough to enter cannot reach it. The table below gives the minimum distance from the opening to the hazard for slot and square openings. Values are for people 14 years and older; smaller values apply for children where they could be present.</div>\n    <table class=\"ref-table\">\n      <tr><th>Opening (mm)</th><th>Body part that fits</th><th>Slot: minimum distance to hazard</th><th>Square or round: minimum distance</th></tr>\n      <tr><td>up to 4</td><td>fingertip</td><td>2 mm</td><td>2 mm</td></tr>\n      <tr><td>over 4 to 6</td><td>fingertip</td><td>10 mm</td><td>5 mm</td></tr>\n      <tr><td>over 6 to 8</td><td>finger up to knuckle</td><td>20 mm</td><td>15 mm</td></tr>\n      <tr><td>over 8 to 10</td><td>finger up to knuckle</td><td>80 mm</td><td>25 mm</td></tr>\n      <tr><td>over 10 to 12</td><td>finger</td><td>100 mm</td><td>80 mm</td></tr>\n      <tr><td>over 12 to 20</td><td>finger or hand to wrist</td><td>120 mm</td><td>120 mm</td></tr>\n      <tr><td>over 20 to 30</td><td>hand to wrist</td><td>850 mm</td><td>120 mm</td></tr>\n      <tr><td>over 30 to 40</td><td>arm to shoulder</td><td>850 mm</td><td>200 mm</td></tr>\n      <tr><td>over 40 to 120</td><td>arm to shoulder</td><td>850 mm</td><td>850 mm</td></tr>\n    </table>\n    <ul class=\"info-block-tips\">\n      <li>The slot column governs for expanded metal and mesh with elongated openings; measure the longest dimension of the opening.</li>\n      <li>Above 120 mm the opening admits a body and the guard is no longer a guard; distance guarding rules apply.</li>\n      <li>The standard also gives reach-over distances for fencing (how high a fence must be relative to how high and how far away the hazard is) and reach-around distances for edges. For a fence protecting a hazard at floor level, 1400 mm is the usual minimum height with the hazard well inside; the Z432 tables give the full matrix.</li>\n    </ul>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-calculator\"></i> Safety distance for a light curtain or other presence-sensing device</div>\n      <div style=\"background:#111110; border:0.5px solid #3a3a36; border-radius:6px; padding:0.75rem 1rem; margin:0.4rem 0 0.6rem 0; font-family:'Share Tech Mono',monospace; font-size:12px; color:#EF9F27; line-height:1.9;\">S = K × T + C<br>S = minimum distance from the detection plane to the hazard<br>K = approach speed. ISO 13855 rule for a vertical curtain: calculate first with K = 2000 mm/s; if the result is over 500 mm, recalculate with K = 1600 mm/s and use that (minimum 500 mm). If the first result is 500 mm or less, use it (minimum 100 mm)<br>T = total stopping time: device response + safety logic response + machine stopping time (measured with a stop-time meter)<br>C = penetration factor: for curtains with resolution d up to 40 mm, C = 8 × (d minus 14) mm, minimum 0<br><br>Example: 30 mm resolution curtain, total stop time 0.35 s<br>C = 8 × (30 minus 14) = 128 mm<br>First pass: S = 2000 × 0.35 + 128 = 828 mm, which is over 500<br>Second pass: S = 1600 × 0.35 + 128 = 688 mm. Mount the curtain at least 688 mm from the hazard</div>\n      <ul class=\"info-block-tips\">\n        <li>T includes the machine's actual stopping time, measured, not the drive's nominal ramp. A press brake or a conveyor with a heavy load coasts. A stop-time measurement is part of every light curtain installation and every PSR that involves one.</li>\n        <li>A curtain mounted closer than S does not protect anyone; a hand reaches the hazard before the machine stops. The calculation is the installation.</li>\n        <li>Resolution 14 mm detects a finger; 30 mm a hand; 70 mm an arm. Coarser resolution means a larger C and a greater distance.</li>\n        <li>Reaching over, under, or around the curtain must be prevented by the mounting height and width or by additional guarding. The curtain only protects the plane it covers.</li>\n      </ul>\n    </div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-arrow-autofit-right\"></i> Two-hand control distance</div>\n      <div class=\"info-block-body\">Same formula with C = 250 mm and K = 1600 mm/s: S = 1600 × T + 250. Buttons far enough apart and shrouded so they cannot be operated with one hand and an elbow, and both must be released and re-pressed for each cycle (anti-tie-down).</div>\n    </div>",
+    "risk": "<div class=\"bw-section-label\">Risk assessment: how the level of safeguarding is decided</div>\n    <div class=\"info-block\">\n      <div class=\"info-block-body\">ISO 12100 and CSA Z1002 describe the process: identify the hazards, estimate the risk from each (how badly it could hurt someone, how often someone is exposed, how likely the harmful event is, and whether they could avoid it), evaluate whether that risk is acceptable, and if not, reduce it using the hierarchy of controls, then check again. The output is a documented list of hazards with the risk before and after controls, and the safeguarding that was chosen for each. The ISO 13849 risk graph turns the same inputs into a required Performance Level for any safety function.</div>\n      <table class=\"ref-table\">\n        <tr><th>Parameter</th><th>Options</th><th>What to think about</th></tr>\n        <tr><td>Severity (S)</td><td>S1 slight, reversible; S2 serious, irreversible or fatal</td><td>Amputation, crushing, and entanglement are S2. A bruise is S1.</td></tr>\n        <tr><td>Frequency and duration of exposure (F)</td><td>F1 seldom or short; F2 frequent or continuous</td><td>Once a shift for a moment versus every cycle. Include maintenance and clearing.</td></tr>\n        <tr><td>Possibility of avoidance (P)</td><td>P1 possible under some conditions; P2 scarcely possible</td><td>Speed of the hazard, whether it can be seen coming, whether the person can get clear.</td></tr>\n        <tr><td>Result: required PL</td><td>S1 F1 P1 gives PL a; S2 F2 P2 gives PL e</td><td>The risk graph in ISO 13849-1 Annex A maps the three choices to a required PL from a to e.</td></tr>\n      </table>\n      <ul class=\"info-block-tips\">\n        <li>Assess by task, not just by machine. The same nip point is a different risk during production (guarded) and during a jam clearance (guard open, machine live).</li>\n        <li>Do it with the people who run and maintain the machine in the room. They know the tasks and the workarounds.</li>\n        <li>Residual risk after controls is documented and communicated: signage, training, and procedures cover what the guards cannot.</li>\n        <li>The assessment is the evidence for the PSR. An engineer reviewing a machine wants to see the hazard list, the ratings, and the controls, with the reasoning.</li>\n      </ul>\n    </div>\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: the jam clearance task decides the guard</strong>Ask how the machine gets unjammed. If the answer involves a hand in a gap with the machine energised, that task sets the safeguarding requirement for the whole machine, no matter how well production mode is guarded. The right answer is an interlocked door with guard locking and a safe clearing method, and it is cheaper than the alternative.</div></div>",
+    "psr": "<div class=\"bw-section-label\">Pre-Start Health and Safety Review: Ontario Regulation 851, section 7</div>\n    <div class=\"callout-box blue\">\n      <div class=\"callout-box-header\"><i class=\"ti ti-file-certificate callout-box-icon\"></i><div class=\"callout-box-title\">What a PSR is</div></div>\n      <div class=\"callout-box-body\">A pre-start health and safety review is a review, required by section 7 of Regulation 851 (Industrial Establishments), of a new or modified apparatus, structure, protective element, or process before it is started, to confirm it meets the applicable requirements of the regulation. It is done by a professional engineer, results in a signed report identifying the measures needed for compliance, and the employer must complete those measures before the equipment starts. <strong>The section applies to specific circumstances listed in a table in the regulation, and it has specific exemptions. Read the current section; this tab is a field summary, not the law.</strong></div>\n    </div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-list-numbers\"></i> When section 7 is triggered: the eight circumstances in the table</div>\n      <div class=\"info-block-body\">The table in section 7 lists the situations. In plain language, a PSR is required before starting or resuming operation when the new or modified installation involves:</div>\n      <ul class=\"info-block-tips\">\n        <li>Flammable liquids being located or dispensed in a building, room, or area (relates to section 22).</li>\n        <li>A process that involves a risk of ignition or explosion and creates a condition of imminent hazard (relates to sections 63 and 65).</li>\n        <li>A rack or stacking structure for storage (relates to section 45, and CSA A344 is the referenced standard for steel storage racks).</li>\n        <li>A process that uses or produces a substance that could expose a worker above an occupational exposure limit, requiring ventilation or other controls (relates to sections 127 and 128).</li>\n        <li>A factory that produces aluminum or steel, or a foundry, with respect to specific melting and pouring hazards (relates to sections 68 and 70).</li>\n        <li>A process involving a dust that could cause a dust explosion, with respect to the dust collection or control (relates to section 65).</li>\n        <li>A machine with a protective element or safeguarding device, where the guarding is what section 7 is reviewing (relates to sections 24, 25, 26, 28, 31, and 32). This is the circumstance that covers most machine guarding PSRs and most of the work a millwright will be involved in.</li>\n        <li>A lifting device, travelling crane, or automobile hoist (relates to sections 51 and 53).</li>\n      </ul>\n      <div class=\"info-block-body\">Two of these, racking and machine guarding, are the everyday ones in a manufacturing plant, and they are where a millwright's field knowledge is the substance of the report.</div>\n    </div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-user-check\"></i> Who, what, and the exemptions</div>\n      <ul class=\"info-block-tips\">\n        <li>Who: a professional engineer conducts the review and signs and seals the report. The engineer may rely on measurements, inspection, and documentation provided by others, which is where the millwright comes in.</li>\n        <li>What the report contains: the details of the circumstances, the measures necessary to comply with the applicable sections, and a statement of whether they have been completed. The employer keeps it available, and the joint health and safety committee or representative gets a copy.</li>\n        <li>Exemptions: section 7 sets out limited circumstances where a PSR is not required. In general terms they cover an apparatus that was already reviewed and has not been modified in a way that affects the reviewed elements, and certain cases where the equipment is certified as complying with a listed standard and installed per the manufacturer. The exemptions are narrow and specific; the regulation and the Ministry of Labour guideline are the authority on whether one applies.</li>\n        <li>Modification counts: moving a machine, changing its guarding, changing its controls, adding a device, or changing the process it runs can all trigger a new review. A plant that moved a press and reused the old PSR has not complied.</li>\n        <li>The PSR is a review of compliance with Regulation 851. It is not a substitute for a risk assessment, a commissioning check, or a functional test of the safety system, though a good PSR will look at all three.</li>\n      </ul>\n    </div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-tools\"></i> The millwright's role in a PSR</div>\n      <ul class=\"info-block-tips\">\n        <li>Before the engineer arrives: the machine drawings, the manufacturer's manual and declaration, the hazard walk (Hazards tab), the risk assessment if one exists, the stop-time measurement on any presence-sensing device, and photographs of every guard and device.</li>\n        <li>During the review: walk the machine with the engineer in every mode. Show the tasks: setup, changeover, clearing, maintenance. Point out the guard that comes off and why.</li>\n        <li>Measurements: guard openings and distances (Distances tab), fence heights, curtain mounting distances, interlock function tests, e-stop coverage, guard fastening.</li>\n        <li>After the report: the measures listed are the work order. Build the guards to Z432, wire the devices through safety-rated logic, document the completion, and get the engineer's confirmation before the machine starts.</li>\n        <li>Racking: for a rack PSR under CSA A344, the millwright inspects installation against the drawings, anchoring, plumb, damage, load signage, and configuration versus the design. The Rack Grid and PSR Inspector tools cover this in the field.</li>\n      </ul>\n    </div>\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: the PSR is easier when the millwright did the homework</strong>An engineer who arrives to a machine with a hazard list, photos of every guard, measured openings, a stop-time number, and a drawing of the safety circuit writes the report in an afternoon. The same engineer arriving to \"it's over there\" spends the first day doing the millwright's job at an engineer's rate. The homework is also the record that proves the plant knew what it was doing.</div></div>",
+    "troubleshoot": "<div class=\"bw-section-label\">Safeguarding problems in the field</div>\n    <div class=\"adv-wrap\" id=\"adv-method\">\n      <button class=\"adv-toggle\" onclick=\"toggleAdv('adv-method')\">\n        <div class=\"adv-toggle-left\"><i class=\"ti ti-map-2 adv-toggle-icon\"></i><span class=\"adv-toggle-label\">Diagnostic methodology: a defeated safeguard is a symptom</span></div>\n        <i class=\"ti ti-chevron-down adv-chevron\"></i>\n      </button>\n      <div class=\"adv-body\">\n        <p><strong>A guard that is off, an interlock that is jumpered, a light curtain that is muted with tape: none of these are the problem.</strong> They are what someone did to solve a problem the safeguarding created for them. Find that problem and the safeguard stays on.</p>\n        <p><strong>Ask what task needed it defeated.</strong> Greasing, clearing, watching the process, threading a web, adjusting a guide. Then design for the task: a port, a window, a hold-to-run mode, an interlocked door with locking.</p>\n        <p><strong>Nuisance trips</strong> are the other reason safeguards get defeated. A curtain that stops the line ten times a shift on dust, a scanner that sees a forklift, an interlock that vibrates open. Fix the nuisance and the tape comes off.</p>\n        <p><strong>Never restore a defeated safeguard without finding out why it was defeated.</strong> It will be defeated again tomorrow, by the same person, for the same reason.</p>\n      </div>\n    </div>\n    <div class=\"progress-bar\"><div class=\"progress-fill\" id=\"sg-progress\" style=\"width:8%\"></div></div>\n    <div id=\"sg-tree\"></div>",
+    "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
+    "safety": "<div class=\"bw-section-label\">Working on safeguarding systems</div>\n    <div class=\"callout-box red\">\n      <div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">The person testing the safeguard is standing where it is supposed to protect someone</div></div>\n      <div class=\"callout-box-body\">Functional testing of an interlock, a light curtain, or a two-hand control means operating the machine with the safeguard in the loop and checking that it stops. The tester is at the hazard. <strong>Test with a test piece (a rod for the curtain, a hand-shaped block for the two-hand shroud), never with a body part, and with the machine in a mode where the worst-case failure of the safeguard cannot reach anyone.</strong></div>\n    </div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\">\n      <div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-lock\" style=\"color:#F09595;\"></i> Lockout versus safeguarding</div>\n      <ul class=\"info-block-tips\">\n        <li>An interlocked guard is a production safeguard. It is not a lockout. Opening an interlocked door and reaching in is protected only by the safety circuit, which can fail, and only if guard locking holds the door until the hazard has stopped.</li>\n        <li>Maintenance inside a machine is done under lockout, Regulation 851 section 75 and 76, CSA Z460. The interlock is a backup, not the isolation.</li>\n        <li>Building or modifying a guard on a machine: the machine is locked out. A guard that is being fitted is a guard that is not yet protecting anyone.</li>\n        <li>Testing after modification: a written test procedure, a second person, and a mode where a safeguard failure does not injure the tester.</li>\n      </ul>\n    </div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\">\n      <div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-cpu\" style=\"color:#F09595;\"></i> Safety circuits are not to be improvised</div>\n      <ul class=\"info-block-tips\">\n        <li>Jumpering an interlock, muting a curtain, or bridging a safety relay channel \"just to test\" removes the protection for everyone, not just the person who did it. If a safeguard must be bypassed for a task, that task needs a designed mode (hold-to-run, reduced speed, enabling device) built into the safety system by whoever is qualified to modify it.</li>\n        <li>Wiring changes to a safety circuit are done by someone qualified on the system, documented, and followed by a functional test of every safety function on the machine, not just the one that changed.</li>\n        <li>A safety relay or safety PLC fault that is reset repeatedly without diagnosis is a fault that will eventually be a failure to stop.</li>\n      </ul>\n    </div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-hammer\"></i> Fabricating guards</div>\n      <ul class=\"info-block-tips\">\n        <li>Cutting and welding guard material: standard hot work and metalworking hazards. Expanded metal edges are sharp; grind and deburr before handling.</li>\n        <li>Polycarbonate panels: the right material for impact and visibility, and it must be the right grade and thickness for the ejection hazard. Acrylic shatters.</li>\n        <li>A guard is a structure. Hinges, latches, and frames sized so the guard does not sag, fall, or trap fingers.</li>\n        <li>Paint colour: consistent for guards across the plant, so a missing one is visible.</li>\n      </ul>\n    </div>"
+  }
+}

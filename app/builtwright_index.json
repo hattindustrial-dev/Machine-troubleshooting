@@ -35,7 +35,7 @@
     "selfcheck": "Self-Check",
     "safety": "Safety"
    },
-   "diagnostic_results": 0,
+   "diagnostic_results": 15,
    "self_check_questions": 14,
    "field_tips": 3,
    "has_safety_tab": true
@@ -1118,7 +1118,7 @@
  ],
  "totals": {
   "modules": 23,
-  "diagnostic_results": 365,
+  "diagnostic_results": 380,
   "self_check_questions": 423,
   "field_tips": 77,
   "hub_routes": 67
