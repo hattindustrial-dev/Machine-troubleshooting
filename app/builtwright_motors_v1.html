@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuiltWright: Motors, Mechanical Side: Module 10</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a1a18">
+<link rel="apple-touch-icon" href="builtwright_icon_192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #1a1a18; color: #e8e6df; font-family: 'Rajdhani', sans-serif; min-height: 100vh; padding: 2rem 1rem; }
+  .bw-wrap { max-width: 720px; margin: 0 auto; }
+  .bw-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 1.5rem; border-bottom: 1px solid #3a3a36; padding-bottom: 0.75rem; }
+  .bw-logo { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: #BA7517; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .bw-logo a { color: #BA7517; text-decoration: none; }
+  .bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }
+  .bw-badge { font-family: 'Share Tech Mono', monospace; font-size: 10px; background: #2a1f08; color: #BA7517; padding: 3px 8px; border-radius: 3px; letter-spacing: 1px; border: 0.5px solid #BA7517; }
+  .bw-tabs { display: flex; gap: 4px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }
+  .bw-tab:hover { background: #2e2e2a; color: #e8e6df; border-color: #BA7517; }
+  .bw-tab.active { background: #BA7517; color: #fff; border-color: #BA7517; font-weight: 600; }
+  .bw-panel { display: none; } .bw-panel.active { display: block; }
+  .bw-section-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 2px; color: #5F5E5A; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .family-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; color: #BA7517; text-transform: uppercase; margin: 1rem 0 0.5rem 0; }
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 0.5rem; }
+  .type-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; }
+  .type-card:hover, .type-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }
+  .type-card-icon { font-size: 22px; color: #BA7517; margin-bottom: 5px; }
+  .type-card-name { font-size: 13px; font-weight: 600; color: #f0ede4; margin-bottom: 2px; }
+  .type-card-sub { font-size: 11px; color: #888780; }
+  .comp-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }
+  .comp-detail-header { display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem; }
+  .comp-detail-icon { font-size: 22px; color: #BA7517; }
+  .comp-detail-name { font-size: 16px; font-weight: 600; color: #f0ede4; }
+  .comp-detail-role { font-size: 13px; color: #888780; margin-top: 1px; }
+  .comp-detail-body { font-size: 14px; color: #c8c6bf; line-height: 1.65; margin-bottom: 0.75rem; }
+  .comp-detail-tips { list-style: none; }
+  .comp-detail-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }
+  .comp-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; }
+  .comp-placeholder { text-align: center; padding: 2rem; color: #5F5E5A; font-size: 13px; font-family: 'Share Tech Mono', monospace; letter-spacing: 1px; border: 0.5px dashed #3a3a36; border-radius: 8px; margin-bottom: 1.5rem; }
+  .info-block { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.1rem 1.25rem; margin-bottom: 10px; }
+  .info-block-title { font-size: 15px; font-weight: 600; color: #f0ede4; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px; }
+  .info-block-title i { color: #BA7517; font-size: 17px; }
+  .info-block-body { font-size: 13px; color: #c8c6bf; line-height: 1.6; }
+  .info-block-tips { list-style: none; margin-top: 0.6rem; }
+  .info-block-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }
+  .info-block-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; }
+  .callout-box { border-radius: 8px; padding: 1.1rem 1.25rem; margin-bottom: 1.25rem; border: 1.5px solid #EF9F27; background: #2a1f08; }
+  .callout-box.red { border-color: #A32D2D; background: #200d0d; }
+  .callout-box.blue { border-color: #185FA5; background: #0c1f33; }
+  .callout-box-header { display: flex; align-items: center; gap: 8px; margin-bottom: 0.6rem; }
+  .callout-box-icon { font-size: 20px; color: #EF9F27; }
+  .callout-box.red .callout-box-icon, .callout-box.red .callout-box-title, .callout-box.red strong { color: #F09595; }
+  .callout-box.blue .callout-box-icon, .callout-box.blue .callout-box-title, .callout-box.blue strong { color: #85B7EB; }
+  .callout-box-title { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #EF9F27; font-weight: 600; }
+  .callout-box-body { font-size: 13px; color: #c8c6bf; line-height: 1.6; }
+  .callout-box-body strong { color: #EF9F27; font-weight: 600; }
+  .callout-tips { list-style: none; margin-top: 0.6rem; }
+  .callout-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }
+  .callout-tips li::before { content: '→'; position: absolute; left: 0; color: #EF9F27; }
+  .callout-box.red .callout-tips li::before { color: #F09595; }
+  .field-tip { display: flex; gap: 10px; background: #1e1e1c; border-left: 3px solid #BA7517; border-radius: 0 6px 6px 0; padding: 0.7rem 0.9rem; margin: 0.75rem 0; }
+  .field-tip i { color: #BA7517; font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+  .field-tip div { font-size: 13px; color: #c8c6bf; line-height: 1.55; }
+  .field-tip strong { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517; display: block; margin-bottom: 2px; }
+  .adv-wrap { border-radius: 8px; overflow: hidden; border: 0.5px solid #3a3a36; margin-bottom: 1.25rem; }
+  .adv-toggle { width: 100%; background: #242420; border: none; padding: 0.75rem 1.1rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; gap: 10px; }
+  .adv-toggle-left { display: flex; align-items: center; gap: 8px; }
+  .adv-toggle-icon { font-size: 15px; color: #BA7517; }
+  .adv-toggle-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517; font-weight: 600; text-align: left; }
+  .adv-chevron { font-size: 13px; color: #BA7517; transition: transform 0.2s; }
+  .adv-wrap.open .adv-chevron { transform: rotate(180deg); }
+  .adv-body { display: none; background: #1e1e1c; padding: 1rem 1.1rem; border-top: 0.5px solid #3a3a36; }
+  .adv-wrap.open .adv-body { display: block; }
+  .adv-body p { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-bottom: 0.75rem; }
+  .adv-body strong { color: #e8e6df; font-weight: 600; }
+  .chain-wrap { background: #242420; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; overflow-x: auto; }
+  .chain { display: flex; align-items: center; flex-wrap: nowrap; gap: 0; }
+  .chain-node { flex-shrink: 0; }
+  .chain-box { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 6px; padding: 7px 9px; text-align: center; cursor: pointer; transition: all 0.15s; min-width: 70px; }
+  .chain-box:hover, .chain-box.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }
+  .chain-icon { font-size: 18px; color: #BA7517; display: block; margin-bottom: 2px; }
+  .chain-label { font-size: 11px; font-weight: 600; color: #e8e6df; }
+  .chain-sub { font-size: 9px; color: #888780; }
+  .chain-arrow { font-size: 14px; color: #5F5E5A; padding: 0 3px; flex-shrink: 0; }
+  .sym-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.25rem; }
+  .sym-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .sym-card:hover, .sym-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }
+  .sym-card-label { font-size: 12px; font-weight: 600; color: #f0ede4; text-align: center; }
+  .sym-card-sub { font-size: 10px; color: #888780; text-align: center; }
+  .sym-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }
+  .sym-detail-body { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-top: 0.75rem; }
+  .sym-detail-tips { list-style: none; margin-top: 0.6rem; }
+  .sym-detail-tips li { font-size: 12px; color: #888780; padding: 2px 0 2px 16px; position: relative; line-height: 1.5; }
+  .sym-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; font-size: 11px; }
+  .ref-table { width: 100%; border-collapse: collapse; margin: 0.5rem 0 1rem 0; font-size: 12px; }
+  .ref-table th { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #BA7517; text-align: left; padding: 6px 8px; border-bottom: 1px solid #3a3a36; }
+  .ref-table td { padding: 6px 8px; border-bottom: 0.5px solid #2e2e2a; color: #c8c6bf; vertical-align: top; line-height: 1.4; }
+  .ref-table td:first-child { color: #f0ede4; font-weight: 600; white-space: nowrap; }
+  .progress-bar { height: 3px; background: #242420; border-radius: 2px; margin-bottom: 1rem; overflow: hidden; }
+  .progress-fill { height: 100%; background: #BA7517; border-radius: 2px; transition: width 0.3s; }
+  .tree-q { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1rem 1.25rem; }
+  .tree-q-text { font-size: 15px; font-weight: 600; color: #f0ede4; margin-bottom: 0.5rem; line-height: 1.4; }
+  .tree-q-hint { font-size: 12px; color: #888780; margin-bottom: 0.75rem; font-style: italic; line-height: 1.45; }
+  .tree-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tree-btn { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; padding: 7px 16px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; text-align: left; }
+  .tree-btn:hover { border-color: #BA7517; background: #2a1f08; color: #EF9F27; }
+  .tree-btn.yes { border-color: #3B6D11; } .tree-btn.yes:hover { background: #0e1f05; color: #97C459; }
+  .tree-btn.no { border-color: #A32D2D; } .tree-btn.no:hover { background: #200d0d; color: #F09595; }
+  .tree-result { border-radius: 8px; padding: 1rem 1.25rem; margin-top: 8px; }
+  .tree-result.action { background: #2a1f08; border: 0.5px solid #BA7517; }
+  .tree-result.fix { background: #0e1f05; border: 0.5px solid #3B6D11; }
+  .tree-result.escalate { background: #200d0d; border: 0.5px solid #A32D2D; }
+  .tree-result-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+  .tree-result.action .tree-result-label { color: #EF9F27; }
+  .tree-result.fix .tree-result-label { color: #97C459; }
+  .tree-result.escalate .tree-result-label { color: #F09595; }
+  .tree-result-text { font-size: 14px; font-weight: 500; color: #f0ede4; line-height: 1.55; }
+  .tree-result-sub { font-size: 12px; color: #888780; margin-top: 5px; line-height: 1.5; }
+  .tree-prevent { margin-top: 10px; padding-top: 8px; border-top: 0.5px solid rgba(255,255,255,0.08); font-size: 12px; color: #c8c6bf; line-height: 1.5; }
+  .tree-prevent strong { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #97C459; display: block; margin-bottom: 2px; }
+  .tree-back { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; color: #888780; background: none; border: none; cursor: pointer; padding: 4px 0; text-transform: uppercase; display: inline-flex; align-items: center; gap: 5px; }
+  .tree-back:hover { color: #BA7517; }
+  .bw-footer { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: #5F5E5A; letter-spacing: 1px; text-align: right; margin-top: 1rem; padding-top: 0.75rem; border-top: 0.5px solid #3a3a36; }
+
+  .sc-section { margin-bottom: 1.25rem; }
+  .sc-q { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 0.9rem 1.1rem; margin-bottom: 8px; }
+  .sc-stem { font-size: 14px; font-weight: 600; color: #f0ede4; line-height: 1.45; margin-bottom: 0.6rem; }
+  .sc-opts { display: flex; flex-direction: column; gap: 6px; }
+  .sc-opt { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 500; text-align: left; padding: 7px 12px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; line-height: 1.4; }
+  .sc-opt:hover { border-color: #BA7517; color: #EF9F27; }
+  .sc-opt.correct { border-color: #3B6D11; background: #0e1f05; color: #97C459; }
+  .sc-opt.wrong { border-color: #A32D2D; background: #200d0d; color: #F09595; }
+  .sc-opt:disabled { cursor: default; }
+  .sc-why { display: none; font-size: 12px; color: #c8c6bf; line-height: 1.5; margin-top: 8px; padding-top: 8px; border-top: 0.5px solid rgba(255,255,255,0.08); }
+  .sc-why.show { display: block; }
+  .sc-why strong { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #97C459; display: block; margin-bottom: 2px; }
+  .sc-score { position: sticky; bottom: 0; background: #1a1a18; border-top: 0.5px solid #3a3a36; padding: 0.6rem 0; display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 1rem; }
+  .sc-score-text { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 1px; color: #888780; text-transform: uppercase; }
+  .sc-score-text b { color: #EF9F27; }
+  .sc-bar { flex: 1; height: 4px; background: #242420; border-radius: 2px; overflow: hidden; }
+  .sc-bar div { height: 100%; background: #97C459; width: 0; transition: width 0.3s; }
+  .sc-jump { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; color: #888780; text-decoration: none; text-transform: uppercase; }
+  .sc-jump:hover { color: #EF9F27; }
+
+  @media print {
+    body { background:#fff; color:#000; padding:0; }
+    .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; }
+    .bw-panel { display:none; } .bw-panel.active { display:block; }
+    .bw-wrap { max-width:100%; }
+    .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; }
+    .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; }
+    .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; }
+    .adv-body { display:block !important; }
+    .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; }
+    .progress-bar { display:none; }
+    a { color:#000; text-decoration:none; }
+    .bw-logo a::after { content:"  builtwrightapp.com"; color:#666; }
+    .bw-header { border-bottom:1px solid #000; }
+    .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; }
+  }
+ .related { margin-top:1.25rem; border-top:0.5px solid #3a3a36; padding-top:0.9rem; }
+  .related-label { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:#5F5E5A; margin-bottom:6px; }
+  .related a { display:inline-block; font-size:12px; color:#e8e6df; background:#242420; border:0.5px solid #3a3a36; border-radius:4px; padding:5px 9px; margin:0 6px 6px 0; text-decoration:none; }
+  .related a:hover { border-color:#BA7517; color:#EF9F27; }
+</style>
+</head>
+<body>
+<div class="bw-wrap">
+  <div class="bw-header">
+    <div><div class="bw-logo"><a href="builtwright_diagnose_hub_v1.html">BuiltWright</a></div><div class="bw-title">Motors: Mechanical Side</div></div>
+    <div class="bw-badge">Module 10</div>
+  </div>
+  <div class="bw-tabs">
+    <button class="bw-tab active" onclick="switchTab('overview')">Overview</button>
+    <button class="bw-tab" onclick="switchTab('nameplate')">Nameplate</button>
+    <button class="bw-tab" onclick="switchTab('bearings')">Bearings</button>
+    <button class="bw-tab" onclick="switchTab('mounting')">Mounting</button>
+    <button class="bw-tab" onclick="switchTab('cooling')">Cooling and Heat</button>
+    <button class="bw-tab" onclick="switchTab('amps')">Amps as a Symptom</button>
+    <button class="bw-tab" onclick="switchTab('handoff')">The Handoff</button>
+    <button class="bw-tab" onclick="switchTab('troubleshoot')">Troubleshoot</button>
+    <button class="bw-tab" onclick="switchTab('selfcheck')">Self-Check</button>
+    <button class="bw-tab" onclick="switchTab('safety')" style="border-color:#A32D2D; color:#F09595;">Safety</button>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div id="panel-overview" class="bw-panel active">
+    <div class="callout-box blue">
+      <div class="callout-box-header"><i class="ti ti-bulb callout-box-icon"></i><div class="callout-box-title">Scope: what this module is and is not</div></div>
+      <div class="callout-box-body">An electric motor is a mechanical machine with an electrical heart. The bearings, the shaft, the fan, the frame, the mounting, the alignment, the coupling, and the load are mechanical, and they cause the majority of motor problems. Windings, connections, insulation, voltage, and drives are electrical. <strong>In Ontario, work on the electrical side is the licensed electrician's scope. This module covers everything a millwright owns, and how to hand off cleanly when the problem is not mechanical.</strong> Done well, the millwright's checks are what make the electrician's visit a ten minute confirmation instead of a two hour hunt.</div>
+    </div>
+
+    <div class="bw-section-label">Motor as a machine: tap a component</div>
+    <div class="chain-wrap">
+      <div class="chain">
+        <div class="chain-node"><div class="chain-box" onclick="selectChain('frame')" id="cnode-frame"><i class="ti ti-box chain-icon"></i><div class="chain-label">Frame</div><div class="chain-sub">and feet</div></div></div>
+        <div class="chain-arrow">›</div>
+        <div class="chain-node"><div class="chain-box" onclick="selectChain('bearings')" id="cnode-bearings"><i class="ti ti-circle-dot chain-icon"></i><div class="chain-label">Bearings</div><div class="chain-sub">DE and NDE</div></div></div>
+        <div class="chain-arrow">›</div>
+        <div class="chain-node"><div class="chain-box" onclick="selectChain('rotor')" id="cnode-rotor"><i class="ti ti-rotate chain-icon"></i><div class="chain-label">Rotor and Shaft</div><div class="chain-sub">the moving part</div></div></div>
+        <div class="chain-arrow">›</div>
+        <div class="chain-node"><div class="chain-box" onclick="selectChain('fan')" id="cnode-fan"><i class="ti ti-wind chain-icon"></i><div class="chain-label">Fan and Shroud</div><div class="chain-sub">cooling</div></div></div>
+        <div class="chain-arrow">›</div>
+        <div class="chain-node"><div class="chain-box" onclick="selectChain('stator')" id="cnode-stator"><i class="ti ti-bolt chain-icon"></i><div class="chain-label">Stator</div><div class="chain-sub">electrical: theirs</div></div></div>
+        <div class="chain-arrow">›</div>
+        <div class="chain-node"><div class="chain-box" onclick="selectChain('load')" id="cnode-load"><i class="ti ti-arrow-bar-right chain-icon"></i><div class="chain-label">Coupling and Load</div><div class="chain-sub">what it drives</div></div></div>
+      </div>
+    </div>
+    <div id="chain-display"><div class="comp-placeholder">select a component above</div></div>
+
+    <div class="bw-section-label">The three-phase induction motor in one paragraph</div>
+    <div class="info-block">
+      <div class="info-block-body">Three-phase power in the stator windings creates a magnetic field that rotates at synchronous speed: 3600, 1800, 1200, or 900 rpm at 60 Hz for a 2, 4, 6, or 8 pole motor. The rotor (a squirrel cage of bars in a laminated core) is dragged along behind that field, a little slower. The difference is slip, and it is what produces torque: more load, more slip, more current. A 4-pole motor nameplated at 1750 rpm is running 50 rpm behind its 1800 rpm field at full load, and closer to 1795 unloaded. That is why measuring shaft speed tells you something about load, and why a motor that has slowed noticeably is a motor that is being overloaded or single phased.</div>
+      <ul class="info-block-tips">
+        <li>Current rises with load, roughly linearly near full load. Below about half load, current flattens out and does not fall much further, because the motor draws magnetising current regardless of load. An unloaded motor draws 25 to 40 percent of full load amps.</li>
+        <li>Starting current is 6 to 8 times full load amps on an across-the-line start. That is normal and is why overloads have a time delay.</li>
+        <li>A VFD changes the frequency to change the synchronous speed. At reduced speed the shaft fan moves less air, which matters for cooling.</li>
+        <li>Single phase motors, DC motors, and servo motors have their own behaviour and their own components (capacitors, brushes, encoders). This module is mostly about the three-phase induction motor because that is most of what is on a plant floor.</li>
+      </ul>
+    </div>
+
+    <div class="field-tip"><i class="ti ti-tool"></i><div><strong>Field tip: the instant-off test</strong>A motor vibrating or humming: watch or feel it as the power is cut. If the vibration or hum vanishes the instant the power goes off, it was electrical (magnetic forces, unbalanced phases, rotor bar problems). If it decays gradually as the motor coasts down, it is mechanical (unbalance, misalignment, bearings). One test, one second, and you know whose problem it is.</div></div>
+  </div>
+
+  <!-- NAMEPLATE -->
+  <div id="panel-nameplate" class="bw-panel">
+    <div class="bw-section-label">Reading the nameplate: every field is a number you will need</div>
+    <div class="info-block">
+      <div class="info-block-body">Photograph the nameplate on every motor you touch. It is the specification, and most of the troubleshooting questions on this module are answered by comparing what the motor is doing to what the nameplate says it should do.</div>
+      <table class="ref-table">
+        <tr><th>Field</th><th>Means</th><th>Why you care</th></tr>
+        <tr><td>HP or kW</td><td>Rated output power at the shaft</td><td>Against the load. Against the gearbox or pump it drives.</td></tr>
+        <tr><td>FLA (full load amps)</td><td>Current at rated power, rated voltage</td><td>The number a clamp meter reading is compared to. Amps tab.</td></tr>
+        <tr><td>Volts</td><td>Rated voltage, often dual (230/460, 575)</td><td>575 V is common in Ontario and unusual elsewhere. Connection must match the supply.</td></tr>
+        <tr><td>RPM</td><td>Full load speed</td><td>1750 means 4-pole with 50 rpm slip. Measured speed against this tells you load.</td></tr>
+        <tr><td>SF (service factor)</td><td>Overload the motor can carry continuously, as a multiplier (1.0, 1.15, 1.25)</td><td>1.15 SF means 15 percent over nameplate HP is allowed, at higher temperature and shorter life. Not a design margin to use up.</td></tr>
+        <tr><td>Frame</td><td>NEMA or IEC frame size (143T, 256T, 100L, 132M)</td><td>Fixes shaft diameter, shaft height, foot spacing, and mounting. A replacement is ordered by frame.</td></tr>
+        <tr><td>Enclosure</td><td>ODP, TEFC, TENV, XP, wash-down</td><td>Open drip proof breathes; totally enclosed fan cooled does not. Sets what environment it survives.</td></tr>
+        <tr><td>Insulation class</td><td>A, B, F, H</td><td>Maximum winding temperature: 105, 130, 155, 180°C. Cooling tab.</td></tr>
+        <tr><td>Ambient</td><td>Design ambient, normally 40°C</td><td>Above this the motor must be derated. A motor in a 50°C corner is running over its rating at nameplate load.</td></tr>
+        <tr><td>Duty</td><td>Continuous (S1) or intermittent</td><td>An intermittent duty motor run continuously overheats.</td></tr>
+        <tr><td>Design</td><td>NEMA A, B, C, D</td><td>Starting torque and slip characteristics. B is standard. D is high slip for punch presses and hoists.</td></tr>
+        <tr><td>Efficiency</td><td>Percent at full load</td><td>Losses are heat. A premium efficiency motor runs cooler.</td></tr>
+        <tr><td>Bearings</td><td>DE and NDE bearing numbers (6309 C3, etc.)</td><td>Order by this. C3 clearance is standard for motors.</td></tr>
+        <tr><td>Inverter duty</td><td>Rated for VFD use</td><td>Insulation for voltage spikes, and often an insulated bearing or grounding provision.</td></tr>
+      </table>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-ruler-measure"></i> NEMA frame decoder</div>
+      <div class="info-block-body">The frame number carries the dimensions. First two digits divided by four is the shaft centreline height in inches. The T suffix means the current (post-1964) standard. The full number fixes the shaft diameter, keyway, and foot pattern.</div>
+      <table class="ref-table">
+        <tr><th>Frame</th><th>Shaft height (D)</th><th>Shaft dia (U)</th><th>Typical HP at 1800 rpm</th></tr>
+        <tr><td>143T, 145T</td><td>3.5 in</td><td>0.875 in</td><td>1 to 2</td></tr>
+        <tr><td>182T, 184T</td><td>4.5 in</td><td>1.125 in</td><td>3 to 5</td></tr>
+        <tr><td>213T, 215T</td><td>5.25 in</td><td>1.375 in</td><td>7.5 to 10</td></tr>
+        <tr><td>254T, 256T</td><td>6.25 in</td><td>1.625 in</td><td>15 to 20</td></tr>
+        <tr><td>284T, 286T</td><td>7.0 in</td><td>1.875 in</td><td>25 to 30</td></tr>
+        <tr><td>324T, 326T</td><td>8.0 in</td><td>2.125 in</td><td>40 to 50</td></tr>
+        <tr><td>364T, 365T</td><td>9.0 in</td><td>2.375 in</td><td>60 to 75</td></tr>
+        <tr><td>404T, 405T</td><td>10.0 in</td><td>2.875 in</td><td>100 to 125</td></tr>
+        <tr><td>444T, 445T</td><td>11.0 in</td><td>3.375 in</td><td>150 to 200</td></tr>
+      </table>
+      <ul class="info-block-tips">
+        <li>IEC frames (80, 90S, 100L, 132M, 160L) use the shaft height in millimetres as the number. Letters give the foot spacing.</li>
+        <li>A replacement with the same frame bolts in. A different frame is a new base, a new coupling half, and a new alignment.</li>
+        <li>Frame number is the one thing to get right when ordering a spare. HP and rpm on the same frame is not enough; check the shaft.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BEARINGS -->
+  <div id="panel-bearings" class="bw-panel">
+    <div class="bw-section-label">Motor bearings: the mechanical failure</div>
+    <div class="comp-detail">
+      <div class="comp-detail-body">Bearing failure is the most common motor failure by a wide margin, and almost all of it is preventable: over-greasing, under-greasing, belt over-tension, misalignment, contamination, and on VFD-driven motors, electrical fluting. The bearing failure module covers diagnosis in full. This tab is what is specific to motors.</div>
+      <ul class="comp-detail-tips">
+        <li>Drive end (DE) bearing takes the coupling or belt load. Non-drive end (NDE) takes the fan and locates the rotor axially on most designs. A belt-driven motor fails the DE bearing; a misaligned coupled motor fails the DE bearing; a VFD-driven motor with fluting often fails the NDE first because it is the smaller bearing.</li>
+        <li>Deep groove ball bearings with C3 (extra) internal clearance are standard, because the rotor heats and expands. A standard clearance bearing in a motor runs tight and hot.</li>
+        <li>Small motors have sealed bearings: no grease fittings, no maintenance, replace on failure. Larger motors have regreasable bearings with a fill fitting and, on the good ones, a relief plug or drain.</li>
+        <li>Grease type must match. Mixing incompatible thickeners (lithium complex and polyurea, for instance) turns the grease to soup or to soap. The nameplate or manual specifies it. Polyurea is common in motors.</li>
+      </ul>
+    </div>
+
+    <div class="callout-box">
+      <div class="callout-box-header"><i class="ti ti-alert-hexagon callout-box-icon"></i><div class="callout-box-title">Over-greasing a motor pushes grease into the windings</div></div>
+      <div class="callout-box-body">The bearing cavity has a fixed volume. Grease pumped in past that volume goes somewhere. With the relief plug in, it goes past the inner bearing cap and into the motor, onto the windings, where it insulates them from cooling air and eventually causes a winding failure that gets blamed on the electrical side. <strong>Remove the relief plug before greasing. Grease the specified quantity, slowly, with the motor running if the manual says so. Leave the relief plug out for a run period so the excess purges. Then replace it.</strong></div>
+      <ul class="callout-tips">
+        <li>Quantity is in the manual, or by the formula G = 0.005 × D × B (grams, bearing OD and width in mm). A 6309 bearing takes roughly 12 to 15 grams, which is a few strokes of a hand gun, not a full tube.</li>
+        <li>Interval depends on speed, size, and temperature. A 2-pole motor needs greasing several times more often than a 6-pole of the same frame.</li>
+        <li>Ultrasonic monitoring while greasing shows the friction drop as the grease reaches the bearing and the rise when there is too much. It is the right way to grease critical motors.</li>
+        <li>A motor that has just been greased and runs hot at the bearing has been over-greased. It is churning. Remove the relief plug and let it purge.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-bolt"></i> Bearing currents and fluting on VFD motors</div>
+      <div class="info-block-body">A variable frequency drive switches the output voltage thousands of times a second. That switching induces a voltage on the rotor shaft, and the shaft discharges it through the path of least resistance: the bearings. Each discharge is a tiny arc between the ball and the race that melts a pit. Over months the pits line up into a washboard pattern (fluting) across the race, the bearing gets noisy, and it fails. The bearing did nothing wrong.</div>
+      <ul class="info-block-tips">
+        <li>Fluting looks like fine, evenly spaced lines across the race, perpendicular to the direction of rolling. Frosting (a dull grey matte surface) is the early stage. Both are electrical damage, not mechanical.</li>
+        <li>Fixes are on the motor: an insulated bearing (usually NDE), a ceramic hybrid bearing, or a shaft grounding ring that gives the current a path to ground that is not through the bearing. A shaft grounding ring is a retrofit a millwright can do.</li>
+        <li>A motor that is not inverter duty, on a VFD, with a bearing failing every year with a washboard race: this is why.</li>
+        <li>Also check the VFD to motor cable grounding and the drive's carrier frequency setting; both affect bearing currents and both are the electrician's side to adjust.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-arrows-diagonal"></i> Shaft loading: what the motor bearings are rated for</div>
+      <ul class="info-block-tips">
+        <li>Radial load rating on the DE bearing sets how much belt tension or overhung sheave load the motor can carry. It is in the motor catalogue. A large sheave on a long shaft extension on a small frame exceeds it.</li>
+        <li>Sheave as close to the motor bearing as the guard allows. Every extra centimetre of overhang multiplies the bending load.</li>
+        <li>Axial load: most motors have a small axial rating, because a deep groove ball bearing is not a thrust bearing. A vertical motor, or a coupling that transmits thrust from the driven machine, needs a motor designed for it.</li>
+        <li>Coupling misalignment loads the DE bearing every revolution. Alignment tolerance for a motor is the same as for any coupled machine; the motor bearings are usually smaller than the driven machine's, so they fail first.</li>
+      </ul>
+    </div>
+
+    <div class="field-tip"><i class="ti ti-ear"></i><div><strong>Field tip: listen at the NDE</strong>The NDE bearing is behind the fan, small, and the first to flute on a VFD motor. Screwdriver on the NDE bearing housing (through the fan shroud slots, with the motor running and hands clear of the fan) picks up the gravelly hiss of fluting before it is audible without help. Compare it to the DE. Compare it to an identical motor beside it.</div></div>
+  </div>
+
+  <!-- MOUNTING -->
+  <div id="panel-mounting" class="bw-panel">
+    <div class="bw-section-label">Mounting: soft foot, frame distortion, and the base</div>
+    <div class="info-block">
+      <div class="info-block-body">A motor frame is a cast or fabricated shell with the stator pressed inside it and the bearing housings in its end bells. The frame's job is to hold the rotor exactly centred in the stator bore, with an air gap of a fraction of a millimetre all round. Bolt the frame down onto a base that is not flat, and the frame twists. The air gap goes uneven, the magnetic pull goes uneven, the motor hums and vibrates at twice line frequency, and the bearings carry a load that changes with every revolution. That is soft foot, and it is the mounting fault that gets diagnosed as an electrical fault.</div>
+      <ul class="info-block-tips">
+        <li>Soft foot check before any alignment: loosen one foot bolt at a time with an indicator on the foot. Any lift over 0.05 mm (0.002 in) is soft foot. Shim it. The alignment module has the full procedure.</li>
+        <li>Four kinds: a short foot (parallel gap under one foot), an angled foot (foot not parallel to the base), a springy foot (bent foot, or dirt or a burr under it), and induced soft foot (pipe strain or coupling strain pulling the frame). Each is corrected differently.</li>
+        <li>Base condition: rust, paint, grout cracks, and old shims left in place all produce soft foot. Clean to bare metal under the feet.</li>
+        <li>Adapter plates and slide bases: a motor on a slide base for belt tensioning has four more surfaces that can be uneven. Check the slide base to the foundation, then the motor to the slide base.</li>
+        <li>Frame distortion from over-torqued or unevenly torqued foot bolts. Torque in a pattern, to the specification for the bolt size, not to the limit of the wrench.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-arrows-horizontal"></i> Alignment and the coupling</div>
+      <div class="info-block-body">The coupling and alignment module covers the procedure. Motor-specific points:</div>
+      <ul class="info-block-tips">
+        <li>Thermal growth: a motor grows upward as it heats, and a large motor grows enough to matter. The alignment target may include a cold offset so the shafts are aligned hot. It is in the machine documentation or calculated from frame height and temperature rise.</li>
+        <li>Magnetic centre: the rotor of a sleeve bearing motor (large motors) floats axially and finds its own centre when running. The coupling must be set so the rotor runs at magnetic centre, marked on the shaft. Ball bearing motors locate the rotor and do not have this.</li>
+        <li>Rotor end float on sleeve bearing motors is limited by the coupling on a limited end float coupling. Fitting the wrong coupling lets the rotor hit the bearing thrust faces.</li>
+        <li>Coupling hub fit on the motor shaft: motor shafts are made to a standard tolerance and a hub bored oversize walks and frets. Check the fit.</li>
+      </ul>
+    </div>
+
+    <div class="field-tip"><i class="ti ti-tool"></i><div><strong>Field tip: hum that changes when you loosen a foot bolt</strong>A motor humming with a hard, angry, 120 Hz buzz, and the buzz changes when one foot bolt is backed off half a turn: that is soft foot distorting the frame and the air gap. Nothing electrical was ever wrong. The electrician was about to megger it.</div></div>
+  </div>
+
+  <!-- COOLING -->
+  <div id="panel-cooling" class="bw-panel">
+    <div class="bw-section-label">Heat: where it comes from and why hand-on-the-frame lies</div>
+    <div class="info-block">
+      <div class="info-block-body">A motor turns electrical energy into shaft power and heat. The heat is the losses: copper losses in the windings (rising with the square of current), iron losses in the core, friction and windage. A 95 percent efficient 100 HP motor makes about 4 kW of heat at full load, continuously, and the frame and fan have to get rid of it. The winding temperature limit is set by the insulation class, and every 10°C above the class limit roughly halves the insulation life.</div>
+      <table class="ref-table">
+        <tr><th>Insulation class</th><th>Max winding temperature</th><th>Typical frame surface at full load, 40°C ambient</th></tr>
+        <tr><td>B</td><td>130°C</td><td>60 to 75°C</td></tr>
+        <tr><td>F</td><td>155°C</td><td>70 to 90°C</td></tr>
+        <tr><td>H</td><td>180°C</td><td>Up to 100°C</td></tr>
+      </table>
+      <ul class="info-block-tips">
+        <li>A frame you cannot hold your hand on can be a healthy class F motor. The hand test tells you almost nothing. An infrared reading, compared to the same motor last month or to the identical motor beside it, tells you a lot.</li>
+        <li>Design ambient is 40°C. Above that, the motor is over its thermal rating at nameplate load. A motor in a hot enclosure, near an oven, or in a summer roof space is derated by the ambient.</li>
+        <li>Altitude derates cooling above about 1000 m. Not usually an Ontario problem.</li>
+        <li>Frame temperature that has risen from its usual is the symptom. The absolute number is only meaningful against the insulation class and the ambient.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-wind"></i> Cooling paths by enclosure</div>
+      <ul class="info-block-tips">
+        <li>TEFC (totally enclosed fan cooled): a shaft-driven fan at the NDE blows air over the finned frame under a shroud. Nothing enters the motor. The fins, the shroud inlet, and the fan are the cooling system. Blocked fins or a shroud packed with dust or product, and the motor overheats at any load.</li>
+        <li>ODP (open drip proof): air is drawn through the motor, over the windings, and out. Cooler and cheaper, and it eats whatever is in the air. Vent screens blocked with lint or fibre are the usual fault.</li>
+        <li>TENV (totally enclosed non-ventilated): no fan, cooled by the frame surface alone. Small motors and servo motors. Depends on the mounting surface and free air around it.</li>
+        <li>Blower cooled (TEBC): a separate small motor drives the cooling fan, so cooling is independent of shaft speed. Used on VFD motors that run slow. If the blower fails, the main motor overheats at any speed.</li>
+        <li>VFD at low speed: a shaft fan at 20 percent speed moves almost no air. A TEFC motor on a VFD needs a derate below about 50 percent speed at full torque, or a blower, or it cooks.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-flame"></i> Sources of excess heat, mechanical side</div>
+      <ul class="info-block-tips">
+        <li>Overload: the driven machine is asking for more than nameplate. Amps tab.</li>
+        <li>Misalignment and belt over-tension: bearing friction, and current rising to overcome it.</li>
+        <li>Bearing failing: the DE or NDE end hot, frame body normal. A localised hot spot is a bearing; a uniformly hot frame is load, cooling, or electrical.</li>
+        <li>Fan damaged, loose on the shaft, or running backward: a reversed motor rotation on a motor with a unidirectional fan halves the airflow.</li>
+        <li>Frequent starts: each start dumps 6 to 8 times FLA into the windings. Too many starts per hour overheats a motor that never runs above half load. The manufacturer publishes the starts per hour limit.</li>
+        <li>Grease in the windings from over-greasing insulates the winding from the cooling air.</li>
+      </ul>
+    </div>
+
+    <div class="field-tip"><i class="ti ti-tool"></i><div><strong>Field tip: the fan shroud is a filter nobody changes</strong>Pull the shroud on a TEFC motor that has been in a dusty area for a few years. The fins are full, the fan is caked, and the motor has been running twenty degrees hotter than it should for as long as anyone remembers. Compressed air (with the motor locked out and eye protection on) and a stiff brush. Add it to the PM.</div></div>
+  </div>
+  <!-- AMPS -->
+  <div id="panel-amps" class="bw-panel">
+    <div class="bw-section-label">Current draw is a mechanical symptom</div>
+    <div class="comp-detail">
+      <div class="comp-detail-body">The motor draws the current it needs to turn the load. Read the amps and compare to the nameplate FLA and you know how hard the motor is working. A millwright reading amps off the panel ammeter or a drive display is reading the load, and load is a mechanical question: what is the driven machine asking for, and why. Clamping a meter on the leads is the electrician's side in most Ontario plants; reading a permanently installed meter or a VFD display is not.</div>
+      <div style="background:#111110; border:0.5px solid #3a3a36; border-radius:6px; padding:0.75rem 1rem; margin:0.6rem 0; font-family:'Share Tech Mono',monospace; font-size:12px; color:#EF9F27; line-height:1.9;">
+        Percent load ≈ (measured amps ÷ nameplate FLA) × 100<br>
+        Valid from about 50% load upward. Below that, amps flatten and the estimate reads high.<br><br>
+        Example: 20 HP motor, FLA 24 A at 575 V<br>
+        Reads 26 A → about 108% load: over nameplate, into the service factor<br>
+        Reads 12 A → somewhere under 50%: lightly loaded, cannot tell exactly<br>
+        Reads 8 A → unloaded (magnetising current only)
+      </div>
+      <ul class="comp-detail-tips">
+        <li>Read all three phases if you can. They should be within a few percent of each other. One phase different is an electrical problem (unbalanced supply, a bad connection, a winding fault): hand it off with the readings.</li>
+        <li>Read under the actual operating condition, and read it again when the fault is happening. Amps at idle tell you nothing about amps at the jam.</li>
+        <li>Trend it. The same motor, the same load, the same reading month after month. A reading that has risen is the load growing or the mechanical losses growing. A reading that has fallen is a belt slipping, a coupling gone, or a pump losing prime.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-trending-up"></i> What raises amps, mechanical side</div>
+      <table class="ref-table">
+        <tr><th>Cause</th><th>How it shows</th><th>Check</th></tr>
+        <tr><td>Load growth</td><td>Amps up over time, evenly on all phases</td><td>Driven machine: pump off its curve, fan blades dirty, conveyor overloaded, product buildup, worn wear parts making more drag</td></tr>
+        <tr><td>Bearing failing (motor or driven)</td><td>Amps up, heat at one bearing, noise</td><td>Uncouple and run solo: amps drop to unloaded value if the motor is fine</td></tr>
+        <tr><td>Misalignment</td><td>Amps up a few percent, vibration, hot DE bearing</td><td>Alignment readings. Amps often fall measurably after a good alignment</td></tr>
+        <tr><td>Belt over-tension</td><td>Amps up, hot DE bearing</td><td>Deflection check</td></tr>
+        <tr><td>Wrong rotation</td><td>Pump or fan draws different amps backward; fan may draw more</td><td>Rotation arrow</td></tr>
+        <tr><td>Mechanical bind or jam</td><td>Amps at locked rotor, overload trips instantly</td><td>Lock out, turn by hand</td></tr>
+        <tr><td>Viscosity or density up</td><td>Pump or mixer amps up with the process</td><td>Process temperature, product change</td></tr>
+        <tr><td>Wrong sheave ratio</td><td>Driven machine faster than design, amps up</td><td>Sheave diameters against the drawing. Fan power goes with the cube of speed</td></tr>
+      </table>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-trending-down"></i> What lowers amps</div>
+      <ul class="info-block-tips">
+        <li>Belt slipping: the motor is not doing the work. Amps down, driven speed down, belt squeal.</li>
+        <li>Coupling or key sheared: motor at unloaded amps, driven machine stopped.</li>
+        <li>Pump lost prime or running dry: amps drop sharply. A dry-running pump seal is minutes from failure.</li>
+        <li>Fan damper closed, or a blocked duct: a fan draws less air and less power when starved. This one surprises people.</li>
+        <li>Product stopped: an empty conveyor or an empty mixer.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-gauge"></i> Speed as a symptom</div>
+      <div class="info-block-body">A tachometer or strobe on the motor shaft gives slip, and slip gives load, without touching anything electrical. A 4-pole motor at 1795 rpm is unloaded. At 1750 it is at full load. At 1720 it is overloaded. At 1650 something is badly wrong: overload, low voltage, or single phasing, and that last one will burn the windings in minutes.</div>
+    </div>
+
+    <div class="field-tip"><i class="ti ti-tool"></i><div><strong>Field tip: uncouple and run solo</strong>Half of all motor arguments end with this test. Lock out, uncouple (or remove the belts), and run the motor alone. Amps at the unloaded value, quiet, cool, no vibration: the motor is fine and the problem is in the driven machine or the coupling. Still hot, noisy, high amps, or vibrating: the motor has a problem, and now you can tell the electrician it was tested uncoupled.</div></div>
+  </div>
+
+  <!-- HANDOFF -->
+  <div id="panel-handoff" class="bw-panel">
+    <div class="bw-section-label">The handoff: what to give the electrician and what is theirs</div>
+    <div class="callout-box blue">
+      <div class="callout-box-header"><i class="ti ti-arrows-exchange callout-box-icon"></i><div class="callout-box-title">A good handoff is a page of readings, not a shrug</div></div>
+      <div class="callout-box-body">The electrician who arrives to a motor that has been mechanically cleared, with the amps, the speed, the temperatures, and the uncoupled test written down, can go straight to the electrical checks. The one who arrives to "the motor's acting up" starts from zero and spends the first hour doing the mechanical checks you could have done. <strong>The handoff package is how a millwright makes the whole maintenance team faster.</strong></div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-clipboard-check"></i> The handoff package</div>
+      <ul class="info-block-tips">
+        <li>Nameplate photo.</li>
+        <li>Symptom, when it started, what changed.</li>
+        <li>Amps per phase from the panel or drive, under load and unloaded if possible.</li>
+        <li>Shaft speed if measured.</li>
+        <li>Infrared temperatures: frame body, DE bearing, NDE bearing, and the same points on a comparable motor.</li>
+        <li>Result of the instant-off test: vanished instantly (electrical) or decayed (mechanical).</li>
+        <li>Result of the uncoupled solo run.</li>
+        <li>Bearing condition: sound, play, temperature.</li>
+        <li>Soft foot and alignment status.</li>
+        <li>Cooling: fins, shroud, fan condition.</li>
+        <li>Greasing history: when, how much, relief plug in or out.</li>
+        <li>Whether it is on a VFD, and whether the bearings show fluting.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-bolt"></i> What is theirs</div>
+      <div class="info-block-body">These are the electrician's checks. Knowing what they are lets you recognise when a fault is heading their way and describe it in their terms.</div>
+      <ul class="info-block-tips">
+        <li>Insulation resistance (megger): winding to ground. Low means moisture, contamination, or insulation breakdown.</li>
+        <li>Winding resistance balance: the three phases should match. An open or shorted winding shows here.</li>
+        <li>Supply voltage and balance: low voltage raises current and heat; a few percent voltage unbalance causes a much larger current unbalance and a lot of heat.</li>
+        <li>Single phasing: one phase lost, motor runs on two, hums, slows, and overheats fast. A blown fuse, a bad contactor tip, a loose connection.</li>
+        <li>Connections: loose or corroded terminals in the peckerhead, the starter, or the disconnect. Heat at a connection is found with infrared on an open panel, which is their job with the right PPE.</li>
+        <li>Overload and protection settings: an overload set wrong trips a healthy motor, or fails to protect an overloaded one.</li>
+        <li>VFD parameters: motor data entered, carrier frequency, volts-per-hertz curve, acceleration ramps, and the drive's own fault log.</li>
+        <li>Rotor bar problems: broken rotor bars show as a rhythmic swing in current at slip frequency and a growl under load. Electrical signature analysis finds them.</li>
+        <li>Capacitors on single phase motors, brushes on DC motors, encoders on servos.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-scale"></i> Scope in Ontario</div>
+      <div class="info-block-body">Electrical work, including connecting and disconnecting motor leads, live testing, and work inside panels and junction boxes, is the scope of a licensed electrician under the Ontario Electrical Safety Code and the trade regulations. A millwright's scope is the mechanical machine. Applying your own lock to a disconnect as part of a group lockout is yours. Opening the peckerhead is not. Where the line sits exactly in a given plant is a matter of the plant's policy and the collective agreement, and the safe assumption is that anything behind a cover with a voltage warning is theirs.</div>
+    </div>
+  </div>
+
+  <!-- TROUBLESHOOT -->
+  <div id="panel-troubleshoot" class="bw-panel">
+    <div class="bw-section-label">Motor fault diagnosis: mechanical side first</div>
+    <div class="adv-wrap" id="adv-method">
+      <button class="adv-toggle" onclick="toggleAdv('adv-method')">
+        <div class="adv-toggle-left"><i class="ti ti-map-2 adv-toggle-icon"></i><span class="adv-toggle-label">Diagnostic methodology: five checks that decide whose problem it is</span></div>
+        <i class="ti ti-chevron-down adv-chevron"></i>
+      </button>
+      <div class="adv-body">
+        <p><strong>1. Look and listen, running.</strong> Infrared at DE bearing, NDE bearing, and frame body. Screwdriver at both bearing housings. Hand on the frame for rhythm. Fan shroud and fins. Read the amps and speed if a meter or drive display is there.</p>
+        <p><strong>2. Instant-off test.</strong> Vibration or hum that vanishes the instant power is cut is electrical. Decays with speed is mechanical.</p>
+        <p><strong>3. Lock out, turn by hand.</strong> The motor shaft and the driven shaft separately if possible. Free, smooth, no rough spots, no drag. Rotor does not rub. Fan spins free and is tight on the shaft.</p>
+        <p><strong>4. Soft foot and alignment.</strong> Loosen one bolt at a time with an indicator on the foot. Then the alignment readings.</p>
+        <p><strong>5. Uncoupled solo run.</strong> Motor alone, no load. If it is clean, the problem is downstream. If it is not, you have isolated it to the motor and you have the readings to hand over.</p>
+        <p>After these five, a fault that is still unexplained is on the electrical side, and the handoff package tells the electrician where to start.</p>
+      </div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="mo-progress" style="width:8%"></div></div>
+    <div id="mo-tree"></div>
+  </div>
+
+  <!-- SELF-CHECK TAB -->
+  <div id="panel-selfcheck" class="bw-panel">
+    <div class="bw-section-label">Self-check: one question at a time, tap an answer, read why</div>
+    <div class="comp-detail"><div class="comp-detail-body">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>
+    <div id="sc-body"></div>
+  </div>
+
+  <!-- SAFETY -->
+  <div id="panel-safety" class="bw-panel">
+    <div class="bw-section-label">Motor safety: electrical hazards a millwright works beside</div>
+    <div class="callout-box red">
+      <div class="callout-box-header"><i class="ti ti-alert-triangle callout-box-icon"></i><div class="callout-box-title">The motor is connected to enough energy to kill you, and it stays connected until the disconnect is open and locked</div></div>
+      <div class="callout-box-body">A stopped motor is a live motor until the disconnect is opened, locked, tagged, and verified. A motor on a VFD can have the drive stopped and the motor leads still live. A motor with a capacitor bank, a soft starter, or a drive can hold a charge after the disconnect is opened. <strong>Your lock on the disconnect is your protection. Verify the isolation by attempting a start, and never assume a stop button, a drive keypad, or a PLC is an isolation.</strong> CSA Z462 is the Canadian standard for electrical safety in the workplace and defines the arc flash and shock boundaries; the plant's electrical safety program applies them.</div>
+    </div>
+
+    <div class="info-block" style="border-color:#A32D2D;">
+      <div class="info-block-title" style="color:#F09595;"><i class="ti ti-lock" style="color:#F09595;"></i> Lockout for motor mechanical work</div>
+      <ul class="info-block-tips">
+        <li>Open the local disconnect (or the breaker if there is no local disconnect), apply your lock and tag, and try to start the motor from every start point: local, remote, HMI.</li>
+        <li>Motors on VFDs: the disconnect must be upstream of the drive, or the drive's own input disconnect. A stopped drive is not an isolation. Some drives have DC bus capacitors that hold a lethal charge for minutes after isolation; the drive manual states the discharge time and the electrician verifies it before anyone opens the drive.</li>
+        <li>Group lockout: your lock on the group lockbox, the electrician's isolation of the source. You do not remove your lock until your work is complete and you are clear.</li>
+        <li>Mechanical energy: the driven machine can turn the motor. Block the driven side. A fan in a duct windmills from draft; a conveyor with a load on an incline runs back; a pump with a head of liquid behind a leaking check valve spins backward.</li>
+        <li>Never work on a motor with a cover off the terminal box unless it is isolated, verified, and you are qualified to be there.</li>
+      </ul>
+    </div>
+
+    <div class="info-block" style="border-color:#A32D2D;">
+      <div class="info-block-title" style="color:#F09595;"><i class="ti ti-wind" style="color:#F09595;"></i> Rotating parts and the fan</div>
+      <ul class="info-block-tips">
+        <li>The shaft key on an uncoupled motor is a rotating blade. Remove the key or tape it before running a motor solo. A loose key thrown from a shaft at 3600 rpm is a projectile.</li>
+        <li>The fan shroud is a guard. A motor run with the shroud off has an exposed fan at 1800 or 3600 rpm.</li>
+        <li>Screwdriver stethoscope on the NDE housing through the shroud slots: the screwdriver goes in, fingers stay out. Keep the tool short and the grip firm.</li>
+        <li>Loose clothing, lanyards, and gloves near an uncoupled running shaft: the shaft grabs and wraps.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-flame"></i> Heat and burns</div>
+      <ul class="info-block-tips">
+        <li>A class F motor frame at full load can be 90°C. That is a burn. Infrared before hand.</li>
+        <li>A motor that has been single phasing or stalled can have a frame well over 100°C and windings that are smoking. Isolate and let it cool before anything else.</li>
+        <li>Grease from a failing bearing can reach smoking temperature. Smell of hot grease from a motor is a stop.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-crane"></i> Handling and lifting</div>
+      <ul class="info-block-tips">
+        <li>Lift by the lifting eye on the frame. The eye is rated for the motor alone; a motor with a gearbox, a pump, or a base attached has a different weight and a different centre of gravity.</li>
+        <li>Never lift by the shaft, the fan shroud, or the terminal box.</li>
+        <li>Rigging is RigIt's territory. Weight from the nameplate or catalogue, sling angle, and rated hardware.</li>
+        <li>Motors in wash-down and food areas are heavy for their size (stainless, cast). Do not judge by the frame number.</li>
+      </ul>
+    </div>
+  </div>
+
+    <div class="related"><div class="related-label">Related modules</div><a href="builtwright_bearing_module_v1.html#diagnose">Bearings: the motor failure</a><a href="builtwright_coupling_alignment_v1.html#procedure">Alignment: soft foot first</a><a href="builtwright_power_transmission_v1.html#tension">Belt drives: tension by gauge</a><a href="builtwright_vibration_v1.html#spectrum">Vibration: electrical signatures and the instant-off test</a><a href="builtwright_clutches_brakes_v1.html#types">Clutches and Brakes: motor brakes</a><a href="builtwright_reference_v1.html#electrical">Reference: frames, speeds, and amps</a></div>
+  <div class="bw-footer">builtwrightapp.com &nbsp;·&nbsp; module 10 of series &nbsp;·&nbsp; motors, mechanical side</div>
+</div>
+<script>
+const chainData = {
+  frame: { icon:'ti-box', name:'Frame and Feet', role:'Holds the stator, carries the bearings, and keeps the rotor centred in an air gap of a fraction of a millimetre',
+    body:'The frame is a machine element, not just a housing. It has to hold the two bearing housings concentric with the stator bore under the magnetic pull of the rotor, the load from the coupling or belt, and the twist of four foot bolts on a base that is never perfectly flat. A distorted frame puts the rotor off centre, the air gap goes uneven, and the motor hums, vibrates, and loads its bearings. Cast iron frames are stiff and heavy. Rolled steel and aluminium frames are lighter and less tolerant of a bad base.',
+    tips:['Soft foot is the frame fault. Check it before every alignment and whenever a motor hums.','Fins on a TEFC frame are the cooling surface. Full fins are a hot motor.','Feet are cast or welded and can crack from over-torque or from a foot bolt used as a jacking point. A cracked foot is soft foot that no shim fixes.','The frame is the ground path. A frame that is not bonded is a shock hazard, and that is the electrician\'s to confirm.']
+  },
+  bearings: { icon:'ti-circle-dot', name:'Bearings: Drive End and Non-Drive End', role:'The most common motor failure, and almost always preventable',
+    body:'Two bearings, usually deep groove ball bearings with C3 clearance, in the end bells. The DE bearing carries the coupling or belt load. The NDE bearing carries the fan and locates the rotor axially on most designs, often with a wave spring to preload it. Sealed for life on small motors; regreasable with a fill fitting and a relief on larger ones. They fail from over-greasing, under-greasing, belt over-tension, misalignment, contamination, and VFD bearing currents.',
+    tips:['Grease type on the nameplate. Do not mix thickeners.','Relief plug out before greasing. Quantity by the formula or the manual.','VFD motors: look for fluting on the race when the bearing comes out. If it is there, the fix is a grounding ring or an insulated bearing, not another bearing.','Bearing numbers on the nameplate: order by them, with the correct clearance suffix.']
+  },
+  rotor: { icon:'ti-rotate', name:'Rotor and Shaft', role:'A laminated steel core with cast aluminium or copper bars, on a shaft that carries everything',
+    body:'The squirrel cage rotor has no electrical connections: it is a core of laminations with conductor bars cast or fitted into slots and shorted at each end by end rings. The stator field induces current in the bars and drags the rotor round. The shaft carries the rotor, the bearings, the fan, and the coupling. It is balanced with the rotor as an assembly. A bent shaft, a damaged shaft extension, or a rotor rubbing the stator is a mechanical fault that looks electrical.',
+    tips:['Shaft run-out at the extension: 0.05 mm (0.002 in) or less on a small motor. More is a bent shaft or a bearing with play.','Rotor rub: a scraping sound, aluminium dust in an ODP motor, or scored laminations visible through the vents. The bearings have failed or the frame is distorted.','Broken rotor bars are an electrical signature (current swing at slip frequency) but the cause is often thermal cycling from too many starts.','Shaft extension damage from a hammer on a coupling hub: the bearing behind it took the same blow. Brinelling.']
+  },
+  fan: { icon:'ti-wind', name:'Fan and Shroud', role:'The cooling system on a TEFC motor. Blocked, damaged, or backward, the motor overheats at any load',
+    body:'A plastic or metal fan on the NDE shaft end draws air through the shroud inlet and pushes it along the finned frame. The shroud directs it. Most fans are bidirectional (radial blades) so the motor cools in either rotation; some are not, and a motor reversed with a unidirectional fan cools badly. On a VFD at low speed the fan moves little air.',
+    tips:['Shroud inlet and fins clear. This is a PM item, and one that gets missed for years.','Fan tight on the shaft. A loose fan rattles, then stops cooling, then comes off.','Fan blades broken or missing: unbalance and lost airflow. Replace the fan.','Blower cooled motors have a separate fan motor. Check it runs.']
+  },
+  stator: { icon:'ti-bolt', name:'Stator and Windings', role:'The electrical side. Insulated copper windings in a laminated steel core, connected through the terminal box',
+    body:'Three sets of coils in slots in the stator core, connected in star or delta at the terminal box (the peckerhead) and to the supply. The windings are insulated to a class (B, F, H) that sets their temperature limit. They fail from heat (overload, poor cooling, too many starts), moisture and contamination (a wet ODP motor, grease from the bearings), voltage stress (VFD spikes on a non-inverter-duty motor), and mechanical damage (a rotor rub). Everything inside the terminal box and inside the windings is the electrician\'s scope.',
+    tips:['The mechanical causes of winding failure (heat, grease, rub) are yours to prevent. The diagnosis of a failed winding is theirs.','A burnt-winding smell is unmistakable and means the motor is done.','A winding that has been wet (flooded, washed down, condensation) needs a megger test before it is energised.','Inverter duty insulation is a real difference. A standard motor on a VFD without a filter has a shortened winding life.']
+  },
+  load: { icon:'ti-arrow-bar-right', name:'Coupling and Load', role:'Everything downstream of the shaft. The cause of most high-amp and hot-motor calls',
+    body:'The motor draws what the load demands. A pump running off its curve, a fan with dirty blades, a gearbox with a failing bearing, a conveyor with more product than designed, a mixer with a heavier batch: every one of these shows as a motor drawing high amps, running hot, and tripping, and the motor is fine. The coupling or belt between them adds its own load from misalignment and tension.',
+    tips:['Uncoupled solo run separates the motor from the load in ten minutes.','Alignment and belt tension by gauge, not by feel.','Amps trended against the process. The load is what changed.','Modules 01 (pumps), 08 (belts and chains), and 09 (gearboxes) for the driven side.']
+  }
+};
+
+const diagNodes = {
+  start: { q:'What is the symptom?', hint:'Lock out before hands go anywhere near it. Electrical isolation is verified by attempting a start.', options:[
+    {label:'Running hot',next:'heat1'},{label:'High amps or overload tripping',next:'amps1'},{label:'Noise',next:'noise1'},{label:'Vibration',next:'vib1'},{label:'Will not start or will not turn',next:'start1'},{label:'Bearing failed, again',next:'bearing1'},{label:'Grease or oil where it should not be',next:'r_grease'}] },
+
+  heat1: { q:'Where is it hot?', hint:'Infrared: DE bearing, NDE bearing, frame body. Compare to a similar motor.', options:[
+    {label:'One bearing end, frame body normal',next:'r_heat_bearing'},{label:'Whole frame, evenly',next:'heat2'},{label:'Frame hot and smells of burnt insulation',next:'r_heat_burnt'}] },
+  r_heat_bearing: { type:'result', cls:'action', label:'bearing running hot', text:'A localised hot spot at one end is that bearing.', sub:'Just greased: over-greased, remove the relief plug and let it purge. DE bearing on a belt drive: belt tension by gauge. DE bearing on a coupled drive: alignment. NDE bearing on a VFD motor: suspect fluting. Any bearing with noise or play: failing, plan the replacement. Bearing Failure module for the full path.', prevent:'Grease quantity and relief plug on the PM sheet. Tension and alignment by gauge. Grounding ring on VFD motors.' },
+  heat2: { q:'Amps against nameplate FLA, and is the cooling clear?', options:[
+    {label:'Amps over FLA',next:'amps1'},{label:'Amps normal, fins or shroud blocked',next:'r_heat_cooling'},{label:'Amps normal, cooling clear, on a VFD at low speed',next:'r_heat_vfd'},{label:'Amps normal, cooling clear, full speed',next:'r_heat_electrical'}] },
+  r_heat_cooling: { type:'result', cls:'fix', label:'cooling blocked', text:'The motor is making normal heat and cannot get rid of it.', sub:'Lock out. Shroud off, fins and fan cleaned. ODP motor: vent screens and the inside if accessible. Check the fan is tight and intact and the rotation matches a unidirectional fan if fitted. Check ambient: a motor in an enclosure or a hot corner may be above its 40°C design ambient regardless.', prevent:'Fins and shroud on the PM. Ambient temperature logged in summer.' },
+  r_heat_vfd: { type:'result', cls:'action', label:'shaft fan not moving enough air at low speed', text:'A TEFC motor at 30 percent speed on a VFD has a fan at 30 percent speed and a fraction of the airflow.', sub:'The motor needs a derate at low speed and full torque, a blower cooling kit, or a larger frame. Check the motor is inverter duty and rated for the speed range. This is a design condition; the fix is on the application. Hand the electrician the speed and torque profile.', prevent:'Blower cooled motors on constant torque VFD applications that run slow.' },
+  r_heat_electrical: { type:'result', cls:'escalate', label:'mechanically clear: hand off', text:'Normal amps, clear cooling, full speed, and still hot. The heat is coming from the electrical side: voltage unbalance, a winding fault developing, or a supply problem.', sub:'Uncoupled solo run to confirm the motor itself is hot with no load. Then the handoff package: readings, temperatures, and the solo run result. The electrician checks voltage balance, winding resistance, and insulation.', prevent:'Amps per phase trended. Voltage balance on the electrician\'s PM.' },
+  r_heat_burnt: { type:'result', cls:'escalate', label:'winding failure', text:'The smell of burnt insulation means the windings have overheated to failure.', sub:'Isolate and lock out. Do not restart. Before the motor goes out for rewind or replacement, find the cause on the mechanical side, because a rewound motor put back into the same conditions fails the same way: was it overloaded (amps history), blocked cooling, grease in the windings, too many starts, single phasing, or a stalled load.', prevent:'The root cause, whichever it was. A rewind without a root cause is a rewind on a schedule.' },
+
+  amps1: { q:'Lock out and uncouple (or remove the belts). Turn the motor and the driven machine by hand separately. How do they feel?', hint:'This one check splits the problem in half.', options:[
+    {label:'Driven machine stiff or seized',next:'r_amps_driven'},{label:'Motor stiff, rough, or rubbing',next:'r_amps_motor'},{label:'Both turn freely',next:'amps2'}] },
+  r_amps_driven: { type:'result', cls:'action', label:'the load is the problem', text:'The motor is drawing high amps because the driven machine is hard to turn.', sub:'The driven machine\'s module: a seized bearing, a rub, product packed in a casing, a gearbox binding. The motor is fine. Independent rotation check element by element.', prevent:'Amps trended so a rising load is caught before it trips. Driven machine bearings on the PM.' },
+  r_amps_motor: { type:'result', cls:'escalate', label:'motor bearing failure or rotor rub', text:'A motor that is stiff, rough, or scraping by hand has a failed bearing or the rotor is touching the stator.', sub:'Bearing: play at the shaft, roughness when turning. Rotor rub: a scraping sound, and on an ODP motor, metallic dust at the vents. A rub means the bearings have collapsed or the frame is distorted, and the stator laminations may be damaged. Motor out for bearings and inspection.', prevent:'Bearing condition on the PM (sound, temperature). Soft foot corrected. Grease quantity.' },
+  amps2: { q:'Run the motor solo, uncoupled. Amps?', options:[
+    {label:'At the unloaded value (roughly 25 to 40% of FLA)',next:'amps3'},{label:'High even uncoupled',next:'r_amps_electrical'},{label:'One phase different from the others',next:'r_amps_unbalance'}] },
+  amps3: { q:'Motor is fine solo. Reconnect. Is the load, the alignment, or the ratio the cause?', options:[
+    {label:'Load has grown: process, product, wear',next:'r_amps_load'},{label:'Misalignment or belt over-tension',next:'r_amps_align'},{label:'Sheave or gearbox ratio changed',next:'r_amps_ratio'}] },
+  r_amps_load: { type:'result', cls:'action', label:'load growth', text:'The driven machine is asking for more than it used to.', sub:'Pump: off its curve, higher density or viscosity, wear ring gone and recirculating. Fan: dirty blades, damper position, wrong rotation. Conveyor: more product, a dragging idler, a worn belt. Mixer: heavier batch. The driven machine module has the diagnosis. Compare amps to the original commissioning value if it exists.', prevent:'Amps trended against the process so growth is seen before it trips. Service factor is not a design margin.' },
+  r_amps_align: { type:'result', cls:'fix', label:'misalignment or belt tension', text:'Misalignment and over-tensioned belts both raise motor current and both heat the DE bearing.', sub:'Belt: deflection and force against the table. Coupling: soft foot, then alignment readings. Amps often fall measurably after correcting either.', prevent:'Tension and alignment by gauge, recorded. Recheck amps after any drive work.' },
+  r_amps_ratio: { type:'result', cls:'fix', label:'wrong ratio: driven machine too fast', text:'A larger motor sheave or a smaller driven sheave, or a gearbox with the wrong ratio, runs the driven machine faster than design. Fan and pump power rises with the cube of speed.', sub:'Sheave diameters or gearbox ratio against the drawing. A fan run 10 percent fast draws 33 percent more power. This shows up after a sheave was replaced with the closest size in stock.', prevent:'Ratio on the drawing and the PM sheet. Replacement sheaves by part number.' },
+  r_amps_electrical: { type:'result', cls:'escalate', label:'high amps uncoupled: electrical', text:'A motor with no load drawing more than its unloaded current has an electrical problem: low voltage, a winding fault, or a wrong connection (delta instead of star, wrong voltage tap).', sub:'Handoff package with the solo run amps, nameplate, and whether the motor was recently connected, moved, or had its voltage changed. The electrician checks the connection, the supply voltage, and the windings.', prevent:'Nameplate connection diagram followed on every reconnect.' },
+  r_amps_unbalance: { type:'result', cls:'escalate', label:'phase unbalance: electrical', text:'Three phases that do not match is a supply, connection, or winding problem.', sub:'Do not run it. A few percent voltage unbalance causes a much larger current unbalance and heats the windings fast. A phase reading near zero is single phasing and the motor will burn. Handoff with the three readings.', prevent:'Electrician\'s connection check on the PM. Phase monitor on critical motors.' },
+
+  noise1: { q:'What kind of noise, and where?', hint:'Screwdriver at each bearing housing. Instant-off test for hum.', options:[
+    {label:'Grinding or rumbling at a bearing',next:'r_noise_bearing'},{label:'Gravelly hiss at the NDE, VFD motor',next:'r_noise_fluting'},{label:'Hum or buzz that stops the instant power is cut',next:'r_noise_hum'},{label:'Scraping or rubbing',next:'r_amps_motor'},{label:'Rattle at the fan end',next:'r_noise_fan'},{label:'Whine that changes with VFD speed',next:'r_noise_vfd'}] },
+  r_noise_bearing: { type:'result', cls:'escalate', label:'bearing failing', text:'Grinding or rumbling localised to one housing is that bearing.', sub:'Confirm by comparing DE to NDE with the screwdriver, and by temperature. Plan the replacement. When it comes out, read the failure: over-greasing (grease everywhere), fluting (washboard race), brinelling (dents from a hammer on the coupling), contamination (scored races). Bearing Failure module.', prevent:'Whichever cause the failed bearing shows.' },
+  r_noise_fluting: { type:'result', cls:'action', label:'electrical fluting from VFD bearing currents', text:'A fine gravelly hiss at the NDE on a VFD-driven motor, getting louder over weeks, is fluting.', sub:'The bearing will fail. When it comes out, the race will show a washboard pattern. Fit a shaft grounding ring at the DE or NDE (retrofit kits exist), or an insulated NDE bearing, or both. Ask the electrician to check the motor cable grounding and the drive carrier frequency, which both affect bearing currents.', prevent:'Grounding ring or insulated bearing on every VFD motor above a few kilowatts. Inverter duty motors on new installs.' },
+  r_noise_hum: { type:'result', cls:'action', label:'magnetic hum: soft foot or electrical', text:'A hum that vanishes the instant the power is cut is magnetic. The mechanical cause is soft foot distorting the frame and the air gap. The electrical causes are voltage unbalance, single phasing, or a winding fault.', sub:'Soft foot check first: loosen one foot bolt at a time and listen. If the hum changes, shim. If soft foot is clear, hand off: the electrician checks voltage balance and the windings. A loud hum with the motor slowing is single phasing; isolate it now.', prevent:'Soft foot before every alignment. Phase monitoring on critical motors.' },
+  r_noise_fan: { type:'result', cls:'fix', label:'fan loose, damaged, or hitting the shroud', text:'A rattle at the NDE is the fan.', sub:'Lock out. Shroud off. Fan tight on the shaft, blades intact, not contacting the shroud. A dented shroud from a knock touches the fan. Debris in the shroud.', prevent:'Shroud and fan on the PM.' },
+  r_noise_vfd: { type:'result', cls:'action', label:'VFD carrier frequency whine', text:'A whine or tone from the motor that changes with speed on a VFD is the drive\'s switching frequency exciting the motor laminations. It is normal to a degree.', sub:'If it is new or louder: something has changed in the drive settings, or the motor is developing a mechanical looseness that amplifies it (loose laminations, loose end bells). Mechanical check for looseness first. Then the electrician can adjust the carrier frequency, which trades noise against heating and bearing current.', prevent:'Drive settings documented. Changes logged.' },
+
+  vib1: { q:'Does the vibration stop the instant power is cut, or decay as it coasts?', hint:'The instant-off test. Watch it or feel it as the stop is pressed.', options:[
+    {label:'Stops instantly',next:'r_noise_hum'},{label:'Decays with speed',next:'vib2'}] },
+  vib2: { q:'Mechanical. Uncoupled solo run: does it still vibrate?', options:[
+    {label:'Yes, vibrates alone',next:'vib3'},{label:'No, smooth alone',next:'r_vib_downstream'}] },
+  vib3: { q:'Soft foot and shaft condition?', options:[
+    {label:'Soft foot found',next:'r_vib_softfoot'},{label:'Shaft run-out or a damaged fan',next:'r_vib_unbalance'},{label:'Bearing noise or play',next:'r_noise_bearing'},{label:'Frame loose on the base',next:'r_vib_loose'}] },
+  r_vib_downstream: { type:'result', cls:'action', label:'coupling, alignment, or the driven machine', text:'The motor is smooth alone. The vibration is coming from the coupling, the alignment, or the driven machine.', sub:'Soft foot on both machines, then alignment readings. Coupling element condition and hub fit. If alignment is good, the driven machine\'s module. Couplings and Alignment module for the signatures (parallel is 2x, angular is 1x axial).', prevent:'Alignment after any work on either machine. Coupling on the PM.' },
+  r_vib_softfoot: { type:'result', cls:'fix', label:'soft foot', text:'The frame is twisted by the base.', sub:'Clean under the feet to bare metal, remove old shims, indicate each foot while loosening its bolt, shim to under 0.05 mm. Then torque in a pattern. Then align. Couplings and Alignment module has the full procedure.', prevent:'Soft foot before every alignment, no exceptions.' },
+  r_vib_unbalance: { type:'result', cls:'action', label:'unbalance: fan, shaft, or coupling hub', text:'Vibration at running speed on a motor running solo is unbalance or a bent shaft.', sub:'Shaft run-out with an indicator at the extension. Fan blades for damage or buildup. Coupling hub (if left on for the solo run) for balance and fit; run without the hub to eliminate it. A rotor that has thrown a balance weight or has a broken bar can be out of balance; that is a motor shop job.', prevent:'Fan cleaned on the PM. Hubs balanced with the coupling on high speed drives.' },
+  r_vib_loose: { type:'result', cls:'fix', label:'looseness', text:'Foot bolts, base bolts, or the base itself.', sub:'Torque every fastener between the motor and the foundation. Check the base for cracks and the grout for voids. A slide base with worn adjusting screws lets the motor rock.', prevent:'Fastener torque on the PM. Base condition inspected.' },
+
+  start1: { q:'Lock out. Does the motor shaft turn freely by hand, uncoupled?', options:[
+    {label:'No, seized or very stiff',next:'r_amps_motor'},{label:'Yes, turns freely',next:'start2'}] },
+  start2: { q:'Does the driven machine turn freely by hand?', options:[
+    {label:'No',next:'r_amps_driven'},{label:'Yes, both free',next:'r_start_electrical'}] },
+  r_start_electrical: { type:'result', cls:'escalate', label:'mechanically clear: will not start is electrical', text:'Both shafts turn freely and the motor will not start. Supply, control circuit, overload, contactor, drive fault, or windings.', sub:'Handoff: mechanical checks done, both free. Note any fault code on the drive. Note whether the motor hums and does not turn (single phasing or a seized rotor, and you have already eliminated seized) or is silent (control circuit or supply).', prevent:'Nothing mechanical to prevent here. A drive fault log is the electrician\'s first stop.' },
+
+  bearing1: { q:'What did the failed bearing look like?', hint:'Read the bearing before it goes in the bin. Bearing Failure module has the patterns.', options:[
+    {label:'Packed with grease, grease in the motor',next:'r_bearing_overgrease'},{label:'Dry, discoloured, no grease',next:'r_bearing_undergrease'},{label:'Washboard lines across the race',next:'r_noise_fluting'},{label:'Dents in the race at ball spacing',next:'r_bearing_brinell'},{label:'Scored, contaminated, rusty',next:'r_bearing_contam'},{label:'Looks normal, just worn out fast',next:'r_bearing_load'}] },
+  r_bearing_overgrease: { type:'result', cls:'fix', label:'over-greasing', text:'Too much grease, or greased with the relief plug in.', sub:'Grease quantity by the formula or the manual. Relief plug out during and after greasing. Interval by the manufacturer chart for the speed and size. If grease has reached the windings, the motor needs cleaning.', prevent:'Quantity and relief plug on the PM sheet. Ultrasonic-assisted greasing on critical motors.' },
+  r_bearing_undergrease: { type:'result', cls:'fix', label:'starvation', text:'The bearing ran dry.', sub:'Interval too long, or the grease fitting was blocked and the grease never reached the bearing, or the wrong grease separated and drained out. Check the fitting and the grease path on the replacement.', prevent:'Interval on the PM. Fittings checked to pass grease.' },
+  r_bearing_brinell: { type:'result', cls:'fix', label:'brinelling: impact', text:'Dents in the race at the ball spacing are from a hammer blow, usually on the coupling hub or the shaft end, or from the motor being dropped.', sub:'Hubs go on with heat or a hydraulic puller, never a hammer. Motors are lifted by the eye and set down gently. False brinelling (from vibration while stationary) has the same pattern with no impact history: a spare motor stored next to a running machine.', prevent:'Hub installation procedure. Rotate stored spare motors periodically.' },
+  r_bearing_contam: { type:'result', cls:'action', label:'contamination or moisture', text:'Scoring is dirt; rust is water.', sub:'Seals on the bearing housing, the grease path, and the environment. Wash-down motors need wash-down bearings and seals. An ODP motor in a wet area is the wrong enclosure.', prevent:'Correct enclosure for the environment. Bearing seals on regreasable motors.' },
+  r_bearing_load: { type:'result', cls:'action', label:'overloaded bearing: belt, alignment, or overhung load', text:'A bearing that wore out fast with no other signature was carrying more load than it was rated for.', sub:'Belt tension by gauge. Sheave overhang against the motor catalogue radial load rating. Coupling alignment. Axial load on a motor not rated for it (vertical, or a coupling transmitting thrust).', prevent:'Belt tension and alignment by gauge. Sheave close to the bearing. Motor selected for the load type.' },
+
+  r_grease: { type:'result', cls:'action', label:'grease where it should not be', text:'Grease at the shaft, through the shroud, or on the windings has come from an over-greased bearing. Oil at the shaft on a sleeve bearing motor is a seal or a level.', sub:'Ball bearing motor: over-greasing, relief plug in. Clean it up, correct the quantity, leave the relief out to purge. Sleeve bearing motor: oil level in the reservoir, oil ring condition, and the shaft seals. Grease on the windings insulates them from cooling and will end in a winding failure.', prevent:'Grease quantity and relief plug on the PM sheet.' }
+};
+
+let currentDiagNode='start', diagHistory=[];
+function switchTab(tab){ if(tab==='selfcheck'){ setTimeout(scRender,0); }document.querySelectorAll('.bw-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.bw-panel').forEach(p=>p.classList.remove('active'));const b=document.querySelector(`[onclick="switchTab('${tab}')"]`);if(b)b.classList.add('active');const p=document.getElementById('panel-'+tab);if(p)p.classList.add('active');if(tab==='troubleshoot')renderDiag('start');}
+function card(d){return `<div class="comp-detail"><div class="comp-detail-header"><i class="ti ${d.icon} comp-detail-icon"></i><div><div class="comp-detail-name">${d.name}</div><div class="comp-detail-role">${d.role}</div></div></div><div class="comp-detail-body">${d.body}</div><ul class="comp-detail-tips">${d.tips.map(t=>`<li>${t}</li>`).join('')}</ul></div>`;}
+function selectChain(id){document.querySelectorAll('.chain-box').forEach(b=>b.classList.remove('selected'));document.getElementById('cnode-'+id).classList.add('selected');document.getElementById('chain-display').innerHTML=card(chainData[id]);}
+function toggleAdv(id){document.getElementById(id).classList.toggle('open');}
+function renderDiag(id){currentDiagNode=id;const n=diagNodes[id];if(!n)return;const pct=Math.min(8+(diagHistory.length/5)*88,96);document.getElementById('mo-progress').style.width=pct+'%';let h='';if(diagHistory.length>0)h+=`<button class="tree-back" onclick="diagBack()"><i class="ti ti-arrow-left"></i> back</button><br><br>`;if(n.type==='result'){document.getElementById('mo-progress').style.width='100%';h+=`<div class="tree-result ${n.cls}"><div class="tree-result-label">${n.label}</div><div class="tree-result-text">${n.text}</div><div class="tree-result-sub">${n.sub}</div>${n.prevent?`<div class="tree-prevent"><strong>Prevent recurrence</strong>${n.prevent}</div>`:''}</div><br><button class="tree-btn" onclick="diagHistory.length=0;renderDiag('start');">Start over</button>`;}else{h+=`<div class="tree-q"><div class="tree-q-text">${n.q}</div>${n.hint?`<div class="tree-q-hint">${n.hint}</div>`:''}<div class="tree-btns">${n.options.map(o=>`<button class="tree-btn ${o.cls||''}" onclick="diagTo('${o.next}')">${o.label}</button>`).join('')}</div></div>`;}document.getElementById('mo-tree').innerHTML=h;}
+function diagTo(id){diagHistory.push(currentDiagNode);renderDiag(id);}
+function diagBack(){if(diagHistory.length>0)renderDiag(diagHistory.pop());}
+(function(){function go(){var h=location.hash.replace('#','');if(h&&document.getElementById('panel-'+h))switchTab(h);}go();window.addEventListener('hashchange',go);})();
+
+const SELFCHECK = {
+  overview: [
+    ['Vibration that vanishes the instant power is cut is?', ['Mechanical', 'Electrical', 'Bearing', 'Unbalance'], 1, 'Decays with speed: mechanical.'],
+    ['A 4-pole motor at 60 Hz has a synchronous speed of?', ['3600', '1800', '1200', '900'], 1, 'Full load speed is 1750-ish because of slip.'],
+    ['An unloaded motor draws about?', ['Zero', '25 to 40% of FLA', '100% FLA', '200% FLA'], 1, 'Magnetising current is drawn regardless of load.']
+  ],
+  nameplate: [
+    ['Service factor 1.15 means?', ['15% design margin to use', '15% overload allowed continuously, at higher temperature and shorter life', '15% efficiency loss', 'Nothing'], 1, 'Not a design margin.'],
+    ['Frame 256T shaft diameter?', ['0.875 in', '1.625 in', '2.125 in', '3.375 in'], 1, 'Frame fixes shaft, height, and foot pattern.'],
+    ['Design ambient for a standard motor?', ['25°C', '40°C', '60°C', '100°C'], 1, 'Above 40°C the motor is over its rating at nameplate load.']
+  ],
+  bearings: [
+    ['Greasing a motor with the relief plug in?', ['Is correct', 'Pushes grease into the windings', 'Is faster', 'Is required'], 1, 'Relief plug out, quantity by formula, let it purge.'],
+    ['Washboard lines across a bearing race on a VFD motor?', ['Brinelling', 'Electrical fluting', 'Contamination', 'Overload'], 1, 'Fix: grounding ring or insulated bearing.'],
+    ['Standard motor bearing clearance?', ['C2', 'CN', 'C3', 'C5'], 2, 'The rotor heats and expands; C3 gives room.']
+  ],
+  mounting: [
+    ['A motor hums hard and the hum changes when one foot bolt is loosened?', ['Winding fault', 'Soft foot distorting the frame and air gap', 'Bad bearing', 'Low voltage'], 1, 'Nothing electrical was wrong.'],
+    ['Soft foot limit?', ['0.5 mm', '0.05 mm (0.002 in)', '1 mm', 'Any'], 1, 'Shim anything above it.']
+  ],
+  cooling: [
+    ['A class F motor frame at 85°C is?', ['Failing', 'Possibly normal at full load', 'Cold', 'Over rating'], 1, 'Hand-on-frame tells you almost nothing; compare to baseline.'],
+    ['A TEFC motor on a VFD at 30% speed?', ['Cools normally', 'Has a fan at 30% speed and needs a derate or a blower', 'Runs cooler', 'Does not need cooling'], 1, 'Shaft fan airflow falls with speed.'],
+    ['Each start dumps about how much current into the windings?', ['FLA', '2x FLA', '6 to 8x FLA', '20x FLA'], 2, 'Starts per hour are limited for this reason.']
+  ],
+  amps: [
+    ['20 HP motor, FLA 24 A, reads 26 A. Load is about?', ['50%', '108%', '80%', 'Cannot tell'], 1, 'Valid above about 50% load.'],
+    ['Amps fall sharply on a pump motor. Suspect?', ['Overload', 'Lost prime, dry running', 'Misalignment', 'Bad bearing'], 1, 'The motor is not doing the work; the seal is minutes from failure.'],
+    ['A fan run 10% fast draws about how much more power?', ['10%', '33%', '5%', '100%'], 1, 'Fan power rises with the cube of speed.']
+  ],
+  handoff: [
+    ['Opening the motor terminal box in Ontario is?', ['Millwright scope', 'Licensed electrician scope', 'Anyone', 'Supervisor'], 1, 'Your lock on the disconnect is yours; the peckerhead is not.'],
+    ['The most useful thing in a handoff package?', ['A guess', 'Readings: amps, speed, temperatures, solo run result', 'The motor manual', 'A photo of the plant'], 1, 'Turns a hunt into a confirmation.']
+  ],
+  troubleshoot: [
+    ['High amps. Uncoupled, both shafts turn freely, solo amps normal. The problem is?', ['The motor', 'The load, the alignment, or the ratio', 'Electrical', 'The fan'], 1, 'The motor is fine.'],
+    ['Motor will not start, both shafts turn freely by hand?', ['Seized bearing', 'Electrical: hand off', 'Bad coupling', 'Soft foot'], 1, 'Mechanically clear.']
+  ],
+  safety: [
+    ['A VFD keypad in stop is an isolation. True or false?', ['True', 'False', 'True after 5 minutes', 'True if the display is off'], 1, 'Disconnect upstream of the drive, locked, verified.'],
+    ['Running a motor solo with the shaft key in place?', ['Is fine', 'Is a projectile hazard: remove or tape the key', 'Improves balance', 'Is required'], 1, 'A loose key at 3600 rpm.']
+  ]
+};
+
+// BuiltWright self-check engine
+let scAnswered = {}, scCorrect = 0;
+function scRender(){
+  const el=document.getElementById('sc-body'); if(!el) return;
+  let total=0, html='';
+  for (const [tab, qs] of Object.entries(SELFCHECK)){
+    const tabName = (document.querySelector(`[onclick="switchTab('${tab}')"]`)||{}).textContent || tab;
+    html += `<div class="sc-section"><div class="family-label">${tabName} <a class="sc-jump" href="#${tab}" onclick="switchTab('${tab}')">open tab</a></div>`;
+    qs.forEach((q,i)=>{ const id=tab+'_'+i; total++;
+      html += `<div class="sc-q" id="scq-${id}"><div class="sc-stem">${q[0]}</div><div class="sc-opts">${q[1].map((o,j)=>`<button class="sc-opt" onclick="scAnswer('${id}',${j},${q[2]})">${o}</button>`).join('')}</div><div class="sc-why" id="scw-${id}"><strong>Why</strong>${q[3]}</div></div>`;
+    });
+    html += `</div>`;
+  }
+  html += `<div class="sc-score"><div class="sc-score-text">Score <b id="sc-n">0</b> / ${total} &nbsp; answered <b id="sc-a">0</b></div><div class="sc-bar"><div id="sc-fill"></div></div><button class="tree-btn" onclick="scReset()">Reset</button></div>`;
+  el.innerHTML = html; window._scTotal=total;
+}
+function scAnswer(id, j, correct){
+  if (scAnswered[id]!==undefined) return;
+  scAnswered[id]=j; if (j===correct) scCorrect++;
+  const btns=document.querySelectorAll(`#scq-${id} .sc-opt`);
+  btns.forEach((b,k)=>{ b.disabled=true; if(k===correct) b.classList.add('correct'); else if(k===j) b.classList.add('wrong'); });
+  document.getElementById('scw-'+id).classList.add('show');
+  document.getElementById('sc-n').textContent=scCorrect;
+  const a=Object.keys(scAnswered).length; document.getElementById('sc-a').textContent=a;
+  document.getElementById('sc-fill').style.width=(100*scCorrect/window._scTotal)+'%';
+}
+function scReset(){ scAnswered={}; scCorrect=0; scRender(); }
+</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
+</body>
+</html>

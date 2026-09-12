@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuiltWright: Gearboxes: Module 09</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a1a18">
+<link rel="apple-touch-icon" href="builtwright_icon_192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #1a1a18; color: #e8e6df; font-family: 'Rajdhani', sans-serif; min-height: 100vh; padding: 2rem 1rem; }
+  .bw-wrap { max-width: 720px; margin: 0 auto; }
+  .bw-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 1.5rem; border-bottom: 1px solid #3a3a36; padding-bottom: 0.75rem; }
+  .bw-logo { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: #BA7517; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .bw-logo a { color: #BA7517; text-decoration: none; }
+  .bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }
+  .bw-badge { font-family: 'Share Tech Mono', monospace; font-size: 10px; background: #2a1f08; color: #BA7517; padding: 3px 8px; border-radius: 3px; letter-spacing: 1px; border: 0.5px solid #BA7517; }
+  .bw-tabs { display: flex; gap: 4px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }
+  .bw-tab:hover { background: #2e2e2a; color: #e8e6df; border-color: #BA7517; }
+  .bw-tab.active { background: #BA7517; color: #fff; border-color: #BA7517; font-weight: 600; }
+  .bw-panel { display: none; } .bw-panel.active { display: block; }
+  .bw-section-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 2px; color: #5F5E5A; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .family-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; color: #BA7517; text-transform: uppercase; margin: 1rem 0 0.5rem 0; }
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 0.5rem; }
+  .type-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; }
+  .type-card:hover, .type-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }
+  .type-card-icon { font-size: 22px; color: #BA7517; margin-bottom: 5px; }
+  .type-card-name { font-size: 13px; font-weight: 600; color: #f0ede4; margin-bottom: 2px; }
+  .type-card-sub { font-size: 11px; color: #888780; }
+  .comp-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }
+  .comp-detail-header { display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem; }
+  .comp-detail-icon { font-size: 22px; color: #BA7517; }
+  .comp-detail-name { font-size: 16px; font-weight: 600; color: #f0ede4; }
+  .comp-detail-role { font-size: 13px; color: #888780; margin-top: 1px; }
+  .comp-detail-body { font-size: 14px; color: #c8c6bf; line-height: 1.65; margin-bottom: 0.75rem; }
+  .comp-detail-tips { list-style: none; }
+  .comp-detail-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }
+  .comp-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; }
+  .comp-placeholder { text-align: center; padding: 2rem; color: #5F5E5A; font-size: 13px; font-family: 'Share Tech Mono', monospace; letter-spacing: 1px; border: 0.5px dashed #3a3a36; border-radius: 8px; margin-bottom: 1.5rem; }
+  .info-block { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.1rem 1.25rem; margin-bottom: 10px; }
+  .info-block-title { font-size: 15px; font-weight: 600; color: #f0ede4; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px; }
+  .info-block-title i { color: #BA7517; font-size: 17px; }
+  .info-block-body { font-size: 13px; color: #c8c6bf; line-height: 1.6; }
+  .info-block-tips { list-style: none; margin-top: 0.6rem; }
+  .info-block-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }
+  .info-block-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; }
+  .callout-box { border-radius: 8px; padding: 1.1rem 1.25rem; margin-bottom: 1.25rem; border: 1.5px solid #EF9F27; background: #2a1f08; }
+  .callout-box.red { border-color: #A32D2D; background: #200d0d; }
+  .callout-box.blue { border-color: #185FA5; background: #0c1f33; }
+  .callout-box-header { display: flex; align-items: center; gap: 8px; margin-bottom: 0.6rem; }
+  .callout-box-icon { font-size: 20px; color: #EF9F27; }
+  .callout-box.red .callout-box-icon, .callout-box.red .callout-box-title, .callout-box.red strong { color: #F09595; }
+  .callout-box.blue .callout-box-icon, .callout-box.blue .callout-box-title, .callout-box.blue strong { color: #85B7EB; }
+  .callout-box-title { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #EF9F27; font-weight: 600; }
+  .callout-box-body { font-size: 13px; color: #c8c6bf; line-height: 1.6; }
+  .callout-box-body strong { color: #EF9F27; font-weight: 600; }
+  .callout-tips { list-style: none; margin-top: 0.6rem; }
+  .callout-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }
+  .callout-tips li::before { content: '→'; position: absolute; left: 0; color: #EF9F27; }
+  .callout-box.red .callout-tips li::before { color: #F09595; }
+  .field-tip { display: flex; gap: 10px; background: #1e1e1c; border-left: 3px solid #BA7517; border-radius: 0 6px 6px 0; padding: 0.7rem 0.9rem; margin: 0.75rem 0; }
+  .field-tip i { color: #BA7517; font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+  .field-tip div { font-size: 13px; color: #c8c6bf; line-height: 1.55; }
+  .field-tip strong { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517; display: block; margin-bottom: 2px; }
+  .adv-wrap { border-radius: 8px; overflow: hidden; border: 0.5px solid #3a3a36; margin-bottom: 1.25rem; }
+  .adv-toggle { width: 100%; background: #242420; border: none; padding: 0.75rem 1.1rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; gap: 10px; }
+  .adv-toggle-left { display: flex; align-items: center; gap: 8px; }
+  .adv-toggle-icon { font-size: 15px; color: #BA7517; }
+  .adv-toggle-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517; font-weight: 600; text-align: left; }
+  .adv-chevron { font-size: 13px; color: #BA7517; transition: transform 0.2s; }
+  .adv-wrap.open .adv-chevron { transform: rotate(180deg); }
+  .adv-body { display: none; background: #1e1e1c; padding: 1rem 1.1rem; border-top: 0.5px solid #3a3a36; }
+  .adv-wrap.open .adv-body { display: block; }
+  .adv-body p { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-bottom: 0.75rem; }
+  .adv-body strong { color: #e8e6df; font-weight: 600; }
+  .chain-wrap { background: #242420; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; overflow-x: auto; }
+  .chain { display: flex; align-items: center; flex-wrap: nowrap; gap: 0; }
+  .chain-node { flex-shrink: 0; }
+  .chain-box { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 6px; padding: 7px 9px; text-align: center; cursor: pointer; transition: all 0.15s; min-width: 70px; }
+  .chain-box:hover, .chain-box.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }
+  .chain-icon { font-size: 18px; color: #BA7517; display: block; margin-bottom: 2px; }
+  .chain-label { font-size: 11px; font-weight: 600; color: #e8e6df; }
+  .chain-sub { font-size: 9px; color: #888780; }
+  .chain-arrow { font-size: 14px; color: #5F5E5A; padding: 0 3px; flex-shrink: 0; }
+  .sym-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.25rem; }
+  .sym-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .sym-card:hover, .sym-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }
+  .sym-card-label { font-size: 12px; font-weight: 600; color: #f0ede4; text-align: center; }
+  .sym-card-sub { font-size: 10px; color: #888780; text-align: center; }
+  .sym-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }
+  .sym-detail-body { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-top: 0.75rem; }
+  .sym-detail-tips { list-style: none; margin-top: 0.6rem; }
+  .sym-detail-tips li { font-size: 12px; color: #888780; padding: 2px 0 2px 16px; position: relative; line-height: 1.5; }
+  .sym-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; font-size: 11px; }
+  .ref-table { width: 100%; border-collapse: collapse; margin: 0.5rem 0 1rem 0; font-size: 12px; }
+  .ref-table th { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #BA7517; text-align: left; padding: 6px 8px; border-bottom: 1px solid #3a3a36; }
+  .ref-table td { padding: 6px 8px; border-bottom: 0.5px solid #2e2e2a; color: #c8c6bf; vertical-align: top; line-height: 1.4; }
+  .ref-table td:first-child { color: #f0ede4; font-weight: 600; white-space: nowrap; }
+  .progress-bar { height: 3px; background: #242420; border-radius: 2px; margin-bottom: 1rem; overflow: hidden; }
+  .progress-fill { height: 100%; background: #BA7517; border-radius: 2px; transition: width 0.3s; }
+  .tree-q { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1rem 1.25rem; }
+  .tree-q-text { font-size: 15px; font-weight: 600; color: #f0ede4; margin-bottom: 0.5rem; line-height: 1.4; }
+  .tree-q-hint { font-size: 12px; color: #888780; margin-bottom: 0.75rem; font-style: italic; line-height: 1.45; }
+  .tree-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tree-btn { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; padding: 7px 16px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; text-align: left; }
+  .tree-btn:hover { border-color: #BA7517; background: #2a1f08; color: #EF9F27; }
+  .tree-btn.yes { border-color: #3B6D11; } .tree-btn.yes:hover { background: #0e1f05; color: #97C459; }
+  .tree-btn.no { border-color: #A32D2D; } .tree-btn.no:hover { background: #200d0d; color: #F09595; }
+  .tree-result { border-radius: 8px; padding: 1rem 1.25rem; margin-top: 8px; }
+  .tree-result.action { background: #2a1f08; border: 0.5px solid #BA7517; }
+  .tree-result.fix { background: #0e1f05; border: 0.5px solid #3B6D11; }
+  .tree-result.escalate { background: #200d0d; border: 0.5px solid #A32D2D; }
+  .tree-result-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+  .tree-result.action .tree-result-label { color: #EF9F27; }
+  .tree-result.fix .tree-result-label { color: #97C459; }
+  .tree-result.escalate .tree-result-label { color: #F09595; }
+  .tree-result-text { font-size: 14px; font-weight: 500; color: #f0ede4; line-height: 1.55; }
+  .tree-result-sub { font-size: 12px; color: #888780; margin-top: 5px; line-height: 1.5; }
+  .tree-prevent { margin-top: 10px; padding-top: 8px; border-top: 0.5px solid rgba(255,255,255,0.08); font-size: 12px; color: #c8c6bf; line-height: 1.5; }
+  .tree-prevent strong { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #97C459; display: block; margin-bottom: 2px; }
+  .tree-back { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; color: #888780; background: none; border: none; cursor: pointer; padding: 4px 0; text-transform: uppercase; display: inline-flex; align-items: center; gap: 5px; }
+  .tree-back:hover { color: #BA7517; }
+  .bw-footer { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: #5F5E5A; letter-spacing: 1px; text-align: right; margin-top: 1rem; padding-top: 0.75rem; border-top: 0.5px solid #3a3a36; }
+
+  .sc-section { margin-bottom: 1.25rem; }
+  .sc-q { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 0.9rem 1.1rem; margin-bottom: 8px; }
+  .sc-stem { font-size: 14px; font-weight: 600; color: #f0ede4; line-height: 1.45; margin-bottom: 0.6rem; }
+  .sc-opts { display: flex; flex-direction: column; gap: 6px; }
+  .sc-opt { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 500; text-align: left; padding: 7px 12px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; line-height: 1.4; }
+  .sc-opt:hover { border-color: #BA7517; color: #EF9F27; }
+  .sc-opt.correct { border-color: #3B6D11; background: #0e1f05; color: #97C459; }
+  .sc-opt.wrong { border-color: #A32D2D; background: #200d0d; color: #F09595; }
+  .sc-opt:disabled { cursor: default; }
+  .sc-why { display: none; font-size: 12px; color: #c8c6bf; line-height: 1.5; margin-top: 8px; padding-top: 8px; border-top: 0.5px solid rgba(255,255,255,0.08); }
+  .sc-why.show { display: block; }
+  .sc-why strong { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #97C459; display: block; margin-bottom: 2px; }
+  .sc-score { position: sticky; bottom: 0; background: #1a1a18; border-top: 0.5px solid #3a3a36; padding: 0.6rem 0; display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 1rem; }
+  .sc-score-text { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 1px; color: #888780; text-transform: uppercase; }
+  .sc-score-text b { color: #EF9F27; }
+  .sc-bar { flex: 1; height: 4px; background: #242420; border-radius: 2px; overflow: hidden; }
+  .sc-bar div { height: 100%; background: #97C459; width: 0; transition: width 0.3s; }
+  .sc-jump { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; color: #888780; text-decoration: none; text-transform: uppercase; }
+  .sc-jump:hover { color: #EF9F27; }
+
+  @media print {
+    body { background:#fff; color:#000; padding:0; }
+    .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; }
+    .bw-panel { display:none; } .bw-panel.active { display:block; }
+    .bw-wrap { max-width:100%; }
+    .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; }
+    .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; }
+    .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; }
+    .adv-body { display:block !important; }
+    .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; }
+    .progress-bar { display:none; }
+    a { color:#000; text-decoration:none; }
+    .bw-logo a::after { content:"  builtwrightapp.com"; color:#666; }
+    .bw-header { border-bottom:1px solid #000; }
+    .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; }
+  }
+ .related { margin-top:1.25rem; border-top:0.5px solid #3a3a36; padding-top:0.9rem; }
+  .related-label { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:#5F5E5A; margin-bottom:6px; }
+  .related a { display:inline-block; font-size:12px; color:#e8e6df; background:#242420; border:0.5px solid #3a3a36; border-radius:4px; padding:5px 9px; margin:0 6px 6px 0; text-decoration:none; }
+  .related a:hover { border-color:#BA7517; color:#EF9F27; }
+</style>
+</head>
+<body>
+<div class="bw-wrap">
+  <div class="bw-header">
+    <div><div class="bw-logo"><a href="builtwright_diagnose_hub_v1.html">BuiltWright</a></div><div class="bw-title">Gearboxes</div></div>
+    <div class="bw-badge">Module 09</div>
+  </div>
+  <div class="bw-tabs">
+    <button class="bw-tab active" onclick="switchTab('overview')">Overview</button>
+    <button class="bw-tab" onclick="switchTab('gears')">Gear Types</button>
+    <button class="bw-tab" onclick="switchTab('bearings')">Bearings and Seals</button>
+    <button class="bw-tab" onclick="switchTab('lube')">Lubrication</button>
+    <button class="bw-tab" onclick="switchTab('wear')">Wear Patterns</button>
+    <button class="bw-tab" onclick="switchTab('setup')">Backlash and Setup</button>
+    <button class="bw-tab" onclick="switchTab('troubleshoot')">Troubleshoot</button>
+    <button class="bw-tab" onclick="switchTab('selfcheck')">Self-Check</button>
+    <button class="bw-tab" onclick="switchTab('safety')" style="border-color:#A32D2D; color:#F09595;">Safety</button>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div id="panel-overview" class="bw-panel active">
+    <div class="bw-section-label">What a gearbox does, and the two ratings on the nameplate</div>
+    <div class="comp-detail">
+      <div class="comp-detail-body">A gearbox trades speed for torque. Reduce the speed by the ratio and the torque goes up by the same ratio, less the losses. A 20:1 reducer on a 1750 rpm motor gives 87.5 rpm at nearly 20 times the motor torque. The gears do the ratio. The bearings hold the shafts in exactly the right place under that load. The oil keeps the tooth surfaces from touching. The housing holds it all rigid and carries the heat away. Most gearbox failures trace to one of those last three, not to the gears.</div>
+      <div style="background:#111110; border:0.5px solid #3a3a36; border-radius:6px; padding:0.75rem 1rem; margin:0.6rem 0; font-family:'Share Tech Mono',monospace; font-size:12px; color:#EF9F27; line-height:1.9;">
+        Output rpm = Input rpm ÷ ratio<br>
+        Output torque = Input torque × ratio × efficiency<br>
+        Torque (Nm) = Power (kW) × 9550 ÷ rpm<br><br>
+        Example: 15 kW motor, 1750 rpm, 20:1 helical reducer at 96% efficiency<br>
+        Input torque = 15 × 9550 ÷ 1750 = 82 Nm<br>
+        Output = 82 × 20 × 0.96 = 1574 Nm at 87.5 rpm
+      </div>
+      <ul class="comp-detail-tips">
+        <li><strong>Mechanical rating</strong> is the torque the gears and bearings can carry with the required service factor. <strong>Thermal rating</strong> is the power the housing can shed as heat without the oil exceeding its temperature limit. A gearbox can be within its mechanical rating and still overheat because it is above its thermal rating. Both are on the nameplate or in the catalogue, and the lower one governs.</li>
+        <li>Service factor multiplies the required torque for shock, hours, and starts. A reducer on a crusher needs a higher service factor than the same reducer on a fan. The catalogue tables give them. A gearbox sized without a service factor is a gearbox that pits its teeth.</li>
+        <li>Efficiency per stage: spur and helical 97 to 99 percent, bevel 97 to 98, worm anywhere from 50 to 90 depending on ratio, planetary 96 to 98. Every percent lost is heat the housing has to dissipate.</li>
+        <li>Ratio per stage is limited (roughly 6:1 helical, 100:1 worm, 10:1 planetary). Multi-stage boxes stack them. Each stage has its own gear pair, bearings, and wear pattern.</li>
+      </ul>
+    </div>
+
+    <div class="bw-section-label">Gearbox configurations: tap to learn more</div>
+    <div class="card-grid">
+      <div class="type-card" onclick="selectCfg('inline')" id="cfgcard-inline"><div class="type-card-icon"><i class="ti ti-arrows-horizontal"></i></div><div class="type-card-name">Inline and Parallel Shaft</div><div class="type-card-sub">Helical stages, foot or flange mount</div></div>
+      <div class="type-card" onclick="selectCfg('rightangle')" id="cfgcard-rightangle"><div class="type-card-icon"><i class="ti ti-corner-right-down"></i></div><div class="type-card-name">Right Angle</div><div class="type-card-sub">Bevel-helical or worm</div></div>
+      <div class="type-card" onclick="selectCfg('shaftmount')" id="cfgcard-shaftmount"><div class="type-card-icon"><i class="ti ti-anchor"></i></div><div class="type-card-name">Shaft Mount with Torque Arm</div><div class="type-card-sub">Hangs on the driven shaft</div></div>
+      <div class="type-card" onclick="selectCfg('gearmotor')" id="cfgcard-gearmotor"><div class="type-card-icon"><i class="ti ti-engine"></i></div><div class="type-card-name">Gearmotor</div><div class="type-card-sub">Motor and reducer as one unit</div></div>
+    </div>
+    <div id="cfg-display" style="margin-top:1rem;"><div class="comp-placeholder">select a configuration above</div></div>
+
+    <div class="field-tip"><i class="ti ti-tool"></i><div><strong>Field tip: three things before you open the inspection cover</strong>Infrared reading on the housing near each bearing and on the sump. Oil level in the sight glass with the unit stopped. Hand on the housing with the unit running, feeling for a rhythm. A gearbox that is hot at one bearing, low on oil, and thumping once per output revolution has told you most of the story before a bolt comes out.</div></div>
+  </div>
+
+  <!-- GEAR TYPES -->
+  <div id="panel-gears" class="bw-panel">
+    <div class="bw-section-label">Gear types: tap a type to learn more</div>
+    <div class="family-label">Parallel shaft</div>
+    <div class="card-grid">
+      <div class="type-card" onclick="selectGear('spur')" id="gcard-spur"><div class="type-card-icon"><i class="ti ti-settings"></i></div><div class="type-card-name">Spur</div><div class="type-card-sub">Straight teeth, no thrust, noisy</div></div>
+      <div class="type-card" onclick="selectGear('helical')" id="gcard-helical"><div class="type-card-icon"><i class="ti ti-settings-2"></i></div><div class="type-card-name">Helical</div><div class="type-card-sub">Angled teeth, quiet, makes thrust</div></div>
+      <div class="type-card" onclick="selectGear('herringbone')" id="gcard-herringbone"><div class="type-card-icon"><i class="ti ti-chevrons-right"></i></div><div class="type-card-name">Herringbone (Double Helical)</div><div class="type-card-sub">Thrust cancels, must float</div></div>
+    </div>
+    <div class="family-label">Intersecting and crossing shafts</div>
+    <div class="card-grid">
+      <div class="type-card" onclick="selectGear('bevel')" id="gcard-bevel"><div class="type-card-icon"><i class="ti ti-triangle"></i></div><div class="type-card-name">Bevel and Spiral Bevel</div><div class="type-card-sub">90 degrees, cone-shaped, set by shims</div></div>
+      <div class="type-card" onclick="selectGear('worm')" id="gcard-worm"><div class="type-card-icon"><i class="ti ti-ruler-2"></i></div><div class="type-card-name">Worm and Wheel</div><div class="type-card-sub">High ratio, sliding contact, runs hot</div></div>
+      <div class="type-card" onclick="selectGear('hypoid')" id="gcard-hypoid"><div class="type-card-icon"><i class="ti ti-arrows-cross"></i></div><div class="type-card-name">Hypoid</div><div class="type-card-sub">Offset bevel, high sliding, special oil</div></div>
+    </div>
+    <div class="family-label">Epicyclic</div>
+    <div class="card-grid">
+      <div class="type-card" onclick="selectGear('planetary')" id="gcard-planetary"><div class="type-card-icon"><i class="ti ti-planet"></i></div><div class="type-card-name">Planetary</div><div class="type-card-sub">Sun, planets, ring, carrier. Compact and strong.</div></div>
+      <div class="type-card" onclick="selectGear('cycloidal')" id="gcard-cycloidal"><div class="type-card-icon"><i class="ti ti-circle-dotted"></i></div><div class="type-card-name">Cycloidal</div><div class="type-card-sub">Very high ratio, shock tolerant, robotics and drives</div></div>
+    </div>
+    <div id="gear-display" style="margin-top:1rem;"><div class="comp-placeholder">select a gear type above</div></div>
+
+    <div class="bw-section-label">Tooth terminology you need to read a drawing or a failure</div>
+    <div class="info-block">
+      <table class="ref-table">
+        <tr><th>Term</th><th>What it is</th><th>Why it matters in the field</th></tr>
+        <tr><td>Pitch circle</td><td>The imaginary circle where the two gears roll on each other without sliding</td><td>Ratios and centre distance are set at the pitch circle</td></tr>
+        <tr><td>Module (metric) or DP (inch)</td><td>Tooth size. Module = pitch diameter ÷ teeth (mm). DP = teeth ÷ pitch diameter (inches)</td><td>Mating gears must have the same module or DP. A replacement gear with the wrong module will not mesh</td></tr>
+        <tr><td>Pressure angle</td><td>Angle of the tooth flank at the pitch circle, usually 20 degrees (older gears 14.5)</td><td>Must match on mating gears. Also sets the separating force on the bearings</td></tr>
+        <tr><td>Helix angle</td><td>Angle of the teeth to the shaft axis on a helical gear</td><td>Sets the thrust load. Mating helical gears have opposite hands and the same angle</td></tr>
+        <tr><td>Face width</td><td>Length of the tooth along the shaft</td><td>Contact pattern should cover most of it. A pattern on one end is misalignment</td></tr>
+        <tr><td>Addendum and dedendum</td><td>Tooth height above and below the pitch circle</td><td>Wear at the addendum tip and the dedendum root means different things. See Wear Patterns</td></tr>
+        <tr><td>Backlash</td><td>Clearance between mating teeth measured at the pitch circle</td><td>Too little binds and overheats. Too much knocks and wears. See Setup</td></tr>
+        <tr><td>Gear mesh frequency</td><td>Teeth × rpm of that gear</td><td>The frequency a vibration analyst looks for. Gear problems show at mesh frequency and its harmonics</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- BEARINGS AND SEALS -->
+  <div id="panel-bearings" class="bw-panel">
+    <div class="bw-section-label">Bearings: the component that fails first in most gearboxes</div>
+    <div class="comp-detail">
+      <div class="comp-detail-body">Gearbox bearings carry the tooth separating force, the tangential load, and (on helical, bevel, and worm gears) the thrust. They also set the position of the gears relative to each other, which sets the backlash and the contact pattern. A bearing with excessive play lets a gear move under load, the contact pattern shifts to one end of the teeth, and the teeth fail from a bearing problem. The full bearing failure module applies here; this tab covers what is specific to gearboxes.</div>
+      <ul class="comp-detail-tips">
+        <li>Input shaft bearings see the coupling or belt load on top of the gear load. Misalignment at the input coupling and belt over-tension fail the input bearing first.</li>
+        <li>Tapered roller bearings are used in pairs to carry combined radial and thrust loads and to locate the shaft. They are set to a specified preload or endplay with shims or a locknut. That setting is part of the gearbox assembly and is on the drawing.</li>
+        <li>Helical gear thrust reverses when the direction of rotation reverses. A reversing drive loads both thrust bearings alternately.</li>
+        <li>Worm gear thrust is large and is carried on the worm shaft bearings. Worm shaft bearing failure is the most common worm gearbox failure.</li>
+        <li>Output shaft bearings on shaft mount and overhung load applications carry the belt, chain, or sprocket load. Overhung load rating is on the nameplate and is exceeded more often than people think.</li>
+        <li>Planet gear bearings in a planetary stage run at high speed relative to the planet and are lubricated by splash. They are the first thing to go in a planetary box that has run low on oil.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-adjustments"></i> Preload and endplay</div>
+      <div class="info-block-body">A shaft on tapered roller bearings is set either with a small axial clearance (endplay) or with the bearings pressed together slightly (preload). Preload gives a stiffer shaft and holds the gear position under load; endplay allows for thermal growth. The manufacturer specifies which and how much, and it is set with shims under a bearing cap or with an adjusting nut. Getting it wrong by a few hundredths of a millimetre is enough to change the contact pattern or overheat the bearing.</div>
+      <ul class="info-block-tips">
+        <li>Endplay is measured with a dial indicator on the shaft end while levering the shaft axially both ways. Preload is often set by rolling torque: the torque needed to turn the shaft with no gear load.</li>
+        <li>Too much preload: the bearing runs hot immediately. Too much endplay: the gear walks under load and the contact pattern moves.</li>
+        <li>Bearing settings change as the bearing wears and as the housing and shaft expand at temperature. Some designs are set cold to a value that becomes correct hot.</li>
+        <li>Record the shim pack thickness before disassembly. If the same bearings go back in, the same shims go back in. New bearings need a fresh setting.</li>
+      </ul>
+    </div>
+
+    <div class="bw-section-label">Seals and breathers</div>
+    <div class="info-block">
+      <div class="info-block-body">Gearbox shaft seals are lip seals running on the shaft, or labyrinth seals with no contact. A lip seal leaking is the most common gearbox complaint, and the seal is rarely the root cause.</div>
+      <ul class="info-block-tips">
+        <li>Blocked breather: the case pressurises as it heats and pushes oil out past the seals. Check the breather before replacing a seal. On a wash-down machine, the breather is often painted over, plugged, or replaced with a bolt.</li>
+        <li>Shaft wear under the lip: the seal wears a groove in the shaft and the new seal leaks in the old groove. A wear sleeve (thin stainless sleeve pressed over the shaft) restores the surface without machining.</li>
+        <li>Overfill: oil above the correct level reaches seals that were not designed to sit in oil, and the churning heats and foams it. Level is on the sight glass or the dipstick with the unit stopped and settled.</li>
+        <li>Seal installed dry, or with the lip nicked on a keyway during installation, leaks from day one. Lubricate the lip, use a sleeve or tape over the keyway, and press it in square.</li>
+        <li>Seal lip hardened by heat: a gearbox that has run hot has hard seals. Fix the heat with the seal.</li>
+        <li>Labyrinth seals do not leak in the usual sense but can weep oil mist. They are used where a lip seal would wear the shaft or where contact is unacceptable. Some are vented and need the vent clear.</li>
+        <li>Desiccant breathers on gearboxes in humid or dusty environments keep water and dirt out of the oil and pay for themselves in oil life.</li>
+      </ul>
+    </div>
+
+    <div class="field-tip"><i class="ti ti-tool"></i><div><strong>Field tip: the leak is the symptom</strong>A gearbox that starts leaking at the output seal after years of running dry has not just worn a seal out. Something changed: the breather blocked, someone overfilled it, the bearing behind the seal got loose and the shaft is running eccentric, or it is running hotter than it used to. Replace the seal and ignore the change, and you will replace it again in three months.</div></div>
+  </div>
+
+  <!-- LUBRICATION -->
+  <div id="panel-lube" class="bw-panel">
+    <div class="bw-section-label">Gear oil: the film that keeps the teeth apart</div>
+    <div class="callout-box">
+      <div class="callout-box-header"><i class="ti ti-alert-hexagon callout-box-icon"></i><div class="callout-box-title">Wrong oil, wrong level, wrong interval: the three ways to kill a gearbox from outside</div></div>
+      <div class="callout-box-body">Gear teeth roll and slide against each other under very high contact pressure. The oil film between them is what stops metal touching metal. Too thin a film (wrong viscosity, too hot, contaminated with water) and the surfaces touch: scuffing, pitting, wear. Too little oil and the gears and bearings run dry. Too much oil and it churns, foams, overheats, and leaks. <strong>The manufacturer specifies a viscosity grade, a level, and an interval. All three are on the nameplate or in the manual, and all three matter.</strong></div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-test-pipe"></i> Viscosity grade and oil type</div>
+      <table class="ref-table">
+        <tr><th>ISO VG</th><th>AGMA</th><th>Typical use</th></tr>
+        <tr><td>68 to 100</td><td>2 to 3</td><td>High speed, light load, small helical boxes</td></tr>
+        <tr><td>150</td><td>4</td><td>General industrial helical, moderate speed</td></tr>
+        <tr><td>220</td><td>5</td><td>The most common industrial gear oil. Helical and bevel reducers.</td></tr>
+        <tr><td>320</td><td>6</td><td>Heavier loads, slower speeds, larger boxes</td></tr>
+        <tr><td>460 to 680</td><td>7 to 8</td><td>Slow, heavy, worm gears, mill drives</td></tr>
+      </table>
+      <ul class="info-block-tips">
+        <li>Mineral EP (extreme pressure) gear oil is the default for steel-on-steel helical and bevel gears. The EP additives (sulphur-phosphorus) form a sacrificial film under high pressure.</li>
+        <li>Worm gears with a bronze wheel: active sulphur EP additives attack bronze. Use the oil the manufacturer specifies, which is usually a compounded mineral oil, a PAG synthetic, or an EP oil with inactive sulphur. A GL-5 automotive gear oil in a bronze worm box eats the wheel.</li>
+        <li>Synthetics (PAO, PAG) run cooler, last longer, and handle a wider temperature range. PAG is not compatible with mineral oil or with most paints and some seals; do not mix or switch without checking. PAO is generally mineral-compatible.</li>
+        <li>Food grade (H1) oils are required in food contact areas and have lower load capacity than the standard oil. The gearbox may need to be derated.</li>
+        <li>Viscosity too low for the load and temperature is the most common oil selection error. If in doubt, the manufacturer's selection chart uses ambient temperature and output speed.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-ruler-measure"></i> Level, temperature, and changes</div>
+      <ul class="info-block-tips">
+        <li>Level is checked with the unit stopped and settled, at the sight glass or dipstick, in the mounting position the box is actually in. A gearbox mounted on its side or vertically has a different fill level and often different plug positions than the same box mounted horizontally. The mounting position is on the nameplate.</li>
+        <li>Splash lubrication depends on the gears dipping into the oil to the correct depth. Too low and the upper bearings get nothing. Too high and the churning loss heats the oil.</li>
+        <li>Normal operating temperature for a helical box is around 50 to 70°C on the housing. Worm boxes run hotter, 80 to 90°C is normal. Above about 95°C the oil oxidises fast and the seals harden. A change from the usual temperature is the symptom, not the absolute number.</li>
+        <li>First oil change on a new or rebuilt box is early (often 500 hours) to remove run-in wear metal. After that, on the manufacturer interval or on oil analysis.</li>
+        <li>Oil analysis for gearboxes: viscosity, water, iron and copper, and particle count. Iron is gears and bearings. Copper is a bronze worm wheel or bearing cages. Rising iron between samples is the alarm.</li>
+        <li>Magnetic drain plugs collect ferrous wear. Fine fuzz is normal. Chips and flakes are not.</li>
+        <li>Forced lubrication (oil pump and cooler) on large or high speed boxes has its own pressure, flow, and filter to check. Low oil pressure alarm on a force-fed box is a shutdown.</li>
+      </ul>
+    </div>
+
+    <div class="field-tip"><i class="ti ti-tool"></i><div><strong>Field tip: the sight glass lies when the box is running</strong>With the gears turning, the oil is thrown up the walls and the sight glass can read anywhere. Stop it, wait a few minutes, then read. If the level was checked and topped up while running, it is now overfilled and will leak at the seals and run hot. A surprising number of "leaking gearboxes" are just overfilled ones.</div></div>
+  </div>
+  <!-- WEAR PATTERNS -->
+  <div id="panel-wear" class="bw-panel">
+    <div class="bw-section-label">Tooth wear patterns: tap to learn what each one is telling you</div>
+    <div class="comp-detail"><div class="comp-detail-body">A gear tooth records its own history. The surface shows whether the oil film held, whether the load was even across the face, whether the gears were aligned, and whether something got into the oil. Reading the teeth through the inspection cover, with a flashlight and a clean rag, is the highest-value ten minutes in gearbox maintenance. Read the whole face width and several teeth around the gear.</div></div>
+    <div class="family-label">Surface fatigue</div>
+    <div class="card-grid">
+      <div class="type-card" onclick="selectWear('polish')" id="wcard-polish"><div class="type-card-icon"><i class="ti ti-sparkles"></i></div><div class="type-card-name">Normal polishing</div><div class="type-card-sub">The good one</div></div>
+      <div class="type-card" onclick="selectWear('initpit')" id="wcard-initpit"><div class="type-card-icon"><i class="ti ti-grain"></i></div><div class="type-card-name">Initial pitting</div><div class="type-card-sub">Small pits near the pitch line, may stop</div></div>
+      <div class="type-card" onclick="selectWear('destpit')" id="wcard-destpit"><div class="type-card-icon"><i class="ti ti-grain"></i></div><div class="type-card-name">Destructive pitting</div><div class="type-card-sub">Growing pits, spreading across the face</div></div>
+      <div class="type-card" onclick="selectWear('spall')" id="wcard-spall"><div class="type-card-icon"><i class="ti ti-square-off"></i></div><div class="type-card-name">Spalling</div><div class="type-card-sub">Large flakes lifting out</div></div>
+    </div>
+    <div class="family-label">Lubrication failure</div>
+    <div class="card-grid">
+      <div class="type-card" onclick="selectWear('scuff')" id="wcard-scuff"><div class="type-card-icon"><i class="ti ti-flame"></i></div><div class="type-card-name">Scuffing (scoring)</div><div class="type-card-sub">Tearing in the sliding direction, welding</div></div>
+      <div class="type-card" onclick="selectWear('abrasive')" id="wcard-abrasive"><div class="type-card-icon"><i class="ti ti-line-dashed"></i></div><div class="type-card-name">Abrasive wear</div><div class="type-card-sub">Fine scratches, dirt in the oil</div></div>
+      <div class="type-card" onclick="selectWear('corrosion')" id="wcard-corrosion"><div class="type-card-icon"><i class="ti ti-droplet"></i></div><div class="type-card-name">Corrosion and staining</div><div class="type-card-sub">Water, acid, wrong additive</div></div>
+    </div>
+    <div class="family-label">Overload and misalignment</div>
+    <div class="card-grid">
+      <div class="type-card" onclick="selectWear('plastic')" id="wcard-plastic"><div class="type-card-icon"><i class="ti ti-wave-sine"></i></div><div class="type-card-name">Plastic flow, ridging, rippling</div><div class="type-card-sub">Metal moving, overload</div></div>
+      <div class="type-card" onclick="selectWear('endload')" id="wcard-endload"><div class="type-card-icon"><i class="ti ti-arrow-bar-to-right"></i></div><div class="type-card-name">Wear at one end of the face</div><div class="type-card-sub">Misalignment</div></div>
+      <div class="type-card" onclick="selectWear('fracture')" id="wcard-fracture"><div class="type-card-icon"><i class="ti ti-crop"></i></div><div class="type-card-name">Tooth breakage</div><div class="type-card-sub">Fatigue crack from the root, or overload</div></div>
+      <div class="type-card" onclick="selectWear('wormwear')" id="wcard-wormwear"><div class="type-card-icon"><i class="ti ti-ruler-2"></i></div><div class="type-card-name">Worm wheel wear</div><div class="type-card-sub">Bronze does what bronze does</div></div>
+    </div>
+    <div id="wear-display" style="margin-top:1rem;"><div class="comp-placeholder">select a wear pattern above</div></div>
+    <div class="field-tip"><i class="ti ti-camera"></i><div><strong>Field tip: photograph the teeth before you touch them</strong>A photo of the tooth surface with a scale beside it, taken through the inspection cover, is worth more than any description. Take it on every inspection and keep it with the equipment record. The pattern of change over a year is the diagnosis. The first photo is the baseline everything else is compared to.</div></div>
+  </div>
+
+  <!-- SETUP -->
+  <div id="panel-setup" class="bw-panel">
+    <div class="bw-section-label">Backlash, contact pattern, and bearing setting</div>
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-ruler-measure"></i> Backlash</div>
+      <div class="info-block-body">Backlash is the clearance between the back of one tooth and the front of the next mating tooth, measured at the pitch circle. It exists so the teeth can be lubricated and so thermal expansion does not bind the gears. Too little and the gears bind, overheat, and wear at the root. Too much and the teeth hammer on every load reversal, which knocks and eventually breaks teeth. The manufacturer specifies it. As a rough guide for general industrial gearing, backlash is on the order of 0.03 to 0.05 times the module in millimetres, or 0.03 to 0.05 divided by the DP in inches, but the drawing governs.</div>
+      <ul class="info-block-tips">
+        <li>Dial indicator method: lock one gear. Put an indicator on a tooth flank of the other gear, tangent to the pitch circle. Rock the gear back and forth through the clearance. The total indicator movement is the backlash. Check at four positions around the gear; variation between positions is run-out.</li>
+        <li>Feeler gauge between the teeth is quick on large gears with accessible teeth.</li>
+        <li>Lead wire or plastigauge rolled through the mesh gives a physical measurement on bevel and worm gears where an indicator is hard to place.</li>
+        <li>Backlash increases as the teeth wear. Measuring it on the PM and trending it is a direct measure of tooth wear.</li>
+        <li>Backlash is adjusted by changing the centre distance (parallel shaft, rarely adjustable), by shimming the pinion or gear axially (bevel gears), or by moving the wheel relative to the worm (worm gears).</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-paint"></i> Contact pattern (marking compound)</div>
+      <div class="info-block-body">The contact pattern shows where the teeth actually touch under load. Coat a few teeth on one gear with a thin layer of marking compound (Prussian blue, or the yellow gear marking compound), roll the mesh through by hand under a light load, and look at where the compound transferred. The pattern should be centred on the tooth face, both along the face width and up the flank, and cover most of the face. This is the definitive check on bevel gear setup and the best check on any gear for misalignment.</div>
+      <table class="ref-table">
+        <tr><th>Pattern</th><th>Meaning</th><th>Correction (bevel gears)</th></tr>
+        <tr><td>Centred, most of the face</td><td>Correct</td><td>None</td></tr>
+        <tr><td>Toward the toe (small end) of the tooth</td><td>Gears too close together, or pinion too deep</td><td>Move the gear away from the pinion (add shim behind the gear)</td></tr>
+        <tr><td>Toward the heel (large end)</td><td>Gears too far apart</td><td>Move the gear toward the pinion</td></tr>
+        <tr><td>High on the flank (toward the tip)</td><td>Pinion too far out</td><td>Move the pinion in</td></tr>
+        <tr><td>Low on the flank (toward the root)</td><td>Pinion too far in</td><td>Move the pinion out</td></tr>
+        <tr><td>One end of the face only, parallel shaft gears</td><td>Shafts not parallel: bearing wear, housing distortion, or bore misalignment</td><td>Find and fix the alignment; this is not adjustable with shims</td></tr>
+        <tr><td>Diagonal across the face</td><td>Shafts crossed (skewed)</td><td>Same: alignment fault</td></tr>
+      </table>
+      <ul class="info-block-tips">
+        <li>On bevel gears, pinion depth and gear position interact with backlash. Adjust position for pattern first, then check backlash, then fine tune. It takes a few rounds.</li>
+        <li>A pattern check on a running-in box shows the pattern moving toward centre as the teeth bed in. A pattern that moves the other way is a bearing losing its setting.</li>
+        <li>The pattern is checked under a light load in the direction the gears drive. Pattern in the reverse direction (coast side) is checked separately on reversing drives.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-list-check"></i> Reassembly sequence that avoids the common mistakes</div>
+      <ul class="info-block-tips">
+        <li>Match-mark everything before disassembly: bearing caps to housing, shim packs to their location, gears to their shafts. Measure and record shim thicknesses.</li>
+        <li>Housing bores and faces clean and undamaged. A raised burr on a bearing cap face changes the shim setting.</li>
+        <li>Bearings heated evenly (induction heater or oil bath, not a torch) and pressed on by the correct race. Never through the rolling elements.</li>
+        <li>Set bearing preload or endplay to the drawing before checking gear backlash. The bearing setting positions the shaft; the backlash follows from it.</li>
+        <li>Check backlash, then contact pattern, then adjust. Then recheck bearing setting because the adjustment may have moved it.</li>
+        <li>Seals last, lip lubricated, keyways covered, pressed square.</li>
+        <li>Fill with the specified oil to the level for the actual mounting position. Breather clear. First run unloaded, temperature and noise checked, then load in steps.</li>
+        <li>Early oil change after run-in to remove the wear-in metal.</li>
+      </ul>
+    </div>
+
+    <div class="field-tip"><i class="ti ti-tool"></i><div><strong>Field tip: shims are not interchangeable between locations</strong>Two bearing caps, two shim packs, and they look identical. They are not. Tape each shim pack to its cap, or bag and label them, before anything comes apart. A shim pack on the wrong cap means the pinion is in the wrong place, the contact pattern is off, and the box fails in a year having sounded fine on the first run.</div></div>
+  </div>
+
+  <!-- TROUBLESHOOT -->
+  <div id="panel-troubleshoot" class="bw-panel">
+    <div class="bw-section-label">Gearbox fault diagnosis</div>
+    <div class="adv-wrap" id="adv-method">
+      <button class="adv-toggle" onclick="toggleAdv('adv-method')">
+        <div class="adv-toggle-left"><i class="ti ti-map-2 adv-toggle-icon"></i><span class="adv-toggle-label">Diagnostic methodology: outside first, then oil, then teeth</span></div>
+        <i class="ti ti-chevron-down adv-chevron"></i>
+      </button>
+      <div class="adv-body">
+        <p><strong>Outside, running:</strong> infrared at each bearing position and the sump. Listen with the screwdriver at each bearing housing and at the mesh. Feel for a rhythm and count it against the input and output shaft speeds: once per input revolution is the high speed pinion or its bearings; once per output revolution is the low speed gear or its bearings; a whine that changes pitch with speed is the mesh.</p>
+        <p><strong>Outside, stopped:</strong> oil level. Breather. Leaks and where they are. Input coupling or belt alignment and tension. Torque arm and mounting bolts on shaft mounts. Foundation. Any recent work.</p>
+        <p><strong>Oil:</strong> magnetic plug. Sample for analysis. Look at what drains: colour, water, foam, chips. Rub a drop between finger and thumb for grit.</p>
+        <p><strong>Teeth:</strong> inspection cover off (see Safety). Wear pattern on several teeth. Backlash. Contact pattern if there is any doubt about alignment. Photograph.</p>
+        <p><strong>Bearings:</strong> shaft play, radial and axial, by hand with a bar under the coupling. Any movement you can feel by hand is far beyond a normal bearing setting.</p>
+        <p><strong>The gears are almost never the first thing to fail.</strong> Bearings, oil, seals, and the input alignment fail first and take the gears with them. Find the primary failure or the rebuilt box fails the same way.</p>
+      </div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="gb-progress" style="width:8%"></div></div>
+    <div id="gb-tree"></div>
+  </div>
+
+  <!-- SELF-CHECK TAB -->
+  <div id="panel-selfcheck" class="bw-panel">
+    <div class="bw-section-label">Self-check: one question at a time, tap an answer, read why</div>
+    <div class="comp-detail"><div class="comp-detail-body">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>
+    <div id="sc-body"></div>
+  </div>
+
+  <!-- SAFETY -->
+  <div id="panel-safety" class="bw-panel">
+    <div class="bw-section-label">Gearbox safety</div>
+    <div class="callout-box red">
+      <div class="callout-box-header"><i class="ti ti-alert-triangle callout-box-icon"></i><div class="callout-box-title">A gearbox stores energy in the load it is holding</div></div>
+      <div class="callout-box-body">A gearbox on an inclined conveyor, a hoist, a mixer with product in it, or a machine with a flywheel is holding that load against gravity or inertia through its gear train. Take a coupling off, pull a shaft, or break a gear tooth and the load runs backward through the box or free-wheels. <strong>Worm gearboxes are often assumed to be self-locking. Many are not, especially when vibrating, and none should be relied on as a brake.</strong> Block, pin, or lower the load before opening anything in the drive train.</div>
+    </div>
+
+    <div class="info-block" style="border-color:#A32D2D;">
+      <div class="info-block-title" style="color:#F09595;"><i class="ti ti-lock" style="color:#F09595;"></i> Lockout and load control</div>
+      <ul class="info-block-tips">
+        <li>Lock out the drive motor. Verify by attempting a start.</li>
+        <li>Identify and control the driven load: block the conveyor, lower the hoist, pin the mixer, let the flywheel stop and lock it. A gearbox with the motor locked out and a raised load on the output is not locked out.</li>
+        <li>Shaft mount reducers hang on the driven shaft. Removing the torque arm or the driven shaft lets the whole reducer rotate around the shaft. Support it before disconnecting anything.</li>
+        <li>Backstops (anti-runback clutches) on inclined conveyors hold the load when the motor stops. They do not hold it when the gearbox is opened. Know which reducers have them and what they are holding.</li>
+      </ul>
+    </div>
+
+    <div class="info-block" style="border-color:#A32D2D;">
+      <div class="info-block-title" style="color:#F09595;"><i class="ti ti-flame" style="color:#F09595;"></i> Hot oil and pressurised cases</div>
+      <ul class="info-block-tips">
+        <li>Gear oil in a running box is 60 to 90°C. Let it cool before draining or opening the inspection cover.</li>
+        <li>A gearbox with a blocked breather is pressurised. Cracking the drain plug or inspection cover on a hot pressurised case sprays hot oil. Open the breather or fill plug first, from the side, with eye protection.</li>
+        <li>Large boxes hold a lot of oil. Have the drain container sized for it and a spill kit at hand. Used gear oil is a slip hazard and a waste stream.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-crane"></i> Lifting and handling</div>
+      <ul class="info-block-tips">
+        <li>Gearboxes are dense. A box that looks liftable by hand often is not. Weight is on the nameplate or in the catalogue.</li>
+        <li>Lift by the cast lifting lugs or eyebolts in the tapped holes provided, never by the shafts, the cover, or the fan guard. Shaft damage from a sling is a common cause of a rebuilt box leaking on day one.</li>
+        <li>Eyebolts must be the correct thread, fully seated, and rated. A shoulder eyebolt loaded at an angle needs derating.</li>
+        <li>The centre of gravity of a gearbox with a motor attached is not where it looks. Test lift and adjust.</li>
+        <li>Rigging is covered fully in RigIt. Load, angle, and sling rating before the lift.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-hand-off"></i> Open gearboxes and inspection covers</div>
+      <ul class="info-block-tips">
+        <li>Never put fingers into a gear mesh, even locked out, if there is any possibility of the shaft turning: a fan windmilling, a load creeping past a backstop, someone bumping the coupling. Use a mirror and a flashlight, or a borescope.</li>
+        <li>Turning the gears by hand for inspection is done at the coupling or with a bar on the shaft, not with a hand on a gear.</li>
+        <li>Keep the open box covered when not being worked on. A dropped bolt into a gear mesh is a rebuilt gearbox.</li>
+        <li>Inspection cover bolts back in with the gasket sound. A leaking cover gasket is dirt getting in as well as oil getting out.</li>
+      </ul>
+    </div>
+  </div>
+
+    <div class="related"><div class="related-label">Related modules</div><a href="builtwright_lubrication_v1.html#types">Lubrication: gear oil and bronze</a><a href="builtwright_bearing_module_v1.html#install">Bearings: preload and endplay</a><a href="builtwright_coupling_alignment_v1.html#why">Alignment: the input bearing eats misalignment</a><a href="builtwright_clutches_brakes_v1.html#holding">Clutches and Brakes: backstops</a><a href="builtwright_conveyors_v1.html#anatomy">Conveyors: shaft mount reducers and torque arms</a><a href="builtwright_root_cause_v1.html#examples">Root Cause: the output seal that leaked after rebuild</a></div>
+  <div class="bw-footer">builtwrightapp.com &nbsp;·&nbsp; module 09 of series &nbsp;·&nbsp; gearboxes</div>
+</div>
+<script>
+const cfgData = {
+  inline: { icon:'ti-arrows-horizontal', name:'Inline and Parallel Shaft Reducers', role:'One to four helical stages. Foot, flange, or shaft mounted. The general purpose industrial reducer.',
+    body:'Input and output shafts parallel (parallel shaft) or on the same axis (inline, usually with a planetary or a nested helical arrangement). Helical stages, splash lubricated, ratios from about 5:1 to several hundred to one over multiple stages. Rugged, efficient, and repairable. What most people picture when they say gearbox.',
+    tips:['Mounting position matters for the oil level and the breather location. Confirm the box is mounted the way the nameplate says.','Each stage has its own pair of bearings and its own contact pattern to read.','Solid output shaft or hollow output shaft (for shaft mount) versions of the same box.']
+  },
+  rightangle: { icon:'ti-corner-right-down', name:'Right Angle Reducers', role:'Bevel-helical for efficiency, worm for high ratio and quiet.',
+    body:'A bevel stage turns the drive 90 degrees, usually followed by helical stages: efficient, and the bevel set is set up with shims for pattern and backlash. A worm reducer is the other route to a right angle: one stage, high ratio, quiet, cheap, and hot. Worm boxes are everywhere on conveyors, packaging, and light duty; bevel-helical boxes where the power or the efficiency matters.',
+    tips:['Bevel gear setup is shim work. Match-mark and record before touching it.','Worm reducers run hot by nature. A worm box at 85°C may be fine; a helical box at 85°C is not.','Worm gears are not reliably self-locking. Do not use one as a brake.','Worm wheel wear shows as increasing backlash and bronze in the oil.']
+  },
+  shaftmount: { icon:'ti-anchor', name:'Shaft Mount Reducer with Torque Arm', role:'Hollow output shaft slides over the driven shaft. A torque arm stops the box from rotating.',
+    body:'The reducer hangs on the driven shaft (a conveyor head pulley, typically) with a bushing or a shrink disc, and a torque arm anchored to the structure reacts the torque. Input is usually a V-belt from a motor on a bracket. Eliminates a coupling and an alignment, which is why they are on every belt conveyor. The torque arm and the shaft bushing are the two things that go wrong.',
+    tips:['The torque arm must be at roughly 90 degrees to a line from the reducer output centre to the arm anchor, and free to swing slightly. A rigid or badly angled torque arm loads the output bearings.','The driven shaft is the output bearing support. A worn head pulley shaft or a loose bushing lets the reducer rock and the output seal and bearing fail.','Belt tension on the input adds to the input bearing load. Tension by gauge, not by feel.','Backstops are common on inclined conveyors. Direction of rotation must be confirmed before fitting or the backstop locks the drive.']
+  },
+  gearmotor: { icon:'ti-engine', name:'Gearmotor', role:'Motor and reducer built as one unit. No coupling, no alignment, no input seal.',
+    body:'The motor rotor shaft is the reducer input pinion, or the motor flange bolts directly to the reducer input with a short coupling inside. Compact, aligned from the factory, and very common on conveyors, mixers, and packaging machines. Available in every gear type. The downside: a motor failure or a gear failure means the whole unit comes off, and matching a replacement means matching the motor frame and the gear ratio.',
+    tips:['Nameplate has both motor data and reducer data. Record all of it.','An integral pinion motor cannot have its motor replaced without the reducer; a flange-mount design can.','Mounting position options are more limited; the breather and level plugs are positioned for the mounting the unit was ordered for.','Brake motors on gearmotors hold loads. The brake is part of the load control plan.']
+  }
+};
+
+const gearData = {
+  spur: { icon:'ti-settings', name:'Spur Gears', role:'Straight teeth parallel to the shaft. Simple, efficient, no thrust, noisy.',
+    body:'Teeth are straight across the face. Each tooth pair engages along its full width at once, which is efficient and produces no axial thrust, but the sudden full engagement makes spur gears noisy at speed. Used in slow speed, open gearing, and where thrust bearings are undesirable. Rare in enclosed industrial reducers above low speeds.',
+    tips:['No thrust load, so plain radial bearings suffice.','Noise at gear mesh frequency is inherent and rises with speed and load.','Contact pattern across the full face width is the check; end loading means misalignment.']
+  },
+  helical: { icon:'ti-settings-2', name:'Helical Gears', role:'Teeth angled to the shaft. Quiet, strong, and they push sideways.',
+    body:'Teeth are cut at a helix angle, so engagement starts at one end of the tooth and sweeps across. More teeth in contact at once, smoother and quieter, and higher load capacity than spur gears of the same size. The angled teeth generate an axial thrust that the bearings must carry, and the thrust reverses with the direction of rotation. The standard gear in industrial reducers.',
+    tips:['Mating helical gears have opposite hand (one right, one left) and the same helix angle.','Thrust bearings (usually tapered rollers or angular contacts) at one or both ends. Thrust bearing setting affects gear position.','Higher helix angle means quieter and stronger but more thrust.','Wear at one end of the face is misalignment or a bearing that has lost its setting and let the shaft tilt.']
+  },
+  herringbone: { icon:'ti-chevrons-right', name:'Herringbone (Double Helical) Gears', role:'Two opposite-hand helicals side by side. Thrust cancels. One shaft must float.',
+    body:'Two helical gear halves with opposite hands on the same gear, either with a gap between (double helical) or meeting at a point (true herringbone). The thrust from each half cancels the other, so no thrust bearing is needed. One of the two shafts must be free to float axially so the halves can share load evenly. Used in large, high power, high speed gearing: mill drives, turbine reducers.',
+    tips:['One shaft is located axially, the other floats. Locating both binds the gears.','Uneven wear between the two halves means the floating shaft is not floating (seized bearing, wrong bearing type).','Apex run-out between the two halves is a manufacturing tolerance that shows as a rhythmic load shift.']
+  },
+  bevel: { icon:'ti-triangle', name:'Bevel and Spiral Bevel Gears', role:'Cone-shaped gears for intersecting shafts, usually at 90 degrees. Set up with shims.',
+    body:'Straight bevel gears have straight teeth on a cone. Spiral bevel gears have curved teeth, which engage progressively like helical gears: quieter and stronger. Zerol bevels are a compromise with curved teeth but zero spiral angle. All bevel gears must be positioned precisely along both shaft axes (pinion depth and gear position) to get the contact pattern centred, and that positioning is done with shims. Both shafts see thrust.',
+    tips:['Pinion depth and gear position set the pattern. Backlash follows. See the Setup tab.','Mating bevel gears are made and lapped as a matched pair. Replace them as a pair.','Thrust on both shafts, often in both directions on spiral bevels depending on rotation and hand.','A bevel set that whines after a rebuild has a pattern that was not checked.']
+  },
+  worm: { icon:'ti-ruler-2', name:'Worm and Wheel', role:'A screw driving a gear. High ratio in one stage, sliding contact, heat, and a bronze wheel.',
+    body:'The worm (a screw thread on the input shaft) drives the wheel (a gear with concave teeth wrapping the worm). Ratios from 5:1 to 100:1 in a single stage, quiet, and compact. The contact is almost pure sliding, so efficiency is low (50 to 90 percent, worse at high ratios) and the losses are heat. The wheel is bronze so it wears preferentially and the steel worm survives. Worm shaft thrust is large.',
+    tips:['Not reliably self-locking. Ratios above about 30:1 with a low lead angle may hold in the static case and let go under vibration. Never rely on it as a brake.','Bronze wheel means no active-sulphur EP oil. Use what the manufacturer specifies.','Runs hot by design. 80 to 90°C housing is normal. Rising above the usual is the symptom.','Worm shaft bearings carry the thrust and fail first. Worm wheel wear shows as bronze in the oil and increasing backlash.','Run-in matters: a new worm set is run at reduced load so the bronze beds to the worm.']
+  },
+  hypoid: { icon:'ti-arrows-cross', name:'Hypoid Gears', role:'Spiral bevel with the pinion offset from the gear centreline. High sliding, needs hypoid oil.',
+    body:'The pinion axis is offset from the gear axis, which allows a larger, stronger pinion and a lower profile. The offset introduces sliding along the tooth length on top of the bevel action, so the oil film is under more stress. Standard in automotive axles; appears in some industrial right-angle drives. Requires an EP oil rated for hypoid service.',
+    tips:['Hypoid oil is specified for a reason. Standard gear oil scuffs the teeth.','Setup is bevel gear setup plus the offset dimension. Shims for pinion depth, gear position, and backlash.','Scuffing on the drive side flank is the classic failure from the wrong oil or overload.']
+  },
+  planetary: { icon:'ti-planet', name:'Planetary (Epicyclic)', role:'A sun gear, planet gears on a carrier, and a ring gear. Load shared across the planets. Compact and strong.',
+    body:'The sun gear (input) drives several planet gears that roll around inside a fixed ring gear, and the planet carrier is the output. Load is shared between the planets (three or more), so the torque capacity for the size is very high. Inline input and output. Ratios of 3:1 to 10:1 per stage, stacked for more. Used in wheel drives, winches, wind turbines, servo drives, and anywhere torque density matters.',
+    tips:['Planet bearings run at high speed relative to the planet and are splash lubricated. They fail first when oil is low or dirty.','Load sharing depends on everything being concentric. A worn carrier bearing unloads one planet and overloads the others.','The ring gear is often the housing. Wear on the ring is not repairable in the field.','Noise at planet pass frequency (number of planets × carrier speed) is characteristic.']
+  },
+  cycloidal: { icon:'ti-circle-dotted', name:'Cycloidal Reducers', role:'An eccentric cam drives a lobed disc against pins. Very high ratio, shock tolerant, zero backlash versions for robotics.',
+    body:'An eccentric on the input shaft rolls a cycloidal disc around inside a ring of pins; the disc advances by one lobe per input revolution and drives the output through a set of pins. Ratios of 10:1 to 100:1 and more in one stage, rolling contact throughout, very high shock capacity, and precision versions with near-zero backlash for robot joints and indexers. Industrial versions drive mixers, conveyors, and crushers.',
+    tips:['Rolling contact means low wear and high efficiency at high ratio.','The eccentric bearing is the highly loaded component and the usual failure.','Precision cycloidal units in robotics are lubricated with specific greases and are not field-repairable.']
+  }
+};
+
+const wearData = {
+  polish: { icon:'ti-sparkles', name:'Normal polishing (run-in)', role:'A smooth, bright, even surface across the whole face. This is what healthy looks like.',
+    body:'During run-in the high spots on new teeth wear off and the surface takes on a polished look. After that, a healthy gear changes very little. The polish should be even across the face width and up the flank, with the pattern centred. Any departure from this baseline is the beginning of a story.',
+    tips:['Photograph it as the baseline.','Slight machining marks still visible at the root and tip are normal; they are outside the contact zone.','A polish that is brighter or wider on one end of the face is early misalignment.']
+  },
+  initpit: { icon:'ti-grain', name:'Initial (corrective) pitting', role:'Small pits, mostly at or just below the pitch line, that appear early and then stop growing.',
+    body:'New gears do not share load perfectly. The overloaded high spots fatigue and pit until the load is spread evenly, and then pitting stops. This is corrective pitting, it is normal, and it is the reason for the early oil change. Small pits, scattered, near the pitch line, not growing between inspections.',
+    tips:['Monitor: photograph and compare at the next inspection. If it stopped, it is corrective.','Early oil change removes the released particles before they become abrasive.','If the pits are growing or joining, it is destructive pitting: next card.']
+  },
+  destpit: { icon:'ti-grain', name:'Destructive (progressive) pitting', role:'Pits growing in size and number, spreading across the face, releasing metal into the oil.',
+    body:'Surface fatigue from contact stress above what the tooth can carry indefinitely. The pits grow, join, and the tooth profile is destroyed. Causes: overload (mechanical rating exceeded, service factor too low), misalignment concentrating the load on part of the face, oil viscosity too low for the load and temperature, or water in the oil reducing fatigue life.',
+    tips:['Iron in the oil analysis rises with it. The magnetic plug collects it.','Check load against the mechanical rating with the correct service factor.','Check contact pattern for concentration at one end of the face.','Check oil viscosity and water content.','A gear with progressive pitting is on a timer. Plan the replacement and fix the cause first.']
+  },
+  spall: { icon:'ti-square-off', name:'Spalling', role:'Large, irregular flakes of surface lifting out, deeper than pitting.',
+    body:'Subsurface fatigue cracks running parallel to the surface and breaking out as large flakes. Advanced destructive pitting, or the result of a case hardened tooth with a case that is too thin or too hard, or a subsurface inclusion. Also the result of shock loads that crack the case.',
+    tips:['Same causes as destructive pitting, further along.','Case-hardened gears: case depth and hardness against the specification if the gear is young.','Shock loading history: a jam, a hard start, a dropped load.']
+  },
+  scuff: { icon:'ti-flame', name:'Scuffing (scoring)', role:'Tearing and smearing of the surface in the sliding direction, from momentary welding of the two surfaces.',
+    body:'The oil film broke down, the surfaces touched, micro-welded, and tore apart as they slid. Radial tears, dull rough surface, worst at the tip and root where sliding is highest, often on the drive flank only. The cause is always lubrication: wrong viscosity, wrong oil (no EP where EP is needed), oil too hot, too little oil, or contamination. Overload and high speed make it worse.',
+    tips:['Oil type and viscosity against the specification, first.','Temperature: an oil that is fine at 60°C is too thin at 95°C.','Level: scuffing on the upper stage of a box is often the upper bearings and gears running above the splash.','Scuffing happens fast. A gear can go from healthy to scuffed in one hot run.']
+  },
+  abrasive: { icon:'ti-line-dashed', name:'Abrasive wear', role:'Fine parallel scratches in the sliding direction, dull surface, teeth thinning and backlash growing.',
+    body:'Hard particles in the oil grinding the surface. The surface looks like it has been rubbed with fine sandpaper, along the sliding direction. The teeth lose profile, backlash increases, and the wear debris makes more wear debris. Sources: dirt through a bad breather or open cover, wear metal from a failing bearing, sand or product from the environment, or the wear-in metal that was never changed out.',
+    tips:['Oil analysis: silicon is dirt from outside. Iron with silicon is dirt wearing the gears.','Breather condition and inspection cover gasket.','Filter the oil or change it. Then find the entry point.','Backlash trending catches this before the teeth are gone.']
+  },
+  corrosion: { icon:'ti-droplet', name:'Corrosion, staining, and etching', role:'Rust, dark stains, or a frosted etched surface.',
+    body:'Water in the oil rusts steel surfaces during shutdown and the rust is ground off in the next run. Acidic oxidised oil etches the surface. Some EP additives stain bronze and copper. A chemical process environment can get into the box through the breather. The pattern: rust or staining on the parts above the oil level, at the shutdown position of the gears.',
+    tips:['Water content and acid number on the oil analysis.','Breather: desiccant type on any box in a wet or humid area.','Wash-down: water gets in past the seals and the breather. Check both.','Oil past its life: acid number up, additives depleted.']
+  },
+  plastic: { icon:'ti-wave-sine', name:'Plastic flow: ridging, rippling, rolling', role:'The surface metal is being moved rather than removed. Ridges, waves, or a lip at the tooth tip.',
+    body:'Contact stress high enough to move the surface metal plastically. Ridges across the face at the pitch line, a wave pattern along the flank, or metal rolled over the tip. Overload on a soft (through-hardened) gear, or a gear that was supposed to be case hardened and is not. Sliding under high load moves the metal in the sliding direction.',
+    tips:['Load against rating. A gear doing this is overloaded or under-specified.','Hardness check if the gear is a replacement: was it made to the right specification.','Shock loads, jams, and frequent hard starts push a marginal gear over the line.']
+  },
+  endload: { icon:'ti-arrow-bar-to-right', name:'Wear concentrated at one end of the face', role:'Misalignment. The load is on part of the tooth instead of the whole width.',
+    body:'Any of the wear types above, but on one end of the face width only. The gears are not parallel: a bearing has worn or lost its setting, the housing is distorted by a bad foundation or a pipe or a mounting bolt sequence, a shaft is bent, or the bores were never right. On bevel gears, the pattern is toward the toe or the heel. This is the most common reason gears fail early in an otherwise well maintained box.',
+    tips:['Contact pattern check confirms it.','Shaft play by hand at each bearing. The bearing with play is usually the answer.','Housing foot flatness and mounting bolt torque; a twisted housing misaligns the bores.','On shaft mount reducers, the driven shaft is a bearing support: check its condition and the bushing fit.']
+  },
+  fracture: { icon:'ti-crop', name:'Tooth breakage', role:'A tooth or part of a tooth gone. Fatigue crack from the root, or overload.',
+    body:'Fatigue: a crack starts at the root fillet on the loaded side, grows slowly (beach marks on the fracture face), and the tooth lets go when the remaining section cannot carry the load. Causes: cyclic overload, a stress raiser at the root (machining mark, nick, corrosion pit), or misalignment concentrating the load at one end. Overload fracture: a single event, a rough crystalline fracture face, no beach marks. A jam, a dropped load, or a foreign object in the mesh.',
+    tips:['Look at the fracture face: beach marks are fatigue, crystalline is overload.','The rest of the teeth on that gear have the same history. Check them all for root cracks.','The broken tooth went through the mesh: check every other gear and the bearings for secondary damage.','Fatigue breakage on one end of the tooth is misalignment. Across the whole tooth is overload or a root defect.']
+  },
+  wormwear: { icon:'ti-ruler-2', name:'Worm wheel wear', role:'Bronze wears. The questions are how fast and why.',
+    body:'The bronze wheel is designed to wear preferentially. Normal wear is a smooth polished contact band on the wheel teeth, centred, with a small amount of bronze in the oil over the life of the box. Abnormal: a contact band off centre (misalignment or wrong wheel position), pitting on the bronze (overload or wrong oil), a bright smeared surface (scuffing, oil film failure, usually heat), or rapid bronze accumulation in the oil (wrong oil attacking the bronze, or overload).',
+    tips:['Copper in the oil analysis is the wheel wearing. Trend it.','Backlash rising is the wheel wearing. Trend it.','Wrong oil (active sulphur EP) shows as chemical attack: a dull, sometimes dark, roughened bronze surface.','Contact band off centre: the wheel is positioned with shims relative to the worm centreline.']
+  }
+};
+
+const diagNodes = {
+  start: { q:'What is the symptom?', hint:'Lock out, control the load, let it cool. See the Safety tab.', options:[
+    {label:'Noise: whine, growl, or knock',next:'noise1'},{label:'Running hot',next:'heat1'},{label:'Oil leak',next:'leak1'},{label:'Vibration',next:'vib1'},{label:'Metal in the oil or on the magnetic plug',next:'metal1'},{label:'Output slipping, stopped, or wrong speed',next:'output1'},{label:'Backlash increasing or lash felt at the output',next:'r_backlash'}] },
+
+  noise1: { q:'What kind of noise, and does it track the input speed, the output speed, or the mesh?', hint:'Screwdriver on each bearing housing and on the housing over the mesh. Count the rhythm.', options:[
+    {label:'Whine that rises and falls with speed',next:'r_noise_mesh'},{label:'Growl or rumble at a bearing',next:'r_noise_bearing'},{label:'Knock once per input revolution',next:'r_noise_input'},{label:'Knock once per output revolution',next:'r_noise_output'},{label:'Rattle or clatter on load reversal',next:'r_noise_backlash'}] },
+  r_noise_mesh: { type:'result', cls:'action', label:'gear mesh noise: alignment, wear, or backlash', text:'A whine at mesh frequency is the teeth engaging harder or less smoothly than designed.', sub:'New or rebuilt box: contact pattern check. The pattern is off centre or the backlash is wrong. Older box that has become whinier: tooth wear changing the profile (Wear Patterns tab), a bearing losing its setting and letting a gear tilt, or oil level low so the mesh is running dry. Some mesh noise is normal on spur and straight bevel gears and rises with load.', prevent:'Contact pattern and backlash checked and recorded on every rebuild. Oil level on the PM. Backlash trended.' },
+  r_noise_bearing: { type:'result', cls:'escalate', label:'bearing failure', text:'A growl or rumble localised to one bearing housing is that bearing.', sub:'Confirm with the screwdriver: loudest at one housing. Shaft play by hand at that bearing. Infrared: that housing hotter than the others. Plan the replacement, and when it comes apart, check the gear that bearing was locating for end-of-face wear; the bearing has been letting it move. Bearing Failure module for the failure analysis.', prevent:'Bearing setting on reassembly. Oil cleanliness. Input alignment or belt tension if it is the input bearing.' },
+  r_noise_input: { type:'result', cls:'action', label:'high speed pinion or input shaft', text:'Once per input revolution is something on the input shaft: a damaged pinion tooth, a bent shaft, a coupling fault, or a bearing with a single defect.', sub:'Inspection cover: look at every tooth on the input pinion for a broken, chipped, or pitted tooth. Coupling condition and alignment. Input shaft run-out with a dial indicator. If the noise is worst on load reversal, see backlash.', prevent:'Input alignment. Overload protection if a tooth was broken by a jam.' },
+  r_noise_output: { type:'result', cls:'action', label:'low speed gear or output shaft', text:'Once per output revolution is on the output side: a damaged tooth on the low speed gear, output bearing defect, or the driven load itself.', sub:'Low speed gear teeth through the inspection cover. Output shaft play. Uncouple the load if possible and run the box alone; if the noise goes, it is the driven machine. Shaft mount: the driven shaft, the bushing fit, and the torque arm.', prevent:'Load control and overload protection. Torque arm and bushing check on the PM for shaft mounts.' },
+  r_noise_backlash: { type:'result', cls:'action', label:'excessive backlash: teeth hammering on reversal', text:'A rattle or clatter each time the load reverses or the drive starts is the teeth crossing the backlash and hitting.', sub:'Measure backlash (Setup tab) against the specification. Excessive backlash is tooth wear (Wear Patterns: abrasive, or worm wheel wear), a bearing that has lost its setting and moved a gear, or a loose gear on its shaft (key, fit, bolts). On a worm box, backlash growing is the wheel wearing.', prevent:'Backlash trended on the PM. Oil cleanliness to slow abrasive wear.' },
+
+  heat1: { q:'Where is it hot, and how does it compare to normal for this box?', hint:'Infrared at each bearing and the sump. Worm boxes run hot normally; the change is the symptom.', options:[
+    {label:'Whole housing hot, oil temperature up',next:'heat2'},{label:'One bearing hotter than the rest',next:'r_heat_bearing'},{label:'Worm box hotter than its usual',next:'r_heat_worm'}] },
+  heat2: { q:'Oil level, viscosity, and load: which is off?', hint:'Level with the unit stopped and settled. Oil grade against the nameplate. Load against the rating.', options:[
+    {label:'Overfilled',next:'r_heat_overfill'},{label:'Low',next:'r_heat_low'},{label:'Wrong oil or old oil',next:'r_heat_oil'},{label:'Level and oil correct',next:'r_heat_load'}] },
+  r_heat_overfill: { type:'result', cls:'fix', label:'churning: overfilled', text:'Oil above the correct level is being churned by the gears, which is friction, which is heat, and it foams and leaks.', sub:'Drain to the correct level for the actual mounting position. Ask how it got overfilled: topped up while running is the usual answer.', prevent:'Level checked stopped and settled. Level mark visible on the sight glass. Mounting position confirmed against the nameplate.' },
+  r_heat_low: { type:'result', cls:'action', label:'low oil: gears and upper bearings running dry', text:'Below the correct level, the gears are not dipping deep enough to splash the upper bearings and the mesh is starved.', sub:'Fill to the correct level with the correct oil. Then find the leak that lowered it. Then inspect the teeth and the upper bearings for scuffing and heat damage; they may have been running dry for a while.', prevent:'Level on the PM. Fix the leak, not just the level.' },
+  r_heat_oil: { type:'result', cls:'action', label:'wrong viscosity or degraded oil', text:'Too thin an oil has a thin film and high internal leakage past the bearings; too thick churns. Old oxidised oil has lost its additives and its viscosity has drifted.', sub:'Oil grade against the nameplate and the manufacturer chart for the actual ambient and speed. Oil analysis: viscosity and acid number. Change the oil if in doubt; it is the cheapest component in the box.', prevent:'Oil grade on the PM sheet and on a tag at the fill plug. Analysis on the interval.' },
+  r_heat_load: { type:'result', cls:'action', label:'thermal rating exceeded, or a mechanical fault', text:'Correct oil and level, and still hot. Either the box is above its thermal rating, or something inside is generating heat: a bearing, a misaligned gear pair, or a load beyond the mechanical rating.', sub:'Thermal rating on the nameplate against the actual continuous power. Ambient temperature and airflow: a box in a hot corner or with the fan guard blocked cannot shed heat. Mechanical: bearing temperatures individually, shaft play, and a contact pattern check. Load: motor amps against the design.', prevent:'Cooling fan, shaft fan, or an oil cooler if the thermal rating is the limit. Airflow around the box kept clear.' },
+  r_heat_bearing: { type:'result', cls:'escalate', label:'bearing running hot', text:'One bearing hotter than its neighbours is failing, over-preloaded, or carrying a load it was not designed for.', sub:'Input bearing: coupling alignment or belt tension. Output bearing: overhung load, torque arm angle on a shaft mount, driven shaft condition. Any bearing after a rebuild: preload set too high. Noise and shaft play confirm a failing bearing. Plan the replacement.', prevent:'Bearing setting on reassembly. Input alignment and belt tension by gauge. Overhung load within the nameplate rating.' },
+  r_heat_worm: { type:'result', cls:'action', label:'worm box running above its normal', text:'Worm boxes are hot by nature. Hotter than usual means efficiency has fallen: the oil film is breaking down or the load is up.', sub:'Oil: correct type (no active sulphur EP on bronze), correct level, not oxidised. Load: motor amps against the design. Worm shaft thrust bearings: the usual worm box failure, and a failing one heats the input end. Backlash rising means the wheel is wearing and the contact has changed.', prevent:'Correct oil on the tag at the fill plug. Copper trend on oil analysis. Backlash trend.' },
+
+  leak1: { q:'Where is the leak?', options:[
+    {label:'Shaft seal (input or output)',next:'leak2'},{label:'Inspection cover or housing joint',next:'r_leak_joint'},{label:'Breather or fill plug',next:'r_leak_breather'}] },
+  leak2: { q:'Is the breather clear and is the level correct?', hint:'Both cause seal leaks and neither is a seal problem.', options:[
+    {label:'Breather blocked or missing',next:'r_leak_breather'},{label:'Overfilled',next:'r_heat_overfill'},{label:'Breather clear, level correct',next:'r_leak_seal'}] },
+  r_leak_breather: { type:'result', cls:'fix', label:'blocked breather: pressurised case', text:'The case heats up, the air inside expands, and with the breather blocked the pressure pushes oil past every seal.', sub:'Clear or replace the breather. On a wash-down machine, fit a breather that will survive the wash-down or relocate it with a tube. A breather leaking oil is the case pressurising and venting through it, or the level is too high and the gears are throwing oil up into it.', prevent:'Breather on the PM sheet. Desiccant breather where humidity or dirt is an issue.' },
+  r_leak_seal: { type:'result', cls:'action', label:'seal: check the shaft and the bearing behind it', text:'Breather clear and level right, and the seal still leaks. The seal has worn, the shaft under it has worn, or the bearing behind it has play and the shaft is running eccentric.', sub:'Shaft play by hand at that end. Play means the bearing, not the seal. Shaft surface under the lip: a groove means a wear sleeve or a machined shaft. Seal lip hardened means the box has been running hot. Replace the seal with the lip lubricated, the keyway covered, pressed square.', prevent:'Wear sleeve on any shaft with a groove. Fix heat before replacing a hardened seal.' },
+  r_leak_joint: { type:'result', cls:'fix', label:'gasket or sealant joint', text:'Inspection cover and housing split lines leak from a damaged gasket, a distorted cover, uneven bolt torque, or a pressurised case.', sub:'Breather first. Then remove the cover, clean both faces, check the cover for flatness, fit a new gasket or the specified sealant, torque in sequence. A leaking cover gasket is also a dirt entry point.', prevent:'Gasket in stock for the box. Torque pattern on the PM sheet.' },
+
+  vib1: { q:'Has the vibration changed recently, and what is its rhythm?', options:[
+    {label:'Changed after maintenance or a rebuild',next:'r_vib_rebuild'},{label:'Increasing over time',next:'r_vib_wear'},{label:'At input speed',next:'r_vib_input'},{label:'Structure or foundation shaking',next:'r_vib_foundation'}] },
+  r_vib_rebuild: { type:'result', cls:'action', label:'rebuild: setting, pattern, or alignment', text:'A box that vibrates after a rebuild has a bearing setting, a contact pattern, or an input alignment that was not checked.', sub:'Input coupling alignment. Bearing preload or endplay against the drawing. Contact pattern. Shims in the right places. Gear on the right shaft and facing the right way (helical hand). One of these is wrong.', prevent:'Rebuild checklist with the settings recorded. Alignment after the box is bolted down.' },
+  r_vib_wear: { type:'result', cls:'action', label:'wear: bearings, teeth, or looseness', text:'Slowly rising vibration is a bearing losing its setting, teeth wearing, or the box working loose on its foundation.', sub:'Shaft play at each bearing. Backlash. Mounting bolt torque. Foundation grout and any cracking. Oil analysis for iron. Vibration Fundamentals module (planned) for reading the spectrum: bearing frequencies, mesh frequency, and its sidebands tell you which.', prevent:'Vibration trended on the PM. Backlash trended. Foundation inspected.' },
+  r_vib_input: { type:'result', cls:'action', label:'input speed: coupling, alignment, or pinion', text:'Vibration at input speed is the coupling, the input alignment, a bent input shaft, or a damaged pinion.', sub:'Alignment readings. Coupling element condition. Input shaft run-out. Pinion teeth. Belt drive: sheave run-out and belt condition. Couplings and Alignment module for the alignment side.', prevent:'Alignment after any input work. Coupling inspection on the PM.' },
+  r_vib_foundation: { type:'result', cls:'action', label:'mounting, foundation, or torque arm', text:'The box is moving on its mounting.', sub:'Mounting bolt torque. Soft foot under the housing (a housing bolted down on an uneven base is twisted and its bores are misaligned). Grout condition. Shaft mount: torque arm bushings, angle, and anchor. Structure resonance if the vibration is at a speed the structure likes.', prevent:'Mounting bolts on the PM. Torque arm bushings replaced on condition.' },
+
+  metal1: { q:'What kind of metal, and how much?', hint:'Fine ferrous fuzz on the magnetic plug is normal. Flakes and chips are not. Bronze is a worm wheel or a bearing cage.', options:[
+    {label:'Fine ferrous fuzz, small amount',next:'r_metal_normal'},{label:'Ferrous flakes or chips',next:'r_metal_flakes'},{label:'Bronze or copper coloured',next:'r_metal_bronze'},{label:'Non-magnetic silver flakes',next:'r_metal_cage'}] },
+  r_metal_normal: { type:'result', cls:'fix', label:'normal wear', text:'A small amount of fine ferrous material on the magnetic plug is the gears and bearings wearing normally.', sub:'Clean the plug, note the amount, and compare next time. The change is the information. Oil analysis iron trend confirms.', prevent:'Magnetic plug inspected and the amount noted on every oil check.' },
+  r_metal_flakes: { type:'result', cls:'escalate', label:'surface fatigue or breakage', text:'Flakes are pitting or spalling; chips are tooth breakage or a bearing race breaking up. Something is coming apart.', sub:'Inspection cover off. Every tooth on every gear. Shaft play at every bearing. The source will be visible. Ferrography on the oil sample tells you the wear mechanism from the particle shape. Plan the repair and change the oil so the debris does not do more damage.', prevent:'Whatever caused it: overload, misalignment, lubrication, or contamination. Wear Patterns tab to read the teeth.' },
+  r_metal_bronze: { type:'result', cls:'action', label:'bronze: worm wheel or bushing', text:'Copper coloured debris on a worm box is the wheel wearing. On any box it can be a bronze bearing cage, a bushing, or a thrust washer.', sub:'Worm box: check backlash and the oil type. Rapid bronze loss is wrong oil or overload. Other boxes: identify the bronze components on the drawing. Copper on the oil analysis trend.', prevent:'Correct oil for bronze. Copper trended on analysis.' },
+  r_metal_cage: { type:'result', cls:'escalate', label:'bearing cage', text:'Non-magnetic silver flakes are usually a bearing cage (brass, bronze, or pressed steel that has been through the mesh).', sub:'A cage breaking up is a bearing in the last stage of failure. Find which bearing by shaft play, temperature, and noise. Plan the replacement now.', prevent:'Bearing condition on the PM. Oil cleanliness.' },
+
+  output1: { q:'What is the output doing?', options:[
+    {label:'Input turns, output does not',next:'r_out_stopped'},{label:'Output speed is wrong',next:'r_out_speed'},{label:'Output stalls under load',next:'r_out_stall'}] },
+  r_out_stopped: { type:'result', cls:'escalate', label:'broken tooth, sheared key, or stripped gear', text:'Input turning with no output means the drive path is broken inside the box, or the input coupling or key has let go.', sub:'Lock out and control the load first. Input coupling and key. Then the inspection cover: a gear with all its teeth gone, a broken shaft, or a gear that has spun on its shaft. Worm box: a stripped wheel, which is what happens when the wheel wears through the bronze.', prevent:'Overload protection on the drive. Backlash trend would have shown a worm wheel wearing.' },
+  r_out_speed: { type:'result', cls:'fix', label:'wrong ratio or wrong input speed', text:'The output speed is what the input speed and the ratio make it. If it is wrong, one of those is wrong.', sub:'Input speed with a tachometer against the motor nameplate; a VFD changes it. Ratio on the gearbox nameplate against what the machine needs. A replacement box with the right frame size and the wrong ratio is a common find.', prevent:'Ratio on the PM sheet and on the purchase specification.' },
+  r_out_stall: { type:'result', cls:'action', label:'load exceeds torque, or a mechanical bind', text:'The box delivers torque up to what the motor gives it times the ratio. If the load is more than that, it stalls. If the box binds, it stalls with the motor pulling high amps.', sub:'Motor amps at the stall: high means the motor is trying and the load or a bind is stopping it; normal means the drive path is slipping (coupling, key, belt). Uncouple the load: if the box turns freely, the load is the problem. If the box is stiff by hand, a bearing has seized or the gears are binding on zero backlash or debris.', prevent:'Load sizing with a service factor. Overload protection.' },
+
+  r_backlash: { type:'result', cls:'action', label:'backlash increasing', text:'Backlash grows as the teeth wear or as a bearing lets a gear move away from its mate.', sub:'Measure it (Setup tab) against the specification and against the last reading. Shaft play at each bearing separates bearing movement from tooth wear. Inspection cover: the teeth will show abrasive wear or worm wheel wear. Rate of increase sets the replacement plan.', prevent:'Backlash measured and recorded on the PM. Oil cleanliness slows abrasive wear. Correct oil for bronze.' }
+};
+
+let currentDiagNode='start', diagHistory=[];
+function switchTab(tab){ if(tab==='selfcheck'){ setTimeout(scRender,0); }document.querySelectorAll('.bw-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.bw-panel').forEach(p=>p.classList.remove('active'));const b=document.querySelector(`[onclick="switchTab('${tab}')"]`);if(b)b.classList.add('active');const p=document.getElementById('panel-'+tab);if(p)p.classList.add('active');if(tab==='troubleshoot')renderDiag('start');}
+function card(d){return `<div class="comp-detail"><div class="comp-detail-header"><i class="ti ${d.icon} comp-detail-icon"></i><div><div class="comp-detail-name">${d.name}</div><div class="comp-detail-role">${d.role}</div></div></div><div class="comp-detail-body">${d.body}</div><ul class="comp-detail-tips">${d.tips.map(t=>`<li>${t}</li>`).join('')}</ul></div>`;}
+function sel(panel,prefix,id,data,target){document.querySelectorAll('#panel-'+panel+' .type-card').forEach(c=>c.classList.remove('selected'));document.getElementById(prefix+id).classList.add('selected');document.getElementById(target).innerHTML=card(data[id]);}
+function selectCfg(id){sel('overview','cfgcard-',id,cfgData,'cfg-display');}
+function selectGear(id){sel('gears','gcard-',id,gearData,'gear-display');}
+function selectWear(id){sel('wear','wcard-',id,wearData,'wear-display');}
+function toggleAdv(id){document.getElementById(id).classList.toggle('open');}
+function renderDiag(id){currentDiagNode=id;const n=diagNodes[id];if(!n)return;const pct=Math.min(8+(diagHistory.length/5)*88,96);document.getElementById('gb-progress').style.width=pct+'%';let h='';if(diagHistory.length>0)h+=`<button class="tree-back" onclick="diagBack()"><i class="ti ti-arrow-left"></i> back</button><br><br>`;if(n.type==='result'){document.getElementById('gb-progress').style.width='100%';h+=`<div class="tree-result ${n.cls}"><div class="tree-result-label">${n.label}</div><div class="tree-result-text">${n.text}</div><div class="tree-result-sub">${n.sub}</div>${n.prevent?`<div class="tree-prevent"><strong>Prevent recurrence</strong>${n.prevent}</div>`:''}</div><br><button class="tree-btn" onclick="diagHistory.length=0;renderDiag('start');">Start over</button>`;}else{h+=`<div class="tree-q"><div class="tree-q-text">${n.q}</div>${n.hint?`<div class="tree-q-hint">${n.hint}</div>`:''}<div class="tree-btns">${n.options.map(o=>`<button class="tree-btn ${o.cls||''}" onclick="diagTo('${o.next}')">${o.label}</button>`).join('')}</div></div>`;}document.getElementById('gb-tree').innerHTML=h;}
+function diagTo(id){diagHistory.push(currentDiagNode);renderDiag(id);}
+function diagBack(){if(diagHistory.length>0)renderDiag(diagHistory.pop());}
+(function(){function go(){var h=location.hash.replace('#','');if(h&&document.getElementById('panel-'+h))switchTab(h);}go();window.addEventListener('hashchange',go);})();
+
+const SELFCHECK = {
+  overview: [
+    ['A gearbox can be within its mechanical rating and still overheat because?', ['The gears are wrong', 'It is above its thermal rating', 'The oil is too clean', 'Ratio is too high'], 1, 'The lower of the two ratings governs.'],
+    ['15 kW at 1750 rpm through a 20:1 reducer at 96% efficiency gives output torque of about?', ['82 Nm', '1574 Nm', '15,740 Nm', '8 Nm'], 1, '82 Nm × 20 × 0.96.'],
+    ['On a shaft mount reducer, the torque arm should be?', ['Rigid', 'At about 90° to the line from output centre to anchor, free to swing slightly', 'Removed', 'Horizontal always'], 1, 'A rigid or badly angled arm loads the output bearings.']
+  ],
+  gears: [
+    ['Which gear type produces axial thrust?', ['Spur', 'Helical', 'Herringbone', 'None'], 1, 'Angled teeth push sideways; the thrust reverses with rotation.'],
+    ['Worm gearboxes are reliably self-locking. True or false?', ['True', 'False', 'True above 30:1', 'True when cold'], 1, 'Many let go under vibration. Never rely on one as a brake.'],
+    ['Mating gears must share the same?', ['Colour', 'Module or DP and pressure angle', 'Tooth count', 'Shaft size'], 1, 'Different module gears will not mesh.'],
+    ['In a planetary stage, which bearings fail first when oil is low?', ['Input', 'Planet bearings', 'Output', 'Ring'], 1, 'They run fast and are splash lubricated.']
+  ],
+  bearings: [
+    ['A leaking output seal: what is checked first?', ['The seal', 'The breather', 'The oil grade', 'The coupling'], 1, 'A blocked breather pressurises the case and pushes oil past every seal.'],
+    ['Tapered roller bearing setting is done with?', ['Grease', 'Shims or an adjusting nut, to the drawing', 'Torque on the cap bolts', 'Feel'], 1, 'Preload or endplay is specified.'],
+    ['Shims from two bearing caps?', ['Are interchangeable', 'Are not; tape each pack to its cap', 'Are always the same', 'Are not needed'], 1, 'The wrong pack moves the pinion.']
+  ],
+  lube: [
+    ['Most common industrial gear oil grade?', ['VG 32', 'VG 220', 'VG 1000', 'VG 10'], 1, 'AGMA 5, helical and bevel reducers.'],
+    ['Oil level is checked?', ['Running', 'Stopped and settled, in the actual mounting position', 'Cold only', 'From the breather'], 1, 'The running sight glass lies.'],
+    ['PAG oil and mineral oil?', ['Mix freely', 'Are incompatible', 'Are the same', 'Mix above 60°C'], 1, 'Do not mix or switch without checking.'],
+    ['Normal worm gearbox housing temperature?', ['30°C', '80 to 90°C', '120°C', 'Ambient'], 1, 'Worm boxes run hot by nature; the change is the symptom.']
+  ],
+  wear: [
+    ['Small pits near the pitch line that appear early and stop growing?', ['Destructive pitting', 'Initial (corrective) pitting', 'Scuffing', 'Spalling'], 1, 'Normal run-in; the early oil change removes the debris.'],
+    ['Radial tears in the sliding direction, worst at tip and root?', ['Pitting', 'Scuffing (oil film failure)', 'Abrasive wear', 'Corrosion'], 1, 'Always a lubrication cause.'],
+    ['Wear at one end of the tooth face?', ['Overload', 'Misalignment', 'Wrong oil', 'Age'], 1, 'The load is on part of the tooth.'],
+    ['Beach marks on a fracture face indicate?', ['Overload', 'Fatigue', 'Corrosion', 'Manufacturing defect'], 1, 'A slow crack; crystalline is overload.']
+  ],
+  setup: [
+    ['Bevel gear contact pattern toward the toe means?', ['Correct', 'Gears too close together', 'Gears too far apart', 'Pinion too far out'], 1, 'Move the gear away from the pinion.'],
+    ['Order of operations on reassembly?', ['Backlash, then bearing setting', 'Bearing setting, then backlash, then contact pattern', 'Pattern first', 'Any order'], 1, 'Bearing setting positions the shaft; backlash follows.'],
+    ['Backlash increasing over time is a direct measure of?', ['Oil level', 'Tooth wear or bearing movement', 'Temperature', 'Load'], 1, 'Trend it on the PM.']
+  ],
+  troubleshoot: [
+    ['A knock once per output revolution points at?', ['The input pinion', 'The low speed gear or output shaft', 'The oil', 'The breather'], 1, 'Count the rhythm against the shaft speeds.'],
+    ['Whole housing hot, oil level correct, oil correct, amps normal, full speed?', ['Overfilled', 'Above thermal rating or a mechanical fault', 'Low oil', 'Wrong oil'], 1, 'Check thermal rating, ambient, airflow, then bearings and pattern.'],
+    ['Non-magnetic silver flakes on the magnetic plug?', ['Normal', 'Bearing cage', 'Gear teeth', 'Worm wheel'], 1, 'A cage breaking up is the last stage of bearing failure.']
+  ],
+  safety: [
+    ['A gearbox on an inclined conveyor with the motor locked out is?', ['Locked out', 'Still holding the load through the gear train; block the load', 'Safe to open', 'Free to turn'], 1, 'Control the load before opening the drive train.'],
+    ['Before cracking the drain on a hot gearbox?', ['Nothing', 'Open the breather or fill plug first, from the side', 'Run it', 'Cool the oil with water'], 1, 'A blocked breather means a pressurised case.']
+  ]
+};
+
+// BuiltWright self-check engine
+let scAnswered = {}, scCorrect = 0;
+function scRender(){
+  const el=document.getElementById('sc-body'); if(!el) return;
+  let total=0, html='';
+  for (const [tab, qs] of Object.entries(SELFCHECK)){
+    const tabName = (document.querySelector(`[onclick="switchTab('${tab}')"]`)||{}).textContent || tab;
+    html += `<div class="sc-section"><div class="family-label">${tabName} <a class="sc-jump" href="#${tab}" onclick="switchTab('${tab}')">open tab</a></div>`;
+    qs.forEach((q,i)=>{ const id=tab+'_'+i; total++;
+      html += `<div class="sc-q" id="scq-${id}"><div class="sc-stem">${q[0]}</div><div class="sc-opts">${q[1].map((o,j)=>`<button class="sc-opt" onclick="scAnswer('${id}',${j},${q[2]})">${o}</button>`).join('')}</div><div class="sc-why" id="scw-${id}"><strong>Why</strong>${q[3]}</div></div>`;
+    });
+    html += `</div>`;
+  }
+  html += `<div class="sc-score"><div class="sc-score-text">Score <b id="sc-n">0</b> / ${total} &nbsp; answered <b id="sc-a">0</b></div><div class="sc-bar"><div id="sc-fill"></div></div><button class="tree-btn" onclick="scReset()">Reset</button></div>`;
+  el.innerHTML = html; window._scTotal=total;
+}
+function scAnswer(id, j, correct){
+  if (scAnswered[id]!==undefined) return;
+  scAnswered[id]=j; if (j===correct) scCorrect++;
+  const btns=document.querySelectorAll(`#scq-${id} .sc-opt`);
+  btns.forEach((b,k)=>{ b.disabled=true; if(k===correct) b.classList.add('correct'); else if(k===j) b.classList.add('wrong'); });
+  document.getElementById('scw-'+id).classList.add('show');
+  document.getElementById('sc-n').textContent=scCorrect;
+  const a=Object.keys(scAnswered).length; document.getElementById('sc-a').textContent=a;
+  document.getElementById('sc-fill').style.width=(100*scCorrect/window._scTotal)+'%';
+}
+function scReset(){ scAnswered={}; scCorrect=0; scRender(); }
+</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
+</body>
+</html>

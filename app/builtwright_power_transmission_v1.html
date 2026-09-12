@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuiltWright: Power Transmission: Module 08</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a1a18">
+<link rel="apple-touch-icon" href="builtwright_icon_192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #1a1a18; color: #e8e6df; font-family: 'Rajdhani', sans-serif; min-height: 100vh; padding: 2rem 1rem; }
+  .bw-wrap { max-width: 720px; margin: 0 auto; }
+  .bw-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 1.5rem; border-bottom: 1px solid #3a3a36; padding-bottom: 0.75rem; }
+  .bw-logo { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: #BA7517; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .bw-logo a { color: #BA7517; text-decoration: none; }
+  .bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }
+  .bw-badge { font-family: 'Share Tech Mono', monospace; font-size: 10px; background: #2a1f08; color: #BA7517; padding: 3px 8px; border-radius: 3px; letter-spacing: 1px; border: 0.5px solid #BA7517; }
+  .bw-tabs { display: flex; gap: 4px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }
+  .bw-tab:hover { background: #2e2e2a; color: #e8e6df; border-color: #BA7517; }
+  .bw-tab.active { background: #BA7517; color: #fff; border-color: #BA7517; font-weight: 600; }
+  .bw-panel { display: none; } .bw-panel.active { display: block; }
+  .bw-section-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 2px; color: #5F5E5A; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .family-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; color: #BA7517; text-transform: uppercase; margin: 1rem 0 0.5rem 0; }
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 0.5rem; }
+  .type-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; }
+  .type-card:hover, .type-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }
+  .type-card-icon { font-size: 22px; color: #BA7517; margin-bottom: 5px; }
+  .type-card-name { font-size: 13px; font-weight: 600; color: #f0ede4; margin-bottom: 2px; }
+  .type-card-sub { font-size: 11px; color: #888780; }
+  .comp-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }
+  .comp-detail-header { display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem; }
+  .comp-detail-icon { font-size: 22px; color: #BA7517; }
+  .comp-detail-name { font-size: 16px; font-weight: 600; color: #f0ede4; }
+  .comp-detail-role { font-size: 13px; color: #888780; margin-top: 1px; }
+  .comp-detail-body { font-size: 14px; color: #c8c6bf; line-height: 1.65; margin-bottom: 0.75rem; }
+  .comp-detail-tips { list-style: none; }
+  .comp-detail-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }
+  .comp-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; }
+  .comp-placeholder { text-align: center; padding: 2rem; color: #5F5E5A; font-size: 13px; font-family: 'Share Tech Mono', monospace; letter-spacing: 1px; border: 0.5px dashed #3a3a36; border-radius: 8px; margin-bottom: 1.5rem; }
+  .info-block { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.1rem 1.25rem; margin-bottom: 10px; }
+  .info-block-title { font-size: 15px; font-weight: 600; color: #f0ede4; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px; }
+  .info-block-title i { color: #BA7517; font-size: 17px; }
+  .info-block-body { font-size: 13px; color: #c8c6bf; line-height: 1.6; }
+  .info-block-tips { list-style: none; margin-top: 0.6rem; }
+  .info-block-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }
+  .info-block-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; }
+  .callout-box { border-radius: 8px; padding: 1.1rem 1.25rem; margin-bottom: 1.25rem; border: 1.5px solid #EF9F27; background: #2a1f08; }
+  .callout-box.red { border-color: #A32D2D; background: #200d0d; }
+  .callout-box.blue { border-color: #185FA5; background: #0c1f33; }
+  .callout-box-header { display: flex; align-items: center; gap: 8px; margin-bottom: 0.6rem; }
+  .callout-box-icon { font-size: 20px; color: #EF9F27; }
+  .callout-box.red .callout-box-icon, .callout-box.red .callout-box-title, .callout-box.red strong { color: #F09595; }
+  .callout-box.blue .callout-box-icon, .callout-box.blue .callout-box-title, .callout-box.blue strong { color: #85B7EB; }
+  .callout-box-title { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #EF9F27; font-weight: 600; }
+  .callout-box-body { font-size: 13px; color: #c8c6bf; line-height: 1.6; }
+  .callout-box-body strong { color: #EF9F27; font-weight: 600; }
+  .callout-tips { list-style: none; margin-top: 0.6rem; }
+  .callout-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }
+  .callout-tips li::before { content: '→'; position: absolute; left: 0; color: #EF9F27; }
+  .callout-box.red .callout-tips li::before { color: #F09595; }
+  .field-tip { display: flex; gap: 10px; background: #1e1e1c; border-left: 3px solid #BA7517; border-radius: 0 6px 6px 0; padding: 0.7rem 0.9rem; margin: 0.75rem 0; }
+  .field-tip i { color: #BA7517; font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+  .field-tip div { font-size: 13px; color: #c8c6bf; line-height: 1.55; }
+  .field-tip strong { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517; display: block; margin-bottom: 2px; }
+  .adv-wrap { border-radius: 8px; overflow: hidden; border: 0.5px solid #3a3a36; margin-bottom: 1.25rem; }
+  .adv-toggle { width: 100%; background: #242420; border: none; padding: 0.75rem 1.1rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; gap: 10px; }
+  .adv-toggle-left { display: flex; align-items: center; gap: 8px; }
+  .adv-toggle-icon { font-size: 15px; color: #BA7517; }
+  .adv-toggle-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517; font-weight: 600; text-align: left; }
+  .adv-chevron { font-size: 13px; color: #BA7517; transition: transform 0.2s; }
+  .adv-wrap.open .adv-chevron { transform: rotate(180deg); }
+  .adv-body { display: none; background: #1e1e1c; padding: 1rem 1.1rem; border-top: 0.5px solid #3a3a36; }
+  .adv-wrap.open .adv-body { display: block; }
+  .adv-body p { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-bottom: 0.75rem; }
+  .adv-body strong { color: #e8e6df; font-weight: 600; }
+  .chain-wrap { background: #242420; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; overflow-x: auto; }
+  .chain { display: flex; align-items: center; flex-wrap: nowrap; gap: 0; }
+  .chain-node { flex-shrink: 0; }
+  .chain-box { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 6px; padding: 7px 9px; text-align: center; cursor: pointer; transition: all 0.15s; min-width: 70px; }
+  .chain-box:hover, .chain-box.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }
+  .chain-icon { font-size: 18px; color: #BA7517; display: block; margin-bottom: 2px; }
+  .chain-label { font-size: 11px; font-weight: 600; color: #e8e6df; }
+  .chain-sub { font-size: 9px; color: #888780; }
+  .chain-arrow { font-size: 14px; color: #5F5E5A; padding: 0 3px; flex-shrink: 0; }
+  .sym-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.25rem; }
+  .sym-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .sym-card:hover, .sym-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }
+  .sym-card-label { font-size: 12px; font-weight: 600; color: #f0ede4; text-align: center; }
+  .sym-card-sub { font-size: 10px; color: #888780; text-align: center; }
+  .sym-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }
+  .sym-detail-body { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-top: 0.75rem; }
+  .sym-detail-tips { list-style: none; margin-top: 0.6rem; }
+  .sym-detail-tips li { font-size: 12px; color: #888780; padding: 2px 0 2px 16px; position: relative; line-height: 1.5; }
+  .sym-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; font-size: 11px; }
+  .ref-table { width: 100%; border-collapse: collapse; margin: 0.5rem 0 1rem 0; font-size: 12px; }
+  .ref-table th { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #BA7517; text-align: left; padding: 6px 8px; border-bottom: 1px solid #3a3a36; }
+  .ref-table td { padding: 6px 8px; border-bottom: 0.5px solid #2e2e2a; color: #c8c6bf; vertical-align: top; line-height: 1.4; }
+  .ref-table td:first-child { color: #f0ede4; font-weight: 600; white-space: nowrap; }
+  .progress-bar { height: 3px; background: #242420; border-radius: 2px; margin-bottom: 1rem; overflow: hidden; }
+  .progress-fill { height: 100%; background: #BA7517; border-radius: 2px; transition: width 0.3s; }
+  .tree-q { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1rem 1.25rem; }
+  .tree-q-text { font-size: 15px; font-weight: 600; color: #f0ede4; margin-bottom: 0.5rem; line-height: 1.4; }
+  .tree-q-hint { font-size: 12px; color: #888780; margin-bottom: 0.75rem; font-style: italic; line-height: 1.45; }
+  .tree-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tree-btn { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; padding: 7px 16px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; text-align: left; }
+  .tree-btn:hover { border-color: #BA7517; background: #2a1f08; color: #EF9F27; }
+  .tree-btn.yes { border-color: #3B6D11; } .tree-btn.yes:hover { background: #0e1f05; color: #97C459; }
+  .tree-btn.no { border-color: #A32D2D; } .tree-btn.no:hover { background: #200d0d; color: #F09595; }
+  .tree-result { border-radius: 8px; padding: 1rem 1.25rem; margin-top: 8px; }
+  .tree-result.action { background: #2a1f08; border: 0.5px solid #BA7517; }
+  .tree-result.fix { background: #0e1f05; border: 0.5px solid #3B6D11; }
+  .tree-result.escalate { background: #200d0d; border: 0.5px solid #A32D2D; }
+  .tree-result-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+  .tree-result.action .tree-result-label { color: #EF9F27; }
+  .tree-result.fix .tree-result-label { color: #97C459; }
+  .tree-result.escalate .tree-result-label { color: #F09595; }
+  .tree-result-text { font-size: 14px; font-weight: 500; color: #f0ede4; line-height: 1.55; }
+  .tree-result-sub { font-size: 12px; color: #888780; margin-top: 5px; line-height: 1.5; }
+  .tree-prevent { margin-top: 10px; padding-top: 8px; border-top: 0.5px solid rgba(255,255,255,0.08); font-size: 12px; color: #c8c6bf; line-height: 1.5; }
+  .tree-prevent strong { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #97C459; display: block; margin-bottom: 2px; }
+  .tree-back { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; color: #888780; background: none; border: none; cursor: pointer; padding: 4px 0; text-transform: uppercase; display: inline-flex; align-items: center; gap: 5px; }
+  .tree-back:hover { color: #BA7517; }
+  .bw-footer { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: #5F5E5A; letter-spacing: 1px; text-align: right; margin-top: 1rem; padding-top: 0.75rem; border-top: 0.5px solid #3a3a36; }
+
+  .sc-section { margin-bottom: 1.25rem; }
+  .sc-q { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 0.9rem 1.1rem; margin-bottom: 8px; }
+  .sc-stem { font-size: 14px; font-weight: 600; color: #f0ede4; line-height: 1.45; margin-bottom: 0.6rem; }
+  .sc-opts { display: flex; flex-direction: column; gap: 6px; }
+  .sc-opt { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 500; text-align: left; padding: 7px 12px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; line-height: 1.4; }
+  .sc-opt:hover { border-color: #BA7517; color: #EF9F27; }
+  .sc-opt.correct { border-color: #3B6D11; background: #0e1f05; color: #97C459; }
+  .sc-opt.wrong { border-color: #A32D2D; background: #200d0d; color: #F09595; }
+  .sc-opt:disabled { cursor: default; }
+  .sc-why { display: none; font-size: 12px; color: #c8c6bf; line-height: 1.5; margin-top: 8px; padding-top: 8px; border-top: 0.5px solid rgba(255,255,255,0.08); }
+  .sc-why.show { display: block; }
+  .sc-why strong { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #97C459; display: block; margin-bottom: 2px; }
+  .sc-score { position: sticky; bottom: 0; background: #1a1a18; border-top: 0.5px solid #3a3a36; padding: 0.6rem 0; display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 1rem; }
+  .sc-score-text { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 1px; color: #888780; text-transform: uppercase; }
+  .sc-score-text b { color: #EF9F27; }
+  .sc-bar { flex: 1; height: 4px; background: #242420; border-radius: 2px; overflow: hidden; }
+  .sc-bar div { height: 100%; background: #97C459; width: 0; transition: width 0.3s; }
+  .sc-jump { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; color: #888780; text-decoration: none; text-transform: uppercase; }
+  .sc-jump:hover { color: #EF9F27; }
+
+  @media print {
+    body { background:#fff; color:#000; padding:0; }
+    .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; }
+    .bw-panel { display:none; } .bw-panel.active { display:block; }
+    .bw-wrap { max-width:100%; }
+    .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; }
+    .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; }
+    .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; }
+    .adv-body { display:block !important; }
+    .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; }
+    .progress-bar { display:none; }
+    a { color:#000; text-decoration:none; }
+    .bw-logo a::after { content:"  builtwrightapp.com"; color:#666; }
+    .bw-header { border-bottom:1px solid #000; }
+    .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; }
+  }
+ .related { margin-top:1.25rem; border-top:0.5px solid #3a3a36; padding-top:0.9rem; }
+  .related-label { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:#5F5E5A; margin-bottom:6px; }
+  .related a { display:inline-block; font-size:12px; color:#e8e6df; background:#242420; border:0.5px solid #3a3a36; border-radius:4px; padding:5px 9px; margin:0 6px 6px 0; text-decoration:none; }
+  .related a:hover { border-color:#BA7517; color:#EF9F27; }
+</style>
+</head>
+<body>
+<div class="bw-wrap">
+  <div class="bw-header">
+    <div><div class="bw-logo"><a href="builtwright_diagnose_hub_v1.html">BuiltWright</a></div><div class="bw-title">Power Transmission</div></div>
+    <div class="bw-badge">Module 08</div>
+  </div>
+  <div class="bw-tabs">
+    <button class="bw-tab active" onclick="switchTab('overview')">Overview</button>
+    <button class="bw-tab" onclick="switchTab('belts')">Belts</button>
+    <button class="bw-tab" onclick="switchTab('chains')">Chains</button>
+    <button class="bw-tab" onclick="switchTab('tension')">Tensioning</button>
+    <button class="bw-tab" onclick="switchTab('alignment')">Alignment</button>
+    <button class="bw-tab" onclick="switchTab('failure')">Failure Analysis</button>
+    <button class="bw-tab" onclick="switchTab('troubleshoot')">Troubleshoot</button>
+    <button class="bw-tab" onclick="switchTab('selfcheck')">Self-Check</button>
+    <button class="bw-tab" onclick="switchTab('safety')" style="border-color:#A32D2D; color:#F09595;">Safety</button>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div id="panel-overview" class="bw-panel active">
+    <div class="bw-section-label">Drive types: tap to compare</div>
+    <div class="card-grid">
+      <div class="type-card" onclick="selectDrive('vbelt')" id="dcard-vbelt"><div class="type-card-icon"><i class="ti ti-circle-dashed"></i></div><div class="type-card-name">V-Belt Drive</div><div class="type-card-sub">Friction, slip-tolerant, quiet, cheap</div></div>
+      <div class="type-card" onclick="selectDrive('timing')" id="dcard-timing"><div class="type-card-icon"><i class="ti ti-clock-cog"></i></div><div class="type-card-name">Synchronous (Timing) Belt</div><div class="type-card-sub">Positive drive, no slip, no lube</div></div>
+      <div class="type-card" onclick="selectDrive('chain')" id="dcard-chain"><div class="type-card-icon"><i class="ti ti-link"></i></div><div class="type-card-name">Roller Chain Drive</div><div class="type-card-sub">Positive, high torque, needs lubrication</div></div>
+      <div class="type-card" onclick="selectDrive('direct')" id="dcard-direct"><div class="type-card-icon"><i class="ti ti-arrows-join"></i></div><div class="type-card-name">Direct Coupled and Geared</div><div class="type-card-sub">When belts and chains are the wrong answer</div></div>
+    </div>
+    <div id="drive-display" style="margin-top:1rem;"><div class="comp-placeholder">select a drive type above</div></div>
+
+    <div class="bw-section-label">Ratio, speed, and the numbers you actually use</div>
+    <div class="info-block">
+      <div style="background:#111110; border:0.5px solid #3a3a36; border-radius:6px; padding:0.75rem 1rem; margin:0.4rem 0 0.8rem 0; font-family:'Share Tech Mono',monospace; font-size:12px; color:#EF9F27; line-height:1.9;">
+        Speed ratio: N1 × D1 = N2 × D2 (rpm × pitch diameter, either side)<br>
+        Driven rpm = Driver rpm × (Driver PD ÷ Driven PD)<br>
+        Belt speed (m/min) = π × PD (m) × rpm<br>
+        Chain: ratio = driven teeth ÷ driver teeth<br><br>
+        Example: 1750 rpm motor, 150 mm driver sheave, 400 mm driven sheave<br>
+        Driven rpm = 1750 × (150 ÷ 400) = 656 rpm<br>
+        Belt speed = π × 0.15 × 1750 = 825 m/min (about 2700 ft/min)
+      </div>
+      <div class="info-block-body">Use pitch diameter, not outside diameter, for belt calculations. The pitch line is where the belt's tension cords run, a little below the top of the belt. Sheave catalogues list pitch diameter. For chain, sprocket pitch diameter is a function of tooth count and chain pitch and is in the sprocket catalogue.</div>
+      <ul class="info-block-tips">
+        <li>Classical V-belts are comfortable up to roughly 1500 m/min (5000 ft/min). Narrow section belts run faster. Above the belt's rated speed, centrifugal force lifts the belt out of the groove and grip falls off.</li>
+        <li>Minimum sheave diameter matters as much as ratio. A belt bent around a sheave smaller than its rated minimum fatigues the cords and cracks the underside early. The belt catalogue lists the minimum for each section.</li>
+        <li>Chain speed limits depend on pitch: small pitch chain runs fast, large pitch chain runs slow. Above the limit, the chain hits the sprocket teeth hard enough to hammer them.</li>
+        <li>Service factor: the catalogue horsepower rating is multiplied down for shock loads, long hours, and hard starts. A drive sized without a service factor is a drive that eats belts.</li>
+      </ul>
+    </div>
+
+    <div class="field-tip"><i class="ti ti-tool"></i><div><strong>Field tip: the drive tells you how it has been treated</strong>Rubber dust under the guard is a belt that slipped or ran misaligned. A polished, shiny groove is a worn sheave. A chain with a black paste on it is a chain that has been run dry and ground its own wear metal into old lube. A tensioner backed all the way out is a belt or chain that has stretched to its limit. Five seconds looking before touching anything.</div></div>
+  </div>
+
+  <!-- BELTS -->
+  <div id="panel-belts" class="bw-panel">
+    <div class="bw-section-label">Belt types: tap a type to learn more</div>
+    <div class="family-label">V-belts</div>
+    <div class="card-grid">
+      <div class="type-card" onclick="selectBelt('classical')" id="bcard-classical"><div class="type-card-icon"><i class="ti ti-letter-a"></i></div><div class="type-card-name">Classical (A, B, C, D)</div><div class="type-card-sub">The original, still everywhere</div></div>
+      <div class="type-card" onclick="selectBelt('narrow')" id="bcard-narrow"><div class="type-card-icon"><i class="ti ti-letter-v"></i></div><div class="type-card-name">Narrow (3V, 5V, 8V)</div><div class="type-card-sub">More power in less space</div></div>
+      <div class="type-card" onclick="selectBelt('cogged')" id="bcard-cogged"><div class="type-card-icon"><i class="ti ti-wave-square"></i></div><div class="type-card-name">Cogged (AX, BX, 3VX)</div><div class="type-card-sub">Notched underside, smaller sheaves</div></div>
+      <div class="type-card" onclick="selectBelt('banded')" id="bcard-banded"><div class="type-card-icon"><i class="ti ti-layout-rows"></i></div><div class="type-card-name">Banded (joined)</div><div class="type-card-sub">Multiple belts, one tie band</div></div>
+    </div>
+    <div class="family-label">Other belt types</div>
+    <div class="card-grid">
+      <div class="type-card" onclick="selectBelt('polyv')" id="bcard-polyv"><div class="type-card-icon"><i class="ti ti-menu-2"></i></div><div class="type-card-name">Poly-V (Serpentine)</div><div class="type-card-sub">Many small ribs, high ratios</div></div>
+      <div class="type-card" onclick="selectBelt('timingbelt')" id="bcard-timingbelt"><div class="type-card-icon"><i class="ti ti-clock-cog"></i></div><div class="type-card-name">Synchronous (Timing)</div><div class="type-card-sub">Teeth engage pulley grooves</div></div>
+      <div class="type-card" onclick="selectBelt('flat')" id="bcard-flat"><div class="type-card-icon"><i class="ti ti-minus"></i></div><div class="type-card-name">Flat Belt</div><div class="type-card-sub">Crowned pulleys, high speed</div></div>
+      <div class="type-card" onclick="selectBelt('variable')" id="bcard-variable"><div class="type-card-icon"><i class="ti ti-adjustments"></i></div><div class="type-card-name">Variable Speed Belt</div><div class="type-card-sub">Wide, for adjustable sheaves</div></div>
+    </div>
+    <div id="belt-display" style="margin-top:1rem;"><div class="comp-placeholder">select a belt type above</div></div>
+
+    <div class="bw-section-label">Reading a belt number</div>
+    <div class="info-block">
+      <table class="ref-table">
+        <tr><th>Section</th><th>Top width</th><th>Number means</th><th>Example</th></tr>
+        <tr><td>A</td><td>13 mm (1/2 in)</td><td>Inside length, inches</td><td>A68: A section, about 68 in inside, 69.3 in pitch</td></tr>
+        <tr><td>B</td><td>17 mm (21/32 in)</td><td>Inside length, inches</td><td>B90: B section, 90 in inside</td></tr>
+        <tr><td>C</td><td>22 mm (7/8 in)</td><td>Inside length, inches</td><td>C120</td></tr>
+        <tr><td>D</td><td>32 mm (1-1/4 in)</td><td>Inside length, inches</td><td>D180</td></tr>
+        <tr><td>3V</td><td>10 mm (3/8 in)</td><td>Outside length × 10, inches</td><td>3V500: 50.0 in outside</td></tr>
+        <tr><td>5V</td><td>16 mm (5/8 in)</td><td>Outside length × 10, inches</td><td>5V1000: 100.0 in outside</td></tr>
+        <tr><td>8V</td><td>25 mm (1 in)</td><td>Outside length × 10, inches</td><td>8V2000: 200.0 in outside</td></tr>
+        <tr><td>X suffix</td><td>Same as base</td><td>Cogged (notched) version</td><td>BX90, 3VX500</td></tr>
+        <tr><td>SPZ, SPA, SPB, SPC</td><td>10, 13, 17, 22 mm</td><td>Metric narrow, pitch length mm</td><td>SPA 1800</td></tr>
+      </table>
+      <div class="info-block-body">Classical and narrow sections are not interchangeable and neither are the sheaves. A B belt in an A groove rides too high and rolls over. An A belt in a B groove bottoms out and slips. Metric SP sections are close to but not identical to their inch cousins; a mixed drive wears fast.</div>
+      <ul class="info-block-tips">
+        <li>Multiple belt drives use a matched set: belts from the same production batch with matched length codes. Never replace one belt of a set. The new one carries all the load until it stretches to match the old ones, then they all share a shortened life.</li>
+        <li>Belt storage: cool, dry, off the floor, not hanging on a nail. Ozone from motors and welding degrades rubber. A belt that has been on the shelf five years is not a new belt.</li>
+        <li>Belt ride: the top of a V-belt should sit at or slightly above the sheave outside diameter. A belt riding low in the groove means the groove is worn or the belt is the wrong section.</li>
+      </ul>
+    </div>
+
+    <div class="field-tip"><i class="ti ti-tool"></i><div><strong>Field tip: sheave groove gauge</strong>A worn groove has a dish in the side walls where the belt has polished it. The belt rides lower, contacts less wall, and slips. Belt manufacturers give away plastic groove gauges. Hold the gauge in the groove against a light: if you can see daylight between gauge and wall, the sheave is worn and new belts will not fix it. A worn sheave kills a new belt set in weeks.</div></div>
+  </div>
+
+  <!-- CHAINS -->
+  <div id="panel-chains" class="bw-panel">
+    <div class="bw-section-label">Chain and sprockets: tap a type to learn more</div>
+    <div class="card-grid">
+      <div class="type-card" onclick="selectChain('roller')" id="ccard-roller"><div class="type-card-icon"><i class="ti ti-link"></i></div><div class="type-card-name">Roller Chain (ANSI)</div><div class="type-card-sub">40, 50, 60, 80: the standard</div></div>
+      <div class="type-card" onclick="selectChain('multistrand')" id="ccard-multistrand"><div class="type-card-icon"><i class="ti ti-layout-rows"></i></div><div class="type-card-name">Multi-strand</div><div class="type-card-sub">Double, triple, for torque</div></div>
+      <div class="type-card" onclick="selectChain('heavy')" id="ccard-heavy"><div class="type-card-icon"><i class="ti ti-weight"></i></div><div class="type-card-name">Heavy Series and Double Pitch</div><div class="type-card-sub">H suffix, conveyor chain</div></div>
+      <div class="type-card" onclick="selectChain('silent')" id="ccard-silent"><div class="type-card-icon"><i class="ti ti-volume-off"></i></div><div class="type-card-name">Silent (Inverted Tooth)</div><div class="type-card-sub">Quiet, smooth, high speed</div></div>
+      <div class="type-card" onclick="selectChain('sprockets')" id="ccard-sprockets"><div class="type-card-icon"><i class="ti ti-settings"></i></div><div class="type-card-name">Sprockets</div><div class="type-card-sub">Tooth count, hardening, hub styles</div></div>
+      <div class="type-card" onclick="selectChain('links')" id="ccard-links"><div class="type-card-icon"><i class="ti ti-puzzle"></i></div><div class="type-card-name">Connecting and Offset Links</div><div class="type-card-sub">Master links, half links, and their limits</div></div>
+    </div>
+    <div id="chain-display" style="margin-top:1rem;"><div class="comp-placeholder">select a type above</div></div>
+
+    <div class="bw-section-label">Reading a chain number</div>
+    <div class="info-block">
+      <div class="info-block-body">ANSI chain numbers encode the pitch. Divide the first digit or digits by 8 for the pitch in inches. The last digit says what kind of chain it is.</div>
+      <table class="ref-table">
+        <tr><th>Number</th><th>Pitch</th><th>Roller dia</th><th>Notes</th></tr>
+        <tr><td>25</td><td>1/4 in (6.35 mm)</td><td>rollerless</td><td>5 = bushed chain, no rollers</td></tr>
+        <tr><td>35</td><td>3/8 in (9.5 mm)</td><td>rollerless</td><td>Light duty</td></tr>
+        <tr><td>40</td><td>1/2 in (12.7 mm)</td><td>7.9 mm</td><td>0 = standard roller chain</td></tr>
+        <tr><td>41</td><td>1/2 in</td><td>7.8 mm</td><td>1 = narrow, light duty</td></tr>
+        <tr><td>50</td><td>5/8 in (15.9 mm)</td><td>10.2 mm</td><td></td></tr>
+        <tr><td>60</td><td>3/4 in (19.05 mm)</td><td>11.9 mm</td><td>Most common industrial size</td></tr>
+        <tr><td>80</td><td>1 in (25.4 mm)</td><td>15.9 mm</td><td></td></tr>
+        <tr><td>100</td><td>1-1/4 in (31.75 mm)</td><td>19.1 mm</td><td></td></tr>
+        <tr><td>120</td><td>1-1/2 in (38.1 mm)</td><td>22.2 mm</td><td></td></tr>
+        <tr><td>160</td><td>2 in (50.8 mm)</td><td>28.6 mm</td><td>Large, slow, high torque</td></tr>
+        <tr><td>60-2, 60-3</td><td>3/4 in</td><td></td><td>Double and triple strand</td></tr>
+        <tr><td>60H</td><td>3/4 in</td><td></td><td>Heavy series: thicker side plates</td></tr>
+        <tr><td>2060</td><td>1-1/2 in</td><td>60 rollers</td><td>Double pitch of 60: conveyor chain</td></tr>
+        <tr><td>08B, 10B, 12B, 16B</td><td>1/2, 5/8, 3/4, 1 in</td><td></td><td>British Standard (ISO) equivalents. Not interchangeable with ANSI on the same sprockets.</td></tr>
+      </table>
+      <ul class="info-block-tips">
+        <li>Verify roller diameter and plate thickness in the manufacturer's table before mixing brands on a multi-strand drive. Within ANSI the dimensions are standard; between ANSI and ISO they are not.</li>
+        <li>A chain drive is designed with an even number of pitches where possible so no offset link is needed. An offset (half) link is weaker and is the first thing to fail.</li>
+        <li>Chain is sold by the 10 foot box or by pitch count. Order by pitch count for a known drive and break it to length with a proper chain breaker.</li>
+      </ul>
+    </div>
+
+    <div class="bw-section-label">Chain lubrication: it is not optional</div>
+    <div class="info-block">
+      <div class="info-block-body">A roller chain is a series of small journal bearings (pin in bushing) that see the full drive load every time they articulate around a sprocket. Chain wear is pin and bushing wear, and that wear is elongation. An unlubricated chain wears at many times the rate of a lubricated one. The lube has to reach the pin, which means it goes on the inside of the chain at the gap between the side plates, not on the rollers.</div>
+      <table class="ref-table">
+        <tr><th>Method</th><th>How</th><th>Used for</th></tr>
+        <tr><td>Manual or drip</td><td>Brush or drip feed to the lower strand at the sprocket entry, inside edge</td><td>Slow drives, low power</td></tr>
+        <tr><td>Bath (oil disc)</td><td>Lower strand runs through an oil bath, or a disc throws oil</td><td>Medium speed, enclosed drives</td></tr>
+        <tr><td>Oil stream (pump)</td><td>Pump delivers filtered oil to each strand continuously</td><td>High speed, high power, always enclosed</td></tr>
+      </table>
+      <ul class="info-block-tips">
+        <li>Use a light oil that will penetrate to the pin. Grease on the outside of a chain seals dirt in and does nothing for the pin. Some spray chain lubes are designed to penetrate then thicken; they work if applied to the inside edge.</li>
+        <li>Apply to the slack strand where the chain is about to wrap the sprocket, so centrifugal force carries the oil into the joints.</li>
+        <li>A dry, red, or black chain is a chain that is elongating right now. Lube it, and then find out why the lube schedule failed.</li>
+        <li>Enclosed drives with an oil bath need the oil level checked and changed like a gearbox.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TENSIONING -->
+  <div id="panel-tension" class="bw-panel">
+    <div class="bw-section-label">Tensioning: too little slips, too much kills bearings</div>
+    <div class="callout-box">
+      <div class="callout-box-header"><i class="ti ti-alert-hexagon callout-box-icon"></i><div class="callout-box-title">The right tension is the lowest tension that does not slip under full load</div></div>
+      <div class="callout-box-body">Every extra newton of belt tension is a newton of radial load on the motor and driven bearings, all the time, whether the drive is working or not. Over-tensioning is the most common way a belt drive kills the bearings on both machines. <strong>Under-tensioning slips, glazes, and burns belts. Over-tensioning fails bearings and stretches belts. The window between is narrower than it feels by hand.</strong></div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-ruler-measure"></i> V-belt tension by deflection</div>
+      <div class="info-block-body">The standard field method. Measure the span (the free length of belt between the sheaves), apply a force at the middle of the span perpendicular to the belt, and measure how far it deflects. The target deflection is proportional to the span; the target force comes from the belt manufacturer's table for the belt section and small sheave diameter.</div>
+      <div style="background:#111110; border:0.5px solid #3a3a36; border-radius:6px; padding:0.75rem 1rem; margin:0.6rem 0; font-family:'Share Tech Mono',monospace; font-size:12px; color:#EF9F27; line-height:1.9;">
+        Target deflection = span length ÷ 64<br>
+        (1/64 in per inch of span, or 1.6 mm per 100 mm of span)<br><br>
+        Example: 800 mm span → deflect 12.5 mm at mid-span<br>
+        Apply the manufacturer's deflection force for the section and sheave size<br>
+        with a spring scale or belt tension gauge. Read the force at 12.5 mm.<br>
+        Below the table minimum: tighten. Above the maximum: loosen.
+      </div>
+      <ul class="info-block-tips">
+        <li>The force values are in the belt catalogue and on most manufacturer websites. They vary with section, small sheave diameter, and speed. Do not guess them; a spring scale and the table takes two minutes.</li>
+        <li>New belts are tensioned to the higher "new belt" value and rechecked after a run-in period (typically 24 to 48 hours of operation) when the initial stretch has occurred and the belts have seated in the grooves.</li>
+        <li>Sonic tension meters measure the belt's natural frequency when plucked and convert to tension. Fast, repeatable, and the only practical method on serpentine and synchronous belts. Worth having if you maintain many drives.</li>
+        <li>Banded belts and multiple belt sets are tensioned as a set: the deflection force is multiplied by the number of belts.</li>
+        <li>Rotate the drive a few turns by hand after adjusting and check tension again. The belt seats and the reading changes.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-clock-cog"></i> Synchronous belt tension</div>
+      <div class="info-block-body">Timing belts do not slip, so the tension is not about grip. It is about keeping the belt teeth seated so they do not ratchet (jump teeth) under load, without pulling the belt cords or the bearings apart. Too loose ratchets and shreds teeth. Too tight whines and fails the cords. The window is set by the manufacturer for the belt pitch and width, and a sonic meter or the manufacturer's deflection force method is used.</div>
+      <ul class="info-block-tips">
+        <li>Never tension a timing belt by feel. The correct tension often feels loose compared to a V-belt.</li>
+        <li>Timing belts run on flanged pulleys. A belt walking off a flange is a misalignment or a damaged flange, not a tension problem.</li>
+        <li>Never force a timing belt over a pulley flange. The tension cords are glass or aramid and a kink or a forced fit breaks them invisibly. Move the tensioner or the motor.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-link"></i> Chain tension by sag</div>
+      <div class="info-block-body">A chain drive runs with a slack strand and a tight strand. The slack strand should sag, and the sag is how tension is set. Too tight loads the bearings and accelerates pin wear. Too loose lets the chain whip, climb the sprocket teeth, and hammer.</div>
+      <div style="background:#111110; border:0.5px solid #3a3a36; border-radius:6px; padding:0.75rem 1rem; margin:0.6rem 0; font-family:'Share Tech Mono',monospace; font-size:12px; color:#EF9F27; line-height:1.9;">
+        Horizontal or slightly inclined drives: sag = 2 to 4% of span<br>
+        Vertical or steep drives: sag = 1 to 2% of span (the chain cannot hang off the lower sprocket)<br><br>
+        Example: 1000 mm centre distance, horizontal → 20 to 40 mm sag on the slack strand<br>
+        Measure by pulling the slack strand taut with a straightedge, then measure the drop at mid-span.
+      </div>
+      <ul class="info-block-tips">
+        <li>The slack strand should be on the bottom on horizontal drives. If the drive reverses, both strands alternate and the sag target is at the low end of the range.</li>
+        <li>Idler sprockets or tensioners take up slack on fixed-centre drives. An idler runs on the slack strand, on the outside of the chain, and needs its own lubrication and its own bearing check.</li>
+        <li>A chain that needs retensioning at every PM is elongating. Measure it (Failure Analysis tab). Taking up slack does not fix a worn chain; it just delays the day it jumps the sprocket.</li>
+        <li>Chain tension changes with temperature on long drives. Set it at operating temperature.</li>
+      </ul>
+    </div>
+
+    <div class="field-tip"><i class="ti ti-tool"></i><div><strong>Field tip: tension the drive, then feel the motor bearings</strong>After tensioning any belt drive, run it and put an infrared thermometer or your hand near the motor drive-end bearing after twenty minutes. A bearing that is warmer than the opposite end is telling you the belt tension is higher than it needs to be. The belt table says one thing; the bearing says what the machine actually sees.</div></div>
+  </div>
+  <!-- ALIGNMENT -->
+  <div id="panel-alignment" class="bw-panel">
+    <div class="bw-section-label">Sheave and sprocket alignment</div>
+    <div class="info-block">
+      <div class="info-block-body">Belt and chain drives are more tolerant of misalignment than couplings, which is one reason they get used. That tolerance is why they are also more often installed misaligned and left that way. A misaligned belt drive wears one side of the belt, throws rubber, runs hot, and can roll the belt over or off. A misaligned chain drive wears the inside of the side plates and one face of the sprocket teeth, and eventually the chain climbs off.</div>
+      <div class="family-label">Three kinds of sheave misalignment</div>
+      <table class="ref-table">
+        <tr><th>Type</th><th>What it is</th><th>Symptom</th><th>Correction</th></tr>
+        <tr><td>Offset (parallel)</td><td>Shafts parallel, sheaves not in the same plane</td><td>Belt wear on one sidewall, belt runs to one side of the groove</td><td>Move one sheave along its shaft</td></tr>
+        <tr><td>Angular (horizontal)</td><td>Shafts not parallel when viewed from above</td><td>Belt enters the groove at an angle, wears one side, squeals at one sheave</td><td>Move one end of one machine sideways</td></tr>
+        <tr><td>Angular (vertical, twist)</td><td>Shafts not parallel when viewed from the side; sheave faces not in the same plane</td><td>Belt twists between sheaves, turns over, wears both sides unevenly</td><td>Shim one machine to bring shafts parallel</td></tr>
+      </table>
+      <ul class="info-block-tips">
+        <li>Straightedge method: lay a straightedge across both sheave faces. It should touch each sheave at two points, four total. Any gap shows offset or angular error. Works when both sheaves have the same face width; correct for the difference if they do not.</li>
+        <li>String method for long centre distances: the same idea with a taut string.</li>
+        <li>Laser sheave alignment tools clip into a groove and project a line onto the other sheave. Fast and accurate and worth it on drives that eat belts.</li>
+        <li>General tolerance: within half a degree of angular error, or about 1 mm of offset per 100 mm of centre distance, is the maximum most belt manufacturers accept. Tighter is better. Synchronous belts want a quarter of that.</li>
+        <li>Check alignment after tensioning, not before. Tensioning pulls the motor on its slide base and can change the alignment.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-link"></i> Sprocket alignment</div>
+      <div class="info-block-body">Sprockets must be in the same plane and the shafts must be parallel. Chain does not tolerate twist at all: a chain running with the sprockets out of plane wears the inside of the side plates on one side and puts a bending load on the pins. The straightedge method across both sprocket faces is the standard check.</div>
+      <ul class="info-block-tips">
+        <li>Sprocket run-out: with the shaft locked, rotate the sprocket against a dial indicator on the tooth tips (radial) and on the face (axial). Excessive run-out on a bored-to-size sprocket usually means the bore is off centre or the key is fighting the fit.</li>
+        <li>Taper-lock and QD bushings must be seated and torqued in sequence. A bushing that walks changes the alignment and eventually spins on the shaft.</li>
+        <li>Shaft parallelism is checked with a feeler gauge or dial indicator between the shafts at both ends, or with the straightedge across the sprocket faces at top and bottom.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-arrows-diagonal"></i> Centre distance and belt length</div>
+      <div style="background:#111110; border:0.5px solid #3a3a36; border-radius:6px; padding:0.75rem 1rem; margin:0.4rem 0 0.8rem 0; font-family:'Share Tech Mono',monospace; font-size:12px; color:#EF9F27; line-height:1.9;">
+        Belt pitch length ≈ 2C + 1.57 × (D + d) + (D - d)² ÷ (4C)<br>
+        C = centre distance, D and d = large and small pitch diameters<br><br>
+        Chain length in pitches ≈ 2C/P + (N + n)/2 + P × (N - n)² ÷ (39.5 × C)<br>
+        C = centre distance, P = pitch, N and n = sprocket tooth counts. Round up to an even number.
+      </div>
+      <div class="info-block-body">Centre distance has to allow take-up: room to move the motor closer to fit the belt without forcing it, and room to move it away to tension and to take up stretch over the belt's life. A drive with no take-up left is a drive that cannot be tensioned correctly and is about to be replaced.</div>
+    </div>
+
+    <div class="field-tip"><i class="ti ti-tool"></i><div><strong>Field tip: never pry a belt on</strong>Rolling a V-belt onto a sheave with a screwdriver or pry bar looks quick and breaks the tension cords inside the belt where you cannot see it. The belt will fail early and you will blame the belt. Loosen the motor, slip the belt on by hand, then tension it. If there is not enough take-up to do that, the drive is designed wrong or the wrong belt length was ordered.</div></div>
+  </div>
+
+  <!-- FAILURE ANALYSIS -->
+  <div id="panel-failure" class="bw-panel">
+    <div class="bw-section-label">Read the failed part before you order the replacement</div>
+    <div class="family-label">Belt failure patterns: tap to expand</div>
+    <div class="card-grid">
+      <div class="type-card" onclick="selectFail('glazed')" id="fcard-glazed"><div class="type-card-icon"><i class="ti ti-sun-high"></i></div><div class="type-card-name">Glazed, shiny sidewalls</div><div class="type-card-sub">Slip and heat</div></div>
+      <div class="type-card" onclick="selectFail('cracked')" id="fcard-cracked"><div class="type-card-icon"><i class="ti ti-crop"></i></div><div class="type-card-name">Cracked underside</div><div class="type-card-sub">Age, heat, or small sheaves</div></div>
+      <div class="type-card" onclick="selectFail('oneside')" id="fcard-oneside"><div class="type-card-icon"><i class="ti ti-arrow-left-right"></i></div><div class="type-card-name">Wear on one sidewall</div><div class="type-card-sub">Misalignment</div></div>
+      <div class="type-card" onclick="selectFail('turnover')" id="fcard-turnover"><div class="type-card-icon"><i class="ti ti-rotate"></i></div><div class="type-card-name">Belt turned over in the groove</div><div class="type-card-sub">Twist, shock, or worn groove</div></div>
+      <div class="type-card" onclick="selectFail('cover')" id="fcard-cover"><div class="type-card-icon"><i class="ti ti-scissors"></i></div><div class="type-card-name">Cover fabric torn or peeling</div><div class="type-card-sub">Pried on, or something in the guard</div></div>
+      <div class="type-card" onclick="selectFail('swollen')" id="fcard-swollen"><div class="type-card-icon"><i class="ti ti-droplet"></i></div><div class="type-card-name">Swollen, soft, spongy</div><div class="type-card-sub">Oil or chemical contamination</div></div>
+      <div class="type-card" onclick="selectFail('teeth')" id="fcard-teeth"><div class="type-card-icon"><i class="ti ti-clock-cog"></i></div><div class="type-card-name">Timing belt teeth sheared</div><div class="type-card-sub">Ratcheting, overload, low tension</div></div>
+      <div class="type-card" onclick="selectFail('shortlife')" id="fcard-shortlife"><div class="type-card-icon"><i class="ti ti-hourglass-low"></i></div><div class="type-card-name">Short life, no obvious damage</div><div class="type-card-sub">Overload, undersizing, wrong belt</div></div>
+    </div>
+    <div id="fail-display" style="margin-top:1rem;"><div class="comp-placeholder">select a failure pattern above</div></div>
+
+    <div class="bw-section-label">Chain elongation: the measurement that decides replacement</div>
+    <div class="info-block">
+      <div class="info-block-body">Chain does not stretch. The pins and bushings wear, each joint gets a little longer, and the sum over the length of the chain is elongation. As the chain elongates its pitch no longer matches the sprocket, it rides up the teeth toward the tips, hammers, and eventually jumps. Replacement is at 3 percent elongation for most drives, and at 1.5 percent for large sprockets (roughly 68 teeth and above) and precision timing applications, because a large sprocket tolerates less pitch error.</div>
+      <div style="background:#111110; border:0.5px solid #3a3a36; border-radius:6px; padding:0.75rem 1rem; margin:0.6rem 0; font-family:'Share Tech Mono',monospace; font-size:12px; color:#EF9F27; line-height:1.9;">
+        Pull the chain taut (slack strand, or off the drive) and measure over 12 pitches, pin centre to pin centre<br>
+        Nominal length = 12 × pitch<br>
+        Elongation % = (measured - nominal) ÷ nominal × 100<br><br>
+        Example: #60 chain, pitch 19.05 mm, 12 pitches = 228.6 mm nominal<br>
+        Measured 235.0 mm → (235.0 - 228.6) ÷ 228.6 = 2.8% → replace soon<br>
+        Measured 236.5 mm → 3.5% → replace now
+      </div>
+      <ul class="info-block-tips">
+        <li>Measure in three places around the chain. Wear is rarely even.</li>
+        <li>Chain wear gauges (a go/no-go bar marked for each pitch) make this a ten second check.</li>
+        <li>A new chain on worn sprockets wears fast to match the sprockets. If the sprocket teeth are hooked, replace the sprockets with the chain.</li>
+        <li>Stiff links that do not articulate freely are a sign of corrosion, dirt in the joint, or a bent pin. A stiff chain fails on the stiff link.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-settings"></i> Sprocket wear: read the teeth</div>
+      <ul class="info-block-tips">
+        <li>Hooked or shark-fin teeth: the tooth face is worn into a hook shape on the loaded side. This is normal wear at the end of a sprocket's life and it holds the chain on so well that the chain will not come off even when it should. A hooked sprocket wears a new chain fast.</li>
+        <li>Wear on one face of the teeth only: misalignment.</li>
+        <li>Polished tooth tips with the roots unworn: the chain is elongated and riding high.</li>
+        <li>Chipped or broken teeth: shock load, or the chain jumped and landed hard. Look for the cause upstream.</li>
+        <li>Small sprockets wear faster than large ones because each tooth engages more often. A 17 to 25 tooth driver is the practical minimum for smooth running; below about 17 teeth the chain speed varies enough on each tooth (chordal action) to be a vibration and noise source.</li>
+      </ul>
+    </div>
+
+    <div class="field-tip"><i class="ti ti-tool"></i><div><strong>Field tip: keep the old belt</strong>Before the failed belt goes in the bin, look at it under a light, then put it beside the new one. Length, section, and any markings. Half of short-belt-life complaints are a belt that was never the right belt. The other half are on this tab.</div></div>
+  </div>
+
+  <!-- TROUBLESHOOT -->
+  <div id="panel-troubleshoot" class="bw-panel">
+    <div class="bw-section-label">Belt and chain drive fault diagnosis</div>
+    <div class="adv-wrap" id="adv-method">
+      <button class="adv-toggle" onclick="toggleAdv('adv-method')">
+        <div class="adv-toggle-left"><i class="ti ti-map-2 adv-toggle-icon"></i><span class="adv-toggle-label">Diagnostic methodology: the five-minute drive inspection</span></div>
+        <i class="ti ti-chevron-down adv-chevron"></i>
+      </button>
+      <div class="adv-body">
+        <p><strong>Lock out first.</strong> Belt and chain drives are the nip point hazard in the plant. Nothing on this tab is done with the guard off and the drive live.</p>
+        <p><strong>Under the guard, before touching:</strong> rubber dust (slip or misalignment), metal dust or paste on a chain (dry chain), belt ride height in the groove (worn sheave), tensioner position (how much take-up is left), and anything foreign in the guard.</p>
+        <p><strong>Tension:</strong> deflection and force on belts, sag on chain. Compare to the table. Note whether it is high, low, or right, because the next steps depend on it.</p>
+        <p><strong>Alignment:</strong> straightedge across the sheave or sprocket faces. Four points of contact or it is out.</p>
+        <p><strong>Condition:</strong> belt sidewalls, underside, cover. Chain elongation over 12 pitches. Sprocket tooth profile. Sheave groove gauge.</p>
+        <p><strong>Bearings:</strong> both shafts, both ends, by hand with the drive locked out: play, roughness. Then by infrared after a run: the drive-end bearing running warmer than the opposite end is over-tension.</p>
+        <p><strong>Then run it and listen.</strong> Squeal at startup versus under load versus continuous tells you different things. Screwdriver stethoscope on the bearing housings if the plant is loud.</p>
+      </div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="pt-progress" style="width:8%"></div></div>
+    <div id="pt-tree"></div>
+  </div>
+
+  <!-- SELF-CHECK TAB -->
+  <div id="panel-selfcheck" class="bw-panel">
+    <div class="bw-section-label">Self-check: one question at a time, tap an answer, read why</div>
+    <div class="comp-detail"><div class="comp-detail-body">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>
+    <div id="sc-body"></div>
+  </div>
+
+  <!-- SAFETY -->
+  <div id="panel-safety" class="bw-panel">
+    <div class="bw-section-label">Power transmission safety: nip points and stored energy</div>
+    <div class="callout-box red">
+      <div class="callout-box-header"><i class="ti ti-alert-triangle callout-box-icon"></i><div class="callout-box-title">Belts and chains are the nip point hazard in the plant</div></div>
+      <div class="callout-box-body">The point where a belt or chain enters a sheave or sprocket is an in-running nip. It pulls in anything it catches: a finger, a sleeve, a glove, hair, a rag, a lanyard. At belt speeds of hundreds of metres per minute there is no reaction time. <strong>Guards stay on when the drive is running. Every time. No exceptions for a quick look.</strong> Ontario Regulation 851 sections 24 and 25 require in-running nip points and exposed moving parts to be guarded. A drive found running with the guard off is a stop-work condition.</div>
+    </div>
+
+    <div class="info-block" style="border-color:#A32D2D;">
+      <div class="info-block-title" style="color:#F09595;"><i class="ti ti-lock" style="color:#F09595;"></i> Lockout before the guard comes off</div>
+      <ul class="info-block-tips">
+        <li>Lock out the drive motor. Verify by attempting a start. Then remove the guard.</li>
+        <li>Driven equipment can turn the drive backward: a fan windmilling, a conveyor with material on an incline, a gravity load. Block or pin the driven side before putting hands on the belt or chain.</li>
+        <li>A belt drive under tension is a spring. A chain drive with a spring tensioner is a spring. Relieve tension before disconnecting a belt or breaking a chain, and know where your hands are when it lets go.</li>
+        <li>Never rotate a drive by hand with fingers on the belt or chain. Turn it by the shaft, the coupling, or a bar in a sheave spoke, with hands clear of the nip.</li>
+        <li>Guards go back on before the lock comes off. Check that nothing was left inside: tools, rags, the old belt.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-hand-off"></i> Belt and chain handling</div>
+      <ul class="info-block-tips">
+        <li>Do not pry belts on or off. It damages the belt and it puts your hand next to the nip when the belt snaps into the groove.</li>
+        <li>Chain breakers and chain pullers are the tools for breaking and joining chain. A hammer and punch on a chain pin under tension is how fingers get broken and pins get launched.</li>
+        <li>A spring clip on a master link opens toward the direction of travel. Installed backward, it can be stripped off by contact and the chain comes apart at speed.</li>
+        <li>Taper-lock bushings can bind and release suddenly. Loosen the screws fully, use the jacking holes, and keep fingers clear of the hub gap.</li>
+        <li>Belt dust and chain lube on the floor are slip hazards. Clean up under the guard as part of the job.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-flame"></i> Heat, fire, and chemicals</div>
+      <ul class="info-block-tips">
+        <li>A slipping belt generates enough heat to smoke and, in a dusty guard, to ignite. Belt smell from a guard is an immediate stop.</li>
+        <li>Chain lubricant sprays are flammable aerosols. Not near hot surfaces, not near welding.</li>
+        <li>Belt dressing is a slip cure that shortens belt life and can make a belt grab and throw. Fix the tension or the sheave instead.</li>
+        <li>Static: fast-running belts can build a static charge. In dusty or solvent atmospheres, static conductive belts and a grounded frame are required.</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-shield-check"></i> Guard design basics for the person who has to make one</div>
+      <div class="info-block-body">Millwrights build and modify guards. A guard that is hard to remove for maintenance gets left off. A guard that is easy to defeat gets defeated. CSA Z432 is the reference for machine guarding in Canada.</div>
+      <ul class="info-block-tips">
+        <li>Fully enclose the drive, including the return side of the belt or chain and both sheaves or sprockets.</li>
+        <li>Mesh openings sized to the reach distance to the nearest hazard (Z432 tables). Small openings close to the nip; larger openings are allowed further away.</li>
+        <li>Fixed guards need a tool to remove. Hinged guards need an interlock if they can be opened without a tool.</li>
+        <li>Provide an inspection window or a hinged access panel for tension checks so the whole guard does not need to come off for a look.</li>
+        <li>The guard must not be a hazard itself: no sharp edges, no pinch points at the hinge, and rigid enough that it cannot be pushed into the drive.</li>
+      </ul>
+    </div>
+  </div>
+
+    <div class="related"><div class="related-label">Related modules</div><a href="builtwright_bearing_module_v1.html#diagnose">Bearings: over-tension kills them</a><a href="builtwright_motors_v1.html#bearings">Motors: shaft load ratings</a><a href="builtwright_fans_v1.html#drives">Fans: the belt drive most likely to be found unguarded</a><a href="builtwright_conveyors_v1.html#anatomy">Conveyors: head pulley drives and shaft mounts</a><a href="builtwright_safeguarding_v1.html#guards">Safeguarding: nip point guards</a><a href="builtwright_reference_v1.html#calc">Reference: ratio and deflection calculator</a></div>
+  <div class="bw-footer">builtwrightapp.com &nbsp;·&nbsp; module 08 of series &nbsp;·&nbsp; power transmission</div>
+</div>
+<script>
+const driveData = {
+  vbelt: { icon:'ti-circle-dashed', name:'V-Belt Drive', role:'Friction drive. Tolerates shock, slips before it breaks something, cheap to fix.',
+    body:'A V-belt wedges into a matching groove and transmits torque by friction on the sidewalls, not on the bottom. The wedge action multiplies the grip, which is why a V-belt carries far more than a flat belt of the same tension. It slips under overload, which protects the driven machine and is also its main weakness: it needs tension to work, and that tension loads the bearings. Efficiency is around 95 to 97 percent when correctly tensioned and falls fast with slip.',
+    tips:['Best where some slip is acceptable or desirable: fans, pumps, compressors, crushers.','Ratio is limited by the largest practical sheave and the minimum sheave diameter for the belt section. Above about 7:1, look at a gearbox.','No lubrication, quiet, and a belt change is a short job with the right take-up.','Needs periodic retensioning as the belt seats and stretches, and the bearings pay for every bit of excess.']
+  },
+  timing: { icon:'ti-clock-cog', name:'Synchronous (Timing) Belt Drive', role:'Positive drive. No slip, no lubrication, exact ratio.',
+    body:'Teeth moulded into the belt engage grooves in the pulley. There is no slip, so the ratio is exact and the drive can be used where timing between shafts matters: camshafts, indexers, printing, packaging. Tension is lower than a V-belt because it is not relying on friction, which means lower bearing loads. Efficiency is around 98 percent. The belt is quieter than chain, needs no lubrication, and is lighter.',
+    tips:['Cannot slip, so overload goes straight to the driven machine or shears the belt teeth. Not a substitute for a V-belt where shock protection was the point.','Pulleys are flanged on at least one side to keep the belt tracking. Alignment must be tighter than a V-belt drive.','Tooth profiles (trapezoidal, HTD, GT) are not interchangeable. Belt and pulley must match.','Sonic tension meter is the right tool. Deflection by feel is wrong on timing belts.']
+  },
+  chain: { icon:'ti-link', name:'Roller Chain Drive', role:'Positive drive, very high torque density, needs lubrication, tolerates heat and dirt better than belts.',
+    body:'A roller chain wraps sprockets and transmits torque through the teeth. It is a positive drive with a fixed ratio, handles high torque at low speed in a compact space, and runs in heat and environments that destroy belts. Efficiency around 98 percent when lubricated. It needs lubrication to reach the pin joints, it elongates as those joints wear, and it is noisier than belt at speed.',
+    tips:['Best for high torque at low to moderate speed, harsh environments, exact ratio, and where centre distance is long.','Chordal action (the chain speed pulsing as each link engages) is noticeable below about 17 teeth on the driver sprocket. Use larger sprockets for smooth drives.','Chain drives are not quiet, and they do not tolerate misalignment or a dry run.','Replacement is triggered by elongation measurement, not by appearance.']
+  },
+  direct: { icon:'ti-arrows-join', name:'Direct Coupled and Geared', role:'When the ratio, the speed, or the environment rule out belts and chains',
+    body:'Direct coupling (motor to driven machine through a flexible coupling) has no ratio, no tension, no bearing side load, and efficiency near 100 percent. A gearbox gives large ratios in a small space with high efficiency and no maintenance beyond oil. Both need precision alignment and both are covered in their own modules. Belts and chains exist for the cases where the ratio needs to change cheaply, the centre distance is long, or shock protection matters.',
+    tips:['Couplings and alignment: Module 03.','Gearboxes: Module 09.','A belt drive being replaced with a direct drive usually needs a VFD to get the speed the belt ratio was providing.']
+  }
+};
+
+const beltData = {
+  classical: { icon:'ti-letter-a', name:'Classical V-Belt (A, B, C, D, E)', role:'The original section. Widest availability, most forgiving.',
+    body:'Sections A through E in increasing size, with the belt number giving the section and the approximate inside length in inches. Rubber body, fabric cover, and tension cords (usually polyester) at the pitch line. Runs in classical sheaves with matching groove angles. Tolerant of less-than-perfect alignment and tension, which is why it is on every old fan and pump in the country.',
+    tips:['Wrapped construction (fabric cover) is the standard; raw edge is more flexible and grips better on small sheaves.','Minimum sheave diameters: A about 75 mm, B about 135 mm, C about 230 mm. Smaller sheaves crack the belt underside.','Matched sets on multi-belt drives. The matching code is on the belt.','Not interchangeable with narrow sections or their sheaves.']
+  },
+  narrow: { icon:'ti-letter-v', name:'Narrow V-Belt (3V, 5V, 8V)', role:'Same power in a narrower sheave, or more power in the same space.',
+    body:'A deeper, narrower section that puts the tension cords higher and grips deeper in the groove. Transmits roughly twice the power of a classical belt of similar top width, runs at higher speed, and allows smaller sheaves and narrower drives. The belt number is the section and the outside length in tenths of an inch. Metric equivalents are SPZ, SPA, SPB, SPC.',
+    tips:['Sheaves are different from classical. A 5V belt in a B groove is the wrong belt.','Used where drive width or weight is limited: HVAC, compressors, new designs.','Higher tension per belt than classical for the same power, so bearing loads need checking on retrofit.','Cogged versions (3VX, 5VX) allow still smaller sheaves.']
+  },
+  cogged: { icon:'ti-wave-square', name:'Cogged V-Belt (AX, BX, 3VX, 5VX)', role:'Notched underside bends around smaller sheaves and runs cooler.',
+    body:'The underside is moulded with notches that let the belt bend around a smaller sheave without straining the underside rubber, and that give the belt more surface area to shed heat. Otherwise the same section and same sheave as the un-notched version. Slightly higher power rating and longer life on small sheaves. Slightly more expensive.',
+    tips:['Drop-in replacement for the plain version in the same sheave.','Run cooler and last longer on drives with small sheaves or high ratio.','Do not confuse with a synchronous belt: cogs are on the underside for flexibility, not for engagement with anything.']
+  },
+  banded: { icon:'ti-layout-rows', name:'Banded (Joined) V-Belt', role:'Several belts joined by a top band so they cannot turn over or whip.',
+    body:'Two or more V-belts of the same section joined across the top with a tie band. Used on drives where individual belts were turning over, whipping on long spans, or where shock loads unseat single belts. The band forces all belts to share load evenly and eliminates the matched-set problem. Runs in standard sheaves.',
+    tips:['Tension as a set: the deflection force is per belt times the number of belts.','Cannot be installed one belt at a time; the whole band goes on together, so take-up is important.','Very effective fix for belt turnover on vertical shaft drives and pulsating loads.','Wears the sheave grooves at the same rate as individual belts; the groove gauge still applies.']
+  },
+  polyv: { icon:'ti-menu-2', name:'Poly-V (Serpentine, Micro-V)', role:'Many small ribs on a flat belt. High ratios, small pulleys, back-side idlers.',
+    body:'A flat belt with many small V-ribs on the underside that run in a matching grooved pulley. Thin and flexible, so it runs on small pulleys and can be bent backward over an idler on its flat side. Used on high ratio drives, automotive accessory drives, and machines where one belt drives several shafts. Sections J, L, M in increasing rib size; the belt number gives the section, the length, and the rib count.',
+    tips:['Tension by sonic meter or the manufacturer deflection method. Too tight loads small bearings hard.','Misalignment shows as rib wear on one side and a belt that walks off the pulley.','Rib count must match the pulley. A belt with more ribs than the pulley overhangs and wears.','Back-side idlers must be flat and crowned, not grooved.']
+  },
+  timingbelt: { icon:'ti-clock-cog', name:'Synchronous (Timing) Belt', role:'Teeth engage pulley grooves. No slip, exact ratio, no lubrication.',
+    body:'Moulded teeth on the belt engage grooves in the pulley, driving positively like a chain but silently and dry. Tooth profiles are trapezoidal (the original L, H, XH pitches), curvilinear HTD (3M, 5M, 8M, 14M), and high-torque GT profiles. Belt and pulley profiles must match exactly. Tension cords are glass, aramid, or carbon and do not stretch, which is why the ratio holds.',
+    tips:['Do not force over a flange. The cords kink and break invisibly.','Alignment tolerance is a quarter of a V-belt drive. Flanges keep the belt on, but a belt riding hard against a flange is being pushed there by misalignment.','Ratcheting (teeth jumping) is low tension or worn pulleys. Sheared teeth are ratcheting that continued.','Tooth wear on one flank: overload or the belt was run under-tensioned and hammering the grooves.']
+  },
+  flat: { icon:'ti-minus', name:'Flat Belt', role:'Very high speed, long centres, crowned pulleys keep it tracking.',
+    body:'A flat belt runs on a crowned pulley (slightly larger in the middle) and self-centres because the belt climbs toward the high point. Modern flat belts are thin polyamide or polyester with a friction cover and run at very high speed with high efficiency. Used on high speed spindles, line shafts, and long centre drives. Rarer in general industry now but still common in specific machines.',
+    tips:['Tracking is set by the crown and by pulley alignment. A flat belt that walks off is misaligned.','Tension is critical: no wedge action, so grip is all from tension.','Endless belts are made to length; joined belts have a splice that is the weak point.']
+  },
+  variable: { icon:'ti-adjustments', name:'Variable Speed Belt', role:'Wide, thin belt for adjustable-pitch sheaves. Changes ratio on the fly.',
+    body:'An adjustable sheave has two halves that move apart or together, changing the effective pitch diameter. A wide, thin variable speed belt rides at different depths as the sheave opens and closes, changing the ratio while running. Used on older variable speed drives, some conveyors and mixers, and anywhere a VFD has not yet replaced it.',
+    tips:['Belt width and sheave angle must match exactly. Variable speed belts are specific to the drive.','Sheave halves must move freely on their shaft. A sticking sheave gives an inconsistent ratio and wears one belt edge.','Grease the sliding sheave mechanism per the manual; it is the most neglected part of these drives.','Many are replaced by a fixed sheave and a VFD when the belt or the sheave wears out.']
+  }
+};
+
+const chainData = {
+  roller: { icon:'ti-link', name:'Roller Chain (ANSI standard)', role:'Pins, bushings, rollers, and side plates. The general purpose chain.',
+    body:'Inner links (two side plates pressed onto two bushings, with a roller over each bushing) alternate with outer links (two side plates pressed onto two pins). The pin turns inside the bushing as the chain articulates; that joint is the wear point. The roller turns on the outside of the bushing and rolls onto the sprocket tooth, which is what makes engagement quiet and low-wear. ANSI numbers give the pitch in eighths of an inch.',
+    tips:['Wear is pin and bushing wear, felt as elongation. Lubrication that reaches the pin is what slows it.','Rollers that do not turn freely are a chain that has been run dry or is corroded.','Riveted chain (pins peened) is standard; cottered chain (pins with cotter pins) is used on large sizes and is easier to break.','Stainless, nickel plated, and lube-free (sealed) chains exist for food, wash-down, and clean applications. They have lower ratings than carbon steel.']
+  },
+  multistrand: { icon:'ti-layout-rows', name:'Multi-strand Chain', role:'Two, three, or four strands on a common pin for higher torque.',
+    body:'Strands share long pins across the width. Rating is not a simple multiple: two strands carry about 1.7 times one, three strands about 2.5 times, because load sharing is never perfect. Used where a single strand of the next pitch up would be too fast or too large. Sprockets are multi-strand to match.',
+    tips:['Alignment matters more: all strands must engage evenly. Uneven wear across strands is misalignment or a sprocket that is not true.','Lubrication must reach all strands; the middle strand of a triple is the one that gets missed.','Elongation measured on each strand; they wear differently.']
+  },
+  heavy: { icon:'ti-weight', name:'Heavy Series (H) and Double Pitch', role:'H suffix: thicker side plates. Double pitch: same pins and rollers, twice the pitch.',
+    body:'Heavy series chain (60H, 80H) uses the side plates from the next size up on the standard pitch, for higher fatigue strength in shock loaded drives. Same sprockets as the standard chain. Double pitch chain (2040, 2060) has the same pins, bushings and rollers as the standard chain but twice the pitch: lighter and cheaper per metre for long, slow conveyors and drives. Double pitch runs on double pitch sprockets, or on standard sprockets with an even tooth count using every other tooth.',
+    tips:['H chain is for shock and fatigue, not for higher speed.','Double pitch conveyor chain often has oversize rollers (C suffix, 2060C) that carry the load on rails.','Attachments (bent tabs, extended pins) on conveyor chain are standardised; order by the attachment code.']
+  },
+  silent: { icon:'ti-volume-off', name:'Silent (Inverted Tooth) Chain', role:'Toothed links engage the sprocket like a rack. Quiet, smooth, high speed.',
+    body:'Stacked toothed plates on pins, engaging sprocket teeth across the full width. No rollers. Runs quietly at high speed and carries high power in a narrow width, with a guide link to keep it centred. Used in timing drives, machine tool spindles, and high speed transmissions. Expensive and less tolerant of dirt than roller chain.',
+    tips:['Lubrication is mandatory and usually by oil bath or stream in an enclosure.','Wear shows as the chain riding out on the teeth, same as roller chain elongation.','Sprockets are specific to the chain type and pitch.']
+  },
+  sprockets: { icon:'ti-settings', name:'Sprockets', role:'Tooth count sets ratio and smoothness. Hardening sets life. Hub style sets the fit.',
+    body:'Sprockets are specified by chain number, tooth count, and hub style: plain bore (A, no hub), one-sided hub (B), two-sided hub (C), or a bushing bore for taper-lock or QD bushings. Tooth count from about 9 to over 100. Small sprockets wear faster and run rougher; 17 to 25 teeth is the practical minimum for a driver. Teeth on high speed or abrasive drives are hardened.',
+    tips:['Hardened teeth are the norm on small drivers. A soft small sprocket hooks its teeth quickly.','Ratio between sprockets should not exceed about 7:1 in one stage.','Bored-to-size sprockets need a proper key fit and set screws over the key. A sprocket walking on a shaft misaligns the drive.','Taper-lock and QD bushings give a tight, centred fit and are easy to remove. Torque the screws in sequence and recheck after run-in.']
+  },
+  links: { icon:'ti-puzzle', name:'Connecting and Offset Links', role:'How a chain is joined, and the weak point in every chain.',
+    body:'A connecting link (master link) is an outer link with a removable side plate held by a spring clip or cotter pins. It joins the two ends of the chain. An offset link (half link) is a link with one inner end and one outer end, used to get an odd number of pitches. Both are weaker than the chain itself, offset links particularly, and both are where a chain usually fails first.',
+    tips:['Spring clip closed end faces the direction of travel. Backward, it can be stripped off.','Press-fit connecting links (no clip) match the chain strength and are used on high speed or critical drives.','Avoid offset links by designing the drive for an even pitch count. If one is unavoidable, use a two-pitch offset link, which is stronger than a single.','Riveting a connecting link pin in the field with a hammer is not a press fit. Use a chain tool.']
+  }
+};
+
+const failData = {
+  glazed: { icon:'ti-sun-high', name:'Glazed, hard, shiny sidewalls', role:'The belt has been slipping and the heat has cooked the rubber',
+    body:'Slip generates heat, heat hardens the rubber, hard rubber grips less and slips more. A glazed belt is at the end of that cycle and will not recover by tensioning; the surface is changed. The cause is under-tension, overload, a worn sheave that the belt bottoms in, or oil on the sheave.',
+    tips:['Replace the belt. Then fix the cause or the new one glazes too.','Groove gauge on the sheave. A worn groove is the most common reason a correctly tensioned belt still slips.','Check the load: has the driven machine got harder to turn (bearing, product buildup) since the drive was sized.','Belt dressing is not a fix.']
+  },
+  cracked: { icon:'ti-crop', name:'Cracks across the underside', role:'The belt has been flexed around too small a sheave, run too hot, or is simply old',
+    body:'The underside of a V-belt is in compression around the sheave. Small sheaves, high temperature, and ozone all crack it. A few small cracks on an old belt is age. Many deep cracks on a young belt is a sheave below the minimum diameter for the section, or a hot environment. Cogged belts resist this.',
+    tips:['Check the small sheave diameter against the section minimum in the catalogue.','Check the belt date code if it has one. Belts age on the shelf.','Guard temperature: a belt in an enclosed guard next to a hot machine runs hot. Ventilate the guard.','Switch to a cogged belt of the same section if the sheave cannot be changed.']
+  },
+  oneside: { icon:'ti-arrow-left-right', name:'Wear on one sidewall only', role:'Misalignment. The belt is entering the groove at an angle.',
+    body:'One sidewall is worn, frayed, or polished more than the other. The belt is being pushed against one side of the groove as it enters, which means the sheaves are offset or the shafts are not parallel. Rubber dust under the guard on the same side confirms it.',
+    tips:['Straightedge across the sheave faces.','Check the sheave is not walking on the shaft (loose bushing or set screw).','Check the motor is not moving on its slide base.','Correct alignment before fitting the new belt, then check again after tensioning.']
+  },
+  turnover: { icon:'ti-rotate', name:'Belt turned over in the groove', role:'The belt rolled onto its side. Twist, shock, or a worn groove let it.',
+    body:'A V-belt that flips over has lost its stability in the groove. Causes: angular (twist) misalignment, a sheave groove worn wide, a belt riding too high because it is the wrong section, shock loads that unseat it, or a vertical shaft drive where gravity and misalignment combine. Foreign material in the groove can do it too.',
+    tips:['Vertical (twist) misalignment: shim to bring the sheave faces into the same plane.','Groove gauge. A worn groove lets the belt rock.','Banded belts cure turnover on drives that cannot be otherwise fixed.','Check the belt section against the sheave.']
+  },
+  cover: { icon:'ti-scissors', name:'Cover fabric torn, peeled, or cut', role:'Mechanical damage from installation or from something in the guard',
+    body:'The fabric cover protects the belt body. A cut or tear on the cover is from prying the belt on, from a sharp edge on a sheave or guard, or from an object that got into the drive. A cover peeling off along the belt is a manufacturing or age defect.',
+    tips:['Check for burrs and sharp edges on the sheave rim and inside the guard.','Ask how the last belt was installed.','Look for the object: a bolt, a piece of the old belt, a rag.']
+  },
+  swollen: { icon:'ti-droplet', name:'Swollen, soft, spongy, or sticky', role:'Oil, grease, or chemical contamination has attacked the rubber',
+    body:'Rubber swells and softens in oil and many solvents. A swollen belt slips, rides low in the groove, and falls apart. The source is usually a leaking bearing or gearbox above the drive, an over-greased bearing purging into the guard, or a process spill.',
+    tips:['Find and stop the source. A new belt in the same oil fails the same way.','Clean the sheaves with a solvent that leaves no residue before fitting the new belt.','Oil-resistant belt compounds exist for drives that cannot be kept clean.']
+  },
+  teeth: { icon:'ti-clock-cog', name:'Timing belt teeth sheared or worn', role:'The belt ratcheted under load, or was run under-tensioned and hammered the pulley',
+    body:'Sheared teeth: the belt jumped teeth under a load or shock that exceeded the tooth shear strength, usually because tension was too low to keep the teeth seated. Worn teeth on one flank: chronic under-tension, or the belt profile does not match the pulley. Worn teeth on both flanks and the land: overload or a pulley worn out of profile.',
+    tips:['Tension with a sonic meter to the manufacturer number.','Confirm belt and pulley profile match. HTD and GT look similar and are not the same.','Check the pulley groove for wear and the flange for damage.','A drive that ratchets under normal load is undersized.']
+  },
+  shortlife: { icon:'ti-hourglass-low', name:'Short life with no obvious damage', role:'Overload, undersizing, or the wrong belt for the drive',
+    body:'The belt wore out evenly and early. The drive is being asked for more than it was sized for: more power, more starts, more shock, more hours, or a higher ambient temperature. Or the belt is not the belt the drive was designed with.',
+    tips:['Compare the belt to the drive design: section, length, and matched set.','Recalculate the drive with a service factor for the actual duty. Belt catalogues have the tables.','Check for load creep: a fan with dirty blades, a pump with a worn impeller running off its curve, a conveyor carrying more than it was designed for.','Add belts, go up a section, or move to a cogged or narrow belt for more capacity in the same space.']
+  }
+};
+
+const diagNodes = {
+  start: { q:'What is the symptom?', hint:'Lock out before the guard comes off. Every check below is done with the drive isolated unless it says otherwise.', options:[
+    {label:'Squeal or chirp',next:'squeal1'},{label:'Belt comes off, turns over, or walks to one side',next:'off1'},{label:'Short belt life',next:'life1'},{label:'Chain noise, whip, or jumping',next:'chain1'},{label:'Hot bearing on a belt or chain drive',next:'r_hotbearing'},{label:'Vibration from the drive',next:'vib1'},{label:'Driven machine slow or losing speed under load',next:'r_slip'}] },
+
+  squeal1: { q:'When does it squeal?', hint:'Startup only, under load only, or all the time.', options:[
+    {label:'On startup, then quiet',next:'r_squeal_start'},{label:'Under load',next:'r_squeal_load'},{label:'Continuously, at one sheave',next:'r_squeal_align'},{label:'Timing belt: whine or howl',next:'r_timing_whine'}] },
+  r_squeal_start: { type:'result', cls:'fix', label:'startup slip: inertia exceeds grip', text:'The belt slips while accelerating the load, then grips once it is up to speed.', sub:'Tension is at the low end, the belt is glazed, or the driven inertia is high for the drive (large fan, flywheel). Check tension against the table first. If tension is correct and the belt is not glazed, the drive is marginal for the starting load: more belts, a larger section, or a soft start on the motor.', prevent:'Tension to the table, recheck after run-in. Log startup behaviour on the PM so a change is noticed.' },
+  r_squeal_load: { type:'result', cls:'action', label:'load slip: tension, groove, or overload', text:'The belt grips unloaded and slips when the load comes on.', sub:'Tension check with a gauge, not by hand. Groove gauge on the sheaves: a worn groove lets a correctly tensioned belt bottom out and slip. Oil or belt dressing on the sheave. Then the load: has the driven machine got heavier (bearing failing, product buildup, process change) since the drive was sized.', prevent:'Groove gauge on every belt change. Track motor amps: rising amps with the same belt slip means the load is growing.' },
+  r_squeal_align: { type:'result', cls:'action', label:'misalignment: the belt is rubbing one groove wall', text:'A continuous squeal from one sheave is the belt being pushed against the groove wall as it enters.', sub:'Straightedge across the sheave faces. Check the sheave is tight on its shaft. Correct the alignment, then check the belt sidewall for one-sided wear and replace it if it is worn.', prevent:'Align after tensioning, every time.' },
+  r_timing_whine: { type:'result', cls:'action', label:'timing belt over-tensioned or misaligned', text:'A timing belt that howls is usually too tight, or it is being pushed against a flange.', sub:'Sonic meter tension check. Alignment with a straightedge; a belt riding hard against one flange is misaligned. Some tooth noise is normal at high speed; a change in noise is the symptom.', prevent:'Tension by meter, alignment by straightedge, both recorded.' },
+
+  off1: { q:'What is the belt doing?', options:[
+    {label:'Turning over in the groove',next:'r_turnover'},{label:'Walking to one side or coming off',next:'r_walk'},{label:'Timing belt riding against the flange',next:'r_flange'}] },
+  r_turnover: { type:'result', cls:'action', label:'belt turnover: twist, worn groove, or wrong section', text:'The belt has lost stability in the groove.', sub:'Vertical angular (twist) misalignment: shim to bring the sheave faces parallel. Groove gauge for wear. Confirm the belt section matches the sheave: a belt riding high turns over. Foreign material in the groove. On a vertical shaft drive or a pulsating load, a banded belt is often the practical fix.', prevent:'Alignment in all three planes. Groove gauge. Banded belt where the application cannot be tamed.' },
+  r_walk: { type:'result', cls:'action', label:'belt walking: misalignment or a loose sheave', text:'The belt is being steered off by an angle between the sheaves.', sub:'Straightedge check. A sheave that has walked on its shaft (loose bushing, backed-out set screw) moves the alignment without anyone touching it. A motor creeping on its slide base does the same. Flat belts: check the crown and the pulley alignment.', prevent:'Torque bushing screws and recheck after run-in. Lock the motor base after tensioning.' },
+  r_flange: { type:'result', cls:'fix', label:'timing belt against the flange: misalignment', text:'Flanges keep the belt on. A belt riding hard against one is being pushed there.', sub:'Straightedge across the pulley faces. Correct the alignment to a quarter of what a V-belt would tolerate. Check the flange for damage that could cut the belt edge.', prevent:'Laser alignment on timing belt drives.' },
+
+  life1: { q:'What does the failed belt look like?', hint:'Failure Analysis tab has the patterns with pictures in words.', options:[
+    {label:'Glazed, hard sidewalls',next:'r_life_glazed'},{label:'Cracked underside',next:'r_life_cracked'},{label:'One sidewall worn',next:'r_squeal_align'},{label:'Swollen or soft',next:'r_life_oil'},{label:'Even wear, no damage, just early',next:'r_life_overload'},{label:'One belt of a set failed',next:'r_life_set'}] },
+  r_life_glazed: { type:'result', cls:'action', label:'chronic slip', text:'The belt has been slipping for most of its life.', sub:'Tension by gauge, groove gauge, load check. See the squeal-under-load branch. A glazed belt cannot be recovered by tensioning.', prevent:'Groove gauge on every belt change. Tension recorded.' },
+  r_life_cracked: { type:'result', cls:'action', label:'small sheave, heat, or age', text:'The underside is fatiguing from bending or from heat.', sub:'Small sheave diameter against the section minimum. Guard temperature. Belt age from the date code. Switch to a cogged belt if the sheave cannot change.', prevent:'Cogged belts on small sheave drives. Ventilated guards near heat.' },
+  r_life_oil: { type:'result', cls:'action', label:'contamination', text:'Oil or chemicals have attacked the rubber.', sub:'Find the source: a leaking seal above the drive, an over-greased bearing purging into the guard, a process spill. Stop it. Clean the sheaves. Oil-resistant compound if the source cannot be eliminated.', prevent:'Grease quantity on the bearings above the drive. Seal condition on the PM.' },
+  r_life_overload: { type:'result', cls:'action', label:'drive undersized for the actual duty', text:'The belt is doing what it was designed to do, for a load it was not designed for.', sub:'Recalculate with the belt catalogue using the actual motor size, hours, and a service factor for the duty. Check whether the load has grown. More belts, larger section, or cogged or narrow belts for more capacity in the same space.', prevent:'Motor amps trended. Re-rate the drive after any process change.' },
+  r_life_set: { type:'result', cls:'fix', label:'unmatched set', text:'One belt of a multi-belt set is carrying all the load.', sub:'The belts are not a matched set, or one was replaced alone, or one is a different length code. Replace all belts with a matched set from one batch. Tension as a set.', prevent:'Never replace one belt of a set. Stock matched sets for critical drives.' },
+
+  chain1: { q:'What is the chain doing?', options:[
+    {label:'Noisy, rattling, whipping',next:'chain2'},{label:'Jumping or climbing the sprocket',next:'r_chain_jump'},{label:'Stiff links, chain does not run smoothly',next:'r_chain_stiff'},{label:'Broke at a link',next:'r_chain_broke'}] },
+  chain2: { q:'Measure elongation over 12 pitches. Where is it?', hint:'Failure Analysis tab has the method and the numbers.', options:[
+    {label:'Under 1.5%',next:'r_chain_tension'},{label:'1.5 to 3%',next:'r_chain_wearing'},{label:'Over 3%',next:'r_chain_replace'}] },
+  r_chain_tension: { type:'result', cls:'fix', label:'chain not worn: tension, alignment, or lubrication', text:'The chain is within its wear limit. The noise is coming from something else.', sub:'Sag against the 2 to 4 percent target. Straightedge across the sprocket faces. Is the chain lubricated at the pin joint (inside edge, slack strand). A driver sprocket under about 17 teeth has chordal action and is noisy by design. Check the idler bearing if fitted.', prevent:'Lubrication schedule that actually reaches the pins. Sag checked and recorded on the PM.' },
+  r_chain_wearing: { type:'result', cls:'action', label:'chain wearing: plan the replacement', text:'The chain is elongating and the pitch no longer matches the sprocket well. It is noisier and riding higher on the teeth.', sub:'Lubricate properly now, which slows the rate. Order chain and check the sprocket teeth for hooking; if they are hooked, order sprockets too. Replace before 3 percent, or 1.5 percent on large sprockets.', prevent:'Lubrication. Elongation measured and logged on every PM so the replacement is planned, not emergency.' },
+  r_chain_replace: { type:'result', cls:'escalate', label:'chain past its wear limit', text:'The chain is riding on the tooth tips and will jump the sprocket or break.', sub:'Replace the chain. Inspect the sprockets: hooked teeth mean the sprockets go too, or the new chain will be worn out in months. Check why it got this far: lubrication, PM interval, or the drive is undersized.', prevent:'Elongation on the PM sheet with the replacement threshold written on it.' },
+  r_chain_jump: { type:'result', cls:'escalate', label:'chain jumping: elongation, slack, or hooked sprockets', text:'The chain is riding up and over the teeth under load.', sub:'Elongation measurement first. Then sag: a chain with too much slack whips and jumps on shock. Sprocket teeth hooked or worn on one face. Misalignment lets the chain climb one side of the sprocket. A chain that jumps is also a chain that can come off and wrap a shaft.', prevent:'Elongation and sag on the PM. Replace sprockets with the chain when the teeth are worn.' },
+  r_chain_stiff: { type:'result', cls:'action', label:'stiff links: corrosion, dirt, or damage', text:'Links that do not articulate freely are corroded, packed with dirt, or have a bent pin.', sub:'Clean and lubricate first. If a link stays stiff, look for a bent pin or a side plate that has been hit. A chain that has been run in a wash-down or a wet environment without lubrication rusts at the pins. Stiff links load the sprocket unevenly and are where the chain will break.', prevent:'Lubricant that displaces water on wet drives. Stainless or coated chain if the environment cannot be changed.' },
+  r_chain_broke: { type:'result', cls:'escalate', label:'chain failure: find the link and the load', text:'Chains break at the connecting link, an offset link, a stiff link, or from an overload.', sub:'Find the broken link and see what it was. Connecting link with a spring clip: was the clip on backward or missing. Offset link: it was the weak point by design. A link mid-chain: overload or a crack from a shock, and the drive or the load needs looking at. Inspect the sprockets and shafts for damage from the loose chain.', prevent:'Press-fit connecting links on critical drives. Even pitch count to eliminate offset links. Overload protection on shock-loaded drives.' },
+
+  r_hotbearing: { type:'result', cls:'action', label:'over-tension or misalignment loading the bearing', text:'A drive-end bearing running hotter than the opposite end on a belt or chain drive is carrying more radial load than it should.', sub:'Tension by gauge against the table; hand-tight is almost always too tight. Alignment: an angled belt or chain pulls the shaft sideways. Check the sheave or sprocket overhang: a sheave hung far out on a shaft extension multiplies the bending load on the bearing. If tension and alignment are correct, the bearing itself is the problem: Bearing Failure module.', prevent:'Tension to the low end of the table. Sheave as close to the bearing as the guard allows. Infrared reading on both bearing ends after every tensioning.' },
+
+  vib1: { q:'What kind of vibration?', options:[
+    {label:'Once per belt revolution (slow beat)',next:'r_vib_belt'},{label:'At shaft speed',next:'r_vib_sheave'},{label:'Chain drive, pulsing',next:'r_vib_chordal'}] },
+  r_vib_belt: { type:'result', cls:'action', label:'belt defect or splice', text:'A vibration that repeats once per belt revolution (slower than shaft speed) is a defect in the belt: a lump, a thin spot, a bad splice, or a set from being stored bent.', sub:'Mark the belt and watch: the beat coincides with the mark passing. Replace the belt. On a multi-belt drive, an unmatched set gives a beat as belts fight each other.', prevent:'Store belts flat or on large diameter hangers. Matched sets.' },
+  r_vib_sheave: { type:'result', cls:'action', label:'sheave or sprocket run-out, unbalance, or looseness', text:'Vibration at shaft speed on a belt drive is the sheave or sprocket itself.', sub:'Dial indicator on the rim: radial and axial run-out. A bored sheave with a bad key fit, a bushing not seated, or a bent shaft all show as run-out. Large sheaves are balanced; a chipped or damaged sheave is out of balance. Check the sheave is tight.', prevent:'Run-out check on installation. Bushing torque sequence and recheck.' },
+  r_vib_chordal: { type:'result', cls:'action', label:'chordal action or elongation', text:'A chain drive pulses by nature as each link engages, and a small driver sprocket makes it worse. Elongation makes it much worse.', sub:'Elongation measurement. Driver tooth count: under 17 teeth is inherently pulsing. If the drive is smooth when new and rough now, it is wear. If it has always been rough, it is the sprocket size, and a larger driver with a larger driven (same ratio) smooths it.', prevent:'Design drives with 17+ teeth on the driver. Elongation on the PM.' },
+
+  r_slip: { type:'result', cls:'action', label:'slip under load', text:'The driven machine is not getting the speed the ratio says it should, or loses speed when loaded.', sub:'Belt drive: this is slip. Tension by gauge, groove gauge, glazing, oil on the sheave, load growth. A strobe or tachometer on both shafts confirms the actual ratio against the design. Chain drive: chain does not slip; if the driven speed is wrong the ratio was changed (wrong sprocket) or the motor is slowing under load (motor or VFD). Timing belt: ratcheting under load is low tension or an undersized belt.', prevent:'Log driven shaft speed on the PM. A falling speed is slip starting.' }
+};
+
+let currentDiagNode='start', diagHistory=[];
+function switchTab(tab){ if(tab==='selfcheck'){ setTimeout(scRender,0); }document.querySelectorAll('.bw-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.bw-panel').forEach(p=>p.classList.remove('active'));const b=document.querySelector(`[onclick="switchTab('${tab}')"]`);if(b)b.classList.add('active');const p=document.getElementById('panel-'+tab);if(p)p.classList.add('active');if(tab==='troubleshoot')renderDiag('start');}
+function card(d){return `<div class="comp-detail"><div class="comp-detail-header"><i class="ti ${d.icon} comp-detail-icon"></i><div><div class="comp-detail-name">${d.name}</div><div class="comp-detail-role">${d.role}</div></div></div><div class="comp-detail-body">${d.body}</div><ul class="comp-detail-tips">${d.tips.map(t=>`<li>${t}</li>`).join('')}</ul></div>`;}
+function sel(panel,prefix,id,data,target){document.querySelectorAll('#panel-'+panel+' .type-card').forEach(c=>c.classList.remove('selected'));document.getElementById(prefix+id).classList.add('selected');document.getElementById(target).innerHTML=card(data[id]);}
+function selectDrive(id){sel('overview','dcard-',id,driveData,'drive-display');}
+function selectBelt(id){sel('belts','bcard-',id,beltData,'belt-display');}
+function selectChain(id){sel('chains','ccard-',id,chainData,'chain-display');}
+function selectFail(id){sel('failure','fcard-',id,failData,'fail-display');}
+function toggleAdv(id){document.getElementById(id).classList.toggle('open');}
+function renderDiag(id){currentDiagNode=id;const n=diagNodes[id];if(!n)return;const pct=Math.min(8+(diagHistory.length/5)*88,96);document.getElementById('pt-progress').style.width=pct+'%';let h='';if(diagHistory.length>0)h+=`<button class="tree-back" onclick="diagBack()"><i class="ti ti-arrow-left"></i> back</button><br><br>`;if(n.type==='result'){document.getElementById('pt-progress').style.width='100%';h+=`<div class="tree-result ${n.cls}"><div class="tree-result-label">${n.label}</div><div class="tree-result-text">${n.text}</div><div class="tree-result-sub">${n.sub}</div>${n.prevent?`<div class="tree-prevent"><strong>Prevent recurrence</strong>${n.prevent}</div>`:''}</div><br><button class="tree-btn" onclick="diagHistory.length=0;renderDiag('start');">Start over</button>`;}else{h+=`<div class="tree-q"><div class="tree-q-text">${n.q}</div>${n.hint?`<div class="tree-q-hint">${n.hint}</div>`:''}<div class="tree-btns">${n.options.map(o=>`<button class="tree-btn ${o.cls||''}" onclick="diagTo('${o.next}')">${o.label}</button>`).join('')}</div></div>`;}document.getElementById('pt-tree').innerHTML=h;}
+function diagTo(id){diagHistory.push(currentDiagNode);renderDiag(id);}
+function diagBack(){if(diagHistory.length>0)renderDiag(diagHistory.pop());}
+(function(){function go(){var h=location.hash.replace('#','');if(h&&document.getElementById('panel-'+h))switchTab(h);}go();window.addEventListener('hashchange',go);})();
+
+const SELFCHECK = {
+  overview: [
+    ['A 1750 rpm motor with a 150 mm driver sheave and a 400 mm driven sheave gives?', ['4667 rpm', '656 rpm', '1750 rpm', '175 rpm'], 1, '1750 × (150 ÷ 400) = 656.'],
+    ['Which drive type slips under overload?', ['Chain', 'Timing belt', 'V-belt', 'Gearbox'], 2, 'Friction drives slip; positive drives do not.'],
+    ['Rubber dust under a belt guard indicates?', ['Normal wear', 'Slip or misalignment', 'New belts', 'Too little tension only'], 1, 'The belt is being abraded against the groove.']
+  ],
+  belts: [
+    ['A B belt in an A groove will?', ['Fit fine', 'Ride too high and roll over', 'Bottom out', 'Run cooler'], 1, 'Sections are not interchangeable.'],
+    ['Replacing one belt of a multi-belt set?', ['Is fine', 'Puts all the load on the new belt until it stretches', 'Balances the load', 'Extends life'], 1, 'Always replace as a matched set.'],
+    ['A belt riding low in the groove means?', ['Correct', 'The groove is worn or the belt is the wrong section', 'Too tight', 'Too loose'], 1, 'Top of the belt should sit at or slightly above the sheave OD.'],
+    ['A cogged belt is for?', ['Positive drive', 'Bending around smaller sheaves and running cooler', 'Higher speed only', 'Timing'], 1, 'Notches on the underside; same sheave as the plain belt.']
+  ],
+  chains: [
+    ['ANSI #60 chain pitch?', ['1/2 in', '5/8 in', '3/4 in', '1 in'], 2, 'First digits ÷ 8: 6 ÷ 8 = 3/4 in.'],
+    ['Where does chain lubricant need to reach?', ['The rollers', 'The pin and bushing joint, via the side plate gap', 'The sprocket teeth', 'The outside of the chain'], 1, 'Wear is pin and bushing wear.'],
+    ['A spring clip master link is installed with the closed end?', ['Facing backward', 'Facing the direction of travel', 'Either way', 'Up'], 1, 'Backward, it can be stripped off by contact.']
+  ],
+  tension: [
+    ['V-belt deflection target?', ['Span ÷ 16', 'Span ÷ 64', 'Span ÷ 100', '1 inch'], 1, '1/64 in per inch of span, or 1.6 mm per 100 mm.'],
+    ['The right belt tension is?', ['As tight as possible', 'The lowest that does not slip under full load', 'Hand tight', 'Manufacturer maximum'], 1, 'Every extra newton loads the bearings.'],
+    ['Chain sag on a horizontal drive?', ['Zero', '2 to 4% of span', '10% of span', 'Half the span'], 1, 'Vertical drives use 1 to 2%.'],
+    ['New belts are rechecked after?', ['A year', '24 to 48 hours of operation', 'Never', 'One minute'], 1, 'Initial stretch and seating happen in the first day or two.']
+  ],
+  alignment: [
+    ['Straightedge across two sheaves should touch at?', ['Two points', 'Four points', 'One point', 'Any number'], 1, 'Two points per sheave, four total.'],
+    ['When is sheave alignment checked?', ['Before tensioning', 'After tensioning', 'During', 'Never'], 1, 'Tensioning pulls the motor on its base.'],
+    ['Prying a belt onto a sheave?', ['Is the standard method', 'Breaks the tension cords invisibly', 'Is fine with a plastic tool', 'Improves grip'], 1, 'Loosen the motor and slip it on by hand.']
+  ],
+  failure: [
+    ['Chain replacement elongation for general drives?', ['1%', '3%', '10%', 'Never'], 1, '1.5% for large sprockets.'],
+    ['#60 chain, 12 pitches measures 236.5 mm. Elongation?', ['1%', '2%', '3.5%', '7%'], 2, 'Nominal 228.6 mm; (236.5 - 228.6) ÷ 228.6 = 3.5%.'],
+    ['Hooked (shark-fin) sprocket teeth mean?', ['New sprocket', 'End of sprocket life; replace with the chain', 'Wrong chain', 'Too much lube'], 1, 'A hooked sprocket wears a new chain fast.'],
+    ['Belt glazed and hard on the sidewalls?', ['Age', 'Slip and heat', 'Oil', 'Misalignment'], 1, 'Cannot be recovered by tensioning.']
+  ],
+  troubleshoot: [
+    ['Belt squeals on startup then runs quiet?', ['Misalignment', 'Startup slip on inertia', 'Worn sheave only', 'Oil'], 1, 'Tension at the low end, glazed belt, or a marginal drive for the starting load.'],
+    ['Motor DE bearing warmer than NDE after tensioning?', ['Normal', 'Over-tension', 'Under-tension', 'Misalignment only'], 1, 'The bearing tells you what the belt table did not.']
+  ],
+  safety: [
+    ['The guard comes off?', ['When the drive is running slowly', 'After lockout is verified, and goes back before the lock comes off', 'For a quick look', 'Never'], 1, 'Belts and chains are the nip point hazard in the plant.'],
+    ['The driven machine can turn a locked-out drive backward. True or false?', ['False', 'True: block the driven side', 'Only conveyors', 'Only fans'], 1, 'Windmilling fans, loaded inclines, gravity loads.']
+  ]
+};
+
+// BuiltWright self-check engine
+let scAnswered = {}, scCorrect = 0;
+function scRender(){
+  const el=document.getElementById('sc-body'); if(!el) return;
+  let total=0, html='';
+  for (const [tab, qs] of Object.entries(SELFCHECK)){
+    const tabName = (document.querySelector(`[onclick="switchTab('${tab}')"]`)||{}).textContent || tab;
+    html += `<div class="sc-section"><div class="family-label">${tabName} <a class="sc-jump" href="#${tab}" onclick="switchTab('${tab}')">open tab</a></div>`;
+    qs.forEach((q,i)=>{ const id=tab+'_'+i; total++;
+      html += `<div class="sc-q" id="scq-${id}"><div class="sc-stem">${q[0]}</div><div class="sc-opts">${q[1].map((o,j)=>`<button class="sc-opt" onclick="scAnswer('${id}',${j},${q[2]})">${o}</button>`).join('')}</div><div class="sc-why" id="scw-${id}"><strong>Why</strong>${q[3]}</div></div>`;
+    });
+    html += `</div>`;
+  }
+  html += `<div class="sc-score"><div class="sc-score-text">Score <b id="sc-n">0</b> / ${total} &nbsp; answered <b id="sc-a">0</b></div><div class="sc-bar"><div id="sc-fill"></div></div><button class="tree-btn" onclick="scReset()">Reset</button></div>`;
+  el.innerHTML = html; window._scTotal=total;
+}
+function scAnswer(id, j, correct){
+  if (scAnswered[id]!==undefined) return;
+  scAnswered[id]=j; if (j===correct) scCorrect++;
+  const btns=document.querySelectorAll(`#scq-${id} .sc-opt`);
+  btns.forEach((b,k)=>{ b.disabled=true; if(k===correct) b.classList.add('correct'); else if(k===j) b.classList.add('wrong'); });
+  document.getElementById('scw-'+id).classList.add('show');
+  document.getElementById('sc-n').textContent=scCorrect;
+  const a=Object.keys(scAnswered).length; document.getElementById('sc-a').textContent=a;
+  document.getElementById('sc-fill').style.width=(100*scCorrect/window._scTotal)+'%';
+}
+function scReset(){ scAnswered={}; scCorrect=0; scRender(); }
+</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
+</body>
+</html>

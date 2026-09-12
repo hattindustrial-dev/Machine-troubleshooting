@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuiltWright: Fans and Blowers: Module 17</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a1a18">
+<link rel="apple-touch-icon" href="builtwright_icon_192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #1a1a18; color: #e8e6df; font-family: 'Rajdhani', sans-serif; min-height: 100vh; padding: 2rem 1rem; }
+  .bw-wrap { max-width: 720px; margin: 0 auto; }
+  .bw-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 1.5rem; border-bottom: 1px solid #3a3a36; padding-bottom: 0.75rem; }
+  .bw-logo { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: #BA7517; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .bw-logo a { color: #BA7517; text-decoration: none; }
+  .bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }
+  .bw-badge { font-family: 'Share Tech Mono', monospace; font-size: 10px; background: #2a1f08; color: #BA7517; padding: 3px 8px; border-radius: 3px; letter-spacing: 1px; border: 0.5px solid #BA7517; }
+  .bw-tabs { display: flex; gap: 4px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }
+  .bw-tab:hover { background: #2e2e2a; color: #e8e6df; border-color: #BA7517; }
+  .bw-tab.active { background: #BA7517; color: #fff; border-color: #BA7517; font-weight: 600; }
+  .bw-panel { display: none; } .bw-panel.active { display: block; }
+  .bw-section-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 2px; color: #5F5E5A; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .family-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; color: #BA7517; text-transform: uppercase; margin: 1rem 0 0.5rem 0; }
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 0.5rem; }
+  .type-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; }
+  .type-card:hover, .type-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }
+  .type-card-icon { font-size: 22px; color: #BA7517; margin-bottom: 5px; }
+  .type-card-name { font-size: 13px; font-weight: 600; color: #f0ede4; margin-bottom: 2px; }
+  .type-card-sub { font-size: 11px; color: #888780; }
+  .comp-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }
+  .comp-detail-header { display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem; }
+  .comp-detail-icon { font-size: 22px; color: #BA7517; }
+  .comp-detail-name { font-size: 16px; font-weight: 600; color: #f0ede4; }
+  .comp-detail-role { font-size: 13px; color: #888780; margin-top: 1px; }
+  .comp-detail-body { font-size: 14px; color: #c8c6bf; line-height: 1.65; margin-bottom: 0.75rem; }
+  .comp-detail-tips { list-style: none; }
+  .comp-detail-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }
+  .comp-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; }
+  .comp-placeholder { text-align: center; padding: 2rem; color: #5F5E5A; font-size: 13px; font-family: 'Share Tech Mono', monospace; letter-spacing: 1px; border: 0.5px dashed #3a3a36; border-radius: 8px; margin-bottom: 1.5rem; }
+  .info-block { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.1rem 1.25rem; margin-bottom: 10px; }
+  .info-block-title { font-size: 15px; font-weight: 600; color: #f0ede4; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px; }
+  .info-block-title i { color: #BA7517; font-size: 17px; }
+  .info-block-body { font-size: 13px; color: #c8c6bf; line-height: 1.6; }
+  .info-block-tips { list-style: none; margin-top: 0.6rem; }
+  .info-block-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }
+  .info-block-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; }
+  .callout-box { border-radius: 8px; padding: 1.1rem 1.25rem; margin-bottom: 1.25rem; border: 1.5px solid #EF9F27; background: #2a1f08; }
+  .callout-box.red { border-color: #A32D2D; background: #200d0d; }
+  .callout-box.blue { border-color: #185FA5; background: #0c1f33; }
+  .callout-box-header { display: flex; align-items: center; gap: 8px; margin-bottom: 0.6rem; }
+  .callout-box-icon { font-size: 20px; color: #EF9F27; }
+  .callout-box.red .callout-box-icon, .callout-box.red .callout-box-title, .callout-box.red strong { color: #F09595; }
+  .callout-box.blue .callout-box-icon, .callout-box.blue .callout-box-title, .callout-box.blue strong { color: #85B7EB; }
+  .callout-box-title { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #EF9F27; font-weight: 600; }
+  .callout-box-body { font-size: 13px; color: #c8c6bf; line-height: 1.6; }
+  .callout-box-body strong { color: #EF9F27; font-weight: 600; }
+  .callout-tips { list-style: none; margin-top: 0.6rem; }
+  .callout-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }
+  .callout-tips li::before { content: '→'; position: absolute; left: 0; color: #EF9F27; }
+  .callout-box.red .callout-tips li::before { color: #F09595; }
+  .field-tip { display: flex; gap: 10px; background: #1e1e1c; border-left: 3px solid #BA7517; border-radius: 0 6px 6px 0; padding: 0.7rem 0.9rem; margin: 0.75rem 0; }
+  .field-tip i { color: #BA7517; font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+  .field-tip div { font-size: 13px; color: #c8c6bf; line-height: 1.55; }
+  .field-tip strong { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517; display: block; margin-bottom: 2px; }
+  .adv-wrap { border-radius: 8px; overflow: hidden; border: 0.5px solid #3a3a36; margin-bottom: 1.25rem; }
+  .adv-toggle { width: 100%; background: #242420; border: none; padding: 0.75rem 1.1rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; gap: 10px; }
+  .adv-toggle-left { display: flex; align-items: center; gap: 8px; }
+  .adv-toggle-icon { font-size: 15px; color: #BA7517; }
+  .adv-toggle-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517; font-weight: 600; text-align: left; }
+  .adv-chevron { font-size: 13px; color: #BA7517; transition: transform 0.2s; }
+  .adv-wrap.open .adv-chevron { transform: rotate(180deg); }
+  .adv-body { display: none; background: #1e1e1c; padding: 1rem 1.1rem; border-top: 0.5px solid #3a3a36; }
+  .adv-wrap.open .adv-body { display: block; }
+  .adv-body p { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-bottom: 0.75rem; }
+  .adv-body strong { color: #e8e6df; font-weight: 600; }
+  .chain-wrap { background: #242420; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; overflow-x: auto; }
+  .chain { display: flex; align-items: center; flex-wrap: nowrap; gap: 0; }
+  .chain-node { flex-shrink: 0; }
+  .chain-box { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 6px; padding: 7px 9px; text-align: center; cursor: pointer; transition: all 0.15s; min-width: 70px; }
+  .chain-box:hover, .chain-box.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }
+  .chain-icon { font-size: 18px; color: #BA7517; display: block; margin-bottom: 2px; }
+  .chain-label { font-size: 11px; font-weight: 600; color: #e8e6df; }
+  .chain-sub { font-size: 9px; color: #888780; }
+  .chain-arrow { font-size: 14px; color: #5F5E5A; padding: 0 3px; flex-shrink: 0; }
+  .sym-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.25rem; }
+  .sym-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .sym-card:hover, .sym-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }
+  .sym-card-label { font-size: 12px; font-weight: 600; color: #f0ede4; text-align: center; }
+  .sym-card-sub { font-size: 10px; color: #888780; text-align: center; }
+  .sym-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }
+  .sym-detail-body { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-top: 0.75rem; }
+  .sym-detail-tips { list-style: none; margin-top: 0.6rem; }
+  .sym-detail-tips li { font-size: 12px; color: #888780; padding: 2px 0 2px 16px; position: relative; line-height: 1.5; }
+  .sym-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; font-size: 11px; }
+  .ref-table { width: 100%; border-collapse: collapse; margin: 0.5rem 0 1rem 0; font-size: 12px; }
+  .ref-table th { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #BA7517; text-align: left; padding: 6px 8px; border-bottom: 1px solid #3a3a36; }
+  .ref-table td { padding: 6px 8px; border-bottom: 0.5px solid #2e2e2a; color: #c8c6bf; vertical-align: top; line-height: 1.4; }
+  .ref-table td:first-child { color: #f0ede4; font-weight: 600; white-space: nowrap; }
+  .progress-bar { height: 3px; background: #242420; border-radius: 2px; margin-bottom: 1rem; overflow: hidden; }
+  .progress-fill { height: 100%; background: #BA7517; border-radius: 2px; transition: width 0.3s; }
+  .tree-q { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1rem 1.25rem; }
+  .tree-q-text { font-size: 15px; font-weight: 600; color: #f0ede4; margin-bottom: 0.5rem; line-height: 1.4; }
+  .tree-q-hint { font-size: 12px; color: #888780; margin-bottom: 0.75rem; font-style: italic; line-height: 1.45; }
+  .tree-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tree-btn { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; padding: 7px 16px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; text-align: left; }
+  .tree-btn:hover { border-color: #BA7517; background: #2a1f08; color: #EF9F27; }
+  .tree-btn.yes { border-color: #3B6D11; } .tree-btn.yes:hover { background: #0e1f05; color: #97C459; }
+  .tree-btn.no { border-color: #A32D2D; } .tree-btn.no:hover { background: #200d0d; color: #F09595; }
+  .tree-result { border-radius: 8px; padding: 1rem 1.25rem; margin-top: 8px; }
+  .tree-result.action { background: #2a1f08; border: 0.5px solid #BA7517; }
+  .tree-result.fix { background: #0e1f05; border: 0.5px solid #3B6D11; }
+  .tree-result.escalate { background: #200d0d; border: 0.5px solid #A32D2D; }
+  .tree-result-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+  .tree-result.action .tree-result-label { color: #EF9F27; }
+  .tree-result.fix .tree-result-label { color: #97C459; }
+  .tree-result.escalate .tree-result-label { color: #F09595; }
+  .tree-result-text { font-size: 14px; font-weight: 500; color: #f0ede4; line-height: 1.55; }
+  .tree-result-sub { font-size: 12px; color: #888780; margin-top: 5px; line-height: 1.5; }
+  .tree-prevent { margin-top: 10px; padding-top: 8px; border-top: 0.5px solid rgba(255,255,255,0.08); font-size: 12px; color: #c8c6bf; line-height: 1.5; }
+  .tree-prevent strong { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #97C459; display: block; margin-bottom: 2px; }
+  .tree-back { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; color: #888780; background: none; border: none; cursor: pointer; padding: 4px 0; text-transform: uppercase; display: inline-flex; align-items: center; gap: 5px; }
+  .tree-back:hover { color: #BA7517; }
+  .bw-footer { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: #5F5E5A; letter-spacing: 1px; text-align: right; margin-top: 1rem; padding-top: 0.75rem; border-top: 0.5px solid #3a3a36; }
+
+  .sc-section { margin-bottom: 1.25rem; }
+  .sc-q { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 0.9rem 1.1rem; margin-bottom: 8px; }
+  .sc-stem { font-size: 14px; font-weight: 600; color: #f0ede4; line-height: 1.45; margin-bottom: 0.6rem; }
+  .sc-opts { display: flex; flex-direction: column; gap: 6px; }
+  .sc-opt { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 500; text-align: left; padding: 7px 12px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; line-height: 1.4; }
+  .sc-opt:hover { border-color: #BA7517; color: #EF9F27; }
+  .sc-opt.correct { border-color: #3B6D11; background: #0e1f05; color: #97C459; }
+  .sc-opt.wrong { border-color: #A32D2D; background: #200d0d; color: #F09595; }
+  .sc-opt:disabled { cursor: default; }
+  .sc-why { display: none; font-size: 12px; color: #c8c6bf; line-height: 1.5; margin-top: 8px; padding-top: 8px; border-top: 0.5px solid rgba(255,255,255,0.08); }
+  .sc-why.show { display: block; }
+  .sc-why strong { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #97C459; display: block; margin-bottom: 2px; }
+  .sc-score { position: sticky; bottom: 0; background: #1a1a18; border-top: 0.5px solid #3a3a36; padding: 0.6rem 0; display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 1rem; }
+  .sc-score-text { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 1px; color: #888780; text-transform: uppercase; }
+  .sc-score-text b { color: #EF9F27; }
+  .sc-bar { flex: 1; height: 4px; background: #242420; border-radius: 2px; overflow: hidden; }
+  .sc-bar div { height: 100%; background: #97C459; width: 0; transition: width 0.3s; }
+  .sc-jump { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; color: #888780; text-decoration: none; text-transform: uppercase; }
+  .sc-jump:hover { color: #EF9F27; }
+
+  @media print {
+    body { background:#fff; color:#000; padding:0; }
+    .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; }
+    .bw-panel { display:none; } .bw-panel.active { display:block; }
+    .bw-wrap { max-width:100%; }
+    .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; }
+    .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; }
+    .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; }
+    .adv-body { display:block !important; }
+    .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; }
+    .progress-bar { display:none; }
+    a { color:#000; text-decoration:none; }
+    .bw-logo a::after { content:"  builtwrightapp.com"; color:#666; }
+    .bw-header { border-bottom:1px solid #000; }
+    .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; }
+  }
+ .related { margin-top:1.25rem; border-top:0.5px solid #3a3a36; padding-top:0.9rem; }
+  .related-label { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:#5F5E5A; margin-bottom:6px; }
+  .related a { display:inline-block; font-size:12px; color:#e8e6df; background:#242420; border:0.5px solid #3a3a36; border-radius:4px; padding:5px 9px; margin:0 6px 6px 0; text-decoration:none; }
+  .related a:hover { border-color:#BA7517; color:#EF9F27; }
+</style>
+</head>
+<body>
+<div class="bw-wrap">
+  <div class="bw-header">
+    <div><div class="bw-logo"><a href="builtwright_diagnose_hub_v1.html">BuiltWright</a></div><div class="bw-title">Fans and Blowers</div></div>
+    <div class="bw-badge">Module 17</div>
+  </div>
+  <div class="bw-tabs">
+    <button class="bw-tab active" onclick="switchTab('overview')">Overview</button>
+    <button class="bw-tab" onclick="switchTab('types')">Fan Types</button>
+    <button class="bw-tab" onclick="switchTab('laws')">Fan Laws and the System</button>
+    <button class="bw-tab" onclick="switchTab('wheel')">Wheel, Balance, Clearance</button>
+    <button class="bw-tab" onclick="switchTab('drives')">Bearings and Drives</button>
+    <button class="bw-tab" onclick="switchTab('troubleshoot')">Troubleshoot</button>
+    <button class="bw-tab" onclick="switchTab('selfcheck')">Self-Check</button>
+    <button class="bw-tab" onclick="switchTab('safety')" style="border-color:#A32D2D; color:#F09595;">Safety</button>
+  </div>
+
+  <div id="panel-overview" class="bw-panel active">
+    <div class="callout-box blue">
+      <div class="callout-box-header"><i class="ti ti-bulb callout-box-icon"></i><div class="callout-box-title">A fan is a pump for air, and the pump module's first rule applies</div></div>
+      <div class="callout-box-body">Fans create flow. The duct system resists that flow, and the resistance registers as pressure. A fan running against a closed damper is a centrifugal pump at shutoff: little flow, all the power going into heat and noise, and on some fan types, stall and surge. <strong>The fan curve, the system curve, the affinity laws, and the operating point are the same ideas as the pump module, with air instead of water and a much bigger, lighter wheel that is far more sensitive to balance and buildup.</strong></div>
+    </div>
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-list-numbers"></i> What goes wrong with fans, in order of how often</div>
+      <ul class="info-block-tips">
+        <li>Buildup on the wheel: product, dust, moisture, ice. The wheel goes out of balance, vibration rises, bearings fail. Most fan bearing failures are balance failures, and most balance failures are dirt.</li>
+        <li>Belt drive problems: tension, sheave wear, ratio changed by a replacement sheave. Power Transmission module.</li>
+        <li>Bearing failure from unbalance, over-tension, misalignment, heat on hot gas fans, or contamination. Bearing Failure module.</li>
+        <li>System changes: dampers, filters loading up, ducts added or blocked. The fan moves on its curve and draws different power, and people blame the fan.</li>
+        <li>Wheel damage: erosion, corrosion, a blade cracked at the hub weld, a wheel that has slipped on the shaft.</li>
+        <li>Stall and surge on backward-inclined and axial fans throttled too far.</li>
+      </ul>
+    </div>
+    <div class="field-tip"><i class="ti ti-tool"></i><div><strong>Field tip: amps tell you where the fan is on its curve</strong>On a backward-inclined or airfoil centrifugal fan, motor amps rise with flow: a fan with the discharge damper wide open and no duct on the outlet will overload the motor. On a forward-curved fan and an axial fan it is the opposite or nearly flat. Know which you have before you open a damper to "give it more air" and trip the motor. The fan laws tab has the curves.</div></div>
+  </div>
+
+  <div id="panel-types" class="bw-panel">
+    <div class="bw-section-label">Fan and blower types: tap a type</div>
+    <div class="family-label">Centrifugal</div>
+    <div class="card-grid">
+      <div class="type-card" onclick="selectType('fc')" id="tcard-fc"><div class="type-card-icon"><i class="ti ti-circle-dashed"></i></div><div class="type-card-name">Forward curved</div><div class="type-card-sub">Squirrel cage, HVAC, low pressure</div></div>
+      <div class="type-card" onclick="selectType('bi')" id="tcard-bi"><div class="type-card-icon"><i class="ti ti-circle-half"></i></div><div class="type-card-name">Backward inclined and airfoil</div><div class="type-card-sub">Efficient, non-overloading, industrial</div></div>
+      <div class="type-card" onclick="selectType('radial')" id="tcard-radial"><div class="type-card-icon"><i class="ti ti-sun"></i></div><div class="type-card-name">Radial blade</div><div class="type-card-sub">Material handling, dust, tough</div></div>
+    </div>
+    <div class="family-label">Axial and positive displacement</div>
+    <div class="card-grid">
+      <div class="type-card" onclick="selectType('axial')" id="tcard-axial"><div class="type-card-icon"><i class="ti ti-propeller"></i></div><div class="type-card-name">Axial (propeller, tube, vane)</div><div class="type-card-sub">High volume, low pressure, stall-prone</div></div>
+      <div class="type-card" onclick="selectType('roots')" id="tcard-roots"><div class="type-card-icon"><i class="ti ti-settings"></i></div><div class="type-card-name">Rotary lobe (Roots) blower</div><div class="type-card-sub">Positive displacement, needs a relief valve</div></div>
+      <div class="type-card" onclick="selectType('regen')" id="tcard-regen"><div class="type-card-icon"><i class="ti ti-rotate-clockwise"></i></div><div class="type-card-name">Regenerative (side channel) blower</div><div class="type-card-sub">Compact, oil-free, moderate pressure</div></div>
+    </div>
+    <div id="type-display" style="margin-top:1rem;"><div class="comp-placeholder">select a type above</div></div>
+  </div>
+
+  <div id="panel-laws" class="bw-panel">
+    <div class="bw-section-label">Fan laws and the system curve</div>
+    <div class="info-block">
+      <div style="background:#111110; border:0.5px solid #3a3a36; border-radius:6px; padding:0.75rem 1rem; margin:0.4rem 0 0.6rem 0; font-family:'Share Tech Mono',monospace; font-size:12px; color:#EF9F27; line-height:1.9;">Flow ∝ speed &nbsp;&nbsp; Pressure ∝ speed² &nbsp;&nbsp; Power ∝ speed³<br>Same relationships with wheel diameter at constant speed<br><br>Example: sheave change takes a fan from 1000 to 1100 rpm (10% faster)<br>Flow up 10%, pressure up 21%, power up 33%<br>A 20 HP motor is now being asked for 26.6 HP</div>
+      <ul class="info-block-tips">
+        <li>The cube law is why a replacement sheave "close enough" trips a motor, and why a VFD slowing a fan 20 percent halves its power.</li>
+        <li>Density: pressure and power scale with air density. A fan rated for 20°C air moves the same volume of 200°C air but at 60 percent of the pressure and power; a cold start on a hot gas fan overloads the motor.</li>
+        <li>System curve: the duct resistance rises with the square of flow. Where the fan curve crosses the system curve is the operating point. Close a damper, the system curve steepens, the operating point moves left (less flow, more pressure). Open a duct, it moves right.</li>
+        <li>Backward-inclined and airfoil power curves peak and fall off at high flow (non-overloading). Forward-curved power keeps rising with flow (overloading). Axial power is highest at low flow, near stall.</li>
+      </ul>
+    </div>
+    <div class="info-block">
+      <div class="info-block-title"><i class="ti ti-alert-hexagon"></i> Stall and surge</div>
+      <div class="info-block-body">Backward-inclined centrifugal fans and all axial fans have a region on the curve, to the left of the peak pressure, where the airflow separates from the blades. The fan stalls: flow drops, pressure fluctuates, the fan pulses and roars, and the vibration can wreck the wheel and bearings. A system throttled too far (a damper closed down, filters loaded, a duct blocked) pushes the fan into it. Two fans in parallel where one is stronger can push the weaker into stall.</div>
+      <ul class="info-block-tips">
+        <li>Sound: a low pulsing roar, and pressure gauges swinging.</li>
+        <li>Cure: open the system (dampers, filters), reduce the speed, or fit a stall-limiting device on axial fans. A fan selected too close to its peak pressure will live in stall.</li>
+        <li>Forward-curved and radial fans do not stall in the same way; they are used where the system varies widely.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="panel-wheel" class="bw-panel">
+    <div class="bw-section-label">The wheel: balance, buildup, and clearance</div>
+    <div class="info-block">
+      <ul class="info-block-tips">
+        <li>Balance: fan wheels are balanced to ISO 21940 (formerly 1940) grade G6.3 for general industrial, G2.5 for high speed. A fan is a large light rotor at high tip speed, and a few grams of product on one blade is a vibration problem. Buildup is removed before any balancing, or the balance job is balancing the dirt.</li>
+        <li>Buildup: sticky product, moisture with dust, ice, paint overspray, and corrosion products all accumulate unevenly. It comes off in chunks, which is when the vibration jumps. Cleaning access (a door in the housing) and a cleaning interval on the PM, sized by the product.</li>
+        <li>Wheel to inlet cone clearance: the overlap and the radial gap between the wheel inlet and the inlet cone set the fan's efficiency and pressure. A wheel that has moved on the shaft, a cone knocked out of position, or a bearing with axial play opens the gap and the fan loses pressure and draws different power. The manufacturer gives the dimension; check it after any wheel or bearing work.</li>
+        <li>Wheel on the shaft: hub set screws, a taper-lock bushing, or a key and locknut. A wheel that has slipped is out of position (clearance) and often out of balance. Match-mark the hub to the shaft.</li>
+        <li>Erosion and corrosion: blades thin from the leading edge, and the wheel loses balance and strength. A radial fan on abrasive dust is inspected for blade thickness. Cracks at the blade-to-backplate welds on centrifugal wheels are the failure that throws a blade; dye penetrant on the PM for high-speed wheels.</li>
+        <li>Wheel rotation direction: a centrifugal wheel run backward moves about half the air at much higher power draw; it does not run "in reverse," it runs badly. The arrow on the housing.</li>
+      </ul>
+    </div>
+    <div class="field-tip"><i class="ti ti-tool"></i><div><strong>Field tip: clean it before you balance it</strong>The most common fan vibration job starts with a balancing instrument and ends with a wire brush. Lock out, open the housing, look at the wheel. If one side has product on it, that is the unbalance. Clean the whole wheel, close up, run it, read the vibration, and then decide whether it needs balancing. Balancing a dirty wheel puts weight on to cancel the dirt, and when the dirt comes off, the weight is the unbalance.</div></div>
+  </div>
+
+  <div id="panel-drives" class="bw-panel">
+    <div class="bw-section-label">Bearings and drives: fan-specific points</div>
+    <div class="info-block">
+      <ul class="info-block-tips">
+        <li>Arrangement: fans are built in numbered arrangements (AMCA). Arrangement 1 is an overhung wheel on a shaft between two bearings, belt driven; arrangement 4 is the wheel on the motor shaft; arrangement 8 is direct coupled with its own bearings; arrangement 9 is belt driven with the motor on the side. The arrangement tells you where the bearings are, what loads they see, and how the wheel comes off.</li>
+        <li>Overhung wheels (arrangement 1, 9) put a bending load on the shaft and the inboard bearing carries most of it plus the belt pull. That bearing is the one that fails.</li>
+        <li>Belt drives on fans: tension by gauge, sheave gauge, and ratio checked against the drawing after any sheave change. The cube law makes a ratio error expensive. Power Transmission module.</li>
+        <li>Hot gas fans: the shaft conducts heat to the bearings. A heat slinger (a small disc on the shaft between the housing and the bearing) throws air over the shaft; a cooling wheel; a shaft seal on the housing. Bearing grease rated for the temperature, and the interval shortened. A hot gas fan started cold overloads the motor (denser air) until the gas heats.</li>
+        <li>Fan bearings are often pillow blocks: fixing ring on the drive side, the other free to float for thermal growth, per the Bearing Failure module. A fan shaft that heats and cannot grow bends.</li>
+        <li>Large fans with long shafts have a critical speed; run-up through it must be quick, and a VFD must not park the fan on it. Vibration module, resonance.</li>
+        <li>Backdraft dampers and outlet dampers: a fan started against a closed outlet damper on a forward-curved unit is at minimum power, which is the design intent; on a backward-inclined unit it is near stall. Start-up damper position is on the procedure.</li>
+        <li>Windmilling: a fan in a duct with draft turns with the motor off. Block it before the guard comes off; it is also a generator on the motor terminals.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="panel-troubleshoot" class="bw-panel">
+    <div class="bw-section-label">Fan fault diagnosis</div>
+    <div class="adv-wrap" id="adv-method">
+      <button class="adv-toggle" onclick="toggleAdv('adv-method')">
+        <div class="adv-toggle-left"><i class="ti ti-map-2 adv-toggle-icon"></i><span class="adv-toggle-label">Diagnostic methodology: amps, dampers, wheel, drive, bearings</span></div>
+        <i class="ti ti-chevron-down adv-chevron"></i>
+      </button>
+      <div class="adv-body">
+        <p><strong>Running:</strong> amps against nameplate and against last time. Damper positions. Filter differential pressure. Static pressure at the fan if there is a gauge. Vibration by hand or by meter at both bearings. Belt noise. Infrared on bearings and motor.</p>
+        <p><strong>Locked out, blocked against windmilling:</strong> open the housing. Wheel buildup, blade condition, cracks at the hub, wheel position and cone clearance, rotation arrow. Shaft play at the bearings. Belt tension and sheave gauge. Sheave diameters against the drawing.</p>
+        <p><strong>Then think about the system.</strong> A fan that changed behaviour with no fan fault has a system that changed: a damper, a filter, a duct, a process.</p>
+      </div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="fn-progress" style="width:8%"></div></div>
+    <div id="fn-tree"></div>
+  </div>
+
+  <!-- SELF-CHECK TAB -->
+  <div id="panel-selfcheck" class="bw-panel">
+    <div class="bw-section-label">Self-check: one question at a time, tap an answer, read why</div>
+    <div class="comp-detail"><div class="comp-detail-body">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>
+    <div id="sc-body"></div>
+  </div>
+
+  <div id="panel-safety" class="bw-panel">
+    <div class="bw-section-label">Fan safety: stored energy in a big light wheel, and ducts</div>
+    <div class="callout-box red">
+      <div class="callout-box-header"><i class="ti ti-alert-triangle callout-box-icon"></i><div class="callout-box-title">A fan wheel stores more energy than it looks like, and it keeps turning</div></div>
+      <div class="callout-box-body">A large wheel at speed carries enough kinetic energy to take a hand off, and it coasts for minutes after the motor stops. A fan in a duct with draft turns with the power off, indefinitely. <strong>Lock out the motor, wait for or brake the coast-down, and block the wheel against windmilling before any guard or access door is opened.</strong></div>
+    </div>
+    <div class="info-block" style="border-color:#A32D2D;">
+      <ul class="info-block-tips">
+        <li>Inlet and outlet guards on any fan with an open inlet or outlet within reach. An open inlet on a large fan will draw in and hold a person.</li>
+        <li>Windmilling: a wheel turning from draft is a hazard and an electrical generator. Block the wheel with a designed device or a bar in a spoke, not a hand on the wheel.</li>
+        <li>Ducts and plenums are confined spaces when they meet the definition. Entry procedure, atmosphere test, isolation of every fan that could move air through it.</li>
+        <li>Hot gas fans: housing, wheel, and gas are at process temperature. Cool down and isolate the gas source before opening.</li>
+        <li>A wheel that has thrown a blade or cracked at the hub is a wheel that will throw the next one. Do not run it to "see if it holds."</li>
+        <li>Belt drive guards, Regulation 851 sections 24 and 25. The fan drive is the belt drive most likely to be found with the guard off, because it is on the roof.</li>
+        <li>Dust: a fan handling combustible dust is part of a dust explosion system. Housekeeping, bonding, and no ignition sources (a rubbing wheel is one).</li>
+      </ul>
+    </div>
+  </div>
+
+    <div class="related"><div class="related-label">Related modules</div><a href="builtwright_pumps_combined_v1.html#compare">Pumps: the same curve logic</a><a href="builtwright_power_transmission_v1.html#tension">Belt drives on fans</a><a href="builtwright_bearing_module_v1.html#diagnose">Fan bearings</a><a href="builtwright_vibration_v1.html#spectrum">Unbalance and blade pass</a><a href="builtwright_motors_v1.html#cooling">Motors: the fan on the motor</a></div>
+  <div class="bw-footer">builtwrightapp.com &nbsp;·&nbsp; module 17 of series &nbsp;·&nbsp; fans and blowers</div>
+</div>
+<script>
+const typeData = {
+  fc: { icon:'ti-circle-dashed', name:'Forward-curved centrifugal', role:'Many small blades curved in the direction of rotation. Low pressure, high volume for its size, quiet. HVAC air handlers.',
+    body:'The squirrel cage wheel. Cheap, compact, quiet, and it moves a lot of air at low pressure. Its power rises continuously with flow (overloading), so a duct removed or a damper left open can trip the motor. Efficiency is modest. It does not stall the way a backward-inclined fan does, which is why it suits systems that vary. Blades are thin and fill with dirt quickly.',
+    tips:['Overloading power curve: check amps when the system is opened up.','Dirt in the blade channels is the balance problem.','Not for high pressure or dirty, hot, or abrasive air.']
+  },
+  bi: { icon:'ti-circle-half', name:'Backward-inclined and airfoil centrifugal', role:'Blades angled away from rotation. Efficient, non-overloading, and the industrial standard.',
+    body:'Flat backward-inclined, backward-curved, or airfoil (hollow aerodynamic) blades. High efficiency, a power curve that peaks and then falls (non-overloading: the motor is safe at any flow if sized for the peak), and a clean wheel that tolerates some dust. Airfoil blades are the most efficient and the least tolerant of erosion and buildup, because a change in blade shape changes the airflow. All of them stall to the left of peak pressure.',
+    tips:['Stall region: do not throttle below the peak. Read the curve.','Airfoil blades that erode or fill with product lose efficiency fast.','Amps rise with flow up to the peak, then fall.']
+  },
+  radial: { icon:'ti-sun', name:'Radial blade and radial tip', role:'Flat blades straight out from the hub. Self-cleaning, rugged, for material and dust handling.',
+    body:'The simplest wheel: paddles. It throws material and does not clog, so it is used for pneumatic conveying, dust collectors, and dirty gas. Low efficiency, noisy, and overloading (power rises with flow). Blade wear from abrasive material is the maintenance item; blades are often lined or made replaceable. Radial tip wheels are a compromise between radial and backward-inclined.',
+    tips:['Blade thickness measured on the PM on abrasive service.','Overloading: amps rise with flow.','Rugged, but a cracked blade root on a radial wheel throws a paddle.']
+  },
+  axial: { icon:'ti-propeller', name:'Axial fans: propeller, tube-axial, vane-axial', role:'Air moves along the shaft axis. High volume, low pressure, compact, and prone to stall.',
+    body:'Propeller fans are a blade in a ring (wall exhaust, cooling towers). Tube-axial fans are in a cylindrical housing. Vane-axial fans add guide vanes and reach higher pressures. All of them have a stall region at low flow where the pressure curve dips and the fan pulses; power is highest at low flow, so an axial fan started against a closed damper draws the most power. Blade pitch is fixed or adjustable (manually or in flight on large units).',
+    tips:['Start with the system open. Closed dampers mean maximum power and stall.','Tip clearance to the housing sets performance; a wheel that has moved rubs or loses pressure.','Adjustable pitch: all blades at the same angle, or the fan is out of balance aerodynamically.']
+  },
+  roots: { icon:'ti-settings', name:'Rotary lobe (Roots) blower', role:'Two figure-eight rotors trap and move a fixed volume per revolution. Positive displacement.',
+    body:'A PD machine, so the pump module PD rules apply: it delivers a fixed flow regardless of pressure, it cannot run against a closed discharge without a relief valve, and its discharge pressure is set by the system. Timing gears keep the rotors from touching; oil in the gear end; the rotors run dry with fine clearances. Used for pneumatic conveying, aeration, and vacuum. Pulsation and noise are inherent; silencers on both ends.',
+    tips:['Relief valve on the discharge, tested. A Roots blower against a closed valve overheats and seizes within minutes.','Inlet filter is the protection for the rotor clearances; a dirty inlet is a scored rotor.','Timing gear oil level and condition; a timing gear failure is rotors touching.','Discharge temperature rises with pressure ratio; the manufacturer limit is the operating limit.']
+  },
+  regen: { icon:'ti-rotate-clockwise', name:'Regenerative (side channel) blower', role:'An impeller flings air around an annular channel repeatedly. Oil-free, compact, moderate pressure and vacuum.',
+    body:'A single impeller with many blades runs in a housing with a side channel; air is accelerated repeatedly around the channel, building pressure without contact or oil. Used for aeration, pneumatic conveying at low rates, vacuum hold-down, and packaging. Quiet, sealed, and simple. It is a dynamic machine (not PD) but its curve is steep, and a fully blocked inlet or outlet overheats it.',
+    tips:['Inlet filter and a relief valve are standard fittings for a reason.','Impeller to housing clearance is fine; debris through the inlet damages it.','Bearings are the motor bearings on most units; heat from the blower shortens their life.']
+  }
+};
+const diagNodes = {
+  start: { q:'What is the fan doing?', hint:'Lock out and block the wheel before opening anything.', options:[
+    {label:'Vibration',next:'vib1'},{label:'Not enough air, or pressure dropped',next:'flow1'},{label:'Motor overloading or tripping',next:'amps1'},{label:'Noise: pulsing, roaring, rubbing, squealing',next:'noise1'},{label:'Bearing hot or failing',next:'r_bearing'}] },
+  vib1: { q:'Lock out, block, and open the housing. What does the wheel look like?', options:[
+    {label:'Buildup on the blades',next:'r_buildup'},{label:'Clean wheel, blade damage or a crack at the hub',next:'r_wheel_damage'},{label:'Clean and sound. Check the drive and bearings.',next:'vib2'}] },
+  vib2: { q:'Belt drive tension, sheave condition, and shaft play?', options:[
+    {label:'Over-tensioned or worn sheaves',next:'r_drive'},{label:'Shaft play or bearing noise',next:'r_bearing'},{label:'All correct: balance or resonance',next:'r_balance'}] },
+  r_buildup: { type:'result', cls:'fix', label:'buildup unbalance', text:'Product on the wheel is the unbalance.', sub:'Clean the whole wheel (every blade, both sides of the backplate). Run it and read the vibration. Most of the time it is gone. If not, then balance. Find why it is building: moisture, sticky product, no cleaning interval.', prevent:'Wheel cleaning on the PM, interval set by the product. An access door in the housing.' },
+  r_wheel_damage: { type:'result', cls:'escalate', label:'wheel damage', text:'A cracked or eroded wheel is a wheel that will throw a piece.', sub:'Do not run it. Cracks at the blade-to-backplate weld or the hub: replace the wheel or have it repaired and rebalanced by the manufacturer. Erosion: measure blade thickness; a thinned wheel is replaced. A wheel that has slipped on the shaft is out of balance and out of clearance: reposition, match-mark, secure, and check the cone gap.', prevent:'Dye penetrant on high speed wheels on the PM. Blade thickness on abrasive service. Hub fastening checked.' },
+  r_drive: { type:'result', cls:'fix', label:'belt drive', text:'Over-tension and worn sheaves both vibrate and both load the fan bearing.', sub:'Tension by deflection gauge. Sheave groove gauge. Belt condition. Power Transmission module.', prevent:'Tension and sheave gauge on the PM.' },
+  r_balance: { type:'result', cls:'action', label:'balance or resonance', text:'A clean, sound wheel on good bearings and a correct drive that still vibrates at 1x is out of balance or on a resonance.', sub:'Field balance with a two-plane instrument on wide wheels, single plane on narrow ones. If the vibration changes sharply with a small speed change (VFD), it is resonance: bump test the base and the ductwork, stiffen, or skip the speed. Vibration module.', prevent:'Balance to G6.3 after any wheel work. Baseline vibration reading recorded.' },
+  flow1: { q:'Has anything in the system changed: dampers, filters, ducts, process?', options:[
+    {label:'Yes, or filters are loaded',next:'r_system'},{label:'No. Check the wheel.',next:'flow2'}] },
+  flow2: { q:'Wheel rotation, wheel-to-cone clearance, and wheel condition?', options:[
+    {label:'Running backward',next:'r_backward'},{label:'Cone clearance opened up (wheel moved, bearing play)',next:'r_clearance'},{label:'Wheel eroded or fouled',next:'r_buildup'},{label:'Fan pulsing and roaring',next:'r_stall'}] },
+  r_system: { type:'result', cls:'fix', label:'system resistance changed', text:'The fan moved on its curve because the system moved.', sub:'Clean or replace filters. Check every damper position against the setpoint, including backdraft dampers stuck closed. Look for a blocked duct, a collapsed flex connection, a new branch. The fan is fine; the operating point moved.', prevent:'Filter differential pressure on the PM. Damper positions recorded.' },
+  r_backward: { type:'result', cls:'fix', label:'wrong rotation', text:'A centrifugal wheel backward moves about half the air at high power.', sub:'Rotation arrow on the housing. This happens after a motor change, a rewire, or a VFD replacement. Correct it at the motor leads (electrician) and confirm before restarting.', prevent:'Rotation verified on every electrical change before the belts go on.' },
+  r_clearance: { type:'result', cls:'action', label:'wheel to inlet cone clearance', text:'An opened gap or lost overlap lets air recirculate; pressure and efficiency drop.', sub:'Manufacturer dimension for overlap and radial gap. Reposition the wheel on the shaft, reposition the cone, or fix the bearing with axial play. Match-mark after.', prevent:'Cone clearance measured after any wheel or bearing work and recorded.' },
+  r_stall: { type:'result', cls:'action', label:'stall or surge', text:'The fan is being throttled below its peak pressure and the airflow has separated.', sub:'Open the system: dampers, filters, blockages. On parallel fans, balance them. If the fan was selected near its peak, it will stall on any system restriction; a different fan or a VFD to bring the curve down. Axial fans: adjustable pitch or a stall-limiting ring.', prevent:'Operating point kept to the right of peak pressure. Dampers with minimum stops.' },
+  amps1: { q:'Fan type and system state?', options:[
+    {label:'Forward-curved or radial, system opened up (duct off, damper open)',next:'r_overload_fc'},{label:'Backward-inclined, amps high',next:'r_overload_bi'},{label:'Axial, damper closed',next:'r_overload_axial'},{label:'Hot gas fan started cold',next:'r_cold_start'},{label:'Sheave was replaced',next:'r_ratio'}] },
+  r_overload_fc: { type:'result', cls:'fix', label:'overloading fan curve', text:'Forward-curved and radial fans draw more power the more air they move; open the system and the motor trips.', sub:'Restore the duct or the damper to the design condition. If the system has permanently changed, re-select the fan or the motor.', prevent:'Amps recorded with the damper position. The overloading characteristic noted on the fan record.' },
+  r_overload_bi: { type:'result', cls:'action', label:'backward-inclined at high amps', text:'A non-overloading fan drawing high amps is past its rated speed, moving denser air than design, or has a drive or bearing problem.', sub:'Speed against the drawing (sheave ratio). Air density (cold air on a fan sized for hot). Belt tension and bearing drag. Motors module for the uncoupled test.', prevent:'Sheave ratio and speed on the fan record.' },
+  r_overload_axial: { type:'result', cls:'fix', label:'axial fan at low flow', text:'Axial fans draw the most power near shutoff.', sub:'Open the damper before starting. If the fan must start against a closed damper, the motor must be sized for it, and it usually is not.', prevent:'Startup damper position on the procedure.' },
+  r_cold_start: { type:'result', cls:'fix', label:'cold dense air', text:'A fan sized for hot gas moving cold air draws power in proportion to the density.', sub:'Start with the inlet damper partly closed until the gas is at temperature, per the manufacturer procedure, or size the motor for the cold start.', prevent:'Cold start procedure on the fan record.' },
+  r_ratio: { type:'result', cls:'fix', label:'wrong sheave ratio', text:'A 10 percent speed increase is 33 percent more power.', sub:'Sheave diameters against the drawing. Replace with the correct size. The cube law is not negotiable.', prevent:'Sheaves by part number on the PM sheet.' },
+  noise1: { q:'What kind of noise?', options:[{label:'Low pulsing roar',next:'r_stall'},{label:'Metallic rub or scrape',next:'r_rub'},{label:'Squeal',next:'r_drive'},{label:'Rumble or grind at a bearing',next:'r_bearing'}] },
+  r_rub: { type:'result', cls:'escalate', label:'wheel rubbing', text:'The wheel is touching the cone or the housing: it has moved, a bearing has play, or the housing has been dented.', sub:'Stop it. A rubbing wheel heats, throws sparks (a dust explosion ignition source), and damages the wheel. Lock out, find the contact, and fix the position or the bearing.', prevent:'Cone clearance and shaft play on the PM.' },
+  r_bearing: { type:'result', cls:'escalate', label:'fan bearing', text:'Fan bearings fail from unbalance, belt over-tension, heat, and contamination, in that order.', sub:'Read the failed bearing (Bearing Failure module). Before the new one goes in: wheel cleaned and balanced, belt tension by gauge, heat slinger and grease grade on hot service, fixing ring on the drive side only.', prevent:'Wheel cleaning, tension by gauge, and vibration route on the PM.' }
+};
+let currentDiagNode='start', diagHistory=[];
+function switchTab(tab){ if(tab==='selfcheck'){ setTimeout(scRender,0); }document.querySelectorAll('.bw-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.bw-panel').forEach(p=>p.classList.remove('active'));const b=document.querySelector(`[onclick="switchTab('${tab}')"]`);if(b)b.classList.add('active');const p=document.getElementById('panel-'+tab);if(p)p.classList.add('active');if(tab==='troubleshoot')renderDiag('start');}
+function card(d){return `<div class="comp-detail"><div class="comp-detail-header"><i class="ti ${d.icon} comp-detail-icon"></i><div><div class="comp-detail-name">${d.name}</div><div class="comp-detail-role">${d.role}</div></div></div><div class="comp-detail-body">${d.body}</div><ul class="comp-detail-tips">${d.tips.map(t=>`<li>${t}</li>`).join('')}</ul></div>`;}
+function selectType(id){document.querySelectorAll('#panel-types .type-card').forEach(c=>c.classList.remove('selected'));document.getElementById('tcard-'+id).classList.add('selected');document.getElementById('type-display').innerHTML=card(typeData[id]);}
+function toggleAdv(id){document.getElementById(id).classList.toggle('open');}
+function renderDiag(id){currentDiagNode=id;const n=diagNodes[id];if(!n)return;const pct=Math.min(8+(diagHistory.length/5)*88,96);document.getElementById('fn-progress').style.width=pct+'%';let h='';if(diagHistory.length>0)h+=`<button class="tree-back" onclick="diagBack()"><i class="ti ti-arrow-left"></i> back</button><br><br>`;if(n.type==='result'){document.getElementById('fn-progress').style.width='100%';h+=`<div class="tree-result ${n.cls}"><div class="tree-result-label">${n.label}</div><div class="tree-result-text">${n.text}</div><div class="tree-result-sub">${n.sub}</div>${n.prevent?`<div class="tree-prevent"><strong>Prevent recurrence</strong>${n.prevent}</div>`:''}</div><br><button class="tree-btn" onclick="diagHistory.length=0;renderDiag('start');">Start over</button>`;}else{h+=`<div class="tree-q"><div class="tree-q-text">${n.q}</div>${n.hint?`<div class="tree-q-hint">${n.hint}</div>`:''}<div class="tree-btns">${n.options.map(o=>`<button class="tree-btn ${o.cls||''}" onclick="diagTo('${o.next}')">${o.label}</button>`).join('')}</div></div>`;}document.getElementById('fn-tree').innerHTML=h;}
+function diagTo(id){diagHistory.push(currentDiagNode);renderDiag(id);}
+function diagBack(){if(diagHistory.length>0)renderDiag(diagHistory.pop());}
+(function(){function go(){var h=location.hash.replace('#','');if(h&&document.getElementById('panel-'+h))switchTab(h);}go();window.addEventListener('hashchange',go);})();
+
+const SELFCHECK = {
+  overview: [
+    ['Most fan bearing failures trace to?', ['Bad bearings', 'Unbalance from buildup on the wheel', 'Wrong grease', 'Motor faults'], 1, 'Most balance failures are dirt.'],
+    ['On a backward-inclined fan, opening the outlet fully does what to motor amps?', ['Nothing', 'Raises them, up to the curve peak', 'Lowers them', 'Trips instantly'], 1, 'Know the curve before opening a damper.']
+  ],
+  types: [
+    ['Which fan type has an overloading power curve?', ['Backward-inclined', 'Airfoil', 'Forward-curved', 'Vane-axial'], 2, 'Power rises with flow; open the system and it trips.'],
+    ['A Roots blower against a closed discharge?', ['Runs fine', 'Overheats and seizes within minutes without a relief valve', 'Stalls', 'Slows down'], 1, 'It is a positive displacement machine.'],
+    ['Which fan types stall to the left of peak pressure?', ['Forward-curved', 'Radial', 'Backward-inclined and axial', 'Regenerative'], 2, 'Throttling below the peak separates the flow.']
+  ],
+  laws: [
+    ['A fan sped up 10% draws how much more power?', ['10%', '21%', '33%', '50%'], 2, 'Power is proportional to speed cubed.'],
+    ['A hot gas fan started on cold air?', ['Draws less power', 'Draws more power because the air is denser', 'Draws the same', 'Stalls'], 1, 'Pressure and power scale with density.'],
+    ['A low pulsing roar with swinging pressure gauges is?', ['Bearing failure', 'Stall or surge', 'Belt slip', 'Normal'], 1, 'Open the system or reduce speed.']
+  ],
+  wheel: [
+    ['First step before balancing a fan wheel?', ['Add trial weight', 'Clean it', 'Change bearings', 'Tighten belts'], 1, 'Balancing a dirty wheel balances the dirt.'],
+    ['Wheel-to-inlet cone clearance matters because?', ['Noise only', 'It sets efficiency and pressure; an open gap recirculates air', 'It does not', 'Balance'], 1, 'Check after any wheel or bearing work.'],
+    ['A centrifugal wheel run backward?', ['Reverses the airflow', 'Moves about half the air at high power', 'Works normally', 'Stops'], 1, 'The arrow on the housing.']
+  ],
+  drives: [
+    ['On an overhung wheel arrangement, which bearing fails first?', ['Outboard', 'Inboard, carrying the wheel load plus belt pull', 'Motor NDE', 'Neither'], 1, 'Bending load and belt tension.'],
+    ['A fan in a duct with the motor off?', ['Is stationary', 'Can windmill from draft and must be blocked', 'Is safe to reach into', 'Cannot turn'], 1, 'It is also a generator on the motor terminals.']
+  ],
+  troubleshoot: [
+    ['Fan vibration, wheel has product on one side. Fix?', ['Balance', 'Clean the whole wheel, then read the vibration', 'New bearings', 'Tighten belts'], 1, 'Most of the time it is gone.'],
+    ['Airflow dropped, nothing on the fan changed. First check?', ['Wheel', 'Filters, dampers, and ducts: the system', 'Motor', 'Belts'], 1, 'The operating point moved.']
+  ],
+  safety: [
+    ['Before opening a fan housing?', ['Stop the motor', 'Lock out, wait for coast-down, block against windmilling', 'Close the damper', 'Nothing'], 1, 'A big light wheel stores more energy than it looks.'],
+    ['A fan wheel with a cracked blade weld?', ['Run it to see', 'Do not run it: it will throw the next one', 'Balance it', 'Weld it and run'], 1, 'Replace or manufacturer repair and rebalance.']
+  ]
+};
+
+// BuiltWright self-check engine
+let scAnswered = {}, scCorrect = 0;
+function scRender(){
+  const el=document.getElementById('sc-body'); if(!el) return;
+  let total=0, html='';
+  for (const [tab, qs] of Object.entries(SELFCHECK)){
+    const tabName = (document.querySelector(`[onclick="switchTab('${tab}')"]`)||{}).textContent || tab;
+    html += `<div class="sc-section"><div class="family-label">${tabName} <a class="sc-jump" href="#${tab}" onclick="switchTab('${tab}')">open tab</a></div>`;
+    qs.forEach((q,i)=>{ const id=tab+'_'+i; total++;
+      html += `<div class="sc-q" id="scq-${id}"><div class="sc-stem">${q[0]}</div><div class="sc-opts">${q[1].map((o,j)=>`<button class="sc-opt" onclick="scAnswer('${id}',${j},${q[2]})">${o}</button>`).join('')}</div><div class="sc-why" id="scw-${id}"><strong>Why</strong>${q[3]}</div></div>`;
+    });
+    html += `</div>`;
+  }
+  html += `<div class="sc-score"><div class="sc-score-text">Score <b id="sc-n">0</b> / ${total} &nbsp; answered <b id="sc-a">0</b></div><div class="sc-bar"><div id="sc-fill"></div></div><button class="tree-btn" onclick="scReset()">Reset</button></div>`;
+  el.innerHTML = html; window._scTotal=total;
+}
+function scAnswer(id, j, correct){
+  if (scAnswered[id]!==undefined) return;
+  scAnswered[id]=j; if (j===correct) scCorrect++;
+  const btns=document.querySelectorAll(`#scq-${id} .sc-opt`);
+  btns.forEach((b,k)=>{ b.disabled=true; if(k===correct) b.classList.add('correct'); else if(k===j) b.classList.add('wrong'); });
+  document.getElementById('scw-'+id).classList.add('show');
+  document.getElementById('sc-n').textContent=scCorrect;
+  const a=Object.keys(scAnswered).length; document.getElementById('sc-a').textContent=a;
+  document.getElementById('sc-fill').style.width=(100*scCorrect/window._scTotal)+'%';
+}
+function scReset(){ scAnswered={}; scCorrect=0; scRender(); }
+</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
+</body>
+</html>
