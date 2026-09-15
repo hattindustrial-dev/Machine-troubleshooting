@@ -195,8 +195,64 @@ for (const mod of modules) {
   if (absent) fail(mod.key, `${absent} diagnostic result(s) missing from the search index, first: "${firstMissing}"`);
 }
 
-// ---- 7. Totals against the published index -------------------------------------
 const index = JSON.parse(readFileSync(join(APP, 'builtwright_index.json'), 'utf8'));
+
+// ---- 6d. Hub routes ------------------------------------------------------------
+// The facility layer is planned on top of the route-to-component tags in the published
+// index, so the index has to list every route the hub actually has. The generator matched
+// ids beginning with r_ and silently dropped the four that do not.
+const hub = JSON.parse(readFileSync(join(DATA, 'hub.json'), 'utf8'));
+const hubRoutes = Object.entries(hub.nodes).filter(([, n]) => n && n.type === 'route');
+
+for (const [id, route] of hubRoutes) {
+  const target = hub.modules[route.module];
+  if (!target) fail('hub', `route '${id}' points at unknown module '${route.module}'`);
+  else if (!(route.tab in target.tabs)) fail('hub', `route '${id}' points at '${route.module}' tab '${route.tab}', which does not exist`);
+  if (!route.components || !route.components.length) fail('hub', `route '${id}' has no component tags`);
+}
+
+// Every route has to be reachable by answering questions from a symptom.
+const reachable = new Set();
+const queue = hub.symptoms.map((s) => s.id).filter((id) => id in hub.nodes);
+if (queue.length !== hub.symptoms.length) fail('hub', 'some symptoms have no matching node');
+while (queue.length) {
+  const id = queue.pop();
+  if (reachable.has(id)) continue;
+  reachable.add(id);
+  for (const opt of (hub.nodes[id] && hub.nodes[id].options) || []) {
+    if (opt.next in hub.nodes) queue.push(opt.next);
+  }
+}
+const stranded = hubRoutes.filter(([id]) => !reachable.has(id)).map(([id]) => id);
+if (stranded.length) fail('hub', `${stranded.length} route(s) unreachable from any symptom: ${stranded.slice(0, 5).join(', ')}`);
+
+const publishedRoutes = new Set(index.hub_routes.map((r) => r.id));
+const unpublished = hubRoutes.filter(([id]) => !publishedRoutes.has(id)).map(([id]) => id);
+if (unpublished.length) fail('index', `${unpublished.length} hub route(s) missing from the index: ${unpublished.join(', ')}`);
+if (index.totals.hub_routes !== hubRoutes.length) fail('index', `totals.hub_routes is ${index.totals.hub_routes}, hub has ${hubRoutes.length}`);
+
+// ---- 6e. Pocket cards round trip -------------------------------------------------
+// The ten cards are authored content that used to live only inside pass3.py. They are
+// data now, so the data has to regenerate the shipped page exactly, character for
+// character, or the JSON is not really the source.
+const pocketCards = JSON.parse(readFileSync(join(DATA, 'pocket-cards.json'), 'utf8'));
+const pocketHtml = readFileSync(join(APP, 'builtwright_pocket_cards_v1.html'), 'utf8');
+if (pocketCards.length !== (pocketHtml.match(/<div class="card /g) || []).length) {
+  fail('pocket cards', `extracted ${pocketCards.length} cards, page has ${(pocketHtml.match(/<div class="card /g) || []).length}`);
+}
+for (const card of pocketCards) {
+  const rendered = `<div class="card ${card.cls}"><div class="card-title">${card.title}</div><ol>` +
+    card.steps.map((s) => `<li>${s}</li>`).join('') +
+    `</ol><div class="src">Full version: <a href="${card.file}#${card.tab}">${card.linkText}</a></div></div>`;
+  if (!pocketHtml.includes(rendered)) fail('pocket cards', `"${card.title}" does not round trip to the page markup`);
+  // and the card has to point at a tab that exists
+  if (!existsSync(join(APP, card.file))) fail('pocket cards', `"${card.title}" links to missing file ${card.file}`);
+  else if (!panels.get(card.file) || !panels.get(card.file).has(card.tab)) {
+    fail('pocket cards', `"${card.title}" links to ${card.file}#${card.tab}, which has no such panel`);
+  }
+}
+
+// ---- 7. Totals against the published index -------------------------------------
 if (index.totals.diagnostic_results !== results) fail('index', `totals.diagnostic_results is ${index.totals.diagnostic_results}, extracted ${results}`);
 if (index.totals.self_check_questions !== questions) fail('index', `totals.self_check_questions is ${index.totals.self_check_questions}, extracted ${questions}`);
 

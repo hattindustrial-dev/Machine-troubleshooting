@@ -5,7 +5,7 @@ CONTENTS (27 HTML files plus support files)
   Modules:      23 entries in the hub registry (21 content modules, 2 documents, plus tools)
   Tools:        search, PM task library, reference, root cause report, pocket cards, manager's guide, curriculum map
   Support:      manifest.json, sw.js, builtwright_icon_192.png, builtwright_icon_512.png, builtwright_index.json
-  Totals:       380 diagnostic results (each with a prevent-recurrence line), 423 self-check questions, 77 field tips, 67 hub routes
+  Totals:       380 diagnostic results (each with a prevent-recurrence line), 423 self-check questions, 77 field tips, 71 hub routes
 
 HOSTING
   All files in one folder on any static web host (GitHub Pages, Netlify, Cloudflare Pages, or a plant intranet server).

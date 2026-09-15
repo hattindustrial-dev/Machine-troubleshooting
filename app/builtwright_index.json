@@ -523,6 +523,45 @@
    "title": "Normal flow, hot seal area: seal face or flush problem."
   },
   {
+   "id": "heat_coupling",
+   "module": "alignment",
+   "tab": "misalign",
+   "components": [
+    "alignment"
+   ],
+   "title": "A hot coupling is absorbing misalignment."
+  },
+  {
+   "id": "heat_gearbox",
+   "module": "gearbox",
+   "tab": "troubleshoot",
+   "components": [
+    "gearbox",
+    "lube"
+   ],
+   "title": "Gearbox heat: oil first, then one bearing versus the whole housing."
+  },
+  {
+   "id": "heat_motor",
+   "module": "motors",
+   "tab": "troubleshoot",
+   "components": [
+    "motor",
+    "alignment",
+    "bearing"
+   ],
+   "title": "Hot motor: rule out the mechanical causes before calling it electrical."
+  },
+  {
+   "id": "heat_pneu",
+   "module": "pneu",
+   "tab": "troubleshoot",
+   "components": [
+    "pneu"
+   ],
+   "title": "Hot solenoid or compressor."
+  },
+  {
    "id": "r_heat_brake",
    "module": "clutches",
    "tab": "troubleshoot",
@@ -1121,6 +1160,6 @@
   "diagnostic_results": 380,
   "self_check_questions": 423,
   "field_tips": 77,
-  "hub_routes": 67
+  "hub_routes": 71
  }
 }

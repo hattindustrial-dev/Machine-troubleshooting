@@ -182,6 +182,23 @@ for (const [name, file, wanted] of [
   writeFileSync(join(DATA, `${name}.json`), JSON.stringify(picked, null, 2) + '\n');
 }
 
+// ---- Pocket cards ----------------------------------------------------------------
+// These ten cards are authored content, not derived from the modules: they were written
+// as a Python list inside pass3.py and rendered straight to HTML. Lifting them into JSON
+// puts them on the same footing as everything else, so a renderer can produce the page.
+const pocketHtml = read('builtwright_pocket_cards_v1.html');
+const pocketCards = [...pocketHtml.matchAll(
+  /<div class="card ([a-z]+)"><div class="card-title">([^<]*)<\/div><ol>([\s\S]*?)<\/ol><div class="src">Full version: <a href="([^"#]+)#([^"]+)">([^<]*)<\/a><\/div><\/div>/g
+)].map((m) => ({
+  cls: m[1],
+  title: m[2],
+  steps: [...m[3].matchAll(/<li>([\s\S]*?)<\/li>/g)].map((s) => s[1]),
+  file: m[4],
+  tab: m[5],
+  linkText: m[6],
+}));
+writeFileSync(join(DATA, 'pocket-cards.json'), JSON.stringify(pocketCards, null, 2) + '\n');
+
 writeFileSync(join(DATA, 'extract-report.json'), JSON.stringify({
   generated_from: index.version,
   modules: report,

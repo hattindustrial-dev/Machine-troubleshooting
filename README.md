@@ -15,7 +15,7 @@ JS, linked by URL hashes, and the set installs as a PWA over https.
 | Diagnostic results | 380, each with a prevent-recurrence line |
 | Self-check questions | 423 |
 | Field tips | 77 |
-| Hub routes | 67 |
+| Hub routes | 71 |
 
 ## Layout
 
@@ -91,6 +91,7 @@ app/data/modules/<key>.json   one per module: tabs, cards, diagnostic trees,
 app/data/hub.json             the hub module registry, node tree and symptom list
 app/data/pm.json              PM task library tasks, components and intervals
 app/data/search.json          the prebuilt search index and ranking table
+app/data/pocket-cards.json    the ten printable cards, lifted out of pass3.py
 app/data/extract-report.json  per module counts and anything the extractor skipped
 ```
 
@@ -147,6 +148,9 @@ had inline, which `build/validate.mjs` checks.
 - the body of every page balances, and all panels sit at the same depth
 - `bw.css` plus a module's own blocks are exactly the rule set it had inline
 - every diagnostic result is findable in the search index
+- every hub route resolves, is reachable from a symptom, has component tags, and is listed
+  in the published index
+- the pocket card data regenerates the pocket card page exactly
 
 Current state: 23 modules, 380 diagnostic results, 570 transitions, 423 self-check
 questions, 162 links, 52 script blocks, all passing.
@@ -173,6 +177,17 @@ The search index did not. Its diagnosis entries were collected with a regex need
 lines, contributed none of its 15 results. Searching "overgreasing or cold grease" returned
 nothing even though the bearing module's Diagnose tab ends on exactly that. Those 15
 entries are spliced in now and `validate.mjs` checks every result stays findable.
+
+The hub needed no derivation: its 71 routes are authored, all reachable from the ten
+symptoms, and every module and tab they name resolves. The published index listed only 67
+of them, because the generator matched route ids beginning with `r_` and four of them do
+not. All 71 are listed now, which matters because the facility layer is planned on top of
+those route-to-component tags.
+
+The ten pocket cards were authored as a Python list inside `pass3.py` and rendered
+straight to HTML, so they were content with no home in the data. They are
+`app/data/pocket-cards.json` now, and the validator regenerates the shipped page from
+them character for character.
 
 ## Parity
 
