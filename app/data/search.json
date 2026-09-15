@@ -1215,6 +1215,156 @@
       "x": "A hand grease gun can inject grease through skin. True or false?"
     },
     {
+      "m": "02",
+      "n": "Bearing Failure",
+      "f": "builtwright_bearing_module_v1.html",
+      "t": "diagnose",
+      "tn": "Diagnose",
+      "k": "diagnosis",
+      "x": "likely overgreasing or cold grease",
+      "d": "A squeal that clears on warm-up is usually excess grease being displaced or cold grease reaching operating consistency."
+    },
+    {
+      "m": "02",
+      "n": "Bearing Failure",
+      "f": "builtwright_bearing_module_v1.html",
+      "t": "diagnose",
+      "tn": "Diagnose",
+      "k": "diagnosis",
+      "x": "race or rolling element damage",
+      "d": "A persistent squeal at operating temperature indicates damaged or dry contact between rolling elements and races."
+    },
+    {
+      "m": "02",
+      "n": "Bearing Failure",
+      "f": "builtwright_bearing_module_v1.html",
+      "t": "diagnose",
+      "tn": "Diagnose",
+      "k": "diagnosis",
+      "x": "contamination during maintenance likely",
+      "d": "Rumbling in a recently serviced or new bearing strongly suggests contamination introduced during installation or regreasing."
+    },
+    {
+      "m": "02",
+      "n": "Bearing Failure",
+      "f": "builtwright_bearing_module_v1.html",
+      "t": "diagnose",
+      "tn": "Diagnose",
+      "k": "diagnosis",
+      "x": "wear or spalling: plan replacement",
+      "d": "Rumbling in a bearing that has been running normally indicates fatigue wear or spalling of the races or rolling elements."
+    },
+    {
+      "m": "02",
+      "n": "Bearing Failure",
+      "f": "builtwright_bearing_module_v1.html",
+      "t": "diagnose",
+      "tn": "Diagnose",
+      "k": "diagnosis",
+      "x": "inspect for brinelling or race damage",
+      "d": "Rhythmic clicking or knocking that occurs at a consistent interval tied to shaft rotation points to a discrete defect on a race or rolling e"
+    },
+    {
+      "m": "02",
+      "n": "Bearing Failure",
+      "f": "builtwright_bearing_module_v1.html",
+      "t": "diagnose",
+      "tn": "Diagnose",
+      "k": "diagnosis",
+      "x": "overgreasing: purge and monitor",
+      "d": "Heat after regreasing is the classic overgreasing signature."
+    },
+    {
+      "m": "02",
+      "n": "Bearing Failure",
+      "f": "builtwright_bearing_module_v1.html",
+      "t": "diagnose",
+      "tn": "Diagnose",
+      "k": "diagnosis",
+      "x": "bearing failure in progress: plan immediate replacement",
+      "d": "Heat combined with increased noise indicates active bearing damage. The failure is progressing."
+    },
+    {
+      "m": "02",
+      "n": "Bearing Failure",
+      "f": "builtwright_bearing_module_v1.html",
+      "t": "diagnose",
+      "tn": "Diagnose",
+      "k": "diagnosis",
+      "x": "check lubrication and alignment",
+      "d": "Heat without significant noise is often an early-stage lubrication or misalignment issue."
+    },
+    {
+      "m": "02",
+      "n": "Bearing Failure",
+      "f": "builtwright_bearing_module_v1.html",
+      "t": "diagnose",
+      "tn": "Diagnose",
+      "k": "diagnosis",
+      "x": "investigate immediately: bearing or alignment",
+      "d": "A recent increase in vibration is a significant indicator. Do not normalize it."
+    },
+    {
+      "m": "02",
+      "n": "Bearing Failure",
+      "f": "builtwright_bearing_module_v1.html",
+      "t": "diagnose",
+      "tn": "Diagnose",
+      "k": "diagnosis",
+      "x": "establish baseline and monitor",
+      "d": "Steady-state vibration that has always been present may be acceptable for the machine design, or it may indicate a long-standing alignment o"
+    },
+    {
+      "m": "02",
+      "n": "Bearing Failure",
+      "f": "builtwright_bearing_module_v1.html",
+      "t": "diagnose",
+      "tn": "Diagnose",
+      "k": "diagnosis",
+      "x": "shutdown immediately: oil starvation",
+      "d": "A journal bearing without adequate oil supply will fail within seconds to minutes under load."
+    },
+    {
+      "m": "02",
+      "n": "Bearing Failure",
+      "f": "builtwright_bearing_module_v1.html",
+      "t": "diagnose",
+      "tn": "Diagnose",
+      "k": "diagnosis",
+      "x": "check oil viscosity, clearance, and load",
+      "d": "Heat with adequate oil supply points to a film breakdown issue rather than starvation."
+    },
+    {
+      "m": "02",
+      "n": "Bearing Failure",
+      "f": "builtwright_bearing_module_v1.html",
+      "t": "diagnose",
+      "tn": "Diagnose",
+      "k": "diagnosis",
+      "x": "investigate oil system before continuing operation",
+      "d": "An oil pressure drop is an emergency condition for a journal bearing system."
+    },
+    {
+      "m": "02",
+      "n": "Bearing Failure",
+      "f": "builtwright_bearing_module_v1.html",
+      "t": "diagnose",
+      "tn": "Diagnose",
+      "k": "diagnosis",
+      "x": "oil whirl or whip: check clearance and oil supply",
+      "d": "Vibration or instability in a journal bearing is often caused by oil whirl, a condition where the oil film drives the shaft into a self-sust"
+    },
+    {
+      "m": "02",
+      "n": "Bearing Failure",
+      "f": "builtwright_bearing_module_v1.html",
+      "t": "diagnose",
+      "tn": "Diagnose",
+      "k": "diagnosis",
+      "x": "bearing surface damage: shutdown and inspect",
+      "d": "Metal particles in the oil from a journal bearing system mean the bearing surface is being physically removed."
+    },
+    {
       "m": "03",
       "n": "Couplings and Alignment",
       "f": "builtwright_coupling_alignment_v1.html",

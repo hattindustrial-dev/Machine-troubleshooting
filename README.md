@@ -146,9 +146,33 @@ had inline, which `build/validate.mjs` checks.
 
 - the body of every page balances, and all panels sit at the same depth
 - `bw.css` plus a module's own blocks are exactly the rule set it had inline
+- every diagnostic result is findable in the search index
 
 Current state: 23 modules, 380 diagnostic results, 570 transitions, 423 self-check
 questions, 162 links, 52 script blocks, all passing.
+
+## Derivation
+
+`build/derive.mjs` rebuilds the generated views from the module data and checks them
+against what the app ships. Step three of the brief makes the PM library, search, hub and
+pocket cards views over the module data instead of separately generated files; before
+anything can be rebuilt on that data, the data has to be shown to contain it.
+
+```sh
+node build/derive.mjs               # compare only
+node build/derive.mjs --fix-search  # splice missing diagnoses into the search index
+```
+
+The PM task library reproduces exactly: all 663 tasks, same text, component, interval and
+source back-references, from the `prevent` tails in the module trees and nothing else.
+The derivation rules are ported from `build_tools.py` but read `app/data/modules` rather
+than pattern matching HTML.
+
+The search index did not. Its diagnosis entries were collected with a regex needing
+`label:` and `text:` adjacent on one line, so the bearing module, which is formatted across
+lines, contributed none of its 15 results. Searching "overgreasing or cold grease" returned
+nothing even though the bearing module's Diagnose tab ends on exactly that. Those 15
+entries are spliced in now and `validate.mjs` checks every result stays findable.
 
 ## Parity
 

@@ -175,6 +175,26 @@ for (const mod of modules) {
   if (extra.length) fail(mod.key, `${extra.length} CSS block(s) the module never had, first: ${extra[0].slice(0, 70)}`);
 }
 
+// ---- 6c. Every diagnosis is findable in search ---------------------------------
+// The search index was generated with a regex that needed label: and text: adjacent on
+// one line, so the one module formatted across lines contributed no diagnoses at all.
+const searchIdx = JSON.parse(readFileSync(join(DATA, 'search.json'), 'utf8')).IDX;
+const searchable = new Set(searchIdx.filter((e) => e.k === 'diagnosis').map((e) => `${e.f}|${e.x.toLowerCase()}`));
+for (const mod of modules) {
+  let absent = 0;
+  let firstMissing = '';
+  for (const tree of Object.values(mod.trees)) {
+    for (const node of Object.values(tree)) {
+      if (!node || node.type !== 'result') continue;
+      if (!searchable.has(`${mod.source}|${node.label.toLowerCase()}`)) {
+        absent++;
+        if (!firstMissing) firstMissing = node.label;
+      }
+    }
+  }
+  if (absent) fail(mod.key, `${absent} diagnostic result(s) missing from the search index, first: "${firstMissing}"`);
+}
+
 // ---- 7. Totals against the published index -------------------------------------
 const index = JSON.parse(readFileSync(join(APP, 'builtwright_index.json'), 'utf8'));
 if (index.totals.diagnostic_results !== results) fail('index', `totals.diagnostic_results is ${index.totals.diagnostic_results}, extracted ${results}`);
