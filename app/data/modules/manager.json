@@ -6,25 +6,42 @@
   "tabs": [
     {
       "id": "what",
-      "label": "What It Is"
+      "label": "What It Is",
+      "active": true,
+      "style": ""
     },
     {
       "id": "deploy",
-      "label": "Deploying It"
+      "label": "Deploying It",
+      "active": false,
+      "style": ""
     },
     {
       "id": "program",
-      "label": "A 12-Week Program"
+      "label": "A 12-Week Program",
+      "active": false,
+      "style": ""
     },
     {
       "id": "using",
-      "label": "Using the Tools"
+      "label": "Using the Tools",
+      "active": false,
+      "style": ""
     },
     {
       "id": "measure",
-      "label": "Measuring Results"
+      "label": "Measuring Results",
+      "active": false,
+      "style": ""
     }
   ],
+  "render": {
+    "title": "Manager's Guide",
+    "badge": "Document",
+    "tree": null,
+    "treeTab": null,
+    "groups": {}
+  },
   "cards": {},
   "trees": {},
   "selfcheck": null,
@@ -34,5 +51,64 @@
     "program": "<div class=\"bw-section-label\">A twelve-week program for a new maintenance technician</div>\n    <div class=\"ref-note\">One module a week, about two hours of reading and self-check, plus a supervised walk on a real machine that uses that module. The walk is the point; the reading is preparation for it. Adjust the order to the plant: a plant that is all conveyors moves week 11 to week 3.</div>\n    <table class=\"ref-table\">\n      <tr><th>Week</th><th>Module</th><th>The walk</th></tr>\n      <tr><td>1</td><td>14 Machine Safeguarding and PSR (Hazards, Guards, Safety tabs) plus every module's Safety tab as a skim</td><td>Walk a machine and list its nip, crush, shear, and entanglement points and how each is guarded. Do a lockout with the supervisor watching.</td></tr>\n      <tr><td>2</td><td>21 Precision Measurement</td><td>Measure a shaft seat at four positions with a micrometer and a bore with a bore gauge; write it all down; compare to the drawing.</td></tr>\n      <tr><td>3</td><td>02 Bearing Failure</td><td>Open the failed-parts shelf; read three bearings and name the mechanism. Grease a bearing by formula with the relief plug out.</td></tr>\n      <tr><td>4</td><td>05 Lubrication Systems</td><td>Walk the lube room; match every product to its application list; take an oil sample the right way.</td></tr>\n      <tr><td>5</td><td>03 Couplings and Alignment</td><td>Soft foot check and a full alignment on a spare pump set or a training rig, readings recorded.</td></tr>\n      <tr><td>6</td><td>08 Power Transmission</td><td>Tension a belt drive by deflection gauge; gauge a sheave; measure a chain for elongation.</td></tr>\n      <tr><td>7</td><td>01 Pump Systems</td><td>Walk a pump's system chain from supply to discharge; find the gauges; explain what each reading means.</td></tr>\n      <tr><td>8</td><td>06 Pneumatics</td><td>Trace a pneumatic circuit from compressor to cylinder on a machine; find every FRL and drain; do a leak listen with the screwdriver.</td></tr>\n      <tr><td>9</td><td>10 Motors: Mechanical Side</td><td>Read three nameplates; infrared a running motor at both ends; do the instant-off test; write a handoff package for a real fault.</td></tr>\n      <tr><td>10</td><td>09 Gearboxes</td><td>Inspection cover off a locked-out gearbox; photograph the teeth; measure backlash.</td></tr>\n      <tr><td>11</td><td>15 Conveyors (or 07 Hydraulics, 17 Fans, 18 Compressors, depending on the plant)</td><td>Walk a conveyor running from outside the guards; chalk the belt edge; identify the take-up type and where it sits.</td></tr>\n      <tr><td>12</td><td>16 Root Cause</td><td>Take one repeat failure from the plant's history and write a root cause report using the form, with the supervisor. Present it.</td></tr>\n    </table>\n    <div class=\"info-block\">\n      <div class=\"info-block-body\">After twelve weeks the technician has walked twelve machines with a purpose, written one root cause report, and worked every self-check in the modules that matter most. The remaining modules (04, 07, 11, 12, 13, 17 through 20) are read as the work brings them up, and the hub routes to them from the symptom.</div>\n    </div>",
     "using": "<div class=\"bw-section-label\">Using the tools as a manager</div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-checklist\"></i> PM Task Library</div>\n      <ul class=\"info-block-tips\">\n        <li>Open it by component. Every task says which fault it prevents and links to the diagnosis. Tick the ones your PM already does. What is left unticked is the gap between your PM program and the failures the series knows about.</li>\n        <li>Set the interval per task for your plant. Export to CSV and merge into the CMMS. The interval column is a suggestion from the wording; your equipment history governs.</li>\n        <li>When a technician asks why a task is on the sheet, the answer is the link. Put the link in the CMMS task description.</li>\n      </ul>\n    </div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-report-analytics\"></i> Root Cause report</div>\n      <ul class=\"info-block-tips\">\n        <li>Make it the standard for any repeat failure, any failure over a cost threshold, and any injury or near miss. The form fits on a phone and prints on one page.</li>\n        <li>Review each report for a chain that ends at a person. Send those back. The Traps tab explains why.</li>\n        <li>Every corrective action gets an owner and a date, and the report stays open until the verification date passes and the failure has not returned.</li>\n      </ul>\n    </div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-school\"></i> Self-Check</div>\n      <ul class=\"info-block-tips\">\n        <li>Assign a module. Ask for the self-check to be worked through with the reasons read. Then walk the machine with the technician and ask them the questions in their own words. The score on the screen is not the measure; the conversation at the machine is.</li>\n        <li>Scores are not stored anywhere. That is deliberate: it is a learning tool, not a surveillance tool, and technicians use it more when it is not a test.</li>\n      </ul>\n    </div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-shield-check\"></i> Safeguarding and PSR</div>\n      <ul class=\"info-block-tips\">\n        <li>Before a new machine or a modification, the Safeguarding module's PSR tab tells you whether Regulation 851 section 7 applies and what the engineer will need. Doing the millwright homework before the engineer arrives is the difference between an afternoon and a week.</li>\n        <li>The Hazards and Guards tabs are the reference for building and reviewing guards to CSA Z432.</li>\n      </ul>\n    </div>",
     "measure": "<div class=\"bw-section-label\">Measuring whether it is working</div>\n    <div class=\"info-block\">\n      <table class=\"ref-table\">\n        <tr><th>Measure</th><th>How</th><th>What good looks like after a year</th></tr>\n        <tr><td>Repeat failure rate</td><td>Failures on the same machine and component within 12 months, from the CMMS</td><td>Falling. This is the one that matters.</td></tr>\n        <tr><td>Root cause reports completed</td><td>Count, and the share that reach a system cause with an owner and a date</td><td>Every repeat and every costly failure has one; most reach a system cause.</td></tr>\n        <tr><td>PM tasks with quantities and settings</td><td>Audit the PM sheets: does \"grease\" have a quantity, does \"align\" have a tolerance, does \"tension\" have a number</td><td>Yes on every sheet.</td></tr>\n        <tr><td>Commissioning baselines</td><td>Machines installed or rebuilt this year with vibration, temperature, alignment, and amps recorded on day one</td><td>All of them.</td></tr>\n        <tr><td>Failed parts read</td><td>Share of failed-part work orders that name a mechanism</td><td>Most of them.</td></tr>\n        <tr><td>Electrical handoffs</td><td>Motor faults that arrive at the electrician with amps, temperatures, and the solo run result written down</td><td>All of them, and the electrician says so.</td></tr>\n        <tr><td>Guards found off</td><td>Weekly walk count</td><td>Zero, and when one is found, the design reason is fixed.</td></tr>\n        <tr><td>Self-checks worked</td><td>Ask. It is not logged.</td><td>Every technician has done the modules for the machines they own.</td></tr>\n      </table>\n      <div class=\"info-block-body\">None of these needs new software. They come out of the CMMS and a weekly walk. A department that tracks the first one and the third one will see the rest follow.</div>\n    </div>\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip for managers: the shelf and the whiteboard</strong>Two things cost nothing and change a department. A shelf where every failed part sits for a month with the work order number on its box. A whiteboard with the machines that have failed twice this year. The shelf is evidence; the whiteboard is the priority list. BuiltWright is what the technician reads standing in front of either one.</div></div>"
-  }
+  },
+  "css": [
+    ".bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }",
+    ".bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }",
+    ".family-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; color: #BA7517; text-transform: uppercase; margin: 1rem 0 0.5rem 0; }",
+    ".card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 0.5rem; }",
+    ".type-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; }",
+    ".type-card:hover, .type-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".type-card-icon { font-size: 22px; color: #BA7517; margin-bottom: 5px; }",
+    ".type-card-name { font-size: 13px; font-weight: 600; color: #f0ede4; margin-bottom: 2px; }",
+    ".type-card-sub { font-size: 11px; color: #888780; }",
+    ".comp-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }",
+    ".comp-detail-icon { font-size: 22px; color: #BA7517; }",
+    ".comp-detail-name { font-size: 16px; font-weight: 600; color: #f0ede4; }",
+    ".comp-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; }",
+    ".callout-box.blue { border-color: #185FA5; background: #0c1f33; }",
+    ".callout-box.blue .callout-box-icon, .callout-box.blue .callout-box-title, .callout-box.blue strong { color: #85B7EB; }",
+    ".callout-tips { list-style: none; margin-top: 0.6rem; }",
+    ".callout-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }",
+    ".callout-tips li::before { content: '→'; position: absolute; left: 0; color: #EF9F27; }",
+    ".adv-wrap { border-radius: 8px; overflow: hidden; border: 0.5px solid #3a3a36; margin-bottom: 1.25rem; }",
+    ".adv-toggle { width: 100%; background: #242420; border: none; padding: 0.75rem 1.1rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; gap: 10px; }",
+    ".adv-toggle-left { display: flex; align-items: center; gap: 8px; }",
+    ".adv-toggle-icon { font-size: 15px; color: #BA7517; }",
+    ".adv-toggle-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517; font-weight: 600; text-align: left; }",
+    ".adv-chevron { font-size: 13px; color: #BA7517; transition: transform 0.2s; }",
+    ".adv-wrap.open .adv-chevron { transform: rotate(180deg); }",
+    ".adv-body { display: none; background: #1e1e1c; padding: 1rem 1.1rem; border-top: 0.5px solid #3a3a36; }",
+    ".adv-wrap.open .adv-body { display: block; }",
+    ".adv-body p { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-bottom: 0.75rem; }",
+    ".adv-body strong { color: #e8e6df; font-weight: 600; }",
+    ".chain-wrap { background: #242420; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; overflow-x: auto; }",
+    ".chain { display: flex; align-items: center; flex-wrap: nowrap; gap: 0; }",
+    ".chain-node { flex-shrink: 0; }",
+    ".chain-box { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 6px; padding: 7px 9px; text-align: center; cursor: pointer; transition: all 0.15s; min-width: 70px; }",
+    ".chain-box:hover, .chain-box.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".chain-icon { font-size: 18px; color: #BA7517; display: block; margin-bottom: 2px; }",
+    ".chain-label { font-size: 11px; font-weight: 600; color: #e8e6df; }",
+    ".chain-sub { font-size: 9px; color: #888780; }",
+    ".chain-arrow { font-size: 14px; color: #5F5E5A; padding: 0 3px; flex-shrink: 0; }",
+    ".sym-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.25rem; }",
+    ".sym-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; display: flex; flex-direction: column; align-items: center; gap: 8px; }",
+    ".sym-card:hover, .sym-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".sym-card-label { font-size: 12px; font-weight: 600; color: #f0ede4; text-align: center; }",
+    ".sym-card-sub { font-size: 10px; color: #888780; text-align: center; }",
+    ".sym-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }",
+    ".sym-detail-body { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-top: 0.75rem; }",
+    ".sym-detail-tips { list-style: none; margin-top: 0.6rem; }",
+    ".sym-detail-tips li { font-size: 12px; color: #888780; padding: 2px 0 2px 16px; position: relative; line-height: 1.5; }",
+    ".sym-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; font-size: 11px; }",
+    ".ref-table { width: 100%; border-collapse: collapse; margin: 0.5rem 0 1rem 0; font-size: 12px; }",
+    ".ref-table th { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #BA7517; text-align: left; padding: 6px 8px; border-bottom: 1px solid #3a3a36; }",
+    ".ref-table td { padding: 6px 8px; border-bottom: 0.5px solid #2e2e2a; color: #c8c6bf; vertical-align: top; line-height: 1.4; }",
+    ".ref-table td:first-child { color: #f0ede4; font-weight: 600; white-space: nowrap; }",
+    ".progress-bar { height: 3px; background: #242420; border-radius: 2px; margin-bottom: 1rem; overflow: hidden; }",
+    ".tree-q-hint { font-size: 12px; color: #888780; margin-bottom: 0.75rem; font-style: italic; line-height: 1.45; }",
+    ".tree-btn { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; padding: 7px 16px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; text-align: left; }",
+    "@media print { body { background:#fff; color:#000; padding:0; } .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; } .bw-panel { display:none; } .bw-panel.active { display:block; } .bw-wrap { max-width:100%; } .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; } .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; } .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; } .adv-body { display:block !important; } .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; } .progress-bar { display:none; } a { color:#000; text-decoration:none; } .bw-logo a::after { content:\" builtwrightapp.com\"; color:#666; } .bw-header { border-bottom:1px solid #000; } .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; } }"
+  ],
+  "cssShared": 86
 }

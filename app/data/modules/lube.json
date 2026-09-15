@@ -6,37 +6,78 @@
   "tabs": [
     {
       "id": "types",
-      "label": "Lubricant Types"
+      "label": "Lubricant Types",
+      "active": true,
+      "style": ""
     },
     {
       "id": "systems",
-      "label": "Centralized"
+      "label": "Centralized Systems",
+      "active": false,
+      "style": ""
     },
     {
       "id": "contam",
-      "label": "Contamination"
+      "label": "Contamination",
+      "active": false,
+      "style": ""
     },
     {
       "id": "analysis",
-      "label": "Oil Analysis"
+      "label": "Oil Analysis",
+      "active": false,
+      "style": ""
     },
     {
       "id": "application",
-      "label": "Application"
+      "label": "Application",
+      "active": false,
+      "style": ""
     },
     {
       "id": "troubleshoot",
-      "label": "Troubleshoot"
+      "label": "Troubleshoot",
+      "active": false,
+      "style": ""
     },
     {
       "id": "selfcheck",
-      "label": "Self-Check"
+      "label": "Self-Check",
+      "active": false,
+      "style": ""
     },
     {
       "id": "safety",
-      "label": "Safety"
+      "label": "Safety",
+      "active": false,
+      "style": "border-color:#A32D2D; color:#F09595;"
     }
   ],
+  "render": {
+    "title": "Lubrication Systems",
+    "badge": "Module 05",
+    "tree": {
+      "progress": "lube-progress",
+      "container": "lube-tree"
+    },
+    "treeTab": "troubleshoot",
+    "groups": {
+      "selectLube": {
+        "scope": "#panel-types",
+        "cardClass": ".type-card",
+        "prefix": "lcard-",
+        "data": "lubeData",
+        "display": "lube-display"
+      },
+      "selectSystem": {
+        "scope": "#panel-systems",
+        "cardClass": ".type-card",
+        "prefix": "syscard-",
+        "data": "systemData",
+        "display": "system-display"
+      }
+    }
+  },
   "cards": {
     "lubeData": {
       "mineral": {
@@ -773,5 +814,70 @@
     "troubleshoot": "<div class=\"bw-section-label\">Lubrication system fault diagnosis</div>\n    <div class=\"progress-bar\"><div class=\"progress-fill\" id=\"lube-progress\" style=\"width:8%\"></div></div>\n    <div id=\"lube-tree\"></div>",
     "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
     "safety": "<div class=\"bw-section-label\">Lubrication safety: injection, fire, and the lube room</div>\n    <div class=\"callout-box red\"><div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">Lubricants are the safest looking materials in the plant, and they injure people every year.</div></div><div class=\"callout-box-body\">Grease guns inject. Hot oil burns. Oil mist and oil-soaked rags ignite. Spilled oil puts people on the floor. Centralized systems run at hundreds of bar. <strong>Treat lubrication as fluid handling, with the same rules as any other pressurised, flammable, slippery fluid.</strong></div></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-syringe\" style=\"color:#F09595;\"></i> Injection injury from grease guns and centralized systems</div><ul class=\"info-block-tips\"><li>A hand grease gun develops enough pressure to push grease through skin. Never test a coupler against a hand, never hold a hose end, and never clear a blocked fitting by pointing the gun at anything but the fitting.</li><li>Centralized grease systems (progressive, dual-line) run at 100 to 400 bar. A line that has been cut, a fitting that has cracked, or a blocked point that is being cleared can spray at injection pressure. Depressurise the line before opening it.</li><li>An injection wound looks like a puncture. It is a surgical emergency. Tell the triage staff it is a high pressure injection and what the material was.</li><li>Pneumatic and battery grease guns: coupler on the fitting before the trigger, hands behind the gun.</li></ul></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-flame\" style=\"color:#F09595;\"></i> Hot oil and fire</div><ul class=\"info-block-tips\"><li>Gearbox and hydraulic oil at 60 to 90°C burns on contact. Drain into a container that will not deform, and let it cool before handling.</li><li>Oil-soaked rags self-heat. Metal bin with a lid, emptied daily. A pile of oily rags in a corner is a fire waiting for a warm afternoon.</li><li>Oil mist lubrication systems and oil sprays near hot surfaces are ignition hazards. Mist collects on surfaces and in ducts.</li><li>Compressed air on an oil-soaked surface aerosolises it. Aerosolised oil is flammable and breathable.</li><li>Aerosol chain lubes and penetrating oils are flammable propellants. Not near hot work.</li></ul></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-hand-off\" style=\"color:#F09595;\"></i> Handling and skin</div><ul class=\"info-block-tips\"><li>Prolonged skin contact with mineral oils causes dermatitis and worse. Nitrile gloves for oil handling, and wash before eating. Used oil is dirtier than new oil in ways that matter to skin.</li><li>Some EP additives, some synthetics, and all used oils carry hazard warnings on the SDS. Read it for the products you handle every day, not just the exotic ones.</li><li>Oil on the floor is the plant's most common slip and fall. Clean it now, not at the end of the job. Absorbent on hand at every lube point.</li></ul></div>\n    <div class=\"info-block\"><div class=\"info-block-title\"><i class=\"ti ti-building-warehouse\"></i> Lube room and storage</div><ul class=\"info-block-tips\"><li>Drums stored on containment, indoors, labelled, with the lids on and the bungs tight. A drum open to the plant air is a drum full of dirt and water in a month.</li><li>Each product with its own dedicated pump, container, and grease gun, colour coded. Cross-contamination is a reliability problem and an incompatibility reaction is a chemical problem.</li><li>Reservoirs and tanks large enough to enter are confined spaces. Permit, atmosphere test, attendant.</li><li>Used oil is a regulated waste. Segregated, labelled, and collected by a licensed hauler. Never down a drain.</li><li>Spill kit sized for the largest container in the room, and everyone knows where it is.</li></ul></div>\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: the coupler goes on first</strong>A grease gun trigger pulled while the coupler is being lined up on a fitting sends a jet of grease at whatever is in front of it, at a pressure that goes through a glove. Coupler on, seated, hand clear, then the trigger. Every time, on every fitting, until it is a reflex.</div></div>"
-  }
+  },
+  "css": [
+    ".bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }",
+    ".bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }",
+    ".family-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; color: #BA7517; text-transform: uppercase; margin: 1rem 0 0.5rem 0; }",
+    ".card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 0.5rem; }",
+    ".type-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; }",
+    ".type-card:hover, .type-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".type-card-icon { font-size: 22px; color: #BA7517; margin-bottom: 5px; }",
+    ".type-card-name { font-size: 13px; font-weight: 600; color: #f0ede4; margin-bottom: 2px; }",
+    ".type-card-sub { font-size: 11px; color: #888780; }",
+    ".comp-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }",
+    ".comp-detail-icon { font-size: 22px; color: #BA7517; }",
+    ".comp-detail-name { font-size: 16px; font-weight: 600; color: #f0ede4; }",
+    ".comp-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; }",
+    ".callout-tips { list-style: none; margin-top: 0.6rem; }",
+    ".callout-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }",
+    ".callout-tips li::before { content: '→'; position: absolute; left: 0; color: #EF9F27; }",
+    ".inst-step { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 0.9rem 1.1rem; margin-bottom: 8px; display: flex; gap: 12px; align-items: flex-start; }",
+    ".inst-num { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: #BA7517; background: #2a1f08; border-radius: 4px; padding: 2px 7px; flex-shrink: 0; font-weight: 600; margin-top: 1px; }",
+    ".inst-body { font-size: 13px; color: #c8c6bf; line-height: 1.55; }",
+    ".inst-body strong { font-weight: 600; color: #e8e6df; }",
+    ".inst-sub { font-size: 12px; color: #888780; margin-top: 3px; line-height: 1.5; }",
+    ".adv-wrap { border-radius: 8px; overflow: hidden; border: 0.5px solid #3a3a36; margin-bottom: 1.25rem; }",
+    ".adv-toggle { width: 100%; background: #242420; border: none; padding: 0.75rem 1.1rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; gap: 10px; }",
+    ".adv-toggle-left { display: flex; align-items: center; gap: 8px; }",
+    ".adv-toggle-icon { font-size: 15px; color: #BA7517; }",
+    ".adv-toggle-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517; font-weight: 600; }",
+    ".adv-chevron { font-size: 13px; color: #BA7517; transition: transform 0.2s; }",
+    ".adv-wrap.open .adv-chevron { transform: rotate(180deg); }",
+    ".adv-body { display: none; background: #1e1e1c; padding: 1rem 1.1rem; border-top: 0.5px solid #3a3a36; }",
+    ".adv-wrap.open .adv-body { display: block; }",
+    ".adv-body p { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-bottom: 0.75rem; }",
+    ".adv-body strong { color: #e8e6df; font-weight: 600; }",
+    ".adv-step { display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start; }",
+    ".adv-num { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: #BA7517; background: #2a1f08; border-radius: 3px; padding: 2px 6px; flex-shrink: 0; margin-top: 1px; }",
+    ".adv-step-body { font-size: 13px; color: #c8c6bf; line-height: 1.55; }",
+    ".contam-card { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 10px; cursor: pointer; transition: all 0.15s; }",
+    ".contam-card:hover { border-color: #BA7517; }",
+    ".contam-card-header { display: flex; align-items: center; justify-content: space-between; }",
+    ".contam-card-title { font-size: 14px; font-weight: 600; color: #f0ede4; display: flex; align-items: center; gap: 8px; }",
+    ".contam-card-chevron { font-size: 13px; color: #5F5E5A; transition: transform 0.2s; }",
+    ".contam-card.open .contam-card-chevron { transform: rotate(180deg); }",
+    ".contam-card-body { display: none; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 0.5px solid #3a3a36; }",
+    ".contam-card.open .contam-card-body { display: block; }",
+    ".contam-card-body p { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-bottom: 0.5rem; }",
+    ".contam-card-body ul { list-style: none; }",
+    ".contam-card-body ul li { font-size: 12px; color: #888780; padding: 2px 0 2px 16px; position: relative; line-height: 1.5; }",
+    ".contam-card-body ul li::before { content: '→'; position: absolute; left: 0; color: #BA7517; font-size: 11px; }",
+    ".analysis-row { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 0.9rem 1.1rem; margin-bottom: 8px; }",
+    ".analysis-row-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem; }",
+    ".analysis-row-param { font-size: 14px; font-weight: 600; color: #f0ede4; }",
+    ".analysis-row-tag { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; padding: 2px 7px; border-radius: 3px; text-transform: uppercase; }",
+    ".tag-condition { background: #0e1f05; color: #97C459; border: 0.5px solid #3B6D11; }",
+    ".tag-contam { background: #0c1f33; color: #85B7EB; border: 0.5px solid #185FA5; }",
+    ".tag-wear { background: #200d0d; color: #F09595; border: 0.5px solid #A32D2D; }",
+    ".tag-fluid { background: #2a1f08; color: #EF9F27; border: 0.5px solid #BA7517; }",
+    ".analysis-row-body { font-size: 12px; color: #888780; line-height: 1.55; }",
+    ".progress-bar { height: 3px; background: #242420; border-radius: 2px; margin-bottom: 1rem; overflow: hidden; }",
+    ".tree-q-hint { font-size: 12px; color: #888780; margin-bottom: 0.75rem; font-style: italic; }",
+    ".tree-btn { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; padding: 7px 16px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; }",
+    ".tree-result.info { background: #0c1f33; border: 0.5px solid #185FA5; }",
+    ".tree-result.info .tree-result-label { color: #85B7EB; }",
+    "@media print { body { background:#fff; color:#000; padding:0; } .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; } .bw-panel { display:none; } .bw-panel.active { display:block; } .bw-wrap { max-width:100%; } .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; } .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; } .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; } .adv-body { display:block !important; } .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; } .progress-bar { display:none; } a { color:#000; text-decoration:none; } .bw-logo a::after { content:\" builtwrightapp.com\"; color:#666; } .bw-header { border-bottom:1px solid #000; } .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; } }"
+  ],
+  "cssShared": 86
 }

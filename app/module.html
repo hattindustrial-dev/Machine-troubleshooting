@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuiltWright</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a1a18">
+<link rel="apple-touch-icon" href="builtwright_icon_192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="bw.css">
+<style>
+  .bw-loading { padding: 2rem; color: #888780; font-family: 'Share Tech Mono', monospace; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .bw-error { padding: 2rem; color: #F09595; font-family: 'Rajdhani', sans-serif; }
+</style>
+</head>
+<body>
+<div class="bw-wrap" id="bw-root"><div class="bw-loading">loading module...</div></div>
+<script src="bw-renderer.js"></script>
+<script>
+  // module.html?m=fans renders the fans module from app/data/modules/fans.json
+  var key = new URLSearchParams(location.search).get('m');
+  var root = document.getElementById('bw-root');
+  if (!key) {
+    root.innerHTML = '<div class="bw-error">No module requested. Try <a href="?m=fans">?m=fans</a>.</div>';
+  } else {
+    BW.load(key, root).catch(function (err) {
+      root.innerHTML = '<div class="bw-error">' + err.message + '</div>';
+    });
+  }
+</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
+</body>
+</html>

@@ -6,45 +6,72 @@
   "tabs": [
     {
       "id": "torque",
-      "label": "Torque"
+      "label": "Torque",
+      "active": true,
+      "style": ""
     },
     {
       "id": "fits",
-      "label": "Fits and Clearances"
+      "label": "Fits and Clearances",
+      "active": false,
+      "style": ""
     },
     {
       "id": "align",
-      "label": "Alignment Tolerances"
+      "label": "Alignment Tolerances",
+      "active": false,
+      "style": ""
     },
     {
       "id": "shims",
-      "label": "Shims and Gauges"
+      "label": "Shims and Gauges",
+      "active": false,
+      "style": ""
     },
     {
       "id": "lube",
-      "label": "Lubrication"
+      "label": "Lubrication",
+      "active": false,
+      "style": ""
     },
     {
       "id": "pipe",
-      "label": "Pipe and Flange"
+      "label": "Pipe and Flange",
+      "active": false,
+      "style": ""
     },
     {
       "id": "electrical",
-      "label": "Motor Quick Ref"
+      "label": "Motor Quick Ref",
+      "active": false,
+      "style": ""
     },
     {
       "id": "calc",
-      "label": "Calculators"
+      "label": "Calculators",
+      "active": false,
+      "style": ""
     },
     {
       "id": "units",
-      "label": "Conversions"
+      "label": "Conversions",
+      "active": false,
+      "style": ""
     },
     {
       "id": "standards",
-      "label": "Standards Cited"
+      "label": "Standards Cited",
+      "active": false,
+      "style": ""
     }
   ],
+  "render": {
+    "title": "Reference",
+    "badge": "Module 12",
+    "tree": null,
+    "treeTab": null,
+    "groups": {}
+  },
   "cards": {
     "UC": {
       "Pressure": {
@@ -119,5 +146,76 @@
     "calc": "<div class=\"bw-section-label\">Calculators: the ones you use at the machine</div>\n    <div class=\"calc\"><div class=\"calc-title\"><i class=\"ti ti-arrow-bar-right\"></i> Cylinder force and speed</div>\n      <div class=\"calc-row\"><div><label>Bore (mm)</label><input type=\"number\" id=\"cf_d\" value=\"100\" oninput=\"calcCyl()\"></div><div><label>Rod (mm)</label><input type=\"number\" id=\"cf_r\" value=\"56\" oninput=\"calcCyl()\"></div></div>\n      <div class=\"calc-row\"><div><label>Pressure (bar)</label><input type=\"number\" id=\"cf_p\" value=\"200\" oninput=\"calcCyl()\"></div><div><label>Flow (L/min, optional)</label><input type=\"number\" id=\"cf_q\" value=\"40\" oninput=\"calcCyl()\"></div></div>\n      <div class=\"calc-out\" id=\"cf_out\"></div></div>\n    <div class=\"calc\"><div class=\"calc-title\"><i class=\"ti ti-engine\"></i> Torque, power, and speed</div>\n      <div class=\"calc-row\"><div><label>Power (kW)</label><input type=\"number\" id=\"tp_kw\" value=\"15\" oninput=\"calcTP()\"></div><div><label>Speed (rpm)</label><input type=\"number\" id=\"tp_n\" value=\"1750\" oninput=\"calcTP()\"></div></div>\n      <div class=\"calc-row\"><div><label>Ratio (optional, e.g. 20 for 20:1)</label><input type=\"number\" id=\"tp_i\" value=\"20\" oninput=\"calcTP()\"></div><div><label>Efficiency (%)</label><input type=\"number\" id=\"tp_e\" value=\"96\" oninput=\"calcTP()\"></div></div>\n      <div class=\"calc-out\" id=\"tp_out\"></div></div>\n    <div class=\"calc\"><div class=\"calc-title\"><i class=\"ti ti-circle-dashed\"></i> Belt drive: ratio, belt speed, deflection</div>\n      <div class=\"calc-row\"><div><label>Driver sheave PD (mm)</label><input type=\"number\" id=\"bd_d1\" value=\"150\" oninput=\"calcBelt()\"></div><div><label>Driven sheave PD (mm)</label><input type=\"number\" id=\"bd_d2\" value=\"400\" oninput=\"calcBelt()\"></div></div>\n      <div class=\"calc-row\"><div><label>Driver rpm</label><input type=\"number\" id=\"bd_n\" value=\"1750\" oninput=\"calcBelt()\"></div><div><label>Centre distance (mm)</label><input type=\"number\" id=\"bd_c\" value=\"900\" oninput=\"calcBelt()\"></div></div>\n      <div class=\"calc-out\" id=\"bd_out\"></div></div>\n    <div class=\"calc\"><div class=\"calc-title\"><i class=\"ti ti-link\"></i> Chain elongation</div>\n      <div class=\"calc-row\"><div><label>Chain number (ANSI)</label><select id=\"ce_no\" onchange=\"calcChain()\"><option value=\"40\">40 (1/2 in)</option><option value=\"50\">50 (5/8 in)</option><option value=\"60\" selected>60 (3/4 in)</option><option value=\"80\">80 (1 in)</option><option value=\"100\">100 (1-1/4 in)</option><option value=\"120\">120 (1-1/2 in)</option><option value=\"160\">160 (2 in)</option></select></div><div><label>Pitches measured</label><input type=\"number\" id=\"ce_n\" value=\"12\" oninput=\"calcChain()\"></div></div>\n      <div class=\"calc-row\"><div><label>Measured length (mm)</label><input type=\"number\" id=\"ce_l\" value=\"235\" oninput=\"calcChain()\"></div><div><label>Large sprocket (68+ teeth)?</label><select id=\"ce_big\" onchange=\"calcChain()\"><option value=\"0\">No: 3% limit</option><option value=\"1\">Yes: 1.5% limit</option></select></div></div>\n      <div class=\"calc-out\" id=\"ce_out\"></div></div>\n    <div class=\"calc\"><div class=\"calc-title\"><i class=\"ti ti-ruler-measure\"></i> Alignment: rim and face to foot corrections</div>\n      <div class=\"calc-row\"><div><label>Rim TIR, sag corrected (mm)</label><input type=\"number\" id=\"al_rim\" value=\"0.20\" step=\"0.01\" oninput=\"calcAlign()\"></div><div><label>Face gap difference (mm)</label><input type=\"number\" id=\"al_face\" value=\"0.10\" step=\"0.01\" oninput=\"calcAlign()\"></div></div>\n      <div class=\"calc-row\"><div><label>Face diameter (mm)</label><input type=\"number\" id=\"al_dia\" value=\"200\" oninput=\"calcAlign()\"></div><div><label>Inboard foot to coupling (mm)</label><input type=\"number\" id=\"al_in\" value=\"300\" oninput=\"calcAlign()\"></div></div>\n      <div class=\"calc-row\"><div><label>Outboard foot to coupling (mm)</label><input type=\"number\" id=\"al_outf\" value=\"800\" oninput=\"calcAlign()\"></div><div><label>Speed (rpm) for tolerance</label><input type=\"number\" id=\"al_rpm\" value=\"1750\" oninput=\"calcAlign()\"></div></div>\n      <div class=\"calc-out\" id=\"al_out\"></div></div>\n    <div class=\"calc\"><div class=\"calc-title\"><i class=\"ti ti-droplet\"></i> Grease quantity</div>\n      <div class=\"calc-row\"><div><label>Bearing OD (mm)</label><input type=\"number\" id=\"gq_d\" value=\"100\" oninput=\"calcGrease()\"></div><div><label>Bearing width (mm)</label><input type=\"number\" id=\"gq_b\" value=\"25\" oninput=\"calcGrease()\"></div></div>\n      <div class=\"calc-row\"><div><label>Your gun, grams per stroke</label><input type=\"number\" id=\"gq_s\" value=\"1.2\" step=\"0.1\" oninput=\"calcGrease()\"></div><div></div></div>\n      <div class=\"calc-out\" id=\"gq_out\"></div></div>\n    <div class=\"calc\"><div class=\"calc-title\"><i class=\"ti ti-wave-sine\"></i> Bearing defect frequencies (rule of thumb)</div>\n      <div class=\"calc-row\"><div><label>Rolling elements (count)</label><input type=\"number\" id=\"bf_n\" value=\"8\" oninput=\"calcBF()\"></div><div><label>Shaft rpm</label><input type=\"number\" id=\"bf_rpm\" value=\"1780\" oninput=\"calcBF()\"></div></div>\n      <div class=\"calc-out\" id=\"bf_out\"></div></div>",
     "units": "<div class=\"bw-section-label\">Unit converter and the factors behind it</div>\n    <div class=\"calc\"><div class=\"calc-title\"><i class=\"ti ti-arrows-exchange\"></i> Convert</div>\n      <div class=\"calc-row\"><div><label>Quantity</label><select id=\"uc_type\" onchange=\"ucSetup()\"></select></div><div><label>Value</label><input type=\"number\" id=\"uc_val\" value=\"1\" oninput=\"ucCalc()\"></div></div>\n      <div class=\"calc-row\"><div><label>From</label><select id=\"uc_from\" onchange=\"ucCalc()\"></select></div><div><label>To</label><select id=\"uc_to\" onchange=\"ucCalc()\"></select></div></div>\n      <div class=\"calc-out\" id=\"uc_out\"></div></div>\n    <table class=\"ref-table\">\n      <tr><th>Quantity</th><th>Factors</th></tr>\n      <tr><td>Pressure</td><td>1 bar = 14.50 psi = 100 kPa = 0.1 MPa; 1 psi = 6.895 kPa; 1 atm = 1.013 bar; 1 in Hg = 3.386 kPa</td></tr>\n      <tr><td>Torque</td><td>1 Nm = 0.7376 ft·lb = 8.851 in·lb; 1 ft·lb = 1.356 Nm</td></tr>\n      <tr><td>Power</td><td>1 kW = 1.341 HP; 1 HP = 0.7457 kW = 746 W</td></tr>\n      <tr><td>Force</td><td>1 kN = 224.8 lbf = 101.97 kgf; 1 lbf = 4.448 N</td></tr>\n      <tr><td>Flow</td><td>1 L/min = 0.2642 US gpm; 1 US gpm = 3.785 L/min; 1 m³/h = 4.403 US gpm = 16.67 L/min</td></tr>\n      <tr><td>Length</td><td>1 in = 25.4 mm exactly; 1 thou (mil) = 0.0254 mm = 25.4 µm; 1 mm = 0.03937 in</td></tr>\n      <tr><td>Speed</td><td>1 m/s = 196.9 ft/min; 1 m/min = 3.281 ft/min; 1 mm/s = 0.03937 in/s</td></tr>\n      <tr><td>Temperature</td><td>°F = °C × 1.8 + 32; a difference of 10°C = 18°F</td></tr>\n      <tr><td>Mass</td><td>1 kg = 2.205 lb; 1 tonne = 1000 kg = 2205 lb; 1 short ton = 907 kg</td></tr>\n      <tr><td>Frequency</td><td>1 Hz = 60 cpm; 1800 rpm = 30 Hz; orders = frequency ÷ running speed</td></tr>\n      <tr><td>Viscosity</td><td>cSt = cP ÷ specific gravity (about equal for oils); 1 mm²/s = 1 cSt</td></tr>\n    </table>\n    <table class=\"ref-table\">\n      <tr><th>Formulas used across the series</th><th></th></tr>\n      <tr><td>Torque from power</td><td>T (Nm) = 9550 × kW ÷ rpm &nbsp;&nbsp; T (ft·lb) = 5252 × HP ÷ rpm</td></tr>\n      <tr><td>Cylinder force</td><td>F = P × A; A = π D² ÷ 4; 1 bar on 1 cm² = 10 N</td></tr>\n      <tr><td>Cylinder speed</td><td>v = Q ÷ A</td></tr>\n      <tr><td>Pump affinity laws</td><td>Flow ∝ speed; head ∝ speed²; power ∝ speed³ (also with impeller diameter)</td></tr>\n      <tr><td>Fan laws</td><td>Same as the pump affinity laws</td></tr>\n      <tr><td>Belt speed</td><td>v = π × PD × rpm</td></tr>\n      <tr><td>Speed ratio</td><td>N1 × D1 = N2 × D2</td></tr>\n      <tr><td>Belt deflection target</td><td>span ÷ 64</td></tr>\n      <tr><td>Chain elongation</td><td>(measured minus nominal) ÷ nominal × 100</td></tr>\n      <tr><td>Grease quantity</td><td>G = 0.005 × D × B</td></tr>\n      <tr><td>Motor percent load</td><td>amps ÷ FLA × 100 (valid above about 50% load)</td></tr>\n      <tr><td>Slip</td><td>(synchronous rpm minus actual rpm) ÷ synchronous rpm</td></tr>\n      <tr><td>Gear mesh frequency</td><td>teeth × rpm of that gear</td></tr>\n      <tr><td>BPFO, BPFI rule of thumb</td><td>0.4 × n × rpm, 0.6 × n × rpm (n = rolling elements)</td></tr>\n    </table>",
     "standards": "<div class=\"bw-section-label\">Standards and regulations cited across the series</div>\n    <div class=\"ref-note\">Cited so a reader can find the source. Standards are revised; the current edition governs. Where a module gives a number that comes from a standard, it is a general guidance value and the standard or the manufacturer specification takes precedence.</div>\n    <table class=\"ref-table\">\n      <tr><th>Reference</th><th>Subject</th><th>Where it appears</th></tr>\n      <tr><td>Ontario OHSA</td><td>Occupational Health and Safety Act; competent person definition</td><td>Pumps (rotation check), every Safety tab</td></tr>\n      <tr><td>O. Reg. 851 s.24, 25</td><td>Guarding of in-running nips and exposed moving parts</td><td>Power transmission, pumps, gearboxes</td></tr>\n      <tr><td>O. Reg. 851 s.42</td><td>Electrical work and live electrical equipment</td><td>Motors</td></tr>\n      <tr><td>O. Reg. 851 s.75, 76</td><td>Control of hazardous energy, lockout</td><td>Every Safety tab</td></tr>\n      <tr><td>CSA Z460</td><td>Control of hazardous energy: lockout and other methods</td><td>Safety tabs</td></tr>\n      <tr><td>CSA Z432</td><td>Safeguarding of machinery</td><td>Power transmission (guard design)</td></tr>\n      <tr><td>CSA Z462</td><td>Workplace electrical safety (arc flash, shock boundaries)</td><td>Motors</td></tr>\n      <tr><td>CSA B51 / TSSA</td><td>Boiler, pressure vessel, and pressure piping; receivers and accumulators</td><td>Pneumatics, hydraulics</td></tr>\n      <tr><td>Ontario Electrical Safety Code</td><td>Electrical installation; scope of electrical work</td><td>Motors (handoff)</td></tr>\n      <tr><td>ISO 1219</td><td>Fluid power circuit symbols</td><td>Pneumatics, hydraulics</td></tr>\n      <tr><td>ISO 4406</td><td>Hydraulic fluid cleanliness codes</td><td>Hydraulics, lubrication</td></tr>\n      <tr><td>ISO 8573</td><td>Compressed air quality classes</td><td>Pneumatics</td></tr>\n      <tr><td>ISO 20816 (formerly 10816)</td><td>Machine vibration evaluation zones</td><td>Vibration</td></tr>\n      <tr><td>ISO 5753</td><td>Rolling bearing internal clearance</td><td>Reference (fits)</td></tr>\n      <tr><td>ISO 6432, ISO 15552</td><td>Pneumatic cylinder dimensions</td><td>Pneumatics</td></tr>\n      <tr><td>ISO 15407, VDMA 24345</td><td>Pneumatic valve mounting interfaces</td><td>Pneumatics</td></tr>\n      <tr><td>ANSI B29.1</td><td>Roller chain dimensions and numbering</td><td>Power transmission</td></tr>\n      <tr><td>ASME B16.5</td><td>Pipe flanges and flanged fittings; class 150 bolting</td><td>Reference (pipe), seals</td></tr>\n      <tr><td>ASME B16.20, B16.21</td><td>Metallic and non-metallic gaskets for flanges</td><td>Seals and gaskets</td></tr>\n      <tr><td>API 682</td><td>Mechanical seals and seal support plans (Plan 53, 54)</td><td>Seals and gaskets, pumps</td></tr>\n      <tr><td>AGMA 9005</td><td>Industrial gear lubrication</td><td>Gearboxes, lubrication</td></tr>\n      <tr><td>NEMA MG 1</td><td>Motor frames, dimensions, ratings, insulation classes</td><td>Motors, reference</td></tr>\n      <tr><td>NLGI</td><td>Grease consistency grades</td><td>Lubrication, reference</td></tr>\n      <tr><td>SAE J429, ISO 898-1</td><td>Bolt strength grades (SAE 5 and 8; metric 8.8, 10.9, 12.9)</td><td>Reference (torque)</td></tr>\n    </table>"
-  }
+  },
+  "css": [
+    ".bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }",
+    ".bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }",
+    ".family-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; color: #BA7517; text-transform: uppercase; margin: 1rem 0 0.5rem 0; }",
+    ".card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 0.5rem; }",
+    ".type-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; }",
+    ".type-card:hover, .type-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".type-card-icon { font-size: 22px; color: #BA7517; margin-bottom: 5px; }",
+    ".type-card-name { font-size: 13px; font-weight: 600; color: #f0ede4; margin-bottom: 2px; }",
+    ".type-card-sub { font-size: 11px; color: #888780; }",
+    ".comp-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }",
+    ".comp-detail-icon { font-size: 22px; color: #BA7517; }",
+    ".comp-detail-name { font-size: 16px; font-weight: 600; color: #f0ede4; }",
+    ".comp-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; }",
+    ".callout-box.blue { border-color: #185FA5; background: #0c1f33; }",
+    ".callout-box.blue .callout-box-icon, .callout-box.blue .callout-box-title, .callout-box.blue strong { color: #85B7EB; }",
+    ".callout-tips { list-style: none; margin-top: 0.6rem; }",
+    ".callout-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }",
+    ".callout-tips li::before { content: '→'; position: absolute; left: 0; color: #EF9F27; }",
+    ".adv-wrap { border-radius: 8px; overflow: hidden; border: 0.5px solid #3a3a36; margin-bottom: 1.25rem; }",
+    ".adv-toggle { width: 100%; background: #242420; border: none; padding: 0.75rem 1.1rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; gap: 10px; }",
+    ".adv-toggle-left { display: flex; align-items: center; gap: 8px; }",
+    ".adv-toggle-icon { font-size: 15px; color: #BA7517; }",
+    ".adv-toggle-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517; font-weight: 600; text-align: left; }",
+    ".adv-chevron { font-size: 13px; color: #BA7517; transition: transform 0.2s; }",
+    ".adv-wrap.open .adv-chevron { transform: rotate(180deg); }",
+    ".adv-body { display: none; background: #1e1e1c; padding: 1rem 1.1rem; border-top: 0.5px solid #3a3a36; }",
+    ".adv-wrap.open .adv-body { display: block; }",
+    ".adv-body p { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-bottom: 0.75rem; }",
+    ".adv-body strong { color: #e8e6df; font-weight: 600; }",
+    ".chain-wrap { background: #242420; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; overflow-x: auto; }",
+    ".chain { display: flex; align-items: center; flex-wrap: nowrap; gap: 0; }",
+    ".chain-node { flex-shrink: 0; }",
+    ".chain-box { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 6px; padding: 7px 9px; text-align: center; cursor: pointer; transition: all 0.15s; min-width: 70px; }",
+    ".chain-box:hover, .chain-box.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".chain-icon { font-size: 18px; color: #BA7517; display: block; margin-bottom: 2px; }",
+    ".chain-label { font-size: 11px; font-weight: 600; color: #e8e6df; }",
+    ".chain-sub { font-size: 9px; color: #888780; }",
+    ".chain-arrow { font-size: 14px; color: #5F5E5A; padding: 0 3px; flex-shrink: 0; }",
+    ".sym-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.25rem; }",
+    ".sym-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; display: flex; flex-direction: column; align-items: center; gap: 8px; }",
+    ".sym-card:hover, .sym-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".sym-card-label { font-size: 12px; font-weight: 600; color: #f0ede4; text-align: center; }",
+    ".sym-card-sub { font-size: 10px; color: #888780; text-align: center; }",
+    ".sym-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }",
+    ".sym-detail-body { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-top: 0.75rem; }",
+    ".sym-detail-tips { list-style: none; margin-top: 0.6rem; }",
+    ".sym-detail-tips li { font-size: 12px; color: #888780; padding: 2px 0 2px 16px; position: relative; line-height: 1.5; }",
+    ".sym-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; font-size: 11px; }",
+    ".ref-table { width: 100%; border-collapse: collapse; margin: 0.5rem 0 1rem 0; font-size: 12px; }",
+    ".ref-table th { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #BA7517; text-align: left; padding: 6px 8px; border-bottom: 1px solid #3a3a36; }",
+    ".ref-table td { padding: 6px 8px; border-bottom: 0.5px solid #2e2e2a; color: #c8c6bf; vertical-align: top; line-height: 1.4; }",
+    ".ref-table td:first-child { color: #f0ede4; font-weight: 600; white-space: nowrap; }",
+    ".progress-bar { height: 3px; background: #242420; border-radius: 2px; margin-bottom: 1rem; overflow: hidden; }",
+    ".tree-q-hint { font-size: 12px; color: #888780; margin-bottom: 0.75rem; font-style: italic; line-height: 1.45; }",
+    ".tree-btn { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; padding: 7px 16px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; text-align: left; }",
+    ".ref-search { width: 100%; font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 1px; background: #242420; border: 0.5px solid #3a3a36; border-radius: 6px; padding: 9px 12px; color: #e8e6df; margin-bottom: 1rem; outline: none; }",
+    ".ref-search:focus { border-color: #BA7517; }",
+    ".ref-table tr.hide { display: none; }",
+    ".ref-note { font-size: 12px; color: #888780; line-height: 1.5; margin: 0.4rem 0 0.9rem 0; }",
+    ".calc { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1rem 1.1rem; margin-bottom: 10px; }",
+    ".calc-title { font-size: 15px; font-weight: 600; color: #f0ede4; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px; }",
+    ".calc-title i { color: #BA7517; }",
+    ".calc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }",
+    ".calc label { display: block; font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #888780; margin-bottom: 3px; }",
+    ".calc input, .calc select { width: 100%; font-family: 'Rajdhani', sans-serif; font-size: 14px; background: #1a1a18; border: 0.5px solid #3a3a36; border-radius: 5px; padding: 7px 9px; color: #f0ede4; outline: none; }",
+    ".calc input:focus, .calc select:focus { border-color: #BA7517; }",
+    ".calc-out { background: #111110; border: 0.5px solid #3a3a36; border-radius: 6px; padding: 0.6rem 0.9rem; font-family: 'Share Tech Mono', monospace; font-size: 12px; color: #EF9F27; line-height: 1.8; min-height: 2.4em; }",
+    "@media print { body { background:#fff; color:#000; padding:0; } .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; } .bw-panel { display:none; } .bw-panel.active { display:block; } .bw-wrap { max-width:100%; } .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; } .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; } .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; } .adv-body { display:block !important; } .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; } .progress-bar { display:none; } a { color:#000; text-decoration:none; } .bw-logo a::after { content:\" builtwrightapp.com\"; color:#666; } .bw-header { border-bottom:1px solid #000; } .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; } }"
+  ],
+  "cssShared": 86
 }

@@ -6,45 +6,83 @@
   "tabs": [
     {
       "id": "overview",
-      "label": "Overview"
+      "label": "Overview",
+      "active": true,
+      "style": ""
     },
     {
       "id": "nameplate",
-      "label": "Nameplate"
+      "label": "Nameplate",
+      "active": false,
+      "style": ""
     },
     {
       "id": "bearings",
-      "label": "Bearings"
+      "label": "Bearings",
+      "active": false,
+      "style": ""
     },
     {
       "id": "mounting",
-      "label": "Mounting"
+      "label": "Mounting",
+      "active": false,
+      "style": ""
     },
     {
       "id": "cooling",
-      "label": "Cooling and Heat"
+      "label": "Cooling and Heat",
+      "active": false,
+      "style": ""
     },
     {
       "id": "amps",
-      "label": "Amps as a Symptom"
+      "label": "Amps as a Symptom",
+      "active": false,
+      "style": ""
     },
     {
       "id": "handoff",
-      "label": "The Handoff"
+      "label": "The Handoff",
+      "active": false,
+      "style": ""
     },
     {
       "id": "troubleshoot",
-      "label": "Troubleshoot"
+      "label": "Troubleshoot",
+      "active": false,
+      "style": ""
     },
     {
       "id": "selfcheck",
-      "label": "Self-Check"
+      "label": "Self-Check",
+      "active": false,
+      "style": ""
     },
     {
       "id": "safety",
-      "label": "Safety"
+      "label": "Safety",
+      "active": false,
+      "style": "border-color:#A32D2D; color:#F09595;"
     }
   ],
+  "render": {
+    "title": "Motors: Mechanical Side",
+    "badge": "Module 10",
+    "tree": {
+      "progress": "mo-progress",
+      "container": "mo-tree"
+    },
+    "treeTab": "troubleshoot",
+    "groups": {
+      "selectChain": {
+        "scope": null,
+        "cardClass": ".chain-box",
+        "prefix": "cnode-",
+        "data": "chainData",
+        "display": "chain-display"
+      }
+    }
+  },
   "cards": {
     "chainData": {
       "frame": {
@@ -892,5 +930,64 @@
     "troubleshoot": "<div class=\"bw-section-label\">Motor fault diagnosis: mechanical side first</div>\n    <div class=\"adv-wrap\" id=\"adv-method\">\n      <button class=\"adv-toggle\" onclick=\"toggleAdv('adv-method')\">\n        <div class=\"adv-toggle-left\"><i class=\"ti ti-map-2 adv-toggle-icon\"></i><span class=\"adv-toggle-label\">Diagnostic methodology: five checks that decide whose problem it is</span></div>\n        <i class=\"ti ti-chevron-down adv-chevron\"></i>\n      </button>\n      <div class=\"adv-body\">\n        <p><strong>1. Look and listen, running.</strong> Infrared at DE bearing, NDE bearing, and frame body. Screwdriver at both bearing housings. Hand on the frame for rhythm. Fan shroud and fins. Read the amps and speed if a meter or drive display is there.</p>\n        <p><strong>2. Instant-off test.</strong> Vibration or hum that vanishes the instant power is cut is electrical. Decays with speed is mechanical.</p>\n        <p><strong>3. Lock out, turn by hand.</strong> The motor shaft and the driven shaft separately if possible. Free, smooth, no rough spots, no drag. Rotor does not rub. Fan spins free and is tight on the shaft.</p>\n        <p><strong>4. Soft foot and alignment.</strong> Loosen one bolt at a time with an indicator on the foot. Then the alignment readings.</p>\n        <p><strong>5. Uncoupled solo run.</strong> Motor alone, no load. If it is clean, the problem is downstream. If it is not, you have isolated it to the motor and you have the readings to hand over.</p>\n        <p>After these five, a fault that is still unexplained is on the electrical side, and the handoff package tells the electrician where to start.</p>\n      </div>\n    </div>\n    <div class=\"progress-bar\"><div class=\"progress-fill\" id=\"mo-progress\" style=\"width:8%\"></div></div>\n    <div id=\"mo-tree\"></div>",
     "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
     "safety": "<div class=\"bw-section-label\">Motor safety: electrical hazards a millwright works beside</div>\n    <div class=\"callout-box red\">\n      <div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">The motor is connected to enough energy to kill you, and it stays connected until the disconnect is open and locked</div></div>\n      <div class=\"callout-box-body\">A stopped motor is a live motor until the disconnect is opened, locked, tagged, and verified. A motor on a VFD can have the drive stopped and the motor leads still live. A motor with a capacitor bank, a soft starter, or a drive can hold a charge after the disconnect is opened. <strong>Your lock on the disconnect is your protection. Verify the isolation by attempting a start, and never assume a stop button, a drive keypad, or a PLC is an isolation.</strong> CSA Z462 is the Canadian standard for electrical safety in the workplace and defines the arc flash and shock boundaries; the plant's electrical safety program applies them.</div>\n    </div>\n\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\">\n      <div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-lock\" style=\"color:#F09595;\"></i> Lockout for motor mechanical work</div>\n      <ul class=\"info-block-tips\">\n        <li>Open the local disconnect (or the breaker if there is no local disconnect), apply your lock and tag, and try to start the motor from every start point: local, remote, HMI.</li>\n        <li>Motors on VFDs: the disconnect must be upstream of the drive, or the drive's own input disconnect. A stopped drive is not an isolation. Some drives have DC bus capacitors that hold a lethal charge for minutes after isolation; the drive manual states the discharge time and the electrician verifies it before anyone opens the drive.</li>\n        <li>Group lockout: your lock on the group lockbox, the electrician's isolation of the source. You do not remove your lock until your work is complete and you are clear.</li>\n        <li>Mechanical energy: the driven machine can turn the motor. Block the driven side. A fan in a duct windmills from draft; a conveyor with a load on an incline runs back; a pump with a head of liquid behind a leaking check valve spins backward.</li>\n        <li>Never work on a motor with a cover off the terminal box unless it is isolated, verified, and you are qualified to be there.</li>\n      </ul>\n    </div>\n\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\">\n      <div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-wind\" style=\"color:#F09595;\"></i> Rotating parts and the fan</div>\n      <ul class=\"info-block-tips\">\n        <li>The shaft key on an uncoupled motor is a rotating blade. Remove the key or tape it before running a motor solo. A loose key thrown from a shaft at 3600 rpm is a projectile.</li>\n        <li>The fan shroud is a guard. A motor run with the shroud off has an exposed fan at 1800 or 3600 rpm.</li>\n        <li>Screwdriver stethoscope on the NDE housing through the shroud slots: the screwdriver goes in, fingers stay out. Keep the tool short and the grip firm.</li>\n        <li>Loose clothing, lanyards, and gloves near an uncoupled running shaft: the shaft grabs and wraps.</li>\n      </ul>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-flame\"></i> Heat and burns</div>\n      <ul class=\"info-block-tips\">\n        <li>A class F motor frame at full load can be 90°C. That is a burn. Infrared before hand.</li>\n        <li>A motor that has been single phasing or stalled can have a frame well over 100°C and windings that are smoking. Isolate and let it cool before anything else.</li>\n        <li>Grease from a failing bearing can reach smoking temperature. Smell of hot grease from a motor is a stop.</li>\n      </ul>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-crane\"></i> Handling and lifting</div>\n      <ul class=\"info-block-tips\">\n        <li>Lift by the lifting eye on the frame. The eye is rated for the motor alone; a motor with a gearbox, a pump, or a base attached has a different weight and a different centre of gravity.</li>\n        <li>Never lift by the shaft, the fan shroud, or the terminal box.</li>\n        <li>Rigging is RigIt's territory. Weight from the nameplate or catalogue, sling angle, and rated hardware.</li>\n        <li>Motors in wash-down and food areas are heavy for their size (stainless, cast). Do not judge by the frame number.</li>\n      </ul>\n    </div>"
-  }
+  },
+  "css": [
+    ".bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }",
+    ".bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }",
+    ".family-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; color: #BA7517; text-transform: uppercase; margin: 1rem 0 0.5rem 0; }",
+    ".card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 0.5rem; }",
+    ".type-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; }",
+    ".type-card:hover, .type-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".type-card-icon { font-size: 22px; color: #BA7517; margin-bottom: 5px; }",
+    ".type-card-name { font-size: 13px; font-weight: 600; color: #f0ede4; margin-bottom: 2px; }",
+    ".type-card-sub { font-size: 11px; color: #888780; }",
+    ".comp-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }",
+    ".comp-detail-icon { font-size: 22px; color: #BA7517; }",
+    ".comp-detail-name { font-size: 16px; font-weight: 600; color: #f0ede4; }",
+    ".comp-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; }",
+    ".callout-box.blue { border-color: #185FA5; background: #0c1f33; }",
+    ".callout-box.blue .callout-box-icon, .callout-box.blue .callout-box-title, .callout-box.blue strong { color: #85B7EB; }",
+    ".callout-tips { list-style: none; margin-top: 0.6rem; }",
+    ".callout-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }",
+    ".callout-tips li::before { content: '→'; position: absolute; left: 0; color: #EF9F27; }",
+    ".adv-wrap { border-radius: 8px; overflow: hidden; border: 0.5px solid #3a3a36; margin-bottom: 1.25rem; }",
+    ".adv-toggle { width: 100%; background: #242420; border: none; padding: 0.75rem 1.1rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; gap: 10px; }",
+    ".adv-toggle-left { display: flex; align-items: center; gap: 8px; }",
+    ".adv-toggle-icon { font-size: 15px; color: #BA7517; }",
+    ".adv-toggle-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517; font-weight: 600; text-align: left; }",
+    ".adv-chevron { font-size: 13px; color: #BA7517; transition: transform 0.2s; }",
+    ".adv-wrap.open .adv-chevron { transform: rotate(180deg); }",
+    ".adv-body { display: none; background: #1e1e1c; padding: 1rem 1.1rem; border-top: 0.5px solid #3a3a36; }",
+    ".adv-wrap.open .adv-body { display: block; }",
+    ".adv-body p { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-bottom: 0.75rem; }",
+    ".adv-body strong { color: #e8e6df; font-weight: 600; }",
+    ".chain-wrap { background: #242420; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; overflow-x: auto; }",
+    ".chain { display: flex; align-items: center; flex-wrap: nowrap; gap: 0; }",
+    ".chain-node { flex-shrink: 0; }",
+    ".chain-box { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 6px; padding: 7px 9px; text-align: center; cursor: pointer; transition: all 0.15s; min-width: 70px; }",
+    ".chain-box:hover, .chain-box.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".chain-icon { font-size: 18px; color: #BA7517; display: block; margin-bottom: 2px; }",
+    ".chain-label { font-size: 11px; font-weight: 600; color: #e8e6df; }",
+    ".chain-sub { font-size: 9px; color: #888780; }",
+    ".chain-arrow { font-size: 14px; color: #5F5E5A; padding: 0 3px; flex-shrink: 0; }",
+    ".sym-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.25rem; }",
+    ".sym-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; display: flex; flex-direction: column; align-items: center; gap: 8px; }",
+    ".sym-card:hover, .sym-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".sym-card-label { font-size: 12px; font-weight: 600; color: #f0ede4; text-align: center; }",
+    ".sym-card-sub { font-size: 10px; color: #888780; text-align: center; }",
+    ".sym-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }",
+    ".sym-detail-body { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-top: 0.75rem; }",
+    ".sym-detail-tips { list-style: none; margin-top: 0.6rem; }",
+    ".sym-detail-tips li { font-size: 12px; color: #888780; padding: 2px 0 2px 16px; position: relative; line-height: 1.5; }",
+    ".sym-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; font-size: 11px; }",
+    ".ref-table { width: 100%; border-collapse: collapse; margin: 0.5rem 0 1rem 0; font-size: 12px; }",
+    ".ref-table th { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #BA7517; text-align: left; padding: 6px 8px; border-bottom: 1px solid #3a3a36; }",
+    ".ref-table td { padding: 6px 8px; border-bottom: 0.5px solid #2e2e2a; color: #c8c6bf; vertical-align: top; line-height: 1.4; }",
+    ".ref-table td:first-child { color: #f0ede4; font-weight: 600; white-space: nowrap; }",
+    ".progress-bar { height: 3px; background: #242420; border-radius: 2px; margin-bottom: 1rem; overflow: hidden; }",
+    ".tree-q-hint { font-size: 12px; color: #888780; margin-bottom: 0.75rem; font-style: italic; line-height: 1.45; }",
+    ".tree-btn { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; padding: 7px 16px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; text-align: left; }",
+    "@media print { body { background:#fff; color:#000; padding:0; } .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; } .bw-panel { display:none; } .bw-panel.active { display:block; } .bw-wrap { max-width:100%; } .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; } .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; } .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; } .adv-body { display:block !important; } .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; } .progress-bar { display:none; } a { color:#000; text-decoration:none; } .bw-logo a::after { content:\" builtwrightapp.com\"; color:#666; } .bw-header { border-bottom:1px solid #000; } .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; } }"
+  ],
+  "cssShared": 86
 }

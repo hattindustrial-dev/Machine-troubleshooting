@@ -10,10 +10,11 @@ import { execFileSync } from 'node:child_process';
 import { writeFileSync, mkdtempSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { scriptBlocks } from './lib/scan.mjs';
+import { cssRules } from './lib/config.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const APP = join(ROOT, 'app');
-const DATA = join(ROOT, 'data');
+const DATA = join(APP, 'data');
 
 const failures = [];
 const notes = [];
@@ -119,6 +120,27 @@ for (const f of files) {
   }
 }
 
+// ---- 4b. Markup balance ------------------------------------------------------
+// Two shipped bugs came from unbalanced div markup: browsers silently repair it, so it
+// renders as nesting that was never intended. Check the body of each page balances and
+// that every panel sits at the same depth, which is what keeps them inside .bw-wrap.
+for (const f of files) {
+  const html = readFileSync(join(APP, f), 'utf8');
+  const body = html.slice(html.indexOf('<body'), html.indexOf('<script') === -1 ? undefined : html.indexOf('<script'));
+  let depth = 0;
+  const depths = [];
+  const re = /<(\/?)div\b[^>]*>|<div id="panel-([a-z0-9]+)"/g;
+  for (const m of body.matchAll(/<div id="panel-([a-z0-9]+)"|<div\b[^>]*>|<\/div>/g)) {
+    if (m[0].startsWith('</')) { depth--; if (depth < 0) { fail(f, 'more </div> than <div> before offset ' + m.index); break; } }
+    else { if (m[1]) depths.push([m[1], depth]); depth++; }
+  }
+  const levels = new Set(depths.map((d) => d[1]));
+  if (levels.size > 1) {
+    const odd = depths.filter((d) => d[1] !== depths[0][1]).slice(0, 4).map((d) => `panel-${d[0]} at depth ${d[1]}`);
+    fail(f, `panels are not all at the same depth (${odd.join(', ')}); a panel is closing early`);
+  }
+}
+
 // ---- 5. House style: no em dashes --------------------------------------------
 for (const f of files) {
   const n = (readFileSync(join(APP, f), 'utf8').match(/—/g) || []).length;
@@ -136,6 +158,21 @@ for (const f of files) {
     try { execFileSync(process.execPath, ['--check', p], { stdio: 'pipe' }); }
     catch (e) { fail(f, `script block ${i} is not valid JS: ${String(e.stderr).split('\n')[0]}`); }
   }
+}
+
+// ---- 6b. The CSS split is lossless ---------------------------------------------
+// bw.css plus each module's own blocks must be exactly the rule set that module had
+// inline. Losing a block here silently changes the rendering, and hoisting one out of an
+// @media block silently applies print styling to the screen.
+const sharedCssRules = cssRules('<style>' + readFileSync(join(APP, 'bw.css'), 'utf8') + '</style>');
+for (const mod of modules) {
+  if (!Object.keys(mod.trees).length) continue; // bw.css is built from the content modules
+  const original = cssRules(readFileSync(join(APP, mod.source), 'utf8'));
+  const rebuilt = new Set([...sharedCssRules, ...mod.css]);
+  const lost = original.filter((r) => !rebuilt.has(r));
+  const extra = [...rebuilt].filter((r) => !original.includes(r));
+  if (lost.length) fail(mod.key, `${lost.length} CSS block(s) lost in the split, first: ${lost[0].slice(0, 70)}`);
+  if (extra.length) fail(mod.key, `${extra.length} CSS block(s) the module never had, first: ${extra[0].slice(0, 70)}`);
 }
 
 // ---- 7. Totals against the published index -------------------------------------

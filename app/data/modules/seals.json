@@ -6,41 +6,91 @@
   "tabs": [
     {
       "id": "sealtypes",
-      "label": "Seal Types"
+      "label": "Seal Types",
+      "active": true,
+      "style": ""
     },
     {
       "id": "gaskets",
-      "label": "Gaskets"
+      "label": "Gasket Types",
+      "active": false,
+      "style": ""
     },
     {
       "id": "materials",
-      "label": "Materials"
+      "label": "Material Selection",
+      "active": false,
+      "style": ""
     },
     {
       "id": "failure",
-      "label": "Failure Analysis"
+      "label": "Failure Analysis",
+      "active": false,
+      "style": ""
     },
     {
       "id": "install",
-      "label": "Installation"
+      "label": "Installation",
+      "active": false,
+      "style": ""
     },
     {
       "id": "compat",
-      "label": "Compatibility"
+      "label": "Chemical Compatibility",
+      "active": false,
+      "style": ""
     },
     {
       "id": "troubleshoot",
-      "label": "Troubleshoot"
+      "label": "Troubleshoot",
+      "active": false,
+      "style": ""
     },
     {
       "id": "selfcheck",
-      "label": "Self-Check"
+      "label": "Self-Check",
+      "active": false,
+      "style": ""
     },
     {
       "id": "safety",
-      "label": "Safety"
+      "label": "Safety",
+      "active": false,
+      "style": "border-color:#A32D2D; color:#F09595;"
     }
   ],
+  "render": {
+    "title": "Seals and Gaskets",
+    "badge": "Module 04",
+    "tree": {
+      "progress": "se-progress",
+      "container": "se-tree"
+    },
+    "treeTab": "troubleshoot",
+    "groups": {
+      "selectSeal": {
+        "scope": "#panel-sealtypes",
+        "cardClass": ".type-card",
+        "prefix": "scard-",
+        "data": "sealData",
+        "display": "seal-display"
+      },
+      "selectGasket": {
+        "scope": "#panel-gaskets",
+        "cardClass": ".type-card",
+        "prefix": "gcard-",
+        "data": "gasketData",
+        "display": "gasket-display"
+      },
+      "selectMat": {
+        "scope": "#panel-materials",
+        "cardClass": ".type-card",
+        "prefix": "mcard-",
+        "data": "matData",
+        "display": "mat-display"
+      }
+    }
+  },
   "cards": {
     "sealData": {
       "mech_single": {
@@ -768,5 +818,75 @@
     "troubleshoot": "<div class=\"bw-section-label\">Seal and gasket fault diagnosis</div>\n    <div class=\"adv-wrap\" id=\"adv-method\">\n      <button class=\"adv-toggle\" onclick=\"toggleAdv('adv-method')\">\n        <div class=\"adv-toggle-left\"><i class=\"ti ti-map-2 adv-toggle-icon\"></i><span class=\"adv-toggle-label\">Diagnostic methodology</span></div>\n        <i class=\"ti ti-chevron-down adv-chevron\"></i>\n      </button>\n      <div class=\"adv-body\"><p><strong>Keep the failed seal.</strong> A mechanical seal's faces, a gasket's shape, and an o-ring's damage pattern each tell you the cause, and the cause is what decides whether the new one lasts. Replacing without reading is how a pump gets its third seal in a year.</p><p><strong>Then the machine:</strong> shaft runout, alignment, pipe strain, flush flow, and the process (dry running, shutoff, temperature, chemistry). The seal is the part that shows the damage; the cause is almost always upstream of it.</p></div>\n    </div>\n    <div class=\"progress-bar\"><div class=\"progress-fill\" id=\"se-progress\" style=\"width:8%\"></div></div>\n    <div id=\"se-tree\"></div>",
     "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
     "safety": "<div class=\"bw-section-label\">Seal and gasket safety: pressure, fluid, and old gaskets</div>\n    <div class=\"callout-box red\"><div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">A seal or gasket is the thing between you and the process. Replacing it means opening that boundary.</div></div><div class=\"callout-box-body\">Breaking a flange or pulling a seal opens the system to whatever is inside: pressure, temperature, chemistry. <strong>The joint is isolated, depressurised, drained, and verified before the first bolt is loosened, and it is opened from the far side, away from your body.</strong></div></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-lock\" style=\"color:#F09595;\"></i> Opening a flanged joint</div><ul class=\"info-block-tips\"><li>Isolate both sides. Drain. Vent. Confirm zero pressure on a gauge at the joint, not at the pump three metres away.</li><li>Loosen the bolts on the far side first, leaving the near-side bolts snug. If there is trapped pressure, it sprays away from you. Then crack the near side.</li><li>Never loosen a flange under pressure, and never tighten one under pressure. Hot bolting (tightening a live flange) is specialist work with its own procedure and permit.</li><li>Ring joint (RTJ) flanges spring apart when the bolts are released. Stand clear of the gap.</li><li>Spring-loaded and pressurised seal support systems (barrier fluid, Plan 53) are separate pressure sources and are isolated separately.</li></ul></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-flask\" style=\"color:#F09595;\"></i> The fluid and the temperature</div><ul class=\"info-block-tips\"><li>SDS for the process fluid. PPE for the fluid, including face protection when cracking a joint.</li><li>Hot service: the flange and the fluid stay hot after shutdown. Cool it or dress for it.</li><li>Chemical compatibility applies to your gloves too. A glove that the fluid passes through is not PPE.</li><li>Steam: a steam joint holds condensate that flashes when the pressure drops. Vent from the low point first.</li></ul></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-alert-hexagon\" style=\"color:#F09595;\"></i> Old gasket material</div><ul class=\"info-block-tips\"><li>Gaskets in plants built or maintained before the 1990s may contain asbestos. Compressed sheet gaskets, spiral wound filler, and packing all used it. Treat any unidentified old gasket as suspect.</li><li>Do not grind, wire brush, or sand old gasket residue dry. Wet removal, hand scraping, and the plant's asbestos procedure. Dispose of it as the procedure says.</li><li>PTFE begins to degrade above about 260°C and releases toxic fumes at welding and burning temperatures. Do not heat, burn, or weld near PTFE gaskets and seals. Old PTFE residue is not removed with a torch.</li><li>Flexible graphite is not a health hazard but it is conductive; keep the dust away from electrical equipment.</li></ul></div>\n    <div class=\"info-block\"><div class=\"info-block-title\"><i class=\"ti ti-hand-off\"></i> Mechanical seal handling</div><ul class=\"info-block-tips\"><li>Seal faces are silicon carbide, tungsten carbide, or ceramic. They chip and the chips are sharp. Handle by the edges, with gloves for the metal parts and clean bare hands or lint-free gloves for the faces.</li><li>Cartridge seals have compressed springs. Remove the setting clips only after the seal is fully installed and the set screws are tight, or the springs unload the sleeve.</li><li>Solvents for cleaning gasket faces and seal parts: ventilation, gloves, no ignition sources.</li></ul></div>\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: gauge at the joint</strong>A pressure gauge on the pump discharge reading zero says the pump is depressurised. It says nothing about the section of pipe between two closed valves that you are about to open. If the joint does not have its own vent or gauge, fit a bleed at the joint before the bolts come out.</div></div>"
-  }
+  },
+  "css": [
+    ".bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }",
+    ".bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }",
+    ".family-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; color: #BA7517; text-transform: uppercase; margin: 1rem 0 0.5rem 0; }",
+    ".card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 0.5rem; }",
+    ".card-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 0.5rem; }",
+    ".type-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; }",
+    ".type-card:hover, .type-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".type-card-icon { font-size: 22px; color: #BA7517; margin-bottom: 5px; }",
+    ".type-card-name { font-size: 13px; font-weight: 600; color: #f0ede4; margin-bottom: 2px; }",
+    ".type-card-sub { font-size: 11px; color: #888780; }",
+    ".comp-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }",
+    ".comp-detail-icon { font-size: 22px; color: #BA7517; }",
+    ".comp-detail-name { font-size: 16px; font-weight: 600; color: #f0ede4; }",
+    ".comp-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; }",
+    ".callout-tips { list-style: none; margin-top: 0.6rem; }",
+    ".callout-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }",
+    ".callout-tips li::before { content: '→'; position: absolute; left: 0; color: #EF9F27; }",
+    ".failure-card { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 10px; cursor: pointer; transition: all 0.15s; }",
+    ".failure-card:hover { border-color: #BA7517; }",
+    ".failure-card-header { display: flex; align-items: center; justify-content: space-between; }",
+    ".failure-card-title { font-size: 14px; font-weight: 600; color: #f0ede4; display: flex; align-items: center; gap: 8px; }",
+    ".failure-card-badge { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; padding: 2px 7px; border-radius: 3px; text-transform: uppercase; }",
+    ".badge-mech { background: #200d0d; color: #F09595; border: 0.5px solid #A32D2D; }",
+    ".badge-chem { background: #0c1f33; color: #85B7EB; border: 0.5px solid #185FA5; }",
+    ".badge-install { background: #2a1f08; color: #EF9F27; border: 0.5px solid #BA7517; }",
+    ".badge-thermal { background: #1a0f1a; color: #C589E8; border: 0.5px solid #7B3FA0; }",
+    ".failure-card-chevron { font-size: 13px; color: #5F5E5A; transition: transform 0.2s; }",
+    ".failure-card.open .failure-card-chevron { transform: rotate(180deg); }",
+    ".failure-card-body { display: none; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 0.5px solid #3a3a36; }",
+    ".failure-card.open .failure-card-body { display: block; }",
+    ".failure-card-body p { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-bottom: 0.5rem; }",
+    ".failure-card-body ul { list-style: none; }",
+    ".failure-card-body ul li { font-size: 12px; color: #888780; padding: 2px 0 2px 16px; position: relative; line-height: 1.5; }",
+    ".failure-card-body ul li::before { content: '→'; position: absolute; left: 0; color: #BA7517; font-size: 11px; }",
+    ".compat-table { width: 100%; border-collapse: collapse; margin-bottom: 1.25rem; font-size: 12px; }",
+    ".compat-table th { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517; padding: 6px 8px; border-bottom: 1px solid #3a3a36; text-align: left; background: #242420; }",
+    ".compat-table td { padding: 7px 8px; border-bottom: 0.5px solid #2a2a26; color: #c8c6bf; vertical-align: top; line-height: 1.4; }",
+    ".compat-table tr:last-child td { border-bottom: none; }",
+    ".compat-table tr:hover td { background: #242420; }",
+    ".compat-table td:first-child { font-weight: 600; color: #e8e6df; white-space: nowrap; }",
+    ".ok { color: #97C459; font-weight: 600; }",
+    ".warn { color: #EF9F27; font-weight: 600; }",
+    ".no { color: #F09595; font-weight: 600; }",
+    ".inst-step { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 0.9rem 1.1rem; margin-bottom: 8px; display: flex; gap: 12px; align-items: flex-start; }",
+    ".inst-num { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: #BA7517; background: #2a1f08; border-radius: 4px; padding: 2px 7px; flex-shrink: 0; font-weight: 600; margin-top: 1px; }",
+    ".inst-body { font-size: 13px; color: #c8c6bf; line-height: 1.55; }",
+    ".inst-body strong { font-weight: 600; color: #e8e6df; }",
+    ".inst-sub { font-size: 12px; color: #888780; margin-top: 3px; line-height: 1.5; }",
+    ".adv-wrap { border-radius: 8px; overflow: hidden; border: 0.5px solid #3a3a36; margin-bottom: 1.25rem; }",
+    ".adv-toggle { width: 100%; background: #242420; border: none; padding: 0.75rem 1.1rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; gap: 10px; }",
+    ".adv-toggle-left { display: flex; align-items: center; gap: 8px; }",
+    ".adv-toggle-icon { font-size: 15px; color: #BA7517; }",
+    ".adv-toggle-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517; font-weight: 600; }",
+    ".adv-chevron { font-size: 13px; color: #BA7517; transition: transform 0.2s; }",
+    ".adv-wrap.open .adv-chevron { transform: rotate(180deg); }",
+    ".adv-body { display: none; background: #1e1e1c; padding: 1rem 1.1rem; border-top: 0.5px solid #3a3a36; }",
+    ".adv-wrap.open .adv-body { display: block; }",
+    ".adv-body p { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-bottom: 0.75rem; }",
+    ".adv-body strong { color: #e8e6df; font-weight: 600; }",
+    ".adv-step { display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start; }",
+    ".adv-num { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: #BA7517; background: #2a1f08; border-radius: 3px; padding: 2px 6px; flex-shrink: 0; margin-top: 1px; }",
+    ".adv-step-body { font-size: 13px; color: #c8c6bf; line-height: 1.55; }",
+    ".svg-wrap { background: #111110; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1rem; margin-bottom: 1.25rem; text-align: center; overflow-x: auto; }",
+    ".svg-caption { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: #5F5E5A; letter-spacing: 1px; margin-top: 0.5rem; text-transform: uppercase; }",
+    "@media print { body { background:#fff; color:#000; padding:0; } .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; } .bw-panel { display:none; } .bw-panel.active { display:block; } .bw-wrap { max-width:100%; } .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; } .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; } .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; } .adv-body { display:block !important; } .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; } .progress-bar { display:none; } a { color:#000; text-decoration:none; } .bw-logo a::after { content:\" builtwrightapp.com\"; color:#666; } .bw-header { border-bottom:1px solid #000; } .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; } }",
+    ".tree-q-hint { font-size: 12px; color: #888780; margin-bottom: 0.75rem; font-style: italic; line-height: 1.45; }",
+    ".tree-btn { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; padding: 7px 16px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; text-align: left; }"
+  ],
+  "cssShared": 86
 }

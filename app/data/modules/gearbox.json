@@ -6,41 +6,91 @@
   "tabs": [
     {
       "id": "overview",
-      "label": "Overview"
+      "label": "Overview",
+      "active": true,
+      "style": ""
     },
     {
       "id": "gears",
-      "label": "Gear Types"
+      "label": "Gear Types",
+      "active": false,
+      "style": ""
     },
     {
       "id": "bearings",
-      "label": "Bearings and Seals"
+      "label": "Bearings and Seals",
+      "active": false,
+      "style": ""
     },
     {
       "id": "lube",
-      "label": "Lubrication"
+      "label": "Lubrication",
+      "active": false,
+      "style": ""
     },
     {
       "id": "wear",
-      "label": "Wear Patterns"
+      "label": "Wear Patterns",
+      "active": false,
+      "style": ""
     },
     {
       "id": "setup",
-      "label": "Backlash and Setup"
+      "label": "Backlash and Setup",
+      "active": false,
+      "style": ""
     },
     {
       "id": "troubleshoot",
-      "label": "Troubleshoot"
+      "label": "Troubleshoot",
+      "active": false,
+      "style": ""
     },
     {
       "id": "selfcheck",
-      "label": "Self-Check"
+      "label": "Self-Check",
+      "active": false,
+      "style": ""
     },
     {
       "id": "safety",
-      "label": "Safety"
+      "label": "Safety",
+      "active": false,
+      "style": "border-color:#A32D2D; color:#F09595;"
     }
   ],
+  "render": {
+    "title": "Gearboxes",
+    "badge": "Module 09",
+    "tree": {
+      "progress": "gb-progress",
+      "container": "gb-tree"
+    },
+    "treeTab": "troubleshoot",
+    "groups": {
+      "selectCfg": {
+        "scope": "#panel-overview",
+        "cardClass": ".type-card",
+        "prefix": "cfgcard-",
+        "data": "cfgData",
+        "display": "cfg-display"
+      },
+      "selectGear": {
+        "scope": "#panel-gears",
+        "cardClass": ".type-card",
+        "prefix": "gcard-",
+        "data": "gearData",
+        "display": "gear-display"
+      },
+      "selectWear": {
+        "scope": "#panel-wear",
+        "cardClass": ".type-card",
+        "prefix": "wcard-",
+        "data": "wearData",
+        "display": "wear-display"
+      }
+    }
+  },
   "cards": {
     "cfgData": {
       "inline": {
@@ -1039,5 +1089,64 @@
     "troubleshoot": "<div class=\"bw-section-label\">Gearbox fault diagnosis</div>\n    <div class=\"adv-wrap\" id=\"adv-method\">\n      <button class=\"adv-toggle\" onclick=\"toggleAdv('adv-method')\">\n        <div class=\"adv-toggle-left\"><i class=\"ti ti-map-2 adv-toggle-icon\"></i><span class=\"adv-toggle-label\">Diagnostic methodology: outside first, then oil, then teeth</span></div>\n        <i class=\"ti ti-chevron-down adv-chevron\"></i>\n      </button>\n      <div class=\"adv-body\">\n        <p><strong>Outside, running:</strong> infrared at each bearing position and the sump. Listen with the screwdriver at each bearing housing and at the mesh. Feel for a rhythm and count it against the input and output shaft speeds: once per input revolution is the high speed pinion or its bearings; once per output revolution is the low speed gear or its bearings; a whine that changes pitch with speed is the mesh.</p>\n        <p><strong>Outside, stopped:</strong> oil level. Breather. Leaks and where they are. Input coupling or belt alignment and tension. Torque arm and mounting bolts on shaft mounts. Foundation. Any recent work.</p>\n        <p><strong>Oil:</strong> magnetic plug. Sample for analysis. Look at what drains: colour, water, foam, chips. Rub a drop between finger and thumb for grit.</p>\n        <p><strong>Teeth:</strong> inspection cover off (see Safety). Wear pattern on several teeth. Backlash. Contact pattern if there is any doubt about alignment. Photograph.</p>\n        <p><strong>Bearings:</strong> shaft play, radial and axial, by hand with a bar under the coupling. Any movement you can feel by hand is far beyond a normal bearing setting.</p>\n        <p><strong>The gears are almost never the first thing to fail.</strong> Bearings, oil, seals, and the input alignment fail first and take the gears with them. Find the primary failure or the rebuilt box fails the same way.</p>\n      </div>\n    </div>\n    <div class=\"progress-bar\"><div class=\"progress-fill\" id=\"gb-progress\" style=\"width:8%\"></div></div>\n    <div id=\"gb-tree\"></div>",
     "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
     "safety": "<div class=\"bw-section-label\">Gearbox safety</div>\n    <div class=\"callout-box red\">\n      <div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">A gearbox stores energy in the load it is holding</div></div>\n      <div class=\"callout-box-body\">A gearbox on an inclined conveyor, a hoist, a mixer with product in it, or a machine with a flywheel is holding that load against gravity or inertia through its gear train. Take a coupling off, pull a shaft, or break a gear tooth and the load runs backward through the box or free-wheels. <strong>Worm gearboxes are often assumed to be self-locking. Many are not, especially when vibrating, and none should be relied on as a brake.</strong> Block, pin, or lower the load before opening anything in the drive train.</div>\n    </div>\n\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\">\n      <div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-lock\" style=\"color:#F09595;\"></i> Lockout and load control</div>\n      <ul class=\"info-block-tips\">\n        <li>Lock out the drive motor. Verify by attempting a start.</li>\n        <li>Identify and control the driven load: block the conveyor, lower the hoist, pin the mixer, let the flywheel stop and lock it. A gearbox with the motor locked out and a raised load on the output is not locked out.</li>\n        <li>Shaft mount reducers hang on the driven shaft. Removing the torque arm or the driven shaft lets the whole reducer rotate around the shaft. Support it before disconnecting anything.</li>\n        <li>Backstops (anti-runback clutches) on inclined conveyors hold the load when the motor stops. They do not hold it when the gearbox is opened. Know which reducers have them and what they are holding.</li>\n      </ul>\n    </div>\n\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\">\n      <div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-flame\" style=\"color:#F09595;\"></i> Hot oil and pressurised cases</div>\n      <ul class=\"info-block-tips\">\n        <li>Gear oil in a running box is 60 to 90°C. Let it cool before draining or opening the inspection cover.</li>\n        <li>A gearbox with a blocked breather is pressurised. Cracking the drain plug or inspection cover on a hot pressurised case sprays hot oil. Open the breather or fill plug first, from the side, with eye protection.</li>\n        <li>Large boxes hold a lot of oil. Have the drain container sized for it and a spill kit at hand. Used gear oil is a slip hazard and a waste stream.</li>\n      </ul>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-crane\"></i> Lifting and handling</div>\n      <ul class=\"info-block-tips\">\n        <li>Gearboxes are dense. A box that looks liftable by hand often is not. Weight is on the nameplate or in the catalogue.</li>\n        <li>Lift by the cast lifting lugs or eyebolts in the tapped holes provided, never by the shafts, the cover, or the fan guard. Shaft damage from a sling is a common cause of a rebuilt box leaking on day one.</li>\n        <li>Eyebolts must be the correct thread, fully seated, and rated. A shoulder eyebolt loaded at an angle needs derating.</li>\n        <li>The centre of gravity of a gearbox with a motor attached is not where it looks. Test lift and adjust.</li>\n        <li>Rigging is covered fully in RigIt. Load, angle, and sling rating before the lift.</li>\n      </ul>\n    </div>\n\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-hand-off\"></i> Open gearboxes and inspection covers</div>\n      <ul class=\"info-block-tips\">\n        <li>Never put fingers into a gear mesh, even locked out, if there is any possibility of the shaft turning: a fan windmilling, a load creeping past a backstop, someone bumping the coupling. Use a mirror and a flashlight, or a borescope.</li>\n        <li>Turning the gears by hand for inspection is done at the coupling or with a bar on the shaft, not with a hand on a gear.</li>\n        <li>Keep the open box covered when not being worked on. A dropped bolt into a gear mesh is a rebuilt gearbox.</li>\n        <li>Inspection cover bolts back in with the gasket sound. A leaking cover gasket is dirt getting in as well as oil getting out.</li>\n      </ul>\n    </div>"
-  }
+  },
+  "css": [
+    ".bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }",
+    ".bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }",
+    ".family-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; color: #BA7517; text-transform: uppercase; margin: 1rem 0 0.5rem 0; }",
+    ".card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 0.5rem; }",
+    ".type-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; }",
+    ".type-card:hover, .type-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".type-card-icon { font-size: 22px; color: #BA7517; margin-bottom: 5px; }",
+    ".type-card-name { font-size: 13px; font-weight: 600; color: #f0ede4; margin-bottom: 2px; }",
+    ".type-card-sub { font-size: 11px; color: #888780; }",
+    ".comp-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }",
+    ".comp-detail-icon { font-size: 22px; color: #BA7517; }",
+    ".comp-detail-name { font-size: 16px; font-weight: 600; color: #f0ede4; }",
+    ".comp-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; }",
+    ".callout-box.blue { border-color: #185FA5; background: #0c1f33; }",
+    ".callout-box.blue .callout-box-icon, .callout-box.blue .callout-box-title, .callout-box.blue strong { color: #85B7EB; }",
+    ".callout-tips { list-style: none; margin-top: 0.6rem; }",
+    ".callout-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }",
+    ".callout-tips li::before { content: '→'; position: absolute; left: 0; color: #EF9F27; }",
+    ".adv-wrap { border-radius: 8px; overflow: hidden; border: 0.5px solid #3a3a36; margin-bottom: 1.25rem; }",
+    ".adv-toggle { width: 100%; background: #242420; border: none; padding: 0.75rem 1.1rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; gap: 10px; }",
+    ".adv-toggle-left { display: flex; align-items: center; gap: 8px; }",
+    ".adv-toggle-icon { font-size: 15px; color: #BA7517; }",
+    ".adv-toggle-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517; font-weight: 600; text-align: left; }",
+    ".adv-chevron { font-size: 13px; color: #BA7517; transition: transform 0.2s; }",
+    ".adv-wrap.open .adv-chevron { transform: rotate(180deg); }",
+    ".adv-body { display: none; background: #1e1e1c; padding: 1rem 1.1rem; border-top: 0.5px solid #3a3a36; }",
+    ".adv-wrap.open .adv-body { display: block; }",
+    ".adv-body p { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-bottom: 0.75rem; }",
+    ".adv-body strong { color: #e8e6df; font-weight: 600; }",
+    ".chain-wrap { background: #242420; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; overflow-x: auto; }",
+    ".chain { display: flex; align-items: center; flex-wrap: nowrap; gap: 0; }",
+    ".chain-node { flex-shrink: 0; }",
+    ".chain-box { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 6px; padding: 7px 9px; text-align: center; cursor: pointer; transition: all 0.15s; min-width: 70px; }",
+    ".chain-box:hover, .chain-box.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".chain-icon { font-size: 18px; color: #BA7517; display: block; margin-bottom: 2px; }",
+    ".chain-label { font-size: 11px; font-weight: 600; color: #e8e6df; }",
+    ".chain-sub { font-size: 9px; color: #888780; }",
+    ".chain-arrow { font-size: 14px; color: #5F5E5A; padding: 0 3px; flex-shrink: 0; }",
+    ".sym-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.25rem; }",
+    ".sym-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; display: flex; flex-direction: column; align-items: center; gap: 8px; }",
+    ".sym-card:hover, .sym-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".sym-card-label { font-size: 12px; font-weight: 600; color: #f0ede4; text-align: center; }",
+    ".sym-card-sub { font-size: 10px; color: #888780; text-align: center; }",
+    ".sym-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }",
+    ".sym-detail-body { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-top: 0.75rem; }",
+    ".sym-detail-tips { list-style: none; margin-top: 0.6rem; }",
+    ".sym-detail-tips li { font-size: 12px; color: #888780; padding: 2px 0 2px 16px; position: relative; line-height: 1.5; }",
+    ".sym-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; font-size: 11px; }",
+    ".ref-table { width: 100%; border-collapse: collapse; margin: 0.5rem 0 1rem 0; font-size: 12px; }",
+    ".ref-table th { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #BA7517; text-align: left; padding: 6px 8px; border-bottom: 1px solid #3a3a36; }",
+    ".ref-table td { padding: 6px 8px; border-bottom: 0.5px solid #2e2e2a; color: #c8c6bf; vertical-align: top; line-height: 1.4; }",
+    ".ref-table td:first-child { color: #f0ede4; font-weight: 600; white-space: nowrap; }",
+    ".progress-bar { height: 3px; background: #242420; border-radius: 2px; margin-bottom: 1rem; overflow: hidden; }",
+    ".tree-q-hint { font-size: 12px; color: #888780; margin-bottom: 0.75rem; font-style: italic; line-height: 1.45; }",
+    ".tree-btn { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; padding: 7px 16px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; text-align: left; }",
+    "@media print { body { background:#fff; color:#000; padding:0; } .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; } .bw-panel { display:none; } .bw-panel.active { display:block; } .bw-wrap { max-width:100%; } .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; } .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; } .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; } .adv-body { display:block !important; } .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; } .progress-bar { display:none; } a { color:#000; text-decoration:none; } .bw-logo a::after { content:\" builtwrightapp.com\"; color:#666; } .bw-header { border-bottom:1px solid #000; } .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; } }"
+  ],
+  "cssShared": 86
 }

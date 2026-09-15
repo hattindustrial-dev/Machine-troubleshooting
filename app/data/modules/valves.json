@@ -6,37 +6,71 @@
   "tabs": [
     {
       "id": "overview",
-      "label": "Overview"
+      "label": "Overview",
+      "active": true,
+      "style": ""
     },
     {
       "id": "types",
-      "label": "Valve Types"
+      "label": "Valve Types",
+      "active": false,
+      "style": ""
     },
     {
       "id": "actuators",
-      "label": "Actuators and Positioners"
+      "label": "Actuators and Positioners",
+      "active": false,
+      "style": ""
     },
     {
       "id": "packing",
-      "label": "Packing, Seats, and Leaks"
+      "label": "Packing, Seats, and Leaks",
+      "active": false,
+      "style": ""
     },
     {
       "id": "install",
-      "label": "Installation and Service"
+      "label": "Installation and Service",
+      "active": false,
+      "style": ""
     },
     {
       "id": "troubleshoot",
-      "label": "Troubleshoot"
+      "label": "Troubleshoot",
+      "active": false,
+      "style": ""
     },
     {
       "id": "selfcheck",
-      "label": "Self-Check"
+      "label": "Self-Check",
+      "active": false,
+      "style": ""
     },
     {
       "id": "safety",
-      "label": "Safety"
+      "label": "Safety",
+      "active": false,
+      "style": "border-color:#A32D2D; color:#F09595;"
     }
   ],
+  "render": {
+    "title": "Process Valves and Actuators",
+    "badge": "Module 20",
+    "tree": {
+      "progress": "pv-progress",
+      "container": "pv-tree"
+    },
+    "treeTab": "troubleshoot",
+    "groups": {
+      "selectType": {
+        "scope": "#panel-types",
+        "cardClass": ".type-card",
+        "prefix": "tcard-",
+        "data": "typeData",
+        "display": "type-display"
+      }
+    }
+  },
   "cards": {
     "typeData": {
       "gate": {
@@ -618,5 +652,64 @@
     "troubleshoot": "<div class=\"bw-section-label\">Valve and actuator fault diagnosis</div>\n    <div class=\"adv-wrap\" id=\"adv-method\">\n      <button class=\"adv-toggle\" onclick=\"toggleAdv('adv-method')\">\n        <div class=\"adv-toggle-left\"><i class=\"ti ti-map-2 adv-toggle-icon\"></i><span class=\"adv-toggle-label\">Diagnostic methodology: actuator first, then the valve</span></div>\n        <i class=\"ti ti-chevron-down adv-chevron\"></i>\n      </button>\n      <div class=\"adv-body\">\n        <p><strong>Most valve complaints are actuator or air problems.</strong> Air pressure at the actuator, positioner output, stroke against signal, stops, bench set, fail position. If the actuator moves the stem correctly and the valve still misbehaves, then the valve.</p>\n        <p><strong>Then the valve, isolated and depressurised:</strong> stem travel by hand, packing condition and gland load, seat and closure element through the bonnet or by removal, stem scoring, body condition.</p>\n        <p><strong>Then the application:</strong> is an isolation valve throttling; is a control valve sized so it works at 10 percent open; is a soft seat on a service that is too hot; is a swing check on a pulsing line.</p>\n      </div>\n    </div>\n    <div class=\"progress-bar\"><div class=\"progress-fill\" id=\"pv-progress\" style=\"width:8%\"></div></div>\n    <div id=\"pv-tree\"></div>",
     "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
     "safety": "<div class=\"bw-section-label\">Valve safety: the process is on the other side</div>\n    <div class=\"callout-box red\">\n      <div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">A valve is a pressure boundary. Opening it up opens the process.</div></div>\n      <div class=\"callout-box-body\">Repacking, reseating, or removing a valve exposes whatever is in the line: pressure, temperature, chemistry. Isolation is upstream and downstream, drained, vented, and verified at the valve, with double block and bleed on hazardous service. <strong>A single valve that has been used to throttle is a valve that is passing, and it is not an isolation for the work on the valve next to it.</strong></div>\n    </div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\">\n      <ul class=\"info-block-tips\">\n        <li>Isolation for valve work: Pumps module Safety tab (process isolation), Seals module Safety tab (opening a joint). Verify zero at the valve, not somewhere else.</li>\n        <li>Backseating to repack a valve under pressure is a specific procedure for specific valves, with the risk that the backseat is worn. It is not a routine method.</li>\n        <li>Actuator stored energy: a spring-return actuator holds a compressed spring; a double-acting one holds air on one side. Isolate and vent the air; follow the manufacturer procedure for spring release before the actuator is opened. A large spring actuator can injure severely on disassembly.</li>\n        <li>Electric actuators: lockout at the actuator supply and the control circuit; the hand-auto clutch position. A motor operated valve that starts while a hand is on the handwheel spins it.</li>\n        <li>Fail position after work: verify by removing the air or signal, with the process safe, before returning the loop to auto. A valve that fails the wrong way is a process incident.</li>\n        <li>Relief valves: never gagged, never blocked in, never set above the vessel rating, tested and sealed by a qualified shop on the interval. Lifting a relief valve by hand to \"check it\" on live service is a specific procedure with a specific risk.</li>\n        <li>Water hammer: closing a valve fast on a long liquid line, or a check valve slamming, produces a pressure spike that breaks things. Close slowly; fit dashpots or non-slam checks where slam is a known issue.</li>\n        <li>Hot valves and steam: the body and the packing are at line temperature. Steam packing leaks are invisible near the gland and cut flesh at the exit; approach a steam leak from the side with a broom handle, not a hand.</li>\n        <li>Old packing and gaskets: asbestos until proven otherwise on pre-1990s valves.</li>\n      </ul>\n    </div>"
-  }
+  },
+  "css": [
+    ".bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }",
+    ".bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }",
+    ".family-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; color: #BA7517; text-transform: uppercase; margin: 1rem 0 0.5rem 0; }",
+    ".card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 0.5rem; }",
+    ".type-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; }",
+    ".type-card:hover, .type-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".type-card-icon { font-size: 22px; color: #BA7517; margin-bottom: 5px; }",
+    ".type-card-name { font-size: 13px; font-weight: 600; color: #f0ede4; margin-bottom: 2px; }",
+    ".type-card-sub { font-size: 11px; color: #888780; }",
+    ".comp-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }",
+    ".comp-detail-icon { font-size: 22px; color: #BA7517; }",
+    ".comp-detail-name { font-size: 16px; font-weight: 600; color: #f0ede4; }",
+    ".comp-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; }",
+    ".callout-box.blue { border-color: #185FA5; background: #0c1f33; }",
+    ".callout-box.blue .callout-box-icon, .callout-box.blue .callout-box-title, .callout-box.blue strong { color: #85B7EB; }",
+    ".callout-tips { list-style: none; margin-top: 0.6rem; }",
+    ".callout-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }",
+    ".callout-tips li::before { content: '→'; position: absolute; left: 0; color: #EF9F27; }",
+    ".adv-wrap { border-radius: 8px; overflow: hidden; border: 0.5px solid #3a3a36; margin-bottom: 1.25rem; }",
+    ".adv-toggle { width: 100%; background: #242420; border: none; padding: 0.75rem 1.1rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; gap: 10px; }",
+    ".adv-toggle-left { display: flex; align-items: center; gap: 8px; }",
+    ".adv-toggle-icon { font-size: 15px; color: #BA7517; }",
+    ".adv-toggle-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517; font-weight: 600; text-align: left; }",
+    ".adv-chevron { font-size: 13px; color: #BA7517; transition: transform 0.2s; }",
+    ".adv-wrap.open .adv-chevron { transform: rotate(180deg); }",
+    ".adv-body { display: none; background: #1e1e1c; padding: 1rem 1.1rem; border-top: 0.5px solid #3a3a36; }",
+    ".adv-wrap.open .adv-body { display: block; }",
+    ".adv-body p { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-bottom: 0.75rem; }",
+    ".adv-body strong { color: #e8e6df; font-weight: 600; }",
+    ".chain-wrap { background: #242420; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; overflow-x: auto; }",
+    ".chain { display: flex; align-items: center; flex-wrap: nowrap; gap: 0; }",
+    ".chain-node { flex-shrink: 0; }",
+    ".chain-box { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 6px; padding: 7px 9px; text-align: center; cursor: pointer; transition: all 0.15s; min-width: 70px; }",
+    ".chain-box:hover, .chain-box.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".chain-icon { font-size: 18px; color: #BA7517; display: block; margin-bottom: 2px; }",
+    ".chain-label { font-size: 11px; font-weight: 600; color: #e8e6df; }",
+    ".chain-sub { font-size: 9px; color: #888780; }",
+    ".chain-arrow { font-size: 14px; color: #5F5E5A; padding: 0 3px; flex-shrink: 0; }",
+    ".sym-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.25rem; }",
+    ".sym-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; display: flex; flex-direction: column; align-items: center; gap: 8px; }",
+    ".sym-card:hover, .sym-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".sym-card-label { font-size: 12px; font-weight: 600; color: #f0ede4; text-align: center; }",
+    ".sym-card-sub { font-size: 10px; color: #888780; text-align: center; }",
+    ".sym-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }",
+    ".sym-detail-body { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-top: 0.75rem; }",
+    ".sym-detail-tips { list-style: none; margin-top: 0.6rem; }",
+    ".sym-detail-tips li { font-size: 12px; color: #888780; padding: 2px 0 2px 16px; position: relative; line-height: 1.5; }",
+    ".sym-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; font-size: 11px; }",
+    ".ref-table { width: 100%; border-collapse: collapse; margin: 0.5rem 0 1rem 0; font-size: 12px; }",
+    ".ref-table th { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #BA7517; text-align: left; padding: 6px 8px; border-bottom: 1px solid #3a3a36; }",
+    ".ref-table td { padding: 6px 8px; border-bottom: 0.5px solid #2e2e2a; color: #c8c6bf; vertical-align: top; line-height: 1.4; }",
+    ".ref-table td:first-child { color: #f0ede4; font-weight: 600; white-space: nowrap; }",
+    ".progress-bar { height: 3px; background: #242420; border-radius: 2px; margin-bottom: 1rem; overflow: hidden; }",
+    ".tree-q-hint { font-size: 12px; color: #888780; margin-bottom: 0.75rem; font-style: italic; line-height: 1.45; }",
+    ".tree-btn { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; padding: 7px 16px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; text-align: left; }",
+    "@media print { body { background:#fff; color:#000; padding:0; } .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; } .bw-panel { display:none; } .bw-panel.active { display:block; } .bw-wrap { max-width:100%; } .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; } .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; } .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; } .adv-body { display:block !important; } .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; } .progress-bar { display:none; } a { color:#000; text-decoration:none; } .bw-logo a::after { content:\" builtwrightapp.com\"; color:#666; } .bw-header { border-bottom:1px solid #000; } .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; } }"
+  ],
+  "cssShared": 86
 }

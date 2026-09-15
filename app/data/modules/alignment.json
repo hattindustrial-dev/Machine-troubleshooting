@@ -6,41 +6,77 @@
   "tabs": [
     {
       "id": "types",
-      "label": "Coupling Types"
+      "label": "Coupling Types",
+      "active": true,
+      "style": ""
     },
     {
       "id": "why",
-      "label": "Why It Matters"
+      "label": "Why Alignment Matters",
+      "active": false,
+      "style": ""
     },
     {
       "id": "misalign",
-      "label": "Misalignment"
+      "label": "Types of Misalignment",
+      "active": false,
+      "style": ""
     },
     {
       "id": "methods",
-      "label": "Methods"
+      "label": "Alignment Methods",
+      "active": false,
+      "style": ""
     },
     {
       "id": "procedure",
-      "label": "Procedure"
+      "label": "Procedure",
+      "active": false,
+      "style": ""
     },
     {
       "id": "install",
-      "label": "Installation"
+      "label": "Installation Notes",
+      "active": false,
+      "style": ""
     },
     {
       "id": "troubleshoot",
-      "label": "Troubleshoot"
+      "label": "Troubleshoot",
+      "active": false,
+      "style": ""
     },
     {
       "id": "selfcheck",
-      "label": "Self-Check"
+      "label": "Self-Check",
+      "active": false,
+      "style": ""
     },
     {
       "id": "safety",
-      "label": "Safety"
+      "label": "Safety",
+      "active": false,
+      "style": "border-color:#A32D2D; color:#F09595;"
     }
   ],
+  "render": {
+    "title": "Couplings and Alignment",
+    "badge": "Module 03",
+    "tree": {
+      "progress": "al-progress",
+      "container": "al-tree"
+    },
+    "treeTab": "troubleshoot",
+    "groups": {
+      "selectCoupling": {
+        "scope": null,
+        "cardClass": ".type-card",
+        "prefix": "ccard-",
+        "data": "couplingData",
+        "display": "coupling-display"
+      }
+    }
+  },
   "cards": {
     "couplingData": {
       "jaw": {
@@ -513,5 +549,57 @@
     "troubleshoot": "<div class=\"bw-section-label\">Alignment fault diagnosis</div>\n    <div class=\"adv-wrap\" id=\"adv-method\">\n      <button class=\"adv-toggle\" onclick=\"toggleAdv('adv-method')\">\n        <div class=\"adv-toggle-left\"><i class=\"ti ti-map-2 adv-toggle-icon\"></i><span class=\"adv-toggle-label\">Diagnostic methodology</span></div>\n        <i class=\"ti ti-chevron-down adv-chevron\"></i>\n      </button>\n      <div class=\"adv-body\"><p><strong>Every alignment that will not come in has one of five causes:</strong> invalid readings (sag, a loose bracket, axial float), soft foot, pipe strain, the arithmetic, or thermal growth. Check them in that order. The validity check on rim readings (top plus bottom equals left plus right) is the first thing, because if it fails nothing after it means anything. Then soft foot on both machines. Then readings with the piping off and on. Then the sign convention and the dimensions. Then whether the machine runs hot.</p><p>A laser system removes the arithmetic and the sag and leaves every other cause in place.</p></div>\n    </div>\n    <div class=\"progress-bar\"><div class=\"progress-fill\" id=\"al-progress\" style=\"width:8%\"></div></div>\n    <div id=\"al-tree\"></div>",
     "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
     "safety": "<div class=\"bw-section-label\">Alignment safety: pinch points, moving machines, and the coupling gap</div>\n    <div class=\"callout-box red\"><div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">Alignment puts your hands on shafts, in the coupling gap, and under machine feet.</div></div><div class=\"callout-box-body\">Every step of an alignment involves either turning a shaft by hand, reaching into a coupling to fit a bracket, or moving a motor on its base with a bar or jacking bolts. <strong>The machine is locked out and verified before the guard comes off, and it stays that way until the guard goes back on.</strong></div></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-lock\" style=\"color:#F09595;\"></i> Lockout for alignment work</div><ul class=\"info-block-tips\"><li>Both machines locked out and verified: the motor, and anything that can turn the driven machine (process flow, gravity, a windmilling fan, another drive on the same shaft).</li><li>The coupling guard comes off after lockout and goes back on before the lock. No exceptions for a quick reading.</li><li>Rotating shafts for readings: turn by the coupling hub or a bar in a designed spot, never with fingers between the hubs or in the coupling gap. A hand in the gap when the shaft turns is a crushed hand.</li><li>Remote and automatic starts: a machine on a PLC or a level control can start on its own. Isolation is at the source, not at the stop button.</li><li>Regulation 851, section 75 for lockout; sections 24 and 25 for guards.</li></ul></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-arrows-move\" style=\"color:#F09595;\"></i> Moving the machine</div><ul class=\"info-block-tips\"><li>A motor on its base is heavy. Horizontal moves use jacking bolts or a bar with a fulcrum. Hands never between the motor foot and anything solid.</li><li>Vertical moves: the motor is supported on jacking bolts or on the loosened foot bolts, not on a hand or a shim being slid in. Shims go in and out with the foot bolt snugged on the other feet and the motor stable.</li><li>Never leave a machine sitting on jacking bolts alone. Foot bolts snug before hands go under it.</li><li>Large motors and pumps are lifted for base work. Rigging rules apply.</li></ul></div>\n    <div class=\"info-block\"><div class=\"info-block-title\"><i class=\"ti ti-ruler-measure\"></i> Tools and instruments</div><ul class=\"info-block-tips\"><li>Dial indicator brackets clamp to the shaft or hub. A bracket that comes loose while the shaft is turned falls into the coupling. Check it before every rotation.</li><li>Laser alignment systems are Class 2 lasers: safe for brief exposure, but do not stare into the beam and do not point it at anyone.</li><li>Feeler gauges and straightedges in a running coupling: never. Rough alignment is done locked out like everything else.</li><li>Hot alignment checks on a running machine (thermal growth) use non-contact methods or are done immediately after shutdown with the machine locked. A hot casing burns.</li></ul></div>\n    <div class=\"info-block\"><div class=\"info-block-title\"><i class=\"ti ti-player-play\"></i> Restart</div><ul class=\"info-block-tips\"><li>Guard on, all tools and shims accounted for, foot bolts torqued, alignment readings recorded.</li><li>First start with everyone clear of the coupling and the guard. Listen and watch before anyone approaches.</li><li>Recheck after torque and after the first run. Then the lock comes off the paperwork too.</li></ul></div>\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: count the shims</strong>Every shim that goes under a foot is written down. Every shim that comes out is written down. At the end the count matches. A shim left on the base finds its way under the next motor, and a shim in the coupling guard finds its way into the coupling.</div></div>"
-  }
+  },
+  "css": [
+    ".bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }",
+    ".bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 1px; padding: 7px 14px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }",
+    ".card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.5rem; }",
+    ".type-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 1rem; cursor: pointer; transition: all 0.15s; }",
+    ".type-card:hover, .type-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".type-card-icon { font-size: 24px; color: #BA7517; margin-bottom: 6px; }",
+    ".type-card-name { font-size: 14px; font-weight: 600; color: #f0ede4; margin-bottom: 2px; }",
+    ".type-card-sub { font-size: 11px; color: #888780; }",
+    ".comp-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }",
+    ".comp-detail-icon { font-size: 22px; color: #BA7517; }",
+    ".comp-detail-name { font-size: 16px; font-weight: 600; color: #f0ede4; }",
+    ".comp-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; }",
+    ".inst-step { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 0.9rem 1.1rem; margin-bottom: 8px; display: flex; gap: 12px; align-items: flex-start; }",
+    ".inst-num { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: #BA7517; background: #2a1f08; border-radius: 4px; padding: 2px 7px; flex-shrink: 0; font-weight: 600; margin-top: 1px; }",
+    ".inst-body { font-size: 13px; color: #c8c6bf; line-height: 1.55; }",
+    ".inst-body strong { font-weight: 600; color: #e8e6df; }",
+    ".inst-sub { font-size: 12px; color: #888780; margin-top: 3px; line-height: 1.5; }",
+    ".callout-tips { list-style: none; margin-top: 0.6rem; }",
+    ".callout-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }",
+    ".callout-tips li::before { content: '→'; position: absolute; left: 0; color: #EF9F27; }",
+    ".adv-wrap { border-radius: 8px; overflow: hidden; border: 0.5px solid #3a3a36; margin-bottom: 1.25rem; }",
+    ".adv-toggle { width: 100%; background: #242420; border: none; padding: 0.75rem 1.1rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; gap: 10px; }",
+    ".adv-toggle-left { display: flex; align-items: center; gap: 8px; }",
+    ".adv-toggle-icon { font-size: 15px; color: #BA7517; }",
+    ".adv-toggle-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517; font-weight: 600; }",
+    ".adv-chevron { font-size: 13px; color: #BA7517; transition: transform 0.2s; }",
+    ".adv-wrap.open .adv-chevron { transform: rotate(180deg); }",
+    ".adv-body { display: none; background: #1e1e1c; padding: 1rem 1.1rem; border-top: 0.5px solid #3a3a36; }",
+    ".adv-wrap.open .adv-body { display: block; }",
+    ".adv-body p { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-bottom: 0.75rem; }",
+    ".adv-body strong { color: #e8e6df; font-weight: 600; }",
+    ".adv-step { display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start; }",
+    ".adv-num { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: #BA7517; background: #2a1f08; border-radius: 3px; padding: 2px 6px; flex-shrink: 0; margin-top: 1px; }",
+    ".adv-step-body { font-size: 13px; color: #c8c6bf; line-height: 1.55; }",
+    ".adv-step-body strong { color: #e8e6df; }",
+    ".math-block { background: #111110; border: 0.5px solid #3a3a36; border-radius: 6px; padding: 0.75rem 1rem; margin: 0.6rem 0; font-family: 'Share Tech Mono', monospace; font-size: 12px; color: #EF9F27; line-height: 1.8; }",
+    ".svg-wrap { background: #111110; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1rem; margin-bottom: 1.25rem; text-align: center; overflow-x: auto; }",
+    ".svg-caption { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: #5F5E5A; letter-spacing: 1px; margin-top: 0.5rem; text-transform: uppercase; }",
+    ".misalign-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.25rem; }",
+    ".misalign-card { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; }",
+    ".misalign-card:hover, .misalign-card.selected { border-color: #BA7517; background: #2a1f08; }",
+    ".misalign-card-title { font-size: 13px; font-weight: 600; color: #f0ede4; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }",
+    ".misalign-card-title i { color: #BA7517; }",
+    ".misalign-card-sub { font-size: 11px; color: #888780; }",
+    ".misalign-detail { display: none; }",
+    ".misalign-detail.active { display: block; }",
+    "@media print { body { background:#fff; color:#000; padding:0; } .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; } .bw-panel { display:none; } .bw-panel.active { display:block; } .bw-wrap { max-width:100%; } .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; } .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; } .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; } .adv-body { display:block !important; } .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; } .progress-bar { display:none; } a { color:#000; text-decoration:none; } .bw-logo a::after { content:\" builtwrightapp.com\"; color:#666; } .bw-header { border-bottom:1px solid #000; } .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; } }",
+    ".tree-q-hint { font-size: 12px; color: #888780; margin-bottom: 0.75rem; font-style: italic; line-height: 1.45; }",
+    ".tree-btn { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; padding: 7px 16px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; text-align: left; }"
+  ],
+  "cssShared": 86
 }

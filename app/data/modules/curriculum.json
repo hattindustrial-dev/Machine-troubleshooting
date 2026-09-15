@@ -6,17 +6,30 @@
   "tabs": [
     {
       "id": "map",
-      "label": "Modules to Trade Standard"
+      "label": "Modules to Trade Standard",
+      "active": true,
+      "style": ""
     },
     {
       "id": "levels",
-      "label": "By Learner Level"
+      "label": "By Learner Level",
+      "active": false,
+      "style": ""
     },
     {
       "id": "paths",
-      "label": "Learning Paths"
+      "label": "Learning Paths",
+      "active": false,
+      "style": ""
     }
   ],
+  "render": {
+    "title": "Curriculum Map",
+    "badge": "Document",
+    "tree": null,
+    "treeTab": null,
+    "groups": {}
+  },
   "cards": {},
   "trees": {},
   "selfcheck": null,
@@ -24,5 +37,64 @@
     "map": "<div class=\"callout-box blue\">\n      <div class=\"callout-box-header\"><i class=\"ti ti-bulb callout-box-icon\"></i><div class=\"callout-box-title\">How the series maps to the Red Seal Industrial Mechanic (Millwright) occupational standard</div></div>\n      <div class=\"callout-box-body\">The Red Seal Occupational Standard organises the trade into major work activities, each broken into tasks and sub-tasks. BuiltWright's modules were written to the field practice, not to the standard, so the map below is by area rather than by task number. <strong>It is intended to help a training coordinator or a college instructor see what the series covers and where it fits alongside the apprenticeship curriculum, and to help an apprentice preparing for the interprovincial exam find the module for a topic. Task and sub-task numbers should be taken from the current edition of the standard, which is revised periodically.</strong> The series is a supplement to trade school and on-the-job training, not a replacement for either.</div>\n    </div>\n    <table class=\"ref-table\">\n      <tr><th>Standard area (major work activity)</th><th>BuiltWright modules</th><th>Depth</th></tr>\n      <tr><td>Common occupational skills: safety, hazard identification, lockout, documentation, tools, measuring, communication</td><td>Every Safety tab; 14 Safeguarding and PSR; 21 Precision Measurement; 16 Root Cause; 12 Reference</td><td>Strong on lockout, hazard identification, measurement, and documentation. Rigging is in RigIt.</td></tr>\n      <tr><td>Rigging, hoisting, and lifting</td><td>Referenced from 09, 10, 13, 15 Safety tabs; full coverage in RigIt</td><td>Awareness only in this series.</td></tr>\n      <tr><td>Fabrication, machining, welding, and cutting</td><td>14 Safeguarding (guard construction); 21 Precision Measurement</td><td>Light. Welding fundamentals is a planned module.</td></tr>\n      <tr><td>Prime movers: electric motors, engines, turbines</td><td>10 Motors (mechanical side); 18 Compressors (drives)</td><td>Strong on motors as mechanical machines and the electrical handoff. Engines and turbines not covered.</td></tr>\n      <tr><td>Power transmission: couplings, alignment, bearings, seals, belts, chains, gearboxes, clutches, brakes, lubrication</td><td>02 Bearings; 03 Couplings and Alignment; 04 Seals and Gaskets; 05 Lubrication; 08 Power Transmission; 09 Gearboxes; 19 Clutches and Brakes; 11 Vibration</td><td>The core of the series. Comprehensive.</td></tr>\n      <tr><td>Fluid power: hydraulics and pneumatics</td><td>06 Pneumatics; 07 Hydraulics; 20 Process Valves (actuators)</td><td>Comprehensive on systems, components, symbols, troubleshooting, and safety.</td></tr>\n      <tr><td>Process equipment: pumps, compressors, fans, blowers, valves, mixers, tanks</td><td>01 Pumps; 17 Fans and Blowers; 18 Compressors; 20 Process Valves</td><td>Strong on pumps, fans, compressors, and valves. Mixers and agitators not covered as a module.</td></tr>\n      <tr><td>Material handling: conveyors, elevators, hoists</td><td>15 Conveyors; 19 Clutches and Brakes (holding brakes, backstops)</td><td>Strong on belt conveyors; other conveyor types at overview depth.</td></tr>\n      <tr><td>Installation, foundations, and commissioning</td><td>13 Installation and Foundations; 03 Alignment; 11 Vibration (baselines)</td><td>Comprehensive.</td></tr>\n      <tr><td>Maintenance systems: preventive maintenance, condition monitoring, failure analysis</td><td>PM Task Library; 11 Vibration; 05 Lubrication (oil analysis); 16 Root Cause</td><td>Strong. The PM library is derived from every diagnostic result.</td></tr>\n      <tr><td>Machine safeguarding and regulatory compliance (Ontario)</td><td>14 Safeguarding and PSR; Reference (Standards Cited)</td><td>Comprehensive for Ontario; the regulatory content is Ontario-specific.</td></tr>\n    </table>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-list-check\"></i> Not yet covered, for completeness</div>\n      <ul class=\"info-block-tips\">\n        <li>Welding fundamentals and metallurgy (planned).</li>\n        <li>Rigging and hoisting (RigIt, a separate Hatt Industrial Trades product).</li>\n        <li>Fasteners and joining in depth (ButtonUp, a separate product; the Reference module has torque basics).</li>\n        <li>Engines, turbines, and steam systems.</li>\n        <li>Mixers, agitators, and vessels.</li>\n        <li>Machining and layout beyond measurement.</li>\n        <li>Blueprint and drawing reading beyond fluid power symbols (TradeLens, a separate product in development).</li>\n      </ul>\n    </div>",
     "levels": "<div class=\"bw-section-label\">The same modules read at three levels</div>\n    <div class=\"info-block\">\n      <table class=\"ref-table\">\n        <tr><th>Learner</th><th>Use the module for</th><th>Which tabs</th><th>Measure of progress</th></tr>\n        <tr><td>First and second year apprentice</td><td>Vocabulary, how things work, what the parts are called, why the rules exist</td><td>Overview, types and anatomy tabs, Safety, Self-Check</td><td>Self-check sections answered with the reasons read; can explain a component to a journeyman</td></tr>\n        <tr><td>Third and fourth year apprentice, new journeyperson</td><td>Diagnosis, procedures, the numbers, reading failed parts</td><td>Troubleshoot trees, installation and setup tabs, Reference tables, Root Cause</td><td>Walks a fault through a tree and arrives at the right result before being told; uses the reference tables without prompting</td></tr>\n        <tr><td>Experienced journeyperson, lead hand, maintenance supervisor</td><td>Training others, writing PMs, root cause, PSR homework, choosing the fix at the right level</td><td>Prevent-recurrence tails, PM Task Library, Root Cause report, Safeguarding PSR tab, Manager's Guide</td><td>Repeat failure rate falls on the machines they own; PM sheets carry quantities and settings; root cause reports reach a system cause</td></tr>\n      </table>\n      <div class=\"info-block-body\">A module is not read once. An apprentice reads the overview of the bearing module in year one, works the troubleshoot tree in year three, and writes the PM from it as a lead hand. The self-check and the trees are built so that the same page pays off at each stage.</div>\n    </div>",
     "paths": "<div class=\"bw-section-label\">Learning paths by role and by machine</div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-route\"></i> By role</div>\n      <table class=\"ref-table\">\n        <tr><th>Path</th><th>Order</th><th>Why this order</th></tr>\n        <tr><td>New maintenance technician onboarding (12 weeks)</td><td>14 Safeguarding; 21 Measurement; 02 Bearings; 05 Lubrication; 03 Alignment; 08 Power Transmission; 01 Pumps; 06 Pneumatics; 10 Motors; 09 Gearboxes; 15 Conveyors; 16 Root Cause</td><td>Safety and measurement first because everything depends on them; then the components that fail most; then the machines built from them; then the thinking skill. The Manager's Guide has the week-by-week version.</td></tr>\n        <tr><td>Rotating equipment specialist</td><td>02, 03, 11, 05, 09, 13, 01, 17, 10, 16</td><td>Bearings, alignment, and vibration are the core; installation prevents the faults; pumps, fans, and motors are the machines.</td></tr>\n        <tr><td>Fluid power specialist</td><td>06, 07, 20, 18, 05, 04</td><td>Pneumatics before hydraulics (same logic, lower stakes); valves and compressors are the applications; lubrication and seals are the failure modes.</td></tr>\n        <tr><td>Maintenance planner or supervisor</td><td>16 Root Cause; PM Task Library; 14 Safeguarding; 13 Installation; then the Overview and Safety tabs of every module</td><td>The planner needs the causes, the tasks, the compliance, and enough of every subject to ask good questions.</td></tr>\n        <tr><td>Interprovincial exam preparation</td><td>All Self-Check tabs, then the Reference module, then the troubleshoot trees of the modules where the self-check was weakest</td><td>The self-checks are written at the level of the exam's practical judgment questions.</td></tr>\n      </table>\n    </div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-engine\"></i> By machine</div>\n      <table class=\"ref-table\">\n        <tr><th>Machine</th><th>Modules, in the order the faults come</th></tr>\n        <tr><td>Centrifugal pump set</td><td>01 Pumps; 04 Seals; 03 Alignment; 02 Bearings; 05 Lubrication; 10 Motors; 13 Installation; 11 Vibration</td></tr>\n        <tr><td>Belt conveyor</td><td>15 Conveyors; 08 Power Transmission; 09 Gearboxes (shaft mount); 19 Clutches and Brakes (backstop); 02 Bearings; 14 Safeguarding (nip points)</td></tr>\n        <tr><td>Packaging or assembly machine</td><td>06 Pneumatics; 14 Safeguarding; 19 Clutches and Brakes; 08 Power Transmission; 10 Motors; 20 Process Valves (actuators)</td></tr>\n        <tr><td>Hydraulic press</td><td>07 Hydraulics; 14 Safeguarding (light curtains, two-hand, stop time); 19 Clutches and Brakes (clutch-brake units); 05 Lubrication</td></tr>\n        <tr><td>Compressed air system</td><td>18 Compressors; 06 Pneumatics (air quality, leaks); 20 Process Valves (relief); 17 Fans (cooling)</td></tr>\n        <tr><td>HVAC or process fan</td><td>17 Fans; 08 Power Transmission; 02 Bearings; 11 Vibration; 10 Motors</td></tr>\n        <tr><td>Overhead crane or hoist</td><td>19 Clutches and Brakes (holding brakes); 09 Gearboxes; 10 Motors; 14 Safeguarding; RigIt</td></tr>\n      </table>\n    </div>"
-  }
+  },
+  "css": [
+    ".bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }",
+    ".bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }",
+    ".family-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; color: #BA7517; text-transform: uppercase; margin: 1rem 0 0.5rem 0; }",
+    ".card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 0.5rem; }",
+    ".type-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; }",
+    ".type-card:hover, .type-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".type-card-icon { font-size: 22px; color: #BA7517; margin-bottom: 5px; }",
+    ".type-card-name { font-size: 13px; font-weight: 600; color: #f0ede4; margin-bottom: 2px; }",
+    ".type-card-sub { font-size: 11px; color: #888780; }",
+    ".comp-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }",
+    ".comp-detail-icon { font-size: 22px; color: #BA7517; }",
+    ".comp-detail-name { font-size: 16px; font-weight: 600; color: #f0ede4; }",
+    ".comp-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; }",
+    ".callout-box.blue { border-color: #185FA5; background: #0c1f33; }",
+    ".callout-box.blue .callout-box-icon, .callout-box.blue .callout-box-title, .callout-box.blue strong { color: #85B7EB; }",
+    ".callout-tips { list-style: none; margin-top: 0.6rem; }",
+    ".callout-tips li { font-size: 13px; color: #888780; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }",
+    ".callout-tips li::before { content: '→'; position: absolute; left: 0; color: #EF9F27; }",
+    ".adv-wrap { border-radius: 8px; overflow: hidden; border: 0.5px solid #3a3a36; margin-bottom: 1.25rem; }",
+    ".adv-toggle { width: 100%; background: #242420; border: none; padding: 0.75rem 1.1rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; gap: 10px; }",
+    ".adv-toggle-left { display: flex; align-items: center; gap: 8px; }",
+    ".adv-toggle-icon { font-size: 15px; color: #BA7517; }",
+    ".adv-toggle-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517; font-weight: 600; text-align: left; }",
+    ".adv-chevron { font-size: 13px; color: #BA7517; transition: transform 0.2s; }",
+    ".adv-wrap.open .adv-chevron { transform: rotate(180deg); }",
+    ".adv-body { display: none; background: #1e1e1c; padding: 1rem 1.1rem; border-top: 0.5px solid #3a3a36; }",
+    ".adv-wrap.open .adv-body { display: block; }",
+    ".adv-body p { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-bottom: 0.75rem; }",
+    ".adv-body strong { color: #e8e6df; font-weight: 600; }",
+    ".chain-wrap { background: #242420; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; overflow-x: auto; }",
+    ".chain { display: flex; align-items: center; flex-wrap: nowrap; gap: 0; }",
+    ".chain-node { flex-shrink: 0; }",
+    ".chain-box { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 6px; padding: 7px 9px; text-align: center; cursor: pointer; transition: all 0.15s; min-width: 70px; }",
+    ".chain-box:hover, .chain-box.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".chain-icon { font-size: 18px; color: #BA7517; display: block; margin-bottom: 2px; }",
+    ".chain-label { font-size: 11px; font-weight: 600; color: #e8e6df; }",
+    ".chain-sub { font-size: 9px; color: #888780; }",
+    ".chain-arrow { font-size: 14px; color: #5F5E5A; padding: 0 3px; flex-shrink: 0; }",
+    ".sym-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.25rem; }",
+    ".sym-card { background: #2e2e2a; border: 1px solid #3a3a36; border-radius: 8px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; display: flex; flex-direction: column; align-items: center; gap: 8px; }",
+    ".sym-card:hover, .sym-card.selected { border-color: #BA7517; background: #2a1f08; box-shadow: 0 0 0 2px #BA7517; }",
+    ".sym-card-label { font-size: 12px; font-weight: 600; color: #f0ede4; text-align: center; }",
+    ".sym-card-sub { font-size: 10px; color: #888780; text-align: center; }",
+    ".sym-detail { background: #2e2e2a; border: 0.5px solid #3a3a36; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }",
+    ".sym-detail-body { font-size: 13px; color: #c8c6bf; line-height: 1.6; margin-top: 0.75rem; }",
+    ".sym-detail-tips { list-style: none; margin-top: 0.6rem; }",
+    ".sym-detail-tips li { font-size: 12px; color: #888780; padding: 2px 0 2px 16px; position: relative; line-height: 1.5; }",
+    ".sym-detail-tips li::before { content: '→'; position: absolute; left: 0; color: #BA7517; font-size: 11px; }",
+    ".ref-table { width: 100%; border-collapse: collapse; margin: 0.5rem 0 1rem 0; font-size: 12px; }",
+    ".ref-table th { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #BA7517; text-align: left; padding: 6px 8px; border-bottom: 1px solid #3a3a36; }",
+    ".ref-table td { padding: 6px 8px; border-bottom: 0.5px solid #2e2e2a; color: #c8c6bf; vertical-align: top; line-height: 1.4; }",
+    ".ref-table td:first-child { color: #f0ede4; font-weight: 600; white-space: nowrap; }",
+    ".progress-bar { height: 3px; background: #242420; border-radius: 2px; margin-bottom: 1rem; overflow: hidden; }",
+    ".tree-q-hint { font-size: 12px; color: #888780; margin-bottom: 0.75rem; font-style: italic; line-height: 1.45; }",
+    ".tree-btn { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; padding: 7px 16px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; text-align: left; }",
+    "@media print { body { background:#fff; color:#000; padding:0; } .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; } .bw-panel { display:none; } .bw-panel.active { display:block; } .bw-wrap { max-width:100%; } .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; } .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; } .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; } .adv-body { display:block !important; } .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; } .progress-bar { display:none; } a { color:#000; text-decoration:none; } .bw-logo a::after { content:\" builtwrightapp.com\"; color:#666; } .bw-header { border-bottom:1px solid #000; } .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; } }"
+  ],
+  "cssShared": 86
 }
