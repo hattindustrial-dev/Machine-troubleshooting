@@ -252,6 +252,33 @@ for (const card of pocketCards) {
   }
 }
 
+// ---- 6f. Facility vocabulary ------------------------------------------------------
+// The facility layer filters hub routes by matching a machine's component types against
+// the tags on each route, so the two vocabularies have to stay the same set. A tag with no
+// entry silently drops routes from a machine; an entry no route uses is a dead option.
+const vocabulary = JSON.parse(readFileSync(join(DATA, 'components.json'), 'utf8'));
+const routeTags = new Set(hubRoutes.flatMap(([, r]) => r.components || []));
+const vocabTags = new Set(Object.keys(vocabulary.components));
+for (const tag of routeTags) {
+  if (!vocabTags.has(tag)) fail('facility', `hub routes use component '${tag}' with no entry in components.json`);
+}
+for (const tag of vocabTags) {
+  if (!routeTags.has(tag)) fail('facility', `components.json defines '${tag}', which no hub route uses`);
+}
+for (const [tag, spec] of Object.entries(vocabulary.components)) {
+  if (!spec.label || !spec.icon) fail('facility', `component '${tag}' needs a label and an icon`);
+  if (!Array.isArray(spec.fields) || !spec.fields.length) fail('facility', `component '${tag}' has no fields`);
+  const keys = new Set();
+  for (const f of spec.fields || []) {
+    if (!f.key || !f.label) fail('facility', `component '${tag}' has a field with no key or label`);
+    if (keys.has(f.key)) fail('facility', `component '${tag}' repeats field key '${f.key}'`);
+    keys.add(f.key);
+  }
+}
+if (!Array.isArray(vocabulary.equipment) || !vocabulary.equipment.some((f) => f.key === 'tag')) {
+  fail('facility', 'equipment fields must include the equipment number under key "tag"');
+}
+
 // ---- 7. Totals against the published index -------------------------------------
 if (index.totals.diagnostic_results !== results) fail('index', `totals.diagnostic_results is ${index.totals.diagnostic_results}, extracted ${results}`);
 if (index.totals.self_check_questions !== questions) fail('index', `totals.self_check_questions is ${index.totals.self_check_questions}, extracted ${questions}`);

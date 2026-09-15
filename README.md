@@ -92,6 +92,7 @@ app/data/hub.json             the hub module registry, node tree and symptom lis
 app/data/pm.json              PM task library tasks, components and intervals
 app/data/search.json          the prebuilt search index and ranking table
 app/data/pocket-cards.json    the ten printable cards, lifted out of pass3.py
+app/data/components.json      the facility layer vocabulary and its plant fields
 app/data/extract-report.json  per module counts and anything the extractor skipped
 ```
 
@@ -130,6 +131,26 @@ working: `mount()` installs the module's own function names (`selectType`,
 carries only what it adds on top. The two together are exactly the rule set the module
 had inline, which `build/validate.mjs` checks.
 
+## The facility layer
+
+`app/facility.html` is step four of the brief. A machine is an equipment number plus the
+component types it is made of, each carrying the plant's own numbers: bearing numbers,
+seal plan, lubricant, tolerances, set pressures. Reached from Facility on the hub.
+
+The component keys are the same tags the hub routes carry, which is what does the work.
+Tag a machine with its components and the 71 symptom routes filter to the ones that can
+apply to it, grouped by symptom the way the hub groups them. A pump train with a pump,
+bearings, seals, a coupling and a motor sees 45 of 71; a gearbox drive sees 26; a conveyor
+sees 6.
+
+`app/data/components.json` holds the vocabulary: 16 component types and 64 plant fields,
+plus the equipment level fields. The field lists are a starting point meant to be edited
+to match a plant. Only the 16 component keys are fixed, because the hub routes use them.
+
+Plant numbers live in this layer and nowhere else, as the brief requires. The modules stay
+universal and the numbers are overlaid beside them. Machines are kept in `localStorage` on
+the device, like the PM ticks and the root cause form, and nothing leaves the browser.
+
 ## Validation
 
 `node build/validate.mjs` checks, over `data/` and `app/`:
@@ -151,6 +172,8 @@ had inline, which `build/validate.mjs` checks.
 - every hub route resolves, is reachable from a symptom, has component tags, and is listed
   in the published index
 - the pocket card data regenerates the pocket card page exactly
+- the facility vocabulary and the hub's component tags are the same set, and every
+  component has a label, an icon and uniquely keyed fields
 
 Current state: 23 modules, 380 diagnostic results, 570 transitions, 423 self-check
 questions, 162 links, 52 script blocks, all passing.
