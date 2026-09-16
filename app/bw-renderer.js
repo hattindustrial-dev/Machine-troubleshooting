@@ -50,6 +50,9 @@
     if (el) el.classList.toggle('open');
   };
 
+  // Some modules pass the element itself rather than its id.
+  BW.toggleEl = function (el) { if (el) el.classList.toggle('open'); };
+
   // ---- card groups --------------------------------------------------------------
   // One card group: clicking a card marks it selected and renders its detail pane.
   BW.select = function (groupName, id) {
@@ -62,6 +65,19 @@
     var display = document.getElementById(g.display);
     var data = BW.current.cards[g.data];
     if (display && data && data[id]) display.innerHTML = BW.card(data[id]);
+  };
+
+  // A reveal group marks a card selected and activates a matching detail block, with no
+  // card() render. Same shape as a card group, one more element to switch.
+  BW.reveal = function (groupName, id) {
+    var g = BW.current.render.reveals[groupName];
+    if (!g) return;
+    each(document.querySelectorAll(g.cardClass), function (c) { c.classList.remove('selected'); });
+    each(document.querySelectorAll(g.detailClass), function (d) { d.classList.remove('active'); });
+    var card = document.getElementById(g.cardPrefix + id);
+    if (card) card.classList.add('selected');
+    var detail = document.getElementById(g.detailPrefix + id);
+    if (detail) detail.classList.add('active');
   };
 
   // ---- diagnostic tree -----------------------------------------------------------
@@ -163,7 +179,7 @@
   // ---- mount -------------------------------------------------------------------------
   BW.mount = function (mod, root) {
     BW.current = mod;
-    document.title = 'BuiltWright: ' + mod.render.title;
+    document.title = mod.title || ('BuiltWright: ' + mod.render.title);
 
     // Module specific CSS on top of bw.css.
     if (mod.css && mod.css.length) {
@@ -184,7 +200,8 @@
       mod.tabs.map(function (t) {
         var frag = mod.panels[t.id] || '';
         return '<div id="panel-' + t.id + '" class="bw-panel' + (t.active ? ' active' : '') + '">' + frag + '</div>';
-      }).join('');
+      }).join('') +
+      (mod.related || '') + (mod.footer || '');
 
     // The injected fragments call these by bare name.
     global.switchTab = BW.switchTab;
@@ -199,6 +216,14 @@
     Object.keys(mod.render.groups).forEach(function (name) {
       global[name] = function (id) { BW.select(name, id); };
     });
+    Object.keys(mod.render.reveals || {}).forEach(function (name) {
+      global[name] = function (id) { BW.reveal(name, id); };
+    });
+    // Modules spell the same toggle a few ways. byId matches toggleAdv, the rest are
+    // handed the element.
+    (mod.render.toggles || []).forEach(function (t) {
+      global[t.name] = t.byId ? BW.toggleAdv : BW.toggleEl;
+    });
 
     BW.go();
     global.addEventListener('hashchange', BW.go);
@@ -206,13 +231,32 @@
     if (activeTab && activeTab.id === mod.render.treeTab) BW.renderDiag('start');
   };
 
+  // Modules ship as app/data/modules/<key>.js, a script tag rather than a fetch, so the
+  // app still opens from a folder with no server. Each one calls this on load.
+  BW.registry = {};
+  BW.register = function (key, data) { BW.registry[key] = data; };
+
+  BW.mountRegistered = function (key, root) {
+    var mod = BW.registry[key];
+    if (!mod) throw new Error('module "' + key + '" did not register');
+    BW.mount(mod, root);
+    return mod;
+  };
+
+  // Load a module by injecting its data script, so this works over file:// too.
   BW.load = function (key, root) {
-    return fetch('data/modules/' + key + '.json')
-      .then(function (r) {
-        if (!r.ok) throw new Error('module "' + key + '" not found (' + r.status + ')');
-        return r.json();
-      })
-      .then(function (mod) { BW.mount(mod, root); return mod; });
+    if (BW.registry[key]) { BW.mount(BW.registry[key], root); return Promise.resolve(BW.registry[key]); }
+    return new Promise(function (resolve, reject) {
+      var el = document.createElement('script');
+      el.src = 'data/modules/' + key + '.js';
+      el.onload = function () {
+        if (!BW.registry[key]) return reject(new Error('module "' + key + '" did not register'));
+        BW.mount(BW.registry[key], root);
+        resolve(BW.registry[key]);
+      };
+      el.onerror = function () { reject(new Error('module "' + key + '" not found')); };
+      document.head.appendChild(el);
+    });
   };
 
   function each(list, fn) { Array.prototype.forEach.call(list, fn); }

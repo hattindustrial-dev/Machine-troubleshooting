@@ -138,3 +138,49 @@ export function cssRules(html) {
   }
   return out;
 }
+
+// A reveal group: mark a card selected and activate a matching detail block. Same idea as
+// a card group but it switches a second element instead of rendering card() output.
+export function revealGroups(src) {
+  const out = {};
+  for (const name of functionNames(src)) {
+    if (!/^select[A-Z]/.test(name)) continue;
+    const body = functionSource(src, name);
+    if (!body) continue;
+    const selectors = [...body.matchAll(/querySelectorAll\('([^']+)'\)/g)].map((m) => m[1]);
+    const prefixes = [...body.matchAll(/getElementById\(\s*'([^']*)'\s*\+\s*id\s*\)/g)].map((m) => m[1]);
+    if (selectors.length !== 2 || prefixes.length !== 2) continue;
+    if (!/classList\.add\('active'\)/.test(body)) continue;
+    out[name] = {
+      cardClass: selectors[0], detailClass: selectors[1],
+      cardPrefix: prefixes[0], detailPrefix: prefixes[1],
+    };
+  }
+  return out;
+}
+
+// Toggles come in two spellings: one takes an element id, the other the element.
+export function toggleFunctions(src) {
+  const out = [];
+  for (const name of functionNames(src)) {
+    if (!/^toggle/i.test(name)) continue;
+    const body = functionSource(src, name);
+    if (!body) continue;
+    const byId = /getElementById\(\s*\w+\s*\)\.classList\.toggle\('open'\)/.test(body);
+    const byEl = /^function\s+\w+\s*\(\s*(\w+)\s*\)\s*\{\s*\1\.classList\.toggle\('open'\);?\s*\}$/.test(body.trim());
+    if (byId || byEl) out.push({ name, byId });
+  }
+  return out;
+}
+
+// Functions the renderer does not cover. They stay in the module's own page so the code
+// remains where a reader expects it, rather than being evaluated out of a data file.
+const RENDERER_PROVIDES = new Set([
+  'switchTab', 'renderDiag', 'diagTo', 'diagBack', 'scRender', 'scAnswer', 'scReset',
+  'toggleAdv', 'card', 'go', 'sel',
+]);
+
+export function bespokeFunctions(src, covered) {
+  const names = functionNames(src).filter((n) => !RENDERER_PROVIDES.has(n) && !covered.has(n));
+  return names.map((n) => functionSource(src, n)).filter(Boolean);
+}

@@ -1,4 +1,4 @@
-{
+BW.register("seals", {
   "key": "seals",
   "num": "04",
   "name": "Seals and Gaskets",
@@ -89,7 +89,19 @@
         "data": "matData",
         "display": "mat-display"
       }
-    }
+    },
+    "reveals": {},
+    "toggles": [
+      {
+        "name": "toggleFailure",
+        "byId": false
+      },
+      {
+        "name": "toggleAdv",
+        "byId": true
+      }
+    ],
+    "bespoke": []
   },
   "cards": {
     "sealData": {
@@ -819,6 +831,9 @@
     "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
     "safety": "<div class=\"bw-section-label\">Seal and gasket safety: pressure, fluid, and old gaskets</div>\n    <div class=\"callout-box red\"><div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">A seal or gasket is the thing between you and the process. Replacing it means opening that boundary.</div></div><div class=\"callout-box-body\">Breaking a flange or pulling a seal opens the system to whatever is inside: pressure, temperature, chemistry. <strong>The joint is isolated, depressurised, drained, and verified before the first bolt is loosened, and it is opened from the far side, away from your body.</strong></div></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-lock\" style=\"color:#F09595;\"></i> Opening a flanged joint</div><ul class=\"info-block-tips\"><li>Isolate both sides. Drain. Vent. Confirm zero pressure on a gauge at the joint, not at the pump three metres away.</li><li>Loosen the bolts on the far side first, leaving the near-side bolts snug. If there is trapped pressure, it sprays away from you. Then crack the near side.</li><li>Never loosen a flange under pressure, and never tighten one under pressure. Hot bolting (tightening a live flange) is specialist work with its own procedure and permit.</li><li>Ring joint (RTJ) flanges spring apart when the bolts are released. Stand clear of the gap.</li><li>Spring-loaded and pressurised seal support systems (barrier fluid, Plan 53) are separate pressure sources and are isolated separately.</li></ul></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-flask\" style=\"color:#F09595;\"></i> The fluid and the temperature</div><ul class=\"info-block-tips\"><li>SDS for the process fluid. PPE for the fluid, including face protection when cracking a joint.</li><li>Hot service: the flange and the fluid stay hot after shutdown. Cool it or dress for it.</li><li>Chemical compatibility applies to your gloves too. A glove that the fluid passes through is not PPE.</li><li>Steam: a steam joint holds condensate that flashes when the pressure drops. Vent from the low point first.</li></ul></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-alert-hexagon\" style=\"color:#F09595;\"></i> Old gasket material</div><ul class=\"info-block-tips\"><li>Gaskets in plants built or maintained before the 1990s may contain asbestos. Compressed sheet gaskets, spiral wound filler, and packing all used it. Treat any unidentified old gasket as suspect.</li><li>Do not grind, wire brush, or sand old gasket residue dry. Wet removal, hand scraping, and the plant's asbestos procedure. Dispose of it as the procedure says.</li><li>PTFE begins to degrade above about 260°C and releases toxic fumes at welding and burning temperatures. Do not heat, burn, or weld near PTFE gaskets and seals. Old PTFE residue is not removed with a torch.</li><li>Flexible graphite is not a health hazard but it is conductive; keep the dust away from electrical equipment.</li></ul></div>\n    <div class=\"info-block\"><div class=\"info-block-title\"><i class=\"ti ti-hand-off\"></i> Mechanical seal handling</div><ul class=\"info-block-tips\"><li>Seal faces are silicon carbide, tungsten carbide, or ceramic. They chip and the chips are sharp. Handle by the edges, with gloves for the metal parts and clean bare hands or lint-free gloves for the faces.</li><li>Cartridge seals have compressed springs. Remove the setting clips only after the seal is fully installed and the set screws are tight, or the springs unload the sleeve.</li><li>Solvents for cleaning gasket faces and seal parts: ventilation, gloves, no ignition sources.</li></ul></div>\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: gauge at the joint</strong>A pressure gauge on the pump discharge reading zero says the pump is depressurised. It says nothing about the section of pipe between two closed valves that you are about to open. If the joint does not have its own vent or gauge, fit a bleed at the joint before the bolts come out.</div></div>"
   },
+  "title": "BuiltWright, Seals and Gaskets, Module 04",
+  "related": "<div class=\"related\"><div class=\"related-label\">Related modules</div><a href=\"builtwright_pumps_combined_v1.html#leaks\">Pumps: seal versus packing</a><a href=\"builtwright_process_valves_v1.html#packing\">Valves: stem packing and seats</a><a href=\"builtwright_reference_v1.html#pipe\">Reference: flange bolting and sequence</a><a href=\"builtwright_hydraulics_v1.html#fluid\">Hydraulics: seal compatibility with the fluid</a><a href=\"builtwright_root_cause_v1.html#examples\">Root Cause: the third seal in a year</a></div>",
+  "footer": "<div class=\"bw-footer\">builtwrightapp.com &nbsp;·&nbsp; module 04 of series &nbsp;·&nbsp; seals and gaskets</div>",
   "css": [
     ".bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }",
     ".bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }",
@@ -889,4 +904,4 @@
     ".tree-btn { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; padding: 7px 16px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; text-align: left; }"
   ],
   "cssShared": 86
-}
+});

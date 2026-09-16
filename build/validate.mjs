@@ -11,6 +11,7 @@ import { writeFileSync, mkdtempSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { scriptBlocks } from './lib/scan.mjs';
 import { cssRules } from './lib/config.mjs';
+import { readModules } from './lib/modules.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const APP = join(ROOT, 'app');
@@ -20,9 +21,10 @@ const failures = [];
 const notes = [];
 const fail = (where, msg) => failures.push(`${where}: ${msg}`);
 
-const modules = readdirSync(join(DATA, 'modules'))
-  .filter((f) => f.endsWith('.json'))
-  .map((f) => JSON.parse(readFileSync(join(DATA, 'modules', f), 'utf8')));
+const modules = readModules(join(DATA, 'modules'));
+
+// A cut over page mounts the renderer instead of carrying its content inline.
+const isShell = (html) => html.includes('bw-renderer.js');
 
 // ---- 1. Diagnostic trees ----------------------------------------------------
 let results = 0, transitions = 0, missingPrevent = 0;
@@ -94,10 +96,18 @@ for (const mod of modules) {
 // ---- 3. Tabs and panels agree with the HTML ---------------------------------
 for (const mod of modules) {
   const html = readFileSync(join(APP, mod.source), 'utf8');
-  const panelIds = new Set([...html.matchAll(/id="panel-([a-z0-9]+)"/g)].map((m) => m[1]));
+  const shell = isShell(html);
+  const panelIds = shell
+    ? new Set(mod.tabs.map((t) => t.id))
+    : new Set([...html.matchAll(/id="panel-([a-z0-9]+)"/g)].map((m) => m[1]));
   for (const tab of mod.tabs) {
     if (!panelIds.has(tab.id)) fail(mod.key, `tab '${tab.id}' has no panel in ${mod.source}`);
-    if (!(tab.id in mod.panels)) fail(mod.key, `tab '${tab.id}' has no extracted panel HTML`);
+    if (!mod.panels[tab.id]) fail(mod.key, `tab '${tab.id}' has no panel content in the data`);
+  }
+  // Once the page is a shell the data is the only copy of the content.
+  if (shell) {
+    if (!mod.title || !mod.related || !mod.footer) fail(mod.key, 'shell page but the data has no title, related strip or footer');
+    if (!mod.css.length && !mod.cssShared) fail(mod.key, 'shell page but the data carries no CSS');
   }
   // Content modules end on Safety. The three documents (curriculum, manager, reference)
   // have no safety tab by design, so only flag a safety tab that is not last.
@@ -109,7 +119,16 @@ for (const mod of modules) {
 
 // ---- 4. Links and panel fragments across the app -----------------------------
 const files = readdirSync(APP).filter((f) => /^builtwright_.*\.html$/.test(f));
-const panels = new Map(files.map((f) => [f, new Set([...readFileSync(join(APP, f), 'utf8').matchAll(/id="panel-([a-z0-9]+)"/g)].map((m) => m[1]))]));
+const bySource = new Map(modules.map((m) => [m.source, m]));
+
+// A cut over module has no panels in its HTML: the renderer builds them from the data at
+// load. For those files the tab ids in the data are the panels the page will have, which
+// is what every link into the page has to resolve against.
+const panels = new Map(files.map((f) => {
+  const html = readFileSync(join(APP, f), 'utf8');
+  if (isShell(html) && bySource.has(f)) return [f, new Set(bySource.get(f).tabs.map((t) => t.id))];
+  return [f, new Set([...html.matchAll(/id="panel-([a-z0-9]+)"/g)].map((m) => m[1]))];
+}));
 let links = 0;
 for (const f of files) {
   const html = readFileSync(join(APP, f), 'utf8');
@@ -141,10 +160,27 @@ for (const f of files) {
   }
 }
 
+// Links inside the module data. Once a page is a shell its Related strip and every link
+// in its panels live here, so checking only the HTML would stop seeing most of them.
+for (const mod of modules) {
+  const content = [mod.related || '', mod.footer || '', ...Object.values(mod.panels)].join('\n');
+  for (const m of content.matchAll(/href="([^"#]+\.html)(?:#([^"]*))?"/g)) {
+    links++;
+    if (!existsSync(join(APP, m[1]))) fail(mod.key, `data links to missing file ${m[1]}`);
+    else if (m[2] && !panels.get(m[1]).has(m[2])) fail(mod.key, `data links to missing panel ${m[1]}#${m[2]}`);
+  }
+}
+
 // ---- 5. House style: no em dashes --------------------------------------------
+// Checked over the pages and over the module data, because the prose moved into the data
+// when the pages became shells.
 for (const f of files) {
   const n = (readFileSync(join(APP, f), 'utf8').match(/—/g) || []).length;
   if (n) fail(f, `${n} em dash(es)`);
+}
+for (const mod of modules) {
+  const n = (JSON.stringify(mod).match(/—/g) || []).length;
+  if (n) fail(mod.key, `${n} em dash(es) in the module data`);
 }
 
 // ---- 6. Inline script syntax --------------------------------------------------
@@ -167,7 +203,9 @@ for (const f of files) {
 const sharedCssRules = cssRules('<style>' + readFileSync(join(APP, 'bw.css'), 'utf8') + '</style>');
 for (const mod of modules) {
   if (!Object.keys(mod.trees).length) continue; // bw.css is built from the content modules
-  const original = cssRules(readFileSync(join(APP, mod.source), 'utf8'));
+  const source = readFileSync(join(APP, mod.source), 'utf8');
+  if (isShell(source)) continue; // nothing inline left to compare against
+  const original = cssRules(source);
   const rebuilt = new Set([...sharedCssRules, ...mod.css]);
   const lost = original.filter((r) => !rebuilt.has(r));
   const extra = [...rebuilt].filter((r) => !original.includes(r));
@@ -277,6 +315,26 @@ for (const [tag, spec] of Object.entries(vocabulary.components)) {
 }
 if (!Array.isArray(vocabulary.equipment) || !vocabulary.equipment.some((f) => f.key === 'tag')) {
   fail('facility', 'equipment fields must include the equipment number under key "tag"');
+}
+
+// ---- 6g. Service worker precache ----------------------------------------------
+// addAll rejects as a whole if any entry 404s, which fails the install and leaves the app
+// with no offline cache at all. Every listed file has to exist.
+const swSource = readFileSync(join(APP, 'sw.js'), 'utf8');
+const shellMatch = swSource.match(/const SHELL=(\[[\s\S]*?\]);/);
+if (!shellMatch) fail('sw.js', 'no SHELL list found');
+else {
+  const shellList = JSON.parse(shellMatch[1]);
+  for (const entry of shellList) {
+    if (!existsSync(join(APP, entry))) fail('sw.js', `precache lists ${entry}, which does not exist`);
+  }
+  // A shell page is useless offline without its data file.
+  for (const mod of modules) {
+    if (!isShell(readFileSync(join(APP, mod.source), 'utf8'))) continue;
+    for (const needed of [mod.source, `data/modules/${mod.key}.js`, 'bw-renderer.js', 'bw.css']) {
+      if (!shellList.includes(needed)) fail('sw.js', `${mod.key} is a shell but ${needed} is not precached`);
+    }
+  }
 }
 
 // ---- 7. Totals against the published index -------------------------------------

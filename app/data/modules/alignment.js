@@ -1,4 +1,4 @@
-{
+BW.register("alignment", {
   "key": "alignment",
   "num": "03",
   "name": "Couplings and Alignment",
@@ -75,7 +75,22 @@
         "data": "couplingData",
         "display": "coupling-display"
       }
-    }
+    },
+    "reveals": {
+      "selectMisalign": {
+        "cardClass": ".misalign-card",
+        "detailClass": ".misalign-detail",
+        "cardPrefix": "mcard-",
+        "detailPrefix": "mdetail-"
+      }
+    },
+    "toggles": [
+      {
+        "name": "toggleAdv",
+        "byId": true
+      }
+    ],
+    "bespoke": []
   },
   "cards": {
     "couplingData": {
@@ -550,6 +565,9 @@
     "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
     "safety": "<div class=\"bw-section-label\">Alignment safety: pinch points, moving machines, and the coupling gap</div>\n    <div class=\"callout-box red\"><div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">Alignment puts your hands on shafts, in the coupling gap, and under machine feet.</div></div><div class=\"callout-box-body\">Every step of an alignment involves either turning a shaft by hand, reaching into a coupling to fit a bracket, or moving a motor on its base with a bar or jacking bolts. <strong>The machine is locked out and verified before the guard comes off, and it stays that way until the guard goes back on.</strong></div></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-lock\" style=\"color:#F09595;\"></i> Lockout for alignment work</div><ul class=\"info-block-tips\"><li>Both machines locked out and verified: the motor, and anything that can turn the driven machine (process flow, gravity, a windmilling fan, another drive on the same shaft).</li><li>The coupling guard comes off after lockout and goes back on before the lock. No exceptions for a quick reading.</li><li>Rotating shafts for readings: turn by the coupling hub or a bar in a designed spot, never with fingers between the hubs or in the coupling gap. A hand in the gap when the shaft turns is a crushed hand.</li><li>Remote and automatic starts: a machine on a PLC or a level control can start on its own. Isolation is at the source, not at the stop button.</li><li>Regulation 851, section 75 for lockout; sections 24 and 25 for guards.</li></ul></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-arrows-move\" style=\"color:#F09595;\"></i> Moving the machine</div><ul class=\"info-block-tips\"><li>A motor on its base is heavy. Horizontal moves use jacking bolts or a bar with a fulcrum. Hands never between the motor foot and anything solid.</li><li>Vertical moves: the motor is supported on jacking bolts or on the loosened foot bolts, not on a hand or a shim being slid in. Shims go in and out with the foot bolt snugged on the other feet and the motor stable.</li><li>Never leave a machine sitting on jacking bolts alone. Foot bolts snug before hands go under it.</li><li>Large motors and pumps are lifted for base work. Rigging rules apply.</li></ul></div>\n    <div class=\"info-block\"><div class=\"info-block-title\"><i class=\"ti ti-ruler-measure\"></i> Tools and instruments</div><ul class=\"info-block-tips\"><li>Dial indicator brackets clamp to the shaft or hub. A bracket that comes loose while the shaft is turned falls into the coupling. Check it before every rotation.</li><li>Laser alignment systems are Class 2 lasers: safe for brief exposure, but do not stare into the beam and do not point it at anyone.</li><li>Feeler gauges and straightedges in a running coupling: never. Rough alignment is done locked out like everything else.</li><li>Hot alignment checks on a running machine (thermal growth) use non-contact methods or are done immediately after shutdown with the machine locked. A hot casing burns.</li></ul></div>\n    <div class=\"info-block\"><div class=\"info-block-title\"><i class=\"ti ti-player-play\"></i> Restart</div><ul class=\"info-block-tips\"><li>Guard on, all tools and shims accounted for, foot bolts torqued, alignment readings recorded.</li><li>First start with everyone clear of the coupling and the guard. Listen and watch before anyone approaches.</li><li>Recheck after torque and after the first run. Then the lock comes off the paperwork too.</li></ul></div>\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: count the shims</strong>Every shim that goes under a foot is written down. Every shim that comes out is written down. At the end the count matches. A shim left on the base finds its way under the next motor, and a shim in the coupling guard finds its way into the coupling.</div></div>"
   },
+  "title": "BuiltWright, Couplings and Alignment, Module 03",
+  "related": "<div class=\"related\"><div class=\"related-label\">Related modules</div><a href=\"builtwright_installation_v1.html#overview\">Installation: the base the alignment sits on</a><a href=\"builtwright_reference_v1.html#align\">Reference: tolerances by rpm and the correction math</a><a href=\"builtwright_precision_measurement_v1.html#indicators\">Measurement: indicators, sag, and the validity check</a><a href=\"builtwright_vibration_v1.html#spectrum\">Vibration: 1x and 2x signatures</a><a href=\"builtwright_motors_v1.html#mounting\">Motors: soft foot and the air gap</a><a href=\"builtwright_power_transmission_v1.html#alignment\">Belt drives: sheave and sprocket alignment</a></div>",
+  "footer": "<div class=\"bw-footer\">builtwrightapp.com &nbsp;·&nbsp; module 03 of series &nbsp;·&nbsp; couplings and alignment</div>",
   "css": [
     ".bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }",
     ".bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 1px; padding: 7px 14px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }",
@@ -602,4 +620,4 @@
     ".tree-btn { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; padding: 7px 16px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; text-align: left; }"
   ],
   "cssShared": 86
-}
+});

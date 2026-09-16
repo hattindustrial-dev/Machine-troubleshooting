@@ -1,4 +1,4 @@
-{
+BW.register("measurement", {
   "key": "measurement",
   "num": "21",
   "name": "Precision Measurement",
@@ -75,7 +75,15 @@
         "data": "typeData",
         "display": "type-display"
       }
-    }
+    },
+    "reveals": {},
+    "toggles": [
+      {
+        "name": "toggleAdv",
+        "byId": true
+      }
+    ],
+    "bespoke": []
   },
   "cards": {
     "typeData": {
@@ -633,6 +641,9 @@
     "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
     "safety": "<div class=\"bw-section-label\">Measuring safely</div>\n    <div class=\"callout-box red\">\n      <div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">Nothing is measured while it moves</div></div>\n      <div class=\"callout-box-body\">A shaft run-out is taken with the shaft turned by hand, locked out. A bore is measured with the machine stopped and verified. A belt tension is checked with the drive locked out. <strong>An instrument on a running part is a lever that will be snatched, and the hand holding it goes with it.</strong></div>\n    </div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\">\n      <ul class=\"info-block-tips\">\n        <li>Lockout and stored energy before hands and tools go on a shaft, in a bore, or into a housing. Turning a shaft by hand for readings is done with hands clear of the coupling and the keyway, and with the driven side unable to turn it back.</li>\n        <li>Sharp edges: freshly machined parts, keyways, and broken parts cut. Deburr before measuring; gloves for handling, bare hands for the measurement itself if fine feel is needed, and then only on deburred edges.</li>\n        <li>Hot parts burn and read wrong. Infrared first; let it cool to something you can hold.</li>\n        <li>Heavy parts on a surface plate: lifted with the right equipment, set down without pinching fingers under them, and blocked so they cannot roll.</li>\n        <li>Magnetic bases: strong, and they snap onto steel. Fingers out from between the base and the surface; keep them away from anything that rotates.</li>\n        <li>Solvents for cleaning parts and anvils: ventilation, gloves, no ignition sources.</li>\n        <li>Working in a housing or a bore with an inside instrument: nobody else can start or turn the machine. Your lock, your verification.</li>\n      </ul>\n    </div>"
   },
+  "title": "BuiltWright: Precision Measurement: Module 21",
+  "related": "<div class=\"related\"><div class=\"related-label\">Related modules</div><a href=\"builtwright_reference_v1.html#fits\">Reference: the fits these tools measure</a><a href=\"builtwright_coupling_alignment_v1.html#methods\">Alignment: dial indicator methods</a><a href=\"builtwright_bearing_module_v1.html#install\">Bearing seats and bores</a><a href=\"builtwright_gearboxes_v1.html#setup\">Gearboxes: backlash and contact pattern</a><a href=\"builtwright_installation_v1.html#baseplate\">Installation: the machinist level</a></div>",
+  "footer": "<div class=\"bw-footer\">builtwrightapp.com &nbsp;·&nbsp; module 21 of series &nbsp;·&nbsp; precision measurement</div>",
   "css": [
     ".bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }",
     ".bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }",
@@ -692,4 +703,4 @@
     "@media print { body { background:#fff; color:#000; padding:0; } .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; } .bw-panel { display:none; } .bw-panel.active { display:block; } .bw-wrap { max-width:100%; } .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; } .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; } .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; } .adv-body { display:block !important; } .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; } .progress-bar { display:none; } a { color:#000; text-decoration:none; } .bw-logo a::after { content:\" builtwrightapp.com\"; color:#666; } .bw-header { border-bottom:1px solid #000; } .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; } }"
   ],
   "cssShared": 86
-}
+});

@@ -10,12 +10,8 @@
       "tabs": 8,
       "skipped": [
         {
-          "name": "history",
-          "reason": "runtime state"
-        },
-        {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },
@@ -28,12 +24,8 @@
       "tabs": 6,
       "skipped": [
         {
-          "name": "diagHistory",
-          "reason": "runtime state"
-        },
-        {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },
@@ -46,8 +38,8 @@
       "tabs": 9,
       "skipped": [
         {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },
@@ -60,8 +52,8 @@
       "tabs": 9,
       "skipped": [
         {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },
@@ -74,12 +66,8 @@
       "tabs": 8,
       "skipped": [
         {
-          "name": "diagHistory",
-          "reason": "runtime state"
-        },
-        {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },
@@ -92,12 +80,8 @@
       "tabs": 8,
       "skipped": [
         {
-          "name": "diagHistory",
-          "reason": "runtime state"
-        },
-        {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },
@@ -110,8 +94,8 @@
       "tabs": 9,
       "skipped": [
         {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },
@@ -124,8 +108,8 @@
       "tabs": 9,
       "skipped": [
         {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },
@@ -138,8 +122,8 @@
       "tabs": 9,
       "skipped": [
         {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },
@@ -152,8 +136,8 @@
       "tabs": 10,
       "skipped": [
         {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },
@@ -166,8 +150,8 @@
       "tabs": 9,
       "skipped": [
         {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },
@@ -180,8 +164,8 @@
       "tabs": 10,
       "skipped": [
         {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },
@@ -194,8 +178,8 @@
       "tabs": 10,
       "skipped": [
         {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },
@@ -208,8 +192,8 @@
       "tabs": 9,
       "skipped": [
         {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },
@@ -222,8 +206,8 @@
       "tabs": 11,
       "skipped": [
         {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },
@@ -236,8 +220,8 @@
       "tabs": 8,
       "skipped": [
         {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },
@@ -250,8 +234,8 @@
       "tabs": 9,
       "skipped": [
         {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },
@@ -264,8 +248,8 @@
       "tabs": 8,
       "skipped": [
         {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },
@@ -278,8 +262,8 @@
       "tabs": 8,
       "skipped": [
         {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },
@@ -292,8 +276,8 @@
       "tabs": 9,
       "skipped": [
         {
-          "name": "scAnswered",
-          "reason": "runtime state"
+          "name": "-",
+          "reason": "page is a shell, data carried through"
         }
       ]
     },

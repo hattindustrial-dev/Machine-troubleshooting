@@ -12,6 +12,7 @@
 
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
+import { readModule } from './lib/modules.mjs';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -50,7 +51,7 @@ function interval(text) {
   return 'Each PM';
 }
 
-const load = (key) => JSON.parse(readFileSync(join(DATA, 'modules', `${key}.json`), 'utf8'));
+const load = (key) => readModule(join(DATA, 'modules'), key);
 
 // ---- PM task library -------------------------------------------------------------
 function derivePmTasks() {

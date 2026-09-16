@@ -1,4 +1,4 @@
-{
+BW.register("lube", {
   "key": "lube",
   "num": "05",
   "name": "Lubrication Systems",
@@ -76,7 +76,19 @@
         "data": "systemData",
         "display": "system-display"
       }
-    }
+    },
+    "reveals": {},
+    "toggles": [
+      {
+        "name": "toggleContam",
+        "byId": false
+      },
+      {
+        "name": "toggleAdv",
+        "byId": true
+      }
+    ],
+    "bespoke": []
   },
   "cards": {
     "lubeData": {
@@ -815,6 +827,9 @@
     "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
     "safety": "<div class=\"bw-section-label\">Lubrication safety: injection, fire, and the lube room</div>\n    <div class=\"callout-box red\"><div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">Lubricants are the safest looking materials in the plant, and they injure people every year.</div></div><div class=\"callout-box-body\">Grease guns inject. Hot oil burns. Oil mist and oil-soaked rags ignite. Spilled oil puts people on the floor. Centralized systems run at hundreds of bar. <strong>Treat lubrication as fluid handling, with the same rules as any other pressurised, flammable, slippery fluid.</strong></div></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-syringe\" style=\"color:#F09595;\"></i> Injection injury from grease guns and centralized systems</div><ul class=\"info-block-tips\"><li>A hand grease gun develops enough pressure to push grease through skin. Never test a coupler against a hand, never hold a hose end, and never clear a blocked fitting by pointing the gun at anything but the fitting.</li><li>Centralized grease systems (progressive, dual-line) run at 100 to 400 bar. A line that has been cut, a fitting that has cracked, or a blocked point that is being cleared can spray at injection pressure. Depressurise the line before opening it.</li><li>An injection wound looks like a puncture. It is a surgical emergency. Tell the triage staff it is a high pressure injection and what the material was.</li><li>Pneumatic and battery grease guns: coupler on the fitting before the trigger, hands behind the gun.</li></ul></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-flame\" style=\"color:#F09595;\"></i> Hot oil and fire</div><ul class=\"info-block-tips\"><li>Gearbox and hydraulic oil at 60 to 90°C burns on contact. Drain into a container that will not deform, and let it cool before handling.</li><li>Oil-soaked rags self-heat. Metal bin with a lid, emptied daily. A pile of oily rags in a corner is a fire waiting for a warm afternoon.</li><li>Oil mist lubrication systems and oil sprays near hot surfaces are ignition hazards. Mist collects on surfaces and in ducts.</li><li>Compressed air on an oil-soaked surface aerosolises it. Aerosolised oil is flammable and breathable.</li><li>Aerosol chain lubes and penetrating oils are flammable propellants. Not near hot work.</li></ul></div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\"><div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-hand-off\" style=\"color:#F09595;\"></i> Handling and skin</div><ul class=\"info-block-tips\"><li>Prolonged skin contact with mineral oils causes dermatitis and worse. Nitrile gloves for oil handling, and wash before eating. Used oil is dirtier than new oil in ways that matter to skin.</li><li>Some EP additives, some synthetics, and all used oils carry hazard warnings on the SDS. Read it for the products you handle every day, not just the exotic ones.</li><li>Oil on the floor is the plant's most common slip and fall. Clean it now, not at the end of the job. Absorbent on hand at every lube point.</li></ul></div>\n    <div class=\"info-block\"><div class=\"info-block-title\"><i class=\"ti ti-building-warehouse\"></i> Lube room and storage</div><ul class=\"info-block-tips\"><li>Drums stored on containment, indoors, labelled, with the lids on and the bungs tight. A drum open to the plant air is a drum full of dirt and water in a month.</li><li>Each product with its own dedicated pump, container, and grease gun, colour coded. Cross-contamination is a reliability problem and an incompatibility reaction is a chemical problem.</li><li>Reservoirs and tanks large enough to enter are confined spaces. Permit, atmosphere test, attendant.</li><li>Used oil is a regulated waste. Segregated, labelled, and collected by a licensed hauler. Never down a drain.</li><li>Spill kit sized for the largest container in the room, and everyone knows where it is.</li></ul></div>\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip: the coupler goes on first</strong>A grease gun trigger pulled while the coupler is being lined up on a fitting sends a jet of grease at whatever is in front of it, at a pressure that goes through a glove. Coupler on, seated, hand clear, then the trigger. Every time, on every fitting, until it is a reflex.</div></div>"
   },
+  "title": "BuiltWright, Lubrication Systems, Module 05",
+  "related": "<div class=\"related\"><div class=\"related-label\">Related modules</div><a href=\"builtwright_bearing_module_v1.html#lube\">Bearings: grease and overgreasing</a><a href=\"builtwright_gearboxes_v1.html#lube\">Gearboxes: gear oil, level, and the sight glass</a><a href=\"builtwright_hydraulics_v1.html#fluid\">Hydraulics: cleanliness codes and filtration</a><a href=\"builtwright_compressors_v1.html#screw\">Compressors: compressor oil and the separator</a><a href=\"builtwright_reference_v1.html#lube\">Reference: viscosity crosswalk and temperature limits</a></div>",
+  "footer": "<div class=\"bw-footer\">builtwrightapp.com &nbsp;·&nbsp; module 05 of series &nbsp;·&nbsp; lubrication systems</div>",
   "css": [
     ".bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }",
     ".bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }",
@@ -880,4 +895,4 @@
     "@media print { body { background:#fff; color:#000; padding:0; } .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; } .bw-panel { display:none; } .bw-panel.active { display:block; } .bw-wrap { max-width:100%; } .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; } .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; } .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; } .adv-body { display:block !important; } .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; } .progress-bar { display:none; } a { color:#000; text-decoration:none; } .bw-logo a::after { content:\" builtwrightapp.com\"; color:#666; } .bw-header { border-bottom:1px solid #000; } .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; } }"
   ],
   "cssShared": 86
-}
+});

@@ -1,4 +1,4 @@
-{
+BW.register("valves", {
   "key": "valves",
   "num": "20",
   "name": "Process Valves and Actuators",
@@ -69,7 +69,15 @@
         "data": "typeData",
         "display": "type-display"
       }
-    }
+    },
+    "reveals": {},
+    "toggles": [
+      {
+        "name": "toggleAdv",
+        "byId": true
+      }
+    ],
+    "bespoke": []
   },
   "cards": {
     "typeData": {
@@ -653,6 +661,9 @@
     "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
     "safety": "<div class=\"bw-section-label\">Valve safety: the process is on the other side</div>\n    <div class=\"callout-box red\">\n      <div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">A valve is a pressure boundary. Opening it up opens the process.</div></div>\n      <div class=\"callout-box-body\">Repacking, reseating, or removing a valve exposes whatever is in the line: pressure, temperature, chemistry. Isolation is upstream and downstream, drained, vented, and verified at the valve, with double block and bleed on hazardous service. <strong>A single valve that has been used to throttle is a valve that is passing, and it is not an isolation for the work on the valve next to it.</strong></div>\n    </div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\">\n      <ul class=\"info-block-tips\">\n        <li>Isolation for valve work: Pumps module Safety tab (process isolation), Seals module Safety tab (opening a joint). Verify zero at the valve, not somewhere else.</li>\n        <li>Backseating to repack a valve under pressure is a specific procedure for specific valves, with the risk that the backseat is worn. It is not a routine method.</li>\n        <li>Actuator stored energy: a spring-return actuator holds a compressed spring; a double-acting one holds air on one side. Isolate and vent the air; follow the manufacturer procedure for spring release before the actuator is opened. A large spring actuator can injure severely on disassembly.</li>\n        <li>Electric actuators: lockout at the actuator supply and the control circuit; the hand-auto clutch position. A motor operated valve that starts while a hand is on the handwheel spins it.</li>\n        <li>Fail position after work: verify by removing the air or signal, with the process safe, before returning the loop to auto. A valve that fails the wrong way is a process incident.</li>\n        <li>Relief valves: never gagged, never blocked in, never set above the vessel rating, tested and sealed by a qualified shop on the interval. Lifting a relief valve by hand to \"check it\" on live service is a specific procedure with a specific risk.</li>\n        <li>Water hammer: closing a valve fast on a long liquid line, or a check valve slamming, produces a pressure spike that breaks things. Close slowly; fit dashpots or non-slam checks where slam is a known issue.</li>\n        <li>Hot valves and steam: the body and the packing are at line temperature. Steam packing leaks are invisible near the gland and cut flesh at the exit; approach a steam leak from the side with a broom handle, not a hand.</li>\n        <li>Old packing and gaskets: asbestos until proven otherwise on pre-1990s valves.</li>\n      </ul>\n    </div>"
   },
+  "title": "BuiltWright: Process Valves and Actuators: Module 20",
+  "related": "<div class=\"related\"><div class=\"related-label\">Related modules</div><a href=\"builtwright_pneumatics_v1.html#actuators\">Pneumatic actuators</a><a href=\"builtwright_hydraulics_v1.html#valves\">Hydraulic valves: the same functions</a><a href=\"builtwright_seals_gaskets_v1.html#install\">Flange and packing practice</a><a href=\"builtwright_pumps_combined_v1.html#chain\">Pumps: valves in the system chain</a><a href=\"builtwright_compressors_v1.html#safety\">Relief valves on compressors</a></div>",
+  "footer": "<div class=\"bw-footer\">builtwrightapp.com &nbsp;·&nbsp; module 20 of series &nbsp;·&nbsp; process valves and actuators</div>",
   "css": [
     ".bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }",
     ".bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }",
@@ -712,4 +723,4 @@
     "@media print { body { background:#fff; color:#000; padding:0; } .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; } .bw-panel { display:none; } .bw-panel.active { display:block; } .bw-wrap { max-width:100%; } .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; } .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; } .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; } .adv-body { display:block !important; } .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; } .progress-bar { display:none; } a { color:#000; text-decoration:none; } .bw-logo a::after { content:\" builtwrightapp.com\"; color:#666; } .bw-header { border-bottom:1px solid #000; } .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; } }"
   ],
   "cssShared": 86
-}
+});

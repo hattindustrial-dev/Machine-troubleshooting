@@ -1,4 +1,4 @@
-{
+BW.register("safeguarding", {
   "key": "safeguarding",
   "num": "14",
   "name": "Machine Safeguarding and PSR",
@@ -95,7 +95,15 @@
         "data": "devData",
         "display": "dev-display"
       }
-    }
+    },
+    "reveals": {},
+    "toggles": [
+      {
+        "name": "toggleAdv",
+        "byId": true
+      }
+    ],
+    "bespoke": []
   },
   "cards": {
     "hazData": {
@@ -911,6 +919,9 @@
     "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
     "safety": "<div class=\"bw-section-label\">Working on safeguarding systems</div>\n    <div class=\"callout-box red\">\n      <div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">The person testing the safeguard is standing where it is supposed to protect someone</div></div>\n      <div class=\"callout-box-body\">Functional testing of an interlock, a light curtain, or a two-hand control means operating the machine with the safeguard in the loop and checking that it stops. The tester is at the hazard. <strong>Test with a test piece (a rod for the curtain, a hand-shaped block for the two-hand shroud), never with a body part, and with the machine in a mode where the worst-case failure of the safeguard cannot reach anyone.</strong></div>\n    </div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\">\n      <div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-lock\" style=\"color:#F09595;\"></i> Lockout versus safeguarding</div>\n      <ul class=\"info-block-tips\">\n        <li>An interlocked guard is a production safeguard. It is not a lockout. Opening an interlocked door and reaching in is protected only by the safety circuit, which can fail, and only if guard locking holds the door until the hazard has stopped.</li>\n        <li>Maintenance inside a machine is done under lockout, Regulation 851 section 75 and 76, CSA Z460. The interlock is a backup, not the isolation.</li>\n        <li>Building or modifying a guard on a machine: the machine is locked out. A guard that is being fitted is a guard that is not yet protecting anyone.</li>\n        <li>Testing after modification: a written test procedure, a second person, and a mode where a safeguard failure does not injure the tester.</li>\n      </ul>\n    </div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\">\n      <div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-cpu\" style=\"color:#F09595;\"></i> Safety circuits are not to be improvised</div>\n      <ul class=\"info-block-tips\">\n        <li>Jumpering an interlock, muting a curtain, or bridging a safety relay channel \"just to test\" removes the protection for everyone, not just the person who did it. If a safeguard must be bypassed for a task, that task needs a designed mode (hold-to-run, reduced speed, enabling device) built into the safety system by whoever is qualified to modify it.</li>\n        <li>Wiring changes to a safety circuit are done by someone qualified on the system, documented, and followed by a functional test of every safety function on the machine, not just the one that changed.</li>\n        <li>A safety relay or safety PLC fault that is reset repeatedly without diagnosis is a fault that will eventually be a failure to stop.</li>\n      </ul>\n    </div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-hammer\"></i> Fabricating guards</div>\n      <ul class=\"info-block-tips\">\n        <li>Cutting and welding guard material: standard hot work and metalworking hazards. Expanded metal edges are sharp; grind and deburr before handling.</li>\n        <li>Polycarbonate panels: the right material for impact and visibility, and it must be the right grade and thickness for the ejection hazard. Acrylic shatters.</li>\n        <li>A guard is a structure. Hinges, latches, and frames sized so the guard does not sag, fall, or trap fingers.</li>\n        <li>Paint colour: consistent for guards across the plant, so a missing one is visible.</li>\n      </ul>\n    </div>"
   },
+  "title": "BuiltWright: Machine Safeguarding and PSR: Module 14",
+  "related": "<div class=\"related\"><div class=\"related-label\">Related modules</div><a href=\"builtwright_power_transmission_v1.html#safety\">Belt and chain nip points</a><a href=\"builtwright_conveyors_v1.html#safety\">Conveyor nip points and pull cords</a><a href=\"builtwright_pneumatics_v1.html#safety\">Compressed air stored energy</a><a href=\"builtwright_hydraulics_v1.html#safety\">Hydraulic injection injury</a><a href=\"builtwright_clutches_brakes_v1.html#holding\">Holding brakes as safety devices</a><a href=\"builtwright_root_cause_v1.html#examples\">Root Cause: the guard found off</a></div>",
+  "footer": "<div class=\"bw-footer\">builtwrightapp.com &nbsp;·&nbsp; module 14 of series &nbsp;·&nbsp; machine safeguarding and psr</div>",
   "css": [
     ".bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }",
     ".bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }",
@@ -970,4 +981,4 @@
     "@media print { body { background:#fff; color:#000; padding:0; } .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; } .bw-panel { display:none; } .bw-panel.active { display:block; } .bw-wrap { max-width:100%; } .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; } .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; } .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; } .adv-body { display:block !important; } .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; } .progress-bar { display:none; } a { color:#000; text-decoration:none; } .bw-logo a::after { content:\" builtwrightapp.com\"; color:#666; } .bw-header { border-bottom:1px solid #000; } .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; } }"
   ],
   "cssShared": 86
-}
+});

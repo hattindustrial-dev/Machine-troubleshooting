@@ -11,7 +11,8 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 import { scriptBlocks, topLevelLiterals, matchDelimiter } from './lib/scan.mjs';
-import { treeIds, treeTab, cardGroups, header, tabBar, cssRules } from './lib/config.mjs';
+import { treeIds, treeTab, cardGroups, revealGroups, toggleFunctions, bespokeFunctions, header, tabBar, cssRules } from './lib/config.mjs';
+import { wrap, readModule } from './lib/modules.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const APP = join(ROOT, 'app');
@@ -81,6 +82,28 @@ function matchTag(html, start) {
   return -1;
 }
 
+// Grab a complete <div class="x"> ... </div> block, braces balanced by tag depth.
+function blockByClass(html, cls) {
+  const m = html.match(new RegExp(`<div class="${cls}"[^>]*>`));
+  if (!m) return null;
+  const start = html.indexOf(m[0]);
+  const end = matchTag(html, start);
+  return end === -1 ? null : html.slice(start, end) + '</div>';
+}
+
+// One row of the extract report, from a module however it was obtained.
+function summarise(mod, skipped) {
+  return {
+    key: mod.key,
+    cardSets: Object.keys(mod.cards).length,
+    results: Object.values(mod.trees).reduce((a, t) => a + countResults(t), 0),
+    questions: countQuestions(mod.selfcheck),
+    panels: Object.keys(mod.panels).length,
+    tabs: mod.tabs.length,
+    skipped,
+  };
+}
+
 function countResults(tree) {
   let n = 0;
   for (const node of Object.values(tree || {})) if (node && node.type === 'result') n++;
@@ -99,8 +122,21 @@ mkdirSync(join(DATA, 'modules'), { recursive: true });
 
 const report = [];
 const outputs = [];
+// Once a module has been cut over its page is a shell and the content lives in
+// app/data/modules. Re-reading a shell would produce an empty module and overwrite the
+// real data, so the existing data is carried through untouched instead.
+const isShell = (html) => html.includes('bw-renderer.js');
+let carried = 0;
+
 for (const mod of index.modules) {
   const html = read(mod.file);
+  if (isShell(html)) {
+    const carriedMod = readModule(join(DATA, 'modules'), mod.key);
+    outputs.push(carriedMod);
+    report.push(summarise(carriedMod, [{ name: '-', reason: 'page is a shell, data carried through' }]));
+    carried++;
+    continue;
+  }
   const { data, skipped } = extractLiterals(html);
   const panels = extractPanels(html);
 
@@ -122,49 +158,64 @@ for (const mod of index.modules) {
     source: mod.file,
     // The tab bar as rendered, falling back to the index when a file has no bar to read.
     tabs: bar.length ? bar : Object.entries(mod.tabs).map(([id, label]) => ({ id, label, active: false, style: '' })),
-    render: {
-      ...header(html),
-      tree: treeIds(scripts),
-      treeTab: treeTab(scripts),
-      groups: cardGroups(scripts),
-    },
+    render: (() => {
+      const groups = cardGroups(scripts);
+      const reveals = revealGroups(scripts);
+      const toggles = toggleFunctions(scripts);
+      // A function matched as both a card group and a reveal is a reveal: it switches a
+      // detail block rather than rendering a card.
+      for (const name of Object.keys(reveals)) delete groups[name];
+      const covered = new Set([...Object.keys(groups), ...Object.keys(reveals), ...toggles.map((t) => t.name)]);
+      return {
+        ...header(html),
+        tree: treeIds(scripts),
+        treeTab: treeTab(scripts),
+        groups,
+        reveals,
+        toggles,
+        bespoke: bespokeFunctions(scripts, covered),
+      };
+    })(),
     cards,
     trees,
     selfcheck,
     panels,
+    // Everything the page carries outside the panels: the document title, the Related
+    // strip every module ends on, and the footer.
+    title: (html.match(/<title>([^<]*)<\/title>/) || [, ''])[1],
+    related: blockByClass(html, 'related'),
+    footer: blockByClass(html, 'bw-footer'),
     css: cssRules(html),
   };
   outputs.push(out);
 
-  report.push({
-    key: mod.key,
-    cardSets: Object.keys(cards).length,
-    results: Object.values(trees).reduce((a, t) => a + countResults(t), 0),
-    questions: countQuestions(selfcheck),
-    panels: Object.keys(panels).length,
-    tabs: out.tabs.length,
-    skipped,
-  });
+  report.push(summarise(out, skipped));
 }
 
 // ---- Shared stylesheet ----------------------------------------------------------
 // The content modules were each built from the same head block, so most of their CSS is
 // identical. Rules every content module carries move to app/bw.css; what is left stays
 // with the module. Together they are the same rule set the module had before.
-const contentModules = outputs.filter((m) => Object.keys(m.trees).length > 0);
+const contentModules = outputs.filter((m) => Object.keys(m.trees).length > 0 && !m.cssShared);
 const sharedRules = contentModules.length
   ? contentModules.map((m) => new Set(m.css)).reduce((a, b) => new Set([...a].filter((r) => b.has(r))))
   : new Set();
 
 // Emit in the order the widest module lists them so the cascade stays recognisable.
 const order = contentModules.length ? contentModules.reduce((a, b) => (a.css.length >= b.css.length ? a : b)).css : [];
-const sharedCss = order.filter((r) => sharedRules.has(r));
-writeFileSync(join(APP, 'bw.css'), `/* BuiltWright shared module styles. Generated by build/extract.mjs, do not edit. */\n${sharedCss.join('\n')}\n`);
+// Nothing left to compute the shared sheet from once every module is a shell; keep the
+// one already written rather than emptying it.
+const sharedCss = contentModules.length
+  ? order.filter((r) => sharedRules.has(r))
+  : cssRules('<style>' + readFileSync(join(APP, 'bw.css'), 'utf8') + '</style>');
+if (contentModules.length) writeFileSync(join(APP, 'bw.css'), `/* BuiltWright shared module styles. Generated by build/extract.mjs, do not edit. */\n${sharedCss.join('\n')}\n`);
 
 for (const mod of outputs) {
-  mod.cssShared = sharedCss.length;
-  mod.css = mod.css.filter((r) => !sharedRules.has(r)); // what this module adds on top
-  writeFileSync(join(DATA, 'modules', `${mod.key}.json`), JSON.stringify(mod, null, 2) + '\n');
+  if (!mod.cssShared) {
+    mod.cssShared = sharedCss.length;
+    mod.css = mod.css.filter((r) => !sharedRules.has(r)); // what this module adds on top
+  }
+  writeFileSync(join(DATA, 'modules', `${mod.key}.js`), wrap(mod.key, mod));
 }
 
 // The shared views. These are generated files today, so their data is extracted the same
@@ -210,7 +261,7 @@ const totals = report.reduce((a, r) => ({
   questions: a.questions + r.questions,
 }), { results: 0, questions: 0 });
 
-console.log(`modules written : ${report.length}`);
+console.log(`modules written : ${report.length}${carried ? ` (${carried} carried through from data, page is a shell)` : ''}`);
 console.log(`diagnostic results: ${totals.results} (index says ${index.totals.diagnostic_results})`);
 console.log(`self-check questions: ${totals.questions} (index says ${index.totals.self_check_questions})`);
 for (const [k, v] of Object.entries(shared)) console.log(`shared/${k}: ${Object.keys(v).join(', ') || 'nothing extracted'}`);

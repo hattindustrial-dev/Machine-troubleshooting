@@ -1,4 +1,4 @@
-{
+BW.register("compressors", {
   "key": "compressors",
   "num": "18",
   "name": "Compressors",
@@ -75,7 +75,15 @@
         "data": "typeData",
         "display": "type-display"
       }
-    }
+    },
+    "reveals": {},
+    "toggles": [
+      {
+        "name": "toggleAdv",
+        "byId": true
+      }
+    ],
+    "bespoke": []
   },
   "cards": {
     "typeData": {
@@ -696,6 +704,9 @@
     "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
     "safety": "<div class=\"bw-section-label\">Compressor room safety</div>\n    <div class=\"callout-box red\">\n      <div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">Pressure vessels, hot oil, and a machine that starts by itself</div></div>\n      <div class=\"callout-box-body\">A compressor starts whenever the pressure drops, with no one touching it. The receiver, the separator tank, and the intercooler are pressure vessels under TSSA jurisdiction with statutory inspections. The oil is at 80 to 100°C and the discharge line is hotter. <strong>Lockout means the disconnect (not the controller's stop button), the receiver isolated and vented, and the separator tank at zero on its own gauge before a filter or the separator cover is opened.</strong></div>\n    </div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\">\n      <ul class=\"info-block-tips\">\n        <li>Auto restart: the controller will restart the compressor after a power interruption or on pressure. The disconnect is the isolation. Pneumatics module Safety tab for the downstream lockout.</li>\n        <li>Separator tank: it holds pressure after the compressor stops (the minimum pressure valve keeps it there). The tank has its own gauge and vent; zero on that gauge before the separator element cover or the oil filter comes off. The cover is under spring and gasket load; loosen evenly.</li>\n        <li>Relief valves: on the receiver, the separator tank, and each stage of a reciprocating unit. ASME or CSA stamped, sized for full compressor output, tested on the statutory interval, never gagged, never replaced with a smaller one.</li>\n        <li>Receiver inspection: TSSA certificate on the vessel, internal inspection on the interval, and a receiver that has been rusting from the inside because the drain never worked is a vessel that fails the inspection or fails in service.</li>\n        <li>Hot surfaces: discharge piping, the airend, the oil cooler. Infrared before touch.</li>\n        <li>Fire: carbon deposits on discharge valves and in the discharge line of a lubricated reciprocating unit can ignite at high discharge temperature. Discharge temperature limits, the right oil, and valve service intervals are fire prevention. Oil-flooded screw compressors have burned when the separator element grounding strap was missing (static ignition of oil mist): the strap is a safety component.</li>\n        <li>Noise: a compressor room is above 85 dBA. Hearing protection to enter.</li>\n        <li>Belts and flywheels: guarded, Regulation 851 sections 24 and 25. The flywheel on a reciprocating unit is stored energy at shutdown.</li>\n        <li>Condensate: oily, hot on discharge from the drains, and a regulated waste. Oil-water separator maintained.</li>\n      </ul>\n    </div>"
   },
+  "title": "BuiltWright: Compressors: Module 18",
+  "related": "<div class=\"related\"><div class=\"related-label\">Related modules</div><a href=\"builtwright_pneumatics_v1.html#airquality\">Pneumatics: dryers, drains, and leaks</a><a href=\"builtwright_lubrication_v1.html#contam\">Lubrication: oil condition</a><a href=\"builtwright_bearing_module_v1.html#diagnose\">Airend and motor bearings</a><a href=\"builtwright_process_valves_v1.html#types\">Relief valves</a><a href=\"builtwright_fans_v1.html#types\">Blowers and the fan laws</a></div>",
+  "footer": "<div class=\"bw-footer\">builtwrightapp.com &nbsp;·&nbsp; module 18 of series &nbsp;·&nbsp; compressors</div>",
   "css": [
     ".bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }",
     ".bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }",
@@ -755,4 +766,4 @@
     "@media print { body { background:#fff; color:#000; padding:0; } .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; } .bw-panel { display:none; } .bw-panel.active { display:block; } .bw-wrap { max-width:100%; } .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; } .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; } .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; } .adv-body { display:block !important; } .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; } .progress-bar { display:none; } a { color:#000; text-decoration:none; } .bw-logo a::after { content:\" builtwrightapp.com\"; color:#666; } .bw-header { border-bottom:1px solid #000; } .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; } }"
   ],
   "cssShared": 86
-}
+});

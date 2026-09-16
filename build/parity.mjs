@@ -12,17 +12,21 @@
 import { readFileSync, readdirSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { readModules } from './lib/modules.mjs';
 import { chromium } from '/opt/node22/lib/node_modules/playwright/index.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA = join(ROOT, 'app', 'data', 'modules');
 const OUT = process.env.PARITY_OUT || join(ROOT, '.parity');
 const BASE = process.env.PARITY_BASE || 'http://localhost:8765';
+// Where the "original" side is served from, and at which path. When the modules are cut
+// over to the renderer their own URLs become the renderer, so the original is served from
+// a snapshot of the previous app on another port and compared at the same path.
+const ORIGIN_BASE = process.env.PARITY_ORIGIN_BASE || BASE;
+const SAME_PATH = process.env.PARITY_SAME_PATH === '1';
 
 const only = process.argv.slice(2);
-const modules = readdirSync(DATA)
-  .filter((f) => f.endsWith('.json'))
-  .map((f) => JSON.parse(readFileSync(join(DATA, f), 'utf8')))
+const modules = readModules(DATA)
   .filter((m) => Object.keys(m.trees).length > 0)
   .filter((m) => !only.length || only.includes(m.key));
 
@@ -42,7 +46,7 @@ async function openPage(browser, url) {
 // What a panel looks like right now: its text and a census of its elements.
 async function snapshot(page, tabId) {
   return page.evaluate((id) => {
-    const p = document.getElementById('panel-' + id);
+    const p = id === null ? document.querySelector('.bw-wrap') : document.getElementById('panel-' + id);
     if (!p) return null;
     const counts = {};
     p.querySelectorAll('*').forEach((el) => {
@@ -65,8 +69,8 @@ const failures = [];
 let compared = 0, shots = 0;
 
 for (const mod of modules) {
-  const origin = await openPage(browser, `${BASE}/${mod.source}`);
-  const render = await openPage(browser, `${BASE}/module.html?m=${mod.key}`);
+  const origin = await openPage(browser, `${ORIGIN_BASE}/${mod.source}`);
+  const render = await openPage(browser, SAME_PATH ? `${BASE}/${mod.source}` : `${BASE}/module.html?m=${mod.key}`);
 
   for (const tab of mod.tabs) {
     for (const page of [origin, render]) {
@@ -92,6 +96,27 @@ for (const mod of modules) {
       const el = page.locator('#panel-' + tab.id);
       if (await el.count()) { await el.screenshot({ path: join(shotDir, `${tab.id}.${tag}.png`) }).catch(() => {}); shots++; }
     }
+  }
+
+  // The whole page, so anything outside the panels is compared too: the header, the tab
+  // bar, the Related strip and the footer. Comparing only panels missed all four.
+  {
+    const a = await snapshot(origin, null);
+    const b = await snapshot(render, null);
+    compared++;
+    if (!a || !b) failures.push(`${mod.key}/page: no .bw-wrap (${!a ? 'original' : 'renderer'})`);
+    else {
+      if (norm(a.text) !== norm(b.text)) {
+        const i = [...norm(a.text)].findIndex((c, k) => c !== norm(b.text)[k]);
+        failures.push(`${mod.key}/page: text differs at ${i}\n      original: ...${norm(a.text).slice(Math.max(0, i - 50), i + 70)}...\n      renderer: ...${norm(b.text).slice(Math.max(0, i - 50), i + 70)}...`);
+      }
+      const cd = diffCounts(a.counts, b.counts);
+      if (cd.length) failures.push(`${mod.key}/page: element counts differ\n      ${cd.slice(0, 6).join('\n      ')}`);
+    }
+    const ta = await origin.title();
+    const tb = await render.title();
+    compared++;
+    if (ta !== tb) failures.push(`${mod.key}/title: "${ta}" vs "${tb}"`);
   }
 
   // Walk the diagnostic tree: start, then take the first option three times.

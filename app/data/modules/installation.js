@@ -1,4 +1,4 @@
-{
+BW.register("installation", {
   "key": "installation",
   "num": "13",
   "name": "Installation and Foundations",
@@ -88,7 +88,15 @@
         "data": "anchorData",
         "display": "anchor-display"
       }
-    }
+    },
+    "reveals": {},
+    "toggles": [
+      {
+        "name": "toggleAdv",
+        "byId": true
+      }
+    ],
+    "bespoke": []
   },
   "cards": {
     "chainData": {
@@ -800,6 +808,9 @@
     "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
     "safety": "<div class=\"bw-section-label\">Installation safety: heavy things, wet concrete, and chemicals</div>\n    <div class=\"callout-box red\">\n      <div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">The machine is at its most dangerous before it has ever run</div></div>\n      <div class=\"callout-box-body\">During installation the machine is suspended, balanced on jacking screws, sitting on an ungrouted plate, or being pulled into position with a come-along. None of those states is stable. <strong>A machine is not set down until it is on its pads with the anchors snug. Until then, nobody is under it, beside it in the direction it could fall, or reaching into a gap that could close.</strong></div>\n    </div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\">\n      <div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-crane\" style=\"color:#F09595;\"></i> Rigging and setting</div>\n      <ul class=\"info-block-tips\">\n        <li>Weight from the drawing or the nameplate, never estimated. Centre of gravity from the drawing; test lift a few centimetres and adjust.</li>\n        <li>Lift by the designed lifting points. Baseplates and skids have lifting lugs sized for the assembly; individual machines have their own. Never by the shaft, the coupling, the terminal box, or the piping.</li>\n        <li>Tag lines to control rotation. Hands stay off the load while it is in the air.</li>\n        <li>A machine on jacking screws is on four points that can slip. Snug the anchors before leaving it.</li>\n        <li>Rigging in full is RigIt's territory: sling angles, hardware ratings, and the lift plan.</li>\n      </ul>\n    </div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\">\n      <div class=\"info-block-title\" style=\"color:#F09595;\"><i class=\"ti ti-flask\" style=\"color:#F09595;\"></i> Concrete, grout, and epoxy</div>\n      <ul class=\"info-block-tips\">\n        <li>Wet cement and cementitious grout are caustic. Skin contact causes burns that appear hours later. Gloves, long sleeves, eye protection, and wash immediately on contact.</li>\n        <li>Epoxy resins and hardeners are sensitisers. Repeated skin contact can cause a permanent allergy. Nitrile gloves, no bare hands, and the SDS read before the first mix.</li>\n        <li>Mixing epoxy is exothermic. A large mass in a bucket can get hot enough to smoke. Mix what will be placed in the pot life, and never leave a full bucket sitting.</li>\n        <li>Drilling and chipping concrete releases silica dust. Wet methods or dust extraction, and a respirator rated for silica. Silica exposure is regulated and the damage is permanent.</li>\n        <li>Solvents for cleaning epoxy tools and surfaces are flammable and toxic. Ventilation, no ignition sources.</li>\n      </ul>\n    </div>\n    <div class=\"info-block\">\n      <div class=\"info-block-title\"><i class=\"ti ti-hand-off\"></i> Hands, gaps, and pits</div>\n      <ul class=\"info-block-tips\">\n        <li>The gap between a baseplate and a foundation, between a machine foot and a pad, and between a flange and its mate are all pinch points that close with the weight of the machine behind them. Hands out, use a bar to position shims.</li>\n        <li>Anchor bolt projection is a trip and impalement hazard on an open foundation. Cap them.</li>\n        <li>Foundation pits and sumps are confined spaces if they meet the definition, and are fall hazards if they do not. Guard the edge.</li>\n        <li>Temporary supports (cribbing, stands, jacks) stay in place until the permanent support (anchors, grout) is complete. Removing a jack to \"see if it holds\" is how it does not.</li>\n      </ul>\n    </div>"
   },
+  "title": "BuiltWright: Installation and Foundations: Module 13",
+  "related": "<div class=\"related\"><div class=\"related-label\">Related modules</div><a href=\"builtwright_coupling_alignment_v1.html#procedure\">Alignment: after the grout has cured</a><a href=\"builtwright_vibration_v1.html#resonance\">Vibration: resonance and the bump test</a><a href=\"builtwright_pumps_combined_v1.html#chain\">Pumps: suction piping and NPSH</a><a href=\"builtwright_precision_measurement_v1.html#instruments\">Measurement: the machinist level</a><a href=\"builtwright_safeguarding_v1.html#psr\">Safeguarding: a new installation may need a PSR</a></div>",
+  "footer": "<div class=\"bw-footer\">builtwrightapp.com &nbsp;·&nbsp; module 13 of series &nbsp;·&nbsp; installation and foundations</div>",
   "css": [
     ".bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }",
     ".bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }",
@@ -859,4 +870,4 @@
     "@media print { body { background:#fff; color:#000; padding:0; } .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; } .bw-panel { display:none; } .bw-panel.active { display:block; } .bw-wrap { max-width:100%; } .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; } .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; } .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; } .adv-body { display:block !important; } .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; } .progress-bar { display:none; } a { color:#000; text-decoration:none; } .bw-logo a::after { content:\" builtwrightapp.com\"; color:#666; } .bw-header { border-bottom:1px solid #000; } .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; } }"
   ],
   "cssShared": 86
-}
+});

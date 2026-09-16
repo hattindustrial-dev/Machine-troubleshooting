@@ -1,4 +1,4 @@
-{
+BW.register("fans", {
   "key": "fans",
   "num": "17",
   "name": "Fans and Blowers",
@@ -69,7 +69,15 @@
         "data": "typeData",
         "display": "type-display"
       }
-    }
+    },
+    "reveals": {},
+    "toggles": [
+      {
+        "name": "toggleAdv",
+        "byId": true
+      }
+    ],
+    "bespoke": []
   },
   "cards": {
     "typeData": {
@@ -619,6 +627,9 @@
     "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
     "safety": "<div class=\"bw-section-label\">Fan safety: stored energy in a big light wheel, and ducts</div>\n    <div class=\"callout-box red\">\n      <div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">A fan wheel stores more energy than it looks like, and it keeps turning</div></div>\n      <div class=\"callout-box-body\">A large wheel at speed carries enough kinetic energy to take a hand off, and it coasts for minutes after the motor stops. A fan in a duct with draft turns with the power off, indefinitely. <strong>Lock out the motor, wait for or brake the coast-down, and block the wheel against windmilling before any guard or access door is opened.</strong></div>\n    </div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\">\n      <ul class=\"info-block-tips\">\n        <li>Inlet and outlet guards on any fan with an open inlet or outlet within reach. An open inlet on a large fan will draw in and hold a person.</li>\n        <li>Windmilling: a wheel turning from draft is a hazard and an electrical generator. Block the wheel with a designed device or a bar in a spoke, not a hand on the wheel.</li>\n        <li>Ducts and plenums are confined spaces when they meet the definition. Entry procedure, atmosphere test, isolation of every fan that could move air through it.</li>\n        <li>Hot gas fans: housing, wheel, and gas are at process temperature. Cool down and isolate the gas source before opening.</li>\n        <li>A wheel that has thrown a blade or cracked at the hub is a wheel that will throw the next one. Do not run it to \"see if it holds.\"</li>\n        <li>Belt drive guards, Regulation 851 sections 24 and 25. The fan drive is the belt drive most likely to be found with the guard off, because it is on the roof.</li>\n        <li>Dust: a fan handling combustible dust is part of a dust explosion system. Housekeeping, bonding, and no ignition sources (a rubbing wheel is one).</li>\n      </ul>\n    </div>"
   },
+  "title": "BuiltWright: Fans and Blowers: Module 17",
+  "related": "<div class=\"related\"><div class=\"related-label\">Related modules</div><a href=\"builtwright_pumps_combined_v1.html#compare\">Pumps: the same curve logic</a><a href=\"builtwright_power_transmission_v1.html#tension\">Belt drives on fans</a><a href=\"builtwright_bearing_module_v1.html#diagnose\">Fan bearings</a><a href=\"builtwright_vibration_v1.html#spectrum\">Unbalance and blade pass</a><a href=\"builtwright_motors_v1.html#cooling\">Motors: the fan on the motor</a></div>",
+  "footer": "<div class=\"bw-footer\">builtwrightapp.com &nbsp;·&nbsp; module 17 of series &nbsp;·&nbsp; fans and blowers</div>",
   "css": [
     ".bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }",
     ".bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }",
@@ -678,4 +689,4 @@
     "@media print { body { background:#fff; color:#000; padding:0; } .bw-tabs, .ref-search, .tree-back, .sc-score, .adv-chevron, .bw-badge { display:none !important; } .bw-panel { display:none; } .bw-panel.active { display:block; } .bw-wrap { max-width:100%; } .bw-title, .comp-detail-name, .info-block-title, .type-card-name, .sym-card-label, .tree-q-text, .tree-result-text, .route-title, .sc-stem, .callout-box-title, .field-tip strong, .tree-prevent strong, .bw-section-label, .family-label, .ref-table th { color:#000 !important; } .comp-detail-body, .info-block-body, .callout-box-body, .tree-result-sub, .tree-prevent, .field-tip div, .sc-why, .ref-table td, .comp-detail-tips li, .info-block-tips li, .callout-tips li, .sym-detail-body, .adv-body p, .route-text, .type-card-sub, .sym-card-sub, .tree-q-hint, .ref-note, .chain-label, .chain-sub { color:#222 !important; } .comp-detail, .info-block, .callout-box, .type-card, .sym-card, .tree-q, .tree-result, .field-tip, .adv-wrap, .adv-body, .adv-toggle, .chain-wrap, .chain-box, .sc-q, .sym-detail, .calc, .route, .dir-row, .safety-strip { background:#fff !important; border-color:#999 !important; box-shadow:none !important; } .adv-body { display:block !important; } .tree-btn, .sc-opt, .pm-btn { border:0.5px solid #999; background:#fff; color:#000; } .progress-bar { display:none; } a { color:#000; text-decoration:none; } .bw-logo a::after { content:\" builtwrightapp.com\"; color:#666; } .bw-header { border-bottom:1px solid #000; } .comp-detail, .info-block, .callout-box, .tree-q, .sc-q { page-break-inside: avoid; } }"
   ],
   "cssShared": 86
-}
+});

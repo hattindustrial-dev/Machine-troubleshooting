@@ -1,4 +1,4 @@
-{
+BW.register("rootcause", {
   "key": "rootcause",
   "num": "16",
   "name": "Root Cause",
@@ -94,7 +94,20 @@
         "data": "exData",
         "display": "ex-display"
       }
-    }
+    },
+    "reveals": {},
+    "toggles": [
+      {
+        "name": "toggleAdv",
+        "byId": true
+      }
+    ],
+    "bespoke": [
+      "function rcaLoad(){try{const d=JSON.parse(localStorage.getItem('bw_rca')||'{}');FIELDS.forEach(f=>{const e=document.getElementById(f);if(e&&d[f]!==undefined)e.value=d[f];});}catch(e){}}",
+      "function rcaSave(){const d={};FIELDS.forEach(f=>d[f]=document.getElementById(f).value);try{localStorage.setItem('bw_rca',JSON.stringify(d));document.getElementById('rca-status').textContent='Saved in this browser.';}catch(e){document.getElementById('rca-status').textContent='Could not save (storage unavailable).';}}",
+      "function rcaCopy(){const L=[['Machine','r_machine'],['When','r_when'],['Problem','r_problem'],['Timeline','r_timeline'],['Evidence','r_evidence'],['Physical cause','r_physical'],['Why chain','r_whys'],['Root cause','r_root'],['Corrective action (physical)','r_ca1'],['Corrective action (latent), owner, date','r_ca2'],['Verification','r_verify'],['Analysed by','r_by']];const t='ROOT CAUSE REPORT\\n'+L.map(([k,f])=>k+': '+document.getElementById(f).value).join('\\n');(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>document.getElementById('rca-status').textContent='Copied.').catch(()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();document.getElementById('rca-status').textContent='Copied.';});}",
+      "function rcaReset(){FIELDS.forEach(f=>document.getElementById(f).value='');try{localStorage.removeItem('bw_rca');}catch(e){}document.getElementById('rca-status').textContent='Cleared.';}"
+    ]
   },
   "cards": {
     "mechData": {
@@ -729,6 +742,9 @@
     "selfcheck": "<div class=\"bw-section-label\">Self-check: one question at a time, tap an answer, read why</div>\n    <div class=\"comp-detail\"><div class=\"comp-detail-body\">Questions are grouped by the tab they test. Get one wrong and the correct answer lights up green with a one-line reason; use the link to reopen the tab and read it again. For a training program, a pass is every section answered and the reasons read, not a percentage.</div></div>\n    <div id=\"sc-body\"></div>",
     "safety": "<div class=\"bw-section-label\">Safety during failure investigation</div>\n    <div class=\"callout-box red\">\n      <div class=\"callout-box-header\"><i class=\"ti ti-alert-triangle callout-box-icon\"></i><div class=\"callout-box-title\">A failed machine is a machine in an unknown state</div></div>\n      <div class=\"callout-box-body\">Something broke, and until you know what, you do not know what else is loose, cracked, pressurised, or about to let go. Evidence collection happens after isolation, not instead of it. <strong>Never restart a failed machine to see what happens. Never reach in to retrieve a part while anything can move. Never handle a fracture face with bare hands; fresh fracture edges cut.</strong></div>\n    </div>\n    <div class=\"info-block\" style=\"border-color:#A32D2D;\">\n      <ul class=\"info-block-tips\">\n        <li>Lockout and stored energy release before the guard comes off, same as any maintenance. A machine that stopped because a coupling sheared still has a motor that will run and a load that may be hanging on a broken part.</li>\n        <li>Broken parts are sharp. Gloves for handling; bare hands only for surfaces that need reading, and then by the edges.</li>\n        <li>Hot: a seized bearing, a slipped belt, a burnt motor. Infrared before touch.</li>\n        <li>Chemical: the oil, the process fluid, the grease, and anything the failure released. SDS and PPE.</li>\n        <li>Fragments: a burst wheel, a thrown coupling, a shattered seal face. Look for what is missing and where it went before assuming the area is clear.</li>\n        <li>Interviews are not interrogations. Someone who is afraid of blame will not tell you what happened, and what happened is the evidence.</li>\n      </ul>\n    </div>"
   },
+  "title": "BuiltWright: Root Cause: Module 16",
+  "related": "<div class=\"related\"><div class=\"related-label\">Related modules</div><a href=\"builtwright_bearing_module_v1.html#diagnose\">Bearings: reading the failed bearing</a><a href=\"builtwright_gearboxes_v1.html#wear\">Gearboxes: reading the teeth</a><a href=\"builtwright_seals_gaskets_v1.html#failure\">Seals: reading the failure</a><a href=\"builtwright_power_transmission_v1.html#failure\">Belts and chains: reading the failure</a><a href=\"builtwright_vibration_v1.html#trend\">Vibration: the trend is the evidence</a></div>",
+  "footer": "<div class=\"bw-footer\">builtwrightapp.com &nbsp;·&nbsp; module 16 of series &nbsp;·&nbsp; root cause</div>",
   "css": [
     ".bw-title { font-size: 24px; font-weight: 600; color: #f0ede4; }",
     ".bw-tab { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; border: 0.5px solid #3a3a36; background: #242420; color: #888780; cursor: pointer; transition: all 0.15s; text-transform: uppercase; }",
@@ -794,4 +810,4 @@
     "@media print { .rca-btns{display:none} .rca-form input,.rca-form textarea{border:0.5px solid #999;background:#fff;color:#000} }"
   ],
   "cssShared": 86
-}
+});
