@@ -1,4 +1,4 @@
-{
+(window.BW_DATA=window.BW_DATA||{}).hub = {
   "modules": {
     "pumps": {
       "num": "01",
@@ -2773,4 +2773,4 @@
       "sub": "Burning, hot oil, sour, solvent, ozone"
     }
   ]
-}
+};

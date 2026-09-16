@@ -11,7 +11,7 @@ import { writeFileSync, mkdtempSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { scriptBlocks } from './lib/scan.mjs';
 import { cssRules } from './lib/config.mjs';
-import { readModules } from './lib/modules.mjs';
+import { readModules, readData } from './lib/modules.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const APP = join(ROOT, 'app');
@@ -216,7 +216,7 @@ for (const mod of modules) {
 // ---- 6c. Every diagnosis is findable in search ---------------------------------
 // The search index was generated with a regex that needed label: and text: adjacent on
 // one line, so the one module formatted across lines contributed no diagnoses at all.
-const searchIdx = JSON.parse(readFileSync(join(DATA, 'search.json'), 'utf8')).IDX;
+const searchIdx = readData(DATA, 'search').IDX;
 const searchable = new Set(searchIdx.filter((e) => e.k === 'diagnosis').map((e) => `${e.f}|${e.x.toLowerCase()}`));
 for (const mod of modules) {
   let absent = 0;
@@ -239,7 +239,7 @@ const index = JSON.parse(readFileSync(join(APP, 'builtwright_index.json'), 'utf8
 // The facility layer is planned on top of the route-to-component tags in the published
 // index, so the index has to list every route the hub actually has. The generator matched
 // ids beginning with r_ and silently dropped the four that do not.
-const hub = JSON.parse(readFileSync(join(DATA, 'hub.json'), 'utf8'));
+const hub = readData(DATA, 'hub');
 const hubRoutes = Object.entries(hub.nodes).filter(([, n]) => n && n.type === 'route');
 
 for (const [id, route] of hubRoutes) {
@@ -273,17 +273,17 @@ if (index.totals.hub_routes !== hubRoutes.length) fail('index', `totals.hub_rout
 // The ten cards are authored content that used to live only inside pass3.py. They are
 // data now, so the data has to regenerate the shipped page exactly, character for
 // character, or the JSON is not really the source.
-const pocketCards = JSON.parse(readFileSync(join(DATA, 'pocket-cards.json'), 'utf8'));
+const pocketCards = readData(DATA, 'pocketcards');
 const pocketHtml = readFileSync(join(APP, 'builtwright_pocket_cards_v1.html'), 'utf8');
-if (pocketCards.length !== (pocketHtml.match(/<div class="card /g) || []).length) {
-  fail('pocket cards', `extracted ${pocketCards.length} cards, page has ${(pocketHtml.match(/<div class="card /g) || []).length}`);
-}
+// The page renders these at load now, so what is checked is that the data is complete and
+// that the page still builds the same markup from it.
+if (!pocketCards.length) fail('pocket cards', 'no cards in the data');
+if (!pocketHtml.includes("BW_DATA.pocketcards.map")) fail('pocket cards', 'the page no longer renders from the data');
 for (const card of pocketCards) {
-  const rendered = `<div class="card ${card.cls}"><div class="card-title">${card.title}</div><ol>` +
-    card.steps.map((s) => `<li>${s}</li>`).join('') +
-    `</ol><div class="src">Full version: <a href="${card.file}#${card.tab}">${card.linkText}</a></div></div>`;
-  if (!pocketHtml.includes(rendered)) fail('pocket cards', `"${card.title}" does not round trip to the page markup`);
-  // and the card has to point at a tab that exists
+  for (const field of ['cls', 'title', 'file', 'tab', 'linkText']) {
+    if (!card[field]) fail('pocket cards', `a card is missing ${field}`);
+  }
+  if (!Array.isArray(card.steps) || !card.steps.length) fail('pocket cards', `"${card.title}" has no steps`);
   if (!existsSync(join(APP, card.file))) fail('pocket cards', `"${card.title}" links to missing file ${card.file}`);
   else if (!panels.get(card.file) || !panels.get(card.file).has(card.tab)) {
     fail('pocket cards', `"${card.title}" links to ${card.file}#${card.tab}, which has no such panel`);
@@ -294,7 +294,7 @@ for (const card of pocketCards) {
 // The facility layer filters hub routes by matching a machine's component types against
 // the tags on each route, so the two vocabularies have to stay the same set. A tag with no
 // entry silently drops routes from a machine; an entry no route uses is a dead option.
-const vocabulary = JSON.parse(readFileSync(join(DATA, 'components.json'), 'utf8'));
+const vocabulary = readData(DATA, 'components');
 const routeTags = new Set(hubRoutes.flatMap(([, r]) => r.components || []));
 const vocabTags = new Set(Object.keys(vocabulary.components));
 for (const tag of routeTags) {

@@ -12,7 +12,7 @@
 
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
-import { readModule } from './lib/modules.mjs';
+import { readModule, readData } from './lib/modules.mjs';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -120,7 +120,7 @@ function compare(label, derived, shipped, keyOf) {
   return { missing, extra, changed, dMap, sMap };
 }
 
-const shippedPm = JSON.parse(readFileSync(join(DATA, 'pm.json'), 'utf8'));
+const shippedPm = readData(DATA, 'pm');
 const derivedTasks = derivePmTasks();
 const pm = compare('PM tasks', derivedTasks, shippedPm.TASKS, (t) => t.text);
 
@@ -135,7 +135,7 @@ for (const c of pm.changed.slice(0, 6)) {
 }
 
 // ---- search index ------------------------------------------------------------------
-const shippedSearch = JSON.parse(readFileSync(join(DATA, 'search.json'), 'utf8'));
+const shippedSearch = readData(DATA, 'search');
 const shippedDiag = shippedSearch.IDX.filter((e) => e.k === 'diagnosis');
 const derivedDiag = deriveDiagnosisEntries();
 

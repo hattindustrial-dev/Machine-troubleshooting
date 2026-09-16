@@ -1,4 +1,4 @@
-{
+(window.BW_DATA=window.BW_DATA||{}).pm = {
   "TASKS": [
     {
       "id": 0,
@@ -10111,4 +10111,4 @@
     "On event",
     "On condition"
   ]
-}
+};

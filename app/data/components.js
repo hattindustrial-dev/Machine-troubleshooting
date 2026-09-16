@@ -1,4 +1,4 @@
-{
+(window.BW_DATA=window.BW_DATA||{}).components = {
   "_comment": "The facility layer vocabulary. Component keys match the component tags on hub routes, which is what lets the hub filter routes to a machine. Fields are the plant-specific numbers the brief keeps out of the universal modules: bearing numbers, seal plan, lubricant, tolerances, set pressures. Edit the field lists to match your plant; the keys are yours to choose, only the component keys are fixed by the hub.",
   "equipment": [
     {
@@ -482,4 +482,4 @@
       ]
     }
   }
-}
+};

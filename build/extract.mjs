@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 import { scriptBlocks, topLevelLiterals, matchDelimiter } from './lib/scan.mjs';
 import { treeIds, treeTab, cardGroups, revealGroups, toggleFunctions, bespokeFunctions, header, tabBar, cssRules } from './lib/config.mjs';
-import { wrap, readModule } from './lib/modules.mjs';
+import { wrap, wrapData, readModule } from './lib/modules.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const APP = join(ROOT, 'app');
@@ -230,7 +230,7 @@ for (const [name, file, wanted] of [
   const picked = {};
   for (const key of wanted) if (data[key] !== undefined) picked[key] = data[key];
   shared[name] = picked;
-  writeFileSync(join(DATA, `${name}.json`), JSON.stringify(picked, null, 2) + '\n');
+  writeFileSync(join(DATA, `${name}.js`), wrapData(name, picked));
 }
 
 // ---- Pocket cards ----------------------------------------------------------------
@@ -248,7 +248,7 @@ const pocketCards = [...pocketHtml.matchAll(
   tab: m[5],
   linkText: m[6],
 }));
-writeFileSync(join(DATA, 'pocket-cards.json'), JSON.stringify(pocketCards, null, 2) + '\n');
+writeFileSync(join(DATA, 'pocketcards.js'), wrapData('pocketcards', pocketCards));
 
 writeFileSync(join(DATA, 'extract-report.json'), JSON.stringify({
   generated_from: index.version,

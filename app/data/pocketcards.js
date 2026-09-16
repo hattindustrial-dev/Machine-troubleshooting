@@ -1,4 +1,4 @@
-[
+(window.BW_DATA=window.BW_DATA||{}).pocketcards = [
   {
     "cls": "red",
     "title": "Before any guard comes off",
@@ -159,4 +159,4 @@
     "tab": "troubleshoot",
     "linkText": "module tab"
   }
-]
+];

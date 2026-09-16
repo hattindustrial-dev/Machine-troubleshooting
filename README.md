@@ -90,11 +90,11 @@ app/data/modules/<key>.js     one per module: tabs, cards, diagnostic trees,
                               self-check bank, each panel as an HTML fragment,
                               the Related strip, footer, title, the module's
                               own CSS, and the render config
-app/data/hub.json             the hub module registry, node tree and symptom list
-app/data/pm.json              PM task library tasks, components and intervals
-app/data/search.json          the prebuilt search index and ranking table
-app/data/pocket-cards.json    the ten printable cards, lifted out of pass3.py
-app/data/components.json      the facility layer vocabulary and its plant fields
+app/data/hub.js               the hub module registry, node tree and symptom list
+app/data/pm.js                PM task library tasks, components and intervals
+app/data/search.js            the prebuilt search index and ranking table
+app/data/pocketcards.js       the ten printable cards, lifted out of pass3.py
+app/data/components.js        the facility layer vocabulary and its plant fields
 app/data/extract-report.json  per module counts and anything the extractor skipped
 ```
 
@@ -103,9 +103,10 @@ the source, so multi-line formatting and braces inside prose do not throw the co
 Anything that is not a pure literal, and the handful of variables that hold runtime click
 state, are recorded in the skip list in `extract-report.json` instead of being guessed at.
 
-Module data is a `.js` file rather than `.json`: one `BW.register(key, {...})` call wrapping
-pretty printed JSON. A script tag loads it, so the app still opens from a folder with no
-server, and the wrapper is one line at each end so it still diffs like JSON.
+Data ships as `.js` rather than `.json`: a module is one `BW.register(key, {...})` call and a
+shared view is one `(window.BW_DATA=...).key = {...}` assignment, each wrapping pretty printed
+JSON. A script tag loads it, so the app still opens from a folder with no server, and the
+wrapper is one line at each end so it still diffs like JSON.
 
 `extract.mjs` will not re-read a page that has been cut over to a shell. There is nothing
 left in it to read, and re-reading would overwrite the real data with an empty module, so
@@ -155,6 +156,27 @@ A module that needs something the renderer does not cover keeps that code in its
 rather than in the data, along with any of its data objects the code refers to. Only the
 root cause report form needs this: four functions and the `FIELDS` list they walk.
 
+## The tool pages
+
+The hub, search, PM task library and pocket cards read the data files instead of carrying
+their own copy. Until they did, `app/data` was a set of duplicates that nothing loaded:
+the pages had the same content inline, so editing `pm.js` changed nothing on the page.
+Now the data is the only copy.
+
+The pages kept all of their own rendering and interaction code. What changed is where the
+content comes from, which is why the search filters, the PM ticks and the hub walk behave
+exactly as before.
+
+```
+builtwright_search_v1.html       380k -> 20k
+builtwright_pm_library_v1.html   208k -> 24k
+builtwright_diagnose_hub_v1.html  83k -> 20k
+builtwright_pocket_cards_v1.html  24k -> 16k
+```
+
+With the modules and the tool pages both cut over, the app is 3.0M where it was 5.3M, the
+largest page is 64k, and the only literals left inline anywhere are runtime click state.
+
 ## The facility layer
 
 `app/facility.html` is step four of the brief. A machine is an equipment number plus the
@@ -174,6 +196,7 @@ to match a plant. Only the 16 component keys are fixed, because the hub routes u
 Plant numbers live in this layer and nowhere else, as the brief requires. The modules stay
 universal and the numbers are overlaid beside them. Machines are kept in `localStorage` on
 the device, like the PM ticks and the root cause form, and nothing leaves the browser.
+This page loads its data by script tag as well, so it works from a folder like the rest.
 
 ## Validation
 

@@ -17,7 +17,7 @@ const APP = join(ROOT, 'app');
 const pages = readdirSync(APP).filter((f) => /\.html$/.test(f)).sort();
 const moduleData = readdirSync(join(APP, 'data', 'modules')).filter((f) => f.endsWith('.js')).sort()
   .map((f) => `data/modules/${f}`);
-const sharedData = readdirSync(join(APP, 'data')).filter((f) => f.endsWith('.json')).sort()
+const sharedData = readdirSync(join(APP, 'data')).filter((f) => f.endsWith('.js')).sort()
   .map((f) => `data/${f}`);
 
 const shell = [

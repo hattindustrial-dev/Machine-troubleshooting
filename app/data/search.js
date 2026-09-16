@@ -1,4 +1,4 @@
-{
+(window.BW_DATA=window.BW_DATA||{}).search = {
   "IDX": [
     {
       "m": "01",
@@ -16835,4 +16835,4 @@
     "callout": 2,
     "question": 3
   }
-}
+};

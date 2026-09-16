@@ -21,6 +21,23 @@ export function readModule(dir, key) {
   return unwrap(readFileSync(join(dir, `${key}.js`), 'utf8'));
 }
 
+// The shared views (hub, search, PM library, pocket cards, facility vocabulary) ship the
+// same way and for the same reason: a script tag works from a folder, a fetch does not.
+export function wrapData(key, data) {
+  return `(window.BW_DATA=window.BW_DATA||{}).${key} = ${JSON.stringify(data, null, 2)};\n`;
+}
+
+export function unwrapData(source) {
+  const open = source.indexOf('=', source.indexOf(').'));
+  const close = source.lastIndexOf(';');
+  if (open === -1 || close === -1) throw new Error('not a shared data file');
+  return JSON.parse(source.slice(open + 1, close).trim());
+}
+
+export function readData(dir, key) {
+  return unwrapData(readFileSync(join(dir, `${key}.js`), 'utf8'));
+}
+
 export function readModules(dir) {
   return readdirSync(dir)
     .filter((f) => f.endsWith('.js'))

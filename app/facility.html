@@ -57,6 +57,8 @@
   <div id="fac-body"><div class="fac-empty">loading...</div></div>
   <div class="bw-footer">builtwrightapp.com &nbsp;&middot;&nbsp; facility layer &nbsp;&middot;&nbsp; stored on this device</div>
 </div>
+<script src="data/hub.js"></script>
+<script src="data/components.js"></script>
 <script src="facility.js"></script>
 <script>
 (function () {
@@ -64,18 +66,16 @@
   var body = document.getElementById('fac-body');
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); };
 
-  Promise.all([
-    fetch('data/hub.json').then(function (r) { return r.json(); }),
-    fetch('data/components.json').then(function (r) { return r.json(); })
-  ]).then(function (res) {
-    hub = res[0];
-    vocab = res[1].components;
-    window.__equipmentFields = res[1].equipment;
+  // Data arrives by script tag rather than fetch, so this page works from a folder too.
+  try {
+    hub = BW_DATA.hub;
+    vocab = BW_DATA.components.components;
+    window.__equipmentFields = BW_DATA.components.equipment;
     data = BWF.load();
     render();
-  }).catch(function (e) {
+  } catch (e) {
     body.innerHTML = '<div class="fac-empty">Could not load the facility data: ' + esc(e.message) + '</div>';
-  });
+  }
 
   function render() {
     if (editing) return renderEditor();
