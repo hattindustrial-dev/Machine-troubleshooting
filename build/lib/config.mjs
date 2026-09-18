@@ -184,3 +184,80 @@ export function bespokeFunctions(src, covered) {
   const names = functionNames(src).filter((n) => !RENDERER_PROVIDES.has(n) && !covered.has(n));
   return names.map((n) => functionSource(src, n)).filter(Boolean);
 }
+
+// Some pages do a little more when a tab opens. The reference page re-applies its search
+// filter. Everything after the standard body of switchTab is that page's own hook, kept as
+// source so it stays in the page rather than being evaluated out of a data file.
+export function afterSwitchBody(src) {
+  const body = functionSource(src, 'switchTab');
+  if (!body) return null;
+  const marker = "classList.add('active');";
+  const last = body.lastIndexOf(marker);
+  if (last === -1) return null;
+  const tail = body.slice(last + marker.length, body.lastIndexOf('}')).trim();
+  return tail || null;
+}
+
+// Top level declarations whose value is not an object or array literal. Those are data and
+// are extracted as data; these are code, usually a small formatting helper, and the page's
+// own functions may depend on them. The reference page's calculators all call its f2().
+export function topLevelHelpers(src) {
+  const out = [];
+  const re = /(?:^|\n)[ \t]*(?:const|let|var)\s+([A-Za-z_$][\w$]*)\s*=\s*(?![{[])/g;
+  let m;
+  while ((m = re.exec(src))) {
+    const start = m.index + (m[0].startsWith('\n') ? 1 : 0);
+    let i = m.index + m[0].length;
+    let depth = 0, quote = null;
+    for (; i < src.length; i++) {
+      const c = src[i];
+      if (quote) {
+        if (c === '\\') i++;
+        else if (c === quote) quote = null;
+        continue;
+      }
+      if (c === '"' || c === "'" || c === '`') { quote = c; continue; }
+      if ('([{'.includes(c)) depth++;
+      else if (')]}'.includes(c)) depth--;
+      else if ((c === ';' || c === '\n') && depth <= 0) break;
+    }
+    out.push({ name: m[1], source: src.slice(start, i).trim().replace(/;$/, '') + ';' });
+  }
+  return out;
+}
+
+
+// Whatever the page runs at load, once its function declarations and top level
+// declarations are taken out. The reference page fills its unit converter and runs every
+// calculator once so the outputs are not blank. The renderer handles the standard startup
+// (deep link, first tab, starting the tree), so those statements are dropped.
+const RENDERER_HANDLES = [
+  /^go\(\)/, /addEventListener\(\s*'hashchange'/, /^renderDiag\('start'\)/,
+  /^switchTab\(/, /serviceWorker/, /^scRender\(\)/,
+];
+
+const DECL_MARK = '__BW_DECL__';
+
+export function initStatements(src) {
+  let rest = src;
+  // remove function declarations
+  for (const name of functionNames(src)) {
+    const body = functionSource(rest, name);
+    if (body) rest = rest.replace(body, '');
+  }
+  // remove top level declarations, data and helpers alike
+  rest = rest.replace(/(?:^|\n)[ \t]*(?:const|let|var)\s+[A-Za-z_$][\w$]*\s*=\s*/g, '\n' + DECL_MARK);
+  const cleaned = rest
+    .split('\n')
+    .map((line) => (line.includes(DECL_MARK) ? '' : line))
+    .join('\n');
+
+  const statements = [];
+  for (const raw of cleaned.split(/\n/)) {
+    const line = raw.trim();
+    if (!line || line.startsWith('//')) continue;
+    if (RENDERER_HANDLES.some((re) => re.test(line))) continue;
+    statements.push(line);
+  }
+  return statements.length ? statements.join('\n') : null;
+}

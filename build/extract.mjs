@@ -11,8 +11,8 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 import { scriptBlocks, topLevelLiterals, matchDelimiter } from './lib/scan.mjs';
-import { treeIds, treeTab, cardGroups, revealGroups, toggleFunctions, bespokeFunctions, header, tabBar, cssRules } from './lib/config.mjs';
-import { wrap, wrapData, readModule } from './lib/modules.mjs';
+import { treeIds, treeTab, cardGroups, revealGroups, toggleFunctions, bespokeFunctions, topLevelHelpers, initStatements, afterSwitchBody, header, tabBar, cssRules } from './lib/config.mjs';
+import { wrap, wrapData, readModule, readData } from './lib/modules.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const APP = join(ROOT, 'app');
@@ -80,6 +80,17 @@ function matchTag(html, start) {
     if (depth === 0) return m.index;
   }
   return -1;
+}
+
+// Whatever sits between the end of the tab bar and the first panel.
+function preambleOf(html) {
+  const barStart = html.indexOf('<div class="bw-tabs">');
+  const firstPanel = html.indexOf('<div id="panel-');
+  if (barStart === -1 || firstPanel === -1 || firstPanel < barStart) return null;
+  const barEnd = matchTag(html, barStart);
+  if (barEnd === -1) return null;
+  const between = html.slice(barEnd + 6, firstPanel).replace(/<!--[\s\S]*?-->/g, '').trim();
+  return between || null;
 }
 
 // Grab a complete <div class="x"> ... </div> block, braces balanced by tag depth.
@@ -173,7 +184,11 @@ for (const mod of index.modules) {
         groups,
         reveals,
         toggles,
+        afterSwitch: afterSwitchBody(scripts),
         bespoke: bespokeFunctions(scripts, covered),
+        // Small code helpers the page's own functions lean on, kept as source.
+        helpers: topLevelHelpers(scripts).filter((h) => !RUNTIME_STATE.has(h.name)),
+        init: initStatements(scripts),
       };
     })(),
     cards,
@@ -183,6 +198,9 @@ for (const mod of index.modules) {
     // Everything the page carries outside the panels: the document title, the Related
     // strip every module ends on, and the footer.
     title: (html.match(/<title>([^<]*)<\/title>/) || [, ''])[1],
+    // Anything the page puts between the tab bar and the first panel. Only the reference
+    // page uses this, for its filter box, but dropping it silently broke that page.
+    preamble: preambleOf(html),
     related: blockByClass(html, 'related'),
     footer: blockByClass(html, 'bw-footer'),
     css: cssRules(html),
@@ -221,6 +239,7 @@ for (const mod of outputs) {
 // The shared views. These are generated files today, so their data is extracted the same
 // way and becomes the input the renderer will rebuild them from.
 const shared = {};
+const carriedViews = [];
 for (const [name, file, wanted] of [
   ['hub', 'builtwright_diagnose_hub_v1.html', ['modules', 'nodes', 'symptoms']],
   ['pm', 'builtwright_pm_library_v1.html', ['TASKS', 'COMP', 'INTERVALS']],
@@ -229,6 +248,13 @@ for (const [name, file, wanted] of [
   const { data } = extractLiterals(read(file));
   const picked = {};
   for (const key of wanted) if (data[key] !== undefined) picked[key] = data[key];
+  // The page may already read its content from the data file rather than carry it inline.
+  // There is then nothing to extract, and writing what was found would empty the data.
+  if (wanted.some((key) => picked[key] === undefined)) {
+    shared[name] = readData(DATA, name);
+    carriedViews.push(name);
+    continue;
+  }
   shared[name] = picked;
   writeFileSync(join(DATA, `${name}.js`), wrapData(name, picked));
 }
@@ -248,7 +274,10 @@ const pocketCards = [...pocketHtml.matchAll(
   tab: m[5],
   linkText: m[6],
 }));
-writeFileSync(join(DATA, 'pocketcards.js'), wrapData('pocketcards', pocketCards));
+// Same again: the page renders the cards from the data now, so there is nothing in the
+// markup to read back.
+if (pocketCards.length) writeFileSync(join(DATA, 'pocketcards.js'), wrapData('pocketcards', pocketCards));
+else carriedViews.push('pocketcards');
 
 writeFileSync(join(DATA, 'extract-report.json'), JSON.stringify({
   generated_from: index.version,
@@ -265,3 +294,4 @@ console.log(`modules written : ${report.length}${carried ? ` (${carried} carried
 console.log(`diagnostic results: ${totals.results} (index says ${index.totals.diagnostic_results})`);
 console.log(`self-check questions: ${totals.questions} (index says ${index.totals.self_check_questions})`);
 for (const [k, v] of Object.entries(shared)) console.log(`shared/${k}: ${Object.keys(v).join(', ') || 'nothing extracted'}`);
+if (carriedViews.length) console.log(`carried through (page reads the data): ${carriedViews.join(', ')}`);

@@ -43,6 +43,7 @@ BW.register("manager", {
     "groups": {},
     "reveals": {},
     "toggles": [],
+    "afterSwitch": null,
     "bespoke": []
   },
   "cards": {},
@@ -56,6 +57,7 @@ BW.register("manager", {
     "measure": "<div class=\"bw-section-label\">Measuring whether it is working</div>\n    <div class=\"info-block\">\n      <table class=\"ref-table\">\n        <tr><th>Measure</th><th>How</th><th>What good looks like after a year</th></tr>\n        <tr><td>Repeat failure rate</td><td>Failures on the same machine and component within 12 months, from the CMMS</td><td>Falling. This is the one that matters.</td></tr>\n        <tr><td>Root cause reports completed</td><td>Count, and the share that reach a system cause with an owner and a date</td><td>Every repeat and every costly failure has one; most reach a system cause.</td></tr>\n        <tr><td>PM tasks with quantities and settings</td><td>Audit the PM sheets: does \"grease\" have a quantity, does \"align\" have a tolerance, does \"tension\" have a number</td><td>Yes on every sheet.</td></tr>\n        <tr><td>Commissioning baselines</td><td>Machines installed or rebuilt this year with vibration, temperature, alignment, and amps recorded on day one</td><td>All of them.</td></tr>\n        <tr><td>Failed parts read</td><td>Share of failed-part work orders that name a mechanism</td><td>Most of them.</td></tr>\n        <tr><td>Electrical handoffs</td><td>Motor faults that arrive at the electrician with amps, temperatures, and the solo run result written down</td><td>All of them, and the electrician says so.</td></tr>\n        <tr><td>Guards found off</td><td>Weekly walk count</td><td>Zero, and when one is found, the design reason is fixed.</td></tr>\n        <tr><td>Self-checks worked</td><td>Ask. It is not logged.</td><td>Every technician has done the modules for the machines they own.</td></tr>\n      </table>\n      <div class=\"info-block-body\">None of these needs new software. They come out of the CMMS and a weekly walk. A department that tracks the first one and the third one will see the rest follow.</div>\n    </div>\n    <div class=\"field-tip\"><i class=\"ti ti-tool\"></i><div><strong>Field tip for managers: the shelf and the whiteboard</strong>Two things cost nothing and change a department. A shelf where every failed part sits for a month with the work order number on its box. A whiteboard with the machines that have failed twice this year. The shelf is evidence; the whiteboard is the priority list. BuiltWright is what the technician reads standing in front of either one.</div></div>"
   },
   "title": "BuiltWright: Manager Guide",
+  "preamble": null,
   "related": null,
   "footer": "<div class=\"bw-footer\">builtwrightapp.com &nbsp;·&nbsp; manager's guide</div>",
   "css": [

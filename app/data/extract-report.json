@@ -288,7 +288,12 @@
       "questions": 0,
       "panels": 3,
       "tabs": 3,
-      "skipped": []
+      "skipped": [
+        {
+          "name": "-",
+          "reason": "page is a shell, data carried through"
+        }
+      ]
     },
     {
       "key": "manager",
@@ -297,7 +302,12 @@
       "questions": 0,
       "panels": 5,
       "tabs": 5,
-      "skipped": []
+      "skipped": [
+        {
+          "name": "-",
+          "reason": "page is a shell, data carried through"
+        }
+      ]
     },
     {
       "key": "reference",

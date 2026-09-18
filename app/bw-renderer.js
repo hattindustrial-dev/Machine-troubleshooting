@@ -37,6 +37,8 @@
     if (b) b.classList.add('active');
     var p = document.getElementById('panel-' + tab);
     if (p) p.classList.add('active');
+    // A page can do a little more when a tab opens; the reference page re-applies its filter.
+    if (typeof BW.afterSwitch === 'function') BW.afterSwitch(tab);
   };
 
   // Deep link: file.html#tab
@@ -197,6 +199,7 @@
         return '<button class="bw-tab' + (t.active ? ' active' : '') + '" onclick="switchTab(\'' + t.id + '\')"' +
           (t.style ? ' style="' + t.style + '"' : '') + '>' + t.label + '</button>';
       }).join('') + '</div>' +
+      (mod.preamble || '') +
       mod.tabs.map(function (t) {
         var frag = mod.panels[t.id] || '';
         return '<div id="panel-' + t.id + '" class="bw-panel' + (t.active ? ' active' : '') + '">' + frag + '</div>';

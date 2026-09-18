@@ -27,11 +27,19 @@ export const isShell = (html) => html.includes('bw-renderer.js');
 
 function shell(mod) {
   const bespoke = (mod.render.bespoke || []).join('\n');
+  // Helpers and data objects are needed if either the page's own functions or its startup
+  // code refers to them.
+  const referenced = bespoke + '\n' + (mod.render.init || '');
   // A module specific function can lean on one of the module's own data objects, the way
   // the root cause form walks its FIELDS list. Those objects were extracted into the data,
   // so the ones actually referenced are declared back into scope here.
+  // Code helpers first: a bespoke function may call one.
+  const helpers = (mod.render.helpers || [])
+    .filter((h) => new RegExp(`\\b${h.name}\\b`).test(referenced))
+    .map((h) => h.source)
+    .join('\n');
   const deps = Object.keys(mod.cards)
-    .filter((name) => new RegExp(`\\b${name}\\b`).test(bespoke))
+    .filter((name) => new RegExp(`\\b${name}\\b`).test(referenced))
     .map((name) => `const ${name} = ${JSON.stringify(mod.cards[name])};`)
     .join('\n');
   return `<!DOCTYPE html>
@@ -53,7 +61,8 @@ function shell(mod) {
 <div class="bw-wrap" id="bw-root"></div>
 <script src="bw-renderer.js"></script>
 <script src="data/modules/${mod.key}.js"></script>
-${bespoke ? `<script>\n// Specific to this module. The renderer covers the tabs, cards, tree and self-check.\n${deps ? deps + '\n' : ''}${bespoke}\n</script>\n` : ''}<script>BW.mountRegistered(${JSON.stringify(mod.key)}, document.getElementById('bw-root'));</script>
+${bespoke ? `<script>\n// Specific to this page. The renderer covers the tabs, cards, tree and self-check.\n${helpers ? helpers + '\n' : ''}${deps ? deps + '\n' : ''}${bespoke}\n</script>\n` : ''}${mod.render.afterSwitch ? `<script>BW.afterSwitch = function (tab) { ${mod.render.afterSwitch} };</script>\n` : ''}<script>BW.mountRegistered(${JSON.stringify(mod.key)}, document.getElementById('bw-root'));</script>
+${mod.render.init ? `<script>\n// What this page runs once its markup is in place.\n${mod.render.init}\n</script>\n` : ''}
 <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
 </body>
 </html>
@@ -61,7 +70,9 @@ ${bespoke ? `<script>\n// Specific to this module. The renderer covers the tabs,
 }
 
 const write = process.argv.includes('--write');
-const modules = readModules(join(APP, 'data', 'modules')).filter((m) => Object.keys(m.trees).length > 0);
+// Content modules and the three documents alike. A document has no tree and no Related
+// strip; everything else about the shell is the same.
+const modules = readModules(join(APP, 'data', 'modules'));
 
 let converted = 0, already = 0, saved = 0;
 for (const mod of modules) {
@@ -75,8 +86,12 @@ for (const mod of modules) {
     console.log(`  SKIP ${mod.key}: ${emptyTabs.length} tab(s) have no panel in the data`);
     continue;
   }
-  if (!mod.title || !mod.related || !mod.footer) {
-    console.log(`  SKIP ${mod.key}: missing title, related strip or footer in the data`);
+  if (!mod.title || !mod.footer) {
+    console.log(`  SKIP ${mod.key}: missing title or footer in the data`);
+    continue;
+  }
+  if (Object.keys(mod.trees).length && !mod.related) {
+    console.log(`  SKIP ${mod.key}: content module with no Related strip in the data`);
     continue;
   }
 

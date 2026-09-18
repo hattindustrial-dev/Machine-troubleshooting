@@ -106,7 +106,9 @@ for (const mod of modules) {
   }
   // Once the page is a shell the data is the only copy of the content.
   if (shell) {
-    if (!mod.title || !mod.related || !mod.footer) fail(mod.key, 'shell page but the data has no title, related strip or footer');
+    if (!mod.title || !mod.footer) fail(mod.key, 'shell page but the data has no title or footer');
+    // Content modules end on a Related strip; the three documents do not have one.
+    if (Object.keys(mod.trees).length && !mod.related) fail(mod.key, 'shell page but the data has no Related strip');
     if (!mod.css.length && !mod.cssShared) fail(mod.key, 'shell page but the data carries no CSS');
   }
   // Content modules end on Safety. The three documents (curriculum, manager, reference)
@@ -212,6 +214,26 @@ for (const mod of modules) {
   if (lost.length) fail(mod.key, `${lost.length} CSS block(s) lost in the split, first: ${lost[0].slice(0, 70)}`);
   if (extra.length) fail(mod.key, `${extra.length} CSS block(s) the module never had, first: ${extra[0].slice(0, 70)}`);
 }
+
+// ---- 6b2. The shared data files are populated -----------------------------------
+// A page that reads its data has nothing left in its markup to extract. Running the
+// extractor over one of those pages used to write back what it found, which was nothing.
+// An empty data file breaks the page it feeds, so it has to fail here.
+for (const [name, keys] of [
+  ['hub', ['modules', 'nodes', 'symptoms']],
+  ['pm', ['TASKS', 'COMP', 'INTERVALS']],
+  ['search', ['IDX', 'RANK']],
+  ['components', ['equipment', 'components']],
+]) {
+  let view;
+  try { view = readData(DATA, name); } catch (e) { fail(`data/${name}.js`, `unreadable: ${e.message}`); continue; }
+  for (const key of keys) {
+    const value = view[key];
+    const size = Array.isArray(value) ? value.length : value && typeof value === 'object' ? Object.keys(value).length : 0;
+    if (!size) fail(`data/${name}.js`, `${key} is empty`);
+  }
+}
+if (!readData(DATA, 'pocketcards').length) fail('data/pocketcards.js', 'no cards');
 
 // ---- 6c. Every diagnosis is findable in search ---------------------------------
 // The search index was generated with a regex that needed label: and text: adjacent on
