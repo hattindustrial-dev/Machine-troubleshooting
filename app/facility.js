@@ -115,12 +115,11 @@
     return Object.keys(tags);
   };
 
-  // The machine's filled-in numbers for a module, ready to render as an overlay.
-  BWF.overlayFor = function (hub, vocabulary, machine, moduleKey) {
+  // The machine's filled-in numbers for a set of component tags, ready to render.
+  BWF.numbersFor = function (vocabulary, machine, tags) {
     if (!machine) return [];
-    var wanted = BWF.componentsOfModule(hub, moduleKey, vocabulary);
     var out = [];
-    wanted.forEach(function (tag) {
+    (tags || []).forEach(function (tag) {
       var values = (machine.components || {})[tag];
       var spec = vocabulary[tag];
       if (!values || !spec) return;
@@ -130,6 +129,16 @@
       if (filled.length) out.push({ tag: tag, label: spec.label, icon: spec.icon, fields: filled });
     });
     return out;
+  };
+
+  // Same thing for a module, working the tags out from the hub.
+  BWF.overlayFor = function (hub, vocabulary, machine, moduleKey) {
+    return BWF.numbersFor(vocabulary, machine, BWF.componentsOfModule(hub, moduleKey, vocabulary));
+  };
+
+  BWF.activeMachine = function () {
+    var data = BWF.load();
+    return data.activeId ? BWF.machine(data, data.activeId) : null;
   };
 
   global.BWF = BWF;

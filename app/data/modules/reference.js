@@ -310,5 +310,6 @@ BW.register("reference", {
     ".related a { display:inline-block; font-size:12px; color:#e8e6df; background:#242420; border:0.5px solid #3a3a36; border-radius:4px; padding:5px 9px; margin:0 6px 6px 0; text-decoration:none; }",
     ".related a:hover { border-color:#BA7517; color:#EF9F27; }"
   ],
-  "cssShared": 86
+  "cssShared": 86,
+  "components": []
 });

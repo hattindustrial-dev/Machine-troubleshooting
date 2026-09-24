@@ -619,5 +619,10 @@ BW.register("alignment", {
     ".tree-q-hint { font-size: 12px; color: #888780; margin-bottom: 0.75rem; font-style: italic; line-height: 1.45; }",
     ".tree-btn { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; padding: 7px 16px; border-radius: 5px; border: 0.5px solid #3a3a36; background: #242420; color: #e8e6df; cursor: pointer; transition: all 0.12s; text-align: left; }"
   ],
-  "cssShared": 86
+  "cssShared": 86,
+  "components": [
+    "bearing",
+    "alignment",
+    "motor"
+  ]
 });

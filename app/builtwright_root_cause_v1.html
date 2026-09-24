@@ -17,8 +17,9 @@
 <div class="bw-wrap" id="bw-root"></div>
 <script src="bw-renderer.js"></script>
 <script src="data/modules/rootcause.js"></script>
+
 <script>
-// Specific to this module. The renderer covers the tabs, cards, tree and self-check.
+// Specific to this page. The renderer covers the tabs, cards, tree and self-check.
 const FIELDS = ["r_machine","r_when","r_problem","r_timeline","r_evidence","r_physical","r_whys","r_root","r_ca1","r_ca2","r_verify","r_by"];
 function rcaLoad(){try{const d=JSON.parse(localStorage.getItem('bw_rca')||'{}');FIELDS.forEach(f=>{const e=document.getElementById(f);if(e&&d[f]!==undefined)e.value=d[f];});}catch(e){}}
 function rcaSave(){const d={};FIELDS.forEach(f=>d[f]=document.getElementById(f).value);try{localStorage.setItem('bw_rca',JSON.stringify(d));document.getElementById('rca-status').textContent='Saved in this browser.';}catch(e){document.getElementById('rca-status').textContent='Could not save (storage unavailable).';}}
@@ -26,6 +27,7 @@ function rcaCopy(){const L=[['Machine','r_machine'],['When','r_when'],['Problem'
 function rcaReset(){FIELDS.forEach(f=>document.getElementById(f).value='');try{localStorage.removeItem('bw_rca');}catch(e){}document.getElementById('rca-status').textContent='Cleared.';}
 </script>
 <script>BW.mountRegistered("rootcause", document.getElementById('bw-root'));</script>
+
 <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
 </body>
 </html>

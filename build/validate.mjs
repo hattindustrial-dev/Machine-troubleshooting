@@ -350,6 +350,18 @@ else {
   for (const entry of shellList) {
     if (!existsSync(join(APP, entry))) fail('sw.js', `precache lists ${entry}, which does not exist`);
   }
+  // Every local script and stylesheet a page pulls in has to be cached, or that page is
+  // broken offline in a way that is easy to miss.
+  for (const page of files.concat(['facility.html', 'module.html'])) {
+    if (!existsSync(join(APP, page))) continue;
+    const html = readFileSync(join(APP, page), 'utf8');
+    for (const m of html.matchAll(/<(?:script|link)[^>]*(?:src|href)="([^"]+)"/g)) {
+      if (/^https?:|^\/\//.test(m[1])) continue;
+      if (!existsSync(join(APP, m[1]))) fail(page, `references ${m[1]}, which does not exist`);
+      else if (!shellList.includes(m[1])) fail('sw.js', `${page} loads ${m[1]}, which is not precached`);
+    }
+  }
+
   // A shell page is useless offline without its data file.
   for (const mod of modules) {
     if (!isShell(readFileSync(join(APP, mod.source), 'utf8'))) continue;

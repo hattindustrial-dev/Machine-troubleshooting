@@ -316,7 +316,12 @@
       "questions": 0,
       "panels": 10,
       "tabs": 10,
-      "skipped": []
+      "skipped": [
+        {
+          "name": "-",
+          "reason": "page is a shell, data carried through"
+        }
+      ]
     }
   ],
   "shared": {

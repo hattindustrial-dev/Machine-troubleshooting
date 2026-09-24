@@ -20,13 +20,24 @@ const moduleData = readdirSync(join(APP, 'data', 'modules')).filter((f) => f.end
 const sharedData = readdirSync(join(APP, 'data')).filter((f) => f.endsWith('.js')).sort()
   .map((f) => `data/${f}`);
 
+// Every local script and stylesheet the pages actually reference, so adding one to a page
+// cannot leave it out of the cache.
+const referenced = new Set();
+for (const page of pages) {
+  const html = readFileSync(join(APP, page), 'utf8');
+  for (const m of html.matchAll(/<(?:script|link)[^>]*(?:src|href)="([^"]+)"/g)) {
+    if (/^https?:|^\/\//.test(m[1])) continue; // CDN fonts and icons cache at runtime
+    referenced.add(m[1]);
+  }
+}
+
 const shell = [
   ...pages,
-  'bw.css', 'bw-renderer.js', 'facility.js',
+  ...[...referenced].sort(),
   ...moduleData,
   ...sharedData,
   'manifest.json', 'builtwright_icon_192.png', 'builtwright_icon_512.png',
-];
+].filter((v, i, a) => a.indexOf(v) === i);
 
 // Bump the version so installed devices fetch the new files.
 const current = readFileSync(join(APP, 'sw.js'), 'utf8');

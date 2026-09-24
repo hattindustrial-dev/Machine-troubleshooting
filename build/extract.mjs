@@ -279,6 +279,27 @@ const pocketCards = [...pocketHtml.matchAll(
 if (pocketCards.length) writeFileSync(join(DATA, 'pocketcards.js'), wrapData('pocketcards', pocketCards));
 else carriedViews.push('pocketcards');
 
+// ---- Component tags per module -------------------------------------------------
+// Which component types a module speaks to, taken from the hub routes that point at it
+// plus the tag of the same name where there is one. The facility layer uses this to decide
+// which of a machine's numbers belong beside which module.
+{
+  const hub = shared.hub;
+  const vocabulary = readData(DATA, 'components').components;
+  const byModule = {};
+  for (const [, node] of Object.entries(hub.nodes || {})) {
+    if (!node || node.type !== 'route') continue;
+    for (const tag of node.components || []) (byModule[node.module] = byModule[node.module] || new Set()).add(tag);
+  }
+  for (const mod of outputs) {
+    const tags = new Set(byModule[mod.key] || []);
+    if (vocabulary[mod.key]) tags.add(mod.key);
+    mod.components = [...tags];
+    writeFileSync(join(DATA, 'modules', `${mod.key}.js`), wrap(mod.key, mod));
+  }
+  console.log(`component tags: ${outputs.filter((m) => m.components.length).length} of ${outputs.length} modules`);
+}
+
 writeFileSync(join(DATA, 'extract-report.json'), JSON.stringify({
   generated_from: index.version,
   modules: report,

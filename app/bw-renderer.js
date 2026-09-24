@@ -228,6 +228,11 @@
       global[t.name] = t.byId ? BW.toggleAdv : BW.toggleEl;
     });
 
+    // The facility layer, when a machine is selected and the page loaded its script.
+    if (global.BWFacilityOverlay) {
+      try { global.BWFacilityOverlay.decorate(mod, root); } catch (e) { /* never block the module */ }
+    }
+
     BW.go();
     global.addEventListener('hashchange', BW.go);
     var activeTab = mod.tabs.filter(function (t) { return t.active; })[0];

@@ -162,6 +162,9 @@
 </div>
 
 <script src="data/hub.js"></script>
+<script src="data/components.js"></script>
+<script src="facility.js"></script>
+<script src="bw-hub-filter.js"></script>
 <script>
 const modules = BW_DATA.hub.modules;
 const symptoms = BW_DATA.hub.symptoms;
@@ -170,7 +173,16 @@ const nodes = BW_DATA.hub.nodes;
 let history = [], current = null, currentSymptom = null;
 
 function init() {
-  document.getElementById('sym-grid').innerHTML = symptoms.map(s => `<div class="sym-card" id="symcard-${s.id}" onclick="startSymptom('${s.id}')"><div class="sym-icon"><i class="ti ${s.icon}"></i></div><div class="sym-name">${s.name}</div><div class="sym-sub">${s.sub}</div></div>`).join('');
+  BWHub.style(); BWHub.refresh();
+  const grid = document.getElementById('sym-grid');
+  grid.insertAdjacentHTML('beforebegin', BWHub.banner());
+  const priorBanner = document.querySelectorAll('.hub-fac');
+  if (priorBanner.length > 1) priorBanner[0].remove();
+  grid.innerHTML = symptoms.map(s => {
+    const c = BWHub.countFor(s.id);
+    const dim = BWHub.active && c.hit === 0 ? ' bw-dim' : '';
+    return `<div class="sym-card${dim}" id="symcard-${s.id}" onclick="startSymptom('${s.id}')"><div class="sym-icon"><i class="ti ${s.icon}"></i></div><div class="sym-name">${s.name}</div><div class="sym-sub">${s.sub}</div></div>`;
+  }).join('');
   document.getElementById('dir').innerHTML = `<div class="dir-row"><div class="dir-num">S</div><div class="dir-name"><a href="builtwright_search_v1.html" style="color:#f0ede4;text-decoration:none;">Search</a><small>Every card, diagnosis, route, table row, and question across the series</small></div></div><div class="dir-row"><div class="dir-num">PM</div><div class="dir-name"><a href="builtwright_pm_library_v1.html" style="color:#f0ede4;text-decoration:none;">PM Task Library</a><small>Every preventive task, traceable to the failure it prevents</small></div></div>` + Object.entries(modules).map(([k,m]) => m.planned
     ? `<div class="dir-row planned"><div class="dir-num">${m.num}</div><div class="dir-name">${m.name}<small>Planned: ${m.planned}</small></div></div>`
     : `<div class="dir-row"><div class="dir-num">${m.num}</div><div class="dir-name"><a href="${m.file}" style="color:#f0ede4;text-decoration:none;">${m.name}</a></div><div class="dir-tabs">${Object.entries(m.tabs).map(([t,n])=>`<a href="${m.file}#${t}">${n}</a>`).join('')}</div></div>`
@@ -204,11 +216,12 @@ function render(id) {
       <div class="route-dest"><div><div class="route-dest-num">MODULE ${m.num}</div><div class="route-dest-name">${m.name}</div>${tabName?`<div class="route-dest-tab">${tabName}</div>`:''}</div>
         ${planned ? `<span class="route-open disabled">Coming</span>` : `<a class="route-open" href="${href}">Open <i class="ti ti-arrow-right"></i></a>`}</div>
       ${n.first && n.first.length ? `<div class="route-list-label">Check first</div><ul class="route-checks">${n.first.map(f=>`<li>${f}</li>`).join('')}</ul>` : ''}
+      ${BWHub.routeNumbers(n)}
       ${n.also && n.also.length ? `<div class="route-list-label">Also consider</div><div class="also">${n.also.map(a=>{const am=modules[a.module]; return am.planned ? `<a class="planned" href="#">${am.name}<span>${a.why}</span></a>` : `<a href="${am.file}#${a.tab}">${am.name} › ${am.tabs[a.tab]||a.tab}<span>${a.why}</span></a>`;}).join('')}</div>` : ''}
     </div>
     <div style="margin-top:10px;"><button class="tree-btn" onclick="startSymptom('${currentSymptom}')">Start this symptom over</button></div>`;
   } else {
-    html += `<div class="tree-q"><div class="tree-q-text">${n.q}</div>${n.hint?`<div class="tree-q-hint">${n.hint}</div>`:''}<div class="tree-btns">${n.options.map(o=>`<button class="tree-btn ${o.cls||''}" onclick="go('${o.next}')">${o.label}</button>`).join('')}</div></div>`;
+    html += `<div class="tree-q"><div class="tree-q-text">${n.q}</div>${n.hint?`<div class="tree-q-hint">${n.hint}</div>`:''}<div class="tree-btns">${BWHub.filter(n.options).map(o=>`<button class="tree-btn ${o.cls||''}" onclick="go('${o.next}')">${o.label}</button>`).join('')}</div></div>`;
   }
   area.innerHTML = html;
 }

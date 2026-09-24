@@ -17,7 +17,9 @@
 <div class="bw-wrap" id="bw-root"></div>
 <script src="bw-renderer.js"></script>
 <script src="data/modules/curriculum.js"></script>
+
 <script>BW.mountRegistered("curriculum", document.getElementById('bw-root'));</script>
+
 <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
 </body>
 </html>

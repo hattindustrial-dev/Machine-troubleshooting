@@ -809,5 +809,6 @@ BW.register("rootcause", {
     ".pm-btn { font-family: 'Share Tech Mono', monospace; font-size:10px; letter-spacing:1px; text-transform:uppercase; background:#242420; color:#BA7517; border:0.5px solid #BA7517; border-radius:4px; padding:8px 12px; cursor:pointer; }",
     "@media print { .rca-btns{display:none} .rca-form input,.rca-form textarea{border:0.5px solid #999;background:#fff;color:#000} }"
   ],
-  "cssShared": 86
+  "cssShared": 86,
+  "components": []
 });

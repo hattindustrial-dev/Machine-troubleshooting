@@ -209,6 +209,28 @@ universal and the numbers are overlaid beside them. Machines are kept in `localS
 the device, like the PM ticks and the root cause form, and nothing leaves the browser.
 This page loads its data by script tag as well, so it works from a folder like the rest.
 
+### The filter and the overlay
+
+Selecting a machine changes two things, which is what the hub's own Facility mode note
+describes.
+
+The hub filters. A branch of the symptom tree is only offered if some route it can reach
+matches one of the machine's components, so a conveyor question is not put to a pump train.
+Symptoms with nothing to offer are dimmed rather than hidden, a banner says how many of the
+71 routes apply, and one click shows everything again. If a filter would leave a question
+with no answers at all the question is shown unfiltered: narrowing the hub must never
+dead-end it.
+
+The route card and the module carry the numbers. A route about overgreasing shows that
+machine's actual grease and regrease interval under the generic advice; the bearing module
+shows its bearing numbers above the tabs. Which numbers belong where comes from the
+component tags each module carries, derived from the routes that point at it, so no mapping
+is maintained by hand. Six modules have no tags and show no overlay: the three documents,
+plus installation, root cause and precision measurement, which no route tags.
+
+Nothing is written into the module. The overlay is a strip above the tab bar and the module
+content underneath is untouched, which is what keeps the modules universal.
+
 ## Validation
 
 `node build/validate.mjs` checks, over `data/` and `app/`:

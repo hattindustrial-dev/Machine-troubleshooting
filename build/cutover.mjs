@@ -61,6 +61,7 @@ function shell(mod) {
 <div class="bw-wrap" id="bw-root"></div>
 <script src="bw-renderer.js"></script>
 <script src="data/modules/${mod.key}.js"></script>
+${(mod.components || []).length ? `<script src="data/components.js"></script>\n<script src="facility.js"></script>\n<script src="bw-facility-overlay.js"></script>` : ''}
 ${bespoke ? `<script>\n// Specific to this page. The renderer covers the tabs, cards, tree and self-check.\n${helpers ? helpers + '\n' : ''}${deps ? deps + '\n' : ''}${bespoke}\n</script>\n` : ''}${mod.render.afterSwitch ? `<script>BW.afterSwitch = function (tab) { ${mod.render.afterSwitch} };</script>\n` : ''}<script>BW.mountRegistered(${JSON.stringify(mod.key)}, document.getElementById('bw-root'));</script>
 ${mod.render.init ? `<script>\n// What this page runs once its markup is in place.\n${mod.render.init}\n</script>\n` : ''}
 <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
@@ -70,6 +71,10 @@ ${mod.render.init ? `<script>\n// What this page runs once its markup is in plac
 }
 
 const write = process.argv.includes('--write');
+// A page that is already a shell is skipped, because converting it again would do nothing.
+// --force rewrites shells too, for when the shell template itself changes. That is safe
+// now: a shell is generated from the data, so regenerating it is idempotent.
+const force = process.argv.includes('--force');
 // Content modules and the three documents alike. A document has no tree and no Related
 // strip; everything else about the shell is the same.
 const modules = readModules(join(APP, 'data', 'modules'));
@@ -78,7 +83,7 @@ let converted = 0, already = 0, saved = 0;
 for (const mod of modules) {
   const path = join(APP, mod.source);
   const current = readFileSync(path, 'utf8');
-  if (isShell(current)) { already++; continue; }
+  if (isShell(current) && !force) { already++; continue; }
 
   // Refuse to convert anything whose content is not fully in the data.
   const emptyTabs = mod.tabs.filter((t) => !mod.panels[t.id]);
@@ -96,6 +101,7 @@ for (const mod of modules) {
   }
 
   const next = shell(mod);
+  if (next === current) { already++; continue; }
   saved += current.length - next.length;
   converted++;
   console.log(`  ${write ? 'wrote' : 'would write'} ${mod.source}: ${(current.length / 1024).toFixed(0)}k -> ${(next.length / 1024).toFixed(1)}k` +
