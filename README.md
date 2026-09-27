@@ -231,6 +231,21 @@ plus installation, root cause and precision measurement, which no route tags.
 Nothing is written into the module. The overlay is a strip above the tab bar and the module
 content underneath is untouched, which is what keeps the modules universal.
 
+### Capturing what happened
+
+A route card offers to log itself against the selected machine, with one field for whatever
+was read off it. The facility page then shows that machine's history newest first, and a
+Keeps coming back section for any route reached more than once, which is the part a work
+order system tends not to surface: the same diagnosis three times is a root cause, not
+three incidents.
+
+It also lists the modules this machine's components touch, with a link straight to each
+one's Self-Check, so a supervisor can set study that matches the plant rather than the
+whole series.
+
+Logs are `localStorage` like the machines, and deleting a machine deletes its history with
+it rather than leaving it orphaned.
+
 ## Validation
 
 `node build/validate.mjs` checks, over `data/` and `app/`:
@@ -259,6 +274,7 @@ content underneath is untouched, which is what keeps the modules universal.
 - the pocket card data regenerates the pocket card page exactly
 - the facility vocabulary and the hub's component tags are the same set, and every
   component has a label, an icon and uniquely keyed fields
+- every local script and stylesheet a page loads is precached
 
 Current state: 23 modules, 380 diagnostic results, 570 transitions, 423 self-check
 questions, 162 links, 52 script blocks, all passing.

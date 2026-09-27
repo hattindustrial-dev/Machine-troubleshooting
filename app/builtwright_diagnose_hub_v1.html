@@ -217,6 +217,7 @@ function render(id) {
         ${planned ? `<span class="route-open disabled">Coming</span>` : `<a class="route-open" href="${href}">Open <i class="ti ti-arrow-right"></i></a>`}</div>
       ${n.first && n.first.length ? `<div class="route-list-label">Check first</div><ul class="route-checks">${n.first.map(f=>`<li>${f}</li>`).join('')}</ul>` : ''}
       ${BWHub.routeNumbers(n)}
+      ${BWHub.logForm(id, n)}
       ${n.also && n.also.length ? `<div class="route-list-label">Also consider</div><div class="also">${n.also.map(a=>{const am=modules[a.module]; return am.planned ? `<a class="planned" href="#">${am.name}<span>${a.why}</span></a>` : `<a href="${am.file}#${a.tab}">${am.name} › ${am.tabs[a.tab]||a.tab}<span>${a.why}</span></a>`;}).join('')}</div>` : ''}
     </div>
     <div style="margin-top:10px;"><button class="tree-btn" onclick="startSymptom('${currentSymptom}')">Start this symptom over</button></div>`;

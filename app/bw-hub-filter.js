@@ -136,6 +136,46 @@
     });
   }
 
+  // Capturing what happened: the route reached, against the machine, with whatever was
+  // read off it. One field, because anything longer does not get filled in on a plant floor.
+  BWHub.logForm = function (routeId, route) {
+    var m = (global.BWF && global.BWF.activeMachine()) || null;
+    if (!m) return '';
+    return '<div class="hub-log">' +
+      '<input class="hub-log-note" id="hub-log-note" placeholder="what you found, readings, what you did (optional)">' +
+      '<button class="hub-log-btn" onclick="BWHub.logRoute(' + JSON.stringify(routeId).replace(/"/g, '&quot;') + ')">' +
+      'Log against ' + esc(m.tag) + '</button>' +
+      '<span class="hub-log-said" id="hub-log-said"></span></div>';
+  };
+
+  BWHub.logRoute = function (routeId) {
+    if (!global.BWF) return;
+    var data = global.BWF.load();
+    if (!data.activeId) return;
+    var route = nodes()[routeId];
+    if (!route) return;
+    var field = document.getElementById('hub-log-note');
+    global.BWF.addLog(data, {
+      machineId: data.activeId,
+      symptom: global.currentSymptom || '',
+      routeId: routeId,
+      title: route.title,
+      module: route.module,
+      tab: route.tab,
+      note: field ? field.value.trim() : '',
+    });
+    var said = document.getElementById('hub-log-said');
+    if (!global.BWF.save(data)) {
+      if (said) said.textContent = 'could not save on this device';
+      return;
+    }
+    if (field) field.value = '';
+    if (said) {
+      var n = global.BWF.logsFor(data, data.activeId).length;
+      said.textContent = 'logged, ' + n + ' on this machine';
+    }
+  };
+
   BWHub.style = function () {
     if (document.getElementById('bw-hub-filter-style')) return;
     var el = document.createElement('style');
@@ -150,6 +190,13 @@
       '.hub-fac-nums { border-top:0.5px solid #3a3a36; margin-top:0.75rem; padding-top:0.6rem; }',
       ".hub-fac-nums-label { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:#EF9F27; margin-bottom:4px; }",
       '.hub-fac-num { font-size:13px; color:#f0ede4; padding:2px 0; }',
+      '.hub-log { display:flex; gap:8px; align-items:center; flex-wrap:wrap; border-top:0.5px solid #3a3a36; margin-top:0.75rem; padding-top:0.6rem; }',
+      ".hub-log-note { flex:1; min-width:180px; font-family:'Rajdhani',sans-serif; font-size:13px; background:#1a1a18; border:0.5px solid #3a3a36; border-radius:5px; padding:6px 9px; color:#f0ede4; outline:none; }",
+      '.hub-log-note:focus { border-color:#BA7517; }',
+      ".hub-log-btn { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; background:none; color:#888780; border:0.5px solid #3a3a36; border-radius:4px; padding:6px 10px; cursor:pointer; }",
+      '.hub-log-btn:hover { color:#EF9F27; border-color:#BA7517; }',
+      ".hub-log-said { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:#97C459; }",
+      '@media print { .hub-log { display:none; } }',
       ".hub-fac-num span { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:#888780; display:block; }",
     ].join('\n');
     document.head.appendChild(el);

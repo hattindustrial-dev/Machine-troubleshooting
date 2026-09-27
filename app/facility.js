@@ -18,7 +18,7 @@
   var BWF = { version: 1 };
 
   // ---- storage -------------------------------------------------------------------
-  function blank() { return { version: 1, machines: [], activeId: null }; }
+  function blank() { return { version: 1, machines: [], activeId: null, logs: [] }; }
 
   BWF.load = function () {
     try {
@@ -26,6 +26,7 @@
       if (!raw) return blank();
       var data = JSON.parse(raw);
       if (!data || !Array.isArray(data.machines)) return blank();
+      if (!Array.isArray(data.logs)) data.logs = []; // added after the first machines were stored
       return data;
     } catch (e) {
       return blank(); // private mode, cleared storage, or something else wrote the key
@@ -53,8 +54,46 @@
 
   BWF.remove = function (data, id) {
     data.machines = data.machines.filter(function (m) { return m.id !== id; });
+    // Its history goes with it, rather than being left orphaned in storage.
+    data.logs = (data.logs || []).filter(function (l) { return l.machineId !== id; });
     if (data.activeId === id) data.activeId = null;
     return data;
+  };
+
+  // ---- the diagnosis log ---------------------------------------------------------
+  // What the hub's Facility mode note calls capturing what happened: a route taken against
+  // a machine, with whatever the technician read off it. Over time a machine accumulates
+  // its own history, and a route that keeps coming back is pointing at a root cause.
+  BWF.addLog = function (data, entry) {
+    entry.id = entry.id || ('l' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6));
+    entry.at = entry.at || new Date().toISOString();
+    data.logs.unshift(entry);
+    return data;
+  };
+
+  BWF.removeLog = function (data, id) {
+    data.logs = data.logs.filter(function (l) { return l.id !== id; });
+    return data;
+  };
+
+  BWF.logsFor = function (data, machineId) {
+    return (data.logs || []).filter(function (l) { return l.machineId === machineId; });
+  };
+
+  // Routes this machine has reached more than once, most repeated first.
+  BWF.recurring = function (data, machineId) {
+    var counts = {};
+    BWF.logsFor(data, machineId).forEach(function (l) {
+      if (!l.routeId) return;
+      var c = counts[l.routeId] || { routeId: l.routeId, title: l.title, module: l.module, tab: l.tab, count: 0, last: l.at };
+      c.count++;
+      if (l.at > c.last) c.last = l.at;
+      counts[l.routeId] = c;
+    });
+    return Object.keys(counts)
+      .map(function (k) { return counts[k]; })
+      .filter(function (c) { return c.count > 1; })
+      .sort(function (a, b) { return b.count - a.count; });
   };
 
   // ---- the component tags a machine carries ------------------------------------------

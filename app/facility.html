@@ -40,6 +40,18 @@
   .fac-route .why { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:#5F5E5A; margin-top:3px; }
   .fac-empty { color:#888780; font-size:14px; padding:1rem 0; }
   .fac-count { font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:1px; text-transform:uppercase; color:#888780; margin-bottom:0.6rem; }
+  .fac-log { border-left:2px solid #3a3a36; padding:7px 0 7px 11px; margin-bottom:7px; }
+  .fac-log-when { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:#5F5E5A; }
+  .fac-log-title { font-size:14px; color:#f0ede4; }
+  .fac-log-note { font-size:13px; color:#c8c6bf; margin-top:2px; }
+  .fac-log-del { float:right; background:none; border:none; color:#5F5E5A; cursor:pointer; font-size:11px; }
+  .fac-log-del:hover { color:#F09595; }
+  .fac-repeat { border-left:2px solid #BA7517; padding:7px 0 7px 11px; margin-bottom:7px; }
+  .fac-repeat-n { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:#EF9F27; }
+  .fac-study { display:flex; gap:6px; flex-wrap:wrap; }
+  .fac-study a { font-size:13px; color:#f0ede4; text-decoration:none; border:0.5px solid #3a3a36; border-radius:6px; padding:6px 10px; background:#2e2e2a; }
+  .fac-study a:hover { border-color:#BA7517; color:#EF9F27; }
+  .fac-study small { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; color:#888780; display:block; }
 </style>
 </head>
 <body>
@@ -133,6 +145,50 @@
     });
     html += '</div>';
 
+    // What happened on this machine, and which routes keep coming back.
+    var logs = BWF.logsFor(data, m.id);
+    var repeats = BWF.recurring(data, m.id);
+    html += '<div class="fac-group"><div class="fac-group-title">History</div>';
+    html += '<div class="fac-count">' + logs.length + (logs.length === 1 ? ' diagnosis' : ' diagnoses') + ' logged</div>';
+    if (!logs.length) {
+      html += '<div class="fac-empty">Nothing logged yet. Walk a symptom on the hub with this machine selected and log the route you land on.</div>';
+    }
+    if (repeats.length) {
+      html += '<div class="fac-group-title" style="margin-top:0.7rem;">Keeps coming back</div>';
+      repeats.forEach(function (r) {
+        var mod = hub.modules[r.module];
+        html += '<div class="fac-repeat"><div class="fac-repeat-n">' + r.count + ' times</div>' +
+          (mod ? '<a href="' + esc(mod.file) + '#' + esc(r.tab) + '" style="color:#f0ede4;text-decoration:none;">' + esc(r.title) + '</a>'
+               : esc(r.title)) + '</div>';
+      });
+    }
+    logs.slice(0, 25).forEach(function (l) {
+      var mod = hub.modules[l.module];
+      html += '<div class="fac-log"><button class="fac-log-del" onclick="FAC.delLog(\'' + l.id + '\')" title="remove">&times;</button>' +
+        '<div class="fac-log-when">' + esc(String(l.at).slice(0, 16).replace('T', ' ')) + (mod ? ' &middot; ' + esc(mod.name) : '') + '</div>' +
+        '<div class="fac-log-title">' + esc(l.title || '') + '</div>' +
+        (l.note ? '<div class="fac-log-note">' + esc(l.note) + '</div>' : '') + '</div>';
+    });
+    if (logs.length > 25) html += '<div class="fac-count">showing the most recent 25</div>';
+    html += '</div>';
+
+    // Which modules this machine's components point at, for training on it.
+    var study = Object.keys(hub.modules).filter(function (k) {
+      var tags = BWF.componentsOfModule(hub, k, vocab);
+      return tags.some(function (t) { return BWF.tagsOf(m).indexOf(t) !== -1; });
+    });
+    if (study.length) {
+      html += '<div class="fac-group"><div class="fac-group-title">Modules for this machine</div>' +
+        '<div class="fac-count">' + study.length + ' of ' + Object.keys(hub.modules).length + ' modules touch its components</div><div class="fac-study">';
+      study.forEach(function (k) {
+        var mod = hub.modules[k];
+        var sc = mod.tabs && mod.tabs.selfcheck;
+        html += '<a href="' + esc(mod.file) + (sc ? '#selfcheck' : '') + '">' + esc(mod.name) +
+          (sc ? '<small>self-check</small>' : '<small>open</small>') + '</a>';
+      });
+      html += '</div></div>';
+    }
+
     var overlay = [];
     Object.keys(hub.modules).forEach(function (k) {
       BWF.overlayFor(hub, vocab, m, k).forEach(function (o) {
@@ -221,9 +277,15 @@
     cancel: function () { editing = null; render(); },
     select: function (id) { data.activeId = data.activeId === id ? null : id; BWF.save(data); render(); },
     clearSel: function () { data.activeId = null; BWF.save(data); render(); },
+    delLog: function (id) {
+      data = BWF.removeLog(data, id);
+      BWF.save(data);
+      render();
+    },
     del: function (id) {
       var m = BWF.machine(data, id);
-      if (!confirm('Delete ' + (m && m.tag) + ' and its plant numbers from this device?')) return;
+      var n = BWF.logsFor(data, id).length;
+      if (!confirm('Delete ' + (m && m.tag) + ', its plant numbers and ' + n + ' logged diagnos' + (n === 1 ? 'is' : 'es') + ' from this device?')) return;
       data = BWF.remove(data, id);
       BWF.save(data);
       render();
