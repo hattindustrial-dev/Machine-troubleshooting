@@ -13,7 +13,12 @@
         "leaks": "Leak Detection",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": [
+        "pump",
+        "seal",
+        "alignment"
+      ]
     },
     "bearing": {
       "num": "02",
@@ -26,7 +31,13 @@
         "install": "Installation",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": [
+        "bearing",
+        "lube",
+        "seal",
+        "alignment"
+      ]
     },
     "alignment": {
       "num": "03",
@@ -42,7 +53,12 @@
         "troubleshoot": "Troubleshoot",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": [
+        "bearing",
+        "alignment",
+        "motor"
+      ]
     },
     "seals": {
       "num": "04",
@@ -58,7 +74,11 @@
         "troubleshoot": "Troubleshoot",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": [
+        "pump",
+        "seal"
+      ]
     },
     "lube": {
       "num": "05",
@@ -73,7 +93,14 @@
         "troubleshoot": "Troubleshoot",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": [
+        "bearing",
+        "lube",
+        "seal",
+        "gearbox",
+        "powertrans"
+      ]
     },
     "pneu": {
       "num": "06",
@@ -88,7 +115,11 @@
         "troubleshoot": "Troubleshoot",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": [
+        "pneu",
+        "seal"
+      ]
     },
     "hydraulics": {
       "num": "07",
@@ -104,7 +135,10 @@
         "troubleshoot": "Troubleshoot",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": [
+        "hydraulics"
+      ]
     },
     "powertrans": {
       "num": "08",
@@ -120,7 +154,10 @@
         "troubleshoot": "Troubleshoot",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": [
+        "powertrans"
+      ]
     },
     "gearbox": {
       "num": "09",
@@ -136,7 +173,11 @@
         "troubleshoot": "Troubleshoot",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": [
+        "gearbox",
+        "lube"
+      ]
     },
     "motors": {
       "num": "10",
@@ -153,7 +194,13 @@
         "troubleshoot": "Troubleshoot",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": [
+        "motor",
+        "alignment",
+        "bearing",
+        "pneu"
+      ]
     },
     "vibration": {
       "num": "11",
@@ -169,7 +216,11 @@
         "troubleshoot": "Troubleshoot",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": [
+        "bearing",
+        "alignment"
+      ]
     },
     "installation": {
       "num": "13",
@@ -186,7 +237,8 @@
         "troubleshoot": "Troubleshoot",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": []
     },
     "safeguarding": {
       "num": "14",
@@ -203,7 +255,10 @@
         "troubleshoot": "Troubleshoot",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": [
+        "guard"
+      ]
     },
     "conveyors": {
       "num": "15",
@@ -219,7 +274,10 @@
         "troubleshoot": "Troubleshoot",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": [
+        "conveyor"
+      ]
     },
     "rootcause": {
       "num": "16",
@@ -237,7 +295,8 @@
         "troubleshoot": "Troubleshoot",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": []
     },
     "fans": {
       "num": "17",
@@ -252,7 +311,11 @@
         "troubleshoot": "Troubleshoot",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": [
+        "fan",
+        "bearing"
+      ]
     },
     "compressors": {
       "num": "18",
@@ -268,7 +331,11 @@
         "troubleshoot": "Troubleshoot",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": [
+        "compressor",
+        "pneu"
+      ]
     },
     "clutches": {
       "num": "19",
@@ -283,7 +350,11 @@
         "troubleshoot": "Troubleshoot",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": [
+        "brake",
+        "motor"
+      ]
     },
     "valves": {
       "num": "20",
@@ -298,7 +369,10 @@
         "troubleshoot": "Troubleshoot",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": [
+        "valve"
+      ]
     },
     "measurement": {
       "num": "21",
@@ -314,7 +388,8 @@
         "troubleshoot": "Troubleshoot",
         "selfcheck": "Self-Check",
         "safety": "Safety"
-      }
+      },
+      "components": []
     },
     "curriculum": {
       "num": "D1",
@@ -324,7 +399,8 @@
         "map": "Modules to Trade Standard",
         "levels": "By Learner Level",
         "paths": "Learning Paths"
-      }
+      },
+      "components": []
     },
     "manager": {
       "num": "D2",
@@ -336,7 +412,8 @@
         "program": "A 12-Week Program",
         "using": "Using the Tools",
         "measure": "Measuring Results"
-      }
+      },
+      "components": []
     },
     "reference": {
       "num": "12",
@@ -353,7 +430,8 @@
         "calc": "Calculators",
         "units": "Conversions",
         "standards": "Standards Cited"
-      }
+      },
+      "components": []
     }
   },
   "nodes": {

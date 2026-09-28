@@ -238,6 +238,29 @@ plus installation, root cause and precision measurement, which no route tags.
 Nothing is written into the module. The overlay is a strip above the tab bar and the module
 content underneath is untouched, which is what keeps the modules universal.
 
+### Possible issues
+
+`app/issues.html` answers the other question a machine raises: not "what is wrong right
+now" but "what can go wrong with this". It lists the machine's parts in chain order, and
+under each one every diagnostic result the series holds for that component type, grouped by
+the module it comes from, with the prevent-recurrence line and that part's own plant
+numbers. A filter box narrows the whole list at once and opens whatever still matches.
+
+Parts are collapsed by default, because the counts are the overview: a pump train shows 193
+distinct issues across 10 modules, and a part is opened when it is the one in front of you.
+The per part counts repeat an issue that applies to two bearings, on purpose; the headline
+counts each once.
+
+It loads only the module data the machine's parts call for, by script tag, so it works from
+a folder like everything else.
+
+One thing to know about how it matches. A part sees the issues of every module tagged with
+its component type, and those tags are derived per module from the hub routes pointing at
+it. That is module level, not issue level, so a bearing part on a pump train also lists the
+bearing issues from Fans and Blowers. Useful, and broader than it looks. Tightening it means
+tagging the 380 diagnostic results individually, which is a content pass rather than a code
+change.
+
 ### Capturing what happened
 
 A route card offers to log itself against the selected machine, with one field for whatever

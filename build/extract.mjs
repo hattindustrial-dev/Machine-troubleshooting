@@ -295,8 +295,12 @@ else carriedViews.push('pocketcards');
     const tags = new Set(byModule[mod.key] || []);
     if (vocabulary[mod.key]) tags.add(mod.key);
     mod.components = [...tags];
+    // The hub registry carries them too, so a page can tell which modules speak to a
+    // machine's parts without loading every module's data to find out.
+    if (hub.modules[mod.key]) hub.modules[mod.key].components = mod.components;
     writeFileSync(join(DATA, 'modules', `${mod.key}.js`), wrap(mod.key, mod));
   }
+  writeFileSync(join(DATA, 'hub.js'), wrapData('hub', hub));
   console.log(`component tags: ${outputs.filter((m) => m.components.length).length} of ${outputs.length} modules`);
 }
 

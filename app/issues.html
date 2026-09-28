@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuiltWright: Possible Issues</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a1a18">
+<link rel="apple-touch-icon" href="builtwright_icon_192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="bw.css">
+<style>
+  .iss-in { width:100%; font-family:'Share Tech Mono',monospace; font-size:13px; letter-spacing:1px; background:#242420; border:1px solid #3a3a36; border-radius:8px; padding:10px 13px; color:#e8e6df; outline:none; margin-bottom:0.75rem; }
+  .iss-in:focus { border-color:#BA7517; }
+  .iss-count { font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:1px; text-transform:uppercase; color:#888780; margin-bottom:0.75rem; }
+  .iss-part { border:0.5px solid #3a3a36; border-radius:8px; margin-bottom:10px; background:#242420; overflow:hidden; }
+  .iss-part-head { display:flex; gap:10px; align-items:center; padding:0.7rem 1rem; cursor:pointer; }
+  .iss-part-head:hover { background:#2e2e2a; }
+  .iss-part-n { font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:1px; color:#5F5E5A; border:0.5px solid #3a3a36; border-radius:3px; padding:2px 6px; }
+  .iss-part-name { font-size:15px; color:#f0ede4; font-weight:600; }
+  .iss-part-type { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:#888780; }
+  .iss-part-n2 { margin-left:auto; font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:#EF9F27; }
+  .iss-body { display:none; padding:0 1rem 0.8rem; }
+  .iss-part.open .iss-body { display:block; }
+  .iss-topic { margin-top:0.7rem; }
+  .iss-topic-head { font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#BA7517; border-bottom:0.5px solid #3a3a36; padding-bottom:4px; margin-bottom:6px; }
+  .iss { border-left:2px solid #3a3a36; padding:5px 0 5px 10px; margin-bottom:5px; }
+  .iss.fix { border-color:#3B6D11; } .iss.escalate { border-color:#A32D2D; } .iss.action { border-color:#BA7517; }
+  .iss a { color:#f0ede4; text-decoration:none; font-size:14px; }
+  .iss a:hover { color:#EF9F27; }
+  .iss-text { font-size:12px; color:#888780; line-height:1.45; margin-top:2px; }
+  .iss-prevent { font-size:12px; color:#97C459; margin-top:3px; }
+  .iss-empty { color:#888780; font-size:14px; padding:1rem 0; }
+  .iss-plant { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:#5F5E5A; margin-top:2px; }
+</style>
+</head>
+<body>
+<div class="bw-wrap">
+  <div class="bw-header">
+    <div><div class="bw-logo"><a href="builtwright_diagnose_hub_v1.html">BuiltWright</a></div><div class="bw-title">Possible Issues</div></div>
+    <div class="bw-badge">Machine</div>
+  </div>
+  <div class="ref-note" id="iss-note">
+    Everything the series knows that can go wrong with this machine, part by part, grouped by
+    the module it comes from. Built from the parts in the chain: add or remove a part in the
+    facility layer and this list changes with it.
+  </div>
+  <div id="iss-body"><div class="iss-empty">loading...</div></div>
+  <div class="bw-footer">builtwrightapp.com &nbsp;&middot;&nbsp; possible issues &nbsp;&middot;&nbsp; by part</div>
+</div>
+<script src="data/hub.js"></script>
+<script src="data/components.js"></script>
+<script src="facility.js"></script>
+<script src="bw-renderer.js"></script>
+<script>
+(function () {
+  var body = document.getElementById('iss-body');
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); };
+  var hub = BW_DATA.hub, vocab = BW_DATA.components.components;
+  var data = BWF.load();
+  var machine = data.activeId ? BWF.machine(data, data.activeId) : null;
+  var filter = '';
+  var openParts = {};
+
+  if (!machine) {
+    body.innerHTML = '<div class="iss-empty">No machine selected. Pick one in the <a href="facility.html" style="color:#EF9F27;">facility layer</a> and its parts decide what shows here.</div>';
+    return;
+  }
+
+  // Which modules speak to this machine's parts, from the tags in the hub registry.
+  var wanted = {};
+  BWF.partsOf(machine).forEach(function (p) { wanted[p.type] = true; });
+  var modules = Object.keys(hub.modules).filter(function (k) {
+    return (hub.modules[k].components || []).some(function (c) { return wanted[c]; });
+  });
+
+  // Load each one's data, then build the list. Script tags rather than fetch, so this page
+  // works from a folder like the rest.
+  var pending = modules.length;
+  if (!pending) { render(); return; }
+  modules.forEach(function (key) {
+    var el = document.createElement('script');
+    el.src = 'data/modules/' + key + '.js';
+    el.onload = el.onerror = function () { if (--pending === 0) render(); };
+    document.head.appendChild(el);
+  });
+
+  // Every result in a module's diagnostic tree is something that can go wrong.
+  function issuesOf(key) {
+    var mod = BW.registry[key];
+    if (!mod) return [];
+    var out = [];
+    Object.keys(mod.trees).forEach(function (t) {
+      var tree = mod.trees[t];
+      Object.keys(tree).forEach(function (id) {
+        var n = tree[id];
+        if (!n || n.type !== 'result') return;
+        out.push({ cls: n.cls, label: n.label, text: n.text, prevent: n.prevent, file: mod.source, tab: mod.render.treeTab, module: mod.name });
+      });
+    });
+    return out;
+  }
+
+  function matches(iss) {
+    if (!filter) return true;
+    var hay = (iss.label + ' ' + iss.text + ' ' + (iss.prevent || '') + ' ' + iss.module).toLowerCase();
+    return hay.indexOf(filter) !== -1;
+  }
+
+  function render() {
+    var parts = BWF.partsOf(machine);
+    // Two bearings can each have any of the bearing issues, so the per part counts repeat
+    // them on purpose. The headline counts each distinct issue once.
+    var distinct = {};
+    var html = '<input class="iss-in" id="iss-filter" placeholder="filter: cavitation, fluting, overgreasing, backlash..." value="' + esc(filter) + '">';
+    var blocks = '';
+
+    parts.forEach(function (part, i) {
+      var spec = vocab[part.type] || {};
+      // The module that is this component comes first; the rest touch it from their own
+      // angle. Matching is module level, so a part sees every module tagged with its type.
+      var mods = modules
+        .filter(function (k) { return (hub.modules[k].components || []).indexOf(part.type) !== -1; })
+        .sort(function (a, c) { return (c === part.type ? 1 : 0) - (a === part.type ? 1 : 0); });
+      var byTopic = [];
+      var n = 0;
+      mods.forEach(function (k) {
+        var list = issuesOf(k).filter(matches);
+        if (!list.length) return;
+        n += list.length;
+        byTopic.push({ key: k, name: hub.modules[k].name, list: list });
+      });
+      byTopic.forEach(function (t) {
+        t.list.forEach(function (iss) { distinct[t.key + '|' + iss.label] = true; });
+      });
+
+      // Collapsed by default: the chain and its counts are the view, and a part is opened
+      // when it is the one in front of you. A filter opens whatever still matches.
+      var open = openParts[part.id] || (filter && n);
+      blocks += '<div class="iss-part' + (open ? ' open' : '') + '" id="isspart-' + esc(part.id) + '">' +
+        '<div class="iss-part-head" onclick="ISS.toggle(\'' + part.id + '\')">' +
+        '<span class="iss-part-n">' + (i + 1) + '</span>' +
+        '<i class="ti ' + esc(spec.icon || 'ti-point') + '"></i>' +
+        '<span class="iss-part-name">' + esc(BWF.partLabel(vocab, part)) + '</span>' +
+        '<span class="iss-part-type">' + esc(spec.label || part.type) + '</span>' +
+        '<span class="iss-part-n2">' + n + ' issue' + (n === 1 ? '' : 's') + '</span></div><div class="iss-body">';
+
+      var numbers = BWF.numbersFor(vocab, machine, [part.type]).filter(function (g) { return g.label === BWF.partLabel(vocab, part); });
+      if (numbers.length && numbers[0].fields.length) {
+        blocks += '<div class="iss-plant">' + numbers[0].fields.map(function (f) {
+          return esc(f.label) + ': ' + esc(f.value);
+        }).join(' &middot; ') + '</div>';
+      }
+      if (!byTopic.length) blocks += '<div class="iss-empty">Nothing matches.</div>';
+      byTopic.forEach(function (t) {
+        blocks += '<div class="iss-topic"><div class="iss-topic-head">' + esc(t.name) + ' &middot; ' + t.list.length + '</div>';
+        t.list.forEach(function (iss) {
+          blocks += '<div class="iss ' + esc(iss.cls) + '"><a href="' + esc(iss.file) + '#' + esc(iss.tab) + '">' + esc(iss.label) + '</a>' +
+            '<div class="iss-text">' + esc(iss.text) + '</div>' +
+            (iss.prevent ? '<div class="iss-prevent">' + esc(iss.prevent) + '</div>' : '') + '</div>';
+        });
+        blocks += '</div>';
+      });
+      blocks += '</div></div>';
+    });
+
+    var total = Object.keys(distinct).length;
+    html += '<div class="iss-count">' + esc(machine.tag) + ' &middot; ' + parts.length + ' parts &middot; ' +
+      total + ' possible issue' + (total === 1 ? '' : 's') + ' across ' + modules.length + ' modules</div>' + blocks;
+    body.innerHTML = html;
+
+    var box = document.getElementById('iss-filter');
+    box.addEventListener('input', function () { filter = box.value.trim().toLowerCase(); render(); box = document.getElementById('iss-filter'); box.focus(); });
+  }
+
+  window.ISS = {
+    toggle: function (id) {
+      var el = document.getElementById('isspart-' + id);
+      if (!el) return;
+      el.classList.toggle('open');
+      openParts[id] = el.classList.contains('open');
+    }
+  };
+})();
+</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
+</body>
+</html>
