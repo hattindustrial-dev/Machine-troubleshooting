@@ -34,11 +34,35 @@
     return [];
   }
 
+  // The issue index, keyed by module file and result label, which is exactly what a task's
+  // source records. Built once. A label can repeat within a module, so each key holds a list.
+  var byFileLabel = null;
+  function issueIndex() {
+    if (byFileLabel) return byFileLabel;
+    var list = (global.BW_DATA && global.BW_DATA.issues) || null;
+    if (!list) return null;
+    byFileLabel = {};
+    list.forEach(function (i) { (byFileLabel[i.file + '|' + i.label] = byFileLabel[i.file + '|' + i.label] || []).push(i); });
+    return byFileLabel;
+  }
+
+  // A task applies to a machine when the result whose prevent line produced it concerns one
+  // of the machine's components. A result tagged to no component is generic, a method or a
+  // measurement technique, and applies to every machine. Where the issue index is missing or
+  // a result has not been tagged yet, it falls back to the module level match it started with.
   BWPM.applies = function (task) {
     if (!BWPM.active) return true;
     var want = tags();
     if (!want.length) return true;
+    var idx = issueIndex();
     return (task.src || []).some(function (s) {
+      var found = idx && idx[s.file + '|' + s.label];
+      if (found && found.length && found.every(function (i) { return i.tagged; })) {
+        return found.some(function (i) {
+          var comps = i.primary.concat(i.contributing);
+          return !comps.length || comps.some(function (c) { return want.indexOf(c) !== -1; });
+        });
+      }
       return componentsOfFile(s.file).some(function (c) { return want.indexOf(c) !== -1; });
     });
   };

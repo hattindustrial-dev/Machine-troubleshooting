@@ -304,6 +304,31 @@ else carriedViews.push('pocketcards');
   console.log(`component tags: ${outputs.filter((m) => m.components.length).length} of ${outputs.length} modules`);
 }
 
+// ---- Issue index -----------------------------------------------------------------
+// One row per diagnostic result with the components it concerns. The possible-issues view
+// and the PM filter read this rather than loading every module's full data to find what
+// applies to a machine. It is derived: the tags live on the result nodes in the module data,
+// which stay the only place they are edited.
+{
+  const issues = [];
+  for (const mod of outputs) {
+    for (const tree of Object.values(mod.trees)) {
+      for (const [id, node] of Object.entries(tree)) {
+        if (!node || node.type !== 'result') continue;
+        const a = node.applies || { primary: [], contributing: [] };
+        issues.push({
+          module: mod.key, moduleName: mod.name, num: mod.num, file: mod.source, tab: mod.render.treeTab,
+          id, cls: node.cls, label: node.label, text: node.text, prevent: node.prevent || '',
+          primary: a.primary, contributing: a.contributing,
+          tagged: !!node.applies,
+        });
+      }
+    }
+  }
+  writeFileSync(join(DATA, 'issues.js'), wrapData('issues', issues));
+  console.log(`issue index: ${issues.length} results, ${issues.filter((i) => i.tagged).length} tagged`);
+}
+
 writeFileSync(join(DATA, 'extract-report.json'), JSON.stringify({
   generated_from: index.version,
   modules: report,

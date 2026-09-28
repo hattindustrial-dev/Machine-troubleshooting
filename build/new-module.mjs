@@ -88,6 +88,9 @@ const mod = {
         text: 'This branch has not been written yet.',
         sub: 'Replace this node with the real diagnosis.',
         prevent: 'Replace this line: it is what the PM task library is built from.',
+        // Which components it concerns. Empty lists say it is generic. The tagging workflow
+        // fills these in for real content: see the README.
+        applies: { primary: [], contributing: [] },
       },
     },
   } : {},
