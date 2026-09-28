@@ -167,6 +167,30 @@ The renderer also carries a preamble, for anything a page puts between the tab b
 first panel, and an `afterSwitch` hook. Only the reference page uses either: its filter box
 sits in that position and it re-applies the filter when a tab opens.
 
+## Adding a module
+
+Nothing about the pipeline assumed a module could be new: every script converted or read
+pages that already existed. It can now.
+
+```sh
+node build/new-module.mjs --key welding --num 22 --name "Welding Fundamentals" \
+  --tabs "overview:Overview,process:Processes,troubleshoot:Troubleshoot,selfcheck:Self-Check,safety:Safety"
+node build/cutover.mjs --write      # generates the page from the data
+node build/derive.mjs --fix-search  # makes its diagnoses findable
+node build/derive.mjs --fix-pm      # adds its prevent tails to the PM library
+node build/sw.mjs                   # precaches it
+node build/validate.mjs             # checks the lot
+```
+
+The scaffold writes a valid but empty module: the tabs named, a placeholder panel in each,
+a diagnostic tree with a start node and one result, an empty self-check, and the index entry
+the totals are held to. The content goes into `app/data/modules/<key>.js`; no HTML is
+written by hand at any point.
+
+`derive.mjs` no longer works from a hand kept list of modules, which is what made a new one
+invisible to the PM library and the search index. It reads the data and appends anything
+added since, keeping the original order so task ids do not shift.
+
 ## The tool pages
 
 The hub, search, PM task library and pocket cards read the data files instead of carrying

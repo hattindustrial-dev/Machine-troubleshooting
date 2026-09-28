@@ -15,7 +15,7 @@
 // After this, app/data is the source of truth. build/extract.mjs will not re-read a shell,
 // so the data cannot be silently emptied by running it again.
 
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readModules } from './lib/modules.mjs';
@@ -82,8 +82,11 @@ const modules = readModules(join(APP, 'data', 'modules'));
 let converted = 0, already = 0, saved = 0;
 for (const mod of modules) {
   const path = join(APP, mod.source);
-  const current = readFileSync(path, 'utf8');
-  if (isShell(current) && !force) { already++; continue; }
+  // A module authored straight into the data has no page yet. Generating one is the same
+  // operation as converting an old page, so it is not a special case beyond this.
+  const fresh = !existsSync(path);
+  const current = fresh ? '' : readFileSync(path, 'utf8');
+  if (!fresh && isShell(current) && !force) { already++; continue; }
 
   // Refuse to convert anything whose content is not fully in the data.
   const emptyTabs = mod.tabs.filter((t) => !mod.panels[t.id]);
@@ -104,7 +107,7 @@ for (const mod of modules) {
   if (next === current) { already++; continue; }
   saved += current.length - next.length;
   converted++;
-  console.log(`  ${write ? 'wrote' : 'would write'} ${mod.source}: ${(current.length / 1024).toFixed(0)}k -> ${(next.length / 1024).toFixed(1)}k` +
+  console.log(`  ${write ? 'wrote' : 'would write'} ${mod.source}: ${fresh ? 'new' : (current.length / 1024).toFixed(0) + 'k'} -> ${(next.length / 1024).toFixed(1)}k` +
     ((mod.render.bespoke || []).length ? `, keeping ${mod.render.bespoke.length} module specific function(s)` : ''));
   if (write) writeFileSync(path, next);
 }

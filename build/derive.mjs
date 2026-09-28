@@ -12,7 +12,7 @@
 
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
-import { readModule, readData } from './lib/modules.mjs';
+import { readModule, readData, readModules, wrapData } from './lib/modules.mjs';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -22,7 +22,11 @@ const DATA = join(APP, 'data');
 // Module order and component grouping, from the MODS table in build_tools.py. The grouping
 // is authored (Power Transmission files its tasks under "Belts and Chains"), so it is not
 // derivable from the modules and is kept here as data.
-const MODS = [
+// Component grouping per module, from the MODS table in build_tools.py. The grouping is
+// authored (Power Transmission files its tasks under "Belts and Chains"), so it stays here.
+// The list of modules does not: a module added since is picked up from the data and
+// appended, keeping the original order so task ids do not shift.
+const GROUPED = [
   ['pumps', 'Pumps'], ['bearing', 'Bearings'], ['alignment', 'Couplings and Alignment'],
   ['seals', 'Seals and Gaskets'], ['lube', 'Lubrication'], ['pneu', 'Pneumatics'],
   ['hydraulics', 'Hydraulics'], ['powertrans', 'Belts and Chains'], ['gearbox', 'Gearboxes'],
@@ -31,6 +35,15 @@ const MODS = [
   ['fans', 'Fans'], ['compressors', 'Compressors'], ['clutches', 'Clutches and Brakes'],
   ['valves', 'Valves'], ['measurement', 'Measurement'],
 ];
+
+const MODS = (() => {
+  const known = new Set(GROUPED.map(([key]) => key));
+  const extra = readModules(join(DATA, 'modules'))
+    .filter((m) => Object.keys(m.trees).length > 0 && !known.has(m.key))
+    .map((m) => [m.key, m.name]);
+  if (extra.length) console.log(`modules added since the original build: ${extra.map((e) => e[0]).join(', ')}`);
+  return GROUPED.concat(extra);
+})();
 
 const DROP_START = ['whatever', 'nothing', 'depends', 'the root cause', 'whichever', 'none', 'no mechanical'];
 
@@ -155,22 +168,38 @@ for (const e of missingDiag) byModule[e.n] = (byModule[e.n] || 0) + 1;
 for (const [n, c] of Object.entries(byModule)) console.log(`  ${n}: ${c} result(s) not findable in search`);
 
 if (process.argv.includes('--fix-search') && missingDiag.length) {
-  // Splice the missing entries into the inline index, immediately after that module's
-  // existing entries, so module ordering is preserved. Everything else stays byte for byte.
-  const page = join(APP, 'builtwright_search_v1.html');
-  let html = readFileSync(page, 'utf8');
+  // The index lives in app/data/search.js: the page reads it rather than carrying it, so
+  // that is the file to change. Entries are grouped after the module's existing ones to
+  // keep module order, and a module with none yet goes on the end.
+  const view = readData(DATA, 'search');
   for (const [file, entries] of Object.entries(
       missingDiag.reduce((a, e) => { (a[e.f] = a[e.f] || []).push(e); return a; }, {}))) {
-    const marker = `"f": ${JSON.stringify(file)}`;
-    const last = html.lastIndexOf(marker);
-    if (last === -1) { console.log(`  could not place entries for ${file}`); continue; }
-    const close = html.indexOf('}', last);
-    const text = entries.map((e) => ', ' + JSON.stringify(e).replace(/","/g, '", "').replace(/":"/g, '": "')).join('');
-    html = html.slice(0, close + 1) + text + html.slice(close + 1);
-    console.log(`  inserted ${entries.length} entries for ${file}`);
+    let at = -1;
+    for (let i = view.IDX.length - 1; i >= 0; i--) {
+      if (view.IDX[i].f === file) { at = i; break; }
+    }
+    if (at === -1) {
+      view.IDX.push(...entries);
+      console.log(`  appended ${entries.length} entries for ${file}, which had none`);
+    } else {
+      view.IDX.splice(at + 1, 0, ...entries);
+      console.log(`  inserted ${entries.length} entries for ${file}`);
+    }
   }
-  writeFileSync(page, html);
-  console.log('patched app/builtwright_search_v1.html; re-run build/extract.mjs');
+  writeFileSync(join(DATA, 'search.js'), wrapData('search', view));
+  console.log(`app/data/search.js now holds ${view.IDX.length} entries`);
+}
+
+if (process.argv.includes('--fix-pm')) {
+  // The PM library is a pure view over the prevent tails, so the derived list is simply
+  // correct: writing it is how a module added since the original build gets its tasks.
+  const view = readData(DATA, 'pm');
+  const comps = [];
+  for (const t of derivedTasks) if (comps.indexOf(t.comp) === -1) comps.push(t.comp);
+  const COMP = {};
+  comps.forEach((c, i) => { COMP[c] = 'c' + i; });
+  writeFileSync(join(DATA, 'pm.js'), wrapData('pm', { TASKS: derivedTasks, COMP, INTERVALS: view.INTERVALS }));
+  console.log(`app/data/pm.js now holds ${derivedTasks.length} tasks across ${comps.length} components`);
 }
 
 if (process.argv.includes('--write')) {
