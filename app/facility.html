@@ -51,6 +51,16 @@
   .fac-study { display:flex; gap:6px; flex-wrap:wrap; }
   .fac-study a { font-size:13px; color:#f0ede4; text-decoration:none; border:0.5px solid #3a3a36; border-radius:6px; padding:6px 10px; background:#2e2e2a; }
   .fac-study a:hover { border-color:#BA7517; color:#EF9F27; }
+  .fac-part-head { display:flex; gap:8px; align-items:center; margin-bottom:0.6rem; }
+  .fac-part-n { font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:1px; color:#5F5E5A; border:0.5px solid #3a3a36; border-radius:3px; padding:2px 6px; }
+  .fac-part-name { flex:1; min-width:120px; font-family:'Rajdhani',sans-serif; font-size:14px; background:#1a1a18; border:0.5px solid #3a3a36; border-radius:5px; padding:6px 9px; color:#f0ede4; outline:none; }
+  .fac-part-name:focus { border-color:#BA7517; }
+  .fac-part-type { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:#888780; }
+  .fac-part-btn { background:none; border:0.5px solid #3a3a36; border-radius:4px; color:#888780; cursor:pointer; padding:3px 7px; font-size:12px; }
+  .fac-part-btn:hover:enabled { color:#EF9F27; border-color:#BA7517; }
+  .fac-part-btn:disabled { opacity:0.3; cursor:default; }
+  .fac-part-btn.danger:hover { color:#F09595; border-color:#A32D2D; }
+  .fac-chain-arrow { color:#5F5E5A; align-self:center; font-size:12px; }
   .fac-study small { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; color:#888780; display:block; }
 </style>
 </head>
@@ -96,14 +106,14 @@
       html += '<div class="fac-empty">No machines yet. Add one and pick the component types it is made of.</div>';
     }
     data.machines.forEach(function (m) {
-      var tags = BWF.tagsOf(m);
+      var parts = BWF.partsOf(m);
       var n = BWF.routesFor(hub, m).length;
       html += '<div class="fac-machine' + (data.activeId === m.id ? ' active' : '') + '" onclick="FAC.select(\'' + m.id + '\')">' +
         '<div class="fac-tag">' + esc(m.tag || 'untagged') + '</div>' +
         '<div class="fac-name">' + esc(m.name || '') + '</div>' +
-        '<div class="fac-chips">' + tags.map(function (t) {
-          return '<span class="fac-chip on">' + esc((vocab[t] || {}).label || t) + '</span>';
-        }).join('') + '</div>' +
+        '<div class="fac-chips">' + parts.map(function (p) {
+          return '<span class="fac-chip on">' + esc(BWF.partLabel(vocab, p)) + '</span>';
+        }).join('<span class="fac-chain-arrow">&rsaquo;</span>') + '</div>' +
         '<div class="fac-meta">' + (m.area ? esc(m.area) + ' &middot; ' : '') + n + ' of ' + BWF.allRoutes(hub).length + ' symptom routes apply</div>' +
         '</div>';
     });
@@ -127,13 +137,13 @@
       '<button class="fac-btn danger" onclick="FAC.del(\'' + m.id + '\')">Delete</button></div>';
 
     var overlayTotal = 0;
-    Object.keys(vocab).forEach(function (t) {
-      var v = (m.components || {})[t];
-      if (v) overlayTotal += Object.keys(v).filter(function (k) { return v[k]; }).length;
+    BWF.partsOf(m).forEach(function (part) {
+      var v = part.fields || {};
+      overlayTotal += Object.keys(v).filter(function (k) { return v[k]; }).length;
     });
 
     html += '<div class="fac-group"><div class="fac-group-title">Routes for ' + esc(m.tag) + '</div>' +
-      '<div class="fac-count">' + routes.length + ' of ' + BWF.allRoutes(hub).length + ' routes, ' + overlayTotal + ' plant numbers on file</div>';
+      '<div class="fac-count">' + BWF.partsOf(m).length + ' parts, ' + routes.length + ' of ' + BWF.allRoutes(hub).length + ' routes, ' + overlayTotal + ' plant numbers on file</div>';
     if (!routes.length) html += '<div class="fac-empty">No components selected, so no routes apply. Edit the machine and pick its component types.</div>';
     Object.keys(groups).forEach(function (sym) {
       html += '<div class="fac-group-title" style="margin-top:0.8rem;">' + esc(sym) + '</div>';
@@ -225,20 +235,33 @@
     });
     html += '</div></div>';
 
-    html += '<div class="fac-group"><div class="fac-group-title">Components this machine is made of</div><div class="fac-chips">';
+    // The chain. Pick a part to append it, name it for how the plant refers to it, then
+    // order it the way the machine runs: driver to driven, supply to discharge.
+    html += '<div class="fac-group"><div class="fac-group-title">Add a part</div><div class="fac-chips">';
     Object.keys(vocab).forEach(function (t) {
-      var on = !!(m.components || {})[t];
-      html += '<span class="fac-chip pick' + (on ? ' on' : '') + '" onclick="FAC.toggle(\'' + t + '\')">' + esc(vocab[t].label) + '</span>';
+      html += '<span class="fac-chip pick" onclick="FAC.addPart(\'' + t + '\')">+ ' + esc(vocab[t].label) + '</span>';
     });
     html += '</div></div>';
 
-    Object.keys(m.components || {}).forEach(function (t) {
-      var spec = vocab[t];
+    var parts = BWF.partsOf(m);
+    if (!parts.length) {
+      html += '<div class="fac-empty">No parts yet. A machine is a chain of them: motor, coupling, gearbox, pump, seal.</div>';
+    }
+    parts.forEach(function (part, i) {
+      var spec = vocab[part.type];
       if (!spec) return;
-      html += '<div class="fac-group"><div class="fac-group-title"><i class="ti ' + esc(spec.icon) + '"></i> ' + esc(spec.label) + '</div><div class="fac-grid">';
+      html += '<div class="fac-group"><div class="fac-part-head">' +
+        '<span class="fac-part-n">' + (i + 1) + '</span>' +
+        '<i class="ti ' + esc(spec.icon) + '"></i>' +
+        '<input class="fac-part-name" data-part="' + esc(part.id) + '" data-key="__label" value="' + esc(part.label || '') + '" placeholder="' + esc(spec.label) + '">' +
+        '<span class="fac-part-type">' + esc(spec.label) + '</span>' +
+        '<button class="fac-part-btn" onclick="FAC.movePart(\'' + part.id + '\',-1)"' + (i === 0 ? ' disabled' : '') + ' title="earlier in the chain">&uarr;</button>' +
+        '<button class="fac-part-btn" onclick="FAC.movePart(\'' + part.id + '\',1)"' + (i === parts.length - 1 ? ' disabled' : '') + ' title="later in the chain">&darr;</button>' +
+        '<button class="fac-part-btn danger" onclick="FAC.removePart(\'' + part.id + '\')" title="remove">&times;</button>' +
+        '</div><div class="fac-grid">';
       spec.fields.forEach(function (f) {
         html += '<div class="fac-field"><label>' + esc(f.label) + (f.unit ? ' (' + esc(f.unit) + ')' : '') + '</label>' +
-          '<input data-comp="' + esc(t) + '" data-key="' + esc(f.key) + '" value="' + esc((m.components[t] || {})[f.key] || '') + '" placeholder="' + esc(f.placeholder || '') + '"></div>';
+          '<input data-part="' + esc(part.id) + '" data-key="' + esc(f.key) + '" value="' + esc((part.fields || {})[f.key] || '') + '" placeholder="' + esc(f.placeholder || '') + '"></div>';
       });
       html += '</div></div>';
     });
@@ -250,21 +273,24 @@
 
   function collect() {
     document.querySelectorAll('[data-eq]').forEach(function (el) { editing[el.getAttribute('data-eq')] = el.value.trim(); });
-    document.querySelectorAll('[data-comp]').forEach(function (el) {
-      var t = el.getAttribute('data-comp');
-      editing.components[t] = editing.components[t] || {};
-      editing.components[t][el.getAttribute('data-key')] = el.value.trim();
+    var byId = {};
+    BWF.partsOf(editing).forEach(function (p) { byId[p.id] = p; });
+    document.querySelectorAll('[data-part]').forEach(function (el) {
+      var part = byId[el.getAttribute('data-part')];
+      if (!part) return;
+      var key = el.getAttribute('data-key');
+      if (key === '__label') { part.label = el.value.trim(); return; }
+      part.fields = part.fields || {};
+      part.fields[key] = el.value.trim();
     });
   }
 
   window.FAC = {
-    add: function () { editing = { id: BWF.newId(), tag: '', name: '', components: {} }; render(); },
-    edit: function (id) { editing = JSON.parse(JSON.stringify(BWF.machine(data, id))); editing.components = editing.components || {}; render(); },
-    toggle: function (t) {
-      collect();
-      if (editing.components[t]) delete editing.components[t]; else editing.components[t] = {};
-      render();
-    },
+    add: function () { editing = { id: BWF.newId(), tag: '', name: '', parts: [] }; render(); },
+    edit: function (id) { editing = JSON.parse(JSON.stringify(BWF.machine(data, id))); editing.parts = editing.parts || []; render(); },
+    addPart: function (t) { collect(); BWF.addPart(editing, t); render(); },
+    removePart: function (id) { collect(); BWF.removePart(editing, id); render(); },
+    movePart: function (id, d) { collect(); BWF.movePart(editing, id, d); render(); },
     save: function () {
       collect();
       if (!editing.tag) { alert('An equipment number is needed.'); return; }

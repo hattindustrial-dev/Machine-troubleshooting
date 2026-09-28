@@ -66,16 +66,10 @@
       "icon": "ti-circle-dot",
       "fields": [
         {
-          "key": "de",
-          "label": "Drive end bearing",
+          "key": "number",
+          "label": "Bearing number",
           "type": "text",
           "placeholder": "6309 C3"
-        },
-        {
-          "key": "nde",
-          "label": "Non drive end bearing",
-          "type": "text",
-          "placeholder": "6207 C3"
         },
         {
           "key": "fit",

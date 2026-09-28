@@ -18,7 +18,42 @@
   var BWF = { version: 1 };
 
   // ---- storage -------------------------------------------------------------------
-  function blank() { return { version: 1, machines: [], activeId: null, logs: [] }; }
+  function blank() { return { version: 2, machines: [], activeId: null, logs: [] }; }
+
+  // A machine was once a set of component types, one of each. It is a chain of parts now,
+  // in order, so a train can carry a drive end and a non drive end bearing, three valves,
+  // or two gearboxes, each with its own numbers. Machines stored under the old shape are
+  // converted on read: one component becomes one part, keeping its values.
+  function migrate(machine) {
+    if (Array.isArray(machine.parts)) return machine;
+    var parts = [];
+    Object.keys(machine.components || {}).forEach(function (type) {
+      var fields = machine.components[type] || {};
+      // A bearing used to carry a drive end and a non drive end in one entry, because a
+      // machine could only have one of each type. Those are two parts now.
+      if (type === 'bearing' && (fields.de || fields.nde)) {
+        if (fields.de) parts.push(part('bearing', 'Drive end bearing', rest(fields, { number: fields.de })));
+        if (fields.nde) parts.push(part('bearing', 'Non drive end bearing', rest(fields, { number: fields.nde })));
+        return;
+      }
+      parts.push(part(type, '', fields));
+    });
+    machine.parts = parts;
+    delete machine.components;
+    return machine;
+  }
+
+  function part(type, label, fields) {
+    return { id: BWF.newId('p'), type: type, label: label, fields: fields };
+  }
+
+  // Everything except the two retired bearing keys, plus whatever replaces them.
+  function rest(fields, extra) {
+    var out = {};
+    Object.keys(fields).forEach(function (k) { if (k !== 'de' && k !== 'nde') out[k] = fields[k]; });
+    Object.keys(extra).forEach(function (k) { out[k] = extra[k]; });
+    return out;
+  }
 
   BWF.load = function () {
     try {
@@ -27,6 +62,8 @@
       var data = JSON.parse(raw);
       if (!data || !Array.isArray(data.machines)) return blank();
       if (!Array.isArray(data.logs)) data.logs = []; // added after the first machines were stored
+      data.machines = data.machines.map(migrate);
+      data.version = 2;
       return data;
     } catch (e) {
       return blank(); // private mode, cleared storage, or something else wrote the key
@@ -38,8 +75,8 @@
     catch (e) { return false; }
   };
 
-  BWF.newId = function () {
-    return 'm' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  BWF.newId = function (prefix) {
+    return (prefix || 'm') + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
   };
 
   BWF.machine = function (data, id) {
@@ -96,9 +133,45 @@
       .sort(function (a, b) { return b.count - a.count; });
   };
 
-  // ---- the component tags a machine carries ------------------------------------------
+  // ---- the parts a machine is made of -------------------------------------------------
+  BWF.partsOf = function (machine) {
+    return (machine && machine.parts) || [];
+  };
+
+  // The component types present, which is what the hub filters on.
   BWF.tagsOf = function (machine) {
-    return Object.keys((machine && machine.components) || {});
+    var seen = {};
+    BWF.partsOf(machine).forEach(function (p) { seen[p.type] = true; });
+    return Object.keys(seen);
+  };
+
+  // A part's display name: what it was called, or the component's own label.
+  BWF.partLabel = function (vocabulary, part) {
+    if (part.label) return part.label;
+    var spec = vocabulary && vocabulary[part.type];
+    return (spec && spec.label) || part.type;
+  };
+
+  BWF.addPart = function (machine, type) {
+    machine.parts = machine.parts || [];
+    machine.parts.push({ id: BWF.newId('p'), type: type, label: '', fields: {} });
+    return machine;
+  };
+
+  BWF.removePart = function (machine, partId) {
+    machine.parts = BWF.partsOf(machine).filter(function (p) { return p.id !== partId; });
+    return machine;
+  };
+
+  // Moving a part is how the chain gets its order: supply to discharge, driver to driven.
+  BWF.movePart = function (machine, partId, delta) {
+    var parts = BWF.partsOf(machine);
+    var i = parts.map(function (p) { return p.id; }).indexOf(partId);
+    var j = i + delta;
+    if (i === -1 || j < 0 || j >= parts.length) return machine;
+    var moved = parts.splice(i, 1)[0];
+    parts.splice(j, 0, moved);
+    return machine;
   };
 
   // ---- routes ------------------------------------------------------------------------
@@ -154,18 +227,21 @@
     return Object.keys(tags);
   };
 
-  // The machine's filled-in numbers for a set of component tags, ready to render.
+  // The machine's filled-in numbers for a set of component tags, one group per part, in
+  // chain order. Two bearings give two groups, each under its own name.
   BWF.numbersFor = function (vocabulary, machine, tags) {
     if (!machine) return [];
+    var want = tags || [];
     var out = [];
-    (tags || []).forEach(function (tag) {
-      var values = (machine.components || {})[tag];
-      var spec = vocabulary[tag];
-      if (!values || !spec) return;
+    BWF.partsOf(machine).forEach(function (part) {
+      if (want.indexOf(part.type) === -1) return;
+      var spec = vocabulary[part.type];
+      if (!spec) return;
+      var values = part.fields || {};
       var filled = spec.fields
         .filter(function (f) { return values[f.key]; })
         .map(function (f) { return { label: f.label, value: values[f.key], unit: f.unit || '' }; });
-      if (filled.length) out.push({ tag: tag, label: spec.label, icon: spec.icon, fields: filled });
+      if (filled.length) out.push({ tag: part.type, label: BWF.partLabel(vocabulary, part), icon: spec.icon, fields: filled });
     });
     return out;
   };

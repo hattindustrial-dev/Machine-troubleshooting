@@ -200,13 +200,20 @@ apply to it, grouped by symptom the way the hub groups them. A pump train with a
 bearings, seals, a coupling and a motor sees 45 of 71; a gearbox drive sees 26; a conveyor
 sees 6.
 
-`app/data/components.json` holds the vocabulary: 16 component types and 64 plant fields,
+A machine is a chain of parts, in order, the way the hub's note describes one: motor,
+coupling, gearbox, pump, seal. The same type can appear as often as it needs to, so a train
+carries a drive end and a non drive end bearing as two parts, each named and each with its
+own numbers. Parts are added, named, reordered and removed in the editor.
+
+`app/data/components.js` holds the vocabulary: 16 component types and their plant fields,
 plus the equipment level fields. The field lists are a starting point meant to be edited
 to match a plant. Only the 16 component keys are fixed, because the hub routes use them.
 
 Plant numbers live in this layer and nowhere else, as the brief requires. The modules stay
 universal and the numbers are overlaid beside them. Machines are kept in `localStorage` on
-the device, like the PM ticks and the root cause form, and nothing leaves the browser.
+the device, like the PM ticks and the root cause form, and nothing leaves the browser. A
+machine stored under the older shape, a set of one component per type, is converted on
+read: a bearing entry carrying a drive end and a non drive end becomes two named parts.
 This page loads its data by script tag as well, so it works from a folder like the rest.
 
 ### The filter and the overlay
