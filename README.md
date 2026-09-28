@@ -201,7 +201,10 @@ bearings, seals, a coupling and a motor sees 45 of 71; a gearbox drive sees 26; 
 sees 6.
 
 A machine is a chain of parts, in order, the way the hub's note describes one: motor,
-coupling, gearbox, pump, seal. The same type can appear as often as it needs to, so a train
+coupling, gearbox, pump, seal. Standing one up does not mean starting from nothing: twelve
+templates cover the arrangements a plant actually has, from a centrifugal pump train to a
+braked drive, each dropping in its parts named and in order, and any machine can be
+duplicated for a sister unit with its numbers kept for editing. The same type can appear as often as it needs to, so a train
 carries a drive end and a non drive end bearing as two parts, each named and each with its
 own numbers. Parts are added, named, reordered and removed in the editor.
 
@@ -237,6 +240,21 @@ plus installation, root cause and precision measurement, which no route tags.
 
 Nothing is written into the module. The overlay is a strip above the tab bar and the module
 content underneath is untouched, which is what keeps the modules universal.
+
+### Getting machines in and out
+
+`app/data/templates.js` holds the templates, as data like everything else: a key, a name, a
+line on when it applies, and its parts. Editing that file changes what the picker offers.
+
+The whole facility, machines and logs together, exports as one JSON file and imports back
+from it, which is how a machine list moves between a phone and a desk or reaches someone
+else while the data stays local by default. Import either adds to what is there or replaces
+it, and adding never overwrites: a machine whose id is already present is given a new one,
+and repeated equipment numbers are named in the summary rather than silently merged. A
+paste that is not JSON, or JSON with no machines in it, says so instead of doing anything.
+
+Parts also export as CSV, one row per part with its plant details, for an asset register or
+a CMMS.
 
 ### Possible issues
 

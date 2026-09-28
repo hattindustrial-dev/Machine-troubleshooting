@@ -51,6 +51,15 @@
   .fac-study { display:flex; gap:6px; flex-wrap:wrap; }
   .fac-study a { font-size:13px; color:#f0ede4; text-decoration:none; border:0.5px solid #3a3a36; border-radius:6px; padding:6px 10px; background:#2e2e2a; }
   .fac-study a:hover { border-color:#BA7517; color:#EF9F27; }
+  .fac-template { border:0.5px solid #3a3a36; border-radius:8px; padding:0.7rem 0.9rem; margin-bottom:8px; cursor:pointer; background:#2e2e2a; }
+  .fac-template:hover { border-color:#BA7517; }
+  .fac-template-name { font-size:15px; color:#f0ede4; font-weight:600; }
+  .fac-template-name span { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:#888780; font-weight:400; }
+  .fac-template-note { font-size:13px; color:#888780; margin-top:2px; }
+  .fac-template-chain { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:#5F5E5A; margin-top:5px; line-height:1.6; }
+  .fac-paste { width:100%; font-family:'Share Tech Mono',monospace; font-size:11px; background:#1a1a18; border:0.5px solid #3a3a36; border-radius:5px; padding:7px 9px; color:#c8c6bf; outline:none; resize:vertical; }
+  .fac-paste:focus { border-color:#BA7517; }
+  .fac-said { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:#F09595; }
   .fac-part-head { display:flex; gap:8px; align-items:center; margin-bottom:0.6rem; }
   .fac-part-n { font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:1px; color:#5F5E5A; border:0.5px solid #3a3a36; border-radius:3px; padding:2px 6px; }
   .fac-part-name { flex:1; min-width:120px; font-family:'Rajdhani',sans-serif; font-size:14px; background:#1a1a18; border:0.5px solid #3a3a36; border-radius:5px; padding:6px 9px; color:#f0ede4; outline:none; }
@@ -71,20 +80,23 @@
     <div class="bw-badge">Plant</div>
   </div>
   <div class="ref-note" id="fac-intro">
-    Your machines, with the plant's own numbers. A machine is an equipment number and the
-    component types it is made of. The hub routes are filtered to those components, and the
-    numbers you enter here appear beside the universal module content instead of in it.
-    Everything stays in this browser.
+    Your machines, with the plant's own numbers. A machine is an equipment number and a
+    chain of parts: motor, coupling, gearbox, pump, seal, in the order it runs. Start from a
+    template and edit, or duplicate a machine you already have. The hub filters its routes to
+    the parts in the chain, and the numbers you enter appear beside the universal module
+    content instead of in it. Everything stays in this browser until you export it.
   </div>
   <div id="fac-body"><div class="fac-empty">loading...</div></div>
   <div class="bw-footer">builtwrightapp.com &nbsp;&middot;&nbsp; facility layer &nbsp;&middot;&nbsp; stored on this device</div>
 </div>
 <script src="data/hub.js"></script>
 <script src="data/components.js"></script>
+<script src="data/templates.js"></script>
 <script src="facility.js"></script>
 <script>
 (function () {
-  var hub, vocab, data, editing = null;
+  var hub, vocab, templates, data, editing = null;
+  var panel = null; // 'new', 'transfer' or null
   var body = document.getElementById('fac-body');
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); };
 
@@ -92,6 +104,7 @@
   try {
     hub = BW_DATA.hub;
     vocab = BW_DATA.components.components;
+    templates = BW_DATA.templates || [];
     window.__equipmentFields = BW_DATA.components.equipment;
     data = BWF.load();
     render();
@@ -101,7 +114,27 @@
 
   function render() {
     if (editing) return renderEditor();
-    var html = '<div class="fac-row"><button class="fac-btn" onclick="FAC.add()"><i class="ti ti-plus"></i> Add machine</button></div>';
+    var html = '<div class="fac-row">' +
+      '<button class="fac-btn" onclick="FAC.panel(\'new\')"><i class="ti ti-plus"></i> New machine</button>' +
+      '<button class="fac-btn quiet" onclick="FAC.panel(\'transfer\')"><i class="ti ti-arrows-exchange"></i> Import and export</button>' +
+      (data.machines.length ? '<a class="fac-btn quiet" href="issues.html"><i class="ti ti-list-search"></i> Possible issues</a>' : '') +
+      '</div>';
+
+    if (panel === 'new') {
+      html += '<div class="fac-group"><div class="fac-group-title">Start from a template</div>' +
+        '<div class="fac-count">A template drops in the parts a machine of that kind has, named and in order. Edit it from there.</div>';
+      templates.forEach(function (t) {
+        html += '<div class="fac-template" onclick="FAC.fromTemplate(\'' + t.key + '\')">' +
+          '<div class="fac-template-name">' + esc(t.name) + ' <span>' + t.parts.length + ' parts</span></div>' +
+          '<div class="fac-template-note">' + esc(t.note) + '</div>' +
+          '<div class="fac-template-chain">' + t.parts.map(function (p) { return esc(p.label); }).join(' &rsaquo; ') + '</div></div>';
+      });
+      html += '<div class="fac-row" style="margin-top:0.8rem;">' +
+        '<button class="fac-btn" onclick="FAC.add()">Blank machine</button>' +
+        '<button class="fac-btn quiet" onclick="FAC.panel(null)">Cancel</button></div></div>';
+    }
+
+    if (panel === 'transfer') html += transferPanel();
     if (!data.machines.length) {
       html += '<div class="fac-empty">No machines yet. Add one and pick the component types it is made of.</div>';
     }
@@ -135,6 +168,7 @@
       '<button class="fac-btn" onclick="FAC.edit(\'' + m.id + '\')"><i class="ti ti-pencil"></i> Edit ' + esc(m.tag) + '</button>' +
       '<a class="fac-btn" href="issues.html"><i class="ti ti-list-search"></i> Possible issues</a>' +
       '<button class="fac-btn quiet" onclick="FAC.clearSel()">Clear selection</button>' +
+      '<button class="fac-btn quiet" onclick="FAC.duplicate(\'' + m.id + '\')"><i class="ti ti-copy"></i> Duplicate</button>' +
       '<button class="fac-btn danger" onclick="FAC.del(\'' + m.id + '\')">Delete</button></div>';
 
     var overlayTotal = 0;
@@ -219,6 +253,61 @@
     return html;
   }
 
+  // Everything on this device, as one file. This is how a machine list gets off a phone
+  // and onto the next one, or to someone else, while the data stays local by default.
+  function exportPayload() {
+    return JSON.stringify({ format: 'builtwright.facility', version: 2, exported: new Date().toISOString(),
+      machines: data.machines, logs: data.logs || [] }, null, 2);
+  }
+
+  function exportCsv() {
+    var rows = [['equipment', 'description', 'area', 'criticality', 'part', 'part name', 'component', 'details']];
+    data.machines.forEach(function (m) {
+      BWF.partsOf(m).forEach(function (part, i) {
+        var spec = vocab[part.type] || { fields: [] };
+        var details = spec.fields.filter(function (f) { return (part.fields || {})[f.key]; })
+          .map(function (f) { return f.label + ': ' + part.fields[f.key]; }).join('; ');
+        rows.push([m.tag || '', m.name || '', m.area || '', m.criticality || '',
+          String(i + 1), BWF.partLabel(vocab, part), (spec.label || part.type), details]);
+      });
+    });
+    return rows.map(function (r) {
+      return r.map(function (c) { return '"' + String(c).replace(/"/g, '""') + '"'; }).join(',');
+    }).join('\n');
+  }
+
+  function download(name, text, type) {
+    try {
+      var blob = new Blob([text], { type: type });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = name;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 0);
+      return true;
+    } catch (e) {
+      return false; // some browsers block this; the box below is the fallback
+    }
+  }
+
+  function transferPanel() {
+    var n = data.machines.length;
+    return '<div class="fac-group"><div class="fac-group-title">Import and export</div>' +
+      '<div class="fac-count">' + n + ' machine' + (n === 1 ? '' : 's') + ' and ' + (data.logs || []).length + ' logged diagnoses on this device</div>' +
+      '<div class="fac-row">' +
+      '<button class="fac-btn" onclick="FAC.exportJson()"><i class="ti ti-download"></i> Export as JSON</button>' +
+      '<button class="fac-btn quiet" onclick="FAC.exportCsv()"><i class="ti ti-table"></i> Parts as CSV</button>' +
+      '<button class="fac-btn quiet" onclick="FAC.panel(null)">Close</button></div>' +
+      '<div class="fac-field" style="margin-top:0.8rem;"><label>Paste a JSON export here to bring it in</label>' +
+      '<textarea class="fac-paste" id="fac-import" rows="5" placeholder="{ &quot;format&quot;: &quot;builtwright.facility&quot;, ... }"></textarea></div>' +
+      '<div class="fac-row"><button class="fac-btn" onclick="FAC.importJson(false)">Add to what is here</button>' +
+      '<button class="fac-btn danger" onclick="FAC.importJson(true)">Replace everything</button>' +
+      '<span class="fac-said" id="fac-said"></span></div>' +
+      '<div class="fac-field" style="margin-top:0.6rem;"><label>Or copy this out</label>' +
+      '<textarea class="fac-paste" rows="4" readonly onclick="this.select()">' + esc(exportPayload()) + '</textarea></div></div>';
+  }
+
   function renderEditor() {
     var m = editing;
     var eq = window.__equipmentFields;
@@ -287,7 +376,83 @@
   }
 
   window.FAC = {
-    add: function () { editing = { id: BWF.newId(), tag: '', name: '', parts: [] }; render(); },
+    panel: function (which) { panel = which; render(); },
+    add: function () { panel = null; editing = { id: BWF.newId(), tag: '', name: '', parts: [] }; render(); },
+
+    fromTemplate: function (key) {
+      var t = templates.filter(function (x) { return x.key === key; })[0];
+      if (!t) return;
+      panel = null;
+      editing = { id: BWF.newId(), tag: '', name: t.name, parts: t.parts.map(function (p) {
+        return { id: BWF.newId('p'), type: p.type, label: p.label, fields: {} };
+      }) };
+      render();
+    },
+
+    // A sister machine is the same chain with different numbers, so the copy keeps them and
+    // they get edited rather than retyped.
+    duplicate: function (id) {
+      var src = BWF.machine(data, id);
+      if (!src) return;
+      var copy = JSON.parse(JSON.stringify(src));
+      copy.id = BWF.newId();
+      copy.tag = (src.tag || '') + ' copy';
+      copy.parts = BWF.partsOf(copy).map(function (p) { p.id = BWF.newId('p'); return p; });
+      editing = copy;
+      render();
+    },
+
+    exportJson: function () {
+      var name = 'builtwright-facility-' + new Date().toISOString().slice(0, 10) + '.json';
+      if (!download(name, exportPayload(), 'application/json')) alert('This browser would not start the download. Copy the text at the bottom of the panel instead.');
+    },
+
+    exportCsv: function () {
+      var name = 'builtwright-parts-' + new Date().toISOString().slice(0, 10) + '.csv';
+      if (!download(name, exportCsv(), 'text/csv')) alert('This browser would not start the download.');
+    },
+
+    importJson: function (replace) {
+      var said = document.getElementById('fac-said');
+      var box = document.getElementById('fac-import');
+      var text = box ? box.value.trim() : '';
+      if (!text) { if (said) said.textContent = 'nothing pasted'; return; }
+      var incoming;
+      try { incoming = JSON.parse(text); } catch (e) { if (said) said.textContent = 'that is not valid JSON'; return; }
+      if (!incoming || !Array.isArray(incoming.machines)) { if (said) said.textContent = 'no machines in that file'; return; }
+      if (replace && !confirm('Replace every machine and log on this device with the ' + incoming.machines.length + ' in that file?')) return;
+
+      if (replace) { data.machines = []; data.logs = []; data.activeId = null; }
+      var added = 0, renamed = 0;
+      var taken = {};
+      var tags = {};
+      var repeated = [];
+      data.machines.forEach(function (m) { taken[m.id] = true; if (m.tag) tags[m.tag] = true; });
+      incoming.machines.forEach(function (m) {
+        if (!m || typeof m !== 'object') return;
+        var copy = JSON.parse(JSON.stringify(m));
+        if (taken[copy.id]) { copy.id = BWF.newId(); renamed++; } // never overwrite a machine already here
+        taken[copy.id] = true;
+        copy.parts = BWF.partsOf(copy).map(function (part) {
+          return { id: part.id || BWF.newId('p'), type: part.type, label: part.label || '', fields: part.fields || {} };
+        });
+        // Bringing the same file in twice is not an error, but two machines carrying one
+        // equipment number is worth knowing about.
+        if (copy.tag && tags[copy.tag]) repeated.push(copy.tag);
+        if (copy.tag) tags[copy.tag] = true;
+        data.machines.push(copy);
+        added++;
+      });
+      (incoming.logs || []).forEach(function (l) { if (l && l.machineId) data.logs.push(l); });
+
+      if (!BWF.save(data)) { if (said) said.textContent = 'could not write to storage on this device'; return; }
+      panel = null;
+      render();
+      alert('Brought in ' + added + ' machine' + (added === 1 ? '' : 's') +
+        (renamed ? ', ' + renamed + ' given a new id to avoid overwriting one already here' : '') + '.' +
+        (repeated.length ? '\n\nThese equipment numbers now appear more than once: ' + repeated.join(', ') +
+          '. Nothing was lost; rename or delete the ones you do not want.' : ''));
+    },
     edit: function (id) { editing = JSON.parse(JSON.stringify(BWF.machine(data, id))); editing.parts = editing.parts || []; render(); },
     addPart: function (t) { collect(); BWF.addPart(editing, t); render(); },
     removePart: function (id) { collect(); BWF.removePart(editing, id); render(); },
