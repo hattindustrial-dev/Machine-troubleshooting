@@ -375,6 +375,68 @@ else {
   }
 }
 
+// ---- 6h. Issue level component tags -----------------------------------------------
+// Every diagnostic result says which components it concerns, in two lists: primary, the
+// component is what fails or is the subject of the finding, and contributing, its condition
+// causes the result or it has to be checked to rule it out. Two empty lists mean the result
+// is generic, which is a statement, where a missing field would mean nobody tagged it. The
+// possible-issues view and the PM filter both stand on these.
+const componentKeys = new Set(Object.keys(vocabulary.components));
+let taggedResults = 0, genericResults = 0;
+for (const mod of modules) {
+  for (const tree of Object.values(mod.trees)) {
+    for (const [id, node] of Object.entries(tree)) {
+      if (!node || node.type !== 'result') continue;
+      const where = `${mod.key}/${id}`;
+      const a = node.applies;
+      if (!a || !Array.isArray(a.primary) || !Array.isArray(a.contributing)) { fail(where, 'result has no applies tags'); continue; }
+      taggedResults++;
+      for (const t of [...a.primary, ...a.contributing]) {
+        if (!componentKeys.has(t)) fail(where, `applies uses '${t}', which is not a component`);
+      }
+      const both = a.primary.filter((t) => a.contributing.includes(t));
+      if (both.length) fail(where, `${both.join(', ')} is both primary and contributing`);
+      if (new Set(a.primary).size !== a.primary.length || new Set(a.contributing).size !== a.contributing.length) fail(where, 'applies repeats a component');
+      if (!a.primary.length && !a.contributing.length) genericResults++;
+    }
+  }
+}
+
+// The issue index is derived from the module data, so it has to agree with it exactly.
+const issueIndex = readData(DATA, 'issues');
+if (issueIndex.length !== results) fail('data/issues.js', `holds ${issueIndex.length} rows, the modules have ${results} results`);
+const indexed = new Map();
+for (const row of issueIndex) {
+  const key = `${row.file}|${row.label}`;
+  if (!indexed.has(key)) indexed.set(key, []);
+  indexed.get(key).push(row);
+  if (!row.tagged) fail('data/issues.js', `${row.module}/${row.id} is not tagged`);
+}
+for (const mod of modules) {
+  for (const tree of Object.values(mod.trees)) {
+    for (const [id, node] of Object.entries(tree)) {
+      if (!node || node.type !== 'result' || !node.applies) continue;
+      const row = issueIndex.find((r) => r.module === mod.key && r.id === id);
+      if (!row) { fail('data/issues.js', `${mod.key}/${id} is missing`); continue; }
+      if (JSON.stringify(row.primary) !== JSON.stringify(node.applies.primary) || JSON.stringify(row.contributing) !== JSON.stringify(node.applies.contributing)) {
+        fail('data/issues.js', `${mod.key}/${id} disagrees with the module data; run build/extract.mjs`);
+      }
+    }
+  }
+}
+
+// A PM task points at the result whose prevent line produced it, by module file and label.
+// If that does not resolve to an indexed result the filter silently falls back to the
+// coarse module level match, which is the imprecision the tags exist to remove.
+const pmView = readData(DATA, 'pm');
+let unresolvedTasks = 0;
+for (const task of pmView.TASKS) {
+  for (const src of task.src) {
+    if (!indexed.has(`${src.file}|${src.label}`)) unresolvedTasks++;
+  }
+}
+if (unresolvedTasks) fail('data/pm.js', `${unresolvedTasks} task source(s) do not resolve to an indexed result`);
+
 // ---- 7. Totals against the published index -------------------------------------
 if (index.totals.diagnostic_results !== results) fail('index', `totals.diagnostic_results is ${index.totals.diagnostic_results}, extracted ${results}`);
 if (index.totals.self_check_questions !== questions) fail('index', `totals.self_check_questions is ${index.totals.self_check_questions}, extracted ${questions}`);
@@ -383,6 +445,7 @@ console.log(`modules            ${modules.length}`);
 console.log(`diagnostic results ${results} (${missingPrevent} without a prevent tail)`);
 console.log(`tree transitions   ${transitions}`);
 console.log(`self-check qs      ${questions}`);
+console.log(`tagged results     ${taggedResults} (${genericResults} generic)`);
 console.log(`links checked      ${links}`);
 console.log(`script blocks      ${blocks}`);
 if (notes.length) {
