@@ -272,12 +272,23 @@ counts each once.
 It loads only the module data the machine's parts call for, by script tag, so it works from
 a folder like everything else.
 
-One thing to know about how it matches. A part sees the issues of every module tagged with
-its component type, and those tags are derived per module from the hub routes pointing at
-it. That is module level, not issue level, so a bearing part on a pump train also lists the
-bearing issues from Fans and Blowers. Useful, and broader than it looks. Tightening it means
-tagging the 380 diagnostic results individually, which is a content pass rather than a code
-change.
+Each part separates what is direct from what is related. Every component names the module
+that is primarily about it, so a bearing part reads 15 direct and 90 related: the fifteen
+from Bearing Failure, then the ones Lubrication, Alignment, Motors, Vibration and Fans reach
+it with from their own subject. The related ones are worth reading and worth labelling.
+
+The matching underneath is still module level rather than issue level: a part sees every
+module tagged with its component type, and those tags are derived from the hub routes
+pointing at each module. Tightening it further means tagging the 380 diagnostic results
+individually, which is a content pass rather than a code change.
+
+### The PM library for one machine
+
+The task library holds every preventive task the series produced, which is right for
+building a programme and wrong when you are in front of one machine. With a machine
+selected it filters to the tasks whose source modules speak to a part in its chain: a
+conveyor with four parts sees 251 of 663. Same banner and the same one click back to
+everything as the hub.
 
 ### Capturing what happened
 

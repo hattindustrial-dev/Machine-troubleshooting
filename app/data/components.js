@@ -59,7 +59,8 @@
           "type": "text",
           "unit": "m"
         }
-      ]
+      ],
+      "module": "pumps"
     },
     "bearing": {
       "label": "Bearings",
@@ -89,7 +90,8 @@
           "type": "text",
           "placeholder": "2000 h"
         }
-      ]
+      ],
+      "module": "bearing"
     },
     "seal": {
       "label": "Seals",
@@ -118,7 +120,8 @@
           "label": "Part number",
           "type": "text"
         }
-      ]
+      ],
+      "module": "seals"
     },
     "alignment": {
       "label": "Coupling and alignment",
@@ -141,7 +144,8 @@
           "type": "text",
           "placeholder": "0.08 mm up at the pump"
         }
-      ]
+      ],
+      "module": "alignment"
     },
     "lube": {
       "label": "Lubrication",
@@ -170,7 +174,8 @@
           "label": "Filter part",
           "type": "text"
         }
-      ]
+      ],
+      "module": "lube"
     },
     "motor": {
       "label": "Motor",
@@ -199,7 +204,8 @@
           "label": "Motor bearings",
           "type": "text"
         }
-      ]
+      ],
+      "module": "motors"
     },
     "gearbox": {
       "label": "Gearbox",
@@ -226,7 +232,8 @@
           "label": "Backlash specification",
           "type": "text"
         }
-      ]
+      ],
+      "module": "gearbox"
     },
     "powertrans": {
       "label": "Belts and chains",
@@ -249,7 +256,8 @@
           "type": "text",
           "placeholder": "deflection 8 mm at 25 N"
         }
-      ]
+      ],
+      "module": "powertrans"
     },
     "pneu": {
       "label": "Pneumatics",
@@ -277,7 +285,8 @@
           "label": "Valve model",
           "type": "text"
         }
-      ]
+      ],
+      "module": "pneu"
     },
     "hydraulics": {
       "label": "Hydraulics",
@@ -305,7 +314,8 @@
           "label": "Filter part",
           "type": "text"
         }
-      ]
+      ],
+      "module": "hydraulics"
     },
     "valve": {
       "label": "Process valve",
@@ -339,7 +349,8 @@
           "label": "Packing",
           "type": "text"
         }
-      ]
+      ],
+      "module": "valves"
     },
     "fan": {
       "label": "Fan or blower",
@@ -366,7 +377,8 @@
           "type": "text",
           "placeholder": "G6.3"
         }
-      ]
+      ],
+      "module": "fans"
     },
     "compressor": {
       "label": "Compressor",
@@ -392,7 +404,8 @@
           "label": "Separator part",
           "type": "text"
         }
-      ]
+      ],
+      "module": "compressors"
     },
     "conveyor": {
       "label": "Conveyor",
@@ -419,7 +432,8 @@
           "label": "Splice type",
           "type": "text"
         }
-      ]
+      ],
+      "module": "conveyors"
     },
     "brake": {
       "label": "Clutch or brake",
@@ -446,7 +460,8 @@
           "label": "Torque setting",
           "type": "text"
         }
-      ]
+      ],
+      "module": "clutches"
     },
     "guard": {
       "label": "Safeguarding",
@@ -473,7 +488,8 @@
           "label": "PSR reference",
           "type": "text"
         }
-      ]
+      ],
+      "module": "safeguarding"
     }
   }
 };

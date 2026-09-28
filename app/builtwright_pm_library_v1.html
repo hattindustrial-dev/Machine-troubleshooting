@@ -167,6 +167,9 @@
   <div class="bw-footer">builtwrightapp.com &nbsp;·&nbsp; pm task library &nbsp;·&nbsp; derived from 20 diagnostic modules</div>
 </div>
 <script src="data/pm.js"></script>
+<script src="data/hub.js"></script>
+<script src="facility.js"></script>
+<script src="bw-pm-filter.js"></script>
 <script>
 const TASKS=BW_DATA.pm.TASKS;
 const COMP=BW_DATA.pm.COMP;
@@ -178,7 +181,7 @@ function render(){
   const q=(document.getElementById('pm-search').value||'').toLowerCase(), fi=document.getElementById('pm-intfilter').value;
   for (const [comp,cid] of Object.entries(COMP)){
     const el=document.getElementById('pm-list-'+cid); let n=0;
-    el.innerHTML=TASKS.filter(t=>t.comp===comp).map(t=>{
+    el.innerHTML=TASKS.filter(t=>t.comp===comp && BWPM.applies(t)).map(t=>{
       const st=state[t.id]||{}; const intv=st.interval||t.interval;
       if(q && !t.text.toLowerCase().includes(q) && !t.src.some(s=>s.label.toLowerCase().includes(q))) return '';
       if(fi && intv!==fi) return '';
@@ -196,7 +199,9 @@ function exportCSV(){
   const a=document.createElement('a'); a.href='data:text/csv;charset=utf-8,'+encodeURIComponent('\ufeff'+csv); a.download='builtwright_pm_tasks.csv'; a.click();
 }
 render();
-(function(){function go(){var h=location.hash.replace('#','');if(h&&document.getElementById('panel-'+h))switchTab(h);}go();window.addEventListener('hashchange',go);})();
+(function(){function go(){var h=location.hash.replace('#','');if(h&&document.getElementById('panel-'+h))switchTab(h);}go();window.addEventListener('hashchange',go);
+// The filter has to be live before the first render, or the list draws unfiltered.
+BWPM.style(); BWPM.refresh(); render(); BWPM.paint();})();
 </script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
 </body>

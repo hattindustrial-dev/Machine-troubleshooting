@@ -34,6 +34,7 @@
   .iss-text { font-size:12px; color:#888780; line-height:1.45; margin-top:2px; }
   .iss-prevent { font-size:12px; color:#97C459; margin-top:3px; }
   .iss-empty { color:#888780; font-size:14px; padding:1rem 0; }
+  .iss-related { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:#5F5E5A; border-top:0.5px solid #3a3a36; margin-top:1rem; padding-top:0.6rem; }
   .iss-plant { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:#5F5E5A; margin-top:2px; }
 </style>
 </head>
@@ -124,14 +125,21 @@
       // angle. Matching is module level, so a part sees every module tagged with its type.
       var mods = modules
         .filter(function (k) { return (hub.modules[k].components || []).indexOf(part.type) !== -1; })
-        .sort(function (a, c) { return (c === part.type ? 1 : 0) - (a === part.type ? 1 : 0); });
+        .sort(function (a, c) {
+          var primary = (vocab[part.type] || {}).module || part.type;
+          return (c === primary ? 1 : 0) - (a === primary ? 1 : 0);
+        });
       var byTopic = [];
-      var n = 0;
+      var n = 0, direct = 0;
       mods.forEach(function (k) {
         var list = issuesOf(k).filter(matches);
         if (!list.length) return;
         n += list.length;
-        byTopic.push({ key: k, name: hub.modules[k].name, list: list });
+        // The module that is this component speaks to it directly. The rest reach it from
+        // their own subject, which is worth reading and worth labelling as such.
+        var isDirect = k === ((vocab[part.type] || {}).module || part.type);
+        if (isDirect) direct += list.length;
+        byTopic.push({ key: k, name: hub.modules[k].name, list: list, direct: isDirect });
       });
       byTopic.forEach(function (t) {
         t.list.forEach(function (iss) { distinct[t.key + '|' + iss.label] = true; });
@@ -146,7 +154,7 @@
         '<i class="ti ' + esc(spec.icon || 'ti-point') + '"></i>' +
         '<span class="iss-part-name">' + esc(BWF.partLabel(vocab, part)) + '</span>' +
         '<span class="iss-part-type">' + esc(spec.label || part.type) + '</span>' +
-        '<span class="iss-part-n2">' + n + ' issue' + (n === 1 ? '' : 's') + '</span></div><div class="iss-body">';
+        '<span class="iss-part-n2">' + (direct ? direct + ' direct, ' + (n - direct) + ' related' : n + ' issue' + (n === 1 ? '' : 's')) + '</span></div><div class="iss-body">';
 
       var numbers = BWF.numbersFor(vocab, machine, [part.type]).filter(function (g) { return g.label === BWF.partLabel(vocab, part); });
       if (numbers.length && numbers[0].fields.length) {
@@ -155,7 +163,12 @@
         }).join(' &middot; ') + '</div>';
       }
       if (!byTopic.length) blocks += '<div class="iss-empty">Nothing matches.</div>';
+      var shownRelatedHeader = false;
       byTopic.forEach(function (t) {
+        if (!t.direct && !shownRelatedHeader && direct) {
+          blocks += '<div class="iss-related">Related, from modules that touch this component from their own subject</div>';
+          shownRelatedHeader = true;
+        }
         blocks += '<div class="iss-topic"><div class="iss-topic-head">' + esc(t.name) + ' &middot; ' + t.list.length + '</div>';
         t.list.forEach(function (iss) {
           blocks += '<div class="iss ' + esc(iss.cls) + '"><a href="' + esc(iss.file) + '#' + esc(iss.tab) + '">' + esc(iss.label) + '</a>' +

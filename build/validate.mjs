@@ -327,6 +327,10 @@ for (const tag of vocabTags) {
 }
 for (const [tag, spec] of Object.entries(vocabulary.components)) {
   if (!spec.label || !spec.icon) fail('facility', `component '${tag}' needs a label and an icon`);
+  // Each component names the module that is primarily about it, which is what separates a
+  // part's direct issues from the ones that reach it from another subject.
+  if (!spec.module) fail('facility', `component '${tag}' does not name its primary module`);
+  else if (!hub.modules[spec.module]) fail('facility', `component '${tag}' names module '${spec.module}', which does not exist`);
   if (!Array.isArray(spec.fields) || !spec.fields.length) fail('facility', `component '${tag}' has no fields`);
   const keys = new Set();
   for (const f of spec.fields || []) {
