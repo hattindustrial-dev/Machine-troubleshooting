@@ -1,0 +1,6 @@
+[
+  {
+    "module": "installation", "id": "r_anchor_clearance", "type": "motor", "from": "contributing", "to": "absent",
+    "reason": "Found by the consistency sweep. This result is a twin of alignment/r_holes: the same foot bolts against the same holes, the same 2 to 3 mm fix. That one is tagged alignment contributing and nothing else. The text here says 'the machine' and 'the machine feet' and never names a motor, so the motor tag was the first tagger's inference and the two twins disagreed."
+  }
+]

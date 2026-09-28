@@ -349,7 +349,13 @@ BW.register("pumps", {
         "label": "mechanical check first, then electrical contact",
         "text": "Motor is not running. Start with what you can safely observe.",
         "sub": "Check: is there a burnt or acrid smell? Does the motor attempt to start and hum without turning? Is the shaft free to rotate by hand after locking out? Document observations and pass to a competent electrical tradesperson for further diagnosis.",
-        "prevent": "Motor amps and bearing condition logged on the PM. A motor that stops on overload has usually been drawing high current for weeks first."
+        "prevent": "Motor amps and bearing condition logged on the PM. A motor that stops on overload has usually been drawing high current for weeks first.",
+        "applies": {
+          "primary": [
+            "motor"
+          ],
+          "contributing": []
+        }
       },
       "c_noflow2": {
         "q": "Is the suction valve fully open?",
@@ -373,7 +379,14 @@ BW.register("pumps", {
         "label": "simple fix",
         "text": "Open the suction valve fully.",
         "sub": "After opening, allow the pump to prime and confirm flow develops within 30 to 60 seconds. If flow does not develop, continue troubleshooting.",
-        "prevent": "Suction valve position on the startup checklist. Lock or tag valves that must stay open."
+        "prevent": "Suction valve position on the startup checklist. Lock or tag valves that must stay open.",
+        "applies": {
+          "primary": [
+            "pump",
+            "valve"
+          ],
+          "contributing": []
+        }
       },
       "c_noflow3": {
         "q": "Is the discharge valve open and path clear?",
@@ -397,7 +410,16 @@ BW.register("pumps", {
         "label": "open discharge: use caution",
         "text": "Open the discharge valve carefully and verify flow develops.",
         "sub": "If the pump has been deadheading, check fluid temperature before opening as it may be very hot. Verify seal condition after restoring flow.",
-        "prevent": "Startup procedure written down: which valve opens when, and why a PD pump never starts against a closed discharge."
+        "prevent": "Startup procedure written down: which valve opens when, and why a PD pump never starts against a closed discharge.",
+        "applies": {
+          "primary": [
+            "pump",
+            "valve"
+          ],
+          "contributing": [
+            "seal"
+          ]
+        }
       },
       "c_noflow4": {
         "q": "Is the pump rotating in the correct direction?",
@@ -421,7 +443,15 @@ BW.register("pumps", {
         "label": "correct rotation: electrical contact required",
         "text": "Reverse rotation requires swapping two motor leads. This is electrical work.",
         "sub": "Note the issue and pass to a competent electrical tradesperson. On a VFD-driven motor the rotation direction can often be changed in drive parameters.",
-        "prevent": "Rotation verified on every motor change, wiring change, or VFD swap before the coupling goes on. Mark the correct direction on the casing."
+        "prevent": "Rotation verified on every motor change, wiring change, or VFD swap before the coupling goes on. Mark the correct direction on the casing.",
+        "applies": {
+          "primary": [
+            "pump"
+          ],
+          "contributing": [
+            "motor"
+          ]
+        }
       },
       "c_noflow5": {
         "type": "result",
@@ -429,7 +459,15 @@ BW.register("pumps", {
         "label": "internal inspection likely needed",
         "text": "Power on, valves correct, rotation correct. Suspect internal pump fault.",
         "sub": "Disconnect the pump from the coupling and rotate the shaft by hand. If rough, tight, or seized, the problem is internal. Likely causes: worn impeller or wear rings, cavitation damage, or a failed bearing. Check wear ring clearance against manufacturer specification, typically 0.010 to 0.015 inches for cast iron.",
-        "prevent": "Find what caused the internal failure: cavitation, dry run, foreign material, or wear. A rebuilt pump in the same conditions fails again."
+        "prevent": "Find what caused the internal failure: cavitation, dry run, foreign material, or wear. A rebuilt pump in the same conditions fails again.",
+        "applies": {
+          "primary": [
+            "pump"
+          ],
+          "contributing": [
+            "bearing"
+          ]
+        }
       },
       "c_lowflow1": {
         "q": "Has anything in the system changed recently?",
@@ -453,7 +491,13 @@ BW.register("pumps", {
         "label": "review system change first",
         "text": "Investigate the change before assuming a pump fault.",
         "sub": "A centrifugal pump operates on a curve. Higher resistance means less flow. Review the pump curve against the new system conditions before pulling the pump.",
-        "prevent": "Any process or piping change gets checked against the pump curve before it is commissioned. Log the operating point."
+        "prevent": "Any process or piping change gets checked against the pump curve before it is commissioned. Log the operating point.",
+        "applies": {
+          "primary": [
+            "pump"
+          ],
+          "contributing": []
+        }
       },
       "c_lowflow2": {
         "q": "Is the suction strainer clean?",
@@ -477,7 +521,13 @@ BW.register("pumps", {
         "label": "clean suction strainer",
         "text": "Isolate and clean the suction strainer, then restore flow and verify performance.",
         "sub": "Establish a cleaning interval based on how quickly it blocked. Chronic fouling may indicate a process contamination issue upstream.",
-        "prevent": "Strainer cleaning interval on the PM, with a differential pressure gauge across it so the interval is data, not guesswork."
+        "prevent": "Strainer cleaning interval on the PM, with a differential pressure gauge across it so the interval is data, not guesswork.",
+        "applies": {
+          "primary": [
+            "pump"
+          ],
+          "contributing": []
+        }
       },
       "c_lowflow3": {
         "type": "result",
@@ -485,7 +535,13 @@ BW.register("pumps", {
         "label": "internal wear suspected",
         "text": "Low flow with clean strainer and correct system conditions points to internal wear.",
         "sub": "Increased wear ring clearance is the most common cause. Pull the pump and measure wear ring clearance. Cavitation damage may also be present if cavitation has been occurring over time.",
-        "prevent": "Wear ring clearance measured and recorded at every overhaul. Trend flow against head at a fixed valve position to catch wear early."
+        "prevent": "Wear ring clearance measured and recorded at every overhaul. Trend flow against head at a fixed valve position to catch wear early.",
+        "applies": {
+          "primary": [
+            "pump"
+          ],
+          "contributing": []
+        }
       },
       "c_noise1": {
         "q": "Describe the noise:",
@@ -511,7 +567,15 @@ BW.register("pumps", {
         "label": "cavitation indicated",
         "text": "Crackling or gravel-like sound from within the casing is the classic cavitation signature.",
         "sub": "Cavitation means vapour bubbles are forming and collapsing inside the impeller. Address the suction system first: check NPSH, suction valve position, strainer condition, and fluid temperature. Prolonged cavitation pits the impeller and casing.",
-        "prevent": "NPSH margin checked on any suction-side change: level, temperature, strainer, piping. Suction pressure gauge on the PM route."
+        "prevent": "NPSH margin checked on any suction-side change: level, temperature, strainer, piping. Suction pressure gauge on the PM route.",
+        "applies": {
+          "primary": [
+            "pump"
+          ],
+          "contributing": [
+            "valve"
+          ]
+        }
       },
       "c_bearing": {
         "type": "result",
@@ -519,7 +583,15 @@ BW.register("pumps", {
         "label": "bearing inspection required",
         "text": "Grinding or rumbling from bearing housings indicates bearing damage or inadequate lubrication.",
         "sub": "Check lubrication before condemning the bearing. Do not overgrease, especially on motor bearings. See Module 02 for full bearing failure diagnosis.",
-        "prevent": "Grease quantity and interval on the PM. Alignment after any work. Read the failed bearing before ordering the next one."
+        "prevent": "Grease quantity and interval on the PM. Alignment after any work. Read the failed bearing before ordering the next one.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": [
+            "lube"
+          ]
+        }
       },
       "c_squeal": {
         "type": "result",
@@ -527,7 +599,16 @@ BW.register("pumps", {
         "label": "check coupling element and packing",
         "text": "Squealing typically comes from a deteriorating coupling element, a dry bearing, or overtightened packing.",
         "sub": "Coupling: inspect flexible element and check alignment. Packing: overtightened packing will squeal and smoke. Back off gland bolts until you have 40 to 60 drops per minute.",
-        "prevent": "Coupling element and packing on the PM inspection list. Alignment readings recorded so a shift is visible."
+        "prevent": "Coupling element and packing on the PM inspection list. Alignment readings recorded so a shift is visible.",
+        "applies": {
+          "primary": [
+            "alignment",
+            "seal"
+          ],
+          "contributing": [
+            "bearing"
+          ]
+        }
       },
       "c_heat1": {
         "q": "Where is the heat originating?",
@@ -553,7 +634,13 @@ BW.register("pumps", {
         "label": "motor thermal issue: notify electrical contact",
         "text": "Observe what you can safely: cooling fan clear, burning smell, uniformly hot or one spot?",
         "sub": "Document observations and pass to a competent electrical tradesperson. Likely causes: overloading, voltage imbalance, or blocked ventilation.",
-        "prevent": "Motor cooling fins and shroud cleaned on the PM. Amps trended. Motors module for the mechanical checks before the handoff."
+        "prevent": "Motor cooling fins and shroud cleaned on the PM. Amps trended. Motors module for the mechanical checks before the handoff.",
+        "applies": {
+          "primary": [
+            "motor"
+          ],
+          "contributing": []
+        }
       },
       "c_bearing_heat": {
         "type": "result",
@@ -561,7 +648,14 @@ BW.register("pumps", {
         "label": "check for overlubrication first",
         "text": "Hot bearing housings are often caused by too much grease, not too little.",
         "sub": "Purge excess grease by removing the relief plug and running briefly. If temperature does not drop, the bearing may be failing. Normal operating temperature is up to approximately 70 degrees Celsius above ambient. See Module 02.",
-        "prevent": "Relief plug out during greasing. Quantity by formula. Ultrasonic-assisted greasing on critical pumps."
+        "prevent": "Relief plug out during greasing. Quantity by formula. Ultrasonic-assisted greasing on critical pumps.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "lube"
+          ],
+          "contributing": []
+        }
       },
       "c_fluid_heat": {
         "type": "result",
@@ -569,7 +663,16 @@ BW.register("pumps", {
         "label": "check for deadheading or loss of flush",
         "text": "Fluid heating in the casing with no flow almost always means the pump is deadheading.",
         "sub": "Confirm discharge valve is open. Verify seal flush line is flowing on hot process fluids. A flush failure causes rapid heat buildup at the stuffing box.",
-        "prevent": "Minimum flow protection on centrifugal pumps that can be throttled. Flush plan flow verified on the PM."
+        "prevent": "Minimum flow protection on centrifugal pumps that can be throttled. Flush plan flow verified on the PM.",
+        "applies": {
+          "primary": [
+            "pump",
+            "seal"
+          ],
+          "contributing": [
+            "valve"
+          ]
+        }
       },
       "c_vibe": {
         "type": "result",
@@ -577,7 +680,16 @@ BW.register("pumps", {
         "label": "vibration: systematic isolation approach",
         "text": "Start with the most common causes and work outward.",
         "sub": "Most common in order: (1) misalignment, check coupling with dial indicators or laser tool; (2) imbalance from impeller fouling; (3) resonance from loose base bolts or pipe strain; (4) cavitation; (5) bearing wear. See Module 03 for full alignment guidance.",
-        "prevent": "Baseline vibration reading after every rebuild and alignment. Monthly route with the same points. Vibration Fundamentals module."
+        "prevent": "Baseline vibration reading after every rebuild and alignment. Monthly route with the same points. Vibration Fundamentals module.",
+        "applies": {
+          "primary": [
+            "alignment",
+            "pump"
+          ],
+          "contributing": [
+            "bearing"
+          ]
+        }
       },
       "c_seal1": {
         "q": "What type of shaft seal?",
@@ -599,7 +711,16 @@ BW.register("pumps", {
         "label": "mechanical seal replacement required",
         "text": "A leaking mechanical seal will not self-correct. The faces are damaged.",
         "sub": "Common causes: running dry, shaft misalignment, excessive runout, thermal shock, or cavitation. Pull and replace the seal. Measure shaft runout first, maximum 0.002 inches TIR. See Leak Detection tab for seal-specific detection methods.",
-        "prevent": "Read the failed seal faces before installing the new one. Check shaft runout, flush plan, and alignment. Never run it dry, even briefly."
+        "prevent": "Read the failed seal faces before installing the new one. Check shaft runout, flush plan, and alignment. Never run it dry, even briefly.",
+        "applies": {
+          "primary": [
+            "seal"
+          ],
+          "contributing": [
+            "alignment",
+            "pump"
+          ]
+        }
       },
       "c_packing": {
         "type": "result",
@@ -607,7 +728,13 @@ BW.register("pumps", {
         "label": "adjust packing gland",
         "text": "Packing should weep 40 to 60 drops per minute. This is intentional, not a defect.",
         "sub": "Zero leakage means it is overtightened. Adjust gland bolts evenly, a quarter turn at a time. If packing is failing completely, replace all rings at once. Never add a single new ring on top of old packing.",
-        "prevent": "Packing leakage rate (40 to 60 drops per minute) on the PM sheet, so the gland is adjusted on data and not overtightened."
+        "prevent": "Packing leakage rate (40 to 60 drops per minute) on the PM sheet, so the gland is adjusted on data and not overtightened.",
+        "applies": {
+          "primary": [
+            "seal"
+          ],
+          "contributing": []
+        }
       },
       "interval1": {
         "q": "Does the skip or jolt happen at a consistent, repeating interval?",
@@ -631,7 +758,15 @@ BW.register("pumps", {
         "label": "mechanical slip or contact: isolate by shaft",
         "text": "A consistent interval means something is happening once per revolution of a specific shaft.",
         "sub": "Estimate rotation speed of each shaft and compare to the interval. Common causes: loose or worn coupling element, keyway or set screw that has backed off, or coupling spider chunked on one side. Use the Independent Rotation Check tab. Do not assume electrical cause when the interval is consistent.",
-        "prevent": "Independent rotation check after any work on the drive train. Coupling and gearbox on the PM inspection."
+        "prevent": "Independent rotation check after any work on the drive train. Coupling and gearbox on the PM inspection.",
+        "applies": {
+          "primary": [
+            "alignment"
+          ],
+          "contributing": [
+            "gearbox"
+          ]
+        }
       },
       "interval_no": {
         "type": "result",
@@ -639,7 +774,13 @@ BW.register("pumps", {
         "label": "inspect for debris or intermittent obstruction",
         "text": "Irregular jolts may indicate passing debris, an intermittent obstruction, or a loose component.",
         "sub": "Check suction strainer for partial blockage. Inspect impeller for foreign material. Confirm all fasteners are tight. If events correlate with process demand changes, suspect intermittent cavitation or water hammer.",
-        "prevent": "Suction strainer and any upstream screen on the PM. Look for the source of the debris, not just the debris."
+        "prevent": "Suction strainer and any upstream screen on the PM. Look for the source of the debris, not just the debris.",
+        "applies": {
+          "primary": [
+            "pump"
+          ],
+          "contributing": []
+        }
       },
       "pd_rot_symptom": {
         "q": "What is the primary symptom on the rotary PD pump?",
@@ -693,7 +834,15 @@ BW.register("pumps", {
         "label": "check rotation: electrical contact required",
         "text": "Reverse rotation on a rotary PD pump reverses the flow direction. Suction and discharge sides swap.",
         "sub": "Confirm rotation direction against the arrow on the pump casing or the equipment manual. Correcting motor rotation is electrical work. Pass to a competent electrical tradesperson.",
-        "prevent": "Rotation verified before coupling on every motor or wiring change. PD pumps are less forgiving than centrifugal of a wrong-direction start."
+        "prevent": "Rotation verified before coupling on every motor or wiring change. PD pumps are less forgiving than centrifugal of a wrong-direction start.",
+        "applies": {
+          "primary": [
+            "pump"
+          ],
+          "contributing": [
+            "motor"
+          ]
+        }
       },
       "pdr_noflow2": {
         "q": "Is the discharge path open and the relief valve not bypassing?",
@@ -717,7 +866,14 @@ BW.register("pumps", {
         "label": "discharge blockage or relief valve fault",
         "text": "A blocked discharge on a PD pump is a safety emergency. A relief valve continuously lifting means it is doing its job but the cause must be found.",
         "sub": "If discharge is blocked: identify and clear the blockage before restarting. If the relief valve is lifting continuously: the system pressure is at or above the set point. Do not raise the relief valve setting without investigating the cause. Check for a closed valve downstream, a blocked filter, or a process condition change.",
-        "prevent": "Relief valve tested and its setting recorded on the PM. Discharge valve interlocked or tagged so it cannot be closed with the pump running."
+        "prevent": "Relief valve tested and its setting recorded on the PM. Discharge valve interlocked or tagged so it cannot be closed with the pump running.",
+        "applies": {
+          "primary": [
+            "pump",
+            "valve"
+          ],
+          "contributing": []
+        }
       },
       "pdr_noflow3": {
         "q": "Has flow dropped gradually over time or suddenly?",
@@ -741,7 +897,13 @@ BW.register("pumps", {
         "label": "internal wear: clearances have grown",
         "text": "Gradual flow loss at constant speed in a rotary PD pump is the signature of increasing internal clearances from wear.",
         "sub": "As the gear teeth, lobes, or vane tips wear, the gap between the rotating element and the pump casing grows. More fluid slips back from discharge to suction on each revolution. Measure flow against the original baseline. Pull the pump for inspection and measure internal clearances against manufacturer specification.",
-        "prevent": "Clearances measured at overhaul and trended. Fluid cleanliness and viscosity against the pump specification."
+        "prevent": "Clearances measured at overhaul and trended. Fluid cleanliness and viscosity against the pump specification.",
+        "applies": {
+          "primary": [
+            "pump"
+          ],
+          "contributing": []
+        }
       },
       "pdr_sudden": {
         "type": "result",
@@ -749,7 +911,13 @@ BW.register("pumps", {
         "label": "inspect for foreign object or component failure",
         "text": "Sudden flow loss on a rotary PD pump that was running normally suggests a component failure or obstruction.",
         "sub": "Possible causes: foreign object lodged in the pump (rotary PD pumps do not tolerate solids well), sheared shaft or key, timing gear failure on a lobe pump, or a collapsed vane on a vane pump. Disconnect the pump from the coupling and attempt to rotate by hand. If the pump will not turn or has severe rough spots, internal damage has occurred.",
-        "prevent": "Strainer on the suction. Find the source of the foreign object. Check upstream equipment for missing parts."
+        "prevent": "Strainer on the suction. Find the source of the foreign object. Check upstream equipment for missing parts.",
+        "applies": {
+          "primary": [
+            "pump"
+          ],
+          "contributing": []
+        }
       },
       "pdr_noise1": {
         "q": "Describe the noise:",
@@ -775,7 +943,13 @@ BW.register("pumps", {
         "label": "internal contact: shutdown and inspect",
         "text": "Metallic grinding or knocking in a rotary PD pump indicates contact between rotating and stationary components.",
         "sub": "On a lobe pump, this means the timing gears have failed or the rotors are contacting. On a gear pump, it may mean a gear is contacting the casing or end plates. On a vane pump, a broken vane may be circulating. Shut down and inspect before proceeding. Continued operation will destroy the pump rapidly.",
-        "prevent": "Fluid lubricity and viscosity against the pump rating. Never run a PD pump dry. Suction conditions verified."
+        "prevent": "Fluid lubricity and viscosity against the pump rating. Never run a PD pump dry. Suction conditions verified.",
+        "applies": {
+          "primary": [
+            "pump"
+          ],
+          "contributing": []
+        }
       },
       "pdr_squeal": {
         "type": "result",
@@ -783,7 +957,17 @@ BW.register("pumps", {
         "label": "check shaft seals and bearing lubrication",
         "text": "Squealing on a rotary PD pump is often a shaft seal or a dry bearing.",
         "sub": "Check lip seal or mechanical seal condition at the shaft. A dry or damaged seal will squeal and leak progressively. Check bearing lubrication if the pump has grease-lubricated bearings. On gear pumps, the fluid being pumped often serves as the bearing lubricant, meaning a dry-running condition starves the bearings as well.",
-        "prevent": "Seal and bearing lubrication on the PM. Alignment recorded."
+        "prevent": "Seal and bearing lubrication on the PM. Alignment recorded.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "seal"
+          ],
+          "contributing": [
+            "lube",
+            "pump"
+          ]
+        }
       },
       "pdr_cavitation": {
         "type": "result",
@@ -791,7 +975,15 @@ BW.register("pumps", {
         "label": "suction condition issue",
         "text": "Cavitation is possible in rotary PD pumps, though less common than in centrifugal pumps.",
         "sub": "Causes include: suction valve not fully open, blocked strainer, fluid viscosity too high for the suction line size (fluid cannot flow in fast enough), pump speed too high for the fluid viscosity, or suction lift too great. Address suction conditions before assuming pump fault.",
-        "prevent": "Suction line sizing and NPSH margin reviewed. Viscosity at the actual fluid temperature against the pump limit."
+        "prevent": "Suction line sizing and NPSH margin reviewed. Viscosity at the actual fluid temperature against the pump limit.",
+        "applies": {
+          "primary": [
+            "pump"
+          ],
+          "contributing": [
+            "valve"
+          ]
+        }
       },
       "pdr_heat1": {
         "type": "result",
@@ -799,7 +991,13 @@ BW.register("pumps", {
         "label": "check fluid lubrication and internal clearances",
         "text": "Overheating in a rotary PD pump usually means inadequate fluid lubrication of internal surfaces or excessive bypass due to worn clearances.",
         "sub": "Many rotary PD pumps rely on the pumped fluid to lubricate the internal surfaces and bearings. Running dry even briefly causes rapid heat buildup and surface damage. Check that fluid is present and flowing. If the pump has been running hot for some time, check internal clearances for wear. Worn clearances increase bypass flow, which generates heat.",
-        "prevent": "Fluid temperature and viscosity logged. Internal clearances measured at overhaul."
+        "prevent": "Fluid temperature and viscosity logged. Internal clearances measured at overhaul.",
+        "applies": {
+          "primary": [
+            "pump"
+          ],
+          "contributing": []
+        }
       },
       "pdr_relief": {
         "type": "result",
@@ -807,7 +1005,15 @@ BW.register("pumps", {
         "label": "investigate cause before adjusting relief valve",
         "text": "A relief valve that lifts frequently is telling you that system pressure is regularly reaching the set point.",
         "sub": "Do not raise the set pressure as the first response. Investigate: is there a closed or partially closed valve downstream? Has system resistance increased? Is the pump overspeeding? Is the fluid viscosity higher than designed (cold startup, wrong fluid)? Only raise the set pressure after confirming the system MAWP and all downstream components are rated for the higher pressure.",
-        "prevent": "Relief valve setting recorded and locked. Any change to the discharge system reviewed against the relief setting first."
+        "prevent": "Relief valve setting recorded and locked. Any change to the discharge system reviewed against the relief setting first.",
+        "applies": {
+          "primary": [
+            "valve"
+          ],
+          "contributing": [
+            "pump"
+          ]
+        }
       },
       "pdr_seal": {
         "type": "result",
@@ -815,7 +1021,15 @@ BW.register("pumps", {
         "label": "inspect seal type and condition",
         "text": "Seal leakage on a rotary PD pump follows similar principles to centrifugal pumps but with some differences.",
         "sub": "Mechanical seals: same rules as centrifugal pumps: a leaking mechanical seal will not self-correct, replace it. Lip seals: a light film is acceptable, a spray or steady drip is not. Check shaft runout at the seal location before installing a replacement. On pumps that use the process fluid for internal lubrication, a leaking seal may indicate the pump has been running dry, which damages the seal faces from the inside.",
-        "prevent": "Seal type matched to the fluid and pressure. Read every failed seal."
+        "prevent": "Seal type matched to the fluid and pressure. Read every failed seal.",
+        "applies": {
+          "primary": [
+            "seal"
+          ],
+          "contributing": [
+            "pump"
+          ]
+        }
       },
       "pd_rec_symptom": {
         "q": "What is the primary symptom on the reciprocating PD pump?",
@@ -881,7 +1095,14 @@ BW.register("pumps", {
         "label": "check valve failure suspected",
         "text": "A pump that strokes but produces no flow almost always has a check valve problem.",
         "sub": "On a reciprocating pump, the suction check valve must open to allow fluid in on the intake stroke, and the discharge check valve must open to allow fluid out on the pressure stroke. If either valve is stuck open, closed, or leaking, flow is lost. Inspect both suction and discharge check valves. Look for: debris on the valve seat, worn or cracked valve balls or discs, damaged valve seats, or springs that have broken or lost tension.",
-        "prevent": "Check valves inspected on the PM interval. Fluid filtration to keep debris off the seats."
+        "prevent": "Check valves inspected on the PM interval. Fluid filtration to keep debris off the seats.",
+        "applies": {
+          "primary": [
+            "pump",
+            "valve"
+          ],
+          "contributing": []
+        }
       },
       "pdrec_nostroke": {
         "type": "result",
@@ -889,7 +1110,13 @@ BW.register("pumps", {
         "label": "mechanical drive issue",
         "text": "A reciprocating pump that is not stroking has a mechanical drive failure.",
         "sub": "Check the crankshaft, eccentric, or connecting rod mechanism. On diaphragm metering pumps, check that the stroke length adjustment is not set to zero. On hydraulically actuated diaphragm pumps, check hydraulic oil level and hydraulic pressure to the diaphragm. Disconnect the pump from the driver and attempt to rotate by hand through a full crankshaft revolution to locate binding or breakage.",
-        "prevent": "Drive train inspection on the PM: coupling, crank, crosshead. Lubrication schedule for the power end."
+        "prevent": "Drive train inspection on the PM: coupling, crank, crosshead. Lubrication schedule for the power end.",
+        "applies": {
+          "primary": [
+            "pump"
+          ],
+          "contributing": []
+        }
       },
       "pdrec_pulsation": {
         "type": "result",
@@ -897,7 +1124,14 @@ BW.register("pumps", {
         "label": "check pulsation dampener and check valves",
         "text": "Worse than normal pulsation on a reciprocating pump usually means a failed pulsation dampener or a leaking check valve.",
         "sub": "Pulsation dampener: check pre-charge pressure against specification (these are gas-charged accumulators that must be maintained). A waterlogged dampener provides no pulse damping. Check valves: a leaking check valve allows partial backflow on each stroke, increasing net pulsation and reducing flow. Inspect and replace worn check valves.",
-        "prevent": "Dampener precharge checked and recorded on the PM. Check valves on a replacement interval."
+        "prevent": "Dampener precharge checked and recorded on the PM. Check valves on a replacement interval.",
+        "applies": {
+          "primary": [
+            "pump",
+            "valve"
+          ],
+          "contributing": []
+        }
       },
       "pdrec_knock": {
         "type": "result",
@@ -905,7 +1139,15 @@ BW.register("pumps", {
         "label": "inspect check valves, crosshead, and crankshaft bearings",
         "text": "Knocking in a reciprocating pump is often a loose or failed check valve, a worn crosshead, or a worn crankshaft bearing.",
         "sub": "Check valve knock: a valve disc or ball that is bouncing rather than seating cleanly produces a sharp knock at each stroke. Crosshead knock: worn crosshead guides allow side-to-side movement, producing a knock that changes with load. Crankshaft bearing knock: similar to a worn engine bearing, a deep knock at crankshaft frequency that worsens under load. Differentiate by location and frequency.",
-        "prevent": "Power end oil analysis. Check valve inspection interval. Crosshead and crank bearing clearances at overhaul."
+        "prevent": "Power end oil analysis. Check valve inspection interval. Crosshead and crank bearing clearances at overhaul.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "pump",
+            "valve"
+          ],
+          "contributing": []
+        }
       },
       "pdrec_seal": {
         "q": "Is this a piston/plunger pump or a diaphragm pump?",
@@ -927,7 +1169,14 @@ BW.register("pumps", {
         "label": "inspect packing and plunger condition",
         "text": "Packing leakage on a high-pressure reciprocating pump is a safety concern, not just a maintenance item.",
         "sub": "A weep from the packing gland is normal and expected. A spray or steady stream under pressure means the packing has failed and must be replaced before operation continues. Always replace the plunger or sleeve at the same time as the packing. A worn plunger scores new packing immediately. On high-pressure pumps, never use your hand to locate a leak. Use a piece of cardboard or a leak detection spray.",
-        "prevent": "Plunger surface inspected at every packing change. Packing lubrication maintained. Gland adjusted on leak rate, not feel."
+        "prevent": "Plunger surface inspected at every packing change. Packing lubrication maintained. Gland adjusted on leak rate, not feel.",
+        "applies": {
+          "primary": [
+            "pump",
+            "seal"
+          ],
+          "contributing": []
+        }
       },
       "pdrec_diaphragm": {
         "type": "result",
@@ -935,7 +1184,13 @@ BW.register("pumps", {
         "label": "diaphragm failure: shutdown immediately",
         "text": "A failed diaphragm is not an operational condition. Shut down immediately.",
         "sub": "On AODD pumps: process fluid in the air exhaust confirms diaphragm failure. On hydraulically actuated metering pumps: process fluid in the hydraulic oil or hydraulic oil in the process confirms diaphragm failure. In either case, cross-contamination between the process fluid and the drive mechanism has occurred. Inspect the second diaphragm if the pump has a duplex arrangement. Replace the diaphragm with the correct material for the process fluid. Purge the hydraulic oil if contamination occurred.",
-        "prevent": "Diaphragm on a replacement interval based on cycles, not calendar. Leak detection between diaphragms if the pump has it."
+        "prevent": "Diaphragm on a replacement interval based on cycles, not calendar. Leak detection between diaphragms if the pump has it.",
+        "applies": {
+          "primary": [
+            "pump"
+          ],
+          "contributing": []
+        }
       }
     }
   },

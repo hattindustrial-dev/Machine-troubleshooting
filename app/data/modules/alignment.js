@@ -256,7 +256,11 @@ BW.register("alignment", {
         "label": "invalid readings: sag, looseness, or float",
         "text": "Rim readings that do not sum are being corrupted by the setup.",
         "sub": "Bracket sag not measured and corrected (Reference module has the method). Bracket or indicator loose. Shaft floating axially between readings: hold it against one end. Coupling hub run-out: rotate both shafts together. Tap the base; it must return to zero. Take the readings again.",
-        "prevent": "Sag measured on the bar before every job; validity check on every set of readings before a shim is cut."
+        "prevent": "Sag measured on the bar before every job; validity check on every set of readings before a shim is cut.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_softfoot": {
         "type": "result",
@@ -264,7 +268,13 @@ BW.register("alignment", {
         "label": "soft foot",
         "text": "A frame that twists when it is bolted down changes the alignment with every torque.",
         "sub": "Loosen all feet. Indicator on each foot in turn while its bolt is loosened and tightened; any lift over 0.05 mm is shimmed. Clean under every foot to bare metal; remove old shims and burrs. Check for a bent foot or a springy stack. Then torque in a pattern and start the alignment again from rough.",
-        "prevent": "Soft foot on both machines before every alignment. No exceptions."
+        "prevent": "Soft foot on both machines before every alignment. No exceptions.",
+        "applies": {
+          "primary": [
+            "alignment"
+          ],
+          "contributing": []
+        }
       },
       "r_pipestrain": {
         "type": "result",
@@ -272,7 +282,15 @@ BW.register("alignment", {
         "label": "pipe strain",
         "text": "The piping moves the machine when it is connected. It cannot be aligned out.",
         "sub": "Readings with the piping disconnected, then connected: any change over 0.05 mm at the coupling is strain. Support the pipe on its hangers, correct the fit-up (Installation module, Piping tab), and recheck. Indicator on the casing while the flange bolts are tightened shows it directly.",
-        "prevent": "Pipe strain check recorded on every installation and after any piping work."
+        "prevent": "Pipe strain check recorded on every installation and after any piping work.",
+        "applies": {
+          "primary": [
+            "alignment"
+          ],
+          "contributing": [
+            "pump"
+          ]
+        }
       },
       "r_math": {
         "type": "result",
@@ -280,7 +298,11 @@ BW.register("alignment", {
         "label": "correction arithmetic or sign convention",
         "text": "Valid readings, no soft foot, no strain, and the correction still misses: the arithmetic or the sign is wrong.",
         "sub": "Write down the convention before starting: which machine moves, which direction is positive, where the indicator is mounted. Redo the foot corrections with the rim and face formulas (Reference module, Alignment tab, and the calculator). On a laser system, check the dimensions entered (coupling to feet distances) against a tape.",
-        "prevent": "Sign convention and dimensions written on the job sheet before the first reading."
+        "prevent": "Sign convention and dimensions written on the job sheet before the first reading.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_repeat": {
         "type": "result",
@@ -288,7 +310,13 @@ BW.register("alignment", {
         "label": "readings not repeating",
         "text": "Two sets of readings that disagree mean the setup or the shaft is moving.",
         "sub": "Bracket rigid, indicator plunger square, base tapped and returning to zero. Shaft axial float held against one end. Both shafts rotated together in the same direction each time. A worn coupling with backlash lets one shaft lag the other; take readings with the coupling element removed if the bracket allows. Temperature stable (a machine cooling down moves).",
-        "prevent": "Repeat the readings until two sets agree before any correction."
+        "prevent": "Repeat the readings until two sets agree before any correction.",
+        "applies": {
+          "primary": [],
+          "contributing": [
+            "alignment"
+          ]
+        }
       },
       "back1": {
         "q": "When did it come back?",
@@ -313,7 +341,13 @@ BW.register("alignment", {
         "label": "thermal growth",
         "text": "Aligned cold, misaligned hot. The machine grew.",
         "sub": "Thermal growth offsets from the manufacturer or calculated from shaft height and temperature rise (Reference module). Align cold with the offsets so it is aligned hot. Verify with a hot check immediately after shutdown.",
-        "prevent": "Thermal offsets recorded with the alignment on any machine that runs warm."
+        "prevent": "Thermal offsets recorded with the alignment on any machine that runs warm.",
+        "applies": {
+          "primary": [
+            "alignment"
+          ],
+          "contributing": []
+        }
       },
       "r_base": {
         "type": "result",
@@ -321,7 +355,13 @@ BW.register("alignment", {
         "label": "base or foundation moving",
         "text": "An alignment that held and then drifted is a base that moved: grout, anchors, voids, or settlement.",
         "sub": "Installation module, Troubleshoot tab: sound the baseplate, check anchor torque, look for cracked grout and pulled anchors. A recurring soft foot is the same story.",
-        "prevent": "Commissioning level and alignment record to compare against; anchor torque rechecked."
+        "prevent": "Commissioning level and alignment record to compare against; anchor torque rechecked.",
+        "applies": {
+          "primary": [],
+          "contributing": [
+            "alignment"
+          ]
+        }
       },
       "r_element": {
         "type": "result",
@@ -329,7 +369,16 @@ BW.register("alignment", {
         "label": "coupling absorbing misalignment",
         "text": "A coupling element that wears out early has been doing the alignment's job.",
         "sub": "The misalignment is still there and is also loading the bearings and seals. Replace the element, then soft foot, then a full alignment to the tolerance for the speed. Check DBSE and hub fit. Rubber dust or grid debris under the guard is the sign.",
-        "prevent": "Alignment readings recorded so a shift is visible; coupling inspection on the PM."
+        "prevent": "Alignment readings recorded so a shift is visible; coupling inspection on the PM.",
+        "applies": {
+          "primary": [
+            "alignment"
+          ],
+          "contributing": [
+            "bearing",
+            "seal"
+          ]
+        }
       },
       "move1": {
         "q": "Which direction will not move?",
@@ -350,7 +399,13 @@ BW.register("alignment", {
         "label": "no lateral clearance",
         "text": "The bolts are hard against the sides of the foot holes.",
         "sub": "Foot holes need 2 to 3 mm of clearance around the bolt. Enlarge the holes in the machine feet, or reposition the base studs. Never bend a bolt.",
-        "prevent": "Hole clearance checked before the base is grouted."
+        "prevent": "Hole clearance checked before the base is grouted.",
+        "applies": {
+          "primary": [],
+          "contributing": [
+            "alignment"
+          ]
+        }
       },
       "r_shimroom": {
         "type": "result",
@@ -358,7 +413,13 @@ BW.register("alignment", {
         "label": "wrong starting shim allowance",
         "text": "One machine sits too high or too low for the shim range.",
         "sub": "The movable machine starts on about 3 mm (1/8 in) of shim so it can go up or down. Too little: nothing to take out. Too many thin shims: a springy stack that reads as soft foot; replace with one thick shim. Beyond the shim range, the pads are machined or a spacer plate is fitted.",
-        "prevent": "Shaft heights checked against the base design before grout."
+        "prevent": "Shaft heights checked against the base design before grout.",
+        "applies": {
+          "primary": [],
+          "contributing": [
+            "alignment"
+          ]
+        }
       }
     }
   },

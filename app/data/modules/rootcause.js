@@ -318,7 +318,11 @@ BW.register("rootcause", {
         "label": "read this one before the new part goes in",
         "text": "A second failure without a mechanism is a coin flip on the third.",
         "sub": "Preserve the part. Read it (Reading Failed Parts). Name the mechanism. Then the why chain, with the timeline of both failures. The corrective action from a named mechanism is usually obvious; without it there is nothing to correct.",
-        "prevent": "Every failed part on a repeat machine is read and the mechanism logged in the work order."
+        "prevent": "Every failed part on a repeat machine is read and the mechanism logged in the work order.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "rep2": {
         "q": "Same mechanism twice. Where does the why chain end?",
@@ -343,7 +347,11 @@ BW.register("rootcause", {
         "label": "latent cause in method: change the document",
         "text": "The failure is being produced by a written or unwritten procedure that everyone follows.",
         "sub": "Change the PM sheet, the procedure, the setting record, or the checklist so the correct action is the easy one. Give it an owner. Then verify: the next PM done the new way, and the failure interval measured.",
-        "prevent": "Corrective action logged against the document, not the machine."
+        "prevent": "Corrective action logged against the document, not the machine.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_latent_material": {
         "type": "result",
@@ -351,7 +359,11 @@ BW.register("rootcause", {
         "label": "latent cause in material or design: change the spec",
         "text": "The wrong part, the wrong fluid, the wrong material pair, or a design that cannot carry the duty.",
         "sub": "Confirm with the drawing and the spare's paperwork. Change the specification in the CMMS and the stores catalogue so the right part is the one that gets issued. A design limit (undersized drive, closed centre on a fixed pump, no isolation joint) needs an engineered change and a budget.",
-        "prevent": "Spare part specifications reviewed against the failure; stores catalogue corrected."
+        "prevent": "Spare part specifications reviewed against the failure; stores catalogue corrected.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_not_done": {
         "type": "result",
@@ -359,7 +371,11 @@ BW.register("rootcause", {
         "label": "the chain stopped too early",
         "text": "A why chain that ends at a person has not found the root cause.",
         "sub": "Ask what made that action normal for that person: the information they had, the tools they had, the time they had, the training, the sheet. The answer is a system, and it is the corrective action. Repeat the chain with the person in the room and no blame.",
-        "prevent": "Root cause reports are reviewed for chains ending at a person, and sent back."
+        "prevent": "Root cause reports are reviewed for chains ending at a person, and sent back.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_two_causes": {
         "type": "result",
@@ -367,7 +383,11 @@ BW.register("rootcause", {
         "label": "two failures, two causes, or one cause with two faces",
         "text": "A different mechanism the second time means either the first fix worked and something else is wrong, or one underlying condition is producing different symptoms.",
         "sub": "Timeline both failures. Look for a common upstream condition: misalignment that first wore a seal and then a bearing; contamination that first scored a spool and then a pump. Fishbone if the candidates are many. If the two are unrelated, treat them as two analyses.",
-        "prevent": "Failure history by machine reviewed for patterns, not just counts."
+        "prevent": "Failure history by machine reviewed for patterns, not just counts.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "early1": {
         "q": "Read the part. What does it show?",
@@ -396,7 +416,15 @@ BW.register("rootcause", {
         "label": "installed into failure",
         "text": "The part was damaged going in.",
         "sub": "The tool, the procedure, or the time. No induction heater, no puller, no keyway cover, no chamfer, no torque wrench, or a job done in a hurry. Fix the procedure and the tool kit. The Bearing, Seals, and Gearboxes modules have the installation steps.",
-        "prevent": "Installation procedure with the tools listed; tools in the kit."
+        "prevent": "Installation procedure with the tools listed; tools in the kit.",
+        "applies": {
+          "primary": [],
+          "contributing": [
+            "bearing",
+            "gearbox",
+            "seal"
+          ]
+        }
       },
       "r_lubecause": {
         "type": "result",
@@ -404,7 +432,13 @@ BW.register("rootcause", {
         "label": "lubrication or contamination",
         "text": "What was in the part when it came out is the cause.",
         "sub": "Wrong product, wrong quantity, wrong interval, water, dirt. The Lubrication module for the mechanism; the PM sheet and the lube room for the latent cause. Oil analysis if the machine has a sump.",
-        "prevent": "Product, quantity, and interval on the PM sheet; lube room controls."
+        "prevent": "Product, quantity, and interval on the PM sheet; lube room controls.",
+        "applies": {
+          "primary": [
+            "lube"
+          ],
+          "contributing": []
+        }
       },
       "r_overload": {
         "type": "result",
@@ -412,7 +446,11 @@ BW.register("rootcause", {
         "label": "overload event or wrong part",
         "text": "An overload fracture or a part that failed at normal load.",
         "sub": "Find the event in the timeline (a jam, a start, an impact) or check the spare against the drawing (grade, material, size). A wrong part in stores is a latent cause that will repeat on every machine that uses it.",
-        "prevent": "Event logging on the machine; stores catalogue verified against drawings."
+        "prevent": "Event logging on the machine; stores catalogue verified against drawings.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_duty": {
         "type": "result",
@@ -420,7 +458,11 @@ BW.register("rootcause", {
         "label": "duty exceeds design",
         "text": "A part that wears out early with everything else correct is carrying more than it was sized for.",
         "sub": "Load, speed, temperature, hours, starts, product: which has grown since the machine was designed. Re-rate the component with a service factor, or reduce the duty.",
-        "prevent": "Duty reviewed after every process change."
+        "prevent": "Duty reviewed after every process change.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_full": {
         "type": "result",
@@ -428,7 +470,11 @@ BW.register("rootcause", {
         "label": "full method, with a team",
         "text": "Expensive failures and injuries get the eight steps, a team, and a report that goes up the chain.",
         "sub": "Preserve everything now. Define the problem. Timeline. Data. Physical cause. Why chain to the system. Actions with owners and dates. Verification date. For an injury, the plant's incident investigation procedure and the joint health and safety committee are involved, and the Safeguarding module's hazard walk is part of the evidence.",
-        "prevent": "Repeat, expensive, and safety failures trigger the full method by rule, not by mood."
+        "prevent": "Repeat, expensive, and safety failures trigger the full method by rule, not by mood.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "came1": {
         "q": "What did the previous analysis conclude, and what was done?",
@@ -453,7 +499,11 @@ BW.register("rootcause", {
         "label": "the cause was wrong or incomplete",
         "text": "The action was taken and the failure came back: the analysis fixed a contributing factor, not the root, or there were two causes.",
         "sub": "Reopen with the evidence from the new failure. Was the previous cause verified with evidence or accepted as plausible? Were alternative theories tested? Fishbone the candidates and disprove each with the new part in hand.",
-        "prevent": "Verification step enforced: the analysis is not closed until the failure interval proves it."
+        "prevent": "Verification step enforced: the analysis is not closed until the failure interval proves it.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_no_action": {
         "type": "result",
@@ -461,7 +511,11 @@ BW.register("rootcause", {
         "label": "action without an owner",
         "text": "The analysis was right and nothing changed because nobody was assigned to change it.",
         "sub": "Assign the action, with a date. Do it. Then verify. The report goes back to open until it is done.",
-        "prevent": "Every corrective action has a named owner and a due date in the CMMS."
+        "prevent": "Every corrective action has a named owner and a due date in the CMMS.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       }
     }
   },

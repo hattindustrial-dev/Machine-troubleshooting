@@ -35,7 +35,8 @@ const CONTEXT =
   'and the app lists the possible issues for the parts they have. Each diagnostic result is tagged with the plant components it concerns, and those tags decide which issues each part shows.'
 
 const RULES =
-  'Tag meanings. primary: the component is what has failed, is worn, or is the subject of the finding; the diagnosis (the result\'s label) names it or its failure. ' +
+  'Tag meanings. primary: the component is what has failed, is worn, or is the subject of the finding, and the diagnosis (the result\'s label) names it or its failure. ' +
+  'A label that lists candidate causes ("A or B", "check A and B", "oil, wear, or pressure") is a differential: the result is about the fault, and each candidate is contributing unless one of them is the thing the result is really about. ' +
   'contributing: the component\'s condition caused the result, or it must be inspected to confirm or rule the result out, or it is directly damaged or affected by it. ' +
   'absent: the component is at most an example or passing mention. ' +
   'A tag has a cost either way. Every tag makes the result appear on the list for every machine that has that component, so a marginal tag buries technicians in items that are not theirs. ' +

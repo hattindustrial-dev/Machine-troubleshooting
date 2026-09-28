@@ -410,7 +410,13 @@ BW.register("conveyors", {
         "label": "skewed pulley",
         "text": "A pulley out of square steers the belt at that point every revolution.",
         "sub": "Measure from a fixed reference on each side of the frame to the pulley shaft; the two must match. Adjust the bearing blocks (or the screw take-up equally on both sides) until it does. A screw take-up moved on one side only is the most common cause of a skewed tail pulley.",
-        "prevent": "Pulley squareness checked with a tape on the PM. Screw take-up adjusted equally, and the reading recorded on both sides."
+        "prevent": "Pulley squareness checked with a tape on the PM. Screw take-up adjusted equally, and the reading recorded on both sides.",
+        "applies": {
+          "primary": [
+            "conveyor"
+          ],
+          "contributing": []
+        }
       },
       "r_track_structure": {
         "type": "result",
@@ -418,7 +424,13 @@ BW.register("conveyors", {
         "label": "structure or idler frame misalignment",
         "text": "The belt is following the frame, and the frame is not straight.",
         "sub": "Sight the stringers. Level across each idler frame. Square each frame to a string line down the conveyor centreline. Look for the loader bucket dent, the settled support, the frame that was moved for access and put back wrong. Fix the frame, then track.",
-        "prevent": "Centreline string check after any structural work or impact. Frames bolted, not wedged."
+        "prevent": "Centreline string check after any structural work or impact. Frames bolted, not wedged.",
+        "applies": {
+          "primary": [
+            "conveyor"
+          ],
+          "contributing": []
+        }
       },
       "r_track_idler": {
         "type": "result",
@@ -426,7 +438,13 @@ BW.register("conveyors", {
         "label": "seized idlers or buildup",
         "text": "A seized idler is a skid that steers the belt; buildup on an idler or pulley is a cone that does the same.",
         "sub": "Replace every seized idler. Clean buildup and find why it is there: cleaner blades worn, skirts leaking, wet product. Then track.",
-        "prevent": "Walk and spin on every PM. Cleaners and skirts maintained."
+        "prevent": "Walk and spin on every PM. Cleaners and skirts maintained.",
+        "applies": {
+          "primary": [
+            "conveyor"
+          ],
+          "contributing": []
+        }
       },
       "r_track_adjust": {
         "type": "result",
@@ -434,7 +452,13 @@ BW.register("conveyors", {
         "label": "track it: idlers, upstream first, small moves",
         "text": "Causes cleared; now steer it.",
         "sub": "Start at the tail on the carry side and work with the belt travel, then the return side from the head. One idler at a time, a few millimetres, advancing the end on the side the belt runs toward. Several revolutions before the next move. Record every move.",
-        "prevent": "Tracking record kept with the conveyor. Training idlers on runs that wander with load."
+        "prevent": "Tracking record kept with the conveyor. Training idlers on runs that wander with load.",
+        "applies": {
+          "primary": [
+            "conveyor"
+          ],
+          "contributing": []
+        }
       },
       "r_track_belt": {
         "type": "result",
@@ -442,7 +466,13 @@ BW.register("conveyors", {
         "label": "belt fault: splice, camber, or local damage",
         "text": "A belt that runs off at the same spot on itself has the fault in the belt at that spot.",
         "sub": "Lock out, find the spot, and look: a splice cut off square, a damaged edge, a section that was repaired, cupping or camber in that section. A crooked splice is recut. Camber in a new belt is a warranty claim. Local damage is repaired or the section is replaced.",
-        "prevent": "Splices cut with a square and checked on the diagonals. New belts checked for camber before installation."
+        "prevent": "Splices cut with a square and checked on the diagonals. New belts checked for camber before installation.",
+        "applies": {
+          "primary": [
+            "conveyor"
+          ],
+          "contributing": []
+        }
       },
       "r_track_loading": {
         "type": "result",
@@ -450,7 +480,13 @@ BW.register("conveyors", {
         "label": "off-centre loading",
         "text": "Product landing on one side of the belt pushes it the other way.",
         "sub": "Watch the loading point. Fix the chute angle, the skirts, the feed rate, or the upstream conveyor discharge so product lands centred and in the direction of travel. Tracking idlers cannot fight a chute.",
-        "prevent": "Loading point checked whenever the product or the upstream equipment changes."
+        "prevent": "Loading point checked whenever the product or the upstream equipment changes.",
+        "applies": {
+          "primary": [
+            "conveyor"
+          ],
+          "contributing": []
+        }
       },
       "r_track_wander": {
         "type": "result",
@@ -458,7 +494,13 @@ BW.register("conveyors", {
         "label": "wander: tension, cupped belt, or weather",
         "text": "A belt that wanders both ways is not being steered by one fault; it is not being held by anything.",
         "sub": "Tension: a slack belt wanders; check the take-up. Cupping: a belt that does not sit flat on the idlers cannot be tracked. Outdoors: wind and ice. Training idlers help once the cause is addressed.",
-        "prevent": "Take-up position trended. Cover wear measured. Windbreaks on exposed runs."
+        "prevent": "Take-up position trended. Cover wear measured. Windbreaks on exposed runs.",
+        "applies": {
+          "primary": [
+            "conveyor"
+          ],
+          "contributing": []
+        }
       },
       "r_slip": {
         "type": "result",
@@ -466,7 +508,13 @@ BW.register("conveyors", {
         "label": "drive pulley slip",
         "text": "The pulley turns and the belt does not keep up. Heat, squeal, glazed bottom cover, and a fire risk.",
         "sub": "Lagging condition (worn smooth, missing, or contaminated with product or water). Take-up tension. Wrap angle (a snub pulley adds wrap). Overload (too much product, or a belt that is stalling on a jam downstream). A speed switch on the head shaft should be stopping this before it becomes a fire.",
-        "prevent": "Lagging on the PM. Speed switch on every drive pulley. Cleaners keeping the pulley face clean."
+        "prevent": "Lagging on the PM. Speed switch on every drive pulley. Cleaners keeping the pulley face clean.",
+        "applies": {
+          "primary": [
+            "conveyor"
+          ],
+          "contributing": []
+        }
       },
       "r_damage": {
         "type": "result",
@@ -474,7 +522,13 @@ BW.register("conveyors", {
         "label": "read the damage pattern",
         "text": "The Reading Belt Damage tab has six patterns, and each points at a cause.",
         "sub": "Edge wear is mistracking against the structure. Top cover wear is product or a skirt or cleaner pressed too hard. Bottom cover wear is seized idlers, slip, or debris. Cuts and rips are sharp objects. Cupping and camber are belt faults. Heat and chemical damage are the wrong compound for the service. Repair the belt, then fix what damaged it.",
-        "prevent": "Cover thickness measured at a marked spot on the PM. Damage logged with its location."
+        "prevent": "Cover thickness measured at a marked spot on the PM. Damage logged with its location.",
+        "applies": {
+          "primary": [
+            "conveyor"
+          ],
+          "contributing": []
+        }
       },
       "spill1": {
         "q": "Where does it spill?",
@@ -499,7 +553,13 @@ BW.register("conveyors", {
         "label": "loading zone: skirts, chute, or impact",
         "text": "Product is escaping before it settles on the belt.",
         "sub": "Skirt seals worn or set off the belt. Chute aimed wrong or too high. Belt sagging between idlers under the drop (add impact idlers or a bed). Belt not fully troughed at the loading point. Product landing faster or slower than the belt.",
-        "prevent": "Skirt seals on the PM. Loading zone reviewed with any product change."
+        "prevent": "Skirt seals on the PM. Loading zone reviewed with any product change.",
+        "applies": {
+          "primary": [
+            "conveyor"
+          ],
+          "contributing": []
+        }
       },
       "r_spill_run": {
         "type": "result",
@@ -507,7 +567,13 @@ BW.register("conveyors", {
         "label": "overloaded cross-section, sag, or mistracking",
         "text": "Product falling off along the run means the belt is carrying more than its trough holds, sagging between idlers, or has moved off centre under the load.",
         "sub": "Feed rate against belt capacity. Idler spacing and tension against the sag limit. Tracking. A missing or seized idler leaves a gap the belt sags into.",
-        "prevent": "Feed rate controlled at the source. Idlers complete and turning."
+        "prevent": "Feed rate controlled at the source. Idlers complete and turning.",
+        "applies": {
+          "primary": [
+            "conveyor"
+          ],
+          "contributing": []
+        }
       },
       "r_spill_return": {
         "type": "result",
@@ -515,7 +581,13 @@ BW.register("conveyors", {
         "label": "carryback: cleaners",
         "text": "Product stuck to the top cover is going around the head pulley and dropping off the return side onto everything below.",
         "sub": "Primary cleaner blade at the head pulley, secondary cleaner after it, both adjusted to touch and both with usable blade left. Wet or sticky product needs more cleaning, not more pressure. A plow before the tail pulley protects the tail nip.",
-        "prevent": "Cleaner blades on the PM. Carryback under the return idlers is the indicator."
+        "prevent": "Cleaner blades on the PM. Carryback under the return idlers is the indicator.",
+        "applies": {
+          "primary": [
+            "conveyor"
+          ],
+          "contributing": []
+        }
       },
       "r_idler": {
         "type": "result",
@@ -523,7 +595,14 @@ BW.register("conveyors", {
         "label": "idler or pulley bearing",
         "text": "A noisy or hot idler is a bearing failing; a hot pulley bearing is a bearing failing or a pulley that is slipping.",
         "sub": "Idler: replace it. Idler bearings are sealed and not serviceable; a noisy one is weeks from seizing and grooving the belt. Pulley bearing: the Bearing Failure module; head pulley bearings are the heaviest loaded on the conveyor and see the drive load plus belt tension. Infrared on the PM catches both.",
-        "prevent": "Infrared survey of pulley bearings on the PM. Idler walk and spin."
+        "prevent": "Infrared survey of pulley bearings on the PM. Idler walk and spin.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "conveyor"
+          ],
+          "contributing": []
+        }
       },
       "stall1": {
         "q": "Does the belt stop while the drive keeps turning, or does the drive itself stop or trip?",
@@ -548,7 +627,17 @@ BW.register("conveyors", {
         "label": "drive overload: jam, overload, or drive train",
         "text": "The motor is pulling more than the overload allows.",
         "sub": "Jam: product packed at a transfer, a chute plugged, or an object caught. Overload: too much product or product heavier than design. Drive train: seized idlers (each one is drag), a failing pulley bearing, a gearbox problem. Motors and Gearboxes modules for the drive; an idler walk for the drag.",
-        "prevent": "Chute and transfer point plugged-chute detection. Feed control. Idler walk on the PM."
+        "prevent": "Chute and transfer point plugged-chute detection. Feed control. Idler walk on the PM.",
+        "applies": {
+          "primary": [
+            "conveyor"
+          ],
+          "contributing": [
+            "bearing",
+            "gearbox",
+            "motor"
+          ]
+        }
       },
       "r_stall_control": {
         "type": "result",
@@ -556,7 +645,15 @@ BW.register("conveyors", {
         "label": "control stop: interlock, pull cord, or sequence",
         "text": "A conveyor that stops without a trip was told to stop.",
         "sub": "Pull cord switches (one was pulled, or one is out of adjustment and tripping on vibration). Downstream conveyor stopped and the sequence interlock stopped this one. A plugged chute switch, a belt misalignment switch, a speed switch. Read the control panel; the reason is displayed or the switch is latched.",
-        "prevent": "Pull cords and switches tested and adjusted on the PM. Operators trained on what each interlock means."
+        "prevent": "Pull cords and switches tested and adjusted on the PM. Operators trained on what each interlock means.",
+        "applies": {
+          "primary": [
+            "conveyor"
+          ],
+          "contributing": [
+            "guard"
+          ]
+        }
       },
       "r_splice": {
         "type": "result",
@@ -564,7 +661,13 @@ BW.register("conveyors", {
         "label": "splice failure",
         "text": "A splice that is lifting, cracking, or losing fasteners is going to let go, and the belt end goes through the head pulley.",
         "sub": "Lock out, block the take-up. Mechanical splice: replace fasteners, check the pin, check the fastener size against belt thickness, check the cut is square. Vulcanised: a lifting edge or a crack at the step is the start of failure; schedule a resplice. Look at why: tension too high, pulley too small for the belt, a splice that was not square, water in the carcass.",
-        "prevent": "Splices located, counted, and inspected on every PM. Belt tension within the design. Pulley diameters at or above the belt minimum."
+        "prevent": "Splices located, counted, and inspected on every PM. Belt tension within the design. Pulley diameters at or above the belt minimum.",
+        "applies": {
+          "primary": [
+            "conveyor"
+          ],
+          "contributing": []
+        }
       }
     }
   },

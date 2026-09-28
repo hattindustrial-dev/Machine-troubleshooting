@@ -1,0 +1,22 @@
+[
+  {
+    "module": "bearing", "id": "re_heat_only", "type": "lube", "to": "primary",
+    "reason": "The label is a checklist, 'check lubrication and alignment', so it names candidates rather than a diagnosed failure. Every same-concept hot bearing result (lube/hot_before, motors r_heat_bearing, gearbox r_heat_bearing) tags them contributing with the bearing primary. Primary lube is used where a lubrication fault is actually diagnosed (re_heat_postpm, bf_overheat). Accepted two votes to one; the dissent was right."
+  },
+  {
+    "module": "bearing", "id": "re_heat_only", "type": "alignment", "to": "primary",
+    "reason": "Same result and same reasoning as lube above. Primary alignment would list a bearing heat checklist next to soft foot, pipe strain and thermal growth on every coupling's direct list."
+  },
+  {
+    "module": "bearing", "id": "sj_heat_with_oil", "type": "lube", "to": "primary",
+    "reason": "A differential over viscosity, journal clearance, load and contamination, of which only some causes are oil condition. Its family siblings sj_vibe1 and sj_metal keep the bearing primary and lube contributing. Lube is primary where a lubricant fault is diagnosed: sj_no_oil, r_heat_oil, bf_smear."
+  },
+  {
+    "module": "clutches", "id": "r_wet", "type": "lube", "to": "primary",
+    "reason": "Oil is one of three causes in a multi-cause label, 'oil, wear, or pressure'. Comparable results keep lube contributing (sj_heat_with_oil, r_chain_tension, r_thermo); it is primary only when the lubricant is the whole subject (wrong_lube_type, r_oilcond). The wet clutch is what fails, so brake stays primary."
+  },
+  {
+    "module": "valves", "id": "r_positioner", "type": "pneu", "to": "primary",
+    "reason": "The label 'positioner or air' names a differential, and the positioner is a valve component. Air supply is two of five checks. Contributing already lists it for pneumatics as a check to rule in or out. r_pneu_act differs because the pneumatic actuator or air supply is the diagnosis there."
+  }
+]

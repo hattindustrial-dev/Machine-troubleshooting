@@ -246,7 +246,13 @@ BW.register("clutches", {
         "label": "worn: adjust or reline",
         "text": "A gap past maximum means the springs are extended and the clamping force is down.",
         "sub": "Adjust to nominal if within the adjustment range; if the lining is at minimum, reline and set the gap. Holding test before return to service.",
-        "prevent": "Gap and lining thickness measured and recorded every PM; the trend sets the reline date."
+        "prevent": "Gap and lining thickness measured and recorded every PM; the trend sets the reline date.",
+        "applies": {
+          "primary": [
+            "brake"
+          ],
+          "contributing": []
+        }
       },
       "r_contam": {
         "type": "result",
@@ -254,7 +260,17 @@ BW.register("clutches", {
         "label": "contaminated friction surface",
         "text": "Oil on a dry friction surface cuts the friction to a fraction.",
         "sub": "Find the source: the motor or gearbox shaft seal next to the brake, over-greased bearings, a hydraulic leak. Fix it. Clean or replace the lining (oil-soaked organic lining does not recover).",
-        "prevent": "Seal condition on the adjacent machine on the PM. Grease quantity on the bearings."
+        "prevent": "Seal condition on the adjacent machine on the PM. Grease quantity on the bearings.",
+        "applies": {
+          "primary": [
+            "brake"
+          ],
+          "contributing": [
+            "bearing",
+            "lube",
+            "seal"
+          ]
+        }
       },
       "r_glaze": {
         "type": "result",
@@ -262,7 +278,13 @@ BW.register("clutches", {
         "label": "glazed lining",
         "text": "A hard shiny surface from overheating or light dragging.",
         "sub": "Light sanding restores it once. Find the heat: dragging (gap too small, actuator not fully releasing), or energy per stop above the rating (cycle rate, load, speed). If it glazes again, the cause is still there.",
-        "prevent": "Gap at nominal; actuator checked; duty against the rating."
+        "prevent": "Gap at nominal; actuator checked; duty against the rating.",
+        "applies": {
+          "primary": [
+            "brake"
+          ],
+          "contributing": []
+        }
       },
       "r_undersized": {
         "type": "result",
@@ -270,7 +292,13 @@ BW.register("clutches", {
         "label": "brake undersized for the load, or a second brake carrying it",
         "text": "Correct gap, good lining, clean, and it still creeps: it is being asked to hold more than it can, or on a dual-brake hoist the other brake has been carrying the load.",
         "sub": "Brake torque rating against the load torque with the required factor (hoists: typically 150 percent of rated load torque per brake). Spring setting on adjustable brakes. Test each brake alone on a dual system. If the load grew, the brake is re-rated or replaced.",
-        "prevent": "Holding test on each brake independently on the inspection interval."
+        "prevent": "Holding test on each brake independently on the inspection interval.",
+        "applies": {
+          "primary": [
+            "brake"
+          ],
+          "contributing": []
+        }
       },
       "drag1": {
         "q": "Does it release fully when energised (or pressurised)?",
@@ -295,7 +323,13 @@ BW.register("clutches", {
         "label": "gap too small or uneven",
         "text": "Too little clearance, or a cocked armature, drags on one side.",
         "sub": "Three-point gap measurement. Adjust for equal gap, then nominal. Check the disc runs true and the mating plate is flat.",
-        "prevent": "Three-point gap on the PM."
+        "prevent": "Three-point gap on the PM.",
+        "applies": {
+          "primary": [
+            "brake"
+          ],
+          "contributing": []
+        }
       },
       "r_lever": {
         "type": "result",
@@ -303,7 +337,13 @@ BW.register("clutches", {
         "label": "manual release partly engaged",
         "text": "A release lever or screw not fully returned holds the brake partly off, or partly on.",
         "sub": "Return it to the off position per the manual. Check the lever has not been bent or jammed by a guard.",
-        "prevent": "Manual release position on the return-to-service checklist."
+        "prevent": "Manual release position on the return-to-service checklist.",
+        "applies": {
+          "primary": [
+            "brake"
+          ],
+          "contributing": []
+        }
       },
       "act1": {
         "q": "Which actuator?",
@@ -328,7 +368,13 @@ BW.register("clutches", {
         "label": "coil, rectifier, or voltage",
         "text": "A DC brake coil that does not get its voltage does not release; a weak one releases slowly and drags.",
         "sub": "Voltage at the coil when energised against the nameplate (the electrician on the live check). Rectifier output. Coil resistance. Air gap too large for the coil to pull across. Wiring at the terminal box. Handoff package from the Motors module if it is electrical.",
-        "prevent": "Coil voltage and rectifier on the electrical PM. Gap within maximum."
+        "prevent": "Coil voltage and rectifier on the electrical PM. Gap within maximum.",
+        "applies": {
+          "primary": [
+            "brake"
+          ],
+          "contributing": []
+        }
       },
       "r_air": {
         "type": "result",
@@ -336,7 +382,14 @@ BW.register("clutches", {
         "label": "air supply or valve",
         "text": "Pressure, volume, or a valve.",
         "sub": "Pressure at the unit under operation (not at the regulator). Quick exhaust valves sticking on wet air. Control valve shifting (Pneumatics module). Piston seals leaking. Air dryness.",
-        "prevent": "Pressure at the unit recorded on the PM; air quality per the Pneumatics module."
+        "prevent": "Pressure at the unit recorded on the PM; air quality per the Pneumatics module.",
+        "applies": {
+          "primary": [
+            "brake",
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "r_hyd": {
         "type": "result",
@@ -344,7 +397,14 @@ BW.register("clutches", {
         "label": "thruster or hydraulic release",
         "text": "A thruster with low oil or a caliper with a leak does not complete its stroke.",
         "sub": "Thruster oil level and condition; stroke against the specification; the linkage free. Caliper: release pressure at the caliper, leaks, and the pump. A spring-applied caliper that sets by itself has lost hydraulic pressure.",
-        "prevent": "Thruster oil and stroke on the PM. Hydraulic system on the Hydraulics module PM."
+        "prevent": "Thruster oil and stroke on the PM. Hydraulic system on the Hydraulics module PM.",
+        "applies": {
+          "primary": [
+            "brake",
+            "hydraulics"
+          ],
+          "contributing": []
+        }
       },
       "slip1": {
         "q": "Clutch type?",
@@ -373,7 +433,15 @@ BW.register("clutches", {
         "label": "wet clutch: oil, wear, or pressure",
         "text": "Wet clutches slip on the wrong oil, worn plates, or low apply pressure.",
         "sub": "Oil against the specification (friction modifiers matter). Piston travel or clearance as the wear indicator. Apply pressure at the piston. Oil analysis for contamination.",
-        "prevent": "Specified oil on the tag. Piston travel recorded."
+        "prevent": "Specified oil on the tag. Piston travel recorded.",
+        "applies": {
+          "primary": [
+            "brake"
+          ],
+          "contributing": [
+            "lube"
+          ]
+        }
       },
       "r_noise": {
         "type": "result",
@@ -381,7 +449,13 @@ BW.register("clutches", {
         "label": "chatter, squeal, or bang",
         "text": "Chatter is stick-slip on engagement: contamination, glazing, the wrong oil on a wet clutch, or a loose mounting. Squeal is a dry lining under light drag. A bang is excessive gap or a loose hub or key.",
         "sub": "Surface condition and contamination. Gap. Hub, key, and mounting bolts. Wet clutch oil. Cycle rate and energy against the rating.",
-        "prevent": "Gap and mounting on the PM. Correct oil."
+        "prevent": "Gap and mounting on the PM. Correct oil.",
+        "applies": {
+          "primary": [
+            "brake"
+          ],
+          "contributing": []
+        }
       },
       "r_backstop": {
         "type": "result",
@@ -389,7 +463,16 @@ BW.register("clutches", {
         "label": "backstop or torque limiter",
         "text": "A backstop that lets the belt run back, or a torque limiter that slips at normal load or never slips at a jam.",
         "sub": "Backstop: direction of installation, lubrication (clean oil or the specified grease; contamination stops the sprags), and a runback test with the loaded conveyor. Torque limiter: the setting verified with a torque wrench; a friction limiter that has been slipping is glazed; a ball detent that tripped must be reset. A limiter turned up to stop nuisance trips has no protection: fix the jams.",
-        "prevent": "Backstop runback test and limiter setting on the PM, recorded."
+        "prevent": "Backstop runback test and limiter setting on the PM, recorded.",
+        "applies": {
+          "primary": [
+            "brake"
+          ],
+          "contributing": [
+            "conveyor",
+            "lube"
+          ]
+        }
       }
     }
   },

@@ -73,6 +73,22 @@
     return { all: (tasks || []).length, hit: hit };
   };
 
+  // With a machine selected the tab the page opens on can be empty: a guard only machine
+  // lands on Pumps with nothing in it while its tasks sit in other tabs. Open on the first tab
+  // that has any, unless a deep link asked for a particular one.
+  BWPM.landOnTasks = function () {
+    if (!BWPM.active || location.hash) return;
+    var active = document.querySelector('.bw-panel.active');
+    if (active && active.querySelector('.pm-row')) return;
+    var panels = document.querySelectorAll('.bw-panel');
+    for (var i = 0; i < panels.length; i++) {
+      if (panels[i].querySelector('.pm-row') && typeof global.switchTab === 'function') {
+        global.switchTab(panels[i].id.replace('panel-', ''));
+        return;
+      }
+    }
+  };
+
   BWPM.toggle = function () {
     BWPM.on = !BWPM.on;
     BWPM.refresh();
@@ -86,7 +102,7 @@
     var c = BWPM.counts(tasks);
     return '<div class="pm-fac">' +
       '<div><span class="pm-fac-tag">' + esc(m.tag) + '</span> <span class="pm-fac-note">' +
-      (BWPM.on ? c.hit + ' of ' + c.all + ' tasks apply to its ' + global.BWF.partsOf(m).length + ' parts'
+      (BWPM.on ? c.hit + ' of ' + c.all + ' tasks apply to its ' + global.BWF.partsOf(m).length + (global.BWF.partsOf(m).length === 1 ? ' part' : ' parts')
                : 'showing all ' + c.all + ' tasks') + '</span></div>' +
       '<button class="pm-fac-btn" onclick="BWPM.toggle()">' + (BWPM.on ? 'show everything' : 'filter to this machine') + '</button>' +
       '<a class="pm-fac-btn" href="facility.html">facility</a></div>';

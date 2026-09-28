@@ -630,7 +630,14 @@ BW.register("pneu", {
         "label": "compressor motor or control fault",
         "text": "Compressor motor not starting: check the electrical supply and control circuit before assuming a mechanical fault.",
         "sub": "Check: main supply voltage at the compressor starter (loss of a phase on 3-phase units causes single-phasing, which prevents starting or runs the motor on two phases and trips the overload). Check the overload relay: a tripped overload must be reset and the cause investigated before resetting; overloads trip for a reason. Check the pressure switch set points: if the cut-in pressure is set higher than the current receiver pressure, the switch will not call for the compressor to start. Check the compressor control fuse and the stop/start circuit.",
-        "prevent": "Overload trip logged and cause found before reset. Pressure switch settings recorded."
+        "prevent": "Overload trip logged and cause found before reset. Pressure switch settings recorded.",
+        "applies": {
+          "primary": [
+            "compressor",
+            "motor"
+          ],
+          "contributing": []
+        }
       },
       "comp_no_pressure": {
         "type": "result",
@@ -638,7 +645,15 @@ BW.register("pneu", {
         "label": "compressor runs but cannot build pressure",
         "text": "A compressor that runs but cannot build pressure in the receiver has either a major leak pulling pressure out as fast as it is produced, or an internal compressor fault reducing output capacity.",
         "sub": "First check for major leaks: close the discharge valve between the compressor and receiver and watch the compressor output pressure gauge. If the compressor builds pressure with the discharge closed, the problem is a large leak downstream. If the compressor cannot build pressure even with the discharge closed, the fault is internal. Common internal causes: failed intake reed valves or piston rings on a reciprocating compressor (low compression), failed rotary screw elements (worn rotors, failed shaft seals), or a stuck-open unloading valve that vents compressed air back to atmosphere instead of delivering it to the receiver. Also check: is the relief valve stuck open?",
-        "prevent": "Compressor valve plates and rings on the manufacturer interval. Relief valve tested on the PM."
+        "prevent": "Compressor valve plates and rings on the manufacturer interval. Relief valve tested on the PM.",
+        "applies": {
+          "primary": [
+            "compressor"
+          ],
+          "contributing": [
+            "pneu"
+          ]
+        }
       },
       "comp_short_cycle": {
         "type": "result",
@@ -646,7 +661,15 @@ BW.register("pneu", {
         "label": "compressor short-cycling: undersized system or significant leak",
         "text": "A compressor that cycles too frequently (cuts in and out rapidly) is either undersized for the demand, has a leak consuming air as fast as it is produced, or has an incorrectly set pressure switch differential.",
         "sub": "Check: pressure switch differential setting: the band between cut-in and cut-out pressure should be at least 1 to 1.5 bar. A narrow differential causes rapid cycling. Check for leaks: short cycling is one of the earliest signs of a growing leak in the distribution system; conduct an ultrasonic leak survey. Check whether demand has increased beyond the original compressor sizing (new equipment added). Check the receiver size: an undersized receiver does not provide enough buffer volume and the compressor cuts in after every brief demand event.",
-        "prevent": "Leak survey quarterly. Pressure switch differential recorded. Receiver sized for the actual demand."
+        "prevent": "Leak survey quarterly. Pressure switch differential recorded. Receiver sized for the actual demand.",
+        "applies": {
+          "primary": [
+            "compressor"
+          ],
+          "contributing": [
+            "pneu"
+          ]
+        }
       },
       "supply_fault": {
         "type": "result",
@@ -654,7 +677,13 @@ BW.register("pneu", {
         "label": "distribution or isolation issue",
         "text": "Compressor running and receiver pressurised but no pressure at point of use.",
         "sub": "Check: isolation valves in the distribution system: a closed valve between the receiver and the point of use is the most common cause. Check manual shutoff valves at the machine connection point. Check the FRL filter element: a severely blocked filter can drop pressure significantly. Check for a major leak in the distribution piping between the receiver and the FRL unit.",
-        "prevent": "Isolation valves tagged. FRL filter differential on the PM."
+        "prevent": "Isolation valves tagged. FRL filter differential on the PM.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "no_move2": {
         "q": "Is the directional control valve shifting when commanded?",
@@ -693,7 +722,13 @@ BW.register("pneu", {
         "label": "blocked line or fitting",
         "text": "Air is leaving the valve but not reaching the actuator port.",
         "sub": "Check the tubing between valve and actuator for kinks, crushing, or blockage. Check push-in fittings, a fitting not fully inserted allows air in one direction but blocks the other. Check flow control valves, an over-tightened needle valve may be completely closed. Remove and inspect any inline flow controls between the valve and actuator.",
-        "prevent": "Tubing routed and clamped away from crush and kink. Push-in fittings inserted to the stop. Flow control settings recorded."
+        "prevent": "Tubing routed and clamped away from crush and kink. Push-in fittings inserted to the stop. Flow control settings recorded.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "actuator_fault": {
         "type": "result",
@@ -701,7 +736,13 @@ BW.register("pneu", {
         "label": "actuator internal fault",
         "text": "Supply pressure correct, valve shifting, air reaching actuator: fault is internal to the actuator.",
         "sub": "Common causes: piston seal failure (air bypasses the piston, no force generated), seized piston (corrosion or contamination), broken spring on a single acting cylinder, or the rod is mechanically jammed by the load. Disconnect the actuator from the load and test with air applied. If it moves freely without the load, the issue is load-related.",
-        "prevent": "Air quality: dry, filtered, correct lubrication. Rod alignment and side load checked at installation."
+        "prevent": "Air quality: dry, filtered, correct lubrication. Rod alignment and side load checked at installation.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "slow1": {
         "q": "Is the pressure correct at the FRL regulator?",
@@ -725,7 +766,15 @@ BW.register("pneu", {
         "label": "low supply pressure",
         "text": "Low pressure at point of use with the compressor running usually means demand exceeds supply or a distribution issue.",
         "sub": "Check: peak demand vs compressor capacity (measure pressure during the full machine cycle), distribution pipe bore for undersizing, compressed air leaks consuming supply (ultrasonic leak survey), filter element condition, and regulator setting drift.",
-        "prevent": "Leak survey. Pressure logged at the point of use during the full cycle. Distribution sized for added machines."
+        "prevent": "Leak survey. Pressure logged at the point of use during the full cycle. Distribution sized for added machines.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": [
+            "compressor"
+          ]
+        }
       },
       "slow2": {
         "q": "Is the actuator slow in both directions or one direction only?",
@@ -747,7 +796,13 @@ BW.register("pneu", {
         "label": "check flow control on that direction exhaust",
         "text": "One-direction slowness points to an over-restricted exhaust or blocked flow control on the slow stroke.",
         "sub": "For meter-out configuration: the flow control valve on the slow-direction exhaust is too restricted. Open the needle valve a quarter turn at a time until desired speed is achieved. Also check the exhaust silencer on the valve exhaust port: a contaminated silencer adds back-pressure on that stroke. Remove and inspect.",
-        "prevent": "Flow control settings recorded on the drawing. Exhaust silencers on the PM."
+        "prevent": "Flow control settings recorded on the drawing. Exhaust silencers on the PM.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "slow_both": {
         "type": "result",
@@ -755,7 +810,13 @@ BW.register("pneu", {
         "label": "check supply restriction and actuator condition",
         "text": "Slow in both directions with correct pressure suggests inadequate flow or internal actuator friction.",
         "sub": "Check: flow control valves on both directions may both be over-restricted. Check valve Cv rating: an undersized valve does not flow enough air for the cylinder volume. Check cylinder bore for corrosion causing high friction. Check rod seals: a slightly seized seal increases friction significantly. Verify the load is within the cylinder force rating.",
-        "prevent": "Valve Cv and tubing bore checked against the cylinder volume and cycle rate at design. Air quality maintained."
+        "prevent": "Valve Cv and tubing bore checked against the cylinder volume and cycle rate at design. Air quality maintained.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "drift1": {
         "q": "Is the drift slow and gradual or does the actuator move to a specific position?",
@@ -777,7 +838,15 @@ BW.register("pneu", {
         "label": "internal leakage: valve spool or cylinder seal",
         "text": "Slow gradual drift indicates air leaking past a valve spool or cylinder piston seal.",
         "sub": "Isolate: remove air supply from the circuit while leaving the valve in the holding position. If drift stops, the leak is in the supply side valve spool. If drift continues, the leak is in the cylinder piston seal. Listen at the exhaust port: air hissing when the valve is in the holding position indicates piston seal bypass.",
-        "prevent": "Air quality. Valve and cylinder seals on condition. Load holding valve added where drift is unacceptable."
+        "prevent": "Air quality. Valve and cylinder seals on condition. Load holding valve added where drift is unacceptable.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": [
+            "seal"
+          ]
+        }
       },
       "directed_drift": {
         "type": "result",
@@ -785,7 +854,13 @@ BW.register("pneu", {
         "label": "valve position or pilot signal fault",
         "text": "Movement to a specific position suggests the valve is shifting to one position without a command signal.",
         "sub": "Check: is one solenoid energised when it should not be? Check the PLC output and solenoid indicator lights. On a 5/3 valve, check the centre position: a valve going to one end position when both solenoids are de-energised has lost its spring centring. On a pilot-operated valve, check for a pilot pressure signal that is not being released.",
-        "prevent": "Solenoid signals verified after any control change. Pilot lines checked on the PM."
+        "prevent": "Solenoid signals verified after any control change. Pilot lines checked on the PM.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "leak1": {
         "q": "Where is the leak located?",
@@ -815,7 +890,13 @@ BW.register("pneu", {
         "label": "fitting or connection issue",
         "text": "Air leaks at fittings are very common and usually straightforward to resolve.",
         "sub": "Push-in fittings: ensure the tube is fully inserted until it bottoms out. A partially inserted tube leaks around the collet. Remove and reinsert firmly. If still leaking, the collet or O-ring is damaged: replace the fitting. Compression fittings: tighten a quarter turn at a time. Threaded connections: apply fresh PTFE tape or anaerobic thread sealant. Never use silicone on pneumatic threads: it can migrate and block orifices.",
-        "prevent": "Push-in tubes cut square and inserted to the stop. Fittings replaced on collet wear. Ultrasonic leak survey quarterly."
+        "prevent": "Push-in tubes cut square and inserted to the stop. Fittings replaced on collet wear. Ultrasonic leak survey quarterly.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "valve_exhaust_leak": {
         "type": "result",
@@ -823,7 +904,13 @@ BW.register("pneu", {
         "label": "valve spool leakage or incorrect valve position",
         "text": "Continuous air from a valve exhaust when the actuator should be stationary indicates internal valve leakage or incorrect valve state.",
         "sub": "If the valve should be in the holding position: the spool is not sealing the actuator port from exhaust. Contamination on the spool land or a worn spool is the likely cause. If one solenoid may be inadvertently energised: check the control signal. A continuously leaking valve on a load-holding application causes the drift described in the drift diagnostic.",
-        "prevent": "Air quality to keep the spool clean. Control signals verified."
+        "prevent": "Air quality to keep the spool clean. Control signals verified.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "rod_seal_leak": {
         "type": "result",
@@ -831,7 +918,14 @@ BW.register("pneu", {
         "label": "rod seal replacement required",
         "text": "Air leaking around the cylinder rod indicates the rod seal is worn or damaged.",
         "sub": "Inspect the rod surface first: a scored rod will immediately destroy new seals. If the rod is scored it must be polished or the cylinder replaced. Check rod alignment: side force on the rod accelerates seal wear. Replace all rod seals as a set. After seal replacement, cycle the cylinder slowly for several cycles before returning to full speed.",
-        "prevent": "Rod protection and alignment. Guided cylinder where the load applies a moment."
+        "prevent": "Rod protection and alignment. Guided cylinder where the load applies a moment.",
+        "applies": {
+          "primary": [
+            "pneu",
+            "seal"
+          ],
+          "contributing": []
+        }
       },
       "leak_find": {
         "type": "result",
@@ -839,7 +933,13 @@ BW.register("pneu", {
         "label": "use ultrasonic detector or soapy water to locate",
         "text": "A leak not located by listening alone requires a systematic search method.",
         "sub": "Ultrasonic detector: scan slowly along all fittings, valve bodies, cylinder ports, and distribution pipes. Signal intensity peaks at the leak source. Soapy water or commercial leak detection fluid: apply to each joint and fitting and watch for bubbling. Start at the compressor side and work downstream: the highest pressure section has the largest leaks. In a loud production environment where you cannot hear a leak clearly, use a screwdriver as a contact stethoscope: press the tip firmly against the component or fitting body and hold the handle end lightly against the bone behind your ear. Bone conduction transmits the sound of air escaping or a valve spool shifting directly, cutting through ambient noise without putting your ear near a pressurised exhaust. This same technique works for listening for a valve that is or is not shifting, a solenoid that is humming, or any internal mechanical sound in a noisy environment. It costs nothing and every millwright already has a screwdriver in their pocket.",
-        "prevent": "Ultrasonic leak survey on a schedule. Leaks tagged and repaired, not just found."
+        "prevent": "Ultrasonic leak survey on a schedule. Leaks tagged and repaired, not just found.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "valve1": {
         "q": "Is the solenoid receiving electrical power when it should be energised?",
@@ -863,7 +963,13 @@ BW.register("pneu", {
         "label": "electrical fault upstream of solenoid",
         "text": "Voltage absent at the solenoid coil means the control signal is not reaching the valve.",
         "sub": "Work backward from the solenoid: check the solenoid connector for corrosion or loose pins, check the cable for damage, check the PLC output for the correct signal, check any fuses or overloads in the solenoid circuit. On safety-circuit valves, check that all safety conditions are met: a single unmet interlock blocks all downstream outputs on many safety controllers.",
-        "prevent": "Connector seals and cable strain relief on the PM. Fuses and interlocks documented."
+        "prevent": "Connector seals and cable strain relief on the PM. Fuses and interlocks documented.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "mech_fault": {
         "q": "Does the solenoid hum or is it excessively hot when energised?",
@@ -885,7 +991,13 @@ BW.register("pneu", {
         "label": "contaminated or stuck valve spool",
         "text": "A humming solenoid that cannot fully attract means the valve spool is stuck and the magnetic plunger cannot fully seat.",
         "sub": "Causes: contaminated air depositing sludge on the spool, water contamination causing corrosion of the spool bore, or a foreign particle in the spool valve. Remove and disassemble the valve. Clean the spool and bore with a compatible solvent. If the spool is corroded or scored, replace the valve. Improve air quality before reinstalling.",
-        "prevent": "Dryer dewpoint and FRL filter on the PM. Auto drains cycling."
+        "prevent": "Dryer dewpoint and FRL filter on the PM. Auto drains cycling.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "pilot_fault": {
         "type": "result",
@@ -893,7 +1005,13 @@ BW.register("pneu", {
         "label": "pilot pressure fault or failed solenoid plunger",
         "text": "Solenoid energised and drawing current but the main valve spool is not shifting. On a pilot-operated valve this means insufficient pilot pressure.",
         "sub": "Measure pilot supply pressure. Minimum pilot pressure for most pilot-operated valves is 2 to 3 bar. If pilot pressure is below minimum, increase regulator set pressure or check for a blocked pilot supply line. On direct-acting solenoid valves with correct voltage and no mechanical fault, the valve may have a failed solenoid plunger or broken spool spring. Replace the valve.",
-        "prevent": "Pilot pressure verified at the regulator under load. Pilot lines on the PM."
+        "prevent": "Pilot pressure verified at the regulator under load. Pilot lines on the PM.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "sensor1": {
         "q": "Does the cylinder physically reach its end position?",
@@ -949,7 +1067,13 @@ BW.register("pneu", {
         "label": "sensor wiring or power fault",
         "text": "Sensor not powered, check the wiring before assuming the sensor has failed.",
         "sub": "Check the sensor cable for damage, pinched, cut, or abraded cables are very common on cylinders where the cable routes near the moving load. Check the connector for corrosion or backed-out pins. Check the supply voltage at the sensor connector (typically 24VDC between supply and ground wires). If supply voltage is absent, trace the wiring back to the control panel: a blown fuse or tripped protection on the sensor power rail is a common finding.",
-        "prevent": "Sensor cables routed and clamped clear of the load. Connectors sealed."
+        "prevent": "Sensor cables routed and clamped clear of the load. Connectors sealed.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "sensor_position": {
         "type": "result",
@@ -957,7 +1081,13 @@ BW.register("pneu", {
         "label": "sensor position or detection range issue",
         "text": "Sensor is powered but not detecting at the cylinder end position: most likely a positioning or magnet/target issue.",
         "sub": "For magnetic reed switches on pneumatic cylinders: the switch must be positioned in the cylinder barrel groove at the exact axial position where the piston magnet passes. Slide the switch along the groove while the cylinder is at the end position until the LED illuminates, then tighten the clamp. If the LED never illuminates at any position, the piston magnet may have demagnetised (older cylinders) or the switch may be failed. For inductive proximity sensors: confirm the target (usually a metal flag on the cylinder carriage) is within the sensor's rated sensing distance and is made of a material the sensor can detect. Some inductive sensors only detect ferrous metals.",
-        "prevent": "Sensor positions marked after setup. Clamp screws torqued."
+        "prevent": "Sensor positions marked after setup. Clamp screws torqued.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "sensor4": {
         "type": "result",
@@ -965,7 +1095,13 @@ BW.register("pneu", {
         "label": "sensor signal not reaching PLC input, wiring or input card fault",
         "text": "Sensor detects (LED on) but the machine does not advance, the signal is not getting to the control system.",
         "sub": "Monitor the PLC input channel for the sensor in the PLC online view or I/O diagnostic screen while the cylinder is at the end position. If the input does not change state when the sensor LED is on: check the signal wire between the sensor and the PLC input card for damage or a bad connection. Check the PLC input card for a blown input (some cards have per-channel fuse protection). If the input changes state but the machine still does not advance, the issue is in the PLC logic: the input may be mapped incorrectly, or a separate interlock condition is blocking the advance step.",
-        "prevent": "I/O documentation kept current. Input card fuses in stock."
+        "prevent": "I/O documentation kept current. Input card fuses in stock.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "sensor_short": {
         "type": "result",
@@ -973,7 +1109,13 @@ BW.register("pneu", {
         "label": "cylinder not reaching detection point: pneumatic or mechanical cause",
         "text": "If the cylinder is not physically reaching the sensor detection point, the problem is pneumatic or mechanical, not a sensor fault.",
         "sub": "Check: flow control valve on the extend or retract stroke: may be over-restricted, preventing the cylinder from fully stroking before the PLC times out. Check working pressure at the cylinder: insufficient force may mean the cylinder is stalling against the load before reaching the end position. Check for a mechanical obstruction, something contacting the carriage or rod before full stroke. Check cushion adjustment, an over-tightened cushion needle on a long-stroke cylinder can arrest the piston before it reaches the physical end of travel.",
-        "prevent": "Cushion and flow control settings recorded. Cycle timer set with margin for a cold system."
+        "prevent": "Cushion and flow control settings recorded. Cycle timer set with margin for a cold system.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "overtravel1": {
         "q": "When did the end-of-stroke banging start?",
@@ -995,7 +1137,13 @@ BW.register("pneu", {
         "label": "cushion adjustment required",
         "text": "End-of-stroke impact on a cylinder that has never been adjusted means the cushion needles were never set correctly.",
         "sub": "Most ISO-standard double acting cylinders have adjustable cushions at both ends. The cushion needle is a slotted screw accessible from the end cap. To adjust: with the machine running at normal speed, turn the cushion needle clockwise (close) until you hear the impact reduce, then back off slightly until the cylinder reaches the end position smoothly without slamming. Do not over-tighten: a cushion set too tight slows the cylinder dramatically before end of stroke and can prevent it from reaching the fully stroked position needed to trigger the position sensor.",
-        "prevent": "Cushion adjustment on the commissioning checklist and after any cylinder change."
+        "prevent": "Cushion adjustment on the commissioning checklist and after any cylinder change.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "overtravel_recent": {
         "q": "Has anything changed on the machine recently?",
@@ -1021,7 +1169,13 @@ BW.register("pneu", {
         "label": "re-adjust cushion for new speed",
         "text": "Increased cycle speed changes the kinetic energy the cushion must absorb. The previous cushion setting is no longer correct.",
         "sub": "Re-adjust the cushion needle for the new operating speed: close the needle (clockwise) until the impact is eliminated, then back off slightly. If the cushion cannot absorb the energy at the new speed even when fully adjusted, the cylinder is undersized for the application at that speed. Options: reduce the speed back to within the cushion rating, add an external shock absorber (mechanical bumper) to supplement the built-in cushion, or use a larger cylinder with higher cushion capacity.",
-        "prevent": "Any speed change followed by a cushion recheck. Shock absorber where the cushion cannot cope."
+        "prevent": "Any speed change followed by a cushion recheck. Shock absorber where the cushion cannot cope.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "overtravel_new_cyl": {
         "type": "result",
@@ -1029,7 +1183,13 @@ BW.register("pneu", {
         "label": "set cushions on the new cylinder: factory setting is nominal only",
         "text": "Replacement cylinders are shipped with cushion needles at a nominal (often fully open) factory setting that is not tuned for the application.",
         "sub": "Cushion adjustment must be performed after any cylinder replacement. Start with the cushion needle open (counter-clockwise), run the machine at reduced speed, then gradually close the needle while increasing speed until the correct cushioning is achieved at full operating speed. Never assume a replacement cylinder is correctly adjusted from the factory.",
-        "prevent": "Cushion setting on the cylinder replacement procedure."
+        "prevent": "Cushion setting on the cylinder replacement procedure.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "overtravel_wear": {
         "type": "result",
@@ -1037,7 +1197,15 @@ BW.register("pneu", {
         "label": "cushion seal wear or contaminated cushion orifice",
         "text": "Cushioning that has degraded on a machine where nothing obvious changed usually indicates a worn cushion seal or a blocked cushion orifice.",
         "sub": "The cushion works by trapping a volume of air in the end cap and metering it out through the needle orifice as the piston approaches the end of stroke. If the cushion seal (the o-ring or lip seal on the piston boss that enters the cushion cavity) is worn, air bypasses the cushion entirely and the piston hits the end cap at full speed. If the needle orifice is contaminated, the metering is inconsistent. Disassemble the end cap, inspect the cushion seal and the needle orifice. Replace the seal if worn. Clean the orifice with solvent: never with a metal tool that could enlarge it.",
-        "prevent": "Air quality. Cushion seals in the repair kit."
+        "prevent": "Air quality. Cushion seals in the repair kit.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": [
+            "seal"
+          ]
+        }
       },
       "erratic1": {
         "type": "result",
@@ -1045,7 +1213,13 @@ BW.register("pneu", {
         "label": "check air supply consistency and signal logic",
         "text": "Erratic or inconsistent pneumatic cycles have three primary causes: inconsistent air supply pressure, inconsistent control signals, or intermittent mechanical faults.",
         "sub": "Air supply: measure pressure with a gauge during a full cycle. Pressure dips during actuation indicate undersized supply or a large leak elsewhere. Control signals: check PLC output timing and logic. An output that correctly energises but briefly de-energises mid-cycle shifts the valve at the wrong time. Mechanical: check all flow control valve locknuts: vibration can cause needle valves to drift open or closed over time.",
-        "prevent": "Pressure logged through the cycle. Flow control locknuts tightened and settings recorded. Sensor positions marked."
+        "prevent": "Pressure logged through the cycle. Flow control locknuts tightened and settings recorded. Sensor positions marked.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "water1": {
         "type": "result",
@@ -1053,7 +1227,15 @@ BW.register("pneu", {
         "label": "moisture in system: dryer and drain maintenance required",
         "text": "Water or ice in a pneumatic system indicates the dryer is undersized, failed, or automatic drains are not functioning.",
         "sub": "Immediate: drain all receiver tanks, drip legs, and FRL filter bowls manually. Check automatic drain valves for correct operation. Check the dryer: refrigerant dryer dewpoint reading should be approximately 3°C; desiccant dryer indicator should show active desiccant. Ice in the system (at valve orifices or cylinder ports) means water content is high enough to freeze at the point of expansion. Resolve the dryer fault before the ice damage progresses to seized valves.",
-        "prevent": "Dryer dewpoint on the PM. Auto drains checked to cycle. Desiccant dryer where the system sees freezing temperatures."
+        "prevent": "Dryer dewpoint on the PM. Auto drains checked to cycle. Desiccant dryer where the system sees freezing temperatures.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": [
+            "compressor"
+          ]
+        }
       }
     }
   },

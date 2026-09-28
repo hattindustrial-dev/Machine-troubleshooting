@@ -419,7 +419,13 @@ BW.register("safeguarding", {
         "label": "guard designed without maintenance access",
         "text": "The task is legitimate; the guard made it impossible with the guard on.",
         "sub": "Add what the task needs: a remote grease fitting block, a tension check port, an inspection window, a hinged and interlocked access door. Then the guard stays on and the task gets done. Put the guard back now, properly fastened, and schedule the modification.",
-        "prevent": "Guard design reviewed against the PM task list before fabrication. Every guard has a way to do the routine tasks through it."
+        "prevent": "Guard design reviewed against the PM task list before fabrication. Every guard has a way to do the routine tasks through it.",
+        "applies": {
+          "primary": [
+            "guard"
+          ],
+          "contributing": []
+        }
       },
       "r_off_see": {
         "type": "result",
@@ -427,7 +433,13 @@ BW.register("safeguarding", {
         "label": "no visibility",
         "text": "The operator needs to watch the process and the guard blocks the view.",
         "sub": "Polycarbonate window (correct grade for any ejection risk) or mesh panel in the sight line. A camera where a window is impractical. Restore the guard and fit the window.",
-        "prevent": "Sight lines identified in the hazard walk."
+        "prevent": "Sight lines identified in the hazard walk.",
+        "applies": {
+          "primary": [
+            "guard"
+          ],
+          "contributing": []
+        }
       },
       "r_off_damaged": {
         "type": "result",
@@ -435,7 +447,13 @@ BW.register("safeguarding", {
         "label": "damaged or obsolete guard",
         "text": "The guard was hit, bent, or no longer fits after a modification, so it was set aside.",
         "sub": "A modified machine needs its guarding reviewed (and may need a PSR if the protective elements changed). Rebuild the guard to Z432 for the machine as it is now, with openings per the table and captive fasteners. Until it is on, the hazard is unguarded: interim barrier and a stop on the task that exposes someone.",
-        "prevent": "Machine modifications go through a change review that includes guarding."
+        "prevent": "Machine modifications go through a change review that includes guarding.",
+        "applies": {
+          "primary": [
+            "guard"
+          ],
+          "contributing": []
+        }
       },
       "r_off_unknown": {
         "type": "result",
@@ -443,7 +461,13 @@ BW.register("safeguarding", {
         "label": "unknown reason: treat as a systemic finding",
         "text": "A guard off with no known reason means guards are coming off routinely and nobody is noticing.",
         "sub": "Restore it, then audit: walk every drive in the area. Guard colour consistent so a missing one is visible. Guard checks on the operator start-of-shift list. Talk to the crew about what tasks are pushing guards off, without blame; the answers are the design fixes.",
-        "prevent": "Guard inspection on every PM and every shift start. Guards painted a single plant colour."
+        "prevent": "Guard inspection on every PM and every shift start. Guards painted a single plant colour.",
+        "applies": {
+          "primary": [
+            "guard"
+          ],
+          "contributing": []
+        }
       },
       "defeat1": {
         "q": "What task or problem was the bypass solving?",
@@ -468,7 +492,13 @@ BW.register("safeguarding", {
         "label": "design a mode for the task",
         "text": "A task that needs motion with the guard open needs a designed reduced-risk mode, not a jumper.",
         "sub": "Hold-to-run at reduced speed, an enabling device, or inching control, selected by a key or password mode switch, with the guard interlock still monitored so full speed cannot resume with the door open. This is a safety system modification: risk assessed, designed by someone qualified on the system, validated, and documented. In Ontario a change to the protective elements may need a PSR.",
-        "prevent": "Every task that needs guard-open motion identified in the risk assessment before the machine is commissioned."
+        "prevent": "Every task that needs guard-open motion identified in the risk assessment before the machine is commissioned.",
+        "applies": {
+          "primary": [
+            "guard"
+          ],
+          "contributing": []
+        }
       },
       "r_failed_device": {
         "type": "result",
@@ -476,7 +506,13 @@ BW.register("safeguarding", {
         "label": "safeguard failed, bypassed to keep running",
         "text": "The machine ran unguarded because the safeguard broke and the fix was slower than a jumper.",
         "sub": "Remove the bypass. The machine does not run without its safeguarding; that is the regulation and the risk. Repair the device (spare interlock switches and curtain columns in stock for critical machines). Functional test every safety function before restart.",
-        "prevent": "Critical spares for safety devices. A written rule, backed by management, that a failed safeguard stops the machine."
+        "prevent": "Critical spares for safety devices. A written rule, backed by management, that a failed safeguard stops the machine.",
+        "applies": {
+          "primary": [
+            "guard"
+          ],
+          "contributing": []
+        }
       },
       "nuisance1": {
         "q": "What is tripping it?",
@@ -501,7 +537,13 @@ BW.register("safeguarding", {
         "label": "optical device: alignment, contamination, or field configuration",
         "text": "Curtains and scanners trip on what they see, and they see dust, mist, and a forklift crossing the warning field.",
         "sub": "Clean the windows and columns; add air purge shrouds in dusty areas. Check alignment with the built-in indicators. Review the scanner field shape: a warning field that crosses a forklift aisle stops the line every time a truck passes. Reconfigure (documented and validated) so the field covers the approach to the hazard and not the aisle.",
-        "prevent": "Optical safety devices on the PM: clean, aligned, fields reviewed after any layout change."
+        "prevent": "Optical safety devices on the PM: clean, aligned, fields reviewed after any layout change.",
+        "applies": {
+          "primary": [
+            "guard"
+          ],
+          "contributing": []
+        }
       },
       "r_nuisance_interlock": {
         "type": "result",
@@ -509,7 +551,13 @@ BW.register("safeguarding", {
         "label": "interlock mechanics",
         "text": "A door that vibrates open a millimetre, an actuator that does not fully enter the switch, or a worn hinge switch trips the interlock intermittently.",
         "sub": "Door latch and hinge condition. Actuator alignment and approach. Switch mounting rigid. Coded magnetic or RFID switches tolerate more misalignment than tongue switches. Do not fix it by taping the actuator into the switch.",
-        "prevent": "Interlock switch and door mechanics on the PM."
+        "prevent": "Interlock switch and door mechanics on the PM.",
+        "applies": {
+          "primary": [
+            "guard"
+          ],
+          "contributing": []
+        }
       },
       "r_nuisance_circuit": {
         "type": "result",
@@ -517,7 +565,13 @@ BW.register("safeguarding", {
         "label": "safety circuit fault: diagnose, do not reset",
         "text": "Random trips with no visible cause are the safety relay or safety PLC detecting a fault: a channel disagreement, a feedback fault, a wiring intermittent.",
         "sub": "Read the relay or PLC diagnostic. Check every input device two-channel agreement, contactor feedback, and the wiring for chafe and moisture. This is the safety system telling you something in it is failing. Resetting until it stays reset is how a machine ends up with one channel doing the work of two.",
-        "prevent": "Safety circuit diagnostics reviewed on every trip, and logged."
+        "prevent": "Safety circuit diagnostics reviewed on every trip, and logged.",
+        "applies": {
+          "primary": [
+            "guard"
+          ],
+          "contributing": []
+        }
       },
       "r_estop": {
         "type": "result",
@@ -525,7 +579,13 @@ BW.register("safeguarding", {
         "label": "e-stop function fault",
         "text": "An e-stop that does not stop, stops only part of the machine, or restarts the machine on reset is a safety circuit fault.",
         "sub": "Lock out and test every e-stop on the machine. Confirm each removes power from every hazardous motion (a machine with two drives and an e-stop wired to one is half stopped). Confirm the stop category is correct for the machine: a coasting stop on a machine that needs braking is wrong. Confirm reset does not restart. Repair by someone qualified on the safety system; retest everything.",
-        "prevent": "E-stop test on the PM and after any electrical work. Coverage checked in every PSR."
+        "prevent": "E-stop test on the PM and after any electrical work. Coverage checked in every PSR.",
+        "applies": {
+          "primary": [
+            "guard"
+          ],
+          "contributing": []
+        }
       },
       "psr1": {
         "q": "What has changed?",
@@ -554,7 +614,13 @@ BW.register("safeguarding", {
         "label": "PSR likely required: circumstance 7 (protective elements)",
         "text": "A new or relocated machine whose guarding is what protects the worker falls under the machine guarding circumstance in the section 7 table.",
         "sub": "Check the section 7 exemptions: a manufacturer certification to a listed standard with installation per the manufacturer may exempt it. If not exempt, engage a professional engineer before starting the machine, and do the millwright homework (PSR tab): hazard list, guard measurements, stop times, photos, drawings. The report's measures are completed before startup.",
-        "prevent": "PSR requirement checked at the purchase and planning stage, not the day before startup."
+        "prevent": "PSR requirement checked at the purchase and planning stage, not the day before startup.",
+        "applies": {
+          "primary": [
+            "guard"
+          ],
+          "contributing": []
+        }
       },
       "r_psr_modified": {
         "type": "result",
@@ -562,7 +628,13 @@ BW.register("safeguarding", {
         "label": "modification to protective elements triggers a review",
         "text": "Changing the guards, the interlocks, the safety controls, or the process the machine runs can require a new PSR even if one was done originally.",
         "sub": "Document what changed. If the protective elements or the hazards changed, the exemption for a previously reviewed apparatus does not apply and a new review is needed for the changed elements. The Ministry of Labour PSR guideline and the engineer decide the scope.",
-        "prevent": "Change control on machines includes a PSR trigger check."
+        "prevent": "Change control on machines includes a PSR trigger check.",
+        "applies": {
+          "primary": [
+            "guard"
+          ],
+          "contributing": []
+        }
       },
       "r_psr_rack": {
         "type": "result",
@@ -570,7 +642,11 @@ BW.register("safeguarding", {
         "label": "PSR likely required: circumstance 3 (racking)",
         "text": "New rack or a reconfigured rack is a rack or stacking structure under the section 7 table, reviewed against CSA A344.",
         "sub": "Engineer review against the rack drawings and A344: configuration, capacity, anchoring, plumb, load signage, damage, and the installation against the design. The field inspection is millwright work; Rack Grid and PSR Inspector are built for it.",
-        "prevent": "Rack changes (beam levels, uprights, loads) go through the same review as machine changes."
+        "prevent": "Rack changes (beam levels, uprights, loads) go through the same review as machine changes.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_psr_no": {
         "type": "result",
@@ -578,7 +654,13 @@ BW.register("safeguarding", {
         "label": "no change, no new review",
         "text": "An unchanged machine with an existing PSR does not need a new one.",
         "sub": "Confirm the existing report is on file and its measures were completed. Confirm nothing has actually changed: moved, re-guarded, re-controlled, or re-purposed. If the file cannot be found, the plant cannot demonstrate compliance, and that is a problem worth solving before an inspector asks.",
-        "prevent": "PSR reports filed with the equipment record and referenced in the change control process."
+        "prevent": "PSR reports filed with the equipment record and referenced in the change control process.",
+        "applies": {
+          "primary": [
+            "guard"
+          ],
+          "contributing": []
+        }
       },
       "r_opening": {
         "type": "result",
@@ -586,7 +668,13 @@ BW.register("safeguarding", {
         "label": "measure the opening and the distance",
         "text": "An opening is compliant if the distance from it to the nearest hazard meets the table for that opening size.",
         "sub": "Measure the largest dimension of the opening (slot or square rule). Measure straight-line distance from the opening to the nearest hazard behind it. Compare to the Distances and Openings table. Common failures: mesh with 25 mm openings within 120 mm of a nip; a gap at a hinge or a post; a gap under a fence. Fix by reducing the opening (finer mesh, a filler plate) or increasing the distance (relocating the guard face).",
-        "prevent": "Opening and distance measured and recorded on every guard at commissioning."
+        "prevent": "Opening and distance measured and recorded on every guard at commissioning.",
+        "applies": {
+          "primary": [
+            "guard"
+          ],
+          "contributing": []
+        }
       }
     }
   },

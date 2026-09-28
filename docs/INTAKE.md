@@ -77,6 +77,9 @@ the issues that apply to them.
   the result out, or it is damaged by it.
 - Two empty lists mean the result is generic: a method, a measurement technique, general
   safety. That is a statement about the result, so it is not left blank.
+- A label that lists candidate causes ("A or B", "check A and B") is a differential. The
+  result is about the fault, and each candidate is contributing unless one of them is what the
+  result is really about.
 
 For a batch, use the tagging workflow rather than tagging by hand: three independent
 reviewers vote, a change needs two of them, and a blind re-tag of a sample measures how far
@@ -86,8 +89,18 @@ the tagging can be trusted.
 node build/tagging/prep.mjs         # prepare the inputs
 node build/tagging/build.mjs        # generate .tagging/workflow.js
 # run it from Claude Code with the Workflow tool: {scriptPath: '.tagging/workflow.js'}
-node build/apply-tags.mjs <result.json> --write
+# then settle the tags only one reviewer or critic wanted changed, with
+# build/tagging/adjudicate.template.js run the same way, and merge the two:
+node build/tagging/merge.mjs <tag-result.json> <adjudication-result.json> <final.json> \
+  --overrides build/tagging/overrides.json --edits build/tagging/edits.json
+node build/apply-tags.mjs <final.json> --write
 ```
+
+Read the changes that passed over a dissent before applying them. A vote is evidence and not
+a ruling: in the first pass five of twenty-three were overruled because the dissent was the
+better argument. Overrides and hand edits go in `overrides.json` and `edits.json`, each with
+its reason, so the record shows where a person disagreed with the process. `docs/tagging-review.md`
+says how far the tags can be trusted.
 
 ## 5. Regenerate and check
 

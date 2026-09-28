@@ -256,7 +256,11 @@ BW.register("measurement", {
         "label": "technique: force, squareness, cleanliness",
         "text": "Small scatter is the hand, not the tool.",
         "sub": "Ratchet on the micrometer, same clicks. Rock to the maximum on a diameter. Clean the anvils and the part. Same eye position. Same feeler drag. Take the three readings again and use the average, with the spread written down.",
-        "prevent": "Three readings recorded as a habit; the spread is part of the record."
+        "prevent": "Three readings recorded as a habit; the spread is part of the record.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_partshape": {
         "type": "result",
@@ -264,7 +268,11 @@ BW.register("measurement", {
         "label": "the part is not round, not parallel, or not clean",
         "text": "Large scatter that follows position is the part telling you its shape.",
         "sub": "Measure at two positions and two angles and write them all down: the pattern is taper, out-of-round, or a lump of dirt. A bearing seat that is 0.03 mm out of round is a bearing that will not run true, and the measurement just found the fault.",
-        "prevent": "Seats and bores measured as shapes (positions and angles), not as single numbers."
+        "prevent": "Seats and bores measured as shapes (positions and angles), not as single numbers.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_disagree": {
         "type": "result",
@@ -272,7 +280,11 @@ BW.register("measurement", {
         "label": "two instruments disagree: check both against a standard",
         "text": "One of them is wrong, and it may be the one you trust.",
         "sub": "Both on a gauge block or the micrometer standard. Zero both. Temperature of both and of the part. If both check on the standard and still disagree on the part, the technique differs (a caliper on the jaw tips versus a micrometer on the diameter) and the micrometer wins for anything under a tenth.",
-        "prevent": "A gauge block in the toolbox; instruments checked before critical jobs."
+        "prevent": "A gauge block in the toolbox; instruments checked before critical jobs.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "sense1": {
         "q": "Check zero, temperature, and the scale reading. Any of them off?",
@@ -297,7 +309,11 @@ BW.register("measurement", {
         "label": "reading error",
         "text": "The commonest wrong measurement is a right tool read wrong.",
         "sub": "Metric: the 0.5 mm line. Inch: the count of 0.025 lines. Depth micrometer: the reversed scale. Vernier: parallax. Zero the tool and read it again slowly. Digital tools remove this error and keep all the others.",
-        "prevent": "Read twice, the second time out loud, on anything that goes on a record."
+        "prevent": "Read twice, the second time out loud, on anything that goes on a record.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_temp": {
         "type": "result",
@@ -305,7 +321,11 @@ BW.register("measurement", {
         "label": "temperature",
         "text": "Steel grows about 12 µm per metre per °C. A hot shaft measures big; a cold tool on a warm part measures small.",
         "sub": "Let the part and the tool equalise, or note the temperature and correct. A bearing fit measured on a shaft straight off a heater is not a fit measurement.",
-        "prevent": "Temperature written with every fit measurement."
+        "prevent": "Temperature written with every fit measurement.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "ind1": {
         "q": "What is the indicator doing?",
@@ -334,7 +354,11 @@ BW.register("measurement", {
         "label": "setup not rigid",
         "text": "The indicator is reading its own mounting.",
         "sub": "Magnetic base on clean flat steel, arm locked, shortest reach. A bracket on a shaft tightened. Nothing resting on a guard or a cover. Tap it; it must come back to zero.",
-        "prevent": "Tap test after every setup."
+        "prevent": "Tap test after every setup.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_cosine": {
         "type": "result",
@@ -342,7 +366,11 @@ BW.register("measurement", {
         "label": "cosine error",
         "text": "A plunger not square, or a lever at an angle, reads low.",
         "sub": "Plunger square to the surface. DTI lever within 15 degrees of parallel, or apply the correction. Remount rather than correct where possible.",
-        "prevent": "Square and parallel on every indicator setup."
+        "prevent": "Square and parallel on every indicator setup.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_preload": {
         "type": "result",
@@ -350,7 +378,11 @@ BW.register("measurement", {
         "label": "no pre-load, or wrong range",
         "text": "An indicator zeroed at the end of its travel cannot read one direction; a DTI on a large movement runs out.",
         "sub": "Pre-load a quarter to half of the travel before zeroing. Use a plunger indicator for anything over a fraction of a millimetre.",
-        "prevent": "Pre-load as a habit."
+        "prevent": "Pre-load as a habit.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_sag": {
         "type": "result",
@@ -358,7 +390,11 @@ BW.register("measurement", {
         "label": "validity check failed: sag, looseness, or axial float",
         "text": "On rim readings, top plus bottom should equal left plus right. If they do not, the setup is wrong.",
         "sub": "Bracket sag not corrected. Bracket or indicator loose. Shaft floating axially between readings (hold it against one end). Coupling hub run-out (rotate both shafts together). Reference module has the sag method and the correction math.",
-        "prevent": "Validity check on every set of readings before any shim is cut."
+        "prevent": "Validity check on every set of readings before any shim is cut.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_mic": {
         "type": "result",
@@ -366,7 +402,11 @@ BW.register("measurement", {
         "label": "micrometer condition",
         "text": "A micrometer that will not zero, feels rough, or reads differently at different points on the standard is damaged or dirty.",
         "sub": "Clean the anvils and the thread. Check the spindle for a bend (roll it). Check the anvils for flatness and parallelism on an optical flat or by closing on a small ball at several points. Adjust the zero per the manual if the tool is otherwise sound. A dropped micrometer is calibrated before it is trusted.",
-        "prevent": "Stored open, in the case, away from the grinder. Calibrated on the interval and after any drop."
+        "prevent": "Stored open, in the case, away from the grinder. Calibrated on the interval and after any drop.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       }
     }
   },

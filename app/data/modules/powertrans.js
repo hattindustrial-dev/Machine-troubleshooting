@@ -484,7 +484,13 @@ BW.register("powertrans", {
         "label": "startup slip: inertia exceeds grip",
         "text": "The belt slips while accelerating the load, then grips once it is up to speed.",
         "sub": "Tension is at the low end, the belt is glazed, or the driven inertia is high for the drive (large fan, flywheel). Check tension against the table first. If tension is correct and the belt is not glazed, the drive is marginal for the starting load: more belts, a larger section, or a soft start on the motor.",
-        "prevent": "Tension to the table, recheck after run-in. Log startup behaviour on the PM so a change is noticed."
+        "prevent": "Tension to the table, recheck after run-in. Log startup behaviour on the PM so a change is noticed.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": []
+        }
       },
       "r_squeal_load": {
         "type": "result",
@@ -492,7 +498,13 @@ BW.register("powertrans", {
         "label": "load slip: tension, groove, or overload",
         "text": "The belt grips unloaded and slips when the load comes on.",
         "sub": "Tension check with a gauge, not by hand. Groove gauge on the sheaves: a worn groove lets a correctly tensioned belt bottom out and slip. Oil or belt dressing on the sheave. Then the load: has the driven machine got heavier (bearing failing, product buildup, process change) since the drive was sized.",
-        "prevent": "Groove gauge on every belt change. Track motor amps: rising amps with the same belt slip means the load is growing."
+        "prevent": "Groove gauge on every belt change. Track motor amps: rising amps with the same belt slip means the load is growing.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": []
+        }
       },
       "r_squeal_align": {
         "type": "result",
@@ -500,7 +512,13 @@ BW.register("powertrans", {
         "label": "misalignment: the belt is rubbing one groove wall",
         "text": "A continuous squeal from one sheave is the belt being pushed against the groove wall as it enters.",
         "sub": "Straightedge across the sheave faces. Check the sheave is tight on its shaft. Correct the alignment, then check the belt sidewall for one-sided wear and replace it if it is worn.",
-        "prevent": "Align after tensioning, every time."
+        "prevent": "Align after tensioning, every time.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": []
+        }
       },
       "r_timing_whine": {
         "type": "result",
@@ -508,7 +526,13 @@ BW.register("powertrans", {
         "label": "timing belt over-tensioned or misaligned",
         "text": "A timing belt that howls is usually too tight, or it is being pushed against a flange.",
         "sub": "Sonic meter tension check. Alignment with a straightedge; a belt riding hard against one flange is misaligned. Some tooth noise is normal at high speed; a change in noise is the symptom.",
-        "prevent": "Tension by meter, alignment by straightedge, both recorded."
+        "prevent": "Tension by meter, alignment by straightedge, both recorded.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": []
+        }
       },
       "off1": {
         "q": "What is the belt doing?",
@@ -533,7 +557,13 @@ BW.register("powertrans", {
         "label": "belt turnover: twist, worn groove, or wrong section",
         "text": "The belt has lost stability in the groove.",
         "sub": "Vertical angular (twist) misalignment: shim to bring the sheave faces parallel. Groove gauge for wear. Confirm the belt section matches the sheave: a belt riding high turns over. Foreign material in the groove. On a vertical shaft drive or a pulsating load, a banded belt is often the practical fix.",
-        "prevent": "Alignment in all three planes. Groove gauge. Banded belt where the application cannot be tamed."
+        "prevent": "Alignment in all three planes. Groove gauge. Banded belt where the application cannot be tamed.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": []
+        }
       },
       "r_walk": {
         "type": "result",
@@ -541,7 +571,15 @@ BW.register("powertrans", {
         "label": "belt walking: misalignment or a loose sheave",
         "text": "The belt is being steered off by an angle between the sheaves.",
         "sub": "Straightedge check. A sheave that has walked on its shaft (loose bushing, backed-out set screw) moves the alignment without anyone touching it. A motor creeping on its slide base does the same. Flat belts: check the crown and the pulley alignment.",
-        "prevent": "Torque bushing screws and recheck after run-in. Lock the motor base after tensioning."
+        "prevent": "Torque bushing screws and recheck after run-in. Lock the motor base after tensioning.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": [
+            "motor"
+          ]
+        }
       },
       "r_flange": {
         "type": "result",
@@ -549,7 +587,13 @@ BW.register("powertrans", {
         "label": "timing belt against the flange: misalignment",
         "text": "Flanges keep the belt on. A belt riding hard against one is being pushed there.",
         "sub": "Straightedge across the pulley faces. Correct the alignment to a quarter of what a V-belt would tolerate. Check the flange for damage that could cut the belt edge.",
-        "prevent": "Laser alignment on timing belt drives."
+        "prevent": "Laser alignment on timing belt drives.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": []
+        }
       },
       "life1": {
         "q": "What does the failed belt look like?",
@@ -587,7 +631,13 @@ BW.register("powertrans", {
         "label": "chronic slip",
         "text": "The belt has been slipping for most of its life.",
         "sub": "Tension by gauge, groove gauge, load check. See the squeal-under-load branch. A glazed belt cannot be recovered by tensioning.",
-        "prevent": "Groove gauge on every belt change. Tension recorded."
+        "prevent": "Groove gauge on every belt change. Tension recorded.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": []
+        }
       },
       "r_life_cracked": {
         "type": "result",
@@ -595,7 +645,13 @@ BW.register("powertrans", {
         "label": "small sheave, heat, or age",
         "text": "The underside is fatiguing from bending or from heat.",
         "sub": "Small sheave diameter against the section minimum. Guard temperature. Belt age from the date code. Switch to a cogged belt if the sheave cannot change.",
-        "prevent": "Cogged belts on small sheave drives. Ventilated guards near heat."
+        "prevent": "Cogged belts on small sheave drives. Ventilated guards near heat.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": []
+        }
       },
       "r_life_oil": {
         "type": "result",
@@ -603,7 +659,17 @@ BW.register("powertrans", {
         "label": "contamination",
         "text": "Oil or chemicals have attacked the rubber.",
         "sub": "Find the source: a leaking seal above the drive, an over-greased bearing purging into the guard, a process spill. Stop it. Clean the sheaves. Oil-resistant compound if the source cannot be eliminated.",
-        "prevent": "Grease quantity on the bearings above the drive. Seal condition on the PM."
+        "prevent": "Grease quantity on the bearings above the drive. Seal condition on the PM.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": [
+            "bearing",
+            "lube",
+            "seal"
+          ]
+        }
       },
       "r_life_overload": {
         "type": "result",
@@ -611,7 +677,13 @@ BW.register("powertrans", {
         "label": "drive undersized for the actual duty",
         "text": "The belt is doing what it was designed to do, for a load it was not designed for.",
         "sub": "Recalculate with the belt catalogue using the actual motor size, hours, and a service factor for the duty. Check whether the load has grown. More belts, larger section, or cogged or narrow belts for more capacity in the same space.",
-        "prevent": "Motor amps trended. Re-rate the drive after any process change."
+        "prevent": "Motor amps trended. Re-rate the drive after any process change.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": []
+        }
       },
       "r_life_set": {
         "type": "result",
@@ -619,7 +691,13 @@ BW.register("powertrans", {
         "label": "unmatched set",
         "text": "One belt of a multi-belt set is carrying all the load.",
         "sub": "The belts are not a matched set, or one was replaced alone, or one is a different length code. Replace all belts with a matched set from one batch. Tension as a set.",
-        "prevent": "Never replace one belt of a set. Stock matched sets for critical drives."
+        "prevent": "Never replace one belt of a set. Stock matched sets for critical drives.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": []
+        }
       },
       "chain1": {
         "q": "What is the chain doing?",
@@ -666,7 +744,16 @@ BW.register("powertrans", {
         "label": "chain not worn: tension, alignment, or lubrication",
         "text": "The chain is within its wear limit. The noise is coming from something else.",
         "sub": "Sag against the 2 to 4 percent target. Straightedge across the sprocket faces. Is the chain lubricated at the pin joint (inside edge, slack strand). A driver sprocket under about 17 teeth has chordal action and is noisy by design. Check the idler bearing if fitted.",
-        "prevent": "Lubrication schedule that actually reaches the pins. Sag checked and recorded on the PM."
+        "prevent": "Lubrication schedule that actually reaches the pins. Sag checked and recorded on the PM.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": [
+            "bearing",
+            "lube"
+          ]
+        }
       },
       "r_chain_wearing": {
         "type": "result",
@@ -674,7 +761,15 @@ BW.register("powertrans", {
         "label": "chain wearing: plan the replacement",
         "text": "The chain is elongating and the pitch no longer matches the sprocket well. It is noisier and riding higher on the teeth.",
         "sub": "Lubricate properly now, which slows the rate. Order chain and check the sprocket teeth for hooking; if they are hooked, order sprockets too. Replace before 3 percent, or 1.5 percent on large sprockets.",
-        "prevent": "Lubrication. Elongation measured and logged on every PM so the replacement is planned, not emergency."
+        "prevent": "Lubrication. Elongation measured and logged on every PM so the replacement is planned, not emergency.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": [
+            "lube"
+          ]
+        }
       },
       "r_chain_replace": {
         "type": "result",
@@ -682,7 +777,15 @@ BW.register("powertrans", {
         "label": "chain past its wear limit",
         "text": "The chain is riding on the tooth tips and will jump the sprocket or break.",
         "sub": "Replace the chain. Inspect the sprockets: hooked teeth mean the sprockets go too, or the new chain will be worn out in months. Check why it got this far: lubrication, PM interval, or the drive is undersized.",
-        "prevent": "Elongation on the PM sheet with the replacement threshold written on it."
+        "prevent": "Elongation on the PM sheet with the replacement threshold written on it.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": [
+            "lube"
+          ]
+        }
       },
       "r_chain_jump": {
         "type": "result",
@@ -690,7 +793,13 @@ BW.register("powertrans", {
         "label": "chain jumping: elongation, slack, or hooked sprockets",
         "text": "The chain is riding up and over the teeth under load.",
         "sub": "Elongation measurement first. Then sag: a chain with too much slack whips and jumps on shock. Sprocket teeth hooked or worn on one face. Misalignment lets the chain climb one side of the sprocket. A chain that jumps is also a chain that can come off and wrap a shaft.",
-        "prevent": "Elongation and sag on the PM. Replace sprockets with the chain when the teeth are worn."
+        "prevent": "Elongation and sag on the PM. Replace sprockets with the chain when the teeth are worn.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": []
+        }
       },
       "r_chain_stiff": {
         "type": "result",
@@ -698,7 +807,15 @@ BW.register("powertrans", {
         "label": "stiff links: corrosion, dirt, or damage",
         "text": "Links that do not articulate freely are corroded, packed with dirt, or have a bent pin.",
         "sub": "Clean and lubricate first. If a link stays stiff, look for a bent pin or a side plate that has been hit. A chain that has been run in a wash-down or a wet environment without lubrication rusts at the pins. Stiff links load the sprocket unevenly and are where the chain will break.",
-        "prevent": "Lubricant that displaces water on wet drives. Stainless or coated chain if the environment cannot be changed."
+        "prevent": "Lubricant that displaces water on wet drives. Stainless or coated chain if the environment cannot be changed.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": [
+            "lube"
+          ]
+        }
       },
       "r_chain_broke": {
         "type": "result",
@@ -706,7 +823,13 @@ BW.register("powertrans", {
         "label": "chain failure: find the link and the load",
         "text": "Chains break at the connecting link, an offset link, a stiff link, or from an overload.",
         "sub": "Find the broken link and see what it was. Connecting link with a spring clip: was the clip on backward or missing. Offset link: it was the weak point by design. A link mid-chain: overload or a crack from a shock, and the drive or the load needs looking at. Inspect the sprockets and shafts for damage from the loose chain.",
-        "prevent": "Press-fit connecting links on critical drives. Even pitch count to eliminate offset links. Overload protection on shock-loaded drives."
+        "prevent": "Press-fit connecting links on critical drives. Even pitch count to eliminate offset links. Overload protection on shock-loaded drives.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": []
+        }
       },
       "r_hotbearing": {
         "type": "result",
@@ -714,7 +837,14 @@ BW.register("powertrans", {
         "label": "over-tension or misalignment loading the bearing",
         "text": "A drive-end bearing running hotter than the opposite end on a belt or chain drive is carrying more radial load than it should.",
         "sub": "Tension by gauge against the table; hand-tight is almost always too tight. Alignment: an angled belt or chain pulls the shaft sideways. Check the sheave or sprocket overhang: a sheave hung far out on a shaft extension multiplies the bending load on the bearing. If tension and alignment are correct, the bearing itself is the problem: Bearing Failure module.",
-        "prevent": "Tension to the low end of the table. Sheave as close to the bearing as the guard allows. Infrared reading on both bearing ends after every tensioning."
+        "prevent": "Tension to the low end of the table. Sheave as close to the bearing as the guard allows. Infrared reading on both bearing ends after every tensioning.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "powertrans"
+          ],
+          "contributing": []
+        }
       },
       "vib1": {
         "q": "What kind of vibration?",
@@ -739,7 +869,13 @@ BW.register("powertrans", {
         "label": "belt defect or splice",
         "text": "A vibration that repeats once per belt revolution (slower than shaft speed) is a defect in the belt: a lump, a thin spot, a bad splice, or a set from being stored bent.",
         "sub": "Mark the belt and watch: the beat coincides with the mark passing. Replace the belt. On a multi-belt drive, an unmatched set gives a beat as belts fight each other.",
-        "prevent": "Store belts flat or on large diameter hangers. Matched sets."
+        "prevent": "Store belts flat or on large diameter hangers. Matched sets.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": []
+        }
       },
       "r_vib_sheave": {
         "type": "result",
@@ -747,7 +883,13 @@ BW.register("powertrans", {
         "label": "sheave or sprocket run-out, unbalance, or looseness",
         "text": "Vibration at shaft speed on a belt drive is the sheave or sprocket itself.",
         "sub": "Dial indicator on the rim: radial and axial run-out. A bored sheave with a bad key fit, a bushing not seated, or a bent shaft all show as run-out. Large sheaves are balanced; a chipped or damaged sheave is out of balance. Check the sheave is tight.",
-        "prevent": "Run-out check on installation. Bushing torque sequence and recheck."
+        "prevent": "Run-out check on installation. Bushing torque sequence and recheck.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": []
+        }
       },
       "r_vib_chordal": {
         "type": "result",
@@ -755,7 +897,13 @@ BW.register("powertrans", {
         "label": "chordal action or elongation",
         "text": "A chain drive pulses by nature as each link engages, and a small driver sprocket makes it worse. Elongation makes it much worse.",
         "sub": "Elongation measurement. Driver tooth count: under 17 teeth is inherently pulsing. If the drive is smooth when new and rough now, it is wear. If it has always been rough, it is the sprocket size, and a larger driver with a larger driven (same ratio) smooths it.",
-        "prevent": "Design drives with 17+ teeth on the driver. Elongation on the PM."
+        "prevent": "Design drives with 17+ teeth on the driver. Elongation on the PM.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": []
+        }
       },
       "r_slip": {
         "type": "result",
@@ -763,7 +911,15 @@ BW.register("powertrans", {
         "label": "slip under load",
         "text": "The driven machine is not getting the speed the ratio says it should, or loses speed when loaded.",
         "sub": "Belt drive: this is slip. Tension by gauge, groove gauge, glazing, oil on the sheave, load growth. A strobe or tachometer on both shafts confirms the actual ratio against the design. Chain drive: chain does not slip; if the driven speed is wrong the ratio was changed (wrong sprocket) or the motor is slowing under load (motor or VFD). Timing belt: ratcheting under load is low tension or an undersized belt.",
-        "prevent": "Log driven shaft speed on the PM. A falling speed is slip starting."
+        "prevent": "Log driven shaft speed on the PM. A falling speed is slip starting.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": [
+            "motor"
+          ]
+        }
       }
     }
   },

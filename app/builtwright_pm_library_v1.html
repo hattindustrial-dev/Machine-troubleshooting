@@ -202,7 +202,7 @@ function exportCSV(){
 render();
 (function(){function go(){var h=location.hash.replace('#','');if(h&&document.getElementById('panel-'+h))switchTab(h);}go();window.addEventListener('hashchange',go);
 // The filter has to be live before the first render, or the list draws unfiltered.
-BWPM.style(); BWPM.refresh(); render(); BWPM.paint();})();
+BWPM.style(); BWPM.refresh(); render(); BWPM.paint(); BWPM.landOnTasks();})();
 </script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
 </body>

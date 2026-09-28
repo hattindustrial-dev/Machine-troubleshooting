@@ -675,7 +675,17 @@ BW.register("hydraulics", {
         "label": "motor, coupling, or drive",
         "text": "No pump, no flow.",
         "sub": "Motor starter, overload, and disconnect. Then lock out and check the pump coupling: a sheared spider or key means the motor runs and the pump does not. A seized pump will trip the motor overload immediately on start.",
-        "prevent": "Add pump coupling inspection to the PM. Log motor amps at each PM; rising amps show a pump beginning to seize."
+        "prevent": "Add pump coupling inspection to the PM. Log motor amps at each PM; rising amps show a pump beginning to seize.",
+        "applies": {
+          "primary": [
+            "alignment",
+            "motor"
+          ],
+          "contributing": [
+            "hydraulics",
+            "pump"
+          ]
+        }
       },
       "r_level_low": {
         "type": "result",
@@ -683,7 +693,15 @@ BW.register("hydraulics", {
         "label": "low reservoir level",
         "text": "The suction is uncovered or nearly so. The pump is cavitating or has lost prime.",
         "sub": "Stop the pump. Find where the oil went: a cylinder that was extended and drained the tank (normal on large cylinders, and the reason the reservoir must be sized for it), an external leak, or a cooler leak. Fill with filtered oil of the correct grade. Bleed the pump inlet before restart.",
-        "prevent": "Fit a low level switch that stops the pump. Check level with all cylinders extended when setting the minimum mark."
+        "prevent": "Fit a low level switch that stops the pump. Check level with all cylinders extended when setting the minimum mark.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": [
+            "pump"
+          ]
+        }
       },
       "nomove2": {
         "q": "Deadhead the system safely and read the pump outlet gauge. Does pressure rise to the relief or compensator setting?",
@@ -728,7 +746,13 @@ BW.register("hydraulics", {
         "label": "spool stuck: contamination or varnish",
         "text": "The spool will not move even by hand. It is seized on particles, varnish, or a burr.",
         "sub": "Pull the valve. Push the spool out and inspect it and the bore under good light. Silt and varnish clean off with solvent. Scoring means the spool and body are a matched set and the valve is replaced. Check the fluid: a spool sticking on dirt means the fluid is dirty, and cleaning one valve fixes one valve.",
-        "prevent": "Particle count the oil. Fit a desiccant breather and upgrade return filtration to hold the target code. Varnish means the oil is oxidised: it is running too hot or is past its life."
+        "prevent": "Particle count the oil. Fit a desiccant breather and upgrade return filtration to hold the target code. Varnish means the oil is oxidised: it is running too hot or is past its life.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": []
+        }
       },
       "r_electrical": {
         "type": "result",
@@ -736,7 +760,13 @@ BW.register("hydraulics", {
         "label": "electrical: coil, connector, or signal",
         "text": "Spool moves freely on the manual override. The valve is fine. The signal is not reaching it or the coil is dead.",
         "sub": "Voltage at the coil connector when commanded. No voltage: work back to the PLC output. Voltage present: check coil resistance against the nameplate; open circuit is a burnt coil. An AC coil that has been buzzing on a slightly sticky spool burns out; if the coil is burnt, check that the spool is actually free.",
-        "prevent": "Use DC coils where possible. Check connector seals and cable strain relief on the PM; most coil failures are water in the connector."
+        "prevent": "Use DC coils where possible. Check connector seals and cable strain relief on the PM; most coil failures are water in the connector.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": []
+        }
       },
       "nomove4": {
         "q": "Gauge at the actuator port with the DCV shifted. Is there pressure at the actuator?",
@@ -760,7 +790,13 @@ BW.register("hydraulics", {
         "label": "restriction or bypass between DCV and actuator",
         "text": "Pressure is correct at the pump and low at the actuator. Something between them is dumping or blocking.",
         "sub": "A flow control closed down, a pilot operated check with a blocked pilot line, a counterbalance set too high, a kinked hose, or a port relief that has failed open and is passing to tank. Temperature survey every component on that line: the one passing fluid is warm.",
-        "prevent": "Record flow control and counterbalance settings on the drawing. Vibration drifts them; a recorded setting is a five-minute fix."
+        "prevent": "Record flow control and counterbalance settings on the drawing. Vibration drifts them; a recorded setting is a five-minute fix.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": []
+        }
       },
       "nomove5": {
         "q": "Is the actuator hot compared to its neighbours, or does it move when unloaded?",
@@ -787,7 +823,14 @@ BW.register("hydraulics", {
         "label": "internal leakage: piston seal or motor wear",
         "text": "Pressure is going straight past the piston seal (or through the motor internals) to the other port and back to tank. Full pressure, no motion, heat.",
         "sub": "Confirm with the piston seal bypass test on the Actuators tab, or a case drain flow test on a motor. Reseal the cylinder (after checking the bore and rod) or replace the motor. Before installing the rebuilt unit, find out what scored the seals: contamination, side load, or heat.",
-        "prevent": "Oil analysis after the rebuild to catch wear early. Check cylinder alignment and mounting. If the seals hardened from heat, fix the heat."
+        "prevent": "Oil analysis after the rebuild to catch wear early. Check cylinder alignment and mounting. If the seals hardened from heat, fix the heat.",
+        "applies": {
+          "primary": [
+            "hydraulics",
+            "seal"
+          ],
+          "contributing": []
+        }
       },
       "r_overloaded": {
         "type": "result",
@@ -795,7 +838,13 @@ BW.register("hydraulics", {
         "label": "load exceeds available force",
         "text": "The actuator is sound. The load is more than it can move at the available pressure.",
         "sub": "Check the relief or compensator setting has not been turned down. Check the load: has something jammed, seized, or been added. Calculate force at the available pressure against the load. If the system was designed marginal, the fix is pressure (if the components allow) or a larger actuator.",
-        "prevent": "Log the relief setting. Check for load changes after any process change."
+        "prevent": "Log the relief setting. Check for load changes after any process change.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": []
+        }
       },
       "r_mechanical": {
         "type": "result",
@@ -803,7 +852,13 @@ BW.register("hydraulics", {
         "label": "mechanical bind or wrong load holding valve",
         "text": "Full pressure, no heat, no motion, even unloaded. The actuator is physically prevented from moving, or a load holding valve is not releasing.",
         "sub": "Lock out, support the load, disconnect the actuator from the machine, and try it. If it moves free, the bind is in the machine. If it still will not move, check the pilot operated check or counterbalance on the return side: a PO check with no pilot signal, or a counterbalance with a blocked pilot, holds the actuator solid. A bent rod binds in the gland.",
-        "prevent": "Confirm pilot lines are connected and unrestricted after any valve work. Cylinder alignment on installation."
+        "prevent": "Confirm pilot lines are connected and unrestricted after any valve work. Cylinder alignment on installation.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": []
+        }
       },
       "heat1": {
         "q": "Is the relief valve hot, or is the pressure gauge sitting at the relief setting while nothing is moving?",
@@ -844,7 +899,15 @@ BW.register("hydraulics", {
         "label": "circuit design: pump lives on the relief",
         "text": "A fixed displacement pump into a closed centre valve has nowhere to go but the relief whenever the actuators are stopped. All the pump power becomes heat.",
         "sub": "This is a design condition, not a fault. Options: change the DCV to a tandem centre if the load holding allows, add an unloading valve, or replace the pump with a pressure compensated unit. In the short term, a bigger cooler is treating the symptom.",
-        "prevent": "Review the drawing on any system that runs hot from new. The problem is on paper."
+        "prevent": "Review the drawing on any system that runs hot from new. The problem is on paper.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": [
+            "pump"
+          ]
+        }
       },
       "r_heat_compensator": {
         "type": "result",
@@ -852,7 +915,15 @@ BW.register("hydraulics", {
         "label": "relief set below the compensator",
         "text": "The pump never destrokes because the relief opens first. Full flow over the relief, all day.",
         "sub": "Read both settings. The relief must be above the compensator by 10 to 15 percent. Someone turned the relief down or the compensator up. Reset the compensator first, then the relief above it, with a gauge, under safe deadhead. If the compensator will not destroke the pump at any setting, the compensator spool is sticking.",
-        "prevent": "Record both settings on the drawing and on a tag at the pump. Adjusters get locked."
+        "prevent": "Record both settings on the drawing and on a tag at the pump. Adjusters get locked.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": [
+            "pump"
+          ]
+        }
       },
       "r_heat_unload": {
         "type": "result",
@@ -860,7 +931,13 @@ BW.register("hydraulics", {
         "label": "unloading valve not unloading",
         "text": "The circuit should unload the pump at rest and is not.",
         "sub": "Unloading valve: check the pilot signal (accumulator pressure or remote), the vent solenoid on a pilot operated relief, and the valve spool for contamination. Tandem centre: check the DCV is actually centring; a spool not returning fully to centre blocks the P to T path.",
-        "prevent": "Check unloading function on the PM: at idle, the pressure gauge should read low. If it reads relief pressure at idle, the unload has failed."
+        "prevent": "Check unloading function on the PM: at idle, the pressure gauge should read low. If it reads relief pressure at idle, the unload has failed.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": []
+        }
       },
       "heat3": {
         "q": "Temperature survey the actuators, valves, pump, and cooler. What is hottest?",
@@ -889,7 +966,15 @@ BW.register("hydraulics", {
         "label": "actuator internal leakage",
         "text": "One actuator is bypassing internally. The leakage across the piston or through the motor is heat.",
         "sub": "Piston seal bypass test or case drain flow test. Reseal or replace. Also check for a port relief on that actuator that has failed open, which shows as the same local heat.",
-        "prevent": "Trend actuator temperatures on the PM with an infrared gun. A cylinder warming up over months is a seal wearing."
+        "prevent": "Trend actuator temperatures on the PM with an infrared gun. A cylinder warming up over months is a seal wearing.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": [
+            "seal"
+          ]
+        }
       },
       "r_heat_pump": {
         "type": "result",
@@ -897,7 +982,14 @@ BW.register("hydraulics", {
         "label": "pump wear",
         "text": "A pump case running hot is a pump leaking internally. Case drain flow test confirms it.",
         "sub": "Compare case drain flow to the manufacturer limit. Rising internal leakage also shows as slow actuators at operating temperature. Plan the replacement, and find out what wore it: contamination, cavitation, or running above rated pressure.",
-        "prevent": "Case drain flow test on the PM. Oil analysis for iron and chrome. Fix inlet conditions if cavitation was the cause."
+        "prevent": "Case drain flow test on the PM. Oil analysis for iron and chrome. Fix inlet conditions if cavitation was the cause.",
+        "applies": {
+          "primary": [
+            "hydraulics",
+            "pump"
+          ],
+          "contributing": []
+        }
       },
       "r_heat_cooler": {
         "type": "result",
@@ -905,7 +997,13 @@ BW.register("hydraulics", {
         "label": "cooler not removing heat",
         "text": "The cooler is fouled, bypassed, or its cooling medium is not flowing.",
         "sub": "Air cooled: fan running, fins clean, airflow not blocked. Water cooled: water valve open, water flow, tube side fouling. Check the cooler bypass check valve is not stuck open. A thermostatic bypass valve stuck in bypass sends all oil around the cooler.",
-        "prevent": "Cooler cleaning on the PM. Delta T across the cooler logged at each PM; a falling delta T is fouling."
+        "prevent": "Cooler cleaning on the PM. Delta T across the cooler logged at each PM; a falling delta T is fouling.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": []
+        }
       },
       "r_heat_system": {
         "type": "result",
@@ -913,7 +1011,13 @@ BW.register("hydraulics", {
         "label": "system-wide: viscosity, level, or ambient",
         "text": "No single hot spot. The whole system is running above its design temperature.",
         "sub": "Wrong viscosity (too thin, internal leakage everywhere), reservoir level low (less thermal mass and less cooling surface), reservoir sized too small for the duty, ambient temperature up, or a duty cycle heavier than the design. Check the oil grade against the spec first.",
-        "prevent": "Confirm oil grade on every top-up. Reservoir level at the correct mark. Consider an offline cooler if the duty has permanently increased."
+        "prevent": "Confirm oil grade on every top-up. Reservoir level at the correct mark. Consider an offline cooler if the duty has permanently increased.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": []
+        }
       },
       "noise1": {
         "q": "What does the pump sound like?",
@@ -939,7 +1043,14 @@ BW.register("hydraulics", {
         "label": "cavitation: inlet starvation",
         "text": "The pump cannot fill. Vapour forms at the inlet and collapses at the outlet, eroding the pump.",
         "sub": "Suction strainer plugged, suction valve partly closed, suction line too small or too long or kinked, oil too cold and thick, pump running too fast for the inlet, or reservoir level low. Also check the breather: a blocked breather pulls a vacuum on the reservoir as the level drops.",
-        "prevent": "Clean the suction strainer on the PM. Reservoir heater for cold starts. Never fit a fine filter on the suction."
+        "prevent": "Clean the suction strainer on the PM. Reservoir heater for cold starts. Never fit a fine filter on the suction.",
+        "applies": {
+          "primary": [
+            "hydraulics",
+            "pump"
+          ],
+          "contributing": []
+        }
       },
       "r_aeration": {
         "type": "result",
@@ -947,7 +1058,16 @@ BW.register("hydraulics", {
         "label": "aeration: air entering the suction side",
         "text": "Air is getting into the oil before the pump. Compressible air makes the pump rattle and the actuators spongy.",
         "sub": "Suction fitting loose or its seal failed (a suction leak admits air rather than leaking oil), reservoir level below the suction pipe, return line discharging above the surface and splashing, or the pump shaft seal drawing air on a pump with a vacuum at the inlet. Foam in the tank is the confirmation.",
-        "prevent": "Suction fittings torqued and sealed. Return line extended below the surface. Level maintained. Anti-foam additive is a symptom fix."
+        "prevent": "Suction fittings torqued and sealed. Return line extended below the surface. Level maintained. Anti-foam additive is a symptom fix.",
+        "applies": {
+          "primary": [
+            "hydraulics",
+            "pump"
+          ],
+          "contributing": [
+            "seal"
+          ]
+        }
       },
       "r_pump_damage": {
         "type": "result",
@@ -955,7 +1075,16 @@ BW.register("hydraulics", {
         "label": "internal pump damage",
         "text": "Knocking or grinding is a mechanical failure inside the pump. Stop it before the debris goes through the system.",
         "sub": "Shut down. Drain the pump case and look for metal. Check the magnetic plug and the pressure filter element. If there is debris, the system must be flushed before the replacement pump is installed or the new pump will fail on the debris from the old one.",
-        "prevent": "Whatever destroyed the pump is still in the system: contamination, cavitation, or misalignment. Find it before restart. Oil analysis after commissioning the replacement."
+        "prevent": "Whatever destroyed the pump is still in the system: contamination, cavitation, or misalignment. Find it before restart. Oil analysis after commissioning the replacement.",
+        "applies": {
+          "primary": [
+            "hydraulics",
+            "pump"
+          ],
+          "contributing": [
+            "alignment"
+          ]
+        }
       },
       "erratic1": {
         "q": "Is the motion spongy (soft, delayed, bouncy) or jerky (stick-slip, chatter, lurching)?",
@@ -976,7 +1105,15 @@ BW.register("hydraulics", {
         "label": "air in the system",
         "text": "Air is compressible. Air in the fluid turns a rigid hydraulic system into a spongy one.",
         "sub": "Bleed the actuators at the highest points with the system running at low pressure. Cycle to the stops several times. Then find where the air came in: suction leak, low level, a line opened for maintenance and not bled, or a cylinder rod seal pulling air on the retract stroke.",
-        "prevent": "Bleed procedure after every maintenance that opens a line. Check suction side for leaks (aeration route above)."
+        "prevent": "Bleed procedure after every maintenance that opens a line. Check suction side for leaks (aeration route above).",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": [
+            "seal"
+          ]
+        }
       },
       "erratic2": {
         "q": "Which component is jerky?",
@@ -1005,7 +1142,15 @@ BW.register("hydraulics", {
         "label": "stick-slip: seals, rod, or flow control",
         "text": "The piston or rod is grabbing and releasing. Common on slow cylinders with worn seals, a scored rod, or a non-compensated flow control at low speed.",
         "sub": "Rod condition and gland lubrication. Seals hardened by heat grab. A meter-in non-compensated flow control at low speed gives poor control; change to pressure compensated meter-out. Check for side load on the rod from misalignment.",
-        "prevent": "Replace flow controls with pressure compensated types on slow, precise applications. Fix mounting alignment."
+        "prevent": "Replace flow controls with pressure compensated types on slow, precise applications. Fix mounting alignment.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": [
+            "seal"
+          ]
+        }
       },
       "r_cb_unstable": {
         "type": "result",
@@ -1013,7 +1158,13 @@ BW.register("hydraulics", {
         "label": "counterbalance instability",
         "text": "The counterbalance is opening and closing as the load descends: setting too low, wrong pilot ratio, or air in the pilot line.",
         "sub": "Support the load. Reset the counterbalance to roughly 1.3 times load-induced pressure per the manual. Bleed the pilot line. If the application has a high load-to-pilot pressure ratio, the valve may need a different pilot ratio. Back-pressure on the return line affects non-vented counterbalance valves.",
-        "prevent": "Record the setting and the load it was set for. Any load change means a recheck."
+        "prevent": "Record the setting and the load it was set for. Any load change means a recheck.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": []
+        }
       },
       "r_prop_erratic": {
         "type": "result",
@@ -1021,7 +1172,13 @@ BW.register("hydraulics", {
         "label": "proportional valve: dither, null, or contamination",
         "text": "A sticky spool, no dither, or a null setting that has drifted.",
         "sub": "Check the amplifier card: dither on, gain and ramp per the setup sheet. Check null with zero command. Particle count the oil; proportional valves need 16/14/11 or better. If the spool is sticky on dirt, cleaning it is temporary until the fluid is cleaned.",
-        "prevent": "Offline filtration to hold the cleanliness target. Record amplifier settings on the drawing."
+        "prevent": "Offline filtration to hold the cleanliness target. Record amplifier settings on the drawing.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": []
+        }
       },
       "r_comp_hunt": {
         "type": "result",
@@ -1029,7 +1186,15 @@ BW.register("hydraulics", {
         "label": "compensator hunting",
         "text": "The pump compensator is oscillating, usually because the relief and compensator settings are too close, or the compensator spool is sticking.",
         "sub": "Separate the settings: compensator at working pressure, relief 10 to 15 percent above. Clean or replace the compensator spool if it sticks. Check for air in the compensator pilot line.",
-        "prevent": "Settings recorded and locked."
+        "prevent": "Settings recorded and locked.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": [
+            "pump"
+          ]
+        }
       },
       "drift1": {
         "q": "Isolate the cylinder (close both port valves or cap both lines) with the load safely supported. Does it still drift?",
@@ -1053,7 +1218,14 @@ BW.register("hydraulics", {
         "label": "piston seal bypass",
         "text": "Fluid is moving from one side of the piston to the other inside the cylinder. Only the cylinder can do that.",
         "sub": "Confirm with the bypass test. Reseal after inspecting the bore for scoring and the rod for damage. On a single acting or gravity-loaded cylinder, also check the rod seal: external leakage past the rod seal drops the load too.",
-        "prevent": "Find what damaged the seal: contamination (particle count), heat (system temperature), or side load (mounting). A new seal in the old conditions fails the same way."
+        "prevent": "Find what damaged the seal: contamination (particle count), heat (system temperature), or side load (mounting). A new seal in the old conditions fails the same way.",
+        "applies": {
+          "primary": [
+            "hydraulics",
+            "seal"
+          ],
+          "contributing": []
+        }
       },
       "drift2": {
         "q": "What holds the load in this circuit?",
@@ -1079,7 +1251,13 @@ BW.register("hydraulics", {
         "label": "PO check not seating",
         "text": "A poppet on a seat should be leak-tight. It is not: contamination on the seat, seat damage, or a pilot signal that is not fully releasing.",
         "sub": "Pull the check and inspect the poppet and seat. A scored seat is replaced. Confirm the pilot line drains fully when the DCV centres; residual pilot pressure holds the check partly open. Check for back-pressure on the pilot drain.",
-        "prevent": "Fluid cleanliness. A PO check seat is one particle away from leaking."
+        "prevent": "Fluid cleanliness. A PO check seat is one particle away from leaking.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": []
+        }
       },
       "r_drift_cb": {
         "type": "result",
@@ -1087,7 +1265,13 @@ BW.register("hydraulics", {
         "label": "counterbalance setting or seat",
         "text": "The counterbalance is set below the load-induced pressure, or its seat is leaking.",
         "sub": "Support the load. Read the load-induced pressure at the cylinder port. Set the counterbalance to about 1.3 times that. If it still creeps, the poppet or seat is damaged.",
-        "prevent": "Record the setting. Recheck after any load change."
+        "prevent": "Record the setting. Recheck after any load change.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": []
+        }
       },
       "r_drift_spool": {
         "type": "result",
@@ -1095,7 +1279,13 @@ BW.register("hydraulics", {
         "label": "no load holding valve: this circuit will always drift",
         "text": "A DCV spool holds a load with a running clearance. It leaks by design. Some drift is inherent.",
         "sub": "If the drift is new or worse than it was, the spool and body are worn and the valve is replaced. If the load must not move, the circuit needs a pilot operated check or counterbalance added. This is a circuit design limitation.",
-        "prevent": "Any load that must hold position gets a poppet-type holding valve. Put it on the drawing."
+        "prevent": "Any load that must hold position gets a poppet-type holding valve. Put it on the drawing.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": []
+        }
       },
       "lowp1": {
         "q": "Deadhead the system safely with a gauge on the pump outlet. What does it read?",
@@ -1137,7 +1327,17 @@ BW.register("hydraulics", {
         "label": "pump rotation or no flow",
         "text": "A pump turning backward pumps nothing and blows its shaft seal. A pump with no flow is not primed, is cavitating badly, or has failed.",
         "sub": "Rotation arrow versus motor rotation. If the motor was replaced or rewired, this is the cause. If rotation is correct: prime the pump by filling the inlet and case, check the suction valve, and listen for cavitation.",
-        "prevent": "Mark rotation on the motor and pump. Verify rotation on every motor change before coupling."
+        "prevent": "Mark rotation on the motor and pump. Verify rotation on every motor change before coupling.",
+        "applies": {
+          "primary": [
+            "hydraulics",
+            "pump"
+          ],
+          "contributing": [
+            "motor",
+            "seal"
+          ]
+        }
       },
       "r_open_to_tank": {
         "type": "result",
@@ -1145,7 +1345,13 @@ BW.register("hydraulics", {
         "label": "flow going straight to tank",
         "text": "The pump is producing flow and something is dumping it to tank before it can build pressure.",
         "sub": "Relief valve stuck open or set to zero: it will be warm. Unloading valve stuck in the unload position. Pilot operated relief with its vent open (vent solenoid failed or wired wrong). DCV with an open or tandem centre when a closed centre was expected. A port relief failed open. Temperature survey: the component passing full flow is warm.",
-        "prevent": "Record relief settings. Check vent solenoid function on the PM."
+        "prevent": "Record relief settings. Check vent solenoid function on the PM.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": []
+        }
       },
       "lowp3": {
         "type": "result",
@@ -1153,7 +1359,14 @@ BW.register("hydraulics", {
         "label": "partial pressure: worn pump or relief leaking",
         "text": "The pump builds some pressure but internal leakage somewhere is limiting it.",
         "sub": "Case drain flow test on the pump: high case drain means the pump cannot build full pressure. Relief valve seat damaged: the relief is passing before its setting, and it is warm. On a compensated pump, the compensator may be set low or sticking. On a load sense pump, a blocked or leaking LS line makes the pump think there is no load.",
-        "prevent": "Case drain trending. Relief seat inspection if it has been chattering. LS line included in any pilot line inspection."
+        "prevent": "Case drain trending. Relief seat inspection if it has been chattering. LS line included in any pilot line inspection.",
+        "applies": {
+          "primary": [
+            "hydraulics",
+            "pump"
+          ],
+          "contributing": []
+        }
       },
       "highp1": {
         "q": "Is the pressure high while an actuator is stalled against a load, or high at rest with nothing moving?",
@@ -1174,7 +1387,13 @@ BW.register("hydraulics", {
         "label": "stalled load: this is what the relief is for",
         "text": "An actuator that reaches the end of stroke or meets an immovable load sends the system to relief pressure. The relief is doing its job.",
         "sub": "The question is why the actuator stalled. Mechanical stop reached (normal if it is the design), jammed load, undersized actuator, or a sequence valve waiting for pressure. If the system spends a lot of its cycle at relief, it is generating heat and wearing the relief seat.",
-        "prevent": "Pressure switch or position feedback to shift the DCV when the stroke completes rather than sitting on the relief."
+        "prevent": "Pressure switch or position feedback to shift the DCV when the stroke completes rather than sitting on the relief.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": []
+        }
       },
       "r_highp_rest": {
         "type": "result",
@@ -1182,7 +1401,13 @@ BW.register("hydraulics", {
         "label": "system not unloading at rest",
         "text": "Pressure at rest should be low on any circuit designed to unload, and at the compensator setting on a compensated system.",
         "sub": "Fixed pump: unloading valve or tandem centre not working (see heat branch). Compensated pump: this is normal if the gauge reads the compensator setting, but the pump should be quiet and cool. If the relief is lifting at rest on a compensated system, the relief is below the compensator.",
-        "prevent": "Idle pressure logged on the PM."
+        "prevent": "Idle pressure logged on the PM.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": []
+        }
       },
       "leak1": {
         "q": "Where is the leak?",
@@ -1216,7 +1441,14 @@ BW.register("hydraulics", {
         "label": "fitting: identify the type before touching it",
         "text": "Depressurise, lock out, verify zero. Then identify the fitting. Different fitting types seal in different ways and are ruined by the wrong fix.",
         "sub": "JIC 37 degree flare: metal to metal on the cone. Overtightening cracks the flare; a leaking JIC usually has a damaged flare and the tube end is replaced. ORFS (O-ring face seal): the o-ring is the seal; replace it, check the face is flat. NPT tapered thread: sealant on the threads, tighten a turn past hand tight, and it can only be reused a couple of times. BSPP with bonded seal: the seal washer is the seal; replace it. SAE straight thread o-ring boss: the o-ring is the seal; do not overtighten.",
-        "prevent": "Standardise fitting types on the machine and stock the seals. Torque to spec rather than to feel."
+        "prevent": "Standardise fitting types on the machine and stock the seals. Torque to spec rather than to feel.",
+        "applies": {
+          "primary": [
+            "hydraulics",
+            "seal"
+          ],
+          "contributing": []
+        }
       },
       "r_leak_hose": {
         "type": "result",
@@ -1224,7 +1456,13 @@ BW.register("hydraulics", {
         "label": "hose failure: replace, do not repair",
         "text": "A leaking hose body is a failed hose. Pinhole leaks in hoses at pressure are injection hazards.",
         "sub": "Depressurise and lock out. Replace with a matched assembly of the correct rating, length, and end fittings. Route it with the correct bend radius, no twist, and clear of heat and abrasion. Then look at why it failed: abrasion (add a sleeve or reroute), heat (reroute or upgrade), age (replace its neighbours of the same age), or pressure spikes (check for shock and add an accumulator or slower shift).",
-        "prevent": "Hose inspection on the PM. Replace hoses on age, not just on failure."
+        "prevent": "Hose inspection on the PM. Replace hoses on age, not just on failure.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": []
+        }
       },
       "r_leak_rod": {
         "type": "result",
@@ -1232,7 +1470,14 @@ BW.register("hydraulics", {
         "label": "rod seal: check the rod first",
         "text": "Oil on the rod is a rod seal or wiper leak. The seal failed for a reason, and the reason is usually the rod.",
         "sub": "Rod scoring, pitting, or bending. A damaged rod is polished or replaced before new seals go in. Then check cylinder mounting alignment (side load) and system temperature (hardened seals). A rod that pulls a film of oil out and does not bring it back is a wiper problem.",
-        "prevent": "Rod protection (boots or covers) on outdoor or dirty applications. Alignment check on mounting."
+        "prevent": "Rod protection (boots or covers) on outdoor or dirty applications. Alignment check on mounting.",
+        "applies": {
+          "primary": [
+            "hydraulics",
+            "seal"
+          ],
+          "contributing": []
+        }
       },
       "r_leak_shaftseal": {
         "type": "result",
@@ -1240,7 +1485,16 @@ BW.register("hydraulics", {
         "label": "shaft seal: case pressure or inlet vacuum",
         "text": "A pump or motor shaft seal leaking usually has a cause upstream of the seal.",
         "sub": "Blocked or restricted case drain pressurises the case and blows the seal. High return back-pressure on a motor without a case drain does the same. A pump with a restricted inlet pulls a vacuum on the seal and draws air (aeration) before it leaks oil. Wrong rotation blows the seal on the first start. Replace the seal after fixing the cause.",
-        "prevent": "Case drain routed separately to tank. Return back-pressure gauge."
+        "prevent": "Case drain routed separately to tank. Return back-pressure gauge.",
+        "applies": {
+          "primary": [
+            "hydraulics",
+            "seal"
+          ],
+          "contributing": [
+            "pump"
+          ]
+        }
       },
       "r_leak_cooler": {
         "type": "result",
@@ -1248,7 +1502,13 @@ BW.register("hydraulics", {
         "label": "cooler leaking water into the oil",
         "text": "Rising reservoir level and milky oil means the water side of the cooler is leaking into the oil side.",
         "sub": "Isolate the cooler and pressure test it. Replace or repair the core. The oil is contaminated with water and needs to be changed or dehydrated. Check every component for corrosion damage if it has been running on wet oil for long.",
-        "prevent": "Cooler water pressure should be kept below oil pressure where the design allows so a leak goes oil-to-water, not water-to-oil. Water content on the oil analysis."
+        "prevent": "Cooler water pressure should be kept below oil pressure where the design allows so a leak goes oil-to-water, not water-to-oil. Water content on the oil analysis.",
+        "applies": {
+          "primary": [
+            "hydraulics"
+          ],
+          "contributing": []
+        }
       }
     }
   },

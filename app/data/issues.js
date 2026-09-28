@@ -10,9 +10,11 @@
     "label": "mechanical check first, then electrical contact",
     "text": "Motor is not running. Start with what you can safely observe.",
     "prevent": "Motor amps and bearing condition logged on the PM. A motor that stops on overload has usually been drawing high current for weeks first.",
-    "primary": [],
+    "primary": [
+      "motor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -25,9 +27,12 @@
     "label": "simple fix",
     "text": "Open the suction valve fully.",
     "prevent": "Suction valve position on the startup checklist. Lock or tag valves that must stay open.",
-    "primary": [],
+    "primary": [
+      "pump",
+      "valve"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -40,9 +45,14 @@
     "label": "open discharge: use caution",
     "text": "Open the discharge valve carefully and verify flow develops.",
     "prevent": "Startup procedure written down: which valve opens when, and why a PD pump never starts against a closed discharge.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "pump",
+      "valve"
+    ],
+    "contributing": [
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -55,9 +65,13 @@
     "label": "correct rotation: electrical contact required",
     "text": "Reverse rotation requires swapping two motor leads. This is electrical work.",
     "prevent": "Rotation verified on every motor change, wiring change, or VFD swap before the coupling goes on. Mark the correct direction on the casing.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "pump"
+    ],
+    "contributing": [
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -70,9 +84,13 @@
     "label": "internal inspection likely needed",
     "text": "Power on, valves correct, rotation correct. Suspect internal pump fault.",
     "prevent": "Find what caused the internal failure: cavitation, dry run, foreign material, or wear. A rebuilt pump in the same conditions fails again.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "pump"
+    ],
+    "contributing": [
+      "bearing"
+    ],
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -85,9 +103,11 @@
     "label": "review system change first",
     "text": "Investigate the change before assuming a pump fault.",
     "prevent": "Any process or piping change gets checked against the pump curve before it is commissioned. Log the operating point.",
-    "primary": [],
+    "primary": [
+      "pump"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -100,9 +120,11 @@
     "label": "clean suction strainer",
     "text": "Isolate and clean the suction strainer, then restore flow and verify performance.",
     "prevent": "Strainer cleaning interval on the PM, with a differential pressure gauge across it so the interval is data, not guesswork.",
-    "primary": [],
+    "primary": [
+      "pump"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -115,9 +137,11 @@
     "label": "internal wear suspected",
     "text": "Low flow with clean strainer and correct system conditions points to internal wear.",
     "prevent": "Wear ring clearance measured and recorded at every overhaul. Trend flow against head at a fixed valve position to catch wear early.",
-    "primary": [],
+    "primary": [
+      "pump"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -130,9 +154,13 @@
     "label": "cavitation indicated",
     "text": "Crackling or gravel-like sound from within the casing is the classic cavitation signature.",
     "prevent": "NPSH margin checked on any suction-side change: level, temperature, strainer, piping. Suction pressure gauge on the PM route.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "pump"
+    ],
+    "contributing": [
+      "valve"
+    ],
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -145,9 +173,13 @@
     "label": "bearing inspection required",
     "text": "Grinding or rumbling from bearing housings indicates bearing damage or inadequate lubrication.",
     "prevent": "Grease quantity and interval on the PM. Alignment after any work. Read the failed bearing before ordering the next one.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing"
+    ],
+    "contributing": [
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -160,9 +192,14 @@
     "label": "check coupling element and packing",
     "text": "Squealing typically comes from a deteriorating coupling element, a dry bearing, or overtightened packing.",
     "prevent": "Coupling element and packing on the PM inspection list. Alignment readings recorded so a shift is visible.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "alignment",
+      "seal"
+    ],
+    "contributing": [
+      "bearing"
+    ],
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -175,9 +212,11 @@
     "label": "motor thermal issue: notify electrical contact",
     "text": "Observe what you can safely: cooling fan clear, burning smell, uniformly hot or one spot?",
     "prevent": "Motor cooling fins and shroud cleaned on the PM. Amps trended. Motors module for the mechanical checks before the handoff.",
-    "primary": [],
+    "primary": [
+      "motor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -190,9 +229,12 @@
     "label": "check for overlubrication first",
     "text": "Hot bearing housings are often caused by too much grease, not too little.",
     "prevent": "Relief plug out during greasing. Quantity by formula. Ultrasonic-assisted greasing on critical pumps.",
-    "primary": [],
+    "primary": [
+      "bearing",
+      "lube"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -205,9 +247,14 @@
     "label": "check for deadheading or loss of flush",
     "text": "Fluid heating in the casing with no flow almost always means the pump is deadheading.",
     "prevent": "Minimum flow protection on centrifugal pumps that can be throttled. Flush plan flow verified on the PM.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "pump",
+      "seal"
+    ],
+    "contributing": [
+      "valve"
+    ],
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -220,9 +267,14 @@
     "label": "vibration: systematic isolation approach",
     "text": "Start with the most common causes and work outward.",
     "prevent": "Baseline vibration reading after every rebuild and alignment. Monthly route with the same points. Vibration Fundamentals module.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "alignment",
+      "pump"
+    ],
+    "contributing": [
+      "bearing"
+    ],
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -235,9 +287,14 @@
     "label": "mechanical seal replacement required",
     "text": "A leaking mechanical seal will not self-correct. The faces are damaged.",
     "prevent": "Read the failed seal faces before installing the new one. Check shaft runout, flush plan, and alignment. Never run it dry, even briefly.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "seal"
+    ],
+    "contributing": [
+      "alignment",
+      "pump"
+    ],
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -250,9 +307,11 @@
     "label": "adjust packing gland",
     "text": "Packing should weep 40 to 60 drops per minute. This is intentional, not a defect.",
     "prevent": "Packing leakage rate (40 to 60 drops per minute) on the PM sheet, so the gland is adjusted on data and not overtightened.",
-    "primary": [],
+    "primary": [
+      "seal"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -265,9 +324,13 @@
     "label": "mechanical slip or contact: isolate by shaft",
     "text": "A consistent interval means something is happening once per revolution of a specific shaft.",
     "prevent": "Independent rotation check after any work on the drive train. Coupling and gearbox on the PM inspection.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "alignment"
+    ],
+    "contributing": [
+      "gearbox"
+    ],
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -280,9 +343,11 @@
     "label": "inspect for debris or intermittent obstruction",
     "text": "Irregular jolts may indicate passing debris, an intermittent obstruction, or a loose component.",
     "prevent": "Suction strainer and any upstream screen on the PM. Look for the source of the debris, not just the debris.",
-    "primary": [],
+    "primary": [
+      "pump"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -295,9 +360,13 @@
     "label": "check rotation: electrical contact required",
     "text": "Reverse rotation on a rotary PD pump reverses the flow direction. Suction and discharge sides swap.",
     "prevent": "Rotation verified before coupling on every motor or wiring change. PD pumps are less forgiving than centrifugal of a wrong-direction start.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "pump"
+    ],
+    "contributing": [
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -310,9 +379,12 @@
     "label": "discharge blockage or relief valve fault",
     "text": "A blocked discharge on a PD pump is a safety emergency. A relief valve continuously lifting means it is doing its job but the cause must be found.",
     "prevent": "Relief valve tested and its setting recorded on the PM. Discharge valve interlocked or tagged so it cannot be closed with the pump running.",
-    "primary": [],
+    "primary": [
+      "pump",
+      "valve"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -325,9 +397,11 @@
     "label": "internal wear: clearances have grown",
     "text": "Gradual flow loss at constant speed in a rotary PD pump is the signature of increasing internal clearances from wear.",
     "prevent": "Clearances measured at overhaul and trended. Fluid cleanliness and viscosity against the pump specification.",
-    "primary": [],
+    "primary": [
+      "pump"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -340,9 +414,11 @@
     "label": "inspect for foreign object or component failure",
     "text": "Sudden flow loss on a rotary PD pump that was running normally suggests a component failure or obstruction.",
     "prevent": "Strainer on the suction. Find the source of the foreign object. Check upstream equipment for missing parts.",
-    "primary": [],
+    "primary": [
+      "pump"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -355,9 +431,11 @@
     "label": "internal contact: shutdown and inspect",
     "text": "Metallic grinding or knocking in a rotary PD pump indicates contact between rotating and stationary components.",
     "prevent": "Fluid lubricity and viscosity against the pump rating. Never run a PD pump dry. Suction conditions verified.",
-    "primary": [],
+    "primary": [
+      "pump"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -370,9 +448,15 @@
     "label": "check shaft seals and bearing lubrication",
     "text": "Squealing on a rotary PD pump is often a shaft seal or a dry bearing.",
     "prevent": "Seal and bearing lubrication on the PM. Alignment recorded.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing",
+      "seal"
+    ],
+    "contributing": [
+      "lube",
+      "pump"
+    ],
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -385,9 +469,13 @@
     "label": "suction condition issue",
     "text": "Cavitation is possible in rotary PD pumps, though less common than in centrifugal pumps.",
     "prevent": "Suction line sizing and NPSH margin reviewed. Viscosity at the actual fluid temperature against the pump limit.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "pump"
+    ],
+    "contributing": [
+      "valve"
+    ],
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -400,9 +488,11 @@
     "label": "check fluid lubrication and internal clearances",
     "text": "Overheating in a rotary PD pump usually means inadequate fluid lubrication of internal surfaces or excessive bypass due to worn clearances.",
     "prevent": "Fluid temperature and viscosity logged. Internal clearances measured at overhaul.",
-    "primary": [],
+    "primary": [
+      "pump"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -415,9 +505,13 @@
     "label": "investigate cause before adjusting relief valve",
     "text": "A relief valve that lifts frequently is telling you that system pressure is regularly reaching the set point.",
     "prevent": "Relief valve setting recorded and locked. Any change to the discharge system reviewed against the relief setting first.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "valve"
+    ],
+    "contributing": [
+      "pump"
+    ],
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -430,9 +524,13 @@
     "label": "inspect seal type and condition",
     "text": "Seal leakage on a rotary PD pump follows similar principles to centrifugal pumps but with some differences.",
     "prevent": "Seal type matched to the fluid and pressure. Read every failed seal.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "seal"
+    ],
+    "contributing": [
+      "pump"
+    ],
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -445,9 +543,12 @@
     "label": "check valve failure suspected",
     "text": "A pump that strokes but produces no flow almost always has a check valve problem.",
     "prevent": "Check valves inspected on the PM interval. Fluid filtration to keep debris off the seats.",
-    "primary": [],
+    "primary": [
+      "pump",
+      "valve"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -460,9 +561,11 @@
     "label": "mechanical drive issue",
     "text": "A reciprocating pump that is not stroking has a mechanical drive failure.",
     "prevent": "Drive train inspection on the PM: coupling, crank, crosshead. Lubrication schedule for the power end.",
-    "primary": [],
+    "primary": [
+      "pump"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -475,9 +578,12 @@
     "label": "check pulsation dampener and check valves",
     "text": "Worse than normal pulsation on a reciprocating pump usually means a failed pulsation dampener or a leaking check valve.",
     "prevent": "Dampener precharge checked and recorded on the PM. Check valves on a replacement interval.",
-    "primary": [],
+    "primary": [
+      "pump",
+      "valve"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -490,9 +596,13 @@
     "label": "inspect check valves, crosshead, and crankshaft bearings",
     "text": "Knocking in a reciprocating pump is often a loose or failed check valve, a worn crosshead, or a worn crankshaft bearing.",
     "prevent": "Power end oil analysis. Check valve inspection interval. Crosshead and crank bearing clearances at overhaul.",
-    "primary": [],
+    "primary": [
+      "bearing",
+      "pump",
+      "valve"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -505,9 +615,12 @@
     "label": "inspect packing and plunger condition",
     "text": "Packing leakage on a high-pressure reciprocating pump is a safety concern, not just a maintenance item.",
     "prevent": "Plunger surface inspected at every packing change. Packing lubrication maintained. Gland adjusted on leak rate, not feel.",
-    "primary": [],
+    "primary": [
+      "pump",
+      "seal"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pumps",
@@ -520,9 +633,11 @@
     "label": "diaphragm failure: shutdown immediately",
     "text": "A failed diaphragm is not an operational condition. Shut down immediately.",
     "prevent": "Diaphragm on a replacement interval based on cycles, not calendar. Leak detection between diaphragms if the pump has it.",
-    "primary": [],
+    "primary": [
+      "pump"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "bearing",
@@ -535,9 +650,12 @@
     "label": "likely overgreasing or cold grease",
     "text": "A squeal that clears on warm-up is usually excess grease being displaced or cold grease reaching operating consistency.",
     "prevent": "Grease quantity by formula, interval by the manufacturer chart for speed and temperature. Grease grade suited to the cold start temperature.",
-    "primary": [],
+    "primary": [
+      "bearing",
+      "lube"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "bearing",
@@ -550,9 +668,13 @@
     "label": "race or rolling element damage",
     "text": "A persistent squeal at operating temperature indicates damaged or dry contact between rolling elements and races.",
     "prevent": "Read the failed bearing: starvation, contamination, or load. Fix that before the new bearing goes in.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing"
+    ],
+    "contributing": [
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "bearing",
@@ -565,9 +687,13 @@
     "label": "contamination during maintenance likely",
     "text": "Rumbling in a recently serviced or new bearing strongly suggests contamination introduced during installation or regreasing.",
     "prevent": "Clean installation: bearing stays sealed until it goes on, heated by induction or oil bath, pressed by the correct race, housing cleaned. Never through the rolling elements.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing"
+    ],
+    "contributing": [
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "bearing",
@@ -580,9 +706,11 @@
     "label": "wear or spalling: plan replacement",
     "text": "Rumbling in a bearing that has been running normally indicates fatigue wear or spalling of the races or rolling elements.",
     "prevent": "Vibration and temperature trended so replacement is planned. Envelope readings catch the next one at stage 1.",
-    "primary": [],
+    "primary": [
+      "bearing"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "bearing",
@@ -595,9 +723,11 @@
     "label": "inspect for brinelling or race damage",
     "text": "Rhythmic clicking or knocking that occurs at a consistent interval tied to shaft rotation points to a discrete defect on a race or rolling element.",
     "prevent": "Hubs installed with heat or a puller, never a hammer. Stored spares rotated periodically. Machines shipped with shafts locked.",
-    "primary": [],
+    "primary": [
+      "bearing"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "bearing",
@@ -610,9 +740,12 @@
     "label": "overgreasing: purge and monitor",
     "text": "Heat after regreasing is the classic overgreasing signature.",
     "prevent": "Relief plug out during greasing. Quantity by G = 0.005 × D × B. Ultrasonic-assisted greasing on critical machines.",
-    "primary": [],
+    "primary": [
+      "bearing",
+      "lube"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "bearing",
@@ -625,9 +758,11 @@
     "label": "bearing failure in progress: plan immediate replacement",
     "text": "Heat combined with increased noise indicates active bearing damage. The failure is progressing.",
     "prevent": "Whatever the failed bearing shows. Alignment, grease quantity, contamination, or a load it was not designed for.",
-    "primary": [],
+    "primary": [
+      "bearing"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "bearing",
@@ -640,9 +775,14 @@
     "label": "check lubrication and alignment",
     "text": "Heat without significant noise is often an early-stage lubrication or misalignment issue.",
     "prevent": "Alignment after any work, with soft foot corrected. Fixing ring on the drive side only. Grease quantity by formula.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing"
+    ],
+    "contributing": [
+      "alignment",
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "bearing",
@@ -655,9 +795,12 @@
     "label": "investigate immediately: bearing or alignment",
     "text": "A recent increase in vibration is a significant indicator. Do not normalize it.",
     "prevent": "Baseline reading after every rebuild. Alignment readings recorded. Route readings monthly.",
-    "primary": [],
+    "primary": [
+      "alignment",
+      "bearing"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "bearing",
@@ -671,8 +814,11 @@
     "text": "Steady-state vibration that has always been present may be acceptable for the machine design, or it may indicate a long-standing alignment or balance issue that has not yet caused a failure.",
     "prevent": "Baseline established and trended. Route with the same points. Vibration Fundamentals module.",
     "primary": [],
-    "contributing": [],
-    "tagged": false
+    "contributing": [
+      "alignment",
+      "bearing"
+    ],
+    "tagged": true
   },
   {
     "module": "bearing",
@@ -685,9 +831,12 @@
     "label": "shutdown immediately: oil starvation",
     "text": "A journal bearing without adequate oil supply will fail within seconds to minutes under load.",
     "prevent": "Oil pressure low alarm and trip on every pressure-fed sleeve bearing machine. Oil level and ring pickup on the PM for splash systems.",
-    "primary": [],
+    "primary": [
+      "bearing",
+      "lube"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "bearing",
@@ -700,9 +849,13 @@
     "label": "check oil viscosity, clearance, and load",
     "text": "Heat with adequate oil supply points to a film breakdown issue rather than starvation.",
     "prevent": "Oil grade against the bearing specification. Clearance measured at overhaul. Load path checked: alignment and pipe strain.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing"
+    ],
+    "contributing": [
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "bearing",
@@ -715,9 +868,13 @@
     "label": "investigate oil system before continuing operation",
     "text": "An oil pressure drop is an emergency condition for a journal bearing system.",
     "prevent": "Oil system on the PM: filter, cooler, pump, pressure, level. Oil analysis on the interval.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "lube"
+    ],
+    "contributing": [
+      "bearing"
+    ],
+    "tagged": true
   },
   {
     "module": "bearing",
@@ -730,9 +887,13 @@
     "label": "oil whirl or whip: check clearance and oil supply",
     "text": "Vibration or instability in a journal bearing is often caused by oil whirl, a condition where the oil film drives the shaft into a self-sustaining orbit.",
     "prevent": "Clearance and oil viscosity within specification. Alignment keeps the load where the bearing needs it.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing"
+    ],
+    "contributing": [
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "bearing",
@@ -745,9 +906,13 @@
     "label": "bearing surface damage: shutdown and inspect",
     "text": "Metal particles in the oil from a journal bearing system mean the bearing surface is being physically removed.",
     "prevent": "Oil analysis trended. Clearance and alignment at overhaul. Find why the film failed before the new bearing goes in.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing"
+    ],
+    "contributing": [
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "alignment",
@@ -762,7 +927,7 @@
     "prevent": "Sag measured on the bar before every job; validity check on every set of readings before a shim is cut.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "alignment",
@@ -775,9 +940,11 @@
     "label": "soft foot",
     "text": "A frame that twists when it is bolted down changes the alignment with every torque.",
     "prevent": "Soft foot on both machines before every alignment. No exceptions.",
-    "primary": [],
+    "primary": [
+      "alignment"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "alignment",
@@ -790,9 +957,13 @@
     "label": "pipe strain",
     "text": "The piping moves the machine when it is connected. It cannot be aligned out.",
     "prevent": "Pipe strain check recorded on every installation and after any piping work.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "alignment"
+    ],
+    "contributing": [
+      "pump"
+    ],
+    "tagged": true
   },
   {
     "module": "alignment",
@@ -807,7 +978,7 @@
     "prevent": "Sign convention and dimensions written on the job sheet before the first reading.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "alignment",
@@ -821,8 +992,10 @@
     "text": "Two sets of readings that disagree mean the setup or the shaft is moving.",
     "prevent": "Repeat the readings until two sets agree before any correction.",
     "primary": [],
-    "contributing": [],
-    "tagged": false
+    "contributing": [
+      "alignment"
+    ],
+    "tagged": true
   },
   {
     "module": "alignment",
@@ -835,9 +1008,11 @@
     "label": "thermal growth",
     "text": "Aligned cold, misaligned hot. The machine grew.",
     "prevent": "Thermal offsets recorded with the alignment on any machine that runs warm.",
-    "primary": [],
+    "primary": [
+      "alignment"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "alignment",
@@ -851,8 +1026,10 @@
     "text": "An alignment that held and then drifted is a base that moved: grout, anchors, voids, or settlement.",
     "prevent": "Commissioning level and alignment record to compare against; anchor torque rechecked.",
     "primary": [],
-    "contributing": [],
-    "tagged": false
+    "contributing": [
+      "alignment"
+    ],
+    "tagged": true
   },
   {
     "module": "alignment",
@@ -865,9 +1042,14 @@
     "label": "coupling absorbing misalignment",
     "text": "A coupling element that wears out early has been doing the alignment's job.",
     "prevent": "Alignment readings recorded so a shift is visible; coupling inspection on the PM.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "alignment"
+    ],
+    "contributing": [
+      "bearing",
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "alignment",
@@ -881,8 +1063,10 @@
     "text": "The bolts are hard against the sides of the foot holes.",
     "prevent": "Hole clearance checked before the base is grouted.",
     "primary": [],
-    "contributing": [],
-    "tagged": false
+    "contributing": [
+      "alignment"
+    ],
+    "tagged": true
   },
   {
     "module": "alignment",
@@ -896,8 +1080,10 @@
     "text": "One machine sits too high or too low for the shim range.",
     "prevent": "Shaft heights checked against the base design before grout.",
     "primary": [],
-    "contributing": [],
-    "tagged": false
+    "contributing": [
+      "alignment"
+    ],
+    "tagged": true
   },
   {
     "module": "seals",
@@ -910,9 +1096,13 @@
     "label": "thermal damage: dry running or lost flush",
     "text": "The faces ran without a liquid film.",
     "prevent": "Flush flow verified on the PM; vent and prime on the startup procedure; minimum flow protection.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "seal"
+    ],
+    "contributing": [
+      "pump"
+    ],
+    "tagged": true
   },
   {
     "module": "seals",
@@ -925,9 +1115,14 @@
     "label": "shaft runout, misalignment, or pipe strain",
     "text": "The shaft is describing an arc through the seal.",
     "prevent": "Runout, alignment, and pipe strain checked before every seal installation and recorded.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "alignment",
+      "seal"
+    ],
+    "contributing": [
+      "bearing"
+    ],
+    "tagged": true
   },
   {
     "module": "seals",
@@ -940,9 +1135,11 @@
     "label": "abrasive or contaminated process fluid",
     "text": "Solids in the seal chamber are grinding the faces.",
     "prevent": "Seal plan selected for the fluid, and the flush maintained.",
-    "primary": [],
+    "primary": [
+      "seal"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "seals",
@@ -955,9 +1152,11 @@
     "label": "installation damage",
     "text": "The seal was damaged going in.",
     "prevent": "Installation procedure followed with the seal in its packaging until the last moment.",
-    "primary": [],
+    "primary": [
+      "seal"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "seals",
@@ -970,9 +1169,11 @@
     "label": "chemical or temperature incompatibility",
     "text": "The elastomers or the faces were wrong for the fluid or the temperature.",
     "prevent": "Seal materials on the equipment record with every fluid the seal sees.",
-    "primary": [],
+    "primary": [
+      "seal"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "seals",
@@ -985,9 +1186,11 @@
     "label": "secondary seal or sleeve leakage",
     "text": "The faces are sealing; the o-rings, the sleeve, or the gland gasket are not.",
     "prevent": "Shaft and sleeve inspected under the o-ring positions; keyways covered on assembly.",
-    "primary": [],
+    "primary": [
+      "seal"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "seals",
@@ -1000,9 +1203,11 @@
     "label": "bolt torque",
     "text": "Extruded outward is under-torque; crushed and pushed inward is over-torque.",
     "prevent": "Torque and pattern on the flange procedure; calibrated wrench.",
-    "primary": [],
+    "primary": [
+      "seal"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "seals",
@@ -1015,9 +1220,11 @@
     "label": "wrong gasket for the service, or reused",
     "text": "A gasket that blew out was not rated for the pressure and temperature, or it had been used before.",
     "prevent": "Gasket specification on the piping line list; gaskets issued by spec, not by size alone.",
-    "primary": [],
+    "primary": [
+      "seal"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "seals",
@@ -1030,9 +1237,11 @@
     "label": "thermal cycling and bolt relaxation",
     "text": "The joint moves as it heats and cools, and the bolts relax.",
     "prevent": "Re-torque after the first thermal cycle on joints that run hot, recorded.",
-    "primary": [],
+    "primary": [
+      "seal"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "seals",
@@ -1045,9 +1254,11 @@
     "label": "flange face condition",
     "text": "A leak at one spot is a defect at that spot: a scratch across the face, a low spot, corrosion, or old gasket residue.",
     "prevent": "Face inspection on every joint before the gasket goes in; faces protected when open.",
-    "primary": [],
+    "primary": [
+      "seal"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "seals",
@@ -1060,9 +1271,11 @@
     "label": "o-ring failure: read the shape",
     "text": "The damage tells you what happened.",
     "prevent": "Chamfers on bores, lubricant on the o-ring (compatible with the fluid), material against the fluid, and a replacement interval on hot service.",
-    "primary": [],
+    "primary": [
+      "seal"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "seals",
@@ -1075,9 +1288,11 @@
     "label": "packing adjustment or condition",
     "text": "Packing is meant to leak 40 to 60 drops per minute. Too much is worn packing or a scored sleeve; a hot gland with no leakage is over-tightened.",
     "prevent": "Leakage rate on the PM sheet; sleeve inspected at every repack.",
-    "primary": [],
+    "primary": [
+      "seal"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "seals",
@@ -1090,9 +1305,13 @@
     "label": "lip seal",
     "text": "A lip seal leaks from a worn or grooved shaft, a nicked lip, a hardened lip, a blocked breather pressurising the housing, or overfill.",
     "prevent": "Breather and level on the PM; wear sleeve on any grooved shaft; lip lubricated and keyway covered on install.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "seal"
+    ],
+    "contributing": [
+      "gearbox"
+    ],
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1105,9 +1324,12 @@
     "label": "overgreasing: purge and monitor",
     "text": "Heat appearing within an hour of regreasing is the classic overgreasing signature.",
     "prevent": "Relief plug out during greasing. Quantity by formula on the PM sheet. Ultrasonic monitoring on critical points.",
-    "primary": [],
+    "primary": [
+      "bearing",
+      "lube"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1120,9 +1342,14 @@
     "label": "investigate root cause: lubrication not the only factor",
     "text": "A bearing that was already hot before relubrication has a problem that lubrication alone will not fix.",
     "prevent": "Alignment, load, and bearing condition on the PM. Temperature trended so a rise is caught before a PM masks it.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing"
+    ],
+    "contributing": [
+      "alignment",
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1135,9 +1362,13 @@
     "label": "wrong lubricant: drain and refill",
     "text": "A change in lubricant type, grade, or brand can cause immediate performance changes.",
     "prevent": "One product per application, labelled at the fill point and on the grease gun. Colour-coded dispensing. Incompatibility chart posted in the lube room.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "lube"
+    ],
+    "contributing": [
+      "bearing"
+    ],
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1150,9 +1381,11 @@
     "label": "check oil level and cooler function",
     "text": "Same lubricant, heat after a change: check level and heat removal.",
     "prevent": "Level checked stopped and settled, on the PM. Cooler delta T logged.",
-    "primary": [],
+    "primary": [
+      "lube"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1165,9 +1398,14 @@
     "label": "overgreasing or seal failure",
     "text": "Grease purging from housing seals is either overgreasing (excess grease finding its way out) or a failed housing seal.",
     "prevent": "Quantity by formula. Seal condition inspected when purge is heavier than usual.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "lube",
+      "seal"
+    ],
+    "contributing": [
+      "bearing"
+    ],
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1180,9 +1418,14 @@
     "label": "identify leak source: seal, joint, or breather",
     "text": "Oil leaking from an enclosed system needs a source identified before it becomes a serious loss.",
     "prevent": "Breather condition on the PM. Level marks visible. Fix the leak, not just the level.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "seal"
+    ],
+    "contributing": [
+      "gearbox",
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1195,9 +1438,11 @@
     "label": "inspect fittings and line connections",
     "text": "Grease leaks in centralized system lines are almost always at fittings, injectors, or line terminations.",
     "prevent": "Fittings and lines on the PM walk. Line routing protected from traffic and vibration.",
-    "primary": [],
+    "primary": [
+      "lube"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1210,9 +1455,15 @@
     "label": "water contamination: change oil and find source",
     "text": "Milky or cloudy oil has water emulsified through it. The lubricant film is severely compromised.",
     "prevent": "Desiccant breather. Cooler pressure tested. Water content on the oil analysis.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "lube"
+    ],
+    "contributing": [
+      "bearing",
+      "gearbox",
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1225,9 +1476,11 @@
     "label": "oxidation or contamination: sample and analyse",
     "text": "Dark oil indicates oxidation, contamination, or both.",
     "prevent": "Operating temperature trended. Oil changed on analysis rather than on the calendar, and never later than the manufacturer interval.",
-    "primary": [],
+    "primary": [
+      "lube"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1240,9 +1493,14 @@
     "label": "air ingestion or incorrect oil",
     "text": "Foamy oil in a reservoir or gearbox has an air ingestion problem or the wrong oil.",
     "prevent": "Suction side sealed. Return below the surface. Correct oil grade on every top-up.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "lube"
+    ],
+    "contributing": [
+      "gearbox",
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1255,9 +1513,13 @@
     "label": "oxidation deposits: flush and investigate root cause",
     "text": "Varnish and sludge deposits indicate the oil has been operating beyond its service life or at excessive temperature.",
     "prevent": "Operating temperature brought down. Oil condition on analysis. Consider a varnish-resistant synthetic if the duty cannot change.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "lube"
+    ],
+    "contributing": [
+      "hydraulics"
+    ],
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1270,9 +1532,11 @@
     "label": "find the blockage: check cycle indicator first",
     "text": "On a progressive system, a single blocked injector or line stops all downstream points from receiving lubricant.",
     "prevent": "Cycle indicator on the PM route. Filter on the reservoir fill. Line routing protected.",
-    "primary": [],
+    "primary": [
+      "lube"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1285,9 +1549,11 @@
     "label": "identify which injectors are not cycling",
     "text": "On a dual-line system each injector is independent, so identify which specific points are not receiving grease.",
     "prevent": "Injector cycling checked on the PM. Reservoir kept clean and filtered.",
-    "primary": [],
+    "primary": [
+      "lube"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1300,9 +1566,13 @@
     "label": "check pump, filter, and pressure",
     "text": "A recirculating oil system with no flow has a pump failure, severe filter blockage, or a major line failure.",
     "prevent": "Pressure, filter differential, and pump condition on the PM. Low pressure alarm and trip.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "lube"
+    ],
+    "contributing": [
+      "pump"
+    ],
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1315,9 +1585,12 @@
     "label": "thermal failure: insufficient lubrication or overgreasing",
     "text": "Overheated bearings show blue or brown heat discolouration of the races and rolling elements.",
     "prevent": "Grease quantity and interval on the PM. Read the failed bearing to confirm which.",
-    "primary": [],
+    "primary": [
+      "bearing",
+      "lube"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1330,9 +1603,14 @@
     "label": "contamination: improve sealing and filtration",
     "text": "Dull, scratched, or grooved races and rolling elements indicate abrasive particle contamination.",
     "prevent": "Sealing upgraded for the environment. Grease and oil filtered at the point of use. Particle count on analysis.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing",
+      "lube"
+    ],
+    "contributing": [
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1345,9 +1623,14 @@
     "label": "water ingress: improve sealing and check lubricant",
     "text": "Rust pitting on bearing races indicates water contamination of the lubricant.",
     "prevent": "Desiccant breather. Sealing suited to wash-down. Water content on analysis.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing",
+      "lube"
+    ],
+    "contributing": [
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1360,9 +1643,12 @@
     "label": "inadequate film at startup or low speed: review lubricant selection",
     "text": "Smearing (smooth polished flat spots) on rolling elements indicates metal-to-metal contact during low-speed or startup conditions where the lubricant film had not fully formed.",
     "prevent": "Lubricant viscosity and grade suited to the startup temperature and speed. Preload correct on lightly loaded bearings.",
-    "primary": [],
+    "primary": [
+      "bearing",
+      "lube"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1375,9 +1661,13 @@
     "label": "contamination ingression: identify source and filter",
     "text": "A high particle count means contamination is entering faster than the filtration can remove it, or the filtration is not working.",
     "prevent": "Breathers, seals, and fill practices reviewed. Filter carts for top-ups. Target cleanliness code set and trended.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "lube"
+    ],
+    "contributing": [
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1390,9 +1680,14 @@
     "label": "elevated wear: investigate component condition",
     "text": "Rising wear metals indicate accelerated wear of specific components. Identify which component based on the element.",
     "prevent": "Sample interval shortened on the affected machine. Ferrography to identify the wear mechanism. Component inspection planned.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "lube"
+    ],
+    "contributing": [
+      "bearing",
+      "gearbox"
+    ],
+    "tagged": true
   },
   {
     "module": "lube",
@@ -1405,9 +1700,11 @@
     "label": "oil degradation: plan change interval and investigate cause",
     "text": "Rising TAN or viscosity change indicates the oil is degrading faster than expected.",
     "prevent": "Change interval reset from the analysis. Operating temperature reviewed if oxidation is early.",
-    "primary": [],
+    "primary": [
+      "lube"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1420,9 +1717,12 @@
     "label": "compressor motor or control fault",
     "text": "Compressor motor not starting: check the electrical supply and control circuit before assuming a mechanical fault.",
     "prevent": "Overload trip logged and cause found before reset. Pressure switch settings recorded.",
-    "primary": [],
+    "primary": [
+      "compressor",
+      "motor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1435,9 +1735,13 @@
     "label": "compressor runs but cannot build pressure",
     "text": "A compressor that runs but cannot build pressure in the receiver has either a major leak pulling pressure out as fast as it is produced, or an internal compressor fault reducing output capacity.",
     "prevent": "Compressor valve plates and rings on the manufacturer interval. Relief valve tested on the PM.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "compressor"
+    ],
+    "contributing": [
+      "pneu"
+    ],
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1450,9 +1754,13 @@
     "label": "compressor short-cycling: undersized system or significant leak",
     "text": "A compressor that cycles too frequently (cuts in and out rapidly) is either undersized for the demand, has a leak consuming air as fast as it is produced, or has an incorrectly set pressure switch differential.",
     "prevent": "Leak survey quarterly. Pressure switch differential recorded. Receiver sized for the actual demand.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "compressor"
+    ],
+    "contributing": [
+      "pneu"
+    ],
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1465,9 +1773,11 @@
     "label": "distribution or isolation issue",
     "text": "Compressor running and receiver pressurised but no pressure at point of use.",
     "prevent": "Isolation valves tagged. FRL filter differential on the PM.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1480,9 +1790,11 @@
     "label": "blocked line or fitting",
     "text": "Air is leaving the valve but not reaching the actuator port.",
     "prevent": "Tubing routed and clamped away from crush and kink. Push-in fittings inserted to the stop. Flow control settings recorded.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1495,9 +1807,11 @@
     "label": "actuator internal fault",
     "text": "Supply pressure correct, valve shifting, air reaching actuator: fault is internal to the actuator.",
     "prevent": "Air quality: dry, filtered, correct lubrication. Rod alignment and side load checked at installation.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1510,9 +1824,13 @@
     "label": "low supply pressure",
     "text": "Low pressure at point of use with the compressor running usually means demand exceeds supply or a distribution issue.",
     "prevent": "Leak survey. Pressure logged at the point of use during the full cycle. Distribution sized for added machines.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "pneu"
+    ],
+    "contributing": [
+      "compressor"
+    ],
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1525,9 +1843,11 @@
     "label": "check flow control on that direction exhaust",
     "text": "One-direction slowness points to an over-restricted exhaust or blocked flow control on the slow stroke.",
     "prevent": "Flow control settings recorded on the drawing. Exhaust silencers on the PM.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1540,9 +1860,11 @@
     "label": "check supply restriction and actuator condition",
     "text": "Slow in both directions with correct pressure suggests inadequate flow or internal actuator friction.",
     "prevent": "Valve Cv and tubing bore checked against the cylinder volume and cycle rate at design. Air quality maintained.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1555,9 +1877,13 @@
     "label": "internal leakage: valve spool or cylinder seal",
     "text": "Slow gradual drift indicates air leaking past a valve spool or cylinder piston seal.",
     "prevent": "Air quality. Valve and cylinder seals on condition. Load holding valve added where drift is unacceptable.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "pneu"
+    ],
+    "contributing": [
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1570,9 +1896,11 @@
     "label": "valve position or pilot signal fault",
     "text": "Movement to a specific position suggests the valve is shifting to one position without a command signal.",
     "prevent": "Solenoid signals verified after any control change. Pilot lines checked on the PM.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1585,9 +1913,11 @@
     "label": "fitting or connection issue",
     "text": "Air leaks at fittings are very common and usually straightforward to resolve.",
     "prevent": "Push-in tubes cut square and inserted to the stop. Fittings replaced on collet wear. Ultrasonic leak survey quarterly.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1600,9 +1930,11 @@
     "label": "valve spool leakage or incorrect valve position",
     "text": "Continuous air from a valve exhaust when the actuator should be stationary indicates internal valve leakage or incorrect valve state.",
     "prevent": "Air quality to keep the spool clean. Control signals verified.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1615,9 +1947,12 @@
     "label": "rod seal replacement required",
     "text": "Air leaking around the cylinder rod indicates the rod seal is worn or damaged.",
     "prevent": "Rod protection and alignment. Guided cylinder where the load applies a moment.",
-    "primary": [],
+    "primary": [
+      "pneu",
+      "seal"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1630,9 +1965,11 @@
     "label": "use ultrasonic detector or soapy water to locate",
     "text": "A leak not located by listening alone requires a systematic search method.",
     "prevent": "Ultrasonic leak survey on a schedule. Leaks tagged and repaired, not just found.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1645,9 +1982,11 @@
     "label": "electrical fault upstream of solenoid",
     "text": "Voltage absent at the solenoid coil means the control signal is not reaching the valve.",
     "prevent": "Connector seals and cable strain relief on the PM. Fuses and interlocks documented.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1660,9 +1999,11 @@
     "label": "contaminated or stuck valve spool",
     "text": "A humming solenoid that cannot fully attract means the valve spool is stuck and the magnetic plunger cannot fully seat.",
     "prevent": "Dryer dewpoint and FRL filter on the PM. Auto drains cycling.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1675,9 +2016,11 @@
     "label": "pilot pressure fault or failed solenoid plunger",
     "text": "Solenoid energised and drawing current but the main valve spool is not shifting. On a pilot-operated valve this means insufficient pilot pressure.",
     "prevent": "Pilot pressure verified at the regulator under load. Pilot lines on the PM.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1690,9 +2033,11 @@
     "label": "sensor wiring or power fault",
     "text": "Sensor not powered, check the wiring before assuming the sensor has failed.",
     "prevent": "Sensor cables routed and clamped clear of the load. Connectors sealed.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1705,9 +2050,11 @@
     "label": "sensor position or detection range issue",
     "text": "Sensor is powered but not detecting at the cylinder end position: most likely a positioning or magnet/target issue.",
     "prevent": "Sensor positions marked after setup. Clamp screws torqued.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1720,9 +2067,11 @@
     "label": "sensor signal not reaching PLC input, wiring or input card fault",
     "text": "Sensor detects (LED on) but the machine does not advance, the signal is not getting to the control system.",
     "prevent": "I/O documentation kept current. Input card fuses in stock.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1735,9 +2084,11 @@
     "label": "cylinder not reaching detection point: pneumatic or mechanical cause",
     "text": "If the cylinder is not physically reaching the sensor detection point, the problem is pneumatic or mechanical, not a sensor fault.",
     "prevent": "Cushion and flow control settings recorded. Cycle timer set with margin for a cold system.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1750,9 +2101,11 @@
     "label": "cushion adjustment required",
     "text": "End-of-stroke impact on a cylinder that has never been adjusted means the cushion needles were never set correctly.",
     "prevent": "Cushion adjustment on the commissioning checklist and after any cylinder change.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1765,9 +2118,11 @@
     "label": "re-adjust cushion for new speed",
     "text": "Increased cycle speed changes the kinetic energy the cushion must absorb. The previous cushion setting is no longer correct.",
     "prevent": "Any speed change followed by a cushion recheck. Shock absorber where the cushion cannot cope.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1780,9 +2135,11 @@
     "label": "set cushions on the new cylinder: factory setting is nominal only",
     "text": "Replacement cylinders are shipped with cushion needles at a nominal (often fully open) factory setting that is not tuned for the application.",
     "prevent": "Cushion setting on the cylinder replacement procedure.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1795,9 +2152,13 @@
     "label": "cushion seal wear or contaminated cushion orifice",
     "text": "Cushioning that has degraded on a machine where nothing obvious changed usually indicates a worn cushion seal or a blocked cushion orifice.",
     "prevent": "Air quality. Cushion seals in the repair kit.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "pneu"
+    ],
+    "contributing": [
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1810,9 +2171,11 @@
     "label": "check air supply consistency and signal logic",
     "text": "Erratic or inconsistent pneumatic cycles have three primary causes: inconsistent air supply pressure, inconsistent control signals, or intermittent mechanical faults.",
     "prevent": "Pressure logged through the cycle. Flow control locknuts tightened and settings recorded. Sensor positions marked.",
-    "primary": [],
+    "primary": [
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "pneu",
@@ -1825,9 +2188,13 @@
     "label": "moisture in system: dryer and drain maintenance required",
     "text": "Water or ice in a pneumatic system indicates the dryer is undersized, failed, or automatic drains are not functioning.",
     "prevent": "Dryer dewpoint on the PM. Auto drains checked to cycle. Desiccant dryer where the system sees freezing temperatures.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "pneu"
+    ],
+    "contributing": [
+      "compressor"
+    ],
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -1840,9 +2207,15 @@
     "label": "motor, coupling, or drive",
     "text": "No pump, no flow.",
     "prevent": "Add pump coupling inspection to the PM. Log motor amps at each PM; rising amps show a pump beginning to seize.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "alignment",
+      "motor"
+    ],
+    "contributing": [
+      "hydraulics",
+      "pump"
+    ],
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -1855,9 +2228,13 @@
     "label": "low reservoir level",
     "text": "The suction is uncovered or nearly so. The pump is cavitating or has lost prime.",
     "prevent": "Fit a low level switch that stops the pump. Check level with all cylinders extended when setting the minimum mark.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "hydraulics"
+    ],
+    "contributing": [
+      "pump"
+    ],
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -1870,9 +2247,11 @@
     "label": "spool stuck: contamination or varnish",
     "text": "The spool will not move even by hand. It is seized on particles, varnish, or a burr.",
     "prevent": "Particle count the oil. Fit a desiccant breather and upgrade return filtration to hold the target code. Varnish means the oil is oxidised: it is running too hot or is past its life.",
-    "primary": [],
+    "primary": [
+      "hydraulics"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -1885,9 +2264,11 @@
     "label": "electrical: coil, connector, or signal",
     "text": "Spool moves freely on the manual override. The valve is fine. The signal is not reaching it or the coil is dead.",
     "prevent": "Use DC coils where possible. Check connector seals and cable strain relief on the PM; most coil failures are water in the connector.",
-    "primary": [],
+    "primary": [
+      "hydraulics"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -1900,9 +2281,11 @@
     "label": "restriction or bypass between DCV and actuator",
     "text": "Pressure is correct at the pump and low at the actuator. Something between them is dumping or blocking.",
     "prevent": "Record flow control and counterbalance settings on the drawing. Vibration drifts them; a recorded setting is a five-minute fix.",
-    "primary": [],
+    "primary": [
+      "hydraulics"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -1915,9 +2298,12 @@
     "label": "internal leakage: piston seal or motor wear",
     "text": "Pressure is going straight past the piston seal (or through the motor internals) to the other port and back to tank. Full pressure, no motion, heat.",
     "prevent": "Oil analysis after the rebuild to catch wear early. Check cylinder alignment and mounting. If the seals hardened from heat, fix the heat.",
-    "primary": [],
+    "primary": [
+      "hydraulics",
+      "seal"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -1930,9 +2316,11 @@
     "label": "load exceeds available force",
     "text": "The actuator is sound. The load is more than it can move at the available pressure.",
     "prevent": "Log the relief setting. Check for load changes after any process change.",
-    "primary": [],
+    "primary": [
+      "hydraulics"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -1945,9 +2333,11 @@
     "label": "mechanical bind or wrong load holding valve",
     "text": "Full pressure, no heat, no motion, even unloaded. The actuator is physically prevented from moving, or a load holding valve is not releasing.",
     "prevent": "Confirm pilot lines are connected and unrestricted after any valve work. Cylinder alignment on installation.",
-    "primary": [],
+    "primary": [
+      "hydraulics"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -1960,9 +2350,13 @@
     "label": "circuit design: pump lives on the relief",
     "text": "A fixed displacement pump into a closed centre valve has nowhere to go but the relief whenever the actuators are stopped. All the pump power becomes heat.",
     "prevent": "Review the drawing on any system that runs hot from new. The problem is on paper.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "hydraulics"
+    ],
+    "contributing": [
+      "pump"
+    ],
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -1975,9 +2369,13 @@
     "label": "relief set below the compensator",
     "text": "The pump never destrokes because the relief opens first. Full flow over the relief, all day.",
     "prevent": "Record both settings on the drawing and on a tag at the pump. Adjusters get locked.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "hydraulics"
+    ],
+    "contributing": [
+      "pump"
+    ],
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -1990,9 +2388,11 @@
     "label": "unloading valve not unloading",
     "text": "The circuit should unload the pump at rest and is not.",
     "prevent": "Check unloading function on the PM: at idle, the pressure gauge should read low. If it reads relief pressure at idle, the unload has failed.",
-    "primary": [],
+    "primary": [
+      "hydraulics"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2005,9 +2405,13 @@
     "label": "actuator internal leakage",
     "text": "One actuator is bypassing internally. The leakage across the piston or through the motor is heat.",
     "prevent": "Trend actuator temperatures on the PM with an infrared gun. A cylinder warming up over months is a seal wearing.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "hydraulics"
+    ],
+    "contributing": [
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2020,9 +2424,12 @@
     "label": "pump wear",
     "text": "A pump case running hot is a pump leaking internally. Case drain flow test confirms it.",
     "prevent": "Case drain flow test on the PM. Oil analysis for iron and chrome. Fix inlet conditions if cavitation was the cause.",
-    "primary": [],
+    "primary": [
+      "hydraulics",
+      "pump"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2035,9 +2442,11 @@
     "label": "cooler not removing heat",
     "text": "The cooler is fouled, bypassed, or its cooling medium is not flowing.",
     "prevent": "Cooler cleaning on the PM. Delta T across the cooler logged at each PM; a falling delta T is fouling.",
-    "primary": [],
+    "primary": [
+      "hydraulics"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2050,9 +2459,11 @@
     "label": "system-wide: viscosity, level, or ambient",
     "text": "No single hot spot. The whole system is running above its design temperature.",
     "prevent": "Confirm oil grade on every top-up. Reservoir level at the correct mark. Consider an offline cooler if the duty has permanently increased.",
-    "primary": [],
+    "primary": [
+      "hydraulics"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2065,9 +2476,12 @@
     "label": "cavitation: inlet starvation",
     "text": "The pump cannot fill. Vapour forms at the inlet and collapses at the outlet, eroding the pump.",
     "prevent": "Clean the suction strainer on the PM. Reservoir heater for cold starts. Never fit a fine filter on the suction.",
-    "primary": [],
+    "primary": [
+      "hydraulics",
+      "pump"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2080,9 +2494,14 @@
     "label": "aeration: air entering the suction side",
     "text": "Air is getting into the oil before the pump. Compressible air makes the pump rattle and the actuators spongy.",
     "prevent": "Suction fittings torqued and sealed. Return line extended below the surface. Level maintained. Anti-foam additive is a symptom fix.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "hydraulics",
+      "pump"
+    ],
+    "contributing": [
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2095,9 +2514,14 @@
     "label": "internal pump damage",
     "text": "Knocking or grinding is a mechanical failure inside the pump. Stop it before the debris goes through the system.",
     "prevent": "Whatever destroyed the pump is still in the system: contamination, cavitation, or misalignment. Find it before restart. Oil analysis after commissioning the replacement.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "hydraulics",
+      "pump"
+    ],
+    "contributing": [
+      "alignment"
+    ],
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2110,9 +2534,13 @@
     "label": "air in the system",
     "text": "Air is compressible. Air in the fluid turns a rigid hydraulic system into a spongy one.",
     "prevent": "Bleed procedure after every maintenance that opens a line. Check suction side for leaks (aeration route above).",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "hydraulics"
+    ],
+    "contributing": [
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2125,9 +2553,13 @@
     "label": "stick-slip: seals, rod, or flow control",
     "text": "The piston or rod is grabbing and releasing. Common on slow cylinders with worn seals, a scored rod, or a non-compensated flow control at low speed.",
     "prevent": "Replace flow controls with pressure compensated types on slow, precise applications. Fix mounting alignment.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "hydraulics"
+    ],
+    "contributing": [
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2140,9 +2572,11 @@
     "label": "counterbalance instability",
     "text": "The counterbalance is opening and closing as the load descends: setting too low, wrong pilot ratio, or air in the pilot line.",
     "prevent": "Record the setting and the load it was set for. Any load change means a recheck.",
-    "primary": [],
+    "primary": [
+      "hydraulics"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2155,9 +2589,11 @@
     "label": "proportional valve: dither, null, or contamination",
     "text": "A sticky spool, no dither, or a null setting that has drifted.",
     "prevent": "Offline filtration to hold the cleanliness target. Record amplifier settings on the drawing.",
-    "primary": [],
+    "primary": [
+      "hydraulics"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2170,9 +2606,13 @@
     "label": "compensator hunting",
     "text": "The pump compensator is oscillating, usually because the relief and compensator settings are too close, or the compensator spool is sticking.",
     "prevent": "Settings recorded and locked.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "hydraulics"
+    ],
+    "contributing": [
+      "pump"
+    ],
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2185,9 +2625,12 @@
     "label": "piston seal bypass",
     "text": "Fluid is moving from one side of the piston to the other inside the cylinder. Only the cylinder can do that.",
     "prevent": "Find what damaged the seal: contamination (particle count), heat (system temperature), or side load (mounting). A new seal in the old conditions fails the same way.",
-    "primary": [],
+    "primary": [
+      "hydraulics",
+      "seal"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2200,9 +2643,11 @@
     "label": "PO check not seating",
     "text": "A poppet on a seat should be leak-tight. It is not: contamination on the seat, seat damage, or a pilot signal that is not fully releasing.",
     "prevent": "Fluid cleanliness. A PO check seat is one particle away from leaking.",
-    "primary": [],
+    "primary": [
+      "hydraulics"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2215,9 +2660,11 @@
     "label": "counterbalance setting or seat",
     "text": "The counterbalance is set below the load-induced pressure, or its seat is leaking.",
     "prevent": "Record the setting. Recheck after any load change.",
-    "primary": [],
+    "primary": [
+      "hydraulics"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2230,9 +2677,11 @@
     "label": "no load holding valve: this circuit will always drift",
     "text": "A DCV spool holds a load with a running clearance. It leaks by design. Some drift is inherent.",
     "prevent": "Any load that must hold position gets a poppet-type holding valve. Put it on the drawing.",
-    "primary": [],
+    "primary": [
+      "hydraulics"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2245,9 +2694,15 @@
     "label": "pump rotation or no flow",
     "text": "A pump turning backward pumps nothing and blows its shaft seal. A pump with no flow is not primed, is cavitating badly, or has failed.",
     "prevent": "Mark rotation on the motor and pump. Verify rotation on every motor change before coupling.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "hydraulics",
+      "pump"
+    ],
+    "contributing": [
+      "motor",
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2260,9 +2715,11 @@
     "label": "flow going straight to tank",
     "text": "The pump is producing flow and something is dumping it to tank before it can build pressure.",
     "prevent": "Record relief settings. Check vent solenoid function on the PM.",
-    "primary": [],
+    "primary": [
+      "hydraulics"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2275,9 +2732,12 @@
     "label": "partial pressure: worn pump or relief leaking",
     "text": "The pump builds some pressure but internal leakage somewhere is limiting it.",
     "prevent": "Case drain trending. Relief seat inspection if it has been chattering. LS line included in any pilot line inspection.",
-    "primary": [],
+    "primary": [
+      "hydraulics",
+      "pump"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2290,9 +2750,11 @@
     "label": "stalled load: this is what the relief is for",
     "text": "An actuator that reaches the end of stroke or meets an immovable load sends the system to relief pressure. The relief is doing its job.",
     "prevent": "Pressure switch or position feedback to shift the DCV when the stroke completes rather than sitting on the relief.",
-    "primary": [],
+    "primary": [
+      "hydraulics"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2305,9 +2767,11 @@
     "label": "system not unloading at rest",
     "text": "Pressure at rest should be low on any circuit designed to unload, and at the compensator setting on a compensated system.",
     "prevent": "Idle pressure logged on the PM.",
-    "primary": [],
+    "primary": [
+      "hydraulics"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2320,9 +2784,12 @@
     "label": "fitting: identify the type before touching it",
     "text": "Depressurise, lock out, verify zero. Then identify the fitting. Different fitting types seal in different ways and are ruined by the wrong fix.",
     "prevent": "Standardise fitting types on the machine and stock the seals. Torque to spec rather than to feel.",
-    "primary": [],
+    "primary": [
+      "hydraulics",
+      "seal"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2335,9 +2802,11 @@
     "label": "hose failure: replace, do not repair",
     "text": "A leaking hose body is a failed hose. Pinhole leaks in hoses at pressure are injection hazards.",
     "prevent": "Hose inspection on the PM. Replace hoses on age, not just on failure.",
-    "primary": [],
+    "primary": [
+      "hydraulics"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2350,9 +2819,12 @@
     "label": "rod seal: check the rod first",
     "text": "Oil on the rod is a rod seal or wiper leak. The seal failed for a reason, and the reason is usually the rod.",
     "prevent": "Rod protection (boots or covers) on outdoor or dirty applications. Alignment check on mounting.",
-    "primary": [],
+    "primary": [
+      "hydraulics",
+      "seal"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2365,9 +2837,14 @@
     "label": "shaft seal: case pressure or inlet vacuum",
     "text": "A pump or motor shaft seal leaking usually has a cause upstream of the seal.",
     "prevent": "Case drain routed separately to tank. Return back-pressure gauge.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "hydraulics",
+      "seal"
+    ],
+    "contributing": [
+      "pump"
+    ],
+    "tagged": true
   },
   {
     "module": "hydraulics",
@@ -2380,9 +2857,11 @@
     "label": "cooler leaking water into the oil",
     "text": "Rising reservoir level and milky oil means the water side of the cooler is leaking into the oil side.",
     "prevent": "Cooler water pressure should be kept below oil pressure where the design allows so a leak goes oil-to-water, not water-to-oil. Water content on the oil analysis.",
-    "primary": [],
+    "primary": [
+      "hydraulics"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2395,9 +2874,11 @@
     "label": "startup slip: inertia exceeds grip",
     "text": "The belt slips while accelerating the load, then grips once it is up to speed.",
     "prevent": "Tension to the table, recheck after run-in. Log startup behaviour on the PM so a change is noticed.",
-    "primary": [],
+    "primary": [
+      "powertrans"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2410,9 +2891,11 @@
     "label": "load slip: tension, groove, or overload",
     "text": "The belt grips unloaded and slips when the load comes on.",
     "prevent": "Groove gauge on every belt change. Track motor amps: rising amps with the same belt slip means the load is growing.",
-    "primary": [],
+    "primary": [
+      "powertrans"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2425,9 +2908,11 @@
     "label": "misalignment: the belt is rubbing one groove wall",
     "text": "A continuous squeal from one sheave is the belt being pushed against the groove wall as it enters.",
     "prevent": "Align after tensioning, every time.",
-    "primary": [],
+    "primary": [
+      "powertrans"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2440,9 +2925,11 @@
     "label": "timing belt over-tensioned or misaligned",
     "text": "A timing belt that howls is usually too tight, or it is being pushed against a flange.",
     "prevent": "Tension by meter, alignment by straightedge, both recorded.",
-    "primary": [],
+    "primary": [
+      "powertrans"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2455,9 +2942,11 @@
     "label": "belt turnover: twist, worn groove, or wrong section",
     "text": "The belt has lost stability in the groove.",
     "prevent": "Alignment in all three planes. Groove gauge. Banded belt where the application cannot be tamed.",
-    "primary": [],
+    "primary": [
+      "powertrans"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2470,9 +2959,13 @@
     "label": "belt walking: misalignment or a loose sheave",
     "text": "The belt is being steered off by an angle between the sheaves.",
     "prevent": "Torque bushing screws and recheck after run-in. Lock the motor base after tensioning.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "powertrans"
+    ],
+    "contributing": [
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2485,9 +2978,11 @@
     "label": "timing belt against the flange: misalignment",
     "text": "Flanges keep the belt on. A belt riding hard against one is being pushed there.",
     "prevent": "Laser alignment on timing belt drives.",
-    "primary": [],
+    "primary": [
+      "powertrans"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2500,9 +2995,11 @@
     "label": "chronic slip",
     "text": "The belt has been slipping for most of its life.",
     "prevent": "Groove gauge on every belt change. Tension recorded.",
-    "primary": [],
+    "primary": [
+      "powertrans"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2515,9 +3012,11 @@
     "label": "small sheave, heat, or age",
     "text": "The underside is fatiguing from bending or from heat.",
     "prevent": "Cogged belts on small sheave drives. Ventilated guards near heat.",
-    "primary": [],
+    "primary": [
+      "powertrans"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2530,9 +3029,15 @@
     "label": "contamination",
     "text": "Oil or chemicals have attacked the rubber.",
     "prevent": "Grease quantity on the bearings above the drive. Seal condition on the PM.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "powertrans"
+    ],
+    "contributing": [
+      "bearing",
+      "lube",
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2545,9 +3050,11 @@
     "label": "drive undersized for the actual duty",
     "text": "The belt is doing what it was designed to do, for a load it was not designed for.",
     "prevent": "Motor amps trended. Re-rate the drive after any process change.",
-    "primary": [],
+    "primary": [
+      "powertrans"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2560,9 +3067,11 @@
     "label": "unmatched set",
     "text": "One belt of a multi-belt set is carrying all the load.",
     "prevent": "Never replace one belt of a set. Stock matched sets for critical drives.",
-    "primary": [],
+    "primary": [
+      "powertrans"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2575,9 +3084,14 @@
     "label": "chain not worn: tension, alignment, or lubrication",
     "text": "The chain is within its wear limit. The noise is coming from something else.",
     "prevent": "Lubrication schedule that actually reaches the pins. Sag checked and recorded on the PM.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "powertrans"
+    ],
+    "contributing": [
+      "bearing",
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2590,9 +3104,13 @@
     "label": "chain wearing: plan the replacement",
     "text": "The chain is elongating and the pitch no longer matches the sprocket well. It is noisier and riding higher on the teeth.",
     "prevent": "Lubrication. Elongation measured and logged on every PM so the replacement is planned, not emergency.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "powertrans"
+    ],
+    "contributing": [
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2605,9 +3123,13 @@
     "label": "chain past its wear limit",
     "text": "The chain is riding on the tooth tips and will jump the sprocket or break.",
     "prevent": "Elongation on the PM sheet with the replacement threshold written on it.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "powertrans"
+    ],
+    "contributing": [
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2620,9 +3142,11 @@
     "label": "chain jumping: elongation, slack, or hooked sprockets",
     "text": "The chain is riding up and over the teeth under load.",
     "prevent": "Elongation and sag on the PM. Replace sprockets with the chain when the teeth are worn.",
-    "primary": [],
+    "primary": [
+      "powertrans"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2635,9 +3159,13 @@
     "label": "stiff links: corrosion, dirt, or damage",
     "text": "Links that do not articulate freely are corroded, packed with dirt, or have a bent pin.",
     "prevent": "Lubricant that displaces water on wet drives. Stainless or coated chain if the environment cannot be changed.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "powertrans"
+    ],
+    "contributing": [
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2650,9 +3178,11 @@
     "label": "chain failure: find the link and the load",
     "text": "Chains break at the connecting link, an offset link, a stiff link, or from an overload.",
     "prevent": "Press-fit connecting links on critical drives. Even pitch count to eliminate offset links. Overload protection on shock-loaded drives.",
-    "primary": [],
+    "primary": [
+      "powertrans"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2665,9 +3195,12 @@
     "label": "over-tension or misalignment loading the bearing",
     "text": "A drive-end bearing running hotter than the opposite end on a belt or chain drive is carrying more radial load than it should.",
     "prevent": "Tension to the low end of the table. Sheave as close to the bearing as the guard allows. Infrared reading on both bearing ends after every tensioning.",
-    "primary": [],
+    "primary": [
+      "bearing",
+      "powertrans"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2680,9 +3213,11 @@
     "label": "belt defect or splice",
     "text": "A vibration that repeats once per belt revolution (slower than shaft speed) is a defect in the belt: a lump, a thin spot, a bad splice, or a set from being stored bent.",
     "prevent": "Store belts flat or on large diameter hangers. Matched sets.",
-    "primary": [],
+    "primary": [
+      "powertrans"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2695,9 +3230,11 @@
     "label": "sheave or sprocket run-out, unbalance, or looseness",
     "text": "Vibration at shaft speed on a belt drive is the sheave or sprocket itself.",
     "prevent": "Run-out check on installation. Bushing torque sequence and recheck.",
-    "primary": [],
+    "primary": [
+      "powertrans"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2710,9 +3247,11 @@
     "label": "chordal action or elongation",
     "text": "A chain drive pulses by nature as each link engages, and a small driver sprocket makes it worse. Elongation makes it much worse.",
     "prevent": "Design drives with 17+ teeth on the driver. Elongation on the PM.",
-    "primary": [],
+    "primary": [
+      "powertrans"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "powertrans",
@@ -2725,9 +3264,13 @@
     "label": "slip under load",
     "text": "The driven machine is not getting the speed the ratio says it should, or loses speed when loaded.",
     "prevent": "Log driven shaft speed on the PM. A falling speed is slip starting.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "powertrans"
+    ],
+    "contributing": [
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -2740,9 +3283,14 @@
     "label": "gear mesh noise: alignment, wear, or backlash",
     "text": "A whine at mesh frequency is the teeth engaging harder or less smoothly than designed.",
     "prevent": "Contact pattern and backlash checked and recorded on every rebuild. Oil level on the PM. Backlash trended.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "gearbox"
+    ],
+    "contributing": [
+      "bearing",
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -2755,9 +3303,12 @@
     "label": "bearing failure",
     "text": "A growl or rumble localised to one bearing housing is that bearing.",
     "prevent": "Bearing setting on reassembly. Oil cleanliness. Input alignment or belt tension if it is the input bearing.",
-    "primary": [],
+    "primary": [
+      "bearing",
+      "gearbox"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -2770,9 +3321,14 @@
     "label": "high speed pinion or input shaft",
     "text": "Once per input revolution is something on the input shaft: a damaged pinion tooth, a bent shaft, a coupling fault, or a bearing with a single defect.",
     "prevent": "Input alignment. Overload protection if a tooth was broken by a jam.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "gearbox"
+    ],
+    "contributing": [
+      "alignment",
+      "bearing"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -2785,9 +3341,13 @@
     "label": "low speed gear or output shaft",
     "text": "Once per output revolution is on the output side: a damaged tooth on the low speed gear, output bearing defect, or the driven load itself.",
     "prevent": "Load control and overload protection. Torque arm and bushing check on the PM for shaft mounts.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "gearbox"
+    ],
+    "contributing": [
+      "bearing"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -2800,9 +3360,13 @@
     "label": "excessive backlash: teeth hammering on reversal",
     "text": "A rattle or clatter each time the load reverses or the drive starts is the teeth crossing the backlash and hitting.",
     "prevent": "Backlash trended on the PM. Oil cleanliness to slow abrasive wear.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "gearbox"
+    ],
+    "contributing": [
+      "bearing"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -2815,9 +3379,12 @@
     "label": "churning: overfilled",
     "text": "Oil above the correct level is being churned by the gears, which is friction, which is heat, and it foams and leaks.",
     "prevent": "Level checked stopped and settled. Level mark visible on the sight glass. Mounting position confirmed against the nameplate.",
-    "primary": [],
+    "primary": [
+      "gearbox",
+      "lube"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -2830,9 +3397,14 @@
     "label": "low oil: gears and upper bearings running dry",
     "text": "Below the correct level, the gears are not dipping deep enough to splash the upper bearings and the mesh is starved.",
     "prevent": "Level on the PM. Fix the leak, not just the level.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "gearbox",
+      "lube"
+    ],
+    "contributing": [
+      "bearing"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -2845,9 +3417,12 @@
     "label": "wrong viscosity or degraded oil",
     "text": "Too thin an oil has a thin film and high internal leakage past the bearings; too thick churns. Old oxidised oil has lost its additives and its viscosity has drifted.",
     "prevent": "Oil grade on the PM sheet and on a tag at the fill plug. Analysis on the interval.",
-    "primary": [],
+    "primary": [
+      "gearbox",
+      "lube"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -2860,9 +3435,14 @@
     "label": "thermal rating exceeded, or a mechanical fault",
     "text": "Correct oil and level, and still hot. Either the box is above its thermal rating, or something inside is generating heat: a bearing, a misaligned gear pair, or a load beyond the mechanical rating.",
     "prevent": "Cooling fan, shaft fan, or an oil cooler if the thermal rating is the limit. Airflow around the box kept clear.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "gearbox"
+    ],
+    "contributing": [
+      "bearing",
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -2875,9 +3455,15 @@
     "label": "bearing running hot",
     "text": "One bearing hotter than its neighbours is failing, over-preloaded, or carrying a load it was not designed for.",
     "prevent": "Bearing setting on reassembly. Input alignment and belt tension by gauge. Overhung load within the nameplate rating.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing",
+      "gearbox"
+    ],
+    "contributing": [
+      "alignment",
+      "powertrans"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -2890,9 +3476,15 @@
     "label": "worm box running above its normal",
     "text": "Worm boxes are hot by nature. Hotter than usual means efficiency has fallen: the oil film is breaking down or the load is up.",
     "prevent": "Correct oil on the tag at the fill plug. Copper trend on oil analysis. Backlash trend.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "gearbox"
+    ],
+    "contributing": [
+      "bearing",
+      "lube",
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -2905,9 +3497,14 @@
     "label": "blocked breather: pressurised case",
     "text": "The case heats up, the air inside expands, and with the breather blocked the pressure pushes oil past every seal.",
     "prevent": "Breather on the PM sheet. Desiccant breather where humidity or dirt is an issue.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "gearbox"
+    ],
+    "contributing": [
+      "lube",
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -2920,9 +3517,14 @@
     "label": "seal: check the shaft and the bearing behind it",
     "text": "Breather clear and level right, and the seal still leaks. The seal has worn, the shaft under it has worn, or the bearing behind it has play and the shaft is running eccentric.",
     "prevent": "Wear sleeve on any shaft with a groove. Fix heat before replacing a hardened seal.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "gearbox",
+      "seal"
+    ],
+    "contributing": [
+      "bearing"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -2935,9 +3537,12 @@
     "label": "gasket or sealant joint",
     "text": "Inspection cover and housing split lines leak from a damaged gasket, a distorted cover, uneven bolt torque, or a pressurised case.",
     "prevent": "Gasket in stock for the box. Torque pattern on the PM sheet.",
-    "primary": [],
+    "primary": [
+      "gearbox",
+      "seal"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -2950,9 +3555,14 @@
     "label": "rebuild: setting, pattern, or alignment",
     "text": "A box that vibrates after a rebuild has a bearing setting, a contact pattern, or an input alignment that was not checked.",
     "prevent": "Rebuild checklist with the settings recorded. Alignment after the box is bolted down.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "gearbox"
+    ],
+    "contributing": [
+      "alignment",
+      "bearing"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -2965,9 +3575,13 @@
     "label": "wear: bearings, teeth, or looseness",
     "text": "Slowly rising vibration is a bearing losing its setting, teeth wearing, or the box working loose on its foundation.",
     "prevent": "Vibration trended on the PM. Backlash trended. Foundation inspected.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "gearbox"
+    ],
+    "contributing": [
+      "bearing"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -2980,9 +3594,14 @@
     "label": "input speed: coupling, alignment, or pinion",
     "text": "Vibration at input speed is the coupling, the input alignment, a bent input shaft, or a damaged pinion.",
     "prevent": "Alignment after any input work. Coupling inspection on the PM.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "alignment",
+      "gearbox"
+    ],
+    "contributing": [
+      "powertrans"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -2995,9 +3614,13 @@
     "label": "mounting, foundation, or torque arm",
     "text": "The box is moving on its mounting.",
     "prevent": "Mounting bolts on the PM. Torque arm bushings replaced on condition.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "gearbox"
+    ],
+    "contributing": [
+      "alignment"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -3010,9 +3633,11 @@
     "label": "normal wear",
     "text": "A small amount of fine ferrous material on the magnetic plug is the gears and bearings wearing normally.",
     "prevent": "Magnetic plug inspected and the amount noted on every oil check.",
-    "primary": [],
+    "primary": [
+      "gearbox"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -3025,9 +3650,14 @@
     "label": "surface fatigue or breakage",
     "text": "Flakes are pitting or spalling; chips are tooth breakage or a bearing race breaking up. Something is coming apart.",
     "prevent": "Whatever caused it: overload, misalignment, lubrication, or contamination. Wear Patterns tab to read the teeth.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "gearbox"
+    ],
+    "contributing": [
+      "bearing",
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -3040,9 +3670,14 @@
     "label": "bronze: worm wheel or bushing",
     "text": "Copper coloured debris on a worm box is the wheel wearing. On any box it can be a bronze bearing cage, a bushing, or a thrust washer.",
     "prevent": "Correct oil for bronze. Copper trended on analysis.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "gearbox"
+    ],
+    "contributing": [
+      "bearing",
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -3055,9 +3690,12 @@
     "label": "bearing cage",
     "text": "Non-magnetic silver flakes are usually a bearing cage (brass, bronze, or pressed steel that has been through the mesh).",
     "prevent": "Bearing condition on the PM. Oil cleanliness.",
-    "primary": [],
+    "primary": [
+      "bearing",
+      "gearbox"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -3070,9 +3708,13 @@
     "label": "broken tooth, sheared key, or stripped gear",
     "text": "Input turning with no output means the drive path is broken inside the box, or the input coupling or key has let go.",
     "prevent": "Overload protection on the drive. Backlash trend would have shown a worm wheel wearing.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "gearbox"
+    ],
+    "contributing": [
+      "alignment"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -3085,9 +3727,13 @@
     "label": "wrong ratio or wrong input speed",
     "text": "The output speed is what the input speed and the ratio make it. If it is wrong, one of those is wrong.",
     "prevent": "Ratio on the PM sheet and on the purchase specification.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "gearbox"
+    ],
+    "contributing": [
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -3100,9 +3746,15 @@
     "label": "load exceeds torque, or a mechanical bind",
     "text": "The box delivers torque up to what the motor gives it times the ratio. If the load is more than that, it stalls. If the box binds, it stalls with the motor pulling high amps.",
     "prevent": "Load sizing with a service factor. Overload protection.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "gearbox"
+    ],
+    "contributing": [
+      "alignment",
+      "bearing",
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "gearbox",
@@ -3115,9 +3767,13 @@
     "label": "backlash increasing",
     "text": "Backlash grows as the teeth wear or as a bearing lets a gear move away from its mate.",
     "prevent": "Backlash measured and recorded on the PM. Oil cleanliness slows abrasive wear. Correct oil for bronze.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "gearbox"
+    ],
+    "contributing": [
+      "bearing"
+    ],
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3130,9 +3786,16 @@
     "label": "bearing running hot",
     "text": "A localised hot spot at one end is that bearing.",
     "prevent": "Grease quantity and relief plug on the PM sheet. Tension and alignment by gauge. Grounding ring on VFD motors.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing"
+    ],
+    "contributing": [
+      "alignment",
+      "lube",
+      "motor",
+      "powertrans"
+    ],
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3145,9 +3808,11 @@
     "label": "cooling blocked",
     "text": "The motor is making normal heat and cannot get rid of it.",
     "prevent": "Fins and shroud on the PM. Ambient temperature logged in summer.",
-    "primary": [],
+    "primary": [
+      "motor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3160,9 +3825,11 @@
     "label": "shaft fan not moving enough air at low speed",
     "text": "A TEFC motor at 30 percent speed on a VFD has a fan at 30 percent speed and a fraction of the airflow.",
     "prevent": "Blower cooled motors on constant torque VFD applications that run slow.",
-    "primary": [],
+    "primary": [
+      "motor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3175,9 +3842,11 @@
     "label": "mechanically clear: hand off",
     "text": "Normal amps, clear cooling, full speed, and still hot. The heat is coming from the electrical side: voltage unbalance, a winding fault developing, or a supply problem.",
     "prevent": "Amps per phase trended. Voltage balance on the electrician's PM.",
-    "primary": [],
+    "primary": [
+      "motor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3190,9 +3859,11 @@
     "label": "winding failure",
     "text": "The smell of burnt insulation means the windings have overheated to failure.",
     "prevent": "The root cause, whichever it was. A rewind without a root cause is a rewind on a schedule.",
-    "primary": [],
+    "primary": [
+      "motor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3205,9 +3876,18 @@
     "label": "the load is the problem",
     "text": "The motor is drawing high amps because the driven machine is hard to turn.",
     "prevent": "Amps trended so a rising load is caught before it trips. Driven machine bearings on the PM.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "compressor",
+      "conveyor",
+      "fan",
+      "gearbox",
+      "pump"
+    ],
+    "contributing": [
+      "bearing",
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3220,9 +3900,12 @@
     "label": "motor bearing failure or rotor rub",
     "text": "A motor that is stiff, rough, or scraping by hand has a failed bearing or the rotor is touching the stator.",
     "prevent": "Bearing condition on the PM (sound, temperature). Soft foot corrected. Grease quantity.",
-    "primary": [],
+    "primary": [
+      "bearing",
+      "motor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3235,9 +3918,15 @@
     "label": "load growth",
     "text": "The driven machine is asking for more than it used to.",
     "prevent": "Amps trended against the process so growth is seen before it trips. Service factor is not a design margin.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "conveyor",
+      "fan",
+      "pump"
+    ],
+    "contributing": [
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3250,9 +3939,15 @@
     "label": "misalignment or belt tension",
     "text": "Misalignment and over-tensioned belts both raise motor current and both heat the DE bearing.",
     "prevent": "Tension and alignment by gauge, recorded. Recheck amps after any drive work.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "alignment",
+      "powertrans"
+    ],
+    "contributing": [
+      "bearing",
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3265,9 +3960,14 @@
     "label": "wrong ratio: driven machine too fast",
     "text": "A larger motor sheave or a smaller driven sheave, or a gearbox with the wrong ratio, runs the driven machine faster than design. Fan and pump power rises with the cube of speed.",
     "prevent": "Ratio on the drawing and the PM sheet. Replacement sheaves by part number.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "gearbox",
+      "powertrans"
+    ],
+    "contributing": [
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3280,9 +3980,11 @@
     "label": "high amps uncoupled: electrical",
     "text": "A motor with no load drawing more than its unloaded current has an electrical problem: low voltage, a winding fault, or a wrong connection (delta instead of star, wrong voltage tap).",
     "prevent": "Nameplate connection diagram followed on every reconnect.",
-    "primary": [],
+    "primary": [
+      "motor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3295,9 +3997,11 @@
     "label": "phase unbalance: electrical",
     "text": "Three phases that do not match is a supply, connection, or winding problem.",
     "prevent": "Electrician's connection check on the PM. Phase monitor on critical motors.",
-    "primary": [],
+    "primary": [
+      "motor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3310,9 +4014,13 @@
     "label": "bearing failing",
     "text": "Grinding or rumbling localised to one housing is that bearing.",
     "prevent": "Whichever cause the failed bearing shows.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing"
+    ],
+    "contributing": [
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3325,9 +4033,12 @@
     "label": "electrical fluting from VFD bearing currents",
     "text": "A fine gravelly hiss at the NDE on a VFD-driven motor, getting louder over weeks, is fluting.",
     "prevent": "Grounding ring or insulated bearing on every VFD motor above a few kilowatts. Inverter duty motors on new installs.",
-    "primary": [],
+    "primary": [
+      "bearing",
+      "motor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3340,9 +4051,13 @@
     "label": "magnetic hum: soft foot or electrical",
     "text": "A hum that vanishes the instant the power is cut is magnetic. The mechanical cause is soft foot distorting the frame and the air gap. The electrical causes are voltage unbalance, single phasing, or a winding fault.",
     "prevent": "Soft foot before every alignment. Phase monitoring on critical motors.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "motor"
+    ],
+    "contributing": [
+      "alignment"
+    ],
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3355,9 +4070,11 @@
     "label": "fan loose, damaged, or hitting the shroud",
     "text": "A rattle at the NDE is the fan.",
     "prevent": "Shroud and fan on the PM.",
-    "primary": [],
+    "primary": [
+      "motor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3370,9 +4087,11 @@
     "label": "VFD carrier frequency whine",
     "text": "A whine or tone from the motor that changes with speed on a VFD is the drive's switching frequency exciting the motor laminations. It is normal to a degree.",
     "prevent": "Drive settings documented. Changes logged.",
-    "primary": [],
+    "primary": [
+      "motor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3385,9 +4104,18 @@
     "label": "coupling, alignment, or the driven machine",
     "text": "The motor is smooth alone. The vibration is coming from the coupling, the alignment, or the driven machine.",
     "prevent": "Alignment after any work on either machine. Coupling on the PM.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "alignment"
+    ],
+    "contributing": [
+      "compressor",
+      "conveyor",
+      "fan",
+      "gearbox",
+      "motor",
+      "pump"
+    ],
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3400,9 +4128,12 @@
     "label": "soft foot",
     "text": "The frame is twisted by the base.",
     "prevent": "Soft foot before every alignment, no exceptions.",
-    "primary": [],
+    "primary": [
+      "alignment",
+      "motor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3415,9 +4146,13 @@
     "label": "unbalance: fan, shaft, or coupling hub",
     "text": "Vibration at running speed on a motor running solo is unbalance or a bent shaft.",
     "prevent": "Fan cleaned on the PM. Hubs balanced with the coupling on high speed drives.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "motor"
+    ],
+    "contributing": [
+      "alignment"
+    ],
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3430,9 +4165,11 @@
     "label": "looseness",
     "text": "Foot bolts, base bolts, or the base itself.",
     "prevent": "Fastener torque on the PM. Base condition inspected.",
-    "primary": [],
+    "primary": [
+      "motor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3445,9 +4182,11 @@
     "label": "mechanically clear: will not start is electrical",
     "text": "Both shafts turn freely and the motor will not start. Supply, control circuit, overload, contactor, drive fault, or windings.",
     "prevent": "Nothing mechanical to prevent here. A drive fault log is the electrician's first stop.",
-    "primary": [],
+    "primary": [
+      "motor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3460,9 +4199,14 @@
     "label": "over-greasing",
     "text": "Too much grease, or greased with the relief plug in.",
     "prevent": "Quantity and relief plug on the PM sheet. Ultrasonic-assisted greasing on critical motors.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing",
+      "lube"
+    ],
+    "contributing": [
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3475,9 +4219,14 @@
     "label": "starvation",
     "text": "The bearing ran dry.",
     "prevent": "Interval on the PM. Fittings checked to pass grease.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing",
+      "lube"
+    ],
+    "contributing": [
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3490,9 +4239,14 @@
     "label": "brinelling: impact",
     "text": "Dents in the race at the ball spacing are from a hammer blow, usually on the coupling hub or the shaft end, or from the motor being dropped.",
     "prevent": "Hub installation procedure. Rotate stored spare motors periodically.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing"
+    ],
+    "contributing": [
+      "alignment",
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3505,9 +4259,15 @@
     "label": "contamination or moisture",
     "text": "Scoring is dirt; rust is water.",
     "prevent": "Correct enclosure for the environment. Bearing seals on regreasable motors.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing"
+    ],
+    "contributing": [
+      "lube",
+      "motor",
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3520,9 +4280,15 @@
     "label": "overloaded bearing: belt, alignment, or overhung load",
     "text": "A bearing that wore out fast with no other signature was carrying more load than it was rated for.",
     "prevent": "Belt tension and alignment by gauge. Sheave close to the bearing. Motor selected for the load type.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing"
+    ],
+    "contributing": [
+      "alignment",
+      "motor",
+      "powertrans"
+    ],
+    "tagged": true
   },
   {
     "module": "motors",
@@ -3535,9 +4301,15 @@
     "label": "grease where it should not be",
     "text": "Grease at the shaft, through the shroud, or on the windings has come from an over-greased bearing. Oil at the shaft on a sleeve bearing motor is a seal or a level.",
     "prevent": "Grease quantity and relief plug on the PM sheet.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "lube",
+      "motor"
+    ],
+    "contributing": [
+      "bearing",
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "vibration",
@@ -3550,9 +4322,13 @@
     "label": "developing fault at that bearing: get a spectrum",
     "text": "A slow rise localised to one bearing is a bearing or a gear on that shaft wearing.",
     "prevent": "Envelope readings on every bearing point on the route, so the next one is caught at stage 1 instead of stage 3.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing"
+    ],
+    "contributing": [
+      "gearbox"
+    ],
+    "tagged": true
   },
   {
     "module": "vibration",
@@ -3566,8 +4342,11 @@
     "text": "A step change in vibration has a step change behind it.",
     "prevent": "Baseline reading after every rebuild, before the machine goes back to production.",
     "primary": [],
-    "contributing": [],
-    "tagged": false
+    "contributing": [
+      "alignment",
+      "powertrans"
+    ],
+    "tagged": true
   },
   {
     "module": "vibration",
@@ -3582,7 +4361,7 @@
     "prevent": "Base inspection on the PM. Bump test after any structural change.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "vibration",
@@ -3597,7 +4376,7 @@
     "prevent": "Paint dots at every point. Load and speed noted with every reading.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "vibration",
@@ -3610,9 +4389,15 @@
     "label": "1x dominant: unbalance, bent shaft, eccentricity, or a resonance amplifying any of them",
     "text": "One clean peak at running speed, highest in the radial direction, is unbalance until something says otherwise.",
     "prevent": "Rotor cleaning on the PM for fans and mixers. Balance after any blade or impeller work. Baseline after balancing.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "fan"
+    ],
+    "contributing": [
+      "alignment",
+      "powertrans",
+      "pump"
+    ],
+    "tagged": true
   },
   {
     "module": "vibration",
@@ -3625,9 +4410,11 @@
     "label": "2x radial or 1x axial: misalignment",
     "text": "A 2x greater than 1x, or a 1x that is highest in the axial direction, at the coupling-end bearings of both machines, is misalignment.",
     "prevent": "Alignment after any work on either machine, with soft foot corrected, readings recorded, and a baseline vibration reading after.",
-    "primary": [],
+    "primary": [
+      "alignment"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "vibration",
@@ -3640,9 +4427,12 @@
     "label": "harmonic series: looseness or severe misalignment",
     "text": "Many peaks at 1x, 2x, 3x, 4x and beyond mean something is hitting its limits every revolution.",
     "prevent": "Fastener torque on the PM. Bearing fits checked on every replacement.",
-    "primary": [],
+    "primary": [
+      "alignment",
+      "bearing"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "vibration",
@@ -3655,9 +4445,14 @@
     "label": "oil whirl",
     "text": "Sub-synchronous at just under half speed on a sleeve bearing is oil whirl. It is unstable and it destroys bearings.",
     "prevent": "Bearing clearance and oil condition on the PM for sleeve bearing machines. Alignment to keep the load where the bearing wants it.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing"
+    ],
+    "contributing": [
+      "alignment",
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "vibration",
@@ -3670,9 +4465,14 @@
     "label": "half-order harmonics: rotating looseness",
     "text": "Peaks at 0.5x, 1.5x, 2.5x with the integer harmonics mean a rotating part is loose enough to move in two different ways each revolution.",
     "prevent": "Housing and shaft fits measured on every bearing change.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing"
+    ],
+    "contributing": [
+      "fan",
+      "pump"
+    ],
+    "tagged": true
   },
   {
     "module": "vibration",
@@ -3685,9 +4485,11 @@
     "label": "belt drive problem",
     "text": "Belt frequency (below the speed of either sheave) and its harmonics mean the belt itself is the source.",
     "prevent": "Belt frequency calculated and put in the database. Matched sets. Tension by gauge.",
-    "primary": [],
+    "primary": [
+      "powertrans"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "vibration",
@@ -3700,9 +4502,13 @@
     "label": "cage frequency: bearing cage or advanced wear",
     "text": "A peak at the fundamental train frequency (roughly 0.4x) on a rolling element bearing is the cage.",
     "prevent": "Correct grease quantity. Bearing selected for the load; a lightly loaded large bearing skids.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing"
+    ],
+    "contributing": [
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "vibration",
@@ -3715,9 +4521,11 @@
     "label": "non-synchronous: rolling element bearing",
     "text": "A peak that is not a whole multiple of running speed, in the 3x to 15x range or higher, is a bearing defect frequency until proven otherwise.",
     "prevent": "Bearing numbers in the database. Envelope readings on the route. Read the failed bearing to find the cause.",
-    "primary": [],
+    "primary": [
+      "bearing"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "vibration",
@@ -3730,9 +4538,11 @@
     "label": "gear problem on the shaft matching the sideband spacing",
     "text": "Gear mesh with sidebands at one shaft's speed points at the gear on that shaft.",
     "prevent": "Tooth counts in the database. GMF band alarm. Oil analysis for iron alongside the vibration trend.",
-    "primary": [],
+    "primary": [
+      "gearbox"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "vibration",
@@ -3745,9 +4555,11 @@
     "label": "rotor bar problem: electrical handoff",
     "text": "Pole pass sidebands (slip times poles, a few Hz apart) on 1x or on 120 Hz are broken or cracked rotor bars, or a rotor with high resistance joints.",
     "prevent": "Starts per hour within the motor rating. Motor current signature analysis on critical motors.",
-    "primary": [],
+    "primary": [
+      "motor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "vibration",
@@ -3760,9 +4572,13 @@
     "label": "broadband: cavitation, turbulence, rubbing, or a bearing in stage 4",
     "text": "A raised, ragged floor without discrete peaks is random energy.",
     "prevent": "Depends on which: NPSH margin, bearing route, inlet conditions.",
-    "primary": [],
+    "primary": [
+      "bearing",
+      "fan",
+      "pump"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "vibration",
@@ -3775,9 +4591,14 @@
     "label": "120 Hz: electrical, or soft foot pretending to be",
     "text": "Twice line frequency is the magnetic force frequency on any AC motor. Some is normal. High, or new, means the air gap is uneven or the supply is unbalanced.",
     "prevent": "Soft foot before every alignment. Phase monitoring on critical motors.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "motor"
+    ],
+    "contributing": [
+      "alignment",
+      "bearing"
+    ],
+    "tagged": true
   },
   {
     "module": "installation",
@@ -3790,9 +4611,13 @@
     "label": "pipe strain",
     "text": "The piping is applying a force to the casing through the flange. Every alignment is done against that force and the force wins.",
     "prevent": "Pipe strain check on every installation and every time piping is disturbed, with readings recorded.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "alignment"
+    ],
+    "contributing": [
+      "pump"
+    ],
+    "tagged": true
   },
   {
     "module": "installation",
@@ -3806,8 +4631,10 @@
     "text": "The plate moves when an anchor is loosened: the anchors are pulling the plate down to the foundation against a void, a high spot, or a warp. The plate is spring-loaded, and it flexes under running load.",
     "prevent": "Anchors hand tight until grout cure. Grout before torque, every time.",
     "primary": [],
-    "contributing": [],
-    "tagged": false
+    "contributing": [
+      "alignment"
+    ],
+    "tagged": true
   },
   {
     "module": "installation",
@@ -3820,9 +4647,11 @@
     "label": "thermal growth not compensated",
     "text": "A machine aligned cold runs misaligned hot. Every shutdown and restart, it is misaligned twice.",
     "prevent": "Thermal offsets recorded with the alignment for any machine over about 60°C casing temperature.",
-    "primary": [],
+    "primary": [
+      "alignment"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "installation",
@@ -3836,8 +4665,10 @@
     "text": "Piping, plate, and thermal growth cleared, and it still walks. The foundation itself is moving.",
     "prevent": "Foundation designed for the soil and the load. Isolation joint. Commissioning level record to compare against.",
     "primary": [],
-    "contributing": [],
-    "tagged": false
+    "contributing": [
+      "alignment"
+    ],
+    "tagged": true
   },
   {
     "module": "installation",
@@ -3850,9 +4681,11 @@
     "label": "soft foot that returns: the base, not the foot",
     "text": "Soft foot that was corrected and came back is a base that moves: a void under the pad, a cracked pad, grout crumbling under one corner, or the plate flexing on an anchor that has loosened.",
     "prevent": "Grout without voids. Anchor torque rechecked after the first week. Shim stacks of four or fewer.",
-    "primary": [],
+    "primary": [
+      "alignment"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "installation",
@@ -3867,7 +4700,7 @@
     "prevent": "Grouted or epoxy-filled baseplates on anything variable speed. Bump test at commissioning.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "installation",
@@ -3882,7 +4715,7 @@
     "prevent": "Torque recorded and rechecked. Grout sounded at commissioning.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "installation",
@@ -3897,7 +4730,7 @@
     "prevent": "Foundation designed for the machine, with an isolation joint, before the pour.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "installation",
@@ -3912,7 +4745,7 @@
     "prevent": "Epoxy grout in oily service. Drip trays. Mix ratio and vent sequence followed and recorded.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "installation",
@@ -3927,7 +4760,7 @@
     "prevent": "Adhesive or cast-in anchors under machinery. Expansion anchors for brackets.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "installation",
@@ -3942,7 +4775,7 @@
     "prevent": "Sleeved anchors with 10 diameters of stretch on vibrating machinery.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "installation",
@@ -3957,7 +4790,7 @@
     "prevent": "Edge distance and embedment per specification at the design stage.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "installation",
@@ -3972,7 +4805,7 @@
     "prevent": "Vent holes at every bay; pour from one side; watch every vent. Sound the plate at commissioning.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "installation",
@@ -3986,8 +4819,10 @@
     "text": "The foot bolts are hard against the sides of the holes; the machine cannot move sideways to align.",
     "prevent": "Hole pattern and clearance checked against the machine before the plate is grouted.",
     "primary": [],
-    "contributing": [],
-    "tagged": false
+    "contributing": [
+      "alignment"
+    ],
+    "tagged": true
   },
   {
     "module": "installation",
@@ -4001,8 +4836,10 @@
     "text": "One machine sits too high or too low relative to the other for the shim range.",
     "prevent": "Shaft height difference checked at the plate design and again before grout.",
     "primary": [],
-    "contributing": [],
-    "tagged": false
+    "contributing": [
+      "alignment"
+    ],
+    "tagged": true
   },
   {
     "module": "installation",
@@ -4015,9 +4852,11 @@
     "label": "soft foot on a new machine",
     "text": "Readings that change when the feet are torqued is the definition of soft foot.",
     "prevent": "Soft foot before alignment, no exceptions.",
-    "primary": [],
+    "primary": [
+      "alignment"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "safeguarding",
@@ -4030,9 +4869,11 @@
     "label": "guard designed without maintenance access",
     "text": "The task is legitimate; the guard made it impossible with the guard on.",
     "prevent": "Guard design reviewed against the PM task list before fabrication. Every guard has a way to do the routine tasks through it.",
-    "primary": [],
+    "primary": [
+      "guard"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "safeguarding",
@@ -4045,9 +4886,11 @@
     "label": "no visibility",
     "text": "The operator needs to watch the process and the guard blocks the view.",
     "prevent": "Sight lines identified in the hazard walk.",
-    "primary": [],
+    "primary": [
+      "guard"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "safeguarding",
@@ -4060,9 +4903,11 @@
     "label": "damaged or obsolete guard",
     "text": "The guard was hit, bent, or no longer fits after a modification, so it was set aside.",
     "prevent": "Machine modifications go through a change review that includes guarding.",
-    "primary": [],
+    "primary": [
+      "guard"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "safeguarding",
@@ -4075,9 +4920,11 @@
     "label": "unknown reason: treat as a systemic finding",
     "text": "A guard off with no known reason means guards are coming off routinely and nobody is noticing.",
     "prevent": "Guard inspection on every PM and every shift start. Guards painted a single plant colour.",
-    "primary": [],
+    "primary": [
+      "guard"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "safeguarding",
@@ -4090,9 +4937,11 @@
     "label": "design a mode for the task",
     "text": "A task that needs motion with the guard open needs a designed reduced-risk mode, not a jumper.",
     "prevent": "Every task that needs guard-open motion identified in the risk assessment before the machine is commissioned.",
-    "primary": [],
+    "primary": [
+      "guard"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "safeguarding",
@@ -4105,9 +4954,11 @@
     "label": "safeguard failed, bypassed to keep running",
     "text": "The machine ran unguarded because the safeguard broke and the fix was slower than a jumper.",
     "prevent": "Critical spares for safety devices. A written rule, backed by management, that a failed safeguard stops the machine.",
-    "primary": [],
+    "primary": [
+      "guard"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "safeguarding",
@@ -4120,9 +4971,11 @@
     "label": "optical device: alignment, contamination, or field configuration",
     "text": "Curtains and scanners trip on what they see, and they see dust, mist, and a forklift crossing the warning field.",
     "prevent": "Optical safety devices on the PM: clean, aligned, fields reviewed after any layout change.",
-    "primary": [],
+    "primary": [
+      "guard"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "safeguarding",
@@ -4135,9 +4988,11 @@
     "label": "interlock mechanics",
     "text": "A door that vibrates open a millimetre, an actuator that does not fully enter the switch, or a worn hinge switch trips the interlock intermittently.",
     "prevent": "Interlock switch and door mechanics on the PM.",
-    "primary": [],
+    "primary": [
+      "guard"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "safeguarding",
@@ -4150,9 +5005,11 @@
     "label": "safety circuit fault: diagnose, do not reset",
     "text": "Random trips with no visible cause are the safety relay or safety PLC detecting a fault: a channel disagreement, a feedback fault, a wiring intermittent.",
     "prevent": "Safety circuit diagnostics reviewed on every trip, and logged.",
-    "primary": [],
+    "primary": [
+      "guard"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "safeguarding",
@@ -4165,9 +5022,11 @@
     "label": "e-stop function fault",
     "text": "An e-stop that does not stop, stops only part of the machine, or restarts the machine on reset is a safety circuit fault.",
     "prevent": "E-stop test on the PM and after any electrical work. Coverage checked in every PSR.",
-    "primary": [],
+    "primary": [
+      "guard"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "safeguarding",
@@ -4180,9 +5039,11 @@
     "label": "PSR likely required: circumstance 7 (protective elements)",
     "text": "A new or relocated machine whose guarding is what protects the worker falls under the machine guarding circumstance in the section 7 table.",
     "prevent": "PSR requirement checked at the purchase and planning stage, not the day before startup.",
-    "primary": [],
+    "primary": [
+      "guard"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "safeguarding",
@@ -4195,9 +5056,11 @@
     "label": "modification to protective elements triggers a review",
     "text": "Changing the guards, the interlocks, the safety controls, or the process the machine runs can require a new PSR even if one was done originally.",
     "prevent": "Change control on machines includes a PSR trigger check.",
-    "primary": [],
+    "primary": [
+      "guard"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "safeguarding",
@@ -4212,7 +5075,7 @@
     "prevent": "Rack changes (beam levels, uprights, loads) go through the same review as machine changes.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "safeguarding",
@@ -4225,9 +5088,11 @@
     "label": "no change, no new review",
     "text": "An unchanged machine with an existing PSR does not need a new one.",
     "prevent": "PSR reports filed with the equipment record and referenced in the change control process.",
-    "primary": [],
+    "primary": [
+      "guard"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "safeguarding",
@@ -4240,9 +5105,11 @@
     "label": "measure the opening and the distance",
     "text": "An opening is compliant if the distance from it to the nearest hazard meets the table for that opening size.",
     "prevent": "Opening and distance measured and recorded on every guard at commissioning.",
-    "primary": [],
+    "primary": [
+      "guard"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "conveyors",
@@ -4255,9 +5122,11 @@
     "label": "skewed pulley",
     "text": "A pulley out of square steers the belt at that point every revolution.",
     "prevent": "Pulley squareness checked with a tape on the PM. Screw take-up adjusted equally, and the reading recorded on both sides.",
-    "primary": [],
+    "primary": [
+      "conveyor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "conveyors",
@@ -4270,9 +5139,11 @@
     "label": "structure or idler frame misalignment",
     "text": "The belt is following the frame, and the frame is not straight.",
     "prevent": "Centreline string check after any structural work or impact. Frames bolted, not wedged.",
-    "primary": [],
+    "primary": [
+      "conveyor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "conveyors",
@@ -4285,9 +5156,11 @@
     "label": "seized idlers or buildup",
     "text": "A seized idler is a skid that steers the belt; buildup on an idler or pulley is a cone that does the same.",
     "prevent": "Walk and spin on every PM. Cleaners and skirts maintained.",
-    "primary": [],
+    "primary": [
+      "conveyor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "conveyors",
@@ -4300,9 +5173,11 @@
     "label": "track it: idlers, upstream first, small moves",
     "text": "Causes cleared; now steer it.",
     "prevent": "Tracking record kept with the conveyor. Training idlers on runs that wander with load.",
-    "primary": [],
+    "primary": [
+      "conveyor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "conveyors",
@@ -4315,9 +5190,11 @@
     "label": "belt fault: splice, camber, or local damage",
     "text": "A belt that runs off at the same spot on itself has the fault in the belt at that spot.",
     "prevent": "Splices cut with a square and checked on the diagonals. New belts checked for camber before installation.",
-    "primary": [],
+    "primary": [
+      "conveyor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "conveyors",
@@ -4330,9 +5207,11 @@
     "label": "off-centre loading",
     "text": "Product landing on one side of the belt pushes it the other way.",
     "prevent": "Loading point checked whenever the product or the upstream equipment changes.",
-    "primary": [],
+    "primary": [
+      "conveyor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "conveyors",
@@ -4345,9 +5224,11 @@
     "label": "wander: tension, cupped belt, or weather",
     "text": "A belt that wanders both ways is not being steered by one fault; it is not being held by anything.",
     "prevent": "Take-up position trended. Cover wear measured. Windbreaks on exposed runs.",
-    "primary": [],
+    "primary": [
+      "conveyor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "conveyors",
@@ -4360,9 +5241,11 @@
     "label": "drive pulley slip",
     "text": "The pulley turns and the belt does not keep up. Heat, squeal, glazed bottom cover, and a fire risk.",
     "prevent": "Lagging on the PM. Speed switch on every drive pulley. Cleaners keeping the pulley face clean.",
-    "primary": [],
+    "primary": [
+      "conveyor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "conveyors",
@@ -4375,9 +5258,11 @@
     "label": "read the damage pattern",
     "text": "The Reading Belt Damage tab has six patterns, and each points at a cause.",
     "prevent": "Cover thickness measured at a marked spot on the PM. Damage logged with its location.",
-    "primary": [],
+    "primary": [
+      "conveyor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "conveyors",
@@ -4390,9 +5275,11 @@
     "label": "loading zone: skirts, chute, or impact",
     "text": "Product is escaping before it settles on the belt.",
     "prevent": "Skirt seals on the PM. Loading zone reviewed with any product change.",
-    "primary": [],
+    "primary": [
+      "conveyor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "conveyors",
@@ -4405,9 +5292,11 @@
     "label": "overloaded cross-section, sag, or mistracking",
     "text": "Product falling off along the run means the belt is carrying more than its trough holds, sagging between idlers, or has moved off centre under the load.",
     "prevent": "Feed rate controlled at the source. Idlers complete and turning.",
-    "primary": [],
+    "primary": [
+      "conveyor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "conveyors",
@@ -4420,9 +5309,11 @@
     "label": "carryback: cleaners",
     "text": "Product stuck to the top cover is going around the head pulley and dropping off the return side onto everything below.",
     "prevent": "Cleaner blades on the PM. Carryback under the return idlers is the indicator.",
-    "primary": [],
+    "primary": [
+      "conveyor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "conveyors",
@@ -4435,9 +5326,12 @@
     "label": "idler or pulley bearing",
     "text": "A noisy or hot idler is a bearing failing; a hot pulley bearing is a bearing failing or a pulley that is slipping.",
     "prevent": "Infrared survey of pulley bearings on the PM. Idler walk and spin.",
-    "primary": [],
+    "primary": [
+      "bearing",
+      "conveyor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "conveyors",
@@ -4450,9 +5344,15 @@
     "label": "drive overload: jam, overload, or drive train",
     "text": "The motor is pulling more than the overload allows.",
     "prevent": "Chute and transfer point plugged-chute detection. Feed control. Idler walk on the PM.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "conveyor"
+    ],
+    "contributing": [
+      "bearing",
+      "gearbox",
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "conveyors",
@@ -4465,9 +5365,13 @@
     "label": "control stop: interlock, pull cord, or sequence",
     "text": "A conveyor that stops without a trip was told to stop.",
     "prevent": "Pull cords and switches tested and adjusted on the PM. Operators trained on what each interlock means.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "conveyor"
+    ],
+    "contributing": [
+      "guard"
+    ],
+    "tagged": true
   },
   {
     "module": "conveyors",
@@ -4480,9 +5384,11 @@
     "label": "splice failure",
     "text": "A splice that is lifting, cracking, or losing fasteners is going to let go, and the belt end goes through the head pulley.",
     "prevent": "Splices located, counted, and inspected on every PM. Belt tension within the design. Pulley diameters at or above the belt minimum.",
-    "primary": [],
+    "primary": [
+      "conveyor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "rootcause",
@@ -4497,7 +5403,7 @@
     "prevent": "Every failed part on a repeat machine is read and the mechanism logged in the work order.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "rootcause",
@@ -4512,7 +5418,7 @@
     "prevent": "Corrective action logged against the document, not the machine.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "rootcause",
@@ -4527,7 +5433,7 @@
     "prevent": "Spare part specifications reviewed against the failure; stores catalogue corrected.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "rootcause",
@@ -4542,7 +5448,7 @@
     "prevent": "Root cause reports are reviewed for chains ending at a person, and sent back.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "rootcause",
@@ -4557,7 +5463,7 @@
     "prevent": "Failure history by machine reviewed for patterns, not just counts.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "rootcause",
@@ -4571,8 +5477,12 @@
     "text": "The part was damaged going in.",
     "prevent": "Installation procedure with the tools listed; tools in the kit.",
     "primary": [],
-    "contributing": [],
-    "tagged": false
+    "contributing": [
+      "bearing",
+      "gearbox",
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "rootcause",
@@ -4585,9 +5495,11 @@
     "label": "lubrication or contamination",
     "text": "What was in the part when it came out is the cause.",
     "prevent": "Product, quantity, and interval on the PM sheet; lube room controls.",
-    "primary": [],
+    "primary": [
+      "lube"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "rootcause",
@@ -4602,7 +5514,7 @@
     "prevent": "Event logging on the machine; stores catalogue verified against drawings.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "rootcause",
@@ -4617,7 +5529,7 @@
     "prevent": "Duty reviewed after every process change.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "rootcause",
@@ -4632,7 +5544,7 @@
     "prevent": "Repeat, expensive, and safety failures trigger the full method by rule, not by mood.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "rootcause",
@@ -4647,7 +5559,7 @@
     "prevent": "Verification step enforced: the analysis is not closed until the failure interval proves it.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "rootcause",
@@ -4662,7 +5574,7 @@
     "prevent": "Every corrective action has a named owner and a due date in the CMMS.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "fans",
@@ -4675,9 +5587,11 @@
     "label": "buildup unbalance",
     "text": "Product on the wheel is the unbalance.",
     "prevent": "Wheel cleaning on the PM, interval set by the product. An access door in the housing.",
-    "primary": [],
+    "primary": [
+      "fan"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "fans",
@@ -4690,9 +5604,11 @@
     "label": "wheel damage",
     "text": "A cracked or eroded wheel is a wheel that will throw a piece.",
     "prevent": "Dye penetrant on high speed wheels on the PM. Blade thickness on abrasive service. Hub fastening checked.",
-    "primary": [],
+    "primary": [
+      "fan"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "fans",
@@ -4705,9 +5621,14 @@
     "label": "belt drive",
     "text": "Over-tension and worn sheaves both vibrate and both load the fan bearing.",
     "prevent": "Tension and sheave gauge on the PM.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "powertrans"
+    ],
+    "contributing": [
+      "bearing",
+      "fan"
+    ],
+    "tagged": true
   },
   {
     "module": "fans",
@@ -4720,9 +5641,14 @@
     "label": "balance or resonance",
     "text": "A clean, sound wheel on good bearings and a correct drive that still vibrates at 1x is out of balance or on a resonance.",
     "prevent": "Balance to G6.3 after any wheel work. Baseline vibration reading recorded.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "fan"
+    ],
+    "contributing": [
+      "bearing",
+      "powertrans"
+    ],
+    "tagged": true
   },
   {
     "module": "fans",
@@ -4735,9 +5661,11 @@
     "label": "system resistance changed",
     "text": "The fan moved on its curve because the system moved.",
     "prevent": "Filter differential pressure on the PM. Damper positions recorded.",
-    "primary": [],
+    "primary": [
+      "fan"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "fans",
@@ -4750,9 +5678,13 @@
     "label": "wrong rotation",
     "text": "A centrifugal wheel backward moves about half the air at high power.",
     "prevent": "Rotation verified on every electrical change before the belts go on.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "fan"
+    ],
+    "contributing": [
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "fans",
@@ -4765,9 +5697,13 @@
     "label": "wheel to inlet cone clearance",
     "text": "An opened gap or lost overlap lets air recirculate; pressure and efficiency drop.",
     "prevent": "Cone clearance measured after any wheel or bearing work and recorded.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "fan"
+    ],
+    "contributing": [
+      "bearing"
+    ],
+    "tagged": true
   },
   {
     "module": "fans",
@@ -4780,9 +5716,11 @@
     "label": "stall or surge",
     "text": "The fan is being throttled below its peak pressure and the airflow has separated.",
     "prevent": "Operating point kept to the right of peak pressure. Dampers with minimum stops.",
-    "primary": [],
+    "primary": [
+      "fan"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "fans",
@@ -4795,9 +5733,13 @@
     "label": "overloading fan curve",
     "text": "Forward-curved and radial fans draw more power the more air they move; open the system and the motor trips.",
     "prevent": "Amps recorded with the damper position. The overloading characteristic noted on the fan record.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "fan"
+    ],
+    "contributing": [
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "fans",
@@ -4810,9 +5752,15 @@
     "label": "backward-inclined at high amps",
     "text": "A non-overloading fan drawing high amps is past its rated speed, moving denser air than design, or has a drive or bearing problem.",
     "prevent": "Sheave ratio and speed on the fan record.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "fan"
+    ],
+    "contributing": [
+      "bearing",
+      "motor",
+      "powertrans"
+    ],
+    "tagged": true
   },
   {
     "module": "fans",
@@ -4825,9 +5773,13 @@
     "label": "axial fan at low flow",
     "text": "Axial fans draw the most power near shutoff.",
     "prevent": "Startup damper position on the procedure.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "fan"
+    ],
+    "contributing": [
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "fans",
@@ -4840,9 +5792,13 @@
     "label": "cold dense air",
     "text": "A fan sized for hot gas moving cold air draws power in proportion to the density.",
     "prevent": "Cold start procedure on the fan record.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "fan"
+    ],
+    "contributing": [
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "fans",
@@ -4855,9 +5811,14 @@
     "label": "wrong sheave ratio",
     "text": "A 10 percent speed increase is 33 percent more power.",
     "prevent": "Sheaves by part number on the PM sheet.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "powertrans"
+    ],
+    "contributing": [
+      "fan",
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "fans",
@@ -4870,9 +5831,13 @@
     "label": "wheel rubbing",
     "text": "The wheel is touching the cone or the housing: it has moved, a bearing has play, or the housing has been dented.",
     "prevent": "Cone clearance and shaft play on the PM.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "fan"
+    ],
+    "contributing": [
+      "bearing"
+    ],
+    "tagged": true
   },
   {
     "module": "fans",
@@ -4885,9 +5850,15 @@
     "label": "fan bearing",
     "text": "Fan bearings fail from unbalance, belt over-tension, heat, and contamination, in that order.",
     "prevent": "Wheel cleaning, tension by gauge, and vibration route on the PM.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing"
+    ],
+    "contributing": [
+      "fan",
+      "lube",
+      "powertrans"
+    ],
+    "tagged": true
   },
   {
     "module": "compressors",
@@ -4900,9 +5871,15 @@
     "label": "cooling",
     "text": "Nine out of ten temperature trips.",
     "prevent": "Cooler cleaning on the PM, interval by the room. Room temperature logged in summer.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "compressor"
+    ],
+    "contributing": [
+      "fan",
+      "motor",
+      "powertrans"
+    ],
+    "tagged": true
   },
   {
     "module": "compressors",
@@ -4915,9 +5892,13 @@
     "label": "thermostatic valve or oil circuit",
     "text": "Oil coming off the cooler hot means the oil is not being cooled: the thermostatic valve is stuck in bypass, the oil cooler is fouled internally, or the oil flow is restricted.",
     "prevent": "Thermostatic element replaced on the manufacturer interval with the oil filter.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "compressor"
+    ],
+    "contributing": [
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "compressors",
@@ -4930,9 +5911,12 @@
     "label": "low oil level",
     "text": "Less oil means less heat carried away and less sealing.",
     "prevent": "Level on the PM, with the compressor stopped and depressurised.",
-    "primary": [],
+    "primary": [
+      "compressor",
+      "lube"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "compressors",
@@ -4945,9 +5929,11 @@
     "label": "inlet restriction",
     "text": "A blocked inlet filter raises the pressure ratio across the airend and heats the discharge.",
     "prevent": "Inlet filter on differential and on hours; shorter interval in a dusty room.",
-    "primary": [],
+    "primary": [
+      "compressor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "compressors",
@@ -4960,9 +5946,14 @@
     "label": "airend bearings",
     "text": "A rumble that rises with load and a temperature that creeps up with clean cooling is the airend.",
     "prevent": "Oil analysis on the interval. Discharge temperature trended. Airend hours against the manufacturer life.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "bearing",
+      "compressor"
+    ],
+    "contributing": [
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "compressors",
@@ -4975,9 +5966,11 @@
     "label": "not loading: inlet valve, control signal, or controller",
     "text": "The airend is turning but the inlet is closed.",
     "prevent": "Inlet valve and unloader on the PM. Control settings recorded.",
-    "primary": [],
+    "primary": [
+      "compressor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "compressors",
@@ -4990,9 +5983,11 @@
     "label": "reciprocating: valves or rings",
     "text": "Low output on a piston compressor is leaking valves or worn rings.",
     "prevent": "Valves on the service interval. Output test (pump-up time on the receiver) on the PM.",
-    "primary": [],
+    "primary": [
+      "compressor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "compressors",
@@ -5005,9 +6000,11 @@
     "label": "screw or vane: filter, valve, or wear",
     "text": "Low output on a screw with the inlet open is a restriction, a minimum pressure valve fault, or rotor wear.",
     "prevent": "Differentials on the PM. Output tested annually.",
-    "primary": [],
+    "primary": [
+      "compressor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "compressors",
@@ -5020,9 +6017,13 @@
     "label": "demand exceeds supply: leaks first",
     "text": "The compressor is doing its job; the plant is taking it all.",
     "prevent": "Leak survey quarterly. Loaded hours trended.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "pneu"
+    ],
+    "contributing": [
+      "compressor"
+    ],
+    "tagged": true
   },
   {
     "module": "compressors",
@@ -5035,9 +6036,13 @@
     "label": "separator element or scavenge line",
     "text": "Oil is getting past the separator.",
     "prevent": "Separator on differential and on hours. Scavenge line orifice cleaned on the PM.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "compressor"
+    ],
+    "contributing": [
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "compressors",
@@ -5050,9 +6055,11 @@
     "label": "minimum pressure valve",
     "text": "The separator needs pressure to work; below the minimum, oil carries over.",
     "prevent": "Minimum pressure valve checked on the PM.",
-    "primary": [],
+    "primary": [
+      "compressor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "compressors",
@@ -5065,9 +6072,11 @@
     "label": "control settings",
     "text": "Short-cycling wears the compressor; running unloaded wastes power.",
     "prevent": "Loaded and total hours logged on the PM. Set points recorded and locked.",
-    "primary": [],
+    "primary": [
+      "compressor"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "compressors",
@@ -5080,9 +6089,12 @@
     "label": "water: aftercooler, drains, or dryer",
     "text": "Water in the plant is water that was not removed at the compressor.",
     "prevent": "Auto drains tested on the PM. Aftercooler cleaned with the oil cooler.",
-    "primary": [],
+    "primary": [
+      "compressor",
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "compressors",
@@ -5095,9 +6107,13 @@
     "label": "belt slip",
     "text": "Tension, sheave wear, or an overloaded compressor.",
     "prevent": "Tension by gauge; unloader function on the PM.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "powertrans"
+    ],
+    "contributing": [
+      "compressor"
+    ],
+    "tagged": true
   },
   {
     "module": "compressors",
@@ -5110,9 +6126,14 @@
     "label": "reciprocating knock",
     "text": "A knock is a valve plate broken, a piston contacting the head, or a bearing.",
     "prevent": "Valves on interval; crankcase oil on hours and inspected for metal.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "compressor"
+    ],
+    "contributing": [
+      "bearing",
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "compressors",
@@ -5125,9 +6146,13 @@
     "label": "mounts and piping",
     "text": "Compressors sit on isolation mounts and the piping is connected with flexible connectors for a reason.",
     "prevent": "Mounts and flex connectors on the PM.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "compressor"
+    ],
+    "contributing": [
+      "alignment"
+    ],
+    "tagged": true
   },
   {
     "module": "compressors",
@@ -5140,9 +6165,12 @@
     "label": "oil condition",
     "text": "Milky oil is water (thermostatic valve stuck open, a water-cooled cooler leaking, or the compressor running too cold to boil the moisture off). Dark oil is oxidation (too hot, too old, or the wrong oil).",
     "prevent": "Oil on hours and on analysis. Operating temperature in the design window.",
-    "primary": [],
+    "primary": [
+      "compressor",
+      "lube"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "clutches",
@@ -5155,9 +6183,11 @@
     "label": "worn: adjust or reline",
     "text": "A gap past maximum means the springs are extended and the clamping force is down.",
     "prevent": "Gap and lining thickness measured and recorded every PM; the trend sets the reline date.",
-    "primary": [],
+    "primary": [
+      "brake"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "clutches",
@@ -5170,9 +6200,15 @@
     "label": "contaminated friction surface",
     "text": "Oil on a dry friction surface cuts the friction to a fraction.",
     "prevent": "Seal condition on the adjacent machine on the PM. Grease quantity on the bearings.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "brake"
+    ],
+    "contributing": [
+      "bearing",
+      "lube",
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "clutches",
@@ -5185,9 +6221,11 @@
     "label": "glazed lining",
     "text": "A hard shiny surface from overheating or light dragging.",
     "prevent": "Gap at nominal; actuator checked; duty against the rating.",
-    "primary": [],
+    "primary": [
+      "brake"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "clutches",
@@ -5200,9 +6238,11 @@
     "label": "brake undersized for the load, or a second brake carrying it",
     "text": "Correct gap, good lining, clean, and it still creeps: it is being asked to hold more than it can, or on a dual-brake hoist the other brake has been carrying the load.",
     "prevent": "Holding test on each brake independently on the inspection interval.",
-    "primary": [],
+    "primary": [
+      "brake"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "clutches",
@@ -5215,9 +6255,11 @@
     "label": "gap too small or uneven",
     "text": "Too little clearance, or a cocked armature, drags on one side.",
     "prevent": "Three-point gap on the PM.",
-    "primary": [],
+    "primary": [
+      "brake"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "clutches",
@@ -5230,9 +6272,11 @@
     "label": "manual release partly engaged",
     "text": "A release lever or screw not fully returned holds the brake partly off, or partly on.",
     "prevent": "Manual release position on the return-to-service checklist.",
-    "primary": [],
+    "primary": [
+      "brake"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "clutches",
@@ -5245,9 +6289,11 @@
     "label": "coil, rectifier, or voltage",
     "text": "A DC brake coil that does not get its voltage does not release; a weak one releases slowly and drags.",
     "prevent": "Coil voltage and rectifier on the electrical PM. Gap within maximum.",
-    "primary": [],
+    "primary": [
+      "brake"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "clutches",
@@ -5260,9 +6306,12 @@
     "label": "air supply or valve",
     "text": "Pressure, volume, or a valve.",
     "prevent": "Pressure at the unit recorded on the PM; air quality per the Pneumatics module.",
-    "primary": [],
+    "primary": [
+      "brake",
+      "pneu"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "clutches",
@@ -5275,9 +6324,12 @@
     "label": "thruster or hydraulic release",
     "text": "A thruster with low oil or a caliper with a leak does not complete its stroke.",
     "prevent": "Thruster oil and stroke on the PM. Hydraulic system on the Hydraulics module PM.",
-    "primary": [],
+    "primary": [
+      "brake",
+      "hydraulics"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "clutches",
@@ -5290,9 +6342,13 @@
     "label": "wet clutch: oil, wear, or pressure",
     "text": "Wet clutches slip on the wrong oil, worn plates, or low apply pressure.",
     "prevent": "Specified oil on the tag. Piston travel recorded.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "brake"
+    ],
+    "contributing": [
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "clutches",
@@ -5305,9 +6361,11 @@
     "label": "chatter, squeal, or bang",
     "text": "Chatter is stick-slip on engagement: contamination, glazing, the wrong oil on a wet clutch, or a loose mounting. Squeal is a dry lining under light drag. A bang is excessive gap or a loose hub or key.",
     "prevent": "Gap and mounting on the PM. Correct oil.",
-    "primary": [],
+    "primary": [
+      "brake"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "clutches",
@@ -5320,9 +6378,14 @@
     "label": "backstop or torque limiter",
     "text": "A backstop that lets the belt run back, or a torque limiter that slips at normal load or never slips at a jam.",
     "prevent": "Backstop runback test and limiter setting on the PM, recorded.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "brake"
+    ],
+    "contributing": [
+      "conveyor",
+      "lube"
+    ],
+    "tagged": true
   },
   {
     "module": "valves",
@@ -5335,9 +6398,11 @@
     "label": "not reaching the seat: stops, bench set, or torque switch",
     "text": "A valve that is not fully closed passes, and the actuator is the reason.",
     "prevent": "Stroke test and stop check after any actuator work; bench set recorded.",
-    "primary": [],
+    "primary": [
+      "valve"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "valves",
@@ -5350,9 +6415,11 @@
     "label": "wire drawn seat from throttling",
     "text": "High velocity leakage past a nearly closed gate or ball cut a groove in the seat. It will never seal.",
     "prevent": "Throttling valves identified and tagged; isolation valves on-off only.",
-    "primary": [],
+    "primary": [
+      "valve"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "valves",
@@ -5365,9 +6432,11 @@
     "label": "soft seat damaged",
     "text": "Cut by debris, extruded by pressure, hardened by heat, or swollen by the fluid.",
     "prevent": "Seat material matched to the service on the valve list; strainers upstream where debris is expected.",
-    "primary": [],
+    "primary": [
+      "valve"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "valves",
@@ -5380,9 +6449,11 @@
     "label": "metal seat scored or fouled",
     "text": "Debris on the seat, or scoring from solids.",
     "prevent": "Strainers; exercise schedule; seat inspection on the interval.",
-    "primary": [],
+    "primary": [
+      "valve"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "valves",
@@ -5395,9 +6466,12 @@
     "label": "stem packing",
     "text": "The most common valve leak.",
     "prevent": "Gland load checked on the PM; live loading on valves that stroke constantly.",
-    "primary": [],
+    "primary": [
+      "seal",
+      "valve"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "valves",
@@ -5410,9 +6484,12 @@
     "label": "pneumatic actuator or air supply",
     "text": "Air pressure, air quality, the positioner, or the actuator itself.",
     "prevent": "Instrument air quality maintained; positioner calibration on the interval.",
-    "primary": [],
+    "primary": [
+      "pneu",
+      "valve"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "valves",
@@ -5425,9 +6502,13 @@
     "label": "electric actuator: torque and limit settings, or electrical",
     "text": "Torque switch trips before the valve reaches its seat, a limit switch set short, the hand-auto clutch engaged, or a motor or control fault.",
     "prevent": "Actuator settings recorded; valve exercised so it does not stiffen.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "valve"
+    ],
+    "contributing": [
+      "motor"
+    ],
+    "tagged": true
   },
   {
     "module": "valves",
@@ -5440,9 +6521,13 @@
     "label": "stiff or seized valve",
     "text": "Packing too tight, a stem scored or bent, a gate thermally bound, a ball or plug seized in its seat by deposits or corrosion, or a valve that has not moved in years.",
     "prevent": "Exercise schedule for isolation valves. Correct materials for the service.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "valve"
+    ],
+    "contributing": [
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "valves",
@@ -5455,9 +6540,13 @@
     "label": "stiction: packing or deposits",
     "text": "The stem grabs and releases, so the valve overshoots each small correction and the loop cycles.",
     "prevent": "Packing load set by procedure, not by feel; live loading on control valves.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "valve"
+    ],
+    "contributing": [
+      "seal"
+    ],
+    "tagged": true
   },
   {
     "module": "valves",
@@ -5470,9 +6559,13 @@
     "label": "positioner or air",
     "text": "The positioner is not driving the stem to the signal promptly.",
     "prevent": "Positioner calibration and linkage on the interval.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "valve"
+    ],
+    "contributing": [
+      "pneu"
+    ],
+    "tagged": true
   },
   {
     "module": "valves",
@@ -5485,9 +6578,11 @@
     "label": "hunting: tuning, sizing, or stiction",
     "text": "A loop that cycles has a valve that cannot make small moves (stiction, oversized valve working near closed) or a controller tuned too aggressively.",
     "prevent": "Valve sized to work in the middle of its range; stiction eliminated before tuning.",
-    "primary": [],
+    "primary": [
+      "valve"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "valves",
@@ -5500,9 +6595,11 @@
     "label": "cavitation or flashing in the trim",
     "text": "The pressure drop across the trim takes the liquid below its vapour pressure; bubbles form and collapse on the trim and body.",
     "prevent": "Control valve sizing reviewed against actual process conditions.",
-    "primary": [],
+    "primary": [
+      "valve"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "valves",
@@ -5515,9 +6612,13 @@
     "label": "water hammer",
     "text": "A fast closure or a slamming check on a liquid line stops the column and the pressure spikes.",
     "prevent": "Closure times specified; non-slam checks on pump discharges.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "valve"
+    ],
+    "contributing": [
+      "pump"
+    ],
+    "tagged": true
   },
   {
     "module": "valves",
@@ -5530,9 +6631,11 @@
     "label": "chatter",
     "text": "A check valve fluttering in low flow, or a relief valve chattering near its set point.",
     "prevent": "Check valves sized for the flow; relief valves set with margin and inlet piping per code.",
-    "primary": [],
+    "primary": [
+      "valve"
+    ],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "valves",
@@ -5545,9 +6648,13 @@
     "label": "check valve slam or pass",
     "text": "Slam: closes late. Pass: seat or disc damage, or a disc off its arm.",
     "prevent": "Check valves inspected on the interval; non-slam designs where slam is known.",
-    "primary": [],
-    "contributing": [],
-    "tagged": false
+    "primary": [
+      "valve"
+    ],
+    "contributing": [
+      "pump"
+    ],
+    "tagged": true
   },
   {
     "module": "measurement",
@@ -5562,7 +6669,7 @@
     "prevent": "Three readings recorded as a habit; the spread is part of the record.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "measurement",
@@ -5577,7 +6684,7 @@
     "prevent": "Seats and bores measured as shapes (positions and angles), not as single numbers.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "measurement",
@@ -5592,7 +6699,7 @@
     "prevent": "A gauge block in the toolbox; instruments checked before critical jobs.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "measurement",
@@ -5607,7 +6714,7 @@
     "prevent": "Read twice, the second time out loud, on anything that goes on a record.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "measurement",
@@ -5622,7 +6729,7 @@
     "prevent": "Temperature written with every fit measurement.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "measurement",
@@ -5637,7 +6744,7 @@
     "prevent": "Tap test after every setup.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "measurement",
@@ -5652,7 +6759,7 @@
     "prevent": "Square and parallel on every indicator setup.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "measurement",
@@ -5667,7 +6774,7 @@
     "prevent": "Pre-load as a habit.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "measurement",
@@ -5682,7 +6789,7 @@
     "prevent": "Validity check on every set of readings before any shim is cut.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   },
   {
     "module": "measurement",
@@ -5697,6 +6804,6 @@
     "prevent": "Stored open, in the case, away from the grinder. Calibrated on the interval and after any drop.",
     "primary": [],
     "contributing": [],
-    "tagged": false
+    "tagged": true
   }
 ];

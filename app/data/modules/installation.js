@@ -326,7 +326,15 @@ BW.register("installation", {
         "label": "pipe strain",
         "text": "The piping is applying a force to the casing through the flange. Every alignment is done against that force and the force wins.",
         "sub": "Support the pipe on its hangers, loosen the flange, and see how far it springs. That distance is the correction needed in the piping: a spool cut and rewelded, a hanger adjusted, an expansion joint reset. Then fit-up to tolerance with the bolts loose, then align, then the before-and-after pipe strain check. Piping and Connections tab.",
-        "prevent": "Pipe strain check on every installation and every time piping is disturbed, with readings recorded."
+        "prevent": "Pipe strain check on every installation and every time piping is disturbed, with readings recorded.",
+        "applies": {
+          "primary": [
+            "alignment"
+          ],
+          "contributing": [
+            "pump"
+          ]
+        }
       },
       "r_plate_strain": {
         "type": "result",
@@ -334,7 +342,13 @@ BW.register("installation", {
         "label": "anchor bolts holding a distorted plate",
         "text": "The plate moves when an anchor is loosened: the anchors are pulling the plate down to the foundation against a void, a high spot, or a warp. The plate is spring-loaded, and it flexes under running load.",
         "sub": "The plate was tightened before or without grout, or the grout has failed. Loosen all anchors, level the plate on jacking screws or shims, and grout it properly. On an existing grouted plate: sound for voids, inject them, and check the anchor torque sequence.",
-        "prevent": "Anchors hand tight until grout cure. Grout before torque, every time."
+        "prevent": "Anchors hand tight until grout cure. Grout before torque, every time.",
+        "applies": {
+          "primary": [],
+          "contributing": [
+            "alignment"
+          ]
+        }
       },
       "r_thermal": {
         "type": "result",
@@ -342,7 +356,13 @@ BW.register("installation", {
         "label": "thermal growth not compensated",
         "text": "A machine aligned cold runs misaligned hot. Every shutdown and restart, it is misaligned twice.",
         "sub": "Get the thermal growth values from the manufacturer or calculate them from shaft height and temperature rise (Reference module). Align cold with the offset so the shafts are aligned at operating temperature. Confirm with a hot alignment check immediately after shutdown.",
-        "prevent": "Thermal offsets recorded with the alignment for any machine over about 60°C casing temperature."
+        "prevent": "Thermal offsets recorded with the alignment for any machine over about 60°C casing temperature.",
+        "applies": {
+          "primary": [
+            "alignment"
+          ],
+          "contributing": []
+        }
       },
       "r_foundation_move": {
         "type": "result",
@@ -350,7 +370,13 @@ BW.register("installation", {
         "label": "foundation moving or settling",
         "text": "Piping, plate, and thermal growth cleared, and it still walks. The foundation itself is moving.",
         "sub": "Level survey of the foundation over weeks. Cracks in the block or the floor. Settlement at one corner. No isolation joint, so the slab is flexing under floor loads. Water or oil under the block. This is an engineer's problem, and the fix ranges from injecting the void under the block to a new foundation.",
-        "prevent": "Foundation designed for the soil and the load. Isolation joint. Commissioning level record to compare against."
+        "prevent": "Foundation designed for the soil and the load. Isolation joint. Commissioning level record to compare against.",
+        "applies": {
+          "primary": [],
+          "contributing": [
+            "alignment"
+          ]
+        }
       },
       "r_softfoot_recur": {
         "type": "result",
@@ -358,7 +384,13 @@ BW.register("installation", {
         "label": "soft foot that returns: the base, not the foot",
         "text": "Soft foot that was corrected and came back is a base that moves: a void under the pad, a cracked pad, grout crumbling under one corner, or the plate flexing on an anchor that has loosened.",
         "sub": "Sound the plate under that foot. Check the anchor nearest it. Look for a crack in the pad or the plate. Check the shim pack: a stack of thin shims springs and reads as soft foot again. Replace many thin shims with one thick one.",
-        "prevent": "Grout without voids. Anchor torque rechecked after the first week. Shim stacks of four or fewer."
+        "prevent": "Grout without voids. Anchor torque rechecked after the first week. Shim stacks of four or fewer.",
+        "applies": {
+          "primary": [
+            "alignment"
+          ],
+          "contributing": []
+        }
       },
       "vib1": {
         "q": "Is the vibration at one speed on a VFD, or present at all speeds?",
@@ -383,7 +415,11 @@ BW.register("installation", {
         "label": "foundation or base resonance",
         "text": "A natural frequency of the plate, the block, or the structure is close to a forcing frequency.",
         "sub": "Bump test with the machine locked out (Vibration module). Stiffen the base (grout a hollow fabricated base, add gussets), or skip the speed on the drive. A thin fabricated steel baseplate that was never grouted is the usual culprit.",
-        "prevent": "Grouted or epoxy-filled baseplates on anything variable speed. Bump test at commissioning."
+        "prevent": "Grouted or epoxy-filled baseplates on anything variable speed. Bump test at commissioning.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_base_loose": {
         "type": "result",
@@ -391,7 +427,11 @@ BW.register("installation", {
         "label": "looseness at the base",
         "text": "Vertical higher than horizontal with harmonics is the machine moving on its mounting.",
         "sub": "Anchor torque. Foot bolt torque. Grout condition. Voids. Cracked feet. Loosen-and-watch with an indicator at each anchor.",
-        "prevent": "Torque recorded and rechecked. Grout sounded at commissioning."
+        "prevent": "Torque recorded and rechecked. Grout sounded at commissioning.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_no_isolation": {
         "type": "result",
@@ -399,7 +439,11 @@ BW.register("installation", {
         "label": "no isolation joint, or foundation undersized",
         "text": "The whole floor is the foundation and the whole floor vibrates.",
         "sub": "Look for an isolation joint around the block. If there is none, the block is part of the slab. A joint can be saw cut after the fact. If the block itself is too small for the machine (a reciprocating compressor on a pad meant for a pump), the mass is wrong and an engineer sizes a new one.",
-        "prevent": "Foundation designed for the machine, with an isolation joint, before the pour."
+        "prevent": "Foundation designed for the machine, with an isolation joint, before the pour.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_grout_fail": {
         "type": "result",
@@ -407,7 +451,11 @@ BW.register("installation", {
         "label": "grout failure",
         "text": "Cracked, crumbling, or oil-soaked grout is no longer holding the plate to the block.",
         "sub": "Cementitious grout soaked in oil deteriorates and loses bond. Grout that was mixed wet shrinks and cracks. Grout that was placed without vents has voids that crack. The repair is removal to sound material and regrouting with epoxy, with the plate re-levelled first. Fix the oil leak that soaked it.",
-        "prevent": "Epoxy grout in oily service. Drip trays. Mix ratio and vent sequence followed and recorded."
+        "prevent": "Epoxy grout in oily service. Drip trays. Mix ratio and vent sequence followed and recorded.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "anchor1": {
         "q": "What type of anchor, and what is under it?",
@@ -432,7 +480,11 @@ BW.register("installation", {
         "label": "wrong anchor type",
         "text": "Expansion anchors work loose under vibration. They were never right for this machine.",
         "sub": "Replace with adhesive anchors of the correct embedment, or core and set sleeved anchors. Do not keep retightening; the hole is being worn oversize each time.",
-        "prevent": "Adhesive or cast-in anchors under machinery. Expansion anchors for brackets."
+        "prevent": "Adhesive or cast-in anchors under machinery. Expansion anchors for brackets.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_anchor_stretch": {
         "type": "result",
@@ -440,7 +492,11 @@ BW.register("installation", {
         "label": "no stretch length",
         "text": "A short, stiff anchor loses preload with every thermal cycle and every vibration because there is no elastic length to hold the tension.",
         "sub": "Options: replace with sleeved anchors to get free length; use a longer adhesive anchor with a sleeve over the upper portion; fit a hardened washer stack or a spring washer designed for the purpose. Torque to spec with lubricated threads and recheck on a schedule.",
-        "prevent": "Sleeved anchors with 10 diameters of stretch on vibrating machinery."
+        "prevent": "Sleeved anchors with 10 diameters of stretch on vibrating machinery.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_anchor_concrete": {
         "type": "result",
@@ -448,7 +504,11 @@ BW.register("installation", {
         "label": "concrete failure at the anchor",
         "text": "The anchor is fine; the concrete around it is not. Edge too close, embedment too shallow, or the concrete has cracked from overload or corrosion.",
         "sub": "Chip out to sound concrete, repair with an epoxy patching mortar or a new pour, and set a new anchor with correct edge distance and embedment. If the whole block is cracking, an engineer looks at it.",
-        "prevent": "Edge distance and embedment per specification at the design stage."
+        "prevent": "Edge distance and embedment per specification at the design stage.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_void": {
         "type": "result",
@@ -456,7 +516,11 @@ BW.register("installation", {
         "label": "voids under the baseplate",
         "text": "A hollow ring means grout did not reach that spot. The plate flexes there under load.",
         "sub": "Mark every hollow area. Drill two holes per void (one to inject, one to vent), inject epoxy grout under low pressure until it appears at the vent, cap, and cure. Re-level and retorque after. If more than about a quarter of the plate is void, remove the grout and start again.",
-        "prevent": "Vent holes at every bay; pour from one side; watch every vent. Sound the plate at commissioning."
+        "prevent": "Vent holes at every bay; pour from one side; watch every vent. Sound the plate at commissioning.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "new1": {
         "q": "Where is the run-out on a new install?",
@@ -481,7 +545,13 @@ BW.register("installation", {
         "label": "no lateral clearance at the anchor holes",
         "text": "The foot bolts are hard against the sides of the holes; the machine cannot move sideways to align.",
         "sub": "Foot holes need 2 to 3 mm of clearance around the bolt. Enlarge the holes in the machine feet (not the baseplate) or reposition the baseplate mounting studs. Do not bend a bolt to make it fit.",
-        "prevent": "Hole pattern and clearance checked against the machine before the plate is grouted."
+        "prevent": "Hole pattern and clearance checked against the machine before the plate is grouted.",
+        "applies": {
+          "primary": [],
+          "contributing": [
+            "alignment"
+          ]
+        }
       },
       "r_shim_room": {
         "type": "result",
@@ -489,7 +559,13 @@ BW.register("installation", {
         "label": "wrong shaft height allowance",
         "text": "One machine sits too high or too low relative to the other for the shim range.",
         "sub": "Standard practice is 3 mm (1/8 in) of shim under the movable machine at the start, so there is room to go up or down. Too little: nothing to take out. Too much: a tall spring stack. If the difference is more than shims can fix, the pads are machined or a spacer plate is added.",
-        "prevent": "Shaft height difference checked at the plate design and again before grout."
+        "prevent": "Shaft height difference checked at the plate design and again before grout.",
+        "applies": {
+          "primary": [],
+          "contributing": [
+            "alignment"
+          ]
+        }
       },
       "r_softfoot_new": {
         "type": "result",
@@ -497,7 +573,13 @@ BW.register("installation", {
         "label": "soft foot on a new machine",
         "text": "Readings that change when the feet are torqued is the definition of soft foot.",
         "sub": "Loosen all four, indicate each foot while tightening and loosening one at a time, shim the soft one. Check the pad for a burr or paint under the foot. Check the foot for a bent flange. Then align. Couplings and Alignment module.",
-        "prevent": "Soft foot before alignment, no exceptions."
+        "prevent": "Soft foot before alignment, no exceptions.",
+        "applies": {
+          "primary": [
+            "alignment"
+          ],
+          "contributing": []
+        }
       }
     }
   },

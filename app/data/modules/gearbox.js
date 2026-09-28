@@ -444,7 +444,16 @@ BW.register("gearbox", {
         "label": "gear mesh noise: alignment, wear, or backlash",
         "text": "A whine at mesh frequency is the teeth engaging harder or less smoothly than designed.",
         "sub": "New or rebuilt box: contact pattern check. The pattern is off centre or the backlash is wrong. Older box that has become whinier: tooth wear changing the profile (Wear Patterns tab), a bearing losing its setting and letting a gear tilt, or oil level low so the mesh is running dry. Some mesh noise is normal on spur and straight bevel gears and rises with load.",
-        "prevent": "Contact pattern and backlash checked and recorded on every rebuild. Oil level on the PM. Backlash trended."
+        "prevent": "Contact pattern and backlash checked and recorded on every rebuild. Oil level on the PM. Backlash trended.",
+        "applies": {
+          "primary": [
+            "gearbox"
+          ],
+          "contributing": [
+            "bearing",
+            "lube"
+          ]
+        }
       },
       "r_noise_bearing": {
         "type": "result",
@@ -452,7 +461,14 @@ BW.register("gearbox", {
         "label": "bearing failure",
         "text": "A growl or rumble localised to one bearing housing is that bearing.",
         "sub": "Confirm with the screwdriver: loudest at one housing. Shaft play by hand at that bearing. Infrared: that housing hotter than the others. Plan the replacement, and when it comes apart, check the gear that bearing was locating for end-of-face wear; the bearing has been letting it move. Bearing Failure module for the failure analysis.",
-        "prevent": "Bearing setting on reassembly. Oil cleanliness. Input alignment or belt tension if it is the input bearing."
+        "prevent": "Bearing setting on reassembly. Oil cleanliness. Input alignment or belt tension if it is the input bearing.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "gearbox"
+          ],
+          "contributing": []
+        }
       },
       "r_noise_input": {
         "type": "result",
@@ -460,7 +476,16 @@ BW.register("gearbox", {
         "label": "high speed pinion or input shaft",
         "text": "Once per input revolution is something on the input shaft: a damaged pinion tooth, a bent shaft, a coupling fault, or a bearing with a single defect.",
         "sub": "Inspection cover: look at every tooth on the input pinion for a broken, chipped, or pitted tooth. Coupling condition and alignment. Input shaft run-out with a dial indicator. If the noise is worst on load reversal, see backlash.",
-        "prevent": "Input alignment. Overload protection if a tooth was broken by a jam."
+        "prevent": "Input alignment. Overload protection if a tooth was broken by a jam.",
+        "applies": {
+          "primary": [
+            "gearbox"
+          ],
+          "contributing": [
+            "alignment",
+            "bearing"
+          ]
+        }
       },
       "r_noise_output": {
         "type": "result",
@@ -468,7 +493,15 @@ BW.register("gearbox", {
         "label": "low speed gear or output shaft",
         "text": "Once per output revolution is on the output side: a damaged tooth on the low speed gear, output bearing defect, or the driven load itself.",
         "sub": "Low speed gear teeth through the inspection cover. Output shaft play. Uncouple the load if possible and run the box alone; if the noise goes, it is the driven machine. Shaft mount: the driven shaft, the bushing fit, and the torque arm.",
-        "prevent": "Load control and overload protection. Torque arm and bushing check on the PM for shaft mounts."
+        "prevent": "Load control and overload protection. Torque arm and bushing check on the PM for shaft mounts.",
+        "applies": {
+          "primary": [
+            "gearbox"
+          ],
+          "contributing": [
+            "bearing"
+          ]
+        }
       },
       "r_noise_backlash": {
         "type": "result",
@@ -476,7 +509,15 @@ BW.register("gearbox", {
         "label": "excessive backlash: teeth hammering on reversal",
         "text": "A rattle or clatter each time the load reverses or the drive starts is the teeth crossing the backlash and hitting.",
         "sub": "Measure backlash (Setup tab) against the specification. Excessive backlash is tooth wear (Wear Patterns: abrasive, or worm wheel wear), a bearing that has lost its setting and moved a gear, or a loose gear on its shaft (key, fit, bolts). On a worm box, backlash growing is the wheel wearing.",
-        "prevent": "Backlash trended on the PM. Oil cleanliness to slow abrasive wear."
+        "prevent": "Backlash trended on the PM. Oil cleanliness to slow abrasive wear.",
+        "applies": {
+          "primary": [
+            "gearbox"
+          ],
+          "contributing": [
+            "bearing"
+          ]
+        }
       },
       "heat1": {
         "q": "Where is it hot, and how does it compare to normal for this box?",
@@ -524,7 +565,14 @@ BW.register("gearbox", {
         "label": "churning: overfilled",
         "text": "Oil above the correct level is being churned by the gears, which is friction, which is heat, and it foams and leaks.",
         "sub": "Drain to the correct level for the actual mounting position. Ask how it got overfilled: topped up while running is the usual answer.",
-        "prevent": "Level checked stopped and settled. Level mark visible on the sight glass. Mounting position confirmed against the nameplate."
+        "prevent": "Level checked stopped and settled. Level mark visible on the sight glass. Mounting position confirmed against the nameplate.",
+        "applies": {
+          "primary": [
+            "gearbox",
+            "lube"
+          ],
+          "contributing": []
+        }
       },
       "r_heat_low": {
         "type": "result",
@@ -532,7 +580,16 @@ BW.register("gearbox", {
         "label": "low oil: gears and upper bearings running dry",
         "text": "Below the correct level, the gears are not dipping deep enough to splash the upper bearings and the mesh is starved.",
         "sub": "Fill to the correct level with the correct oil. Then find the leak that lowered it. Then inspect the teeth and the upper bearings for scuffing and heat damage; they may have been running dry for a while.",
-        "prevent": "Level on the PM. Fix the leak, not just the level."
+        "prevent": "Level on the PM. Fix the leak, not just the level.",
+        "applies": {
+          "primary": [
+            "gearbox",
+            "lube"
+          ],
+          "contributing": [
+            "bearing"
+          ]
+        }
       },
       "r_heat_oil": {
         "type": "result",
@@ -540,7 +597,14 @@ BW.register("gearbox", {
         "label": "wrong viscosity or degraded oil",
         "text": "Too thin an oil has a thin film and high internal leakage past the bearings; too thick churns. Old oxidised oil has lost its additives and its viscosity has drifted.",
         "sub": "Oil grade against the nameplate and the manufacturer chart for the actual ambient and speed. Oil analysis: viscosity and acid number. Change the oil if in doubt; it is the cheapest component in the box.",
-        "prevent": "Oil grade on the PM sheet and on a tag at the fill plug. Analysis on the interval."
+        "prevent": "Oil grade on the PM sheet and on a tag at the fill plug. Analysis on the interval.",
+        "applies": {
+          "primary": [
+            "gearbox",
+            "lube"
+          ],
+          "contributing": []
+        }
       },
       "r_heat_load": {
         "type": "result",
@@ -548,7 +612,16 @@ BW.register("gearbox", {
         "label": "thermal rating exceeded, or a mechanical fault",
         "text": "Correct oil and level, and still hot. Either the box is above its thermal rating, or something inside is generating heat: a bearing, a misaligned gear pair, or a load beyond the mechanical rating.",
         "sub": "Thermal rating on the nameplate against the actual continuous power. Ambient temperature and airflow: a box in a hot corner or with the fan guard blocked cannot shed heat. Mechanical: bearing temperatures individually, shaft play, and a contact pattern check. Load: motor amps against the design.",
-        "prevent": "Cooling fan, shaft fan, or an oil cooler if the thermal rating is the limit. Airflow around the box kept clear."
+        "prevent": "Cooling fan, shaft fan, or an oil cooler if the thermal rating is the limit. Airflow around the box kept clear.",
+        "applies": {
+          "primary": [
+            "gearbox"
+          ],
+          "contributing": [
+            "bearing",
+            "motor"
+          ]
+        }
       },
       "r_heat_bearing": {
         "type": "result",
@@ -556,7 +629,17 @@ BW.register("gearbox", {
         "label": "bearing running hot",
         "text": "One bearing hotter than its neighbours is failing, over-preloaded, or carrying a load it was not designed for.",
         "sub": "Input bearing: coupling alignment or belt tension. Output bearing: overhung load, torque arm angle on a shaft mount, driven shaft condition. Any bearing after a rebuild: preload set too high. Noise and shaft play confirm a failing bearing. Plan the replacement.",
-        "prevent": "Bearing setting on reassembly. Input alignment and belt tension by gauge. Overhung load within the nameplate rating."
+        "prevent": "Bearing setting on reassembly. Input alignment and belt tension by gauge. Overhung load within the nameplate rating.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "gearbox"
+          ],
+          "contributing": [
+            "alignment",
+            "powertrans"
+          ]
+        }
       },
       "r_heat_worm": {
         "type": "result",
@@ -564,7 +647,17 @@ BW.register("gearbox", {
         "label": "worm box running above its normal",
         "text": "Worm boxes are hot by nature. Hotter than usual means efficiency has fallen: the oil film is breaking down or the load is up.",
         "sub": "Oil: correct type (no active sulphur EP on bronze), correct level, not oxidised. Load: motor amps against the design. Worm shaft thrust bearings: the usual worm box failure, and a failing one heats the input end. Backlash rising means the wheel is wearing and the contact has changed.",
-        "prevent": "Correct oil on the tag at the fill plug. Copper trend on oil analysis. Backlash trend."
+        "prevent": "Correct oil on the tag at the fill plug. Copper trend on oil analysis. Backlash trend.",
+        "applies": {
+          "primary": [
+            "gearbox"
+          ],
+          "contributing": [
+            "bearing",
+            "lube",
+            "motor"
+          ]
+        }
       },
       "leak1": {
         "q": "Where is the leak?",
@@ -607,7 +700,16 @@ BW.register("gearbox", {
         "label": "blocked breather: pressurised case",
         "text": "The case heats up, the air inside expands, and with the breather blocked the pressure pushes oil past every seal.",
         "sub": "Clear or replace the breather. On a wash-down machine, fit a breather that will survive the wash-down or relocate it with a tube. A breather leaking oil is the case pressurising and venting through it, or the level is too high and the gears are throwing oil up into it.",
-        "prevent": "Breather on the PM sheet. Desiccant breather where humidity or dirt is an issue."
+        "prevent": "Breather on the PM sheet. Desiccant breather where humidity or dirt is an issue.",
+        "applies": {
+          "primary": [
+            "gearbox"
+          ],
+          "contributing": [
+            "lube",
+            "seal"
+          ]
+        }
       },
       "r_leak_seal": {
         "type": "result",
@@ -615,7 +717,16 @@ BW.register("gearbox", {
         "label": "seal: check the shaft and the bearing behind it",
         "text": "Breather clear and level right, and the seal still leaks. The seal has worn, the shaft under it has worn, or the bearing behind it has play and the shaft is running eccentric.",
         "sub": "Shaft play by hand at that end. Play means the bearing, not the seal. Shaft surface under the lip: a groove means a wear sleeve or a machined shaft. Seal lip hardened means the box has been running hot. Replace the seal with the lip lubricated, the keyway covered, pressed square.",
-        "prevent": "Wear sleeve on any shaft with a groove. Fix heat before replacing a hardened seal."
+        "prevent": "Wear sleeve on any shaft with a groove. Fix heat before replacing a hardened seal.",
+        "applies": {
+          "primary": [
+            "gearbox",
+            "seal"
+          ],
+          "contributing": [
+            "bearing"
+          ]
+        }
       },
       "r_leak_joint": {
         "type": "result",
@@ -623,7 +734,14 @@ BW.register("gearbox", {
         "label": "gasket or sealant joint",
         "text": "Inspection cover and housing split lines leak from a damaged gasket, a distorted cover, uneven bolt torque, or a pressurised case.",
         "sub": "Breather first. Then remove the cover, clean both faces, check the cover for flatness, fit a new gasket or the specified sealant, torque in sequence. A leaking cover gasket is also a dirt entry point.",
-        "prevent": "Gasket in stock for the box. Torque pattern on the PM sheet."
+        "prevent": "Gasket in stock for the box. Torque pattern on the PM sheet.",
+        "applies": {
+          "primary": [
+            "gearbox",
+            "seal"
+          ],
+          "contributing": []
+        }
       },
       "vib1": {
         "q": "Has the vibration changed recently, and what is its rhythm?",
@@ -652,7 +770,16 @@ BW.register("gearbox", {
         "label": "rebuild: setting, pattern, or alignment",
         "text": "A box that vibrates after a rebuild has a bearing setting, a contact pattern, or an input alignment that was not checked.",
         "sub": "Input coupling alignment. Bearing preload or endplay against the drawing. Contact pattern. Shims in the right places. Gear on the right shaft and facing the right way (helical hand). One of these is wrong.",
-        "prevent": "Rebuild checklist with the settings recorded. Alignment after the box is bolted down."
+        "prevent": "Rebuild checklist with the settings recorded. Alignment after the box is bolted down.",
+        "applies": {
+          "primary": [
+            "gearbox"
+          ],
+          "contributing": [
+            "alignment",
+            "bearing"
+          ]
+        }
       },
       "r_vib_wear": {
         "type": "result",
@@ -660,7 +787,15 @@ BW.register("gearbox", {
         "label": "wear: bearings, teeth, or looseness",
         "text": "Slowly rising vibration is a bearing losing its setting, teeth wearing, or the box working loose on its foundation.",
         "sub": "Shaft play at each bearing. Backlash. Mounting bolt torque. Foundation grout and any cracking. Oil analysis for iron. Vibration Fundamentals module (planned) for reading the spectrum: bearing frequencies, mesh frequency, and its sidebands tell you which.",
-        "prevent": "Vibration trended on the PM. Backlash trended. Foundation inspected."
+        "prevent": "Vibration trended on the PM. Backlash trended. Foundation inspected.",
+        "applies": {
+          "primary": [
+            "gearbox"
+          ],
+          "contributing": [
+            "bearing"
+          ]
+        }
       },
       "r_vib_input": {
         "type": "result",
@@ -668,7 +803,16 @@ BW.register("gearbox", {
         "label": "input speed: coupling, alignment, or pinion",
         "text": "Vibration at input speed is the coupling, the input alignment, a bent input shaft, or a damaged pinion.",
         "sub": "Alignment readings. Coupling element condition. Input shaft run-out. Pinion teeth. Belt drive: sheave run-out and belt condition. Couplings and Alignment module for the alignment side.",
-        "prevent": "Alignment after any input work. Coupling inspection on the PM."
+        "prevent": "Alignment after any input work. Coupling inspection on the PM.",
+        "applies": {
+          "primary": [
+            "alignment",
+            "gearbox"
+          ],
+          "contributing": [
+            "powertrans"
+          ]
+        }
       },
       "r_vib_foundation": {
         "type": "result",
@@ -676,7 +820,15 @@ BW.register("gearbox", {
         "label": "mounting, foundation, or torque arm",
         "text": "The box is moving on its mounting.",
         "sub": "Mounting bolt torque. Soft foot under the housing (a housing bolted down on an uneven base is twisted and its bores are misaligned). Grout condition. Shaft mount: torque arm bushings, angle, and anchor. Structure resonance if the vibration is at a speed the structure likes.",
-        "prevent": "Mounting bolts on the PM. Torque arm bushings replaced on condition."
+        "prevent": "Mounting bolts on the PM. Torque arm bushings replaced on condition.",
+        "applies": {
+          "primary": [
+            "gearbox"
+          ],
+          "contributing": [
+            "alignment"
+          ]
+        }
       },
       "metal1": {
         "q": "What kind of metal, and how much?",
@@ -706,7 +858,13 @@ BW.register("gearbox", {
         "label": "normal wear",
         "text": "A small amount of fine ferrous material on the magnetic plug is the gears and bearings wearing normally.",
         "sub": "Clean the plug, note the amount, and compare next time. The change is the information. Oil analysis iron trend confirms.",
-        "prevent": "Magnetic plug inspected and the amount noted on every oil check."
+        "prevent": "Magnetic plug inspected and the amount noted on every oil check.",
+        "applies": {
+          "primary": [
+            "gearbox"
+          ],
+          "contributing": []
+        }
       },
       "r_metal_flakes": {
         "type": "result",
@@ -714,7 +872,16 @@ BW.register("gearbox", {
         "label": "surface fatigue or breakage",
         "text": "Flakes are pitting or spalling; chips are tooth breakage or a bearing race breaking up. Something is coming apart.",
         "sub": "Inspection cover off. Every tooth on every gear. Shaft play at every bearing. The source will be visible. Ferrography on the oil sample tells you the wear mechanism from the particle shape. Plan the repair and change the oil so the debris does not do more damage.",
-        "prevent": "Whatever caused it: overload, misalignment, lubrication, or contamination. Wear Patterns tab to read the teeth."
+        "prevent": "Whatever caused it: overload, misalignment, lubrication, or contamination. Wear Patterns tab to read the teeth.",
+        "applies": {
+          "primary": [
+            "gearbox"
+          ],
+          "contributing": [
+            "bearing",
+            "lube"
+          ]
+        }
       },
       "r_metal_bronze": {
         "type": "result",
@@ -722,7 +889,16 @@ BW.register("gearbox", {
         "label": "bronze: worm wheel or bushing",
         "text": "Copper coloured debris on a worm box is the wheel wearing. On any box it can be a bronze bearing cage, a bushing, or a thrust washer.",
         "sub": "Worm box: check backlash and the oil type. Rapid bronze loss is wrong oil or overload. Other boxes: identify the bronze components on the drawing. Copper on the oil analysis trend.",
-        "prevent": "Correct oil for bronze. Copper trended on analysis."
+        "prevent": "Correct oil for bronze. Copper trended on analysis.",
+        "applies": {
+          "primary": [
+            "gearbox"
+          ],
+          "contributing": [
+            "bearing",
+            "lube"
+          ]
+        }
       },
       "r_metal_cage": {
         "type": "result",
@@ -730,7 +906,14 @@ BW.register("gearbox", {
         "label": "bearing cage",
         "text": "Non-magnetic silver flakes are usually a bearing cage (brass, bronze, or pressed steel that has been through the mesh).",
         "sub": "A cage breaking up is a bearing in the last stage of failure. Find which bearing by shaft play, temperature, and noise. Plan the replacement now.",
-        "prevent": "Bearing condition on the PM. Oil cleanliness."
+        "prevent": "Bearing condition on the PM. Oil cleanliness.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "gearbox"
+          ],
+          "contributing": []
+        }
       },
       "output1": {
         "q": "What is the output doing?",
@@ -755,7 +938,15 @@ BW.register("gearbox", {
         "label": "broken tooth, sheared key, or stripped gear",
         "text": "Input turning with no output means the drive path is broken inside the box, or the input coupling or key has let go.",
         "sub": "Lock out and control the load first. Input coupling and key. Then the inspection cover: a gear with all its teeth gone, a broken shaft, or a gear that has spun on its shaft. Worm box: a stripped wheel, which is what happens when the wheel wears through the bronze.",
-        "prevent": "Overload protection on the drive. Backlash trend would have shown a worm wheel wearing."
+        "prevent": "Overload protection on the drive. Backlash trend would have shown a worm wheel wearing.",
+        "applies": {
+          "primary": [
+            "gearbox"
+          ],
+          "contributing": [
+            "alignment"
+          ]
+        }
       },
       "r_out_speed": {
         "type": "result",
@@ -763,7 +954,15 @@ BW.register("gearbox", {
         "label": "wrong ratio or wrong input speed",
         "text": "The output speed is what the input speed and the ratio make it. If it is wrong, one of those is wrong.",
         "sub": "Input speed with a tachometer against the motor nameplate; a VFD changes it. Ratio on the gearbox nameplate against what the machine needs. A replacement box with the right frame size and the wrong ratio is a common find.",
-        "prevent": "Ratio on the PM sheet and on the purchase specification."
+        "prevent": "Ratio on the PM sheet and on the purchase specification.",
+        "applies": {
+          "primary": [
+            "gearbox"
+          ],
+          "contributing": [
+            "motor"
+          ]
+        }
       },
       "r_out_stall": {
         "type": "result",
@@ -771,7 +970,17 @@ BW.register("gearbox", {
         "label": "load exceeds torque, or a mechanical bind",
         "text": "The box delivers torque up to what the motor gives it times the ratio. If the load is more than that, it stalls. If the box binds, it stalls with the motor pulling high amps.",
         "sub": "Motor amps at the stall: high means the motor is trying and the load or a bind is stopping it; normal means the drive path is slipping (coupling, key, belt). Uncouple the load: if the box turns freely, the load is the problem. If the box is stiff by hand, a bearing has seized or the gears are binding on zero backlash or debris.",
-        "prevent": "Load sizing with a service factor. Overload protection."
+        "prevent": "Load sizing with a service factor. Overload protection.",
+        "applies": {
+          "primary": [
+            "gearbox"
+          ],
+          "contributing": [
+            "alignment",
+            "bearing",
+            "motor"
+          ]
+        }
       },
       "r_backlash": {
         "type": "result",
@@ -779,7 +988,15 @@ BW.register("gearbox", {
         "label": "backlash increasing",
         "text": "Backlash grows as the teeth wear or as a bearing lets a gear move away from its mate.",
         "sub": "Measure it (Setup tab) against the specification and against the last reading. Shaft play at each bearing separates bearing movement from tooth wear. Inspection cover: the teeth will show abrasive wear or worm wheel wear. Rate of increase sets the replacement plan.",
-        "prevent": "Backlash measured and recorded on the PM. Oil cleanliness slows abrasive wear. Correct oil for bronze."
+        "prevent": "Backlash measured and recorded on the PM. Oil cleanliness slows abrasive wear. Correct oil for bronze.",
+        "applies": {
+          "primary": [
+            "gearbox"
+          ],
+          "contributing": [
+            "bearing"
+          ]
+        }
       }
     }
   },

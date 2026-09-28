@@ -192,7 +192,14 @@ BW.register("bearing", {
         "label": "likely overgreasing or cold grease",
         "text": "A squeal that clears on warm-up is usually excess grease being displaced or cold grease reaching operating consistency.",
         "sub": "Monitor bearing temperature after warm-up. If temperature returns to normal baseline and the squeal does not return, the bearing is likely fine. If the bearing was recently regreased, overgreasing is the most probable cause. Do not add more grease. If the squeal recurs on every cold start, verify grease type and quantity are correct for the application.",
-        "prevent": "Grease quantity by formula, interval by the manufacturer chart for speed and temperature. Grease grade suited to the cold start temperature."
+        "prevent": "Grease quantity by formula, interval by the manufacturer chart for speed and temperature. Grease grade suited to the cold start temperature.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "lube"
+          ],
+          "contributing": []
+        }
       },
       "re_squeal_persists": {
         "type": "result",
@@ -200,7 +207,15 @@ BW.register("bearing", {
         "label": "race or rolling element damage",
         "text": "A persistent squeal at operating temperature indicates damaged or dry contact between rolling elements and races.",
         "sub": "Check lubrication first: is grease present and in reasonable condition? A dry bearing will squeal continuously. If lubrication appears adequate, the races or rolling elements are likely damaged (spalling, pitting, or contamination scoring). Plan bearing replacement. Continued operation accelerates damage and increases risk of sudden failure. Collect a grease sample if possible to look for metallic particles.",
-        "prevent": "Read the failed bearing: starvation, contamination, or load. Fix that before the new bearing goes in."
+        "prevent": "Read the failed bearing: starvation, contamination, or load. Fix that before the new bearing goes in.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": [
+            "lube"
+          ]
+        }
       },
       "re_rumble1": {
         "q": "Is the bearing recently regreased or new?",
@@ -224,7 +239,15 @@ BW.register("bearing", {
         "label": "contamination during maintenance likely",
         "text": "Rumbling in a recently serviced or new bearing strongly suggests contamination introduced during installation or regreasing.",
         "sub": "Contamination (dirt, grit, metal particles) scoring the races produces a characteristic rumbling sound. If the bearing is new, inspect the installation: was it clean? Was the shaft seat clean? Was the housing bore clean? If the bearing was regreased, was the grease gun nozzle clean? Was the relief plug open during regreasing? If contamination is confirmed, the bearing will need replacement sooner than expected. Contamination damage is progressive.",
-        "prevent": "Clean installation: bearing stays sealed until it goes on, heated by induction or oil bath, pressed by the correct race, housing cleaned. Never through the rolling elements."
+        "prevent": "Clean installation: bearing stays sealed until it goes on, heated by induction or oil bath, pressed by the correct race, housing cleaned. Never through the rolling elements.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": [
+            "lube"
+          ]
+        }
       },
       "re_rumble_old": {
         "type": "result",
@@ -232,7 +255,13 @@ BW.register("bearing", {
         "label": "wear or spalling: plan replacement",
         "text": "Rumbling in a bearing that has been running normally indicates fatigue wear or spalling of the races or rolling elements.",
         "sub": "Spalling (flaking of the hardened race surface) produces a continuous rumble that intensifies over time. This is end-of-life failure mode for a bearing that has reached or exceeded its rating. Identify root cause before installing the replacement: was the bearing correctly specified for the load? Was alignment correct? Was lubrication adequate? Replacing without addressing root cause produces the same failure again. Plan shutdown and replacement before the bearing fails catastrophically.",
-        "prevent": "Vibration and temperature trended so replacement is planned. Envelope readings catch the next one at stage 1."
+        "prevent": "Vibration and temperature trended so replacement is planned. Envelope readings catch the next one at stage 1.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": []
+        }
       },
       "re_click": {
         "type": "result",
@@ -240,7 +269,13 @@ BW.register("bearing", {
         "label": "inspect for brinelling or race damage",
         "text": "Rhythmic clicking or knocking that occurs at a consistent interval tied to shaft rotation points to a discrete defect on a race or rolling element.",
         "sub": "True brinelling (permanent indentation of races from static overload) and false brinelling (fretting from vibration while stationary) both produce a detectable click or knock as each rolling element passes over the indentation. Count the clicks per revolution and compare to the bearing geometry to estimate whether the defect is on the inner race, outer race, or a rolling element. The bearing requires replacement. Investigate whether the equipment was subjected to shock loading or prolonged storage vibration.",
-        "prevent": "Hubs installed with heat or a puller, never a hammer. Stored spares rotated periodically. Machines shipped with shafts locked."
+        "prevent": "Hubs installed with heat or a puller, never a hammer. Stored spares rotated periodically. Machines shipped with shafts locked.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": []
+        }
       },
       "re_heat1": {
         "q": "Was the bearing recently regreased or is this heat appearing after a PM?",
@@ -264,7 +299,14 @@ BW.register("bearing", {
         "label": "overgreasing: purge and monitor",
         "text": "Heat after regreasing is the classic overgreasing signature.",
         "sub": "Open the relief plug if present and run the equipment for 20 to 30 minutes to allow excess grease to purge. Temperature should drop to normal baseline as the excess is displaced. If temperature does not normalize within an hour, investigate further. For future PM: calculate the correct quantity for the specific bearing housing volume rather than estimating. Motor bearings are particularly prone to overgreasing because they are serviced by a wide range of personnel.",
-        "prevent": "Relief plug out during greasing. Quantity by G = 0.005 × D × B. Ultrasonic-assisted greasing on critical machines."
+        "prevent": "Relief plug out during greasing. Quantity by G = 0.005 × D × B. Ultrasonic-assisted greasing on critical machines.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "lube"
+          ],
+          "contributing": []
+        }
       },
       "re_heat_running": {
         "q": "Is there any change in bearing noise along with the heat?",
@@ -288,7 +330,13 @@ BW.register("bearing", {
         "label": "bearing failure in progress: plan immediate replacement",
         "text": "Heat combined with increased noise indicates active bearing damage. The failure is progressing.",
         "sub": "This bearing is past the point of corrective lubrication. Continued operation risks catastrophic failure. If the machine can be safely shut down without a process impact, do so now and replace the bearing. If it must continue running, increase monitoring frequency significantly (temperature and vibration checks every hour) and prepare for an emergency replacement. Document the failure for root cause analysis: check lubrication records, alignment history, and load conditions.",
-        "prevent": "Whatever the failed bearing shows. Alignment, grease quantity, contamination, or a load it was not designed for."
+        "prevent": "Whatever the failed bearing shows. Alignment, grease quantity, contamination, or a load it was not designed for.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": []
+        }
       },
       "re_heat_only": {
         "type": "result",
@@ -296,7 +344,16 @@ BW.register("bearing", {
         "label": "check lubrication and alignment",
         "text": "Heat without significant noise is often an early-stage lubrication or misalignment issue.",
         "sub": "Check grease condition and quantity. Heat alone can indicate the lubricant is degraded and no longer providing adequate film. Also check alignment: a misaligned bearing runs hot before it becomes noisy. Use a thermal gun to compare both bearing housings on the same shaft. If one is significantly hotter, that is the loaded bearing. Trending the temperature over several days will tell you whether the condition is stable or progressing.",
-        "prevent": "Alignment after any work, with soft foot corrected. Fixing ring on the drive side only. Grease quantity by formula."
+        "prevent": "Alignment after any work, with soft foot corrected. Fixing ring on the drive side only. Grease quantity by formula.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": [
+            "alignment",
+            "lube"
+          ]
+        }
       },
       "re_vibe1": {
         "q": "Is the vibration a recent change or has it always been present at this level?",
@@ -320,7 +377,14 @@ BW.register("bearing", {
         "label": "investigate immediately: bearing or alignment",
         "text": "A recent increase in vibration is a significant indicator. Do not normalize it.",
         "sub": "Most common causes in order: (1) misalignment (check coupling with dial indicators or laser tool), (2) imbalance (impeller fouling, coupling element chunk, loss of balance weight), (3) bearing wear beginning to generate vibration. If you have access to vibration analysis equipment, trending the frequency spectrum will help isolate the source. Without instruments, start with alignment and coupling inspection before condemning the bearing.",
-        "prevent": "Baseline reading after every rebuild. Alignment readings recorded. Route readings monthly."
+        "prevent": "Baseline reading after every rebuild. Alignment readings recorded. Route readings monthly.",
+        "applies": {
+          "primary": [
+            "alignment",
+            "bearing"
+          ],
+          "contributing": []
+        }
       },
       "re_vibe_old": {
         "type": "result",
@@ -328,7 +392,14 @@ BW.register("bearing", {
         "label": "establish baseline and monitor",
         "text": "Steady-state vibration that has always been present may be acceptable for the machine design, or it may indicate a long-standing alignment or balance issue that has not yet caused a failure.",
         "sub": "If there are no baseline measurements, establish them now with a handheld vibration meter or accelerometer. Record amplitude and frequency at each bearing housing. This becomes the baseline for future comparison. A vibration that has been present for a long time and is stable is less urgent than one that is increasing. However, review alignment and coupling condition if the source has never been investigated.",
-        "prevent": "Baseline established and trended. Route with the same points. Vibration Fundamentals module."
+        "prevent": "Baseline established and trended. Route with the same points. Vibration Fundamentals module.",
+        "applies": {
+          "primary": [],
+          "contributing": [
+            "alignment",
+            "bearing"
+          ]
+        }
       },
       "sj_symptom": {
         "q": "What is the primary symptom on the sleeve or journal bearing?",
@@ -374,7 +445,14 @@ BW.register("bearing", {
         "label": "shutdown immediately: oil starvation",
         "text": "A journal bearing without adequate oil supply will fail within seconds to minutes under load.",
         "sub": "Shut down the machine immediately if it is safe to do so. A wiped bearing (melted or displaced babbitt) is the likely outcome if operation has continued. Investigate the oil supply system: pump running? Filter blocked? Supply line restricted or broken? Oil level adequate in reservoir? After addressing the supply issue, inspect the bearing surface before restarting. Babbitt that has wiped even partially will have uneven clearance and will not run correctly.",
-        "prevent": "Oil pressure low alarm and trip on every pressure-fed sleeve bearing machine. Oil level and ring pickup on the PM for splash systems."
+        "prevent": "Oil pressure low alarm and trip on every pressure-fed sleeve bearing machine. Oil level and ring pickup on the PM for splash systems.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "lube"
+          ],
+          "contributing": []
+        }
       },
       "sj_heat_with_oil": {
         "type": "result",
@@ -382,7 +460,15 @@ BW.register("bearing", {
         "label": "check oil viscosity, clearance, and load",
         "text": "Heat with adequate oil supply points to a film breakdown issue rather than starvation.",
         "sub": "Possible causes: oil viscosity too low for the operating temperature (check oil specification vs actual temperature), clearance too tight (check journal-to-bearing clearance), overload condition (bearing carrying more than designed load), or oil contamination reducing lubricating ability. Take an oil sample for analysis. Check bearing clearance if possible. Review whether load conditions have changed.",
-        "prevent": "Oil grade against the bearing specification. Clearance measured at overhaul. Load path checked: alignment and pipe strain."
+        "prevent": "Oil grade against the bearing specification. Clearance measured at overhaul. Load path checked: alignment and pipe strain.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": [
+            "lube"
+          ]
+        }
       },
       "sj_oil1": {
         "type": "result",
@@ -390,7 +476,15 @@ BW.register("bearing", {
         "label": "investigate oil system before continuing operation",
         "text": "An oil pressure drop is an emergency condition for a journal bearing system.",
         "sub": "Check: oil pump condition and output pressure, oil level in reservoir, all filters and strainers, relief valve setting and condition, any supply line leaks or restrictions. A pressure drop with no obvious external cause may indicate increased bearing clearance from wear (more oil flows through a worn bearing, reducing system pressure). Bearing inspection and clearance measurement is required.",
-        "prevent": "Oil system on the PM: filter, cooler, pump, pressure, level. Oil analysis on the interval."
+        "prevent": "Oil system on the PM: filter, cooler, pump, pressure, level. Oil analysis on the interval.",
+        "applies": {
+          "primary": [
+            "lube"
+          ],
+          "contributing": [
+            "bearing"
+          ]
+        }
       },
       "sj_vibe1": {
         "type": "result",
@@ -398,7 +492,15 @@ BW.register("bearing", {
         "label": "oil whirl or whip: check clearance and oil supply",
         "text": "Vibration or instability in a journal bearing is often caused by oil whirl, a condition where the oil film drives the shaft into a self-sustaining orbit.",
         "sub": "Oil whirl typically occurs at approximately half the shaft rotational frequency. It can be confirmed with vibration spectrum analysis. Causes include excessive bearing clearance, low oil viscosity, light loading, or oil supply pressure too high. Oil whirl left unaddressed progresses to oil whip, which is a resonant condition and far more damaging. Check clearance, verify oil viscosity is correct, and consult bearing manufacturer specifications for the specific bearing geometry.",
-        "prevent": "Clearance and oil viscosity within specification. Alignment keeps the load where the bearing needs it."
+        "prevent": "Clearance and oil viscosity within specification. Alignment keeps the load where the bearing needs it.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": [
+            "lube"
+          ]
+        }
       },
       "sj_metal": {
         "type": "result",
@@ -406,7 +508,15 @@ BW.register("bearing", {
         "label": "bearing surface damage: shutdown and inspect",
         "text": "Metal particles in the oil from a journal bearing system mean the bearing surface is being physically removed.",
         "sub": "This is not a condition that improves with continued operation. Shut down and inspect the bearing surface. Identify the failure mode from the pattern of damage: wiping (smooth smearing of babbitt, caused by overload or oil starvation), fatigue (pitting and cracking in a regular pattern, caused by cyclic overload), erosion (smooth pitting or grooving from high-velocity oil or contamination), or corrosion (rough pitting distributed across the surface from acid or water in oil). Each failure mode points to a different root cause that must be addressed before the replacement bearing is installed.",
-        "prevent": "Oil analysis trended. Clearance and alignment at overhaul. Find why the film failed before the new bearing goes in."
+        "prevent": "Oil analysis trended. Clearance and alignment at overhaul. Find why the film failed before the new bearing goes in.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": [
+            "lube"
+          ]
+        }
       }
     }
   },

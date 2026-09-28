@@ -310,7 +310,14 @@ BW.register("lube", {
         "label": "overgreasing: purge and monitor",
         "text": "Heat appearing within an hour of regreasing is the classic overgreasing signature.",
         "sub": "Open the relief plug if present and run the equipment for 20 to 30 minutes to allow excess grease to purge. Temperature should normalise as the excess is displaced. For the next relubrication, calculate the correct quantity using the formula: G = 0.005 × D × B (grams, mm). Do not add more grease to a bearing that is running hot from overgreasing. See Module 02 for full bearing temperature guidance.",
-        "prevent": "Relief plug out during greasing. Quantity by formula on the PM sheet. Ultrasonic monitoring on critical points."
+        "prevent": "Relief plug out during greasing. Quantity by formula on the PM sheet. Ultrasonic monitoring on critical points.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "lube"
+          ],
+          "contributing": []
+        }
       },
       "hot_before": {
         "type": "result",
@@ -318,7 +325,16 @@ BW.register("lube", {
         "label": "investigate root cause: lubrication not the only factor",
         "text": "A bearing that was already hot before relubrication has a problem that lubrication alone will not fix.",
         "sub": "Check: bearing load and alignment (Module 03), shaft runout, correct bearing for the application, and whether the operating conditions have changed. Lubricate correctly as part of the investigation but do not assume lubrication was the cause. Take an oil or grease sample from the bearing for analysis if possible before cleaning.",
-        "prevent": "Alignment, load, and bearing condition on the PM. Temperature trended so a rise is caught before a PM masks it."
+        "prevent": "Alignment, load, and bearing condition on the PM. Temperature trended so a rise is caught before a PM masks it.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": [
+            "alignment",
+            "lube"
+          ]
+        }
       },
       "wrong_oil": {
         "q": "Was the same lubricant product used as the previous fill?",
@@ -342,7 +358,15 @@ BW.register("lube", {
         "label": "wrong lubricant: drain and refill",
         "text": "A change in lubricant type, grade, or brand can cause immediate performance changes.",
         "sub": "A higher viscosity oil increases churning losses and heat at operating speed. A lower viscosity oil reduces film thickness and increases heat from metal contact. An incompatible additive package can cause deposits or reduced protection. Drain the system, confirm the correct product against the equipment nameplate or manual, and refill. Document what was used and when for future reference.",
-        "prevent": "One product per application, labelled at the fill point and on the grease gun. Colour-coded dispensing. Incompatibility chart posted in the lube room."
+        "prevent": "One product per application, labelled at the fill point and on the grease gun. Colour-coded dispensing. Incompatibility chart posted in the lube room.",
+        "applies": {
+          "primary": [
+            "lube"
+          ],
+          "contributing": [
+            "bearing"
+          ]
+        }
       },
       "oil_level_check": {
         "type": "result",
@@ -350,7 +374,13 @@ BW.register("lube", {
         "label": "check oil level and cooler function",
         "text": "Same lubricant, heat after a change: check level and heat removal.",
         "sub": "Verify oil level against the sight glass or dipstick specification. Overfill causes churning and heat. Confirm the oil cooler (if present) is flowing coolant and the thermostat is opening. Check that the filter is not bypassing (differential pressure indicator). If all checks pass, take an oil sample for analysis: the oil may have been contaminated during the change.",
-        "prevent": "Level checked stopped and settled, on the PM. Cooler delta T logged."
+        "prevent": "Level checked stopped and settled, on the PM. Cooler delta T logged.",
+        "applies": {
+          "primary": [
+            "lube"
+          ],
+          "contributing": []
+        }
       },
       "lube_leaking": {
         "q": "What type of lubricant is leaking and from where?",
@@ -376,7 +406,16 @@ BW.register("lube", {
         "label": "overgreasing or seal failure",
         "text": "Grease purging from housing seals is either overgreasing (excess grease finding its way out) or a failed housing seal.",
         "sub": "If recent regreasing occurred: this is excess grease purging: normal if a relief plug was open, abnormal if it is coming out through the shaft seal. A seal that is blowing out grease has been subjected to excessive pressure from overgreasing. Reduce quantity on next interval. If no recent regreasing: the seal has failed and should be replaced. Inspect for contamination ingress at the seal location.",
-        "prevent": "Quantity by formula. Seal condition inspected when purge is heavier than usual."
+        "prevent": "Quantity by formula. Seal condition inspected when purge is heavier than usual.",
+        "applies": {
+          "primary": [
+            "lube",
+            "seal"
+          ],
+          "contributing": [
+            "bearing"
+          ]
+        }
       },
       "oil_leak": {
         "type": "result",
@@ -384,7 +423,16 @@ BW.register("lube", {
         "label": "identify leak source: seal, joint, or breather",
         "text": "Oil leaking from an enclosed system needs a source identified before it becomes a serious loss.",
         "sub": "Common sources: shaft seal wear or damage (inspect and replace), gasket failure at inspection covers or drain plugs (replace gasket, check flange surface condition), overfilled reservoir causing overflow through the breather (check level and correct), blocked breather causing positive pressure that forces oil past seals (replace desiccant breather). A leak rate that is increasing indicates a developing failure, not just a maintenance item.",
-        "prevent": "Breather condition on the PM. Level marks visible. Fix the leak, not just the level."
+        "prevent": "Breather condition on the PM. Level marks visible. Fix the leak, not just the level.",
+        "applies": {
+          "primary": [
+            "seal"
+          ],
+          "contributing": [
+            "gearbox",
+            "lube"
+          ]
+        }
       },
       "central_leak": {
         "type": "result",
@@ -392,7 +440,13 @@ BW.register("lube", {
         "label": "inspect fittings and line connections",
         "text": "Grease leaks in centralized system lines are almost always at fittings, injectors, or line terminations.",
         "sub": "Check all compression fittings and push-to-connect fittings for proper seating. A fitting that was not fully seated during installation will weep immediately. An old fitting that has been cycled many times may have cracked ferrules. Replace any fitting that cannot be stopped by tightening to the correct torque. Do not overtighten: this deforms the ferrule and worsens the leak.",
-        "prevent": "Fittings and lines on the PM walk. Line routing protected from traffic and vibration."
+        "prevent": "Fittings and lines on the PM walk. Line routing protected from traffic and vibration.",
+        "applies": {
+          "primary": [
+            "lube"
+          ],
+          "contributing": []
+        }
       },
       "oil_appearance": {
         "q": "What does the oil look like?",
@@ -422,7 +476,17 @@ BW.register("lube", {
         "label": "water contamination: change oil and find source",
         "text": "Milky or cloudy oil has water emulsified through it. The lubricant film is severely compromised.",
         "sub": "Change the oil immediately. Inspect and identify the water ingress source: condensation (common in seasonal temperature swings), failed seal allowing process water in, wash-down water through breather, or cooling water coil leak (on systems with internal coolers). Address the source before refilling. If the system has been running with milky oil, inspect bearings and gears for corrosion and wear damage before returning to service.",
-        "prevent": "Desiccant breather. Cooler pressure tested. Water content on the oil analysis."
+        "prevent": "Desiccant breather. Cooler pressure tested. Water content on the oil analysis.",
+        "applies": {
+          "primary": [
+            "lube"
+          ],
+          "contributing": [
+            "bearing",
+            "gearbox",
+            "seal"
+          ]
+        }
       },
       "dark_oil": {
         "type": "result",
@@ -430,7 +494,13 @@ BW.register("lube", {
         "label": "oxidation or contamination: sample and analyse",
         "text": "Dark oil indicates oxidation, contamination, or both.",
         "sub": "Dark brown indicates moderate oxidation: the additive package is being depleted. Black indicates severe oxidation or carbon contamination. Take an oil sample for analysis (TAN, viscosity, wear metals) before deciding on action. If TAN has doubled from new oil baseline, change the oil. Investigate the cause of accelerated oxidation: operating temperature too high, extended interval, or contamination accelerating degradation.",
-        "prevent": "Operating temperature trended. Oil changed on analysis rather than on the calendar, and never later than the manufacturer interval."
+        "prevent": "Operating temperature trended. Oil changed on analysis rather than on the calendar, and never later than the manufacturer interval.",
+        "applies": {
+          "primary": [
+            "lube"
+          ],
+          "contributing": []
+        }
       },
       "foamy_oil": {
         "type": "result",
@@ -438,7 +508,16 @@ BW.register("lube", {
         "label": "air ingestion or incorrect oil",
         "text": "Foamy oil in a reservoir or gearbox has an air ingestion problem or the wrong oil.",
         "sub": "Check: return lines are submerged below the oil surface in the reservoir (above-surface returns aerate the oil violently), all suction line fittings are tight (air ingestion at pump inlet), shaft seal on the pump is intact (air ingestion past a worn shaft seal), oil level is correct (low level causes pump to cavitate and ingest air). If the oil is correct and seals are intact, the foam inhibitor additive may be depleted: take a sample for analysis.",
-        "prevent": "Suction side sealed. Return below the surface. Correct oil grade on every top-up."
+        "prevent": "Suction side sealed. Return below the surface. Correct oil grade on every top-up.",
+        "applies": {
+          "primary": [
+            "lube"
+          ],
+          "contributing": [
+            "gearbox",
+            "seal"
+          ]
+        }
       },
       "varnish": {
         "type": "result",
@@ -446,7 +525,15 @@ BW.register("lube", {
         "label": "oxidation deposits: flush and investigate root cause",
         "text": "Varnish and sludge deposits indicate the oil has been operating beyond its service life or at excessive temperature.",
         "sub": "Varnish in hydraulic systems is particularly serious: it can cause valve sticking and erratic machine behaviour. A standard oil change will not remove existing varnish deposits. A varnish removal flush using a dedicated varnish removal fluid or extended circulation with a flushing oil is required. After the flush, identify and address the root cause: operating temperature reduction, shorter oil change interval, or upgrade to a more oxidation-stable oil.",
-        "prevent": "Operating temperature brought down. Oil condition on analysis. Consider a varnish-resistant synthetic if the duty cannot change."
+        "prevent": "Operating temperature brought down. Oil condition on analysis. Consider a varnish-resistant synthetic if the duty cannot change.",
+        "applies": {
+          "primary": [
+            "lube"
+          ],
+          "contributing": [
+            "hydraulics"
+          ]
+        }
       },
       "central_no_flow": {
         "q": "What type of centralized system is this?",
@@ -472,7 +559,13 @@ BW.register("lube", {
         "label": "find the blockage: check cycle indicator first",
         "text": "On a progressive system, a single blocked injector or line stops all downstream points from receiving lubricant.",
         "sub": "Check the cycle indicator on the final valve in the sequence. If it has not moved during a pump cycle, there is a blockage upstream. Work backward from the indicator toward the pump, checking each injector for movement. The last injector that moves and the first that does not bracket the blockage location. Check the feed line between those two injectors for a cold or hardened grease plug, a kinked line, or a blocked injector.",
-        "prevent": "Cycle indicator on the PM route. Filter on the reservoir fill. Line routing protected."
+        "prevent": "Cycle indicator on the PM route. Filter on the reservoir fill. Line routing protected.",
+        "applies": {
+          "primary": [
+            "lube"
+          ],
+          "contributing": []
+        }
       },
       "dual_no_flow": {
         "type": "result",
@@ -480,7 +573,13 @@ BW.register("lube", {
         "label": "identify which injectors are not cycling",
         "text": "On a dual-line system each injector is independent, so identify which specific points are not receiving grease.",
         "sub": "Observe injector indicator pins during a pump cycle. Injectors that do not cycle have a blocked inlet (debris in the inlet strainer), internal seizure, or a broken line on the outlet side. Replace stuck injectors. Check line continuity from the injector to the lubrication point. Verify the main line pressure is reaching the specified operating pressure: low pressure affects all injectors.",
-        "prevent": "Injector cycling checked on the PM. Reservoir kept clean and filtered."
+        "prevent": "Injector cycling checked on the PM. Reservoir kept clean and filtered.",
+        "applies": {
+          "primary": [
+            "lube"
+          ],
+          "contributing": []
+        }
       },
       "recirc_no_flow": {
         "type": "result",
@@ -488,7 +587,15 @@ BW.register("lube", {
         "label": "check pump, filter, and pressure",
         "text": "A recirculating oil system with no flow has a pump failure, severe filter blockage, or a major line failure.",
         "sub": "Check: pump running (motor energised, shaft rotating), filter differential pressure indicator (a fully blocked filter with bypass valve will still deliver oil, but dirty), suction line for blockage or air ingestion, discharge pressure gauge against normal operating range, and all distribution manifold valves for correct position. Loss of flow in a recirculating system is a shutdown condition for the equipment it serves.",
-        "prevent": "Pressure, filter differential, and pump condition on the PM. Low pressure alarm and trip."
+        "prevent": "Pressure, filter differential, and pump condition on the PM. Low pressure alarm and trip.",
+        "applies": {
+          "primary": [
+            "lube"
+          ],
+          "contributing": [
+            "pump"
+          ]
+        }
       },
       "bearing_failed": {
         "q": "What did the failed bearing look like?",
@@ -518,7 +625,14 @@ BW.register("lube", {
         "label": "thermal failure: insufficient lubrication or overgreasing",
         "text": "Overheated bearings show blue or brown heat discolouration of the races and rolling elements.",
         "sub": "Two causes produce thermal bearing failure: insufficient lubrication (starvation, wrong grease type, blocked delivery) and overgreasing (churning heat). Distinguish by examining the failed bearing: starved bearings show smearing and adhesive wear before the heat damage. Overgreased bearings show heat damage without prior adhesive wear signatures. Review lubrication records and correct the quantity or delivery method for the replacement.",
-        "prevent": "Grease quantity and interval on the PM. Read the failed bearing to confirm which."
+        "prevent": "Grease quantity and interval on the PM. Read the failed bearing to confirm which.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "lube"
+          ],
+          "contributing": []
+        }
       },
       "bf_abrasive": {
         "type": "result",
@@ -526,7 +640,16 @@ BW.register("lube", {
         "label": "contamination: improve sealing and filtration",
         "text": "Dull, scratched, or grooved races and rolling elements indicate abrasive particle contamination.",
         "sub": "The particles entered the bearing through degraded seals, contaminated grease (dirty gun or container), or contaminated new lubricant. Improve bearing sealing, filter all grease before use, implement contamination control procedures at the lubrication point, and consider upgrading to a sealed bearing if the environment is persistently contaminated.",
-        "prevent": "Sealing upgraded for the environment. Grease and oil filtered at the point of use. Particle count on analysis."
+        "prevent": "Sealing upgraded for the environment. Grease and oil filtered at the point of use. Particle count on analysis.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "lube"
+          ],
+          "contributing": [
+            "seal"
+          ]
+        }
       },
       "bf_corrosion": {
         "type": "result",
@@ -534,7 +657,16 @@ BW.register("lube", {
         "label": "water ingress: improve sealing and check lubricant",
         "text": "Rust pitting on bearing races indicates water contamination of the lubricant.",
         "sub": "Sources: condensation from temperature cycling, wash-down water through seals or breathers, or water-contaminated grease. Improve housing sealing, use a grease with good water resistance (lithium complex or calcium sulfonate thickener both have good water resistance), and check for and eliminate the water ingress path before installing the replacement bearing.",
-        "prevent": "Desiccant breather. Sealing suited to wash-down. Water content on analysis."
+        "prevent": "Desiccant breather. Sealing suited to wash-down. Water content on analysis.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "lube"
+          ],
+          "contributing": [
+            "seal"
+          ]
+        }
       },
       "bf_smear": {
         "type": "result",
@@ -542,7 +674,14 @@ BW.register("lube", {
         "label": "inadequate film at startup or low speed: review lubricant selection",
         "text": "Smearing (smooth polished flat spots) on rolling elements indicates metal-to-metal contact during low-speed or startup conditions where the lubricant film had not fully formed.",
         "sub": "Common in equipment with frequent start-stop cycles, very low operating speeds, or applications where the bearing was started under full load without prelubrication. Consider a higher viscosity grease, a grease with EP additives for boundary lubrication conditions, or a pre-lubrication procedure that ensures the bearing is fully lubricated before the machine is loaded.",
-        "prevent": "Lubricant viscosity and grade suited to the startup temperature and speed. Preload correct on lightly loaded bearings."
+        "prevent": "Lubricant viscosity and grade suited to the startup temperature and speed. Preload correct on lightly loaded bearings.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "lube"
+          ],
+          "contributing": []
+        }
       },
       "oil_analysis_alarm": {
         "q": "Which parameter triggered the alarm?",
@@ -572,7 +711,15 @@ BW.register("lube", {
         "label": "contamination ingression: identify source and filter",
         "text": "A high particle count means contamination is entering faster than the filtration can remove it, or the filtration is not working.",
         "sub": "Check: filter condition and differential pressure (a bypassing filter explains the count), breather condition (replace with desiccant breather if a standard breather is in use), seal condition at all shaft penetrations and inspection covers, and whether new oil was added recently (new oil is often dirtier than the system target). Install a portable filtration unit to bring the count down to target while investigating the ingression path.",
-        "prevent": "Breathers, seals, and fill practices reviewed. Filter carts for top-ups. Target cleanliness code set and trended."
+        "prevent": "Breathers, seals, and fill practices reviewed. Filter carts for top-ups. Target cleanliness code set and trended.",
+        "applies": {
+          "primary": [
+            "lube"
+          ],
+          "contributing": [
+            "seal"
+          ]
+        }
       },
       "oa_wear": {
         "type": "result",
@@ -580,7 +727,16 @@ BW.register("lube", {
         "label": "elevated wear: investigate component condition",
         "text": "Rising wear metals indicate accelerated wear of specific components. Identify which component based on the element.",
         "sub": "Iron: steel gears, shafts, bearing races. Copper/lead/tin: bronze or babbitt bearings, bushings. Chromium: chrome-plated components or certain bearing steels. Aluminium: pump housings, bearing cages. Silicon (elevated): dirt ingestion, not a wear metal but indicates contamination. A single high reading may be an anomaly. Two consecutive rising readings are a trend. Pull the equipment for inspection before the component fails completely.",
-        "prevent": "Sample interval shortened on the affected machine. Ferrography to identify the wear mechanism. Component inspection planned."
+        "prevent": "Sample interval shortened on the affected machine. Ferrography to identify the wear mechanism. Component inspection planned.",
+        "applies": {
+          "primary": [
+            "lube"
+          ],
+          "contributing": [
+            "bearing",
+            "gearbox"
+          ]
+        }
       },
       "oa_condition": {
         "type": "result",
@@ -588,7 +744,13 @@ BW.register("lube", {
         "label": "oil degradation: plan change interval and investigate cause",
         "text": "Rising TAN or viscosity change indicates the oil is degrading faster than expected.",
         "sub": "Rising TAN: oxidation is occurring. Check operating temperature, even a 5 to 10 degree increase in average temperature significantly accelerates oxidation. Consider shortening the change interval or upgrading to a more oxidation-stable product. Viscosity increase: oxidation thickening or contamination with a heavier product. Viscosity decrease: dilution with a lighter product or shear degradation of VI improver additives (common in hydraulic fluids with multigrade-type additives under high shear).",
-        "prevent": "Change interval reset from the analysis. Operating temperature reviewed if oxidation is early."
+        "prevent": "Change interval reset from the analysis. Operating temperature reviewed if oxidation is early.",
+        "applies": {
+          "primary": [
+            "lube"
+          ],
+          "contributing": []
+        }
       }
     }
   },

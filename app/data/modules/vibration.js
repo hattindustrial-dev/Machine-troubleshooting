@@ -280,7 +280,15 @@ BW.register("vibration", {
         "label": "developing fault at that bearing: get a spectrum",
         "text": "A slow rise localised to one bearing is a bearing or a gear on that shaft wearing.",
         "sub": "Take a spectrum and an envelope reading at that point. Screwdriver and infrared on the housing. If it is a bearing, the envelope will show the defect frequency and the four stages tell you how long you have. Bearing Failure module for the physical inspection.",
-        "prevent": "Envelope readings on every bearing point on the route, so the next one is caught at stage 1 instead of stage 3."
+        "prevent": "Envelope readings on every bearing point on the route, so the next one is caught at stage 1 instead of stage 3.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": [
+            "gearbox"
+          ]
+        }
       },
       "r_overall_sudden": {
         "type": "result",
@@ -288,7 +296,14 @@ BW.register("vibration", {
         "label": "something changed: find it",
         "text": "A step change in vibration has a step change behind it.",
         "sub": "After maintenance: soft foot, alignment, coupling, a loose fastener, a hub or sheave not seated, a belt set unmatched. After a process change: load, speed (VFD), flow (a valve, a damper), product on the rotor. The work order or the process log has the answer; the spectrum confirms which family.",
-        "prevent": "Baseline reading after every rebuild, before the machine goes back to production."
+        "prevent": "Baseline reading after every rebuild, before the machine goes back to production.",
+        "applies": {
+          "primary": [],
+          "contributing": [
+            "alignment",
+            "powertrans"
+          ]
+        }
       },
       "r_overall_all": {
         "type": "result",
@@ -296,7 +311,11 @@ BW.register("vibration", {
         "label": "whole machine: unbalance, base, or resonance",
         "text": "A rise at every point at once is a force affecting the whole machine, or the whole machine has become easier to shake.",
         "sub": "Unbalance (product on the rotor, a lost weight) raises 1x everywhere. A base problem (grout failed, anchor bolts loose, a crack) raises everything and shows highest in vertical. Resonance: a speed change (VFD) or a structural change (a pipe support removed, a platform added) moved a natural frequency onto a forcing frequency. Spectrum and a look at the base.",
-        "prevent": "Base inspection on the PM. Bump test after any structural change."
+        "prevent": "Base inspection on the PM. Bump test after any structural change.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_overall_bad": {
         "type": "result",
@@ -304,7 +323,11 @@ BW.register("vibration", {
         "label": "check the reading before the machine",
         "text": "A bad reading is more common than a bad machine.",
         "sub": "Same point (the paint dot), clean flat metal, the magnet seated without rocking, the machine at normal speed and load and temperature, the same instrument. Take it three times. If it repeats, it is real.",
-        "prevent": "Paint dots at every point. Load and speed noted with every reading."
+        "prevent": "Paint dots at every point. Load and speed noted with every reading.",
+        "applies": {
+          "primary": [],
+          "contributing": []
+        }
       },
       "r_1x": {
         "type": "result",
@@ -312,7 +335,17 @@ BW.register("vibration", {
         "label": "1x dominant: unbalance, bent shaft, eccentricity, or a resonance amplifying any of them",
         "text": "One clean peak at running speed, highest in the radial direction, is unbalance until something says otherwise.",
         "sub": "Look at the rotor: buildup, erosion, a missing blade, a thrown weight. Clean it before balancing it. High axial with it: bent shaft or angular misalignment; check run-out. Same 1x on the coupling ends of both machines: misalignment. 1x that changes a lot with a small speed change: resonance. 1x on a belt drive: sheave run-out or eccentricity. A 1x that does not drop after a good balance: resonance or a structural problem.",
-        "prevent": "Rotor cleaning on the PM for fans and mixers. Balance after any blade or impeller work. Baseline after balancing."
+        "prevent": "Rotor cleaning on the PM for fans and mixers. Balance after any blade or impeller work. Baseline after balancing.",
+        "applies": {
+          "primary": [
+            "fan"
+          ],
+          "contributing": [
+            "alignment",
+            "powertrans",
+            "pump"
+          ]
+        }
       },
       "r_2x": {
         "type": "result",
@@ -320,7 +353,13 @@ BW.register("vibration", {
         "label": "2x radial or 1x axial: misalignment",
         "text": "A 2x greater than 1x, or a 1x that is highest in the axial direction, at the coupling-end bearings of both machines, is misalignment.",
         "sub": "Soft foot on both machines first. Then alignment readings, corrected for thermal growth if the machine runs hot. Then the coupling: a worn element has been absorbing this and is due. Pipe strain if the readings change when the piping is connected. Couplings and Alignment module has the procedure and the vibration signatures by misalignment type.",
-        "prevent": "Alignment after any work on either machine, with soft foot corrected, readings recorded, and a baseline vibration reading after."
+        "prevent": "Alignment after any work on either machine, with soft foot corrected, readings recorded, and a baseline vibration reading after.",
+        "applies": {
+          "primary": [
+            "alignment"
+          ],
+          "contributing": []
+        }
       },
       "r_harmonics": {
         "type": "result",
@@ -328,7 +367,14 @@ BW.register("vibration", {
         "label": "harmonic series: looseness or severe misalignment",
         "text": "Many peaks at 1x, 2x, 3x, 4x and beyond mean something is hitting its limits every revolution.",
         "sub": "Structural looseness: vertical higher than horizontal, highest at one foot; torque the fasteners, check the base and grout, look for a cracked foot or frame. Rotating looseness: half-order harmonics (0.5x, 1.5x) and a truncated time waveform; a bearing loose in the housing or on the shaft, a sleeve turning, an impeller loose. Severe misalignment produces harmonics too, with a strong 2x. A bearing in stage 4 produces a harmonic-rich mess with a raised floor.",
-        "prevent": "Fastener torque on the PM. Bearing fits checked on every replacement."
+        "prevent": "Fastener torque on the PM. Bearing fits checked on every replacement.",
+        "applies": {
+          "primary": [
+            "alignment",
+            "bearing"
+          ],
+          "contributing": []
+        }
       },
       "sub1": {
         "q": "Where below 1x, and what kind of bearings?",
@@ -357,7 +403,16 @@ BW.register("vibration", {
         "label": "oil whirl",
         "text": "Sub-synchronous at just under half speed on a sleeve bearing is oil whirl. It is unstable and it destroys bearings.",
         "sub": "Reduce speed if possible and investigate: bearing clearance (worn), bearing load (too light, misaligned), oil viscosity and temperature. If the frequency locks and stops following speed, it is oil whip and the machine comes down. Bearing manufacturer and analyst involvement. Bearing Failure module, sleeve path.",
-        "prevent": "Bearing clearance and oil condition on the PM for sleeve bearing machines. Alignment to keep the load where the bearing wants it."
+        "prevent": "Bearing clearance and oil condition on the PM for sleeve bearing machines. Alignment to keep the load where the bearing wants it.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": [
+            "alignment",
+            "lube"
+          ]
+        }
       },
       "r_halforder": {
         "type": "result",
@@ -365,7 +420,16 @@ BW.register("vibration", {
         "label": "half-order harmonics: rotating looseness",
         "text": "Peaks at 0.5x, 1.5x, 2.5x with the integer harmonics mean a rotating part is loose enough to move in two different ways each revolution.",
         "sub": "A bearing outer race loose in its housing or inner race loose on the shaft, a sleeve turning in a bore, a loose impeller or fan hub, excessive bearing clearance. Also a rub: a rotating part touching a stationary one intermittently. Lock out and check every fit on that shaft.",
-        "prevent": "Housing and shaft fits measured on every bearing change."
+        "prevent": "Housing and shaft fits measured on every bearing change.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": [
+            "fan",
+            "pump"
+          ]
+        }
       },
       "r_belt": {
         "type": "result",
@@ -373,7 +437,13 @@ BW.register("vibration", {
         "label": "belt drive problem",
         "text": "Belt frequency (below the speed of either sheave) and its harmonics mean the belt itself is the source.",
         "sub": "Worn, glazed, or damaged belt; an unmatched set; a bad splice; belt flap (span resonance) that changes with tension. Sheave alignment if 1x of a sheave is high in the axial direction. Sheave run-out if 1x of a sheave is high radially. Power Transmission module for the inspection.",
-        "prevent": "Belt frequency calculated and put in the database. Matched sets. Tension by gauge."
+        "prevent": "Belt frequency calculated and put in the database. Matched sets. Tension by gauge.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": []
+        }
       },
       "r_cage": {
         "type": "result",
@@ -381,7 +451,15 @@ BW.register("vibration", {
         "label": "cage frequency: bearing cage or advanced wear",
         "text": "A peak at the fundamental train frequency (roughly 0.4x) on a rolling element bearing is the cage.",
         "sub": "A damaged or worn cage, a bearing with elements skidding (too little load or too much lubricant), or a bearing far enough gone that the cage is moving irregularly. Envelope spectrum and a physical check. Plan the replacement.",
-        "prevent": "Correct grease quantity. Bearing selected for the load; a lightly loaded large bearing skids."
+        "prevent": "Correct grease quantity. Bearing selected for the load; a lightly loaded large bearing skids.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": [
+            "lube"
+          ]
+        }
       },
       "r_nonsync": {
         "type": "result",
@@ -389,7 +467,13 @@ BW.register("vibration", {
         "label": "non-synchronous: rolling element bearing",
         "text": "A peak that is not a whole multiple of running speed, in the 3x to 15x range or higher, is a bearing defect frequency until proven otherwise.",
         "sub": "Match it to BPFO, BPFI, BSF for the bearing number. With 1x sidebands: inner race. Clean with harmonics: outer race. With FTF sidebands: a ball or roller. Envelope spectrum confirms and shows the stage. Identify which bearing by amplitude at each point. Bearing Frequencies tab for the formulas and stages; Bearing Failure module for the inspection when it comes out. Also possible: another machine's running speed transmitted through the structure, or 120 Hz electrical.",
-        "prevent": "Bearing numbers in the database. Envelope readings on the route. Read the failed bearing to find the cause."
+        "prevent": "Bearing numbers in the database. Envelope readings on the route. Read the failed bearing to find the cause.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": []
+        }
       },
       "side1": {
         "q": "What is the big peak, and what is the sideband spacing?",
@@ -414,7 +498,13 @@ BW.register("vibration", {
         "label": "gear problem on the shaft matching the sideband spacing",
         "text": "Gear mesh with sidebands at one shaft's speed points at the gear on that shaft.",
         "sub": "Sidebands at input speed: the pinion. At output speed: the gear. Wide family of sidebands: a damaged tooth (look at the time waveform for an impact once per revolution of that gear). Rising GMF harmonics: tooth wear or backlash. Gearboxes module: inspection cover, wear patterns, backlash measurement, contact pattern.",
-        "prevent": "Tooth counts in the database. GMF band alarm. Oil analysis for iron alongside the vibration trend."
+        "prevent": "Tooth counts in the database. GMF band alarm. Oil analysis for iron alongside the vibration trend.",
+        "applies": {
+          "primary": [
+            "gearbox"
+          ],
+          "contributing": []
+        }
       },
       "r_polepass": {
         "type": "result",
@@ -422,7 +512,13 @@ BW.register("vibration", {
         "label": "rotor bar problem: electrical handoff",
         "text": "Pole pass sidebands (slip times poles, a few Hz apart) on 1x or on 120 Hz are broken or cracked rotor bars, or a rotor with high resistance joints.",
         "sub": "Instant-off test: it vanishes. Listen for the wah-wah beat under load. High resolution spectrum with the motor loaded. This is the electrician and the analyst; the handoff package from the Motors module. Rotor bars break from thermal cycling, usually too many starts.",
-        "prevent": "Starts per hour within the motor rating. Motor current signature analysis on critical motors."
+        "prevent": "Starts per hour within the motor rating. Motor current signature analysis on critical motors.",
+        "applies": {
+          "primary": [
+            "motor"
+          ],
+          "contributing": []
+        }
       },
       "r_broadband": {
         "type": "result",
@@ -430,7 +526,15 @@ BW.register("vibration", {
         "label": "broadband: cavitation, turbulence, rubbing, or a bearing in stage 4",
         "text": "A raised, ragged floor without discrete peaks is random energy.",
         "sub": "On a pump, changing with the process: cavitation or recirculation; pumps module, suction side and operating point. On any machine with a bearing that has been trending up: stage 4, the haystack, and it is days from failure. A rub produces broadband with harmonics and a truncated waveform. Turbulence in a fan from a bad inlet or a partly closed damper.",
-        "prevent": "Depends on which: NPSH margin, bearing route, inlet conditions."
+        "prevent": "Depends on which: NPSH margin, bearing route, inlet conditions.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "fan",
+            "pump"
+          ],
+          "contributing": []
+        }
       },
       "r_120": {
         "type": "result",
@@ -438,7 +542,16 @@ BW.register("vibration", {
         "label": "120 Hz: electrical, or soft foot pretending to be",
         "text": "Twice line frequency is the magnetic force frequency on any AC motor. Some is normal. High, or new, means the air gap is uneven or the supply is unbalanced.",
         "sub": "Instant-off test: vanishes instantly. Soft foot check first, because a distorted frame makes an uneven air gap and that is a mechanical fix. Then worn bearings letting the rotor drop, an eccentric rotor, a bent shaft. If mechanically clear: the handoff package to the electrician for voltage balance and stator condition. On a 2-pole motor, 120 Hz is close to 2x; use enough resolution to separate them.",
-        "prevent": "Soft foot before every alignment. Phase monitoring on critical motors."
+        "prevent": "Soft foot before every alignment. Phase monitoring on critical motors.",
+        "applies": {
+          "primary": [
+            "motor"
+          ],
+          "contributing": [
+            "alignment",
+            "bearing"
+          ]
+        }
       }
     }
   },

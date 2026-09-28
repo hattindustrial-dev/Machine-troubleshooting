@@ -218,7 +218,13 @@ BW.register("fans", {
         "label": "buildup unbalance",
         "text": "Product on the wheel is the unbalance.",
         "sub": "Clean the whole wheel (every blade, both sides of the backplate). Run it and read the vibration. Most of the time it is gone. If not, then balance. Find why it is building: moisture, sticky product, no cleaning interval.",
-        "prevent": "Wheel cleaning on the PM, interval set by the product. An access door in the housing."
+        "prevent": "Wheel cleaning on the PM, interval set by the product. An access door in the housing.",
+        "applies": {
+          "primary": [
+            "fan"
+          ],
+          "contributing": []
+        }
       },
       "r_wheel_damage": {
         "type": "result",
@@ -226,7 +232,13 @@ BW.register("fans", {
         "label": "wheel damage",
         "text": "A cracked or eroded wheel is a wheel that will throw a piece.",
         "sub": "Do not run it. Cracks at the blade-to-backplate weld or the hub: replace the wheel or have it repaired and rebalanced by the manufacturer. Erosion: measure blade thickness; a thinned wheel is replaced. A wheel that has slipped on the shaft is out of balance and out of clearance: reposition, match-mark, secure, and check the cone gap.",
-        "prevent": "Dye penetrant on high speed wheels on the PM. Blade thickness on abrasive service. Hub fastening checked."
+        "prevent": "Dye penetrant on high speed wheels on the PM. Blade thickness on abrasive service. Hub fastening checked.",
+        "applies": {
+          "primary": [
+            "fan"
+          ],
+          "contributing": []
+        }
       },
       "r_drive": {
         "type": "result",
@@ -234,7 +246,16 @@ BW.register("fans", {
         "label": "belt drive",
         "text": "Over-tension and worn sheaves both vibrate and both load the fan bearing.",
         "sub": "Tension by deflection gauge. Sheave groove gauge. Belt condition. Power Transmission module.",
-        "prevent": "Tension and sheave gauge on the PM."
+        "prevent": "Tension and sheave gauge on the PM.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": [
+            "bearing",
+            "fan"
+          ]
+        }
       },
       "r_balance": {
         "type": "result",
@@ -242,7 +263,16 @@ BW.register("fans", {
         "label": "balance or resonance",
         "text": "A clean, sound wheel on good bearings and a correct drive that still vibrates at 1x is out of balance or on a resonance.",
         "sub": "Field balance with a two-plane instrument on wide wheels, single plane on narrow ones. If the vibration changes sharply with a small speed change (VFD), it is resonance: bump test the base and the ductwork, stiffen, or skip the speed. Vibration module.",
-        "prevent": "Balance to G6.3 after any wheel work. Baseline vibration reading recorded."
+        "prevent": "Balance to G6.3 after any wheel work. Baseline vibration reading recorded.",
+        "applies": {
+          "primary": [
+            "fan"
+          ],
+          "contributing": [
+            "bearing",
+            "powertrans"
+          ]
+        }
       },
       "flow1": {
         "q": "Has anything in the system changed: dampers, filters, ducts, process?",
@@ -284,7 +314,13 @@ BW.register("fans", {
         "label": "system resistance changed",
         "text": "The fan moved on its curve because the system moved.",
         "sub": "Clean or replace filters. Check every damper position against the setpoint, including backdraft dampers stuck closed. Look for a blocked duct, a collapsed flex connection, a new branch. The fan is fine; the operating point moved.",
-        "prevent": "Filter differential pressure on the PM. Damper positions recorded."
+        "prevent": "Filter differential pressure on the PM. Damper positions recorded.",
+        "applies": {
+          "primary": [
+            "fan"
+          ],
+          "contributing": []
+        }
       },
       "r_backward": {
         "type": "result",
@@ -292,7 +328,15 @@ BW.register("fans", {
         "label": "wrong rotation",
         "text": "A centrifugal wheel backward moves about half the air at high power.",
         "sub": "Rotation arrow on the housing. This happens after a motor change, a rewire, or a VFD replacement. Correct it at the motor leads (electrician) and confirm before restarting.",
-        "prevent": "Rotation verified on every electrical change before the belts go on."
+        "prevent": "Rotation verified on every electrical change before the belts go on.",
+        "applies": {
+          "primary": [
+            "fan"
+          ],
+          "contributing": [
+            "motor"
+          ]
+        }
       },
       "r_clearance": {
         "type": "result",
@@ -300,7 +344,15 @@ BW.register("fans", {
         "label": "wheel to inlet cone clearance",
         "text": "An opened gap or lost overlap lets air recirculate; pressure and efficiency drop.",
         "sub": "Manufacturer dimension for overlap and radial gap. Reposition the wheel on the shaft, reposition the cone, or fix the bearing with axial play. Match-mark after.",
-        "prevent": "Cone clearance measured after any wheel or bearing work and recorded."
+        "prevent": "Cone clearance measured after any wheel or bearing work and recorded.",
+        "applies": {
+          "primary": [
+            "fan"
+          ],
+          "contributing": [
+            "bearing"
+          ]
+        }
       },
       "r_stall": {
         "type": "result",
@@ -308,7 +360,13 @@ BW.register("fans", {
         "label": "stall or surge",
         "text": "The fan is being throttled below its peak pressure and the airflow has separated.",
         "sub": "Open the system: dampers, filters, blockages. On parallel fans, balance them. If the fan was selected near its peak, it will stall on any system restriction; a different fan or a VFD to bring the curve down. Axial fans: adjustable pitch or a stall-limiting ring.",
-        "prevent": "Operating point kept to the right of peak pressure. Dampers with minimum stops."
+        "prevent": "Operating point kept to the right of peak pressure. Dampers with minimum stops.",
+        "applies": {
+          "primary": [
+            "fan"
+          ],
+          "contributing": []
+        }
       },
       "amps1": {
         "q": "Fan type and system state?",
@@ -341,7 +399,15 @@ BW.register("fans", {
         "label": "overloading fan curve",
         "text": "Forward-curved and radial fans draw more power the more air they move; open the system and the motor trips.",
         "sub": "Restore the duct or the damper to the design condition. If the system has permanently changed, re-select the fan or the motor.",
-        "prevent": "Amps recorded with the damper position. The overloading characteristic noted on the fan record."
+        "prevent": "Amps recorded with the damper position. The overloading characteristic noted on the fan record.",
+        "applies": {
+          "primary": [
+            "fan"
+          ],
+          "contributing": [
+            "motor"
+          ]
+        }
       },
       "r_overload_bi": {
         "type": "result",
@@ -349,7 +415,17 @@ BW.register("fans", {
         "label": "backward-inclined at high amps",
         "text": "A non-overloading fan drawing high amps is past its rated speed, moving denser air than design, or has a drive or bearing problem.",
         "sub": "Speed against the drawing (sheave ratio). Air density (cold air on a fan sized for hot). Belt tension and bearing drag. Motors module for the uncoupled test.",
-        "prevent": "Sheave ratio and speed on the fan record."
+        "prevent": "Sheave ratio and speed on the fan record.",
+        "applies": {
+          "primary": [
+            "fan"
+          ],
+          "contributing": [
+            "bearing",
+            "motor",
+            "powertrans"
+          ]
+        }
       },
       "r_overload_axial": {
         "type": "result",
@@ -357,7 +433,15 @@ BW.register("fans", {
         "label": "axial fan at low flow",
         "text": "Axial fans draw the most power near shutoff.",
         "sub": "Open the damper before starting. If the fan must start against a closed damper, the motor must be sized for it, and it usually is not.",
-        "prevent": "Startup damper position on the procedure."
+        "prevent": "Startup damper position on the procedure.",
+        "applies": {
+          "primary": [
+            "fan"
+          ],
+          "contributing": [
+            "motor"
+          ]
+        }
       },
       "r_cold_start": {
         "type": "result",
@@ -365,7 +449,15 @@ BW.register("fans", {
         "label": "cold dense air",
         "text": "A fan sized for hot gas moving cold air draws power in proportion to the density.",
         "sub": "Start with the inlet damper partly closed until the gas is at temperature, per the manufacturer procedure, or size the motor for the cold start.",
-        "prevent": "Cold start procedure on the fan record."
+        "prevent": "Cold start procedure on the fan record.",
+        "applies": {
+          "primary": [
+            "fan"
+          ],
+          "contributing": [
+            "motor"
+          ]
+        }
       },
       "r_ratio": {
         "type": "result",
@@ -373,7 +465,16 @@ BW.register("fans", {
         "label": "wrong sheave ratio",
         "text": "A 10 percent speed increase is 33 percent more power.",
         "sub": "Sheave diameters against the drawing. Replace with the correct size. The cube law is not negotiable.",
-        "prevent": "Sheaves by part number on the PM sheet."
+        "prevent": "Sheaves by part number on the PM sheet.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": [
+            "fan",
+            "motor"
+          ]
+        }
       },
       "noise1": {
         "q": "What kind of noise?",
@@ -402,7 +503,15 @@ BW.register("fans", {
         "label": "wheel rubbing",
         "text": "The wheel is touching the cone or the housing: it has moved, a bearing has play, or the housing has been dented.",
         "sub": "Stop it. A rubbing wheel heats, throws sparks (a dust explosion ignition source), and damages the wheel. Lock out, find the contact, and fix the position or the bearing.",
-        "prevent": "Cone clearance and shaft play on the PM."
+        "prevent": "Cone clearance and shaft play on the PM.",
+        "applies": {
+          "primary": [
+            "fan"
+          ],
+          "contributing": [
+            "bearing"
+          ]
+        }
       },
       "r_bearing": {
         "type": "result",
@@ -410,7 +519,17 @@ BW.register("fans", {
         "label": "fan bearing",
         "text": "Fan bearings fail from unbalance, belt over-tension, heat, and contamination, in that order.",
         "sub": "Read the failed bearing (Bearing Failure module). Before the new one goes in: wheel cleaned and balanced, belt tension by gauge, heat slinger and grease grade on hot service, fixing ring on the drive side only.",
-        "prevent": "Wheel cleaning, tension by gauge, and vibration route on the PM."
+        "prevent": "Wheel cleaning, tension by gauge, and vibration route on the PM.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": [
+            "fan",
+            "lube",
+            "powertrans"
+          ]
+        }
       }
     }
   },

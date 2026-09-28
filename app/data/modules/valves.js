@@ -245,7 +245,13 @@ BW.register("valves", {
         "label": "not reaching the seat: stops, bench set, or torque switch",
         "text": "A valve that is not fully closed passes, and the actuator is the reason.",
         "sub": "Rotary actuator stops set to the valve closed position. Diaphragm actuator bench set and air supply. Electric actuator torque and limit switch settings (the electrician). Handwheel valves: is it actually closed, or against a gate jammed on debris.",
-        "prevent": "Stroke test and stop check after any actuator work; bench set recorded."
+        "prevent": "Stroke test and stop check after any actuator work; bench set recorded.",
+        "applies": {
+          "primary": [
+            "valve"
+          ],
+          "contributing": []
+        }
       },
       "r_wiredraw": {
         "type": "result",
@@ -253,7 +259,13 @@ BW.register("valves", {
         "label": "wire drawn seat from throttling",
         "text": "High velocity leakage past a nearly closed gate or ball cut a groove in the seat. It will never seal.",
         "sub": "Replace the valve (or lap a gate seat if the groove is shallow). Put a globe or characterised butterfly in the throttling position and tag it. Tell the operators why.",
-        "prevent": "Throttling valves identified and tagged; isolation valves on-off only."
+        "prevent": "Throttling valves identified and tagged; isolation valves on-off only.",
+        "applies": {
+          "primary": [
+            "valve"
+          ],
+          "contributing": []
+        }
       },
       "r_softseat": {
         "type": "result",
@@ -261,7 +273,13 @@ BW.register("valves", {
         "label": "soft seat damaged",
         "text": "Cut by debris, extruded by pressure, hardened by heat, or swollen by the fluid.",
         "sub": "Seat kit. Then the cause: a strainer if debris, a temperature or fluid review if the material is wrong for the service (Seals module compatibility), a pressure review if extruded.",
-        "prevent": "Seat material matched to the service on the valve list; strainers upstream where debris is expected."
+        "prevent": "Seat material matched to the service on the valve list; strainers upstream where debris is expected.",
+        "applies": {
+          "primary": [
+            "valve"
+          ],
+          "contributing": []
+        }
       },
       "r_metalseat": {
         "type": "result",
@@ -269,7 +287,13 @@ BW.register("valves", {
         "label": "metal seat scored or fouled",
         "text": "Debris on the seat, or scoring from solids.",
         "sub": "Cycle the valve to flush debris (with the process safe). If it still passes, lap or machine the seat. Strainer upstream. Body cavity flush on ball valves.",
-        "prevent": "Strainers; exercise schedule; seat inspection on the interval."
+        "prevent": "Strainers; exercise schedule; seat inspection on the interval.",
+        "applies": {
+          "primary": [
+            "valve"
+          ],
+          "contributing": []
+        }
       },
       "r_packing": {
         "type": "result",
@@ -277,7 +301,14 @@ BW.register("valves", {
         "label": "stem packing",
         "text": "The most common valve leak.",
         "sub": "Tighten the gland evenly, a flat at a time, until it stops. If the gland is bottomed or the leak returns, repack (isolated and depressurised). Inspect the stem for scoring; a scored stem is polished or replaced. Live-loaded packing on control valves. Old packing treated as asbestos.",
-        "prevent": "Gland load checked on the PM; live loading on valves that stroke constantly."
+        "prevent": "Gland load checked on the PM; live loading on valves that stroke constantly.",
+        "applies": {
+          "primary": [
+            "seal",
+            "valve"
+          ],
+          "contributing": []
+        }
       },
       "stroke1": {
         "q": "Actuator or valve?",
@@ -316,7 +347,14 @@ BW.register("valves", {
         "label": "pneumatic actuator or air supply",
         "text": "Air pressure, air quality, the positioner, or the actuator itself.",
         "sub": "Pressure at the actuator under stroke. Filter regulator. Instrument air dewpoint (wet air sticks positioners). Positioner output against signal. Diaphragm or piston seal leaks (listen at the vent). Spring range. Solenoid or lock-up valve in the circuit. Pneumatics module for the air side.",
-        "prevent": "Instrument air quality maintained; positioner calibration on the interval."
+        "prevent": "Instrument air quality maintained; positioner calibration on the interval.",
+        "applies": {
+          "primary": [
+            "pneu",
+            "valve"
+          ],
+          "contributing": []
+        }
       },
       "r_elec_act": {
         "type": "result",
@@ -324,7 +362,15 @@ BW.register("valves", {
         "label": "electric actuator: torque and limit settings, or electrical",
         "text": "Torque switch trips before the valve reaches its seat, a limit switch set short, the hand-auto clutch engaged, or a motor or control fault.",
         "sub": "Hand-auto lever position. Torque and limit switch settings against the valve (the electrician and the actuator manual). Motor and control wiring: the handoff package from the Motors module. A torque trip on a valve that used to close is a valve getting stiffer; look at the valve.",
-        "prevent": "Actuator settings recorded; valve exercised so it does not stiffen."
+        "prevent": "Actuator settings recorded; valve exercised so it does not stiffen.",
+        "applies": {
+          "primary": [
+            "valve"
+          ],
+          "contributing": [
+            "motor"
+          ]
+        }
       },
       "r_seized": {
         "type": "result",
@@ -332,7 +378,15 @@ BW.register("valves", {
         "label": "stiff or seized valve",
         "text": "Packing too tight, a stem scored or bent, a gate thermally bound, a ball or plug seized in its seat by deposits or corrosion, or a valve that has not moved in years.",
         "sub": "Packing gland backed off a little. Thermal binding on a hot line: let it cool and equalise, or warm it. Deposits: the process and the valve material. Do not force a large handwheel with a cheater bar; the stem breaks and the valve stays shut. Plan a removal and overhaul.",
-        "prevent": "Exercise schedule for isolation valves. Correct materials for the service."
+        "prevent": "Exercise schedule for isolation valves. Correct materials for the service.",
+        "applies": {
+          "primary": [
+            "valve"
+          ],
+          "contributing": [
+            "seal"
+          ]
+        }
       },
       "ctrl1": {
         "q": "Stroke it in manual and watch the stem. What does it do?",
@@ -357,7 +411,15 @@ BW.register("valves", {
         "label": "stiction: packing or deposits",
         "text": "The stem grabs and releases, so the valve overshoots each small correction and the loop cycles.",
         "sub": "Packing gland over-tightened: back it off to the minimum that seals; live-loaded packing. Stem deposits or scoring. Positioner gain may be masking it. A digital positioner reports stiction directly.",
-        "prevent": "Packing load set by procedure, not by feel; live loading on control valves."
+        "prevent": "Packing load set by procedure, not by feel; live loading on control valves.",
+        "applies": {
+          "primary": [
+            "valve"
+          ],
+          "contributing": [
+            "seal"
+          ]
+        }
       },
       "r_positioner": {
         "type": "result",
@@ -365,7 +427,15 @@ BW.register("valves", {
         "label": "positioner or air",
         "text": "The positioner is not driving the stem to the signal promptly.",
         "sub": "Calibration (zero and span). Air supply pressure and volume (a volume booster on large actuators). Positioner feedback linkage loose or worn. Wet or dirty instrument air. Bench set.",
-        "prevent": "Positioner calibration and linkage on the interval."
+        "prevent": "Positioner calibration and linkage on the interval.",
+        "applies": {
+          "primary": [
+            "valve"
+          ],
+          "contributing": [
+            "pneu"
+          ]
+        }
       },
       "r_hunt": {
         "type": "result",
@@ -373,7 +443,13 @@ BW.register("valves", {
         "label": "hunting: tuning, sizing, or stiction",
         "text": "A loop that cycles has a valve that cannot make small moves (stiction, oversized valve working near closed) or a controller tuned too aggressively.",
         "sub": "Stroke test first (stiction). Valve opening at normal load: below about 10 percent is an oversized valve. Then the loop tuning, which is the instrument technician's side. Hand off with the stroke test results.",
-        "prevent": "Valve sized to work in the middle of its range; stiction eliminated before tuning."
+        "prevent": "Valve sized to work in the middle of its range; stiction eliminated before tuning.",
+        "applies": {
+          "primary": [
+            "valve"
+          ],
+          "contributing": []
+        }
       },
       "noise1": {
         "q": "What kind?",
@@ -398,7 +474,13 @@ BW.register("valves", {
         "label": "cavitation or flashing in the trim",
         "text": "The pressure drop across the trim takes the liquid below its vapour pressure; bubbles form and collapse on the trim and body.",
         "sub": "Pitted trim on inspection. The valve is taking more pressure drop than its trim is designed for at that opening. Anti-cavitation trim, a different pressure drop split (two valves, or an orifice downstream), or a valve selected for the service. Pumps module for the same physics.",
-        "prevent": "Control valve sizing reviewed against actual process conditions."
+        "prevent": "Control valve sizing reviewed against actual process conditions.",
+        "applies": {
+          "primary": [
+            "valve"
+          ],
+          "contributing": []
+        }
       },
       "r_hammer": {
         "type": "result",
@@ -406,7 +488,15 @@ BW.register("valves", {
         "label": "water hammer",
         "text": "A fast closure or a slamming check on a liquid line stops the column and the pressure spikes.",
         "sub": "Slow the closure (actuator speed control, a slower stroke). Non-slam check valves on pump discharges. Surge tanks or dampers on long lines. Look for the damage: cracked fittings, broken supports, a check disc that has come off.",
-        "prevent": "Closure times specified; non-slam checks on pump discharges."
+        "prevent": "Closure times specified; non-slam checks on pump discharges.",
+        "applies": {
+          "primary": [
+            "valve"
+          ],
+          "contributing": [
+            "pump"
+          ]
+        }
       },
       "r_chatter": {
         "type": "result",
@@ -414,7 +504,13 @@ BW.register("valves", {
         "label": "chatter",
         "text": "A check valve fluttering in low flow, or a relief valve chattering near its set point.",
         "sub": "Check valve: oversized for the flow (the disc never opens fully and flutters); a smaller valve or a spring assisted design. Relief valve: set point too close to operating pressure, inlet piping pressure drop too high, or outlet back-pressure; the relief valve shop and engineering.",
-        "prevent": "Check valves sized for the flow; relief valves set with margin and inlet piping per code."
+        "prevent": "Check valves sized for the flow; relief valves set with margin and inlet piping per code.",
+        "applies": {
+          "primary": [
+            "valve"
+          ],
+          "contributing": []
+        }
       },
       "r_check": {
         "type": "result",
@@ -422,7 +518,15 @@ BW.register("valves", {
         "label": "check valve slam or pass",
         "text": "Slam: closes late. Pass: seat or disc damage, or a disc off its arm.",
         "sub": "Slam: a non-slam design, or a dashpot. Pass: inspect the disc, hinge pin, and seat; a disc that has come off is somewhere downstream. Orientation checked. A passing check on a pump discharge spins the pump backward on stop.",
-        "prevent": "Check valves inspected on the interval; non-slam designs where slam is known."
+        "prevent": "Check valves inspected on the interval; non-slam designs where slam is known.",
+        "applies": {
+          "primary": [
+            "valve"
+          ],
+          "contributing": [
+            "pump"
+          ]
+        }
       }
     }
   },

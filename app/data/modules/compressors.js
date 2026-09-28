@@ -244,7 +244,17 @@ BW.register("compressors", {
         "label": "cooling",
         "text": "Nine out of ten temperature trips.",
         "sub": "Lock out, cool down, blow the cooler out from the clean side with the fan shielded. Check the fan motor, belt, and blades. Check the room: intake and exhaust clear, hot air not recirculating into the intake. Reset and watch the discharge temperature stabilise.",
-        "prevent": "Cooler cleaning on the PM, interval by the room. Room temperature logged in summer."
+        "prevent": "Cooler cleaning on the PM, interval by the room. Room temperature logged in summer.",
+        "applies": {
+          "primary": [
+            "compressor"
+          ],
+          "contributing": [
+            "fan",
+            "motor",
+            "powertrans"
+          ]
+        }
       },
       "r_thermo": {
         "type": "result",
@@ -252,7 +262,15 @@ BW.register("compressors", {
         "label": "thermostatic valve or oil circuit",
         "text": "Oil coming off the cooler hot means the oil is not being cooled: the thermostatic valve is stuck in bypass, the oil cooler is fouled internally, or the oil flow is restricted.",
         "sub": "Thermostatic element replaced (a cartridge on most units). Oil filter differential. Oil cooler internal fouling on water cooled units. Oil stop valve and injection line clear.",
-        "prevent": "Thermostatic element replaced on the manufacturer interval with the oil filter."
+        "prevent": "Thermostatic element replaced on the manufacturer interval with the oil filter.",
+        "applies": {
+          "primary": [
+            "compressor"
+          ],
+          "contributing": [
+            "lube"
+          ]
+        }
       },
       "r_oillow": {
         "type": "result",
@@ -260,7 +278,14 @@ BW.register("compressors", {
         "label": "low oil level",
         "text": "Less oil means less heat carried away and less sealing.",
         "sub": "Top up with the same oil to the level mark with the compressor stopped and the separator tank vented. Find the loss: carryover (separator), a leak, or an oil change that was short.",
-        "prevent": "Level on the PM, with the compressor stopped and depressurised."
+        "prevent": "Level on the PM, with the compressor stopped and depressurised.",
+        "applies": {
+          "primary": [
+            "compressor",
+            "lube"
+          ],
+          "contributing": []
+        }
       },
       "r_inlet": {
         "type": "result",
@@ -268,7 +293,13 @@ BW.register("compressors", {
         "label": "inlet restriction",
         "text": "A blocked inlet filter raises the pressure ratio across the airend and heats the discharge.",
         "sub": "Replace the inlet filter element. Check the inlet ducting and the inlet valve travel. Inlet vacuum gauge or differential indicator on the PM.",
-        "prevent": "Inlet filter on differential and on hours; shorter interval in a dusty room."
+        "prevent": "Inlet filter on differential and on hours; shorter interval in a dusty room.",
+        "applies": {
+          "primary": [
+            "compressor"
+          ],
+          "contributing": []
+        }
       },
       "r_airend": {
         "type": "result",
@@ -276,7 +307,16 @@ BW.register("compressors", {
         "label": "airend bearings",
         "text": "A rumble that rises with load and a temperature that creeps up with clean cooling is the airend.",
         "sub": "Oil analysis for iron and copper. Bearing noise with the screwdriver at the airend housing. Plan an airend exchange; a seized airend is rotor contact and a much bigger bill. Check what shortened its life: oil condition, temperature history, contamination.",
-        "prevent": "Oil analysis on the interval. Discharge temperature trended. Airend hours against the manufacturer life."
+        "prevent": "Oil analysis on the interval. Discharge temperature trended. Airend hours against the manufacturer life.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "compressor"
+          ],
+          "contributing": [
+            "lube"
+          ]
+        }
       },
       "press1": {
         "q": "Is the compressor loading (inlet valve open, motor amps at load)?",
@@ -314,7 +354,13 @@ BW.register("compressors", {
         "label": "not loading: inlet valve, control signal, or controller",
         "text": "The airend is turning but the inlet is closed.",
         "sub": "Inlet valve: the solenoid or pilot that opens it, the valve itself sticking, the control air line. The controller: is it calling for load (pressure set points, a remote signal, a sequencer holding it off). Reciprocating: unloader stuck.",
-        "prevent": "Inlet valve and unloader on the PM. Control settings recorded."
+        "prevent": "Inlet valve and unloader on the PM. Control settings recorded.",
+        "applies": {
+          "primary": [
+            "compressor"
+          ],
+          "contributing": []
+        }
       },
       "r_recip_valves": {
         "type": "result",
@@ -322,7 +368,13 @@ BW.register("compressors", {
         "label": "reciprocating: valves or rings",
         "text": "Low output on a piston compressor is leaking valves or worn rings.",
         "sub": "Discharge valve leaking: the cylinder head is hot and output is low. Inlet valve leaking: puffing at the inlet filter. Rings: blow-by at the crankcase breather, oil carryover. Replace valve plates as sets; rings and cylinder inspection on hours.",
-        "prevent": "Valves on the service interval. Output test (pump-up time on the receiver) on the PM."
+        "prevent": "Valves on the service interval. Output test (pump-up time on the receiver) on the PM.",
+        "applies": {
+          "primary": [
+            "compressor"
+          ],
+          "contributing": []
+        }
       },
       "r_screw_output": {
         "type": "result",
@@ -330,7 +382,13 @@ BW.register("compressors", {
         "label": "screw or vane: filter, valve, or wear",
         "text": "Low output on a screw with the inlet open is a restriction, a minimum pressure valve fault, or rotor wear.",
         "sub": "Inlet filter differential. Separator differential (a loaded separator is a restriction on the outlet). Minimum pressure valve stuck partly closed. Oil-free screw: rotor coating wear. Vane: vane wear. Output test against the nameplate.",
-        "prevent": "Differentials on the PM. Output tested annually."
+        "prevent": "Differentials on the PM. Output tested annually.",
+        "applies": {
+          "primary": [
+            "compressor"
+          ],
+          "contributing": []
+        }
       },
       "r_demand": {
         "type": "result",
@@ -338,7 +396,15 @@ BW.register("compressors", {
         "label": "demand exceeds supply: leaks first",
         "text": "The compressor is doing its job; the plant is taking it all.",
         "sub": "Ultrasonic leak survey; 20 to 30 percent of output on an unmanaged system is leaks. Then the pressure set point (every bar costs 7 percent), then genuine demand growth. Pneumatics module.",
-        "prevent": "Leak survey quarterly. Loaded hours trended."
+        "prevent": "Leak survey quarterly. Loaded hours trended.",
+        "applies": {
+          "primary": [
+            "pneu"
+          ],
+          "contributing": [
+            "compressor"
+          ]
+        }
       },
       "oil1": {
         "q": "How much, and where?",
@@ -363,7 +429,15 @@ BW.register("compressors", {
         "label": "separator element or scavenge line",
         "text": "Oil is getting past the separator.",
         "sub": "Separator element loaded, collapsed, or bypassed (a torn element, a missing gasket). The scavenge (oil return) line from the separator to the airend blocked, so the separated oil pools and is carried over. Oil level too high. Wrong oil foaming.",
-        "prevent": "Separator on differential and on hours. Scavenge line orifice cleaned on the PM."
+        "prevent": "Separator on differential and on hours. Scavenge line orifice cleaned on the PM.",
+        "applies": {
+          "primary": [
+            "compressor"
+          ],
+          "contributing": [
+            "lube"
+          ]
+        }
       },
       "r_mpv": {
         "type": "result",
@@ -371,7 +445,13 @@ BW.register("compressors", {
         "label": "minimum pressure valve",
         "text": "The separator needs pressure to work; below the minimum, oil carries over.",
         "sub": "Minimum pressure valve set point and condition. A valve that has failed open lets the separator tank run at plant pressure, which is fine at 7 bar and not at 3 bar during a high demand event.",
-        "prevent": "Minimum pressure valve checked on the PM."
+        "prevent": "Minimum pressure valve checked on the PM.",
+        "applies": {
+          "primary": [
+            "compressor"
+          ],
+          "contributing": []
+        }
       },
       "r_controls": {
         "type": "result",
@@ -379,7 +459,13 @@ BW.register("compressors", {
         "label": "control settings",
         "text": "Short-cycling wears the compressor; running unloaded wastes power.",
         "sub": "Pressure band 0.7 to 1 bar. Receiver sized for the demand. Auto-dual timer set to stop after a sensible unloaded period. Sequencer set up so units do not fight. Loaded hours ratio: below 40 percent, the unit is oversized or a smaller trim unit is needed; a VFD unit as the trim is the efficient answer.",
-        "prevent": "Loaded and total hours logged on the PM. Set points recorded and locked."
+        "prevent": "Loaded and total hours logged on the PM. Set points recorded and locked.",
+        "applies": {
+          "primary": [
+            "compressor"
+          ],
+          "contributing": []
+        }
       },
       "r_water": {
         "type": "result",
@@ -387,7 +473,14 @@ BW.register("compressors", {
         "label": "water: aftercooler, drains, or dryer",
         "text": "Water in the plant is water that was not removed at the compressor.",
         "sub": "Aftercooler outlet temperature (should be within about 10°C of ambient); a hot aftercooler passes vapour. Drains on the moisture separator, receiver, and dryer: test each. Dryer dewpoint. Pneumatics module Air Quality.",
-        "prevent": "Auto drains tested on the PM. Aftercooler cleaned with the oil cooler."
+        "prevent": "Auto drains tested on the PM. Aftercooler cleaned with the oil cooler.",
+        "applies": {
+          "primary": [
+            "compressor",
+            "pneu"
+          ],
+          "contributing": []
+        }
       },
       "noise1": {
         "q": "What kind?",
@@ -416,7 +509,15 @@ BW.register("compressors", {
         "label": "belt slip",
         "text": "Tension, sheave wear, or an overloaded compressor.",
         "sub": "Power Transmission module. On a reciprocating unit, a belt that squeals on every start is a unit starting loaded (unloader not working) or a belt at the low end of tension.",
-        "prevent": "Tension by gauge; unloader function on the PM."
+        "prevent": "Tension by gauge; unloader function on the PM.",
+        "applies": {
+          "primary": [
+            "powertrans"
+          ],
+          "contributing": [
+            "compressor"
+          ]
+        }
       },
       "r_knock": {
         "type": "result",
@@ -424,7 +525,16 @@ BW.register("compressors", {
         "label": "reciprocating knock",
         "text": "A knock is a valve plate broken, a piston contacting the head, or a bearing.",
         "sub": "Stop it. Valves first (a broken plate rattles); then piston clearance (a loose piston pin or a worn wrist pin bushing); then crank and rod bearings. Crankcase oil for metal.",
-        "prevent": "Valves on interval; crankcase oil on hours and inspected for metal."
+        "prevent": "Valves on interval; crankcase oil on hours and inspected for metal.",
+        "applies": {
+          "primary": [
+            "compressor"
+          ],
+          "contributing": [
+            "bearing",
+            "lube"
+          ]
+        }
       },
       "r_mounts": {
         "type": "result",
@@ -432,7 +542,15 @@ BW.register("compressors", {
         "label": "mounts and piping",
         "text": "Compressors sit on isolation mounts and the piping is connected with flexible connectors for a reason.",
         "sub": "Mounts perished or loose, a flex connector replaced with rigid pipe, a discharge line touching the structure. Reciprocating pulsation cracks rigid fittings.",
-        "prevent": "Mounts and flex connectors on the PM."
+        "prevent": "Mounts and flex connectors on the PM.",
+        "applies": {
+          "primary": [
+            "compressor"
+          ],
+          "contributing": [
+            "alignment"
+          ]
+        }
       },
       "r_oilcond": {
         "type": "result",
@@ -440,7 +558,14 @@ BW.register("compressors", {
         "label": "oil condition",
         "text": "Milky oil is water (thermostatic valve stuck open, a water-cooled cooler leaking, or the compressor running too cold to boil the moisture off). Dark oil is oxidation (too hot, too old, or the wrong oil).",
         "sub": "Milky: thermostatic valve, cooler pressure test, and an oil change. Dark: temperature history, oil hours, and the oil grade against the manual. Oil analysis if it keeps happening.",
-        "prevent": "Oil on hours and on analysis. Operating temperature in the design window."
+        "prevent": "Oil on hours and on analysis. Operating temperature in the design window.",
+        "applies": {
+          "primary": [
+            "compressor",
+            "lube"
+          ],
+          "contributing": []
+        }
       }
     }
   },

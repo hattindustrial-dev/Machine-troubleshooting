@@ -284,35 +284,37 @@ a CMMS.
 
 `app/issues.html` answers the other question a machine raises: not "what is wrong right
 now" but "what can go wrong with this". It lists the machine's parts in chain order, and
-under each one every diagnostic result the series holds for that component type, grouped by
-the module it comes from, with the prevent-recurrence line and that part's own plant
-numbers. A filter box narrows the whole list at once and opens whatever still matches.
+under each one every diagnostic result the library holds for that component type, grouped by
+the module it comes from, with the prevent-recurrence line and that part's own plant numbers.
+A filter box narrows the whole list at once and opens whatever still matches.
 
-Parts are collapsed by default, because the counts are the overview: a pump train shows 193
-distinct issues across 10 modules, and a part is opened when it is the one in front of you.
-The per part counts repeat an issue that applies to two bearings, on purpose; the headline
-counts each once.
+Each part splits what is **direct** from what is **involved**. Direct is what fails in that
+part or is diagnosed there; involved is what its condition causes or what has to be checked to
+rule it out. That comes from tags on every result, `applies: { primary, contributing }`, so a
+bearing part lists the bearing failures analysed in Lubrication, Gearboxes and Pumps as direct,
+not only the Bearing module's own. For a pump train the bearing reads 46 direct and 40
+involved, the pump 33 and 19, the seal 31 and 22.
 
-It loads only the module data the machine's parts call for, by script tag, so it works from
-a folder like everything else.
+Parts are collapsed by default, because the counts are the overview. The per part counts repeat
+an issue that applies to two bearings, on purpose; the headline counts each once. The page reads
+one derived file, `app/data/issues.js`, and loads no module data and no renderer.
 
-Each part separates what is direct from what is related. Every component names the module
-that is primarily about it, so a bearing part reads 15 direct and 90 related: the fifteen
-from Bearing Failure, then the ones Lubrication, Alignment, Motors, Vibration and Fans reach
-it with from their own subject. The related ones are worth reading and worth labelling.
-
-The matching underneath is still module level rather than issue level: a part sees every
-module tagged with its component type, and those tags are derived from the hub routes
-pointing at each module. Tightening it further means tagging the 380 diagnostic results
-individually, which is a content pass rather than a code change.
+The tags were produced by a tagging pass with independent reviewers, a blind re-tag, and a
+second round of judges on the disputed ones, and then reviewed. How far to trust them, what
+the agreement figures do and do not show, and where a person overruled a vote are written up
+in `docs/tagging-review.md`, with every individual decision in `docs/tagging-decisions.json`.
+No domain expert has reviewed them yet, and they are ordinary data that can be edited.
 
 ### The PM library for one machine
 
 The task library holds every preventive task the series produced, which is right for
 building a programme and wrong when you are in front of one machine. With a machine
-selected it filters to the tasks whose source modules speak to a part in its chain: a
-conveyor with four parts sees 251 of 663. Same banner and the same one click back to
-everything as the hub.
+selected it filters to the tasks that apply to a part in its chain. A task inherits the
+components of the result whose prevent line produced it, so it follows the issue level tags:
+a conveyor with four parts sees 271 of 663, the pump train 420. A task from a generic result,
+a method or a measurement technique, applies to every machine. Same banner and the same one
+click back to everything as the hub, and the page opens on the first tab that has tasks
+rather than an empty one.
 
 ### Capturing what happened
 
@@ -352,6 +354,8 @@ it rather than leaving it orphaned.
 - no em dashes in the module data either, which is where the prose now lives
 - every file the service worker precaches exists, and every shell page has its data file,
   the renderer and the stylesheet in that list
+- every diagnostic result carries valid component tags, the issue index agrees with the modules,
+  and every PM task resolves to an indexed result
 - every hub route resolves, is reachable from a symptom, has component tags, and is listed
   in the published index
 - the pocket card data regenerates the pocket card page exactly

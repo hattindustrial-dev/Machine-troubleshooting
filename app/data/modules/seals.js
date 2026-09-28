@@ -474,7 +474,15 @@ BW.register("seals", {
         "label": "thermal damage: dry running or lost flush",
         "text": "The faces ran without a liquid film.",
         "sub": "Flush or quench line flow (a blocked orifice or filter, a closed valve). The seal plan against the service (API 682). Dry running at startup (pump not vented or primed). Pump run at shutoff (heat in the seal chamber). Never run a mechanical seal dry, even briefly.",
-        "prevent": "Flush flow verified on the PM; vent and prime on the startup procedure; minimum flow protection."
+        "prevent": "Flush flow verified on the PM; vent and prime on the startup procedure; minimum flow protection.",
+        "applies": {
+          "primary": [
+            "seal"
+          ],
+          "contributing": [
+            "pump"
+          ]
+        }
       },
       "r_ms_runout": {
         "type": "result",
@@ -482,7 +490,16 @@ BW.register("seals", {
         "label": "shaft runout, misalignment, or pipe strain",
         "text": "The shaft is describing an arc through the seal.",
         "sub": "Shaft runout at the seal under 0.05 mm (0.002 in) TIR. Alignment to tolerance with soft foot corrected. Indicator on the casing while the flange bolts are loosened: movement is pipe strain (Installation module). Bearing play letting the shaft wander.",
-        "prevent": "Runout, alignment, and pipe strain checked before every seal installation and recorded."
+        "prevent": "Runout, alignment, and pipe strain checked before every seal installation and recorded.",
+        "applies": {
+          "primary": [
+            "alignment",
+            "seal"
+          ],
+          "contributing": [
+            "bearing"
+          ]
+        }
       },
       "r_ms_abrasive": {
         "type": "result",
@@ -490,7 +507,13 @@ BW.register("seals", {
         "label": "abrasive or contaminated process fluid",
         "text": "Solids in the seal chamber are grinding the faces.",
         "sub": "A flush plan that keeps clean fluid at the faces (Plan 32 external flush, or a cyclone separator on Plan 31). Harder face materials (silicon carbide against silicon carbide). A seal chamber that lets solids settle away from the faces.",
-        "prevent": "Seal plan selected for the fluid, and the flush maintained."
+        "prevent": "Seal plan selected for the fluid, and the flush maintained.",
+        "applies": {
+          "primary": [
+            "seal"
+          ],
+          "contributing": []
+        }
       },
       "r_ms_install": {
         "type": "result",
@@ -498,7 +521,13 @@ BW.register("seals", {
         "label": "installation damage",
         "text": "The seal was damaged going in.",
         "sub": "A chipped face was dropped. A flat spot on an o-ring was pinched. A spiral cut was twisted. Fingerprints or lubricant on the faces. Cartridge set screws not tightened before the clips came off. Setting dimension wrong on a component seal. Installation tab, step by step, and a clean bench.",
-        "prevent": "Installation procedure followed with the seal in its packaging until the last moment."
+        "prevent": "Installation procedure followed with the seal in its packaging until the last moment.",
+        "applies": {
+          "primary": [
+            "seal"
+          ],
+          "contributing": []
+        }
       },
       "r_ms_chem": {
         "type": "result",
@@ -506,7 +535,13 @@ BW.register("seals", {
         "label": "chemical or temperature incompatibility",
         "text": "The elastomers or the faces were wrong for the fluid or the temperature.",
         "sub": "Compatibility table against the actual fluid, including cleaning chemicals and temperature excursions. Swelling is chemical attack; hardening and cracking is heat. A seal specified for the design fluid and run on the cleaning cycle fails on the cleaning cycle.",
-        "prevent": "Seal materials on the equipment record with every fluid the seal sees."
+        "prevent": "Seal materials on the equipment record with every fluid the seal sees.",
+        "applies": {
+          "primary": [
+            "seal"
+          ],
+          "contributing": []
+        }
       },
       "r_ms_secondary": {
         "type": "result",
@@ -514,7 +549,13 @@ BW.register("seals", {
         "label": "secondary seal or sleeve leakage",
         "text": "The faces are sealing; the o-rings, the sleeve, or the gland gasket are not.",
         "sub": "Sleeve o-ring cut on a keyway or a shoulder. Shaft or sleeve surface damaged under the o-ring. Gland gasket not seated. Cartridge sleeve not clamped (set screws). Wrong o-ring material.",
-        "prevent": "Shaft and sleeve inspected under the o-ring positions; keyways covered on assembly."
+        "prevent": "Shaft and sleeve inspected under the o-ring positions; keyways covered on assembly.",
+        "applies": {
+          "primary": [
+            "seal"
+          ],
+          "contributing": []
+        }
       },
       "fl1": {
         "q": "What does the joint show?",
@@ -543,7 +584,13 @@ BW.register("seals", {
         "label": "bolt torque",
         "text": "Extruded outward is under-torque; crushed and pushed inward is over-torque.",
         "sub": "Torque values for the gasket type and bolt size (the gasket manufacturer), lubricated threads, star pattern, three passes minimum, then a final round. Bolt condition: stretched, corroded, or wrong grade bolts do not hold torque.",
-        "prevent": "Torque and pattern on the flange procedure; calibrated wrench."
+        "prevent": "Torque and pattern on the flange procedure; calibrated wrench.",
+        "applies": {
+          "primary": [
+            "seal"
+          ],
+          "contributing": []
+        }
       },
       "r_fl_wrong": {
         "type": "result",
@@ -551,7 +598,13 @@ BW.register("seals", {
         "label": "wrong gasket for the service, or reused",
         "text": "A gasket that blew out was not rated for the pressure and temperature, or it had been used before.",
         "sub": "Gasket type against the flange rating and the service (Gasket Types tab). Never reuse a gasket; never reuse an RTJ ring. Spiral wound on raised face; full face on flat face.",
-        "prevent": "Gasket specification on the piping line list; gaskets issued by spec, not by size alone."
+        "prevent": "Gasket specification on the piping line list; gaskets issued by spec, not by size alone.",
+        "applies": {
+          "primary": [
+            "seal"
+          ],
+          "contributing": []
+        }
       },
       "r_fl_thermal": {
         "type": "result",
@@ -559,7 +612,13 @@ BW.register("seals", {
         "label": "thermal cycling and bolt relaxation",
         "text": "The joint moves as it heats and cools, and the bolts relax.",
         "sub": "A gasket type that recovers (spiral wound, kammprofile, graphite) rather than a plain sheet. Bolt material that grows with the flange. Live loading (Belleville washers) on joints that cycle. Hot bolting only under a specific procedure.",
-        "prevent": "Re-torque after the first thermal cycle on joints that run hot, recorded."
+        "prevent": "Re-torque after the first thermal cycle on joints that run hot, recorded.",
+        "applies": {
+          "primary": [
+            "seal"
+          ],
+          "contributing": []
+        }
       },
       "r_fl_face": {
         "type": "result",
@@ -567,7 +626,13 @@ BW.register("seals", {
         "label": "flange face condition",
         "text": "A leak at one spot is a defect at that spot: a scratch across the face, a low spot, corrosion, or old gasket residue.",
         "sub": "Face inspection with a straightedge and a light. Radial scratches across a raised face leak; circumferential ones seal. Surface finish for the gasket type (spiral wound wants 125 to 250 AARH). Remachine or replace the flange if the face is beyond a dressing.",
-        "prevent": "Face inspection on every joint before the gasket goes in; faces protected when open."
+        "prevent": "Face inspection on every joint before the gasket goes in; faces protected when open.",
+        "applies": {
+          "primary": [
+            "seal"
+          ],
+          "contributing": []
+        }
       },
       "r_oring": {
         "type": "result",
@@ -575,7 +640,13 @@ BW.register("seals", {
         "label": "o-ring failure: read the shape",
         "text": "The damage tells you what happened.",
         "sub": "Flat spot: pinched on assembly. Spiral cut: twisted going in. Chipped: dropped or dry assembled. Extruded into the gap: pressure too high for the gap or the hardness; a backup ring. Swollen: chemical. Hard and cracked: heat. Compression set (flattened all round): old, or too hot for too long. Installation tab and Compatibility table.",
-        "prevent": "Chamfers on bores, lubricant on the o-ring (compatible with the fluid), material against the fluid, and a replacement interval on hot service."
+        "prevent": "Chamfers on bores, lubricant on the o-ring (compatible with the fluid), material against the fluid, and a replacement interval on hot service.",
+        "applies": {
+          "primary": [
+            "seal"
+          ],
+          "contributing": []
+        }
       },
       "r_packing": {
         "type": "result",
@@ -583,7 +654,13 @@ BW.register("seals", {
         "label": "packing adjustment or condition",
         "text": "Packing is meant to leak 40 to 60 drops per minute. Too much is worn packing or a scored sleeve; a hot gland with no leakage is over-tightened.",
         "sub": "Gland nuts in small equal steps, watching the leakage, never to zero. If the leak cannot be controlled, repack with the sleeve inspected. A scored sleeve burns every new set. Lantern ring aligned with the flush port.",
-        "prevent": "Leakage rate on the PM sheet; sleeve inspected at every repack."
+        "prevent": "Leakage rate on the PM sheet; sleeve inspected at every repack.",
+        "applies": {
+          "primary": [
+            "seal"
+          ],
+          "contributing": []
+        }
       },
       "r_lip": {
         "type": "result",
@@ -591,7 +668,15 @@ BW.register("seals", {
         "label": "lip seal",
         "text": "A lip seal leaks from a worn or grooved shaft, a nicked lip, a hardened lip, a blocked breather pressurising the housing, or overfill.",
         "sub": "Breather first. Level second. Then the shaft under the lip (a groove needs a wear sleeve). Then the seal: installed dry, cut on a keyway, or cooked by heat. Gearboxes module has the same sequence.",
-        "prevent": "Breather and level on the PM; wear sleeve on any grooved shaft; lip lubricated and keyway covered on install."
+        "prevent": "Breather and level on the PM; wear sleeve on any grooved shaft; lip lubricated and keyway covered on install.",
+        "applies": {
+          "primary": [
+            "seal"
+          ],
+          "contributing": [
+            "gearbox"
+          ]
+        }
       }
     }
   },

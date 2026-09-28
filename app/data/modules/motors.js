@@ -227,7 +227,18 @@ BW.register("motors", {
         "label": "bearing running hot",
         "text": "A localised hot spot at one end is that bearing.",
         "sub": "Just greased: over-greased, remove the relief plug and let it purge. DE bearing on a belt drive: belt tension by gauge. DE bearing on a coupled drive: alignment. NDE bearing on a VFD motor: suspect fluting. Any bearing with noise or play: failing, plan the replacement. Bearing Failure module for the full path.",
-        "prevent": "Grease quantity and relief plug on the PM sheet. Tension and alignment by gauge. Grounding ring on VFD motors."
+        "prevent": "Grease quantity and relief plug on the PM sheet. Tension and alignment by gauge. Grounding ring on VFD motors.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": [
+            "alignment",
+            "lube",
+            "motor",
+            "powertrans"
+          ]
+        }
       },
       "heat2": {
         "q": "Amps against nameplate FLA, and is the cooling clear?",
@@ -256,7 +267,13 @@ BW.register("motors", {
         "label": "cooling blocked",
         "text": "The motor is making normal heat and cannot get rid of it.",
         "sub": "Lock out. Shroud off, fins and fan cleaned. ODP motor: vent screens and the inside if accessible. Check the fan is tight and intact and the rotation matches a unidirectional fan if fitted. Check ambient: a motor in an enclosure or a hot corner may be above its 40°C design ambient regardless.",
-        "prevent": "Fins and shroud on the PM. Ambient temperature logged in summer."
+        "prevent": "Fins and shroud on the PM. Ambient temperature logged in summer.",
+        "applies": {
+          "primary": [
+            "motor"
+          ],
+          "contributing": []
+        }
       },
       "r_heat_vfd": {
         "type": "result",
@@ -264,7 +281,13 @@ BW.register("motors", {
         "label": "shaft fan not moving enough air at low speed",
         "text": "A TEFC motor at 30 percent speed on a VFD has a fan at 30 percent speed and a fraction of the airflow.",
         "sub": "The motor needs a derate at low speed and full torque, a blower cooling kit, or a larger frame. Check the motor is inverter duty and rated for the speed range. This is a design condition; the fix is on the application. Hand the electrician the speed and torque profile.",
-        "prevent": "Blower cooled motors on constant torque VFD applications that run slow."
+        "prevent": "Blower cooled motors on constant torque VFD applications that run slow.",
+        "applies": {
+          "primary": [
+            "motor"
+          ],
+          "contributing": []
+        }
       },
       "r_heat_electrical": {
         "type": "result",
@@ -272,7 +295,13 @@ BW.register("motors", {
         "label": "mechanically clear: hand off",
         "text": "Normal amps, clear cooling, full speed, and still hot. The heat is coming from the electrical side: voltage unbalance, a winding fault developing, or a supply problem.",
         "sub": "Uncoupled solo run to confirm the motor itself is hot with no load. Then the handoff package: readings, temperatures, and the solo run result. The electrician checks voltage balance, winding resistance, and insulation.",
-        "prevent": "Amps per phase trended. Voltage balance on the electrician's PM."
+        "prevent": "Amps per phase trended. Voltage balance on the electrician's PM.",
+        "applies": {
+          "primary": [
+            "motor"
+          ],
+          "contributing": []
+        }
       },
       "r_heat_burnt": {
         "type": "result",
@@ -280,7 +309,13 @@ BW.register("motors", {
         "label": "winding failure",
         "text": "The smell of burnt insulation means the windings have overheated to failure.",
         "sub": "Isolate and lock out. Do not restart. Before the motor goes out for rewind or replacement, find the cause on the mechanical side, because a rewound motor put back into the same conditions fails the same way: was it overloaded (amps history), blocked cooling, grease in the windings, too many starts, single phasing, or a stalled load.",
-        "prevent": "The root cause, whichever it was. A rewind without a root cause is a rewind on a schedule."
+        "prevent": "The root cause, whichever it was. A rewind without a root cause is a rewind on a schedule.",
+        "applies": {
+          "primary": [
+            "motor"
+          ],
+          "contributing": []
+        }
       },
       "amps1": {
         "q": "Lock out and uncouple (or remove the belts). Turn the motor and the driven machine by hand separately. How do they feel?",
@@ -306,7 +341,20 @@ BW.register("motors", {
         "label": "the load is the problem",
         "text": "The motor is drawing high amps because the driven machine is hard to turn.",
         "sub": "The driven machine's module: a seized bearing, a rub, product packed in a casing, a gearbox binding. The motor is fine. Independent rotation check element by element.",
-        "prevent": "Amps trended so a rising load is caught before it trips. Driven machine bearings on the PM."
+        "prevent": "Amps trended so a rising load is caught before it trips. Driven machine bearings on the PM.",
+        "applies": {
+          "primary": [
+            "compressor",
+            "conveyor",
+            "fan",
+            "gearbox",
+            "pump"
+          ],
+          "contributing": [
+            "bearing",
+            "motor"
+          ]
+        }
       },
       "r_amps_motor": {
         "type": "result",
@@ -314,7 +362,14 @@ BW.register("motors", {
         "label": "motor bearing failure or rotor rub",
         "text": "A motor that is stiff, rough, or scraping by hand has a failed bearing or the rotor is touching the stator.",
         "sub": "Bearing: play at the shaft, roughness when turning. Rotor rub: a scraping sound, and on an ODP motor, metallic dust at the vents. A rub means the bearings have collapsed or the frame is distorted, and the stator laminations may be damaged. Motor out for bearings and inspection.",
-        "prevent": "Bearing condition on the PM (sound, temperature). Soft foot corrected. Grease quantity."
+        "prevent": "Bearing condition on the PM (sound, temperature). Soft foot corrected. Grease quantity.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "motor"
+          ],
+          "contributing": []
+        }
       },
       "amps2": {
         "q": "Run the motor solo, uncoupled. Amps?",
@@ -356,7 +411,17 @@ BW.register("motors", {
         "label": "load growth",
         "text": "The driven machine is asking for more than it used to.",
         "sub": "Pump: off its curve, higher density or viscosity, wear ring gone and recirculating. Fan: dirty blades, damper position, wrong rotation. Conveyor: more product, a dragging idler, a worn belt. Mixer: heavier batch. The driven machine module has the diagnosis. Compare amps to the original commissioning value if it exists.",
-        "prevent": "Amps trended against the process so growth is seen before it trips. Service factor is not a design margin."
+        "prevent": "Amps trended against the process so growth is seen before it trips. Service factor is not a design margin.",
+        "applies": {
+          "primary": [
+            "conveyor",
+            "fan",
+            "pump"
+          ],
+          "contributing": [
+            "motor"
+          ]
+        }
       },
       "r_amps_align": {
         "type": "result",
@@ -364,7 +429,17 @@ BW.register("motors", {
         "label": "misalignment or belt tension",
         "text": "Misalignment and over-tensioned belts both raise motor current and both heat the DE bearing.",
         "sub": "Belt: deflection and force against the table. Coupling: soft foot, then alignment readings. Amps often fall measurably after correcting either.",
-        "prevent": "Tension and alignment by gauge, recorded. Recheck amps after any drive work."
+        "prevent": "Tension and alignment by gauge, recorded. Recheck amps after any drive work.",
+        "applies": {
+          "primary": [
+            "alignment",
+            "powertrans"
+          ],
+          "contributing": [
+            "bearing",
+            "motor"
+          ]
+        }
       },
       "r_amps_ratio": {
         "type": "result",
@@ -372,7 +447,16 @@ BW.register("motors", {
         "label": "wrong ratio: driven machine too fast",
         "text": "A larger motor sheave or a smaller driven sheave, or a gearbox with the wrong ratio, runs the driven machine faster than design. Fan and pump power rises with the cube of speed.",
         "sub": "Sheave diameters or gearbox ratio against the drawing. A fan run 10 percent fast draws 33 percent more power. This shows up after a sheave was replaced with the closest size in stock.",
-        "prevent": "Ratio on the drawing and the PM sheet. Replacement sheaves by part number."
+        "prevent": "Ratio on the drawing and the PM sheet. Replacement sheaves by part number.",
+        "applies": {
+          "primary": [
+            "gearbox",
+            "powertrans"
+          ],
+          "contributing": [
+            "motor"
+          ]
+        }
       },
       "r_amps_electrical": {
         "type": "result",
@@ -380,7 +464,13 @@ BW.register("motors", {
         "label": "high amps uncoupled: electrical",
         "text": "A motor with no load drawing more than its unloaded current has an electrical problem: low voltage, a winding fault, or a wrong connection (delta instead of star, wrong voltage tap).",
         "sub": "Handoff package with the solo run amps, nameplate, and whether the motor was recently connected, moved, or had its voltage changed. The electrician checks the connection, the supply voltage, and the windings.",
-        "prevent": "Nameplate connection diagram followed on every reconnect."
+        "prevent": "Nameplate connection diagram followed on every reconnect.",
+        "applies": {
+          "primary": [
+            "motor"
+          ],
+          "contributing": []
+        }
       },
       "r_amps_unbalance": {
         "type": "result",
@@ -388,7 +478,13 @@ BW.register("motors", {
         "label": "phase unbalance: electrical",
         "text": "Three phases that do not match is a supply, connection, or winding problem.",
         "sub": "Do not run it. A few percent voltage unbalance causes a much larger current unbalance and heats the windings fast. A phase reading near zero is single phasing and the motor will burn. Handoff with the three readings.",
-        "prevent": "Electrician's connection check on the PM. Phase monitor on critical motors."
+        "prevent": "Electrician's connection check on the PM. Phase monitor on critical motors.",
+        "applies": {
+          "primary": [
+            "motor"
+          ],
+          "contributing": []
+        }
       },
       "noise1": {
         "q": "What kind of noise, and where?",
@@ -426,7 +522,15 @@ BW.register("motors", {
         "label": "bearing failing",
         "text": "Grinding or rumbling localised to one housing is that bearing.",
         "sub": "Confirm by comparing DE to NDE with the screwdriver, and by temperature. Plan the replacement. When it comes out, read the failure: over-greasing (grease everywhere), fluting (washboard race), brinelling (dents from a hammer on the coupling), contamination (scored races). Bearing Failure module.",
-        "prevent": "Whichever cause the failed bearing shows."
+        "prevent": "Whichever cause the failed bearing shows.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": [
+            "motor"
+          ]
+        }
       },
       "r_noise_fluting": {
         "type": "result",
@@ -434,7 +538,14 @@ BW.register("motors", {
         "label": "electrical fluting from VFD bearing currents",
         "text": "A fine gravelly hiss at the NDE on a VFD-driven motor, getting louder over weeks, is fluting.",
         "sub": "The bearing will fail. When it comes out, the race will show a washboard pattern. Fit a shaft grounding ring at the DE or NDE (retrofit kits exist), or an insulated NDE bearing, or both. Ask the electrician to check the motor cable grounding and the drive carrier frequency, which both affect bearing currents.",
-        "prevent": "Grounding ring or insulated bearing on every VFD motor above a few kilowatts. Inverter duty motors on new installs."
+        "prevent": "Grounding ring or insulated bearing on every VFD motor above a few kilowatts. Inverter duty motors on new installs.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "motor"
+          ],
+          "contributing": []
+        }
       },
       "r_noise_hum": {
         "type": "result",
@@ -442,7 +553,15 @@ BW.register("motors", {
         "label": "magnetic hum: soft foot or electrical",
         "text": "A hum that vanishes the instant the power is cut is magnetic. The mechanical cause is soft foot distorting the frame and the air gap. The electrical causes are voltage unbalance, single phasing, or a winding fault.",
         "sub": "Soft foot check first: loosen one foot bolt at a time and listen. If the hum changes, shim. If soft foot is clear, hand off: the electrician checks voltage balance and the windings. A loud hum with the motor slowing is single phasing; isolate it now.",
-        "prevent": "Soft foot before every alignment. Phase monitoring on critical motors."
+        "prevent": "Soft foot before every alignment. Phase monitoring on critical motors.",
+        "applies": {
+          "primary": [
+            "motor"
+          ],
+          "contributing": [
+            "alignment"
+          ]
+        }
       },
       "r_noise_fan": {
         "type": "result",
@@ -450,7 +569,13 @@ BW.register("motors", {
         "label": "fan loose, damaged, or hitting the shroud",
         "text": "A rattle at the NDE is the fan.",
         "sub": "Lock out. Shroud off. Fan tight on the shaft, blades intact, not contacting the shroud. A dented shroud from a knock touches the fan. Debris in the shroud.",
-        "prevent": "Shroud and fan on the PM."
+        "prevent": "Shroud and fan on the PM.",
+        "applies": {
+          "primary": [
+            "motor"
+          ],
+          "contributing": []
+        }
       },
       "r_noise_vfd": {
         "type": "result",
@@ -458,7 +583,13 @@ BW.register("motors", {
         "label": "VFD carrier frequency whine",
         "text": "A whine or tone from the motor that changes with speed on a VFD is the drive's switching frequency exciting the motor laminations. It is normal to a degree.",
         "sub": "If it is new or louder: something has changed in the drive settings, or the motor is developing a mechanical looseness that amplifies it (loose laminations, loose end bells). Mechanical check for looseness first. Then the electrician can adjust the carrier frequency, which trades noise against heating and bearing current.",
-        "prevent": "Drive settings documented. Changes logged."
+        "prevent": "Drive settings documented. Changes logged.",
+        "applies": {
+          "primary": [
+            "motor"
+          ],
+          "contributing": []
+        }
       },
       "vib1": {
         "q": "Does the vibration stop the instant power is cut, or decay as it coasts?",
@@ -514,7 +645,20 @@ BW.register("motors", {
         "label": "coupling, alignment, or the driven machine",
         "text": "The motor is smooth alone. The vibration is coming from the coupling, the alignment, or the driven machine.",
         "sub": "Soft foot on both machines, then alignment readings. Coupling element condition and hub fit. If alignment is good, the driven machine's module. Couplings and Alignment module for the signatures (parallel is 2x, angular is 1x axial).",
-        "prevent": "Alignment after any work on either machine. Coupling on the PM."
+        "prevent": "Alignment after any work on either machine. Coupling on the PM.",
+        "applies": {
+          "primary": [
+            "alignment"
+          ],
+          "contributing": [
+            "compressor",
+            "conveyor",
+            "fan",
+            "gearbox",
+            "motor",
+            "pump"
+          ]
+        }
       },
       "r_vib_softfoot": {
         "type": "result",
@@ -522,7 +666,14 @@ BW.register("motors", {
         "label": "soft foot",
         "text": "The frame is twisted by the base.",
         "sub": "Clean under the feet to bare metal, remove old shims, indicate each foot while loosening its bolt, shim to under 0.05 mm. Then torque in a pattern. Then align. Couplings and Alignment module has the full procedure.",
-        "prevent": "Soft foot before every alignment, no exceptions."
+        "prevent": "Soft foot before every alignment, no exceptions.",
+        "applies": {
+          "primary": [
+            "alignment",
+            "motor"
+          ],
+          "contributing": []
+        }
       },
       "r_vib_unbalance": {
         "type": "result",
@@ -530,7 +681,15 @@ BW.register("motors", {
         "label": "unbalance: fan, shaft, or coupling hub",
         "text": "Vibration at running speed on a motor running solo is unbalance or a bent shaft.",
         "sub": "Shaft run-out with an indicator at the extension. Fan blades for damage or buildup. Coupling hub (if left on for the solo run) for balance and fit; run without the hub to eliminate it. A rotor that has thrown a balance weight or has a broken bar can be out of balance; that is a motor shop job.",
-        "prevent": "Fan cleaned on the PM. Hubs balanced with the coupling on high speed drives."
+        "prevent": "Fan cleaned on the PM. Hubs balanced with the coupling on high speed drives.",
+        "applies": {
+          "primary": [
+            "motor"
+          ],
+          "contributing": [
+            "alignment"
+          ]
+        }
       },
       "r_vib_loose": {
         "type": "result",
@@ -538,7 +697,13 @@ BW.register("motors", {
         "label": "looseness",
         "text": "Foot bolts, base bolts, or the base itself.",
         "sub": "Torque every fastener between the motor and the foundation. Check the base for cracks and the grout for voids. A slide base with worn adjusting screws lets the motor rock.",
-        "prevent": "Fastener torque on the PM. Base condition inspected."
+        "prevent": "Fastener torque on the PM. Base condition inspected.",
+        "applies": {
+          "primary": [
+            "motor"
+          ],
+          "contributing": []
+        }
       },
       "start1": {
         "q": "Lock out. Does the motor shaft turn freely by hand, uncoupled?",
@@ -572,7 +737,13 @@ BW.register("motors", {
         "label": "mechanically clear: will not start is electrical",
         "text": "Both shafts turn freely and the motor will not start. Supply, control circuit, overload, contactor, drive fault, or windings.",
         "sub": "Handoff: mechanical checks done, both free. Note any fault code on the drive. Note whether the motor hums and does not turn (single phasing or a seized rotor, and you have already eliminated seized) or is silent (control circuit or supply).",
-        "prevent": "Nothing mechanical to prevent here. A drive fault log is the electrician's first stop."
+        "prevent": "Nothing mechanical to prevent here. A drive fault log is the electrician's first stop.",
+        "applies": {
+          "primary": [
+            "motor"
+          ],
+          "contributing": []
+        }
       },
       "bearing1": {
         "q": "What did the failed bearing look like?",
@@ -610,7 +781,16 @@ BW.register("motors", {
         "label": "over-greasing",
         "text": "Too much grease, or greased with the relief plug in.",
         "sub": "Grease quantity by the formula or the manual. Relief plug out during and after greasing. Interval by the manufacturer chart for the speed and size. If grease has reached the windings, the motor needs cleaning.",
-        "prevent": "Quantity and relief plug on the PM sheet. Ultrasonic-assisted greasing on critical motors."
+        "prevent": "Quantity and relief plug on the PM sheet. Ultrasonic-assisted greasing on critical motors.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "lube"
+          ],
+          "contributing": [
+            "motor"
+          ]
+        }
       },
       "r_bearing_undergrease": {
         "type": "result",
@@ -618,7 +798,16 @@ BW.register("motors", {
         "label": "starvation",
         "text": "The bearing ran dry.",
         "sub": "Interval too long, or the grease fitting was blocked and the grease never reached the bearing, or the wrong grease separated and drained out. Check the fitting and the grease path on the replacement.",
-        "prevent": "Interval on the PM. Fittings checked to pass grease."
+        "prevent": "Interval on the PM. Fittings checked to pass grease.",
+        "applies": {
+          "primary": [
+            "bearing",
+            "lube"
+          ],
+          "contributing": [
+            "motor"
+          ]
+        }
       },
       "r_bearing_brinell": {
         "type": "result",
@@ -626,7 +815,16 @@ BW.register("motors", {
         "label": "brinelling: impact",
         "text": "Dents in the race at the ball spacing are from a hammer blow, usually on the coupling hub or the shaft end, or from the motor being dropped.",
         "sub": "Hubs go on with heat or a hydraulic puller, never a hammer. Motors are lifted by the eye and set down gently. False brinelling (from vibration while stationary) has the same pattern with no impact history: a spare motor stored next to a running machine.",
-        "prevent": "Hub installation procedure. Rotate stored spare motors periodically."
+        "prevent": "Hub installation procedure. Rotate stored spare motors periodically.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": [
+            "alignment",
+            "motor"
+          ]
+        }
       },
       "r_bearing_contam": {
         "type": "result",
@@ -634,7 +832,17 @@ BW.register("motors", {
         "label": "contamination or moisture",
         "text": "Scoring is dirt; rust is water.",
         "sub": "Seals on the bearing housing, the grease path, and the environment. Wash-down motors need wash-down bearings and seals. An ODP motor in a wet area is the wrong enclosure.",
-        "prevent": "Correct enclosure for the environment. Bearing seals on regreasable motors."
+        "prevent": "Correct enclosure for the environment. Bearing seals on regreasable motors.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": [
+            "lube",
+            "motor",
+            "seal"
+          ]
+        }
       },
       "r_bearing_load": {
         "type": "result",
@@ -642,7 +850,17 @@ BW.register("motors", {
         "label": "overloaded bearing: belt, alignment, or overhung load",
         "text": "A bearing that wore out fast with no other signature was carrying more load than it was rated for.",
         "sub": "Belt tension by gauge. Sheave overhang against the motor catalogue radial load rating. Coupling alignment. Axial load on a motor not rated for it (vertical, or a coupling transmitting thrust).",
-        "prevent": "Belt tension and alignment by gauge. Sheave close to the bearing. Motor selected for the load type."
+        "prevent": "Belt tension and alignment by gauge. Sheave close to the bearing. Motor selected for the load type.",
+        "applies": {
+          "primary": [
+            "bearing"
+          ],
+          "contributing": [
+            "alignment",
+            "motor",
+            "powertrans"
+          ]
+        }
       },
       "r_grease": {
         "type": "result",
@@ -650,7 +868,17 @@ BW.register("motors", {
         "label": "grease where it should not be",
         "text": "Grease at the shaft, through the shroud, or on the windings has come from an over-greased bearing. Oil at the shaft on a sleeve bearing motor is a seal or a level.",
         "sub": "Ball bearing motor: over-greasing, relief plug in. Clean it up, correct the quantity, leave the relief out to purge. Sleeve bearing motor: oil level in the reservoir, oil ring condition, and the shaft seals. Grease on the windings insulates them from cooling and will end in a winding failure.",
-        "prevent": "Grease quantity and relief plug on the PM sheet."
+        "prevent": "Grease quantity and relief plug on the PM sheet.",
+        "applies": {
+          "primary": [
+            "lube",
+            "motor"
+          ],
+          "contributing": [
+            "bearing",
+            "seal"
+          ]
+        }
       }
     }
   },
