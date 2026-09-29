@@ -43,6 +43,87 @@
     return machine;
   }
 
+  // ---- untrusted data ------------------------------------------------------------------
+  // A facility file can come from anyone, and what is in it ends up in markup and in inline
+  // handlers on several pages. So nothing from storage or from an import is used as it is
+  // found. Ids become plain tokens because they are put inside onclick attributes; text is
+  // cut to a length and forced to a string; keys are plain identifiers. An id that is not
+  // already a plain token is replaced by one derived from it, so the same file gives the
+  // same ids every time it is read. Logs stay tied to their machine through the change.
+  var SAFE_ID = /^[A-Za-z0-9_-]{1,64}$/;
+  var SAFE_KEY = /^[A-Za-z][A-Za-z0-9_]{0,40}$/;
+
+  function hash(str) {
+    var h = 5381;
+    for (var i = 0; i < str.length; i++) h = ((h << 5) + h + str.charCodeAt(i)) | 0;
+    return (h >>> 0).toString(36);
+  }
+
+  function text(v, max) {
+    return (typeof v === 'string' || typeof v === 'number') ? String(v).slice(0, max) : '';
+  }
+
+  function unique(id, used) {
+    while (used[id]) id += 'x';
+    used[id] = true;
+    return id;
+  }
+
+  BWF.clean = function (raw) {
+    var out = { version: 2, machines: [], activeId: null, logs: [] };
+    if (!raw || typeof raw !== 'object') return out;
+    var byOriginal = {};
+    var usedMachine = {};
+
+    (Array.isArray(raw.machines) ? raw.machines : []).forEach(function (m0) {
+      if (!m0 || typeof m0 !== 'object' || Array.isArray(m0)) return;
+      var m = Array.isArray(m0.parts) ? m0 : migrate(JSON.parse(JSON.stringify(m0)));
+      var original = typeof m.id === 'string' ? m.id : '';
+      var id = SAFE_ID.test(original) ? original : 'm' + hash(original || JSON.stringify(m).slice(0, 300));
+      id = unique(id, usedMachine);
+      if (original && !(original in byOriginal)) byOriginal[original] = id;
+
+      var machine = { id: id, tag: text(m.tag, 60), name: text(m.name, 120), area: text(m.area, 80), criticality: text(m.criticality, 40), parts: [] };
+      // any other equipment level field the vocabulary defines
+      Object.keys(m).forEach(function (k) {
+        if (k in machine || k === 'parts' || k === 'components' || !SAFE_KEY.test(k)) return;
+        if (typeof m[k] === 'string' || typeof m[k] === 'number') machine[k] = text(m[k], 200);
+      });
+
+      var usedPart = {};
+      (Array.isArray(m.parts) ? m.parts : []).forEach(function (p, i) {
+        if (!p || typeof p !== 'object') return;
+        var type = text(p.type, 40);
+        if (!SAFE_KEY.test(type)) return;
+        var pid = (typeof p.id === 'string' && SAFE_ID.test(p.id)) ? p.id : 'p' + hash(String(p.id) + type + i);
+        var fields = {};
+        if (p.fields && typeof p.fields === 'object') {
+          Object.keys(p.fields).forEach(function (k) {
+            var v = p.fields[k];
+            if (SAFE_KEY.test(k) && (typeof v === 'string' || typeof v === 'number')) fields[k] = text(v, 300);
+          });
+        }
+        machine.parts.push({ id: unique(pid, usedPart), type: type, label: text(p.label, 80), fields: fields });
+      });
+      out.machines.push(machine);
+    });
+
+    var usedLog = {};
+    (Array.isArray(raw.logs) ? raw.logs : []).forEach(function (l, i) {
+      if (!l || typeof l !== 'object') return;
+      var machineId = typeof l.machineId === 'string' && (l.machineId in byOriginal) ? byOriginal[l.machineId] : null;
+      if (!machineId) return; // a log for a machine that is not in the same data has nowhere to live
+      var lid = (typeof l.id === 'string' && SAFE_ID.test(l.id)) ? l.id : 'l' + hash(String(l.id) + String(l.at) + i);
+      out.logs.push({
+        id: unique(lid, usedLog), machineId: machineId, symptom: text(l.symptom, 40), routeId: text(l.routeId, 80),
+        title: text(l.title, 300), module: text(l.module, 40), tab: text(l.tab, 40), note: text(l.note, 1000), at: text(l.at, 40),
+      });
+    });
+
+    if (typeof raw.activeId === 'string' && (raw.activeId in byOriginal)) out.activeId = byOriginal[raw.activeId];
+    return out;
+  };
+
   function part(type, label, fields) {
     return { id: BWF.newId('p'), type: type, label: label, fields: fields };
   }
@@ -61,10 +142,7 @@
       if (!raw) return blank();
       var data = JSON.parse(raw);
       if (!data || !Array.isArray(data.machines)) return blank();
-      if (!Array.isArray(data.logs)) data.logs = []; // added after the first machines were stored
-      data.machines = data.machines.map(migrate);
-      data.version = 2;
-      return data;
+      return BWF.clean(data); // migrates the older shape, and never trusts what it finds
     } catch (e) {
       return blank(); // private mode, cleared storage, or something else wrote the key
     }

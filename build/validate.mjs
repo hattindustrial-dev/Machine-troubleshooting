@@ -437,6 +437,70 @@ for (const task of pmView.TASKS) {
 }
 if (unresolvedTasks) fail('data/pm.js', `${unresolvedTasks} task source(s) do not resolve to an indexed result`);
 
+// ---- 6i. Markup balance inside the module data ----------------------------------
+// The page level balance check above looks at the HTML files. Once a page became a shell the
+// content moved into the data, so that check was left looking at a nearly empty page while
+// the fragments that carry the content, where the original bugs were, went unchecked.
+for (const mod of modules) {
+  const fragments = { ...mod.panels, related: mod.related || '', footer: mod.footer || '' };
+  for (const [name, html] of Object.entries(fragments)) {
+    for (const tag of ['div', 'ul', 'li', 'table', 'button']) {
+      const opens = (html.match(new RegExp(`<${tag}[\\s>]`, 'g')) || []).length;
+      const closes = (html.match(new RegExp(`</${tag}>`, 'g')) || []).length;
+      if (opens !== closes) fail(mod.key, `panel '${name}' has ${opens} <${tag}> and ${closes} </${tag}>`);
+    }
+  }
+}
+
+// ---- 6j. Machine templates ----------------------------------------------------------
+// A template drops parts into a machine. One naming a component that does not exist would add
+// a part the editor cannot draw and the user cannot remove.
+const templateList = readData(DATA, 'templates');
+const templateKeys = new Set();
+for (const t of templateList) {
+  if (!t.key || templateKeys.has(t.key)) fail('templates', `template key '${t.key}' is missing or repeated`);
+  templateKeys.add(t.key);
+  if (!t.name || !t.note) fail('templates', `template '${t.key}' needs a name and a note`);
+  if (!Array.isArray(t.parts) || !t.parts.length) fail('templates', `template '${t.key}' has no parts`);
+  for (const part of t.parts || []) {
+    if (!componentKeys.has(part.type)) fail('templates', `template '${t.key}' uses '${part.type}', which is not a component`);
+    if (!part.label) fail('templates', `template '${t.key}' has a part with no name`);
+  }
+}
+
+// ---- 6k. Self-check answer positions ----------------------------------------------
+// The banks were written with the correct answer second in 91% of questions, and the renderer
+// does not shuffle, so picking B every time passed. The positions are balanced in the data now
+// and have to stay that way.
+{
+  const counts = [0, 0, 0, 0];
+  let n = 0, longest = 0;
+  for (const mod of modules) {
+    if (!mod.selfcheck) continue;
+    const perModule = [0, 0, 0, 0];
+    let m = 0;
+    for (const list of Object.values(mod.selfcheck)) {
+      for (const [, options, correct] of list) {
+        if (options.length !== 4) fail(mod.key, `a self-check question has ${options.length} options, expected 4`);
+        counts[correct]++; perModule[correct]++; n++; m++;
+        const lens = options.map((o) => o.length);
+        const top = Math.max(...lens);
+        if (lens[correct] === top && lens.filter((x) => x === top).length === 1) longest++;
+      }
+    }
+    if (m >= 12 && Math.max(...perModule) / m > 0.6) {
+      fail(mod.key, `${Math.round((100 * Math.max(...perModule)) / m)}% of the self-check answers sit in one position (${perModule.join(', ')})`);
+    }
+  }
+  if (n && Math.max(...counts) / n > 0.4) {
+    fail('self-check', `${Math.round((100 * Math.max(...counts)) / n)}% of all correct answers sit in one position (${counts.join(', ')})`);
+  }
+  // Not a failure: the wrong answers are mostly much shorter than the right one, which a
+  // learner can pass on without knowing anything. That needs the questions rewritten, so it
+  // is measured here rather than gated on.
+  if (n) notes.push(`self-check: the correct answer is the single longest option in ${Math.round((100 * longest) / n)}% of ${n} questions (chance is about 25%); the wrong answers need lengthening`);
+}
+
 // ---- 7. Totals against the published index -------------------------------------
 if (index.totals.diagnostic_results !== results) fail('index', `totals.diagnostic_results is ${index.totals.diagnostic_results}, extracted ${results}`);
 if (index.totals.self_check_questions !== questions) fail('index', `totals.self_check_questions is ${index.totals.self_check_questions}, extracted ${questions}`);

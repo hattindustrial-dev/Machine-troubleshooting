@@ -536,22 +536,22 @@ BW.register("valves", {
         "Using a gate valve to throttle?",
         [
           "Is fine",
-          "Wire-draws the seat; it will not seal again",
           "Extends its life",
+          "Wire-draws the seat; it will not seal again",
           "Is recommended"
         ],
-        1,
+        2,
         "Put a globe or characterised butterfly there."
       ],
       [
         "The most common leak point on any valve?",
         [
           "Body",
-          "Stem packing",
           "Seat",
-          "Flange"
+          "Flange",
+          "Stem packing"
         ],
-        1,
+        3,
         "Tighten the gland evenly, then repack."
       ]
     ],
@@ -559,12 +559,12 @@ BW.register("valves", {
       [
         "Which valve is built to take the pressure drop across its trim?",
         [
+          "Globe",
           "Gate",
           "Ball",
-          "Globe",
           "Butterfly"
         ],
-        2,
+        0,
         "The throttling valve."
       ],
       [
@@ -582,11 +582,11 @@ BW.register("valves", {
         "A ball valve body cavity on a service that expands needs?",
         [
           "Nothing",
-          "Cavity relief",
           "A bigger ball",
+          "Cavity relief",
           "A soft seat"
         ],
-        1,
+        2,
         "Trapped fluid between the seats."
       ],
       [
@@ -606,22 +606,22 @@ BW.register("valves", {
         "Bench set is?",
         [
           "Torque",
-          "The air pressure range that strokes the actuator with no process load",
           "The stroke length",
-          "A switch"
+          "A switch",
+          "The air pressure range that strokes the actuator with no process load"
         ],
-        1,
+        3,
         "Verified with a gauge."
       ],
       [
         "A stem that moves in jumps during a stroke test shows?",
         [
-          "Positioner lag",
           "Stiction in the packing",
+          "Positioner lag",
           "Bench set drift",
           "Air leak"
         ],
-        1,
+        0,
         "Ten minutes at the valve replaces an hour of theory."
       ],
       [
@@ -641,33 +641,33 @@ BW.register("valves", {
         "Gland nuts are tightened?",
         [
           "Fully",
-          "Evenly, a flat at a time, until the leak stops",
           "Once",
+          "Evenly, a flat at a time, until the leak stops",
           "With a cheater"
         ],
-        1,
+        2,
         "Over-tight is stiction."
       ],
       [
         "A scored stem with a packing leak?",
         [
           "Repack",
-          "Polish or replace the stem; no packing fixes it",
           "Tighten more",
-          "Ignore"
+          "Ignore",
+          "Polish or replace the stem; no packing fixes it"
         ],
-        1,
+        3,
         "The stem is the sealing surface."
       ],
       [
         "Double block and bleed is?",
         [
-          "One valve",
           "Two valves in series with a bleed between",
+          "One valve",
           "A relief valve",
           "A check valve"
         ],
-        1,
+        0,
         "A passing valve is detected and contained."
       ]
     ],
@@ -687,11 +687,11 @@ BW.register("valves", {
         "Isolation valves that are never moved?",
         [
           "Last forever",
-          "Seize, and break when forced",
           "Improve",
+          "Seize, and break when forced",
           "Need no PM"
         ],
-        1,
+        2,
         "Exercise on a schedule."
       ]
     ],
@@ -700,22 +700,22 @@ BW.register("valves", {
         "Valve passes when closed. First check?",
         [
           "The seat",
-          "Whether the actuator or handwheel takes it fully to the seat",
           "The body",
-          "The gasket"
+          "The gasket",
+          "Whether the actuator or handwheel takes it fully to the seat"
         ],
-        1,
+        3,
         "Stops, bench set, torque switch."
       ],
       [
         "A control valve working below 10% open is?",
         [
-          "Correct",
           "Oversized and will not control well",
+          "Correct",
           "Undersized",
           "Fine"
         ],
-        1,
+        0,
         "Size to work in the middle of the range."
       ]
     ],
@@ -735,22 +735,22 @@ BW.register("valves", {
         "Approaching a suspected steam packing leak?",
         [
           "By hand",
-          "From the side with a broom handle, not a hand",
           "Head first",
+          "From the side with a broom handle, not a hand",
           "With a rag"
         ],
-        1,
+        2,
         "Invisible near the gland; cuts flesh."
       ],
       [
         "A large spring-return actuator is opened?",
         [
           "With a wrench",
-          "Per the manufacturer procedure for spring release, after air is isolated and vented",
           "Quickly",
-          "With the air on"
+          "With the air on",
+          "Per the manufacturer procedure for spring release, after air is isolated and vented"
         ],
-        1,
+        3,
         "It can injure severely on disassembly."
       ]
     ]

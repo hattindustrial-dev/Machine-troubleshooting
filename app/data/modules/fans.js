@@ -539,22 +539,22 @@ BW.register("fans", {
         "Most fan bearing failures trace to?",
         [
           "Bad bearings",
-          "Unbalance from buildup on the wheel",
           "Wrong grease",
+          "Unbalance from buildup on the wheel",
           "Motor faults"
         ],
-        1,
+        2,
         "Most balance failures are dirt."
       ],
       [
         "On a backward-inclined fan, opening the outlet fully does what to motor amps?",
         [
           "Nothing",
-          "Raises them, up to the curve peak",
           "Lowers them",
-          "Trips instantly"
+          "Trips instantly",
+          "Raises them, up to the curve peak"
         ],
-        1,
+        3,
         "Know the curve before opening a damper."
       ]
     ],
@@ -562,12 +562,12 @@ BW.register("fans", {
       [
         "Which fan type has an overloading power curve?",
         [
+          "Forward-curved",
           "Backward-inclined",
           "Airfoil",
-          "Forward-curved",
           "Vane-axial"
         ],
-        2,
+        0,
         "Power rises with flow; open the system and it trips."
       ],
       [
@@ -599,21 +599,21 @@ BW.register("fans", {
         [
           "10%",
           "21%",
-          "33%",
-          "50%"
+          "50%",
+          "33%"
         ],
-        2,
+        3,
         "Power is proportional to speed cubed."
       ],
       [
         "A hot gas fan started on cold air?",
         [
-          "Draws less power",
           "Draws more power because the air is denser",
+          "Draws less power",
           "Draws the same",
           "Stalls"
         ],
-        1,
+        0,
         "Pressure and power scale with density."
       ],
       [
@@ -633,33 +633,33 @@ BW.register("fans", {
         "First step before balancing a fan wheel?",
         [
           "Add trial weight",
-          "Clean it",
           "Change bearings",
+          "Clean it",
           "Tighten belts"
         ],
-        1,
+        2,
         "Balancing a dirty wheel balances the dirt."
       ],
       [
         "Wheel-to-inlet cone clearance matters because?",
         [
           "Noise only",
-          "It sets efficiency and pressure; an open gap recirculates air",
           "It does not",
-          "Balance"
+          "Balance",
+          "It sets efficiency and pressure; an open gap recirculates air"
         ],
-        1,
+        3,
         "Check after any wheel or bearing work."
       ],
       [
         "A centrifugal wheel run backward?",
         [
-          "Reverses the airflow",
           "Moves about half the air at high power",
+          "Reverses the airflow",
           "Works normally",
           "Stops"
         ],
-        1,
+        0,
         "The arrow on the housing."
       ]
     ],
@@ -692,22 +692,22 @@ BW.register("fans", {
         "Fan vibration, wheel has product on one side. Fix?",
         [
           "Balance",
-          "Clean the whole wheel, then read the vibration",
           "New bearings",
+          "Clean the whole wheel, then read the vibration",
           "Tighten belts"
         ],
-        1,
+        2,
         "Most of the time it is gone."
       ],
       [
         "Airflow dropped, nothing on the fan changed. First check?",
         [
           "Wheel",
-          "Filters, dampers, and ducts: the system",
           "Motor",
-          "Belts"
+          "Belts",
+          "Filters, dampers, and ducts: the system"
         ],
-        1,
+        3,
         "The operating point moved."
       ]
     ],
@@ -715,12 +715,12 @@ BW.register("fans", {
       [
         "Before opening a fan housing?",
         [
-          "Stop the motor",
           "Lock out, wait for coast-down, block against windmilling",
+          "Stop the motor",
           "Close the damper",
           "Nothing"
         ],
-        1,
+        0,
         "A big light wheel stores more energy than it looks."
       ],
       [

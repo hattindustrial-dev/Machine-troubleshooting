@@ -1518,22 +1518,22 @@ BW.register("hydraulics", {
         "What creates pressure in a hydraulic system?",
         [
           "The pump",
-          "Resistance to flow (the load)",
           "The reservoir",
-          "The relief valve"
+          "The relief valve",
+          "Resistance to flow (the load)"
         ],
-        1,
+        3,
         "Pumps create flow; the load creates pressure."
       ],
       [
         "Pressure drop that is not doing work becomes?",
         [
-          "Flow",
           "Heat",
+          "Flow",
           "Noise",
           "Pressure elsewhere"
         ],
-        1,
+        0,
         "A hot system is wasting energy somewhere."
       ],
       [
@@ -1575,22 +1575,22 @@ BW.register("hydraulics", {
         "Cavitation sounds like?",
         [
           "A rattle with foam in the tank",
-          "A steady high whine, worst cold",
           "A knock",
+          "A steady high whine, worst cold",
           "Silence"
         ],
-        1,
+        2,
         "Aeration rattles; cavitation whines."
       ],
       [
         "A load sensing pump will not build pressure. First check?",
         [
           "Replace the pump",
-          "The load sense line for blockage or leak",
           "The reservoir",
-          "The relief"
+          "The relief",
+          "The load sense line for blockage or leak"
         ],
-        1,
+        3,
         "A blocked LS line tells the pump there is no load."
       ]
     ],
@@ -1598,45 +1598,45 @@ BW.register("hydraulics", {
       [
         "A closed centre 4/3 valve on a fixed displacement pump with no unloading valve will?",
         [
-          "Unload the pump",
           "Send the pump over the relief at rest and overheat",
+          "Unload the pump",
           "Float the cylinder",
           "Stop the pump"
         ],
-        1,
+        0,
         "This is a design error that gets built."
       ],
       [
         "Which valve is normally open?",
         [
           "Relief",
-          "Sequence",
           "Pressure reducing",
+          "Sequence",
           "Counterbalance"
         ],
-        2,
+        1,
         "Reducing valves throttle closed as outlet pressure rises; the others are normally closed."
       ],
       [
         "What holds a suspended load: the DCV spool or a counterbalance valve?",
         [
           "The DCV spool",
-          "The counterbalance valve",
           "Either",
+          "The counterbalance valve",
           "The pump"
         ],
-        1,
+        2,
         "A spool leaks by design; a poppet-type holding valve holds."
       ],
       [
         "A counterbalance valve is set to about?",
         [
           "0.5 times load pressure",
-          "1.3 times load pressure",
           "3 times load pressure",
-          "Relief pressure"
+          "Relief pressure",
+          "1.3 times load pressure"
         ],
-        1,
+        3,
         "Too low creeps; too high runs hot and jerky."
       ]
     ],
@@ -1644,12 +1644,12 @@ BW.register("hydraulics", {
       [
         "A cylinder drifts with both ports blocked. The leak is?",
         [
-          "In the DCV",
           "In the piston seal",
+          "In the DCV",
           "In the pump",
           "In the relief"
         ],
-        1,
+        0,
         "Isolated cylinder still drifting means fluid is crossing the piston."
       ],
       [
@@ -1667,11 +1667,11 @@ BW.register("hydraulics", {
         "Before a seal job, run a fingernail along the rod because?",
         [
           "To clean it",
-          "Any score you can catch will cut the new seal",
           "To check temperature",
+          "Any score you can catch will cut the new seal",
           "It is tradition"
         ],
-        1,
+        2,
         "A damaged rod destroys new seals in days."
       ]
     ],
@@ -1680,22 +1680,22 @@ BW.register("hydraulics", {
         "Target cleanliness code for proportional valves?",
         [
           "22/20/17",
-          "16/14/11",
           "19/17/14",
-          "Not needed"
+          "Not needed",
+          "16/14/11"
         ],
-        1,
+        3,
         "Fine spool clearances need cleaner oil than on-off valves."
       ],
       [
         "A fine filter on the pump suction will?",
         [
-          "Protect the pump",
           "Starve the pump and cause cavitation",
+          "Protect the pump",
           "Improve cleanliness",
           "Reduce noise"
         ],
-        1,
+        0,
         "Suction strainers are coarse for a reason."
       ],
       [
@@ -1713,11 +1713,11 @@ BW.register("hydraulics", {
         "Free water in mineral oil appears above about?",
         [
           "10 ppm",
-          "200 to 400 ppm",
           "5%",
+          "200 to 400 ppm",
           "It never appears"
         ],
-        1,
+        2,
         "Above saturation the oil turns cloudy and water does damage."
       ]
     ],
@@ -1726,22 +1726,22 @@ BW.register("hydraulics", {
         "A solid triangle in a pump or motor symbol means?",
         [
           "Pneumatic",
-          "Hydraulic",
           "Variable",
-          "Bidirectional"
+          "Bidirectional",
+          "Hydraulic"
         ],
-        1,
+        3,
         "Open triangle is pneumatic; solid is hydraulic."
       ],
       [
         "In a pressure valve symbol, an arrow drawn offset from the flow path means?",
         [
-          "Normally open",
           "Normally closed",
+          "Normally open",
           "Variable",
           "Pilot operated"
         ],
-        1,
+        0,
         "Offset is normally closed (relief); in line is normally open (reducing)."
       ],
       [
@@ -1761,33 +1761,33 @@ BW.register("hydraulics", {
         "Relief valve hotter than the lines around it means?",
         [
           "Normal",
-          "It is passing oil",
           "It is closed",
+          "It is passing oil",
           "Low oil"
         ],
-        1,
+        2,
         "A hot relief is lifting."
       ],
       [
         "The three questions that answer most hydraulic faults?",
         [
           "Pump, valve, cylinder",
-          "Is there flow, is there pressure, where is the heat",
           "Level, colour, smell",
-          "Volts, amps, ohms"
+          "Volts, amps, ohms",
+          "Is there flow, is there pressure, where is the heat"
         ],
-        1,
+        3,
         "Gauge, temperature gun, and method."
       ],
       [
         "A pump that runs but cannot build pressure with the discharge blocked has?",
         [
-          "A downstream leak",
           "An internal fault or a stuck relief",
+          "A downstream leak",
           "Low level",
           "Wrong oil"
         ],
-        1,
+        0,
         "Blocking the discharge isolates the pump from downstream leaks."
       ]
     ],
@@ -1807,22 +1807,22 @@ BW.register("hydraulics", {
         "How do you locate a hydraulic leak?",
         [
           "By hand",
-          "With cardboard held in the area",
           "With a rag",
+          "With cardboard held in the area",
           "Visually only"
         ],
-        1,
+        2,
         "Never search for a leak with your hands."
       ],
       [
         "Bleeding the hydraulic side of an accumulator releases the nitrogen precharge. True or false?",
         [
           "True",
-          "False",
           "Only on bladder types",
-          "Only when hot"
+          "Only when hot",
+          "False"
         ],
-        1,
+        3,
         "The gas side is separate; never loosen the gas valve or the shell."
       ]
     ]

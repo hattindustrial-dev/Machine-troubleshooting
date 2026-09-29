@@ -759,12 +759,12 @@ BW.register("lube", {
       [
         "Why is GL-5 gear oil a problem in a bronze worm gearbox?",
         [
-          "Too thin",
           "Active sulphur EP additives attack yellow metals",
+          "Too thin",
           "Too expensive",
           "It foams"
         ],
-        1,
+        0,
         "EP additives react with bronze. Use what the manufacturer specifies."
       ],
       [
@@ -795,22 +795,22 @@ BW.register("lube", {
         "In a progressive centralized grease system, one blocked point does what?",
         [
           "Nothing to the others",
-          "Stops all downstream points",
           "Speeds up the others",
-          "Trips the pump"
+          "Trips the pump",
+          "Stops all downstream points"
         ],
-        1,
+        3,
         "Progressive dividers pass grease in sequence; a blockage stops the chain."
       ],
       [
         "In a dual-line system, each injector is?",
         [
-          "Dependent on the previous one",
           "Independent",
+          "Dependent on the previous one",
           "Manual",
           "Timed by the last"
         ],
-        1,
+        0,
         "Dual-line injectors operate independently, so one blockage does not stop the rest."
       ],
       [
@@ -830,33 +830,33 @@ BW.register("lube", {
         "What does milky oil indicate?",
         [
           "Oxidation",
-          "Water contamination",
           "Air",
+          "Water contamination",
           "Varnish"
         ],
-        1,
+        2,
         "Free water emulsifies and turns oil milky."
       ],
       [
         "Oxidation rate roughly doubles for every?",
         [
           "5°C",
-          "10°C",
           "20°C",
-          "50°C"
+          "50°C",
+          "10°C"
         ],
-        1,
+        3,
         "Every 10°C above the design temperature halves oil life."
       ],
       [
         "Is new oil from a drum clean enough to use as delivered?",
         [
-          "Yes",
           "No, filter it in",
+          "Yes",
           "Only synthetic",
           "Only if sealed"
         ],
-        1,
+        0,
         "New oil is dirty oil. Filter it into the machine."
       ],
       [
@@ -887,22 +887,22 @@ BW.register("lube", {
         "What does ferrography tell you that elemental analysis does not?",
         [
           "How much iron",
-          "The type of wear from particle morphology",
           "Water content",
+          "The type of wear from particle morphology",
           "Viscosity"
         ],
-        1,
+        2,
         "Particle shape shows the wear mechanism: cutting, sliding, fatigue."
       ],
       [
         "Where should an oil sample be drawn?",
         [
           "From the drain plug",
-          "From the same live point every time, running or within minutes of shutdown",
           "From the fill cap",
-          "From a new bottle"
+          "From a new bottle",
+          "From the same live point every time, running or within minutes of shutdown"
         ],
-        1,
+        3,
         "The drain plug collects sediment; a consistent live point gives a trend."
       ]
     ],
@@ -910,12 +910,12 @@ BW.register("lube", {
       [
         "Grease quantity formula?",
         [
-          "G = D × B",
           "G = 0.005 × D × B",
+          "G = D × B",
           "G = 0.05 × D",
           "G = B"
         ],
-        1,
+        0,
         "Grams from bearing OD and width in mm."
       ],
       [
@@ -935,22 +935,22 @@ BW.register("lube", {
         "Foamy oil most often means?",
         [
           "Water",
-          "Air ingestion or the wrong oil",
           "Oxidation",
+          "Air ingestion or the wrong oil",
           "Metal"
         ],
-        1,
+        2,
         "Air on the suction side or an incompatible oil."
       ],
       [
         "Varnish deposits on a proportional valve spool are caused by?",
         [
           "Water",
-          "Oxidation products from overheated oil",
           "Dirt",
-          "Wrong viscosity"
+          "Wrong viscosity",
+          "Oxidation products from overheated oil"
         ],
-        1,
+        3,
         "Varnish is oxidised oil depositing on surfaces and sticks fine spools."
       ]
     ],
@@ -958,12 +958,12 @@ BW.register("lube", {
       [
         "Where do oil-soaked rags go?",
         [
-          "Any bin",
           "A metal bin with a lid, emptied daily",
+          "Any bin",
           "On the floor",
           "A plastic bag"
         ],
-        1,
+        0,
         "Oily rags self-heat and ignite."
       ],
       [

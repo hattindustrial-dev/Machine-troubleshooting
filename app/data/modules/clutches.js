@@ -481,12 +481,12 @@ BW.register("clutches", {
       [
         "The three questions on any clutch or brake?",
         [
-          "Colour, size, brand",
           "Gap or adjustment, friction material wear, actuator force",
+          "Colour, size, brand",
           "Speed, torque, power",
           "Oil, filter, belt"
         ],
-        1,
+        0,
         "They resolve almost everything."
       ],
       [
@@ -506,33 +506,33 @@ BW.register("clutches", {
         "A spring-applied electromagnetic brake with the power off is?",
         [
           "Released",
-          "Set: fail-safe",
           "Half on",
+          "Set: fail-safe",
           "Free"
         ],
-        1,
+        2,
         "That is why it is the holding brake on hoists."
       ],
       [
         "A torque limiter turned up to stop nuisance trips?",
         [
           "Is fine",
-          "Has no protection left: fix the jams",
           "Lasts longer",
-          "Is required"
+          "Is required",
+          "Has no protection left: fix the jams"
         ],
-        1,
+        3,
         "The gearbox or chain breaks instead."
       ],
       [
         "A backstop fitted backward?",
         [
-          "Works",
           "Locks the drive on start",
+          "Works",
           "Slips",
           "Is fail-safe"
         ],
-        1,
+        0,
         "Check the arrow."
       ]
     ],
@@ -552,22 +552,22 @@ BW.register("clutches", {
         "Oil on a dry friction surface?",
         [
           "Helps",
-          "Cuts friction to a fraction; the lining does not recover",
           "Cools it",
+          "Cuts friction to a fraction; the lining does not recover",
           "Is normal"
         ],
-        1,
+        2,
         "Find the leaking seal next to the brake."
       ],
       [
         "A glazed lining is caused by?",
         [
           "Cold",
-          "Overheating or light dragging",
           "Too much gap",
-          "New linings"
+          "New linings",
+          "Overheating or light dragging"
         ],
-        1,
+        3,
         "Sand once; if it glazes again the cause is still there."
       ]
     ],
@@ -575,12 +575,12 @@ BW.register("clutches", {
       [
         "Air gap on an electromagnetic brake is measured?",
         [
-          "At one point, brake released",
           "At three or four points, brake set, with a feeler gauge",
+          "At one point, brake released",
           "By eye",
           "With the power on"
         ],
-        1,
+        0,
         "Equal gap all round, then nominal."
       ],
       [
@@ -600,33 +600,33 @@ BW.register("clutches", {
         "A holding brake on a hoist is adjusted?",
         [
           "With the load hanging",
-          "Only with the load lowered or mechanically supported",
           "Any time",
+          "Only with the load lowered or mechanically supported",
           "By the operator"
         ],
-        1,
+        2,
         "It is a safety device."
       ],
       [
         "A backstop is a lockout for the drive train. True or false?",
         [
           "True",
-          "False: open the coupling and the load is free",
           "True on conveyors",
-          "True if tested"
+          "True if tested",
+          "False: open the coupling and the load is free"
         ],
-        1,
+        3,
         "Block the load before drive work."
       ],
       [
         "On a dual-brake hoist, the brakes are tested?",
         [
-          "Together",
           "Each alone",
+          "Together",
           "Never",
           "Only the motor brake"
         ],
-        1,
+        0,
         "Holding on two proves neither."
       ]
     ],
@@ -646,11 +646,11 @@ BW.register("clutches", {
         "Brake will not release; gap and lining are fine?",
         [
           "Reline",
-          "Coil voltage, rectifier, and wiring",
           "Adjust the gap",
+          "Coil voltage, rectifier, and wiring",
           "Replace the brake"
         ],
-        1,
+        2,
         "Check the actuator before blaming the mechanics."
       ]
     ],
@@ -659,22 +659,22 @@ BW.register("clutches", {
         "Brake springs during disassembly are?",
         [
           "Harmless",
-          "Compressed and released in a controlled way per the manual",
           "Removed by hand",
-          "Not present"
+          "Not present",
+          "Compressed and released in a controlled way per the manual"
         ],
-        1,
+        3,
         "Springs that let go are projectiles."
       ],
       [
         "After brake work, before return to service?",
         [
-          "Nothing",
           "A holding test and a controlled stop test with nobody under the load",
+          "Nothing",
           "A paint job",
           "A signature"
         ],
-        1,
+        0,
         "The brake is the only thing between the load and the floor."
       ]
     ]

@@ -1017,22 +1017,22 @@ BW.register("gearbox", {
         "15 kW at 1750 rpm through a 20:1 reducer at 96% efficiency gives output torque of about?",
         [
           "82 Nm",
-          "1574 Nm",
           "15,740 Nm",
+          "1574 Nm",
           "8 Nm"
         ],
-        1,
+        2,
         "82 Nm × 20 × 0.96."
       ],
       [
         "On a shaft mount reducer, the torque arm should be?",
         [
           "Rigid",
-          "At about 90° to the line from output centre to anchor, free to swing slightly",
           "Removed",
-          "Horizontal always"
+          "Horizontal always",
+          "At about 90° to the line from output centre to anchor, free to swing slightly"
         ],
-        1,
+        3,
         "A rigid or badly angled arm loads the output bearings."
       ]
     ],
@@ -1062,12 +1062,12 @@ BW.register("gearbox", {
       [
         "Mating gears must share the same?",
         [
-          "Colour",
           "Module or DP and pressure angle",
+          "Colour",
           "Tooth count",
           "Shaft size"
         ],
-        1,
+        0,
         "Different module gears will not mesh."
       ],
       [
@@ -1087,33 +1087,33 @@ BW.register("gearbox", {
         "A leaking output seal: what is checked first?",
         [
           "The seal",
-          "The breather",
           "The oil grade",
+          "The breather",
           "The coupling"
         ],
-        1,
+        2,
         "A blocked breather pressurises the case and pushes oil past every seal."
       ],
       [
         "Tapered roller bearing setting is done with?",
         [
           "Grease",
-          "Shims or an adjusting nut, to the drawing",
           "Torque on the cap bolts",
-          "Feel"
+          "Feel",
+          "Shims or an adjusting nut, to the drawing"
         ],
-        1,
+        3,
         "Preload or endplay is specified."
       ],
       [
         "Shims from two bearing caps?",
         [
-          "Are interchangeable",
           "Are not; tape each pack to its cap",
+          "Are interchangeable",
           "Are always the same",
           "Are not needed"
         ],
-        1,
+        0,
         "The wrong pack moves the pinion."
       ]
     ],
@@ -1133,11 +1133,11 @@ BW.register("gearbox", {
         "Oil level is checked?",
         [
           "Running",
-          "Stopped and settled, in the actual mounting position",
           "Cold only",
+          "Stopped and settled, in the actual mounting position",
           "From the breather"
         ],
-        1,
+        2,
         "The running sight glass lies."
       ],
       [
@@ -1155,11 +1155,11 @@ BW.register("gearbox", {
         "Normal worm gearbox housing temperature?",
         [
           "30°C",
-          "80 to 90°C",
           "120°C",
-          "Ambient"
+          "Ambient",
+          "80 to 90°C"
         ],
-        1,
+        3,
         "Worm boxes run hot by nature; the change is the symptom."
       ]
     ],
@@ -1167,12 +1167,12 @@ BW.register("gearbox", {
       [
         "Small pits near the pitch line that appear early and stop growing?",
         [
-          "Destructive pitting",
           "Initial (corrective) pitting",
+          "Destructive pitting",
           "Scuffing",
           "Spalling"
         ],
-        1,
+        0,
         "Normal run-in; the early oil change removes the debris."
       ],
       [
@@ -1190,22 +1190,22 @@ BW.register("gearbox", {
         "Wear at one end of the tooth face?",
         [
           "Overload",
-          "Misalignment",
           "Wrong oil",
+          "Misalignment",
           "Age"
         ],
-        1,
+        2,
         "The load is on part of the tooth."
       ],
       [
         "Beach marks on a fracture face indicate?",
         [
           "Overload",
-          "Fatigue",
           "Corrosion",
-          "Manufacturing defect"
+          "Manufacturing defect",
+          "Fatigue"
         ],
-        1,
+        3,
         "A slow crack; crystalline is overload."
       ]
     ],
@@ -1213,12 +1213,12 @@ BW.register("gearbox", {
       [
         "Bevel gear contact pattern toward the toe means?",
         [
-          "Correct",
           "Gears too close together",
+          "Correct",
           "Gears too far apart",
           "Pinion too far out"
         ],
-        1,
+        0,
         "Move the gear away from the pinion."
       ],
       [
@@ -1236,11 +1236,11 @@ BW.register("gearbox", {
         "Backlash increasing over time is a direct measure of?",
         [
           "Oil level",
-          "Tooth wear or bearing movement",
           "Temperature",
+          "Tooth wear or bearing movement",
           "Load"
         ],
-        1,
+        2,
         "Trend it on the PM."
       ]
     ],
@@ -1249,11 +1249,11 @@ BW.register("gearbox", {
         "A knock once per output revolution points at?",
         [
           "The input pinion",
-          "The low speed gear or output shaft",
           "The oil",
-          "The breather"
+          "The breather",
+          "The low speed gear or output shaft"
         ],
-        1,
+        3,
         "Count the rhythm against the shaft speeds."
       ],
       [
@@ -1270,12 +1270,12 @@ BW.register("gearbox", {
       [
         "Non-magnetic silver flakes on the magnetic plug?",
         [
-          "Normal",
           "Bearing cage",
+          "Normal",
           "Gear teeth",
           "Worm wheel"
         ],
-        1,
+        0,
         "A cage breaking up is the last stage of bearing failure."
       ]
     ],
@@ -1295,11 +1295,11 @@ BW.register("gearbox", {
         "Before cracking the drain on a hot gearbox?",
         [
           "Nothing",
-          "Open the breather or fill plug first, from the side",
           "Run it",
+          "Open the breather or fill plug first, from the side",
           "Cool the oil with water"
         ],
-        1,
+        2,
         "A blocked breather means a pressurised case."
       ]
     ]

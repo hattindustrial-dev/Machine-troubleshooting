@@ -103,7 +103,7 @@
       if (tags.some(function (t) { return (n.components || []).indexOf(t) !== -1; })) applying++;
     });
     return '<div class="hub-fac">' +
-      '<div><span class="hub-fac-tag">' + m.tag + '</span> ' +
+      '<div><span class="hub-fac-tag">' + esc(m.tag) + '</span> ' +
       '<span class="hub-fac-note">' + (BWHub.on
         ? applying + ' of ' + total + ' routes apply to this machine'
         : 'showing all ' + total + ' routes') + '</span></div>' +

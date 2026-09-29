@@ -1199,12 +1199,12 @@ BW.register("pumps", {
       [
         "Which family does a centrifugal pump belong to?",
         [
+          "Dynamic",
           "Positive displacement, rotary",
           "Positive displacement, reciprocating",
-          "Dynamic",
           "Diaphragm"
         ],
-        2,
+        0,
         "Centrifugal and axial flow pumps are dynamic pumps: they add velocity to the fluid, and the flow depends on the system resistance."
       ],
       [
@@ -1246,22 +1246,22 @@ BW.register("pumps", {
         "What happens to a centrifugal pump when the discharge valve is closed while running?",
         [
           "Pressure rises until the casing fails",
-          "Flow drops toward zero and the pump heats the fluid",
           "It stops",
-          "It reverses"
+          "It reverses",
+          "Flow drops toward zero and the pump heats the fluid"
         ],
-        1,
+        3,
         "A centrifugal pump at shutoff moves to the left of its curve, flow goes to near zero, and the trapped fluid heats."
       ],
       [
         "What is mandatory on the discharge of a positive displacement pump?",
         [
+          "A relief valve",
           "A flow meter",
           "A check valve",
-          "A relief valve",
           "A strainer"
         ],
-        2,
+        0,
         "A PD pump against a closed discharge raises pressure until something fails. The relief valve is the protection."
       ],
       [
@@ -1281,22 +1281,22 @@ BW.register("pumps", {
         "Troubleshooting a pump system, where does the system chain start?",
         [
           "At the pump",
-          "At the discharge",
           "At the electrical supply and motor",
+          "At the discharge",
           "At the seal"
         ],
-        2,
+        1,
         "Walk the chain from supply through motor, coupling, gearbox, pump, to discharge. A fault upstream shows up downstream."
       ],
       [
         "A gauge on the discharge reads high after a downstream valve is throttled. What moved?",
         [
           "The pump slowed",
-          "The pump shifted left on its curve",
           "The pump curve changed",
+          "The pump shifted left on its curve",
           "The fluid got heavier"
         ],
-        1,
+        2,
         "Throttling adds system resistance, which reduces flow and raises the gauge reading: the pump moves left on its curve."
       ]
     ],
@@ -1305,22 +1305,22 @@ BW.register("pumps", {
         "What is the first step of the independent rotation check?",
         [
           "Rotate the pump shaft",
-          "Motor free-spin, mechanical check only, locked out",
           "Check the coupling",
-          "Open the gearbox"
+          "Open the gearbox",
+          "Motor free-spin, mechanical check only, locked out"
         ],
-        1,
+        3,
         "Start at the motor with the coupling disconnected, locked out and verified, and work down the chain."
       ],
       [
         "Why is the term \"isolation procedure\" avoided for this check?",
         [
-          "It is too long",
           "It could be confused with energy isolation and lockout",
+          "It is too long",
           "It is trademarked",
           "It applies to hydraulics only"
         ],
-        1,
+        0,
         "Independent Rotation Check is used so nobody mistakes a rotation check for lockout/tagout."
       ],
       [
@@ -1340,33 +1340,33 @@ BW.register("pumps", {
         "A centrifugal pump sounds like it is pumping gravel. What is the first suspect?",
         [
           "Bearing failure",
-          "Cavitation from suction-side conditions",
           "Coupling wear",
+          "Cavitation from suction-side conditions",
           "Motor bearing"
         ],
-        1,
+        2,
         "Gravel noise is cavitation: vapour bubbles collapsing at the impeller. Look at the suction side."
       ],
       [
         "A PD pump relief valve is lifting continuously. What is the right first action?",
         [
           "Turn the relief setting up",
-          "Investigate the discharge restriction before touching the relief",
           "Replace the relief valve",
-          "Reduce pump speed"
+          "Reduce pump speed",
+          "Investigate the discharge restriction before touching the relief"
         ],
-        1,
+        3,
         "The relief is telling you system pressure is at or above its setting. Find out why before adjusting anything."
       ],
       [
         "A reciprocating pump has lost flow but the drive is stroking normally. Most likely?",
         [
-          "Motor fault",
           "Check valve failure",
+          "Motor fault",
           "Coupling slip",
           "Wrong rotation"
         ],
-        1,
+        0,
         "A reciprocating pump that strokes without moving fluid has a check valve held open or worn."
       ]
     ],
@@ -1399,22 +1399,22 @@ BW.register("pumps", {
         "Locking out the motor is sufficient isolation for pump work. True or false?",
         [
           "True",
-          "False: process isolation and verification are also required",
           "True if the pump is small",
-          "True for water service"
+          "True for water service",
+          "False: process isolation and verification are also required"
         ],
-        1,
+        3,
         "The casing holds the process. Suction and discharge isolated, drained, vented, and verified."
       ],
       [
         "Before removing the casing drain plug, what should be opened first?",
         [
-          "The discharge valve",
           "The vent at the top of the casing",
+          "The discharge valve",
           "The suction strainer",
           "The seal flush"
         ],
-        1,
+        0,
         "The vent tells you whether there is trapped pressure, at a safer location than the drain plug."
       ]
     ]

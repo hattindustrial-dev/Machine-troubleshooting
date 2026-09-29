@@ -150,12 +150,12 @@
       <i class="ti ti-chevron-down adv-chevron"></i>
     </button>
     <div class="adv-body">
-      <p>Every route in this hub is tagged with the component types it applies to (pump, bearing, coupling, seal, gearbox, lubrication system, pneumatic, motor). That tagging is the foundation for facility mode.</p>
-      <p><strong>Build a machine.</strong> A maintenance manager describes a machine as a chain of components: motor, coupling, gearbox, pump, mechanical seal, centralized grease system. Each component is picked from the module library, with the plant's own details attached: make and model, bearing part numbers, seal plan, lubricant, alignment tolerance, set pressures, and the equipment number from the CMMS.</p>
-      <p><strong>Filter the diagnosis.</strong> When a technician opens that machine and picks a symptom, the hub only shows routes that apply to the components in that chain, and the result cards carry the plant's own specifics: the actual grease quantity for that bearing, the actual seal flush plan, the actual regulator set point. Generic content becomes plant-specific procedure without anyone rewriting it.</p>
-      <p><strong>Capture what happened.</strong> Each diagnosis can be logged against the machine with readings, photos, and the route taken. Over time the machine builds its own history, and recurring routes point at root causes a work order system never surfaces.</p>
-      <p><strong>Train on it.</strong> Every module has a Self-Check tab with questions grouped by the tab they test. A supervisor can assign a module, ask for the self-check to be worked through with the reasons read, and walk the machine with the technician afterward. In facility mode the questions can be filtered to the components a technician actually maintains.</p>
-      <p>The modules stay universal. The facility layer is a filter and an overlay on top of them. That is why the hub is built as tagged data rather than a fixed page.</p>
+      <p>Every route in this hub is tagged with the component types it applies to. A machine built on the <a href="facility.html" style="color:#EF9F27;">Facility</a> page uses those tags.</p>
+      <p><strong>Build a machine.</strong> A machine is a chain of parts in the order it runs: motor, coupling, gearbox, pump, seal. Start from a template or duplicate a machine you already have, name each part the way the plant does, and attach its own details: make and model, bearing numbers, seal plan, lubricant, alignment tolerance, set pressures. The equipment number goes on the machine.</p>
+      <p><strong>Filter the diagnosis.</strong> With a machine selected, the hub offers only the branches that lead to routes for the parts in its chain, and the route cards carry that machine's own numbers under the generic advice. Possible issues lists everything the library knows can go wrong with each part, and the PM library filters to the tasks that apply.</p>
+      <p><strong>Capture what happened.</strong> A route can be logged against the machine with a note of what was found. The machine builds its own history, and a route it reaches more than once is listed as one that keeps coming back. Photos and structured readings are not built yet.</p>
+      <p><strong>Train on it.</strong> Every module has a Self-Check tab. The Facility page lists the modules that touch a machine's parts and links straight to each one's Self-Check, so study can follow the plant. Filtering the questions themselves by component is not built yet.</p>
+      <p>The modules stay universal. The plant's own numbers are laid over them and never written into them.</p>
     </div>
   </div>
 

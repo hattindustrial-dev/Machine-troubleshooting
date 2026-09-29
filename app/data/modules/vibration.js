@@ -560,34 +560,34 @@ BW.register("vibration", {
       [
         "Which measure is the standard for severity on general machinery?",
         [
-          "Displacement",
           "Velocity (mm/s RMS)",
+          "Displacement",
           "Acceleration",
           "Phase"
         ],
-        1,
+        0,
         "Roughly flat across the useful range; ISO charts use it."
       ],
       [
         "A medium machine on a rigid base at 3.5 mm/s RMS is in ISO zone?",
         [
           "A",
-          "B",
           "C",
+          "B",
           "D"
         ],
-        2,
+        1,
         "Zone C: unsatisfactory long term, plan corrective action."
       ],
       [
         "The usual trigger for investigation regardless of absolute level?",
         [
           "Any change",
-          "2.5 times baseline or a zone step",
           "Only zone D",
+          "2.5 times baseline or a zone step",
           "Noise"
         ],
-        1,
+        2,
         "The change is the information."
       ]
     ],
@@ -596,22 +596,22 @@ BW.register("vibration", {
         "Points per bearing?",
         [
           "One",
-          "Three: horizontal, vertical, axial",
           "Two",
-          "Five"
+          "Five",
+          "Three: horizontal, vertical, axial"
         ],
-        1,
+        3,
         "Same points, marked, every time."
       ],
       [
         "Minimum sensor mount for bearing frequencies?",
         [
-          "Handheld probe",
           "Magnet on clean flat metal",
+          "Handheld probe",
           "Any",
           "Tape"
         ],
-        1,
+        0,
         "A handheld probe cannot see above about 1 kHz."
       ],
       [
@@ -631,33 +631,33 @@ BW.register("vibration", {
         "A peak at 3.58x running speed is most likely?",
         [
           "Misalignment",
-          "A rolling element bearing defect",
           "Unbalance",
+          "A rolling element bearing defect",
           "Looseness"
         ],
-        1,
+        2,
         "Non-synchronous means bearing."
       ],
       [
         "Small evenly spaced peaks either side of a large one are?",
         [
           "Noise",
-          "Sidebands: modulation at the sideband spacing",
           "Harmonics",
-          "Resonance"
+          "Resonance",
+          "Sidebands: modulation at the sideband spacing"
         ],
-        1,
+        3,
         "Spacing tells you the source."
       ],
       [
         "Dominant 2x radial at the coupling end of both machines?",
         [
-          "Unbalance",
           "Misalignment",
+          "Unbalance",
           "Bearing",
           "Electrical"
         ],
-        1,
+        0,
         "Offset shafts fight through the coupling twice per revolution."
       ],
       [
@@ -677,33 +677,33 @@ BW.register("vibration", {
         "BPFO plus BPFI equals?",
         [
           "Running speed",
-          "Ball count times running speed",
           "FTF",
+          "Ball count times running speed",
           "Nothing"
         ],
-        1,
+        2,
         "Useful check that two peaks are the same bearing."
       ],
       [
         "BPFI comes with sidebands at?",
         [
           "FTF",
-          "1x",
           "2x line frequency",
-          "GMF"
+          "GMF",
+          "1x"
         ],
-        1,
+        3,
         "The inner race defect moves through the load zone once per revolution."
       ],
       [
         "At which stage does the overall velocity usually start to move?",
         [
+          "3",
           "1",
           "2",
-          "3",
           "4"
         ],
-        2,
+        0,
         "Envelope finds stages 1 and 2."
       ]
     ],
@@ -711,12 +711,12 @@ BW.register("vibration", {
       [
         "The baseline is taken?",
         [
-          "At commissioning or after a rebuild, when known good",
           "Any time",
+          "At commissioning or after a rebuild, when known good",
           "At failure",
           "Never"
         ],
-        0,
+        1,
         "Everything after is compared to it."
       ],
       [
@@ -736,33 +736,33 @@ BW.register("vibration", {
         "A bump test is done?",
         [
           "Running",
-          "Stopped and locked out",
           "At half speed",
+          "Stopped and locked out",
           "On the coupling"
         ],
-        1,
+        2,
         "Strike the structure and read the natural frequency."
       ],
       [
         "Stiffening a structure moves its natural frequency?",
         [
           "Down",
-          "Up",
           "Nowhere",
-          "Sideways"
+          "Sideways",
+          "Up"
         ],
-        1,
+        3,
         "Mass moves it down; damping reduces amplification."
       ],
       [
         "Vibration that changes a lot with a small VFD speed change suggests?",
         [
-          "Unbalance",
           "Resonance",
+          "Unbalance",
           "Bearing",
           "Electrical"
         ],
-        1,
+        0,
         "Skip the speed band on the drive."
       ]
     ],
@@ -782,11 +782,11 @@ BW.register("vibration", {
         "Gear mesh with sidebands at input speed points at?",
         [
           "The gear",
-          "The pinion",
           "The bearing",
+          "The pinion",
           "The coupling"
         ],
-        1,
+        2,
         "Sideband spacing names the shaft."
       ]
     ],
@@ -795,22 +795,22 @@ BW.register("vibration", {
         "A reading point is inside a guard. You?",
         [
           "Reach through",
-          "Fit a stud or access port during a lockout",
           "Skip it",
-          "Remove the guard"
+          "Remove the guard",
+          "Fit a stud or access port during a lockout"
         ],
-        1,
+        3,
         "Never reach through a guard on a running machine."
       ],
       [
         "The sensor cable near a running shaft?",
         [
-          "Can drape over it",
           "Stays short and in hand",
+          "Can drape over it",
           "Is fine on the floor",
           "Does not matter"
         ],
-        1,
+        0,
         "A cable on a shaft takes the analyser and your hand."
       ]
     ]

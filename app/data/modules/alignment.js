@@ -428,12 +428,12 @@ BW.register("alignment", {
       [
         "Which coupling type absorbs misalignment with an elastomer element and needs no lubrication?",
         [
+          "Jaw (spider)",
           "Gear",
           "Grid",
-          "Jaw (spider)",
           "Rigid"
         ],
-        2,
+        0,
         "Jaw couplings use an elastomer spider; gear and grid couplings need lubrication."
       ],
       [
@@ -464,11 +464,11 @@ BW.register("alignment", {
         "What does misalignment do to a mechanical seal?",
         [
           "Nothing",
-          "The shaft describes an arc through the seal faces and destroys them",
           "It improves flush flow",
-          "It reduces face wear"
+          "It reduces face wear",
+          "The shaft describes an arc through the seal faces and destroys them"
         ],
-        1,
+        3,
         "The seal faces see a wobble every revolution."
       ]
     ],
@@ -476,34 +476,34 @@ BW.register("alignment", {
       [
         "Parallel (offset) misalignment typically shows in vibration as?",
         [
-          "1x axial",
           "2x radial",
+          "1x axial",
           "Sub-synchronous",
           "Broadband"
         ],
-        1,
+        0,
         "Offset shafts fight through the coupling twice per revolution."
       ],
       [
         "Angular misalignment typically shows in vibration as?",
         [
-          "1x axial",
           "2x radial only",
+          "1x axial",
           "0.5x",
           "Bearing frequencies"
         ],
-        0,
+        1,
         "Angular misalignment produces high 1x in the axial direction with phase reversed across the coupling."
       ],
       [
         "What is DBSE?",
         [
-          "Distance between shaft ends",
           "Dial indicator sag error",
           "Deflection at bearing support end",
+          "Distance between shaft ends",
           "Drive belt speed estimate"
         ],
-        0,
+        2,
         "DBSE is set at coupling installation and matters for element fit and axial float."
       ]
     ],
@@ -513,21 +513,21 @@ BW.register("alignment", {
         [
           "Straightedge",
           "Laser",
-          "Dial indicator rim and face",
-          "Feeler gauge"
+          "Feeler gauge",
+          "Dial indicator rim and face"
         ],
-        2,
+        3,
         "Indicator brackets sag under their own weight; measure and correct for it."
       ],
       [
         "Which method automatically compensates for sag and thermal growth?",
         [
-          "Straightedge",
           "Laser alignment",
+          "Straightedge",
           "Feeler gauge",
           "Reverse dial without software"
         ],
-        1,
+        0,
         "Laser systems calculate corrections and accept thermal growth targets."
       ]
     ],
@@ -536,33 +536,33 @@ BW.register("alignment", {
         "What is always the first step of an alignment?",
         [
           "Rough alignment",
-          "Take readings",
           "Soft foot check",
+          "Take readings",
           "Torque the feet"
         ],
-        2,
+        1,
         "Soft foot first, no exceptions. Less than 0.002 in is acceptable."
       ],
       [
         "Vertical corrections are made by?",
         [
           "Moving the motor sideways",
-          "Shimming under the feet",
           "Adjusting the coupling",
+          "Shimming under the feet",
           "Loosening the base"
         ],
-        1,
+        2,
         "Vertical is shims; horizontal is lateral moves with jacking bolts."
       ],
       [
         "After the final correction and torque, what should happen?",
         [
           "Start the machine",
-          "Recheck the readings",
           "Remove the shims",
-          "Nothing more"
+          "Nothing more",
+          "Recheck the readings"
         ],
-        1,
+        3,
         "Torquing the feet can move the machine. Verify after torque."
       ]
     ],
@@ -570,12 +570,12 @@ BW.register("alignment", {
       [
         "How do you check for pipe strain?",
         [
-          "Look at the pipe",
           "Take alignment readings before and after connecting the piping",
+          "Look at the pipe",
           "Torque the flange bolts",
           "Run the pump and listen"
         ],
-        1,
+        0,
         "Any shift over 0.001 to 0.002 in when the piping is connected is pipe strain."
       ],
       [
@@ -595,22 +595,22 @@ BW.register("alignment", {
         "When rotating shafts for readings, where do hands go?",
         [
           "In the coupling gap",
-          "On the coupling hub or a bar in a designed spot, never between the hubs",
           "On the shims",
+          "On the coupling hub or a bar in a designed spot, never between the hubs",
           "Anywhere convenient"
         ],
-        1,
+        2,
         "A hand in the gap when the shaft turns is a crushed hand."
       ],
       [
         "Before a hand goes under a motor foot to place a shim, the motor must be?",
         [
           "Lifted by crane",
-          "Stable on snugged foot bolts, not on jacking bolts alone",
           "Running",
-          "Uncoupled"
+          "Uncoupled",
+          "Stable on snugged foot bolts, not on jacking bolts alone"
         ],
-        1,
+        3,
         "Never leave a machine sitting on jacking bolts alone."
       ]
     ]

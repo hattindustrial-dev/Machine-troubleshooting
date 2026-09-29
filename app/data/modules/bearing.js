@@ -525,34 +525,34 @@ BW.register("bearing", {
       [
         "What supports the shaft in a running sleeve (journal) bearing?",
         [
-          "The bearing metal",
           "A pressurised oil wedge",
+          "The bearing metal",
           "Rolling elements",
           "A spring"
         ],
-        1,
+        0,
         "As the shaft turns it draws oil into a converging gap, building pressure that lifts the shaft clear of the bearing material."
       ],
       [
         "Which bearing type carries combined radial and thrust load and is set with preload or endplay?",
         [
           "Deep groove ball",
-          "Cylindrical roller",
           "Tapered roller",
+          "Cylindrical roller",
           "Sleeve"
         ],
-        2,
+        1,
         "Tapered rollers carry combined loads and are used in adjusted pairs."
       ],
       [
         "Which bearing type carries the highest pure radial load for its size?",
         [
           "Deep groove ball",
-          "Cylindrical roller",
           "Sleeve",
+          "Cylindrical roller",
           "Thrust ball"
         ],
-        1,
+        2,
         "Line contact on a cylindrical roller carries more radial load than point contact on a ball."
       ]
     ],
@@ -561,22 +561,22 @@ BW.register("bearing", {
         "A bearing squeals at startup and clears after a few minutes. Most likely?",
         [
           "Race damage",
-          "Marginal lubrication or cold grease",
           "Misalignment",
-          "Brinelling"
+          "Brinelling",
+          "Marginal lubrication or cold grease"
         ],
-        1,
+        3,
         "Squeal that clears is the lubricant reaching operating consistency; persistent squeal is something else."
       ],
       [
         "A bearing runs hot within a day of a grease PM. Most likely?",
         [
-          "Undergreasing",
           "Overgreasing",
+          "Undergreasing",
           "Misalignment",
           "Contamination"
         ],
-        1,
+        0,
         "A full cavity churns grease and generates heat. Do not add more; let it purge."
       ],
       [
@@ -594,11 +594,11 @@ BW.register("bearing", {
         "Oil pressure drops on a pressure-fed sleeve bearing machine. Correct response?",
         [
           "Watch it for a shift",
-          "Shut down immediately",
           "Add oil",
+          "Shut down immediately",
           "Increase speed"
         ],
-        1,
+        2,
         "Loss of oil supply collapses the wedge and the bearing wipes in seconds."
       ]
     ],
@@ -618,11 +618,11 @@ BW.register("bearing", {
         "What is the formula for grease quantity?",
         [
           "G = D × B",
-          "G = 0.005 × D × B (grams, mm)",
           "G = 0.5 × D",
-          "G = B ÷ D"
+          "G = B ÷ D",
+          "G = 0.005 × D × B (grams, mm)"
         ],
-        1,
+        3,
         "Bearing outside diameter times width times 0.005 gives grams."
       ]
     ],
@@ -641,12 +641,12 @@ BW.register("bearing", {
       [
         "How should a rolling element bearing be pressed on?",
         [
-          "Through the outer race onto a shaft",
           "Through the race that is being fitted, never through the rolling elements",
+          "Through the outer race onto a shaft",
           "With a hammer and drift",
           "Any way that fits"
         ],
-        1,
+        0,
         "Force through the rolling elements brinells the races."
       ],
       [
@@ -666,22 +666,22 @@ BW.register("bearing", {
         "Why must a bearing be demagnetised after induction heating?",
         [
           "To cool it",
-          "A magnetised bearing attracts ferrous debris into the raceways",
           "To reset the heater",
+          "A magnetised bearing attracts ferrous debris into the raceways",
           "It does not need to be"
         ],
-        1,
+        2,
         "Residual magnetism collects wear particles inside the bearing."
       ],
       [
         "A hand grease gun can inject grease through skin. True or false?",
         [
           "False, only air guns can",
-          "True",
           "Only with synthetic grease",
-          "Only at the fitting"
+          "Only at the fitting",
+          "True"
         ],
-        1,
+        3,
         "Hand guns produce pressures well above the injection threshold. Coupler on the fitting before the trigger."
       ]
     ]

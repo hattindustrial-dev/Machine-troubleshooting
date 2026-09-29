@@ -1,0 +1,15 @@
+/* Layout fixes for BuiltWright pages that have to survive regeneration.
+ *
+ * Hand written, unlike bw.css, which build/extract.mjs generates and overwrites each run.
+ *
+ * Tables wider than their column were pushing whole pages sideways: nine tabs across five
+ * pages overflowed at 390px, the curriculum map by 505px, and the same table spilled out of
+ * its 720px column on a desktop. They did in the original files too. bw-renderer.js wraps
+ * every table in .bw-table-scroll at mount, so a wide table scrolls inside its own box and a
+ * table that fits looks exactly as it did.
+ */
+.bw-table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}

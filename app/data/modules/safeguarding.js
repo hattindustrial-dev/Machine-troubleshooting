@@ -684,33 +684,33 @@ BW.register("safeguarding", {
         "Which is highest on the hierarchy of controls?",
         [
           "A warning sign",
+          "Designing the hazard out",
           "A lockout procedure",
-          "A fixed guard",
-          "Designing the hazard out"
+          "A fixed guard"
         ],
-        3,
+        1,
         "Elimination first; guards and devices are engineering controls below it."
       ],
       [
         "A sign on a missing guard is?",
         [
           "A control",
-          "Not a control",
           "Adequate for slow machines",
+          "Not a control",
           "A guard"
         ],
-        1,
+        2,
         "Regulation 851 requires guarding for the hazards it lists."
       ],
       [
         "The Canadian standard for machine safeguarding?",
         [
           "CSA Z460",
-          "CSA Z432",
           "CSA Z462",
-          "CSA B51"
+          "CSA B51",
+          "CSA Z432"
         ],
-        1,
+        3,
         "Z460 is lockout; Z462 is electrical safety."
       ]
     ],
@@ -718,12 +718,12 @@ BW.register("safeguarding", {
       [
         "A belt entering a sheave is?",
         [
-          "A shear point",
           "An in-running nip point",
+          "A shear point",
           "A crush point",
           "Not a hazard at low speed"
         ],
-        1,
+        0,
         "A nip is a nip at any speed. Section 25."
       ],
       [
@@ -754,33 +754,33 @@ BW.register("safeguarding", {
         "A fixed guard must?",
         [
           "Open by hand",
-          "Need a tool to remove, with captive fasteners",
           "Be transparent",
+          "Need a tool to remove, with captive fasteners",
           "Be hinged"
         ],
-        1,
+        2,
         "Nobody removes it casually."
       ],
       [
         "When is guard locking required on an interlocked door?",
         [
           "Always",
-          "When the hazard continues after the stop signal (coasting, inertia)",
           "Never",
-          "Only on robots"
+          "Only on robots",
+          "When the hazard continues after the stop signal (coasting, inertia)"
         ],
-        1,
+        3,
         "The door stays locked until standstill is proven."
       ],
       [
         "A guard that comes off for a grease fitting is fixed by?",
         [
-          "Discipline",
           "Bringing the fitting outside the guard",
+          "Discipline",
           "A sign",
           "Removing the fitting"
         ],
-        1,
+        0,
         "Design for the maintenance that will happen."
       ]
     ],
@@ -800,33 +800,33 @@ BW.register("safeguarding", {
         "What detects a welded contactor in a Category 3 circuit?",
         [
           "The PLC",
-          "The feedback loop from the contactor mirror contacts to the safety relay",
           "The operator",
+          "The feedback loop from the contactor mirror contacts to the safety relay",
           "The fuse"
         ],
-        1,
+        2,
         "Without it, two wires are not two channels."
       ],
       [
         "An emergency stop is?",
         [
           "A safeguard",
-          "A complementary measure: required, but it does not prevent the accident",
           "Optional",
-          "A guard"
+          "A guard",
+          "A complementary measure: required, but it does not prevent the accident"
         ],
-        1,
+        3,
         "It depends on a person seeing and reaching."
       ],
       [
         "Two-hand control protects?",
         [
-          "Everyone near the machine",
           "The operator only",
+          "Everyone near the machine",
           "The maintainer",
           "The product"
         ],
-        1,
+        0,
         "Anyone else needs their own safeguarding."
       ]
     ],
@@ -835,44 +835,44 @@ BW.register("safeguarding", {
         "A 25 mm slot opening in a guard needs the hazard at least how far behind it?",
         [
           "25 mm",
-          "120 mm",
           "850 mm",
+          "120 mm",
           "200 mm"
         ],
-        2,
+        1,
         "Over 20 mm slot admits a hand to the wrist: 850 mm."
       ],
       [
         "Light curtain distance formula?",
         [
           "S = K + T + C",
-          "S = K × T + C",
           "S = T ÷ K",
+          "S = K × T + C",
           "S = C only"
         ],
-        1,
+        2,
         "K 1600 mm/s, T total stopping time, C penetration factor."
       ],
       [
         "T in the safety distance formula includes?",
         [
           "Only the curtain response",
-          "Curtain response, logic response, and measured machine stopping time",
           "The drive ramp setting",
-          "Nothing measured"
+          "Nothing measured",
+          "Curtain response, logic response, and measured machine stopping time"
         ],
-        1,
+        3,
         "A stop-time measurement is part of every curtain installation."
       ],
       [
         "A 30 mm resolution curtain has a C of?",
         [
-          "0",
           "128 mm",
+          "0",
           "30 mm",
           "850 mm"
         ],
-        1,
+        0,
         "C = 8 × (30 minus 14)."
       ]
     ],
@@ -881,22 +881,22 @@ BW.register("safeguarding", {
         "S2 F2 P2 in the ISO 13849 risk graph gives a required PL of?",
         [
           "a",
-          "c",
           "e",
+          "c",
           "b"
         ],
-        2,
+        1,
         "Serious harm, frequent exposure, scarcely avoidable."
       ],
       [
         "Risk is assessed by?",
         [
           "Machine only",
-          "Task, in every mode",
           "Operator only",
+          "Task, in every mode",
           "Nameplate"
         ],
-        1,
+        2,
         "The same nip is a different risk during a jam clearance."
       ]
     ],
@@ -905,22 +905,22 @@ BW.register("safeguarding", {
         "A PSR under Regulation 851 section 7 is conducted by?",
         [
           "A millwright",
-          "A professional engineer",
           "The supervisor",
-          "The manufacturer"
+          "The manufacturer",
+          "A professional engineer"
         ],
-        1,
+        3,
         "Signed and sealed report; measures completed before startup."
       ],
       [
         "Which two section 7 circumstances are the everyday ones in a manufacturing plant?",
         [
-          "Foundries and flammables",
           "Racking and machine guarding",
+          "Foundries and flammables",
           "Dust and cranes",
           "Ventilation and hoists"
         ],
-        1,
+        0,
         "The millwright's field knowledge is the substance of both."
       ],
       [
@@ -938,11 +938,11 @@ BW.register("safeguarding", {
         "What does a millwright bring to a PSR?",
         [
           "Coffee",
-          "Hazard list, guard measurements, stop times, photos, drawings",
           "Nothing",
+          "Hazard list, guard measurements, stop times, photos, drawings",
           "A guess"
         ],
-        1,
+        2,
         "The homework turns a day into an afternoon."
       ]
     ],
@@ -951,22 +951,22 @@ BW.register("safeguarding", {
         "A jumpered interlock is?",
         [
           "The problem",
-          "A symptom of a task or a nuisance the safeguard created",
           "Normal",
-          "Acceptable with a sign"
+          "Acceptable with a sign",
+          "A symptom of a task or a nuisance the safeguard created"
         ],
-        1,
+        3,
         "Find the task; design a mode for it."
       ],
       [
         "A safety relay that trips at random should be?",
         [
-          "Reset until it stays reset",
           "Diagnosed: it is detecting a fault",
+          "Reset until it stays reset",
           "Bypassed",
           "Ignored"
         ],
-        1,
+        0,
         "Resetting is how one channel ends up doing the work of two."
       ]
     ],
@@ -986,11 +986,11 @@ BW.register("safeguarding", {
         "An interlocked guard is a lockout. True or false?",
         [
           "True",
-          "False: maintenance inside a machine is done under lockout",
           "True with guard locking",
+          "False: maintenance inside a machine is done under lockout",
           "True if tested"
         ],
-        1,
+        2,
         "The interlock is a production safeguard and a backup, not the isolation."
       ]
     ]

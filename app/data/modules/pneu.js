@@ -1245,22 +1245,22 @@ BW.register("pneu", {
         "Pneumatic systems are open-loop because?",
         [
           "Air is expensive",
-          "Spent air exhausts to atmosphere",
           "They have no valves",
-          "The compressor runs continuously"
+          "The compressor runs continuously",
+          "Spent air exhausts to atmosphere"
         ],
-        1,
+        3,
         "No return line; air is used once."
       ],
       [
         "What is the primary enemy of pneumatic components?",
         [
-          "Heat",
           "Water",
+          "Heat",
           "Vibration",
           "Oil"
         ],
-        1,
+        0,
         "Moisture condenses in valves and cylinders and causes corrosion, sticking, and icing."
       ],
       [
@@ -1280,33 +1280,33 @@ BW.register("pneu", {
         "A 5/2 valve has?",
         [
           "5 positions, 2 ports",
-          "5 ports, 2 positions",
           "5 solenoids",
+          "5 ports, 2 positions",
           "2 exhausts only"
         ],
-        1,
+        2,
         "Pressure, two work ports, two exhausts; two positions."
       ],
       [
         "A double solenoid 5/2 valve on power loss?",
         [
           "Returns to spring position",
-          "Holds its last position (bistable)",
           "Exhausts both ports",
-          "Blocks all ports"
+          "Blocks all ports",
+          "Holds its last position (bistable)"
         ],
-        1,
+        3,
         "No spring, so it stays where it was last commanded."
       ],
       [
         "A humming solenoid usually means?",
         [
-          "Normal operation",
           "A stuck spool preventing the plunger from seating",
+          "Normal operation",
           "Low voltage only",
           "A bad PLC"
         ],
-        1,
+        0,
         "The coil cannot pull in and will burn out."
       ],
       [
@@ -1337,22 +1337,22 @@ BW.register("pneu", {
         "Why is retract force lower than extend force?",
         [
           "Friction",
-          "The rod reduces the effective piston area",
           "Lower pressure",
+          "The rod reduces the effective piston area",
           "Spring"
         ],
-        1,
+        2,
         "Retract area = (π/4)(D² - d²)."
       ],
       [
         "An air motor speed is controlled by?",
         [
           "Pressure",
-          "Flow",
           "Voltage",
-          "Load only"
+          "Load only",
+          "Flow"
         ],
-        1,
+        3,
         "Pressure sets torque; flow sets speed."
       ]
     ],
@@ -1360,12 +1360,12 @@ BW.register("pneu", {
       [
         "A dashed line in a circuit diagram is?",
         [
-          "Working line",
           "Pilot or control line",
+          "Working line",
           "Exhaust",
           "Electrical"
         ],
-        1,
+        0,
         "Solid is working flow; dashed is a pilot signal."
       ],
       [
@@ -1383,11 +1383,11 @@ BW.register("pneu", {
         "In a directional valve symbol, the box next to the spring shows?",
         [
           "The actuated position",
-          "The normal (resting) position",
           "Exhaust",
+          "The normal (resting) position",
           "Pilot"
         ],
-        1,
+        2,
         "Read the spring side box for what happens with no signal."
       ]
     ],
@@ -1396,22 +1396,22 @@ BW.register("pneu", {
         "A refrigerant dryer achieves a pressure dewpoint of about?",
         [
           "-40°C",
-          "3°C",
           "20°C",
-          "0°C"
+          "0°C",
+          "3°C"
         ],
-        1,
+        3,
         "Refrigerant dryers cool to about 3°C; desiccant dryers go to -20 to -70°C."
       ],
       [
         "Correct FRL order?",
         [
-          "Regulate, filter, lubricate",
           "Filter, regulate, lubricate",
+          "Regulate, filter, lubricate",
           "Lubricate, filter, regulate",
           "Any order"
         ],
-        1,
+        0,
         "Filter before regulate before lubricate."
       ],
       [
@@ -1429,11 +1429,11 @@ BW.register("pneu", {
         "Which tubing is better for outdoor UV and heat?",
         [
           "Polyurethane",
-          "Nylon (PA12)",
           "Vinyl",
+          "Nylon (PA12)",
           "Rubber"
         ],
-        1,
+        2,
         "PU degrades in UV and above 50°C; PA12 is the outdoor choice."
       ]
     ],
@@ -1442,22 +1442,22 @@ BW.register("pneu", {
         "Cylinder moves but the machine cycle does not advance. First suspect?",
         [
           "The valve",
-          "The position sensor",
           "The compressor",
-          "The PLC"
+          "The PLC",
+          "The position sensor"
         ],
-        1,
+        3,
         "Sensor faults are constantly misdiagnosed as pneumatic faults."
       ],
       [
         "A cylinder bangs at end of stroke after a speed increase. Fix?",
         [
-          "New cylinder",
           "Re-adjust the cushion",
+          "New cylinder",
           "Lower pressure",
           "Bigger valve"
         ],
-        1,
+        0,
         "Cushion setting is tuned for a speed; change the speed, reset the cushion."
       ],
       [
@@ -1477,11 +1477,11 @@ BW.register("pneu", {
         "A stopped machine with the power off has no compressed air in it. True or false?",
         [
           "True",
-          "False: lines, cylinders, and receivers hold pressure until released",
           "True if the compressor is off",
+          "False: lines, cylinders, and receivers hold pressure until released",
           "True after 5 minutes"
         ],
-        1,
+        2,
         "Isolate, exhaust, verify zero at the point of work."
       ],
       [

@@ -929,22 +929,22 @@ BW.register("powertrans", {
         "A 1750 rpm motor with a 150 mm driver sheave and a 400 mm driven sheave gives?",
         [
           "4667 rpm",
-          "656 rpm",
           "1750 rpm",
-          "175 rpm"
+          "175 rpm",
+          "656 rpm"
         ],
-        1,
+        3,
         "1750 × (150 ÷ 400) = 656."
       ],
       [
         "Which drive type slips under overload?",
         [
+          "V-belt",
           "Chain",
           "Timing belt",
-          "V-belt",
           "Gearbox"
         ],
-        2,
+        0,
         "Friction drives slip; positive drives do not."
       ],
       [
@@ -964,33 +964,33 @@ BW.register("powertrans", {
         "A B belt in an A groove will?",
         [
           "Fit fine",
-          "Ride too high and roll over",
           "Bottom out",
+          "Ride too high and roll over",
           "Run cooler"
         ],
-        1,
+        2,
         "Sections are not interchangeable."
       ],
       [
         "Replacing one belt of a multi-belt set?",
         [
           "Is fine",
-          "Puts all the load on the new belt until it stretches",
           "Balances the load",
-          "Extends life"
+          "Extends life",
+          "Puts all the load on the new belt until it stretches"
         ],
-        1,
+        3,
         "Always replace as a matched set."
       ],
       [
         "A belt riding low in the groove means?",
         [
-          "Correct",
           "The groove is worn or the belt is the wrong section",
+          "Correct",
           "Too tight",
           "Too loose"
         ],
-        1,
+        0,
         "Top of the belt should sit at or slightly above the sheave OD."
       ],
       [
@@ -1021,22 +1021,22 @@ BW.register("powertrans", {
         "Where does chain lubricant need to reach?",
         [
           "The rollers",
-          "The pin and bushing joint, via the side plate gap",
           "The sprocket teeth",
-          "The outside of the chain"
+          "The outside of the chain",
+          "The pin and bushing joint, via the side plate gap"
         ],
-        1,
+        3,
         "Wear is pin and bushing wear."
       ],
       [
         "A spring clip master link is installed with the closed end?",
         [
-          "Facing backward",
           "Facing the direction of travel",
+          "Facing backward",
           "Either way",
           "Up"
         ],
-        1,
+        0,
         "Backward, it can be stripped off by contact."
       ]
     ],
@@ -1056,33 +1056,33 @@ BW.register("powertrans", {
         "The right belt tension is?",
         [
           "As tight as possible",
-          "The lowest that does not slip under full load",
           "Hand tight",
+          "The lowest that does not slip under full load",
           "Manufacturer maximum"
         ],
-        1,
+        2,
         "Every extra newton loads the bearings."
       ],
       [
         "Chain sag on a horizontal drive?",
         [
           "Zero",
-          "2 to 4% of span",
           "10% of span",
-          "Half the span"
+          "Half the span",
+          "2 to 4% of span"
         ],
-        1,
+        3,
         "Vertical drives use 1 to 2%."
       ],
       [
         "New belts are rechecked after?",
         [
-          "A year",
           "24 to 48 hours of operation",
+          "A year",
           "Never",
           "One minute"
         ],
-        1,
+        0,
         "Initial stretch and seating happen in the first day or two."
       ]
     ],
@@ -1102,22 +1102,22 @@ BW.register("powertrans", {
         "When is sheave alignment checked?",
         [
           "Before tensioning",
-          "After tensioning",
           "During",
+          "After tensioning",
           "Never"
         ],
-        1,
+        2,
         "Tensioning pulls the motor on its base."
       ],
       [
         "Prying a belt onto a sheave?",
         [
           "Is the standard method",
-          "Breaks the tension cords invisibly",
           "Is fine with a plastic tool",
-          "Improves grip"
+          "Improves grip",
+          "Breaks the tension cords invisibly"
         ],
-        1,
+        3,
         "Loosen the motor and slip it on by hand."
       ]
     ],
@@ -1125,45 +1125,45 @@ BW.register("powertrans", {
       [
         "Chain replacement elongation for general drives?",
         [
-          "1%",
           "3%",
+          "1%",
           "10%",
           "Never"
         ],
-        1,
+        0,
         "1.5% for large sprockets."
       ],
       [
         "#60 chain, 12 pitches measures 236.5 mm. Elongation?",
         [
           "1%",
-          "2%",
           "3.5%",
+          "2%",
           "7%"
         ],
-        2,
+        1,
         "Nominal 228.6 mm; (236.5 - 228.6) ÷ 228.6 = 3.5%."
       ],
       [
         "Hooked (shark-fin) sprocket teeth mean?",
         [
           "New sprocket",
-          "End of sprocket life; replace with the chain",
           "Wrong chain",
+          "End of sprocket life; replace with the chain",
           "Too much lube"
         ],
-        1,
+        2,
         "A hooked sprocket wears a new chain fast."
       ],
       [
         "Belt glazed and hard on the sidewalls?",
         [
           "Age",
-          "Slip and heat",
           "Oil",
-          "Misalignment"
+          "Misalignment",
+          "Slip and heat"
         ],
-        1,
+        3,
         "Cannot be recovered by tensioning."
       ]
     ],
@@ -1171,12 +1171,12 @@ BW.register("powertrans", {
       [
         "Belt squeals on startup then runs quiet?",
         [
-          "Misalignment",
           "Startup slip on inertia",
+          "Misalignment",
           "Worn sheave only",
           "Oil"
         ],
-        1,
+        0,
         "Tension at the low end, glazed belt, or a marginal drive for the starting load."
       ],
       [
@@ -1196,22 +1196,22 @@ BW.register("powertrans", {
         "The guard comes off?",
         [
           "When the drive is running slowly",
-          "After lockout is verified, and goes back before the lock comes off",
           "For a quick look",
+          "After lockout is verified, and goes back before the lock comes off",
           "Never"
         ],
-        1,
+        2,
         "Belts and chains are the nip point hazard in the plant."
       ],
       [
         "The driven machine can turn a locked-out drive backward. True or false?",
         [
           "False",
-          "True: block the driven side",
           "Only conveyors",
-          "Only fans"
+          "Only fans",
+          "True: block the driven side"
         ],
-        1,
+        3,
         "Windmilling fans, loaded inclines, gravity loads."
       ]
     ]

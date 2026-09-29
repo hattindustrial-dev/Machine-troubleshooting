@@ -60,6 +60,17 @@ re_rumble: {
 
 A self-check entry is `[stem, [options], correctIndex, why]`. The why is what teaches.
 
+Writing self-check questions so they test something:
+
+- Put the correct answer in any position. The validator fails a module that keeps it in one
+  place, and `node build/rebalance-selfcheck.mjs --write` re-spreads a new bank.
+- Make the wrong answers as long and as specific as the right one. Right now the correct answer
+  is the longest option in about three questions out of four, so a learner can pass by picking
+  the most detailed option. Each distractor should be something a person half-remembering the
+  subject would believe, written to the same length and level of detail.
+- Make the why say what makes the right answer right and why the tempting one fails. One line
+  is not enough; the existing ones are mostly under fifty characters.
+
 House style, held throughout:
 
 - No em dashes.
@@ -111,6 +122,8 @@ node build/derive.mjs --fix-search   # makes the new diagnoses searchable
 node build/derive.mjs --fix-pm       # adds their prevent lines to the PM library
 node build/sw.mjs                    # precaches it
 node build/validate.mjs              # every check, non-zero on failure
+node build/test-facility.mjs         # if facility.js was touched
+node build/security.mjs              # if anything that renders stored or imported data was touched
 ```
 
 Nothing is finished until `validate.mjs` passes, and a module still reading "to be written"

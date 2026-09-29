@@ -887,12 +887,12 @@ BW.register("motors", {
       [
         "Vibration that vanishes the instant power is cut is?",
         [
-          "Mechanical",
           "Electrical",
+          "Mechanical",
           "Bearing",
           "Unbalance"
         ],
-        1,
+        0,
         "Decays with speed: mechanical."
       ],
       [
@@ -910,11 +910,11 @@ BW.register("motors", {
         "An unloaded motor draws about?",
         [
           "Zero",
-          "25 to 40% of FLA",
           "100% FLA",
+          "25 to 40% of FLA",
           "200% FLA"
         ],
-        1,
+        2,
         "Magnetising current is drawn regardless of load."
       ]
     ],
@@ -923,22 +923,22 @@ BW.register("motors", {
         "Service factor 1.15 means?",
         [
           "15% design margin to use",
-          "15% overload allowed continuously, at higher temperature and shorter life",
           "15% efficiency loss",
-          "Nothing"
+          "Nothing",
+          "15% overload allowed continuously, at higher temperature and shorter life"
         ],
-        1,
+        3,
         "Not a design margin."
       ],
       [
         "Frame 256T shaft diameter?",
         [
-          "0.875 in",
           "1.625 in",
+          "0.875 in",
           "2.125 in",
           "3.375 in"
         ],
-        1,
+        0,
         "Frame fixes shaft, height, and foot pattern."
       ],
       [
@@ -958,33 +958,33 @@ BW.register("motors", {
         "Greasing a motor with the relief plug in?",
         [
           "Is correct",
-          "Pushes grease into the windings",
           "Is faster",
+          "Pushes grease into the windings",
           "Is required"
         ],
-        1,
+        2,
         "Relief plug out, quantity by formula, let it purge."
       ],
       [
         "Washboard lines across a bearing race on a VFD motor?",
         [
           "Brinelling",
-          "Electrical fluting",
           "Contamination",
-          "Overload"
+          "Overload",
+          "Electrical fluting"
         ],
-        1,
+        3,
         "Fix: grounding ring or insulated bearing."
       ],
       [
         "Standard motor bearing clearance?",
         [
+          "C3",
           "C2",
           "CN",
-          "C3",
           "C5"
         ],
-        2,
+        0,
         "The rotor heats and expands; C3 gives room."
       ]
     ],
@@ -1004,11 +1004,11 @@ BW.register("motors", {
         "Soft foot limit?",
         [
           "0.5 mm",
-          "0.05 mm (0.002 in)",
           "1 mm",
+          "0.05 mm (0.002 in)",
           "Any"
         ],
-        1,
+        2,
         "Shim anything above it."
       ]
     ],
@@ -1017,33 +1017,33 @@ BW.register("motors", {
         "A class F motor frame at 85°C is?",
         [
           "Failing",
-          "Possibly normal at full load",
           "Cold",
-          "Over rating"
+          "Over rating",
+          "Possibly normal at full load"
         ],
-        1,
+        3,
         "Hand-on-frame tells you almost nothing; compare to baseline."
       ],
       [
         "A TEFC motor on a VFD at 30% speed?",
         [
-          "Cools normally",
           "Has a fan at 30% speed and needs a derate or a blower",
+          "Cools normally",
           "Runs cooler",
           "Does not need cooling"
         ],
-        1,
+        0,
         "Shaft fan airflow falls with speed."
       ],
       [
         "Each start dumps about how much current into the windings?",
         [
           "FLA",
-          "2x FLA",
           "6 to 8x FLA",
+          "2x FLA",
           "20x FLA"
         ],
-        2,
+        1,
         "Starts per hour are limited for this reason."
       ]
     ],
@@ -1052,33 +1052,33 @@ BW.register("motors", {
         "20 HP motor, FLA 24 A, reads 26 A. Load is about?",
         [
           "50%",
-          "108%",
           "80%",
+          "108%",
           "Cannot tell"
         ],
-        1,
+        2,
         "Valid above about 50% load."
       ],
       [
         "Amps fall sharply on a pump motor. Suspect?",
         [
           "Overload",
-          "Lost prime, dry running",
           "Misalignment",
-          "Bad bearing"
+          "Bad bearing",
+          "Lost prime, dry running"
         ],
-        1,
+        3,
         "The motor is not doing the work; the seal is minutes from failure."
       ],
       [
         "A fan run 10% fast draws about how much more power?",
         [
-          "10%",
           "33%",
+          "10%",
           "5%",
           "100%"
         ],
-        1,
+        0,
         "Fan power rises with the cube of speed."
       ]
     ],
@@ -1098,11 +1098,11 @@ BW.register("motors", {
         "The most useful thing in a handoff package?",
         [
           "A guess",
-          "Readings: amps, speed, temperatures, solo run result",
           "The motor manual",
+          "Readings: amps, speed, temperatures, solo run result",
           "A photo of the plant"
         ],
-        1,
+        2,
         "Turns a hunt into a confirmation."
       ]
     ],
@@ -1111,22 +1111,22 @@ BW.register("motors", {
         "High amps. Uncoupled, both shafts turn freely, solo amps normal. The problem is?",
         [
           "The motor",
-          "The load, the alignment, or the ratio",
           "Electrical",
-          "The fan"
+          "The fan",
+          "The load, the alignment, or the ratio"
         ],
-        1,
+        3,
         "The motor is fine."
       ],
       [
         "Motor will not start, both shafts turn freely by hand?",
         [
-          "Seized bearing",
           "Electrical: hand off",
+          "Seized bearing",
           "Bad coupling",
           "Soft foot"
         ],
-        1,
+        0,
         "Mechanically clear."
       ]
     ],
@@ -1146,11 +1146,11 @@ BW.register("motors", {
         "Running a motor solo with the shaft key in place?",
         [
           "Is fine",
-          "Is a projectile hazard: remove or tape the key",
           "Improves balance",
+          "Is a projectile hazard: remove or tape the key",
           "Is required"
         ],
-        1,
+        2,
         "A loose key at 3600 rpm."
       ]
     ]

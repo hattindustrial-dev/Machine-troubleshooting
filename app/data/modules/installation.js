@@ -588,12 +588,12 @@ BW.register("installation", {
       [
         "When are machines set on the baseplate?",
         [
-          "Before grouting so the plate can be levelled under load",
           "After the grout has cured",
+          "Before grouting so the plate can be levelled under load",
           "During the pour",
           "Any time"
         ],
-        1,
+        0,
         "Grout shrinks and the plate moves while curing; machines and alignment come after."
       ],
       [
@@ -613,33 +613,33 @@ BW.register("installation", {
         "Rule-of-thumb foundation mass for a reciprocating machine?",
         [
           "Equal to machine weight",
-          "3 to 5 times machine weight",
           "10 times",
+          "3 to 5 times machine weight",
           "Half"
         ],
-        1,
+        2,
         "Rotating machines: 1.5 to 3 times."
       ],
       [
         "What stops foundation vibration reaching the building?",
         [
           "Grout",
-          "An isolation joint around the block",
           "Anchor bolts",
-          "Paint"
+          "Paint",
+          "An isolation joint around the block"
         ],
-        1,
+        3,
         "Full depth, so the block does not touch the slab."
       ],
       [
         "A smooth trowelled foundation top surface is?",
         [
-          "Ideal for grout",
           "A bond breaker; it should be roughened",
+          "Ideal for grout",
           "Required",
           "Faster to cure"
         ],
-        1,
+        0,
         "Grout bonds to rough, clean concrete."
       ]
     ],
@@ -660,32 +660,32 @@ BW.register("installation", {
         [
           "Cast-in",
           "Sleeved",
-          "Adhesive",
-          "Expansion (wedge)"
+          "Expansion (wedge)",
+          "Adhesive"
         ],
-        3,
+        2,
         "Expansion anchors work loose under vibration."
       ],
       [
         "Why sleeve an anchor bolt?",
         [
           "To keep it clean",
-          "Position adjustment and stretch length to hold tension",
           "To make it shorter",
-          "It is not necessary"
+          "It is not necessary",
+          "Position adjustment and stretch length to hold tension"
         ],
-        1,
+        3,
         "Ten diameters of free length is the target."
       ],
       [
         "The most important step in an adhesive anchor installation?",
         [
-          "Torque",
           "Cleaning the hole: blow, brush, repeat",
+          "Torque",
           "Choosing the colour",
           "Speed"
         ],
-        1,
+        0,
         "Dust in the hole is a bond failure."
       ]
     ],
@@ -705,22 +705,22 @@ BW.register("installation", {
         "Typical levelling tolerance for pump baseplates under API 686 practice?",
         [
           "2 mm per metre",
-          "0.2 mm per metre",
           "5 mm per metre",
+          "0.2 mm per metre",
           "Level by eye"
         ],
-        1,
+        2,
         "That is a machinist's level, not a spirit level."
       ],
       [
         "Turning a precision level 180 degrees and comparing readings tells you?",
         [
           "Nothing",
-          "Whether the level itself is accurate",
           "The temperature",
-          "The plate flatness"
+          "The plate flatness",
+          "Whether the level itself is accurate"
         ],
-        1,
+        3,
         "Average of the two readings is the true tilt if they differ."
       ]
     ],
@@ -739,12 +739,12 @@ BW.register("installation", {
       [
         "Proof there is no void under a pad?",
         [
-          "The bag said non-shrink",
           "Grout appears at every vent in sequence, and the plate sounds solid after cure",
+          "The bag said non-shrink",
           "The plate is level",
           "The grout is dry"
         ],
-        1,
+        0,
         "Sound it with a hammer; hollow means a void."
       ],
       [
@@ -762,11 +762,11 @@ BW.register("installation", {
         "Which grout for oily service or a reciprocating compressor?",
         [
           "Cementitious",
-          "Epoxy",
           "Sand and cement",
+          "Epoxy",
           "Either"
         ],
-        1,
+        2,
         "Epoxy resists oil and handles vibration."
       ]
     ],
@@ -775,22 +775,22 @@ BW.register("installation", {
         "Maximum flange face parallel offset before bolting?",
         [
           "6 mm",
-          "1.5 mm (1/16 in)",
           "10 mm",
-          "Any, the bolts pull it in"
+          "Any, the bolts pull it in",
+          "1.5 mm (1/16 in)"
         ],
-        1,
+        3,
         "Bolts should pass through by hand."
       ],
       [
         "Alignment change when the piping is connected should be under?",
         [
-          "0.5 mm",
           "0.05 mm (0.002 in)",
+          "0.5 mm",
           "2 mm",
           "It does not matter"
         ],
-        1,
+        0,
         "Take readings before and after each connection."
       ],
       [
@@ -810,22 +810,22 @@ BW.register("installation", {
         "The commissioning baseline (vibration, temperature, alignment, amps) is taken?",
         [
           "When a problem appears",
-          "On day one, and filed with the equipment record",
           "Never",
+          "On day one, and filed with the equipment record",
           "After a year"
         ],
-        1,
+        2,
         "It is only free on day one."
       ],
       [
         "Anchor torque is rechecked?",
         [
           "Never",
-          "After the first week of operation",
           "Daily",
-          "Only if loose"
+          "Only if loose",
+          "After the first week of operation"
         ],
-        1,
+        3,
         "Thermal cycling and seating relax it."
       ]
     ],
@@ -833,12 +833,12 @@ BW.register("installation", {
       [
         "Indicator on the casing, loosen the discharge flange bolts, casing moves. Diagnosis?",
         [
-          "Soft foot",
           "Pipe strain",
+          "Soft foot",
           "Unbalance",
           "Bad bearing"
         ],
-        1,
+        0,
         "No amount of shimming would have fixed it."
       ],
       [
@@ -858,22 +858,22 @@ BW.register("installation", {
         "A machine on jacking screws with the anchors loose is?",
         [
           "Set",
-          "Not stable; snug the anchors before leaving it",
           "Safe to work under",
+          "Not stable; snug the anchors before leaving it",
           "Ready to run"
         ],
-        1,
+        2,
         "Four points that can slip."
       ],
       [
         "Wet cement and cementitious grout on skin?",
         [
           "Harmless",
-          "Caustic; burns appear hours later",
           "Only irritating if hot",
-          "Fine with a rinse tomorrow"
+          "Fine with a rinse tomorrow",
+          "Caustic; burns appear hours later"
         ],
-        1,
+        3,
         "Gloves, sleeves, eye protection, wash immediately."
       ]
     ]

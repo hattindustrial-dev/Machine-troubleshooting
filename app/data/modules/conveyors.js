@@ -688,11 +688,11 @@ BW.register("conveyors", {
         "Where do tracking problems usually start?",
         [
           "Where the belt runs off",
-          "Upstream of where it runs off",
           "At the drive",
+          "Upstream of where it runs off",
           "At the splice only"
         ],
-        1,
+        2,
         "The belt carries the error to where you can see it."
       ]
     ],
@@ -701,22 +701,22 @@ BW.register("conveyors", {
         "Which conveyor bearing is the heaviest loaded?",
         [
           "Tail pulley",
-          "Head (drive) pulley",
           "Return idler",
-          "Snub pulley"
+          "Snub pulley",
+          "Head (drive) pulley"
         ],
-        1,
+        3,
         "Drive load plus belt tension. Infrared on the PM."
       ],
       [
         "A seized idler does what to the belt?",
         [
-          "Nothing",
           "Skids, heats, grooves the bottom cover, steers the belt, and eventually cuts it",
+          "Nothing",
           "Improves tracking",
           "Reduces tension"
         ],
-        1,
+        0,
         "Walk and spin on every PM."
       ],
       [
@@ -736,33 +736,33 @@ BW.register("conveyors", {
         "To steer the belt away from one side, the idler end on that side is?",
         [
           "Moved backward",
-          "Advanced in the direction of belt travel",
           "Raised",
+          "Advanced in the direction of belt travel",
           "Removed"
         ],
-        1,
+        2,
         "The belt moves away from the advanced end."
       ],
       [
         "Before adjusting idlers, what is checked?",
         [
           "Nothing",
-          "Structure, pulley squareness, buildup, seized idlers, loading, and the belt itself",
           "Only tension",
-          "Only the head pulley"
+          "Only the head pulley",
+          "Structure, pulley squareness, buildup, seized idlers, loading, and the belt itself"
         ],
-        1,
+        3,
         "Idler adjustment is steering, not a cure."
       ],
       [
         "A screw take-up moved on one side only produces?",
         [
-          "Correct tension",
           "A skewed tail pulley and mistracking at the tail",
+          "Correct tension",
           "Better grip",
           "Nothing"
         ],
-        1,
+        0,
         "Move both sides equally and record both readings."
       ],
       [
@@ -782,33 +782,33 @@ BW.register("conveyors", {
         "Belt sag between carry idlers should be about?",
         [
           "Zero",
-          "1.5 to 3% of idler spacing",
           "10%",
+          "1.5 to 3% of idler spacing",
           "Whatever it is"
         ],
-        1,
+        2,
         "More spills and flexes; less is excess tension."
       ],
       [
         "A gravity take-up counterweight is?",
         [
           "Harmless with the motor off",
-          "Stored energy that must be blocked before belt work",
           "Only a tensioner",
-          "A guard"
+          "A guard",
+          "Stored energy that must be blocked before belt work"
         ],
-        1,
+        3,
         "A belt cut with the take-up live snaps back."
       ],
       [
         "A gravity take-up at the top of its travel means?",
         [
-          "Perfect",
           "The belt has stretched past its design; cut a section out or the setting was wrong",
+          "Perfect",
           "Too little belt",
           "Nothing"
         ],
-        1,
+        0,
         "Mark and date the position on the PM."
       ]
     ],
@@ -817,22 +817,22 @@ BW.register("conveyors", {
         "Strongest splice type?",
         [
           "Hinged mechanical",
-          "Plate mechanical",
           "Hot vulcanised",
+          "Plate mechanical",
           "Cold vulcanised"
         ],
-        2,
+        1,
         "85 to 100 percent of belt rating."
       ],
       [
         "A splice cut one degree off square?",
         [
           "Is fine",
-          "Mistracks the belt at every revolution and cannot be tracked out",
           "Runs smoother",
+          "Mistracks the belt at every revolution and cannot be tracked out",
           "Lasts longer"
         ],
-        1,
+        2,
         "Use a square and check the diagonals."
       ]
     ],
@@ -841,22 +841,22 @@ BW.register("conveyors", {
         "A belt that runs off at the same spot on itself every revolution has?",
         [
           "A structure problem",
-          "A belt fault at that spot: splice, camber, or damage",
           "A drive problem",
-          "A loading problem"
+          "A loading problem",
+          "A belt fault at that spot: splice, camber, or damage"
         ],
-        1,
+        3,
         "Mark it and find the spot locked out."
       ],
       [
         "Glazed bottom cover over the drive pulley width?",
         [
-          "Normal",
           "Slip at the drive",
+          "Normal",
           "Product abrasion",
           "Cupping"
         ],
-        1,
+        0,
         "Lagging, tension, wrap, and a speed switch."
       ],
       [
@@ -876,22 +876,22 @@ BW.register("conveyors", {
         "Belt stops while the drive pulley keeps turning?",
         [
           "Overload trip",
-          "Drive slip",
           "Control stop",
+          "Drive slip",
           "Splice failure"
         ],
-        1,
+        2,
         "A speed switch should have caught it."
       ],
       [
         "Carryback on the return side is fixed with?",
         [
           "More tension",
-          "Belt cleaners adjusted and with usable blade",
           "A new belt",
-          "Faster speed"
+          "Faster speed",
+          "Belt cleaners adjusted and with usable blade"
         ],
-        1,
+        3,
         "Primary and secondary cleaners at the head."
       ]
     ],
@@ -899,12 +899,12 @@ BW.register("conveyors", {
       [
         "Clearing a jam is?",
         [
-          "A quick reach",
           "A lockout task",
+          "A quick reach",
           "Fine with gloves",
           "The operator's call"
         ],
-        1,
+        0,
         "The reason people reach in is a management problem with a fatality attached."
       ],
       [

@@ -206,6 +206,16 @@
       }).join('') +
       (mod.related || '') + (mod.footer || '');
 
+    // A table wider than its column would otherwise push the whole page sideways. Each one is
+    // put in a box that scrolls on its own, which changes nothing for a table that fits.
+    Array.prototype.forEach.call(root.querySelectorAll('table'), function (t) {
+      if (t.parentNode.classList.contains('bw-table-scroll')) return;
+      var box = document.createElement('div');
+      box.className = 'bw-table-scroll';
+      t.parentNode.insertBefore(box, t);
+      box.appendChild(t);
+    });
+
     // The injected fragments call these by bare name.
     global.switchTab = BW.switchTab;
     global.toggleAdv = BW.toggleAdv;

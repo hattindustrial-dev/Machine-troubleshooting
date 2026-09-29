@@ -416,22 +416,22 @@ BW.register("measurement", {
         "One reading versus three?",
         [
           "One is enough",
-          "Three that agree are a measurement; three that disagree are information",
           "Three wastes time",
+          "Three that agree are a measurement; three that disagree are information",
           "Only the average matters"
         ],
-        1,
+        2,
         "The spread is as useful as the average."
       ],
       [
         "A caliper is the right tool for a bearing fit. True or false?",
         [
           "True",
-          "False: a caliper is good to a few hundredths; fits are micrometer work",
           "True if digital",
-          "True on small shafts"
+          "True on small shafts",
+          "False: a caliper is good to a few hundredths; fits are micrometer work"
         ],
-        1,
+        3,
         "Anything with a fit is a micrometer job."
       ]
     ],
@@ -439,12 +439,12 @@ BW.register("measurement", {
       [
         "The wear items in feeler gauge use?",
         [
-          "The case",
           "The leaves: they thin and bend; check them with a micrometer",
+          "The case",
           "Nothing",
           "The handle"
         ],
-        1,
+        0,
         "A worn leaf is a wrong reading."
       ],
       [
@@ -462,11 +462,11 @@ BW.register("measurement", {
         "A dial test indicator lever should be?",
         [
           "Perpendicular to the surface",
-          "Within about 15 degrees of parallel to the surface",
           "At 45 degrees",
+          "Within about 15 degrees of parallel to the surface",
           "Any angle"
         ],
-        1,
+        2,
         "Cosine error grows fast beyond that."
       ]
     ],
@@ -475,22 +475,22 @@ BW.register("measurement", {
         "Metric micrometer: 12 whole mm visible, the half line visible, thimble at 32. Reading?",
         [
           "12.32",
-          "12.82",
           "13.32",
-          "12.5"
+          "12.5",
+          "12.82"
         ],
-        1,
+        3,
         "The half-millimetre line is the one most people miss."
       ],
       [
         "Inch micrometer: sleeve 0.300 plus 2 lines, thimble 17. Reading?",
         [
-          "0.317",
           "0.367",
+          "0.317",
           "0.350",
           "0.319"
         ],
-        1,
+        0,
         "0.300 + 0.050 + 0.017."
       ],
       [
@@ -508,11 +508,11 @@ BW.register("measurement", {
         "The ratchet on a micrometer is for?",
         [
           "Locking",
-          "Constant measuring force, the same every time",
           "Speed",
+          "Constant measuring force, the same every time",
           "Decoration"
         ],
-        1,
+        2,
         "Cranking by hand reads small."
       ]
     ],
@@ -521,22 +521,22 @@ BW.register("measurement", {
         "TIR means?",
         [
           "Half the needle swing",
-          "The full needle swing over a revolution",
           "The average",
-          "The eccentricity"
+          "The eccentricity",
+          "The full needle swing over a revolution"
         ],
-        1,
+        3,
         "An eccentricity of 0.05 mm gives a TIR of 0.10 mm."
       ],
       [
         "After zeroing an indicator, tap the base and the needle moves and stays. Meaning?",
         [
-          "Normal",
           "The setup is not rigid; fix it before the first reading",
+          "Normal",
           "The part is out of round",
           "The indicator is broken"
         ],
-        1,
+        0,
         "Every alignment that would not come in has had one of these."
       ],
       [
@@ -556,33 +556,33 @@ BW.register("measurement", {
         "Steel grows about how much per metre per degree C?",
         [
           "1 µm",
-          "12 µm",
           "120 µm",
+          "12 µm",
           "1 mm"
         ],
-        1,
+        2,
         "A 100 mm shaft at 35°C reads about 0.018 mm big."
       ],
       [
         "Standard measurement temperature?",
         [
           "0°C",
-          "20°C",
           "25°C",
-          "Room temperature, whatever it is"
+          "Room temperature, whatever it is",
+          "20°C"
         ],
-        1,
+        3,
         "Let parts and tools equalise."
       ],
       [
         "A micrometer across a diameter is rocked to find?",
         [
-          "The minimum",
           "The maximum",
+          "The minimum",
           "Any reading",
           "The zero"
         ],
-        1,
+        0,
         "Off the diameter is a chord and reads small."
       ]
     ],
@@ -602,22 +602,22 @@ BW.register("measurement", {
         "Micrometers are stored with the anvils?",
         [
           "Closed tight",
-          "Slightly open",
           "Removed",
+          "Slightly open",
           "Taped"
         ],
-        1,
+        2,
         "Temperature change does not stress the frame."
       ],
       [
         "An instrument found out of calibration means?",
         [
           "Nothing",
-          "Every measurement since the last check is suspect",
           "It was always fine before",
-          "Only today is affected"
+          "Only today is affected",
+          "Every measurement since the last check is suspect"
         ],
-        1,
+        3,
         "That is why the interval exists."
       ]
     ],
@@ -625,12 +625,12 @@ BW.register("measurement", {
       [
         "Two instruments disagree on a part. First step?",
         [
-          "Trust the expensive one",
           "Check both against a gauge block",
+          "Trust the expensive one",
           "Average them",
           "Measure a third time"
         ],
-        1,
+        0,
         "One of them is wrong, and it may be the one you trust."
       ],
       [
@@ -650,22 +650,22 @@ BW.register("measurement", {
         "Measuring shaft run-out is done?",
         [
           "With the machine running slowly",
-          "With the shaft turned by hand, locked out",
           "At full speed",
+          "With the shaft turned by hand, locked out",
           "From a distance"
         ],
-        1,
+        2,
         "Nothing is measured while it moves."
       ],
       [
         "A magnetic base near a rotating part?",
         [
           "Is fine",
-          "Snaps onto steel; fingers out and away from anything that rotates",
           "Is required",
-          "Does not matter"
+          "Does not matter",
+          "Snaps onto steel; fingers out and away from anything that rotates"
         ],
-        1,
+        3,
         "Strong, and it grabs."
       ]
     ]

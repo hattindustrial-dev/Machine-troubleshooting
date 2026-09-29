@@ -420,30 +420,42 @@
       var incoming;
       try { incoming = JSON.parse(text); } catch (e) { if (said) said.textContent = 'that is not valid JSON'; return; }
       if (!incoming || !Array.isArray(incoming.machines)) { if (said) said.textContent = 'no machines in that file'; return; }
-      if (replace && !confirm('Replace every machine and log on this device with the ' + incoming.machines.length + ' in that file?')) return;
+      // Nothing in a file is used as found: ids become plain tokens, text is cut and forced
+      // to strings, and each log stays tied to its machine.
+      var clean = BWF.clean(incoming);
+      if (!clean.machines.length) { if (said) said.textContent = 'no usable machines in that file'; return; }
+      if (replace && !confirm('Replace every machine and log on this device with the ' + clean.machines.length + ' in that file?')) return;
 
       if (replace) { data.machines = []; data.logs = []; data.activeId = null; }
       var added = 0, renamed = 0;
       var taken = {};
       var tags = {};
       var repeated = [];
+      var idMap = {};
       data.machines.forEach(function (m) { taken[m.id] = true; if (m.tag) tags[m.tag] = true; });
-      incoming.machines.forEach(function (m) {
-        if (!m || typeof m !== 'object') return;
-        var copy = JSON.parse(JSON.stringify(m));
-        if (taken[copy.id]) { copy.id = BWF.newId(); renamed++; } // never overwrite a machine already here
-        taken[copy.id] = true;
-        copy.parts = BWF.partsOf(copy).map(function (part) {
-          return { id: part.id || BWF.newId('p'), type: part.type, label: part.label || '', fields: part.fields || {} };
-        });
+      clean.machines.forEach(function (m) {
+        var was = m.id;
+        if (taken[m.id]) { m.id = BWF.newId(); renamed++; } // never overwrite a machine already here
+        taken[m.id] = true;
+        idMap[was] = m.id;
         // Bringing the same file in twice is not an error, but two machines carrying one
         // equipment number is worth knowing about.
-        if (copy.tag && tags[copy.tag]) repeated.push(copy.tag);
-        if (copy.tag) tags[copy.tag] = true;
-        data.machines.push(copy);
+        if (m.tag && tags[m.tag]) repeated.push(m.tag);
+        if (m.tag) tags[m.tag] = true;
+        data.machines.push(m);
         added++;
       });
-      (incoming.logs || []).forEach(function (l) { if (l && l.machineId) data.logs.push(l); });
+      // A machine given a new id takes its own logs with it. They used to keep the old id,
+      // which attached them to the machine that was already here.
+      var takenLog = {};
+      data.logs.forEach(function (l) { takenLog[l.id] = true; });
+      clean.logs.forEach(function (l) {
+        if (!(l.machineId in idMap)) return;
+        l.machineId = idMap[l.machineId];
+        if (takenLog[l.id]) l.id = BWF.newId('l');
+        takenLog[l.id] = true;
+        data.logs.push(l);
+      });
 
       if (!BWF.save(data)) { if (said) said.textContent = 'could not write to storage on this device'; return; }
       panel = null;

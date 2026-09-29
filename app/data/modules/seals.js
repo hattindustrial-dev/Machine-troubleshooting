@@ -686,22 +686,22 @@ BW.register("seals", {
         "What is the most common cartridge seal installation error?",
         [
           "Wrong material",
-          "Removing the setting clips before tightening the set screws",
           "Too much lubricant",
-          "Wrong flush plan"
+          "Wrong flush plan",
+          "Removing the setting clips before tightening the set screws"
         ],
-        1,
+        3,
         "Set the screws first, then remove the clips, or the springs unload the sleeve."
       ],
       [
         "A double (tandem) mechanical seal needs?",
         [
-          "No flush",
           "A barrier or buffer fluid system",
+          "No flush",
           "Packing behind it",
           "Dry gas"
         ],
-        1,
+        0,
         "The space between the seals is supplied by an API plan such as 53 or 54."
       ],
       [
@@ -721,33 +721,33 @@ BW.register("seals", {
         "A spiral wound gasket needs a flange face finish of roughly?",
         [
           "32 AARH",
-          "125 to 250 AARH",
           "500 AARH",
+          "125 to 250 AARH",
           "Polished"
         ],
-        1,
+        2,
         "Too smooth and it slips; too rough and it does not seal."
       ],
       [
         "Can an RTJ ring be reused?",
         [
           "Yes, if it looks fine",
-          "No",
           "Yes, once",
-          "Only on low pressure"
+          "Only on low pressure",
+          "No"
         ],
-        1,
+        3,
         "The ring deforms to seal and the ring must be softer than the groove. Never reuse."
       ],
       [
         "A full face gasket is used on?",
         [
-          "Raised face flanges",
           "Flat face flanges",
+          "Raised face flanges",
           "RTJ flanges",
           "Threaded connections"
         ],
-        1,
+        0,
         "Full face gaskets cover the whole flat face including the bolt holes."
       ]
     ],
@@ -756,22 +756,22 @@ BW.register("seals", {
         "Which elastomer should not be used with mineral oils?",
         [
           "Nitrile",
-          "Viton",
           "EPDM",
+          "Viton",
           "Neoprene"
         ],
-        2,
+        1,
         "EPDM swells in oils; it is for water, steam, and many chemicals."
       ],
       [
         "Which material cold flows and is used in filled grades for that reason?",
         [
           "Graphite",
-          "PTFE",
           "Viton",
+          "PTFE",
           "Nitrile"
         ],
-        1,
+        2,
         "PTFE creeps under load; filled grades reduce it."
       ],
       [
@@ -779,10 +779,10 @@ BW.register("seals", {
         [
           "Nitrile",
           "Silicone",
-          "Flexible graphite",
-          "EPDM"
+          "EPDM",
+          "Flexible graphite"
         ],
-        2,
+        3,
         "Graphite handles high temperature and steam service."
       ]
     ],
@@ -790,12 +790,12 @@ BW.register("seals", {
       [
         "An o-ring with a flat spot on one side was?",
         [
-          "Chemically attacked",
           "Pinched during assembly",
+          "Chemically attacked",
           "Overheated",
           "Dropped"
         ],
-        1,
+        0,
         "Flat spot is pinched; spiral cut is twisted; chipped face is dropped."
       ],
       [
@@ -813,11 +813,11 @@ BW.register("seals", {
         "A gasket extruded outward was?",
         [
           "Over-torqued",
-          "Under-torqued",
           "Reused",
+          "Under-torqued",
           "The wrong size"
         ],
-        1,
+        2,
         "Under-torque lets pressure push it out; over-torque crushes it inward."
       ]
     ],
@@ -826,33 +826,33 @@ BW.register("seals", {
         "What is the maximum shaft runout before installing a mechanical seal?",
         [
           "0.010 in TIR",
-          "0.002 in TIR",
           "0.050 in TIR",
-          "Any"
+          "Any",
+          "0.002 in TIR"
         ],
-        1,
+        3,
         "Runout above 0.002 in wobbles the faces."
       ],
       [
         "Which parts of a mechanical seal get lubricated at installation?",
         [
-          "The faces",
           "The secondary seals (o-rings), never the faces",
+          "The faces",
           "Everything",
           "Nothing"
         ],
-        1,
+        0,
         "Lubricant on the faces is contamination. A fingerprint is contamination."
       ],
       [
         "Minimum number of torque passes on a flange?",
         [
           "One",
-          "Two",
           "Three, in a star pattern",
+          "Two",
           "Five"
         ],
-        2,
+        1,
         "Star pattern, at least three passes, to seat the gasket evenly."
       ]
     ],
@@ -872,11 +872,11 @@ BW.register("seals", {
         "What does a \"Warn\" rating in the compatibility table mean?",
         [
           "Never use",
-          "Use with caution, verify against concentration and temperature",
           "Good in all cases",
-          "Not tested"
+          "Not tested",
+          "Use with caution, verify against concentration and temperature"
         ],
-        1,
+        3,
         "Warn means conditional: confirm with the manufacturer for the actual service."
       ]
     ],
@@ -884,12 +884,12 @@ BW.register("seals", {
       [
         "When breaking a flange, which bolts are loosened first?",
         [
-          "Nearest you",
           "Far side, so trapped pressure sprays away from you",
+          "Nearest you",
           "Top",
           "Bottom"
         ],
-        1,
+        0,
         "Crack the far side with the near side snug."
       ],
       [

@@ -560,22 +560,22 @@ BW.register("rootcause", {
         "A corrective action without an owner and a date is?",
         [
           "Complete",
-          "A wish",
           "Verified",
+          "A wish",
           "A root cause"
         ],
-        1,
+        2,
         "Every action gets a name and a date."
       ],
       [
         "The analysis is closed when?",
         [
           "The report is written",
-          "The evidence shows the failure stopped",
           "The part is replaced",
-          "The meeting ends"
+          "The meeting ends",
+          "The evidence shows the failure stopped"
         ],
-        1,
+        3,
         "Set a date, check, then close."
       ]
     ],
@@ -583,12 +583,12 @@ BW.register("rootcause", {
       [
         "A fracture face should be?",
         [
-          "Wire brushed clean",
           "Left uncleaned, and the halves never fitted back together",
+          "Wire brushed clean",
           "Degreased",
           "Filed smooth"
         ],
-        1,
+        0,
         "Rubbing the halves destroys the origin marks."
       ],
       [
@@ -608,33 +608,33 @@ BW.register("rootcause", {
         "Beach marks on a fracture face indicate?",
         [
           "Overload",
-          "Fatigue",
           "Corrosion",
+          "Fatigue",
           "Installation damage"
         ],
-        1,
+        2,
         "Follow them back to the origin."
       ],
       [
         "A fine red powder at a bearing housing fit is?",
         [
           "Grease",
-          "Fretting: the fit was loose or the joint moved",
           "Paint",
-          "Rust from water"
+          "Rust from water",
+          "Fretting: the fit was loose or the joint moved"
         ],
-        1,
+        3,
         "The ring or hub was moving microscopically."
       ],
       [
         "Steel that has turned blue got to about?",
         [
-          "100°C",
           "300°C",
+          "100°C",
           "600°C",
           "It does not indicate temperature"
         ],
-        1,
+        0,
         "Straw at about 200; blue at about 300."
       ],
       [
@@ -654,33 +654,33 @@ BW.register("rootcause", {
         "A why chain that ends at a person?",
         [
           "Is complete",
-          "Has not found the root cause",
           "Names the operator",
+          "Has not found the root cause",
           "Is the standard"
         ],
-        1,
+        2,
         "Ask what made that action normal."
       ],
       [
         "Each answer in a Five Whys must be?",
         [
           "An opinion",
-          "A fact you can check",
           "A guess",
-          "Blame"
+          "Blame",
+          "A fact you can check"
         ],
-        1,
+        3,
         "\"Because the sheet gave no quantity\" is on a piece of paper."
       ],
       [
         "The fishbone category for \"no commissioning baseline existed\"?",
         [
-          "Machine",
           "Measurement",
+          "Machine",
           "Material",
           "Environment"
         ],
-        1,
+        0,
         "Instruments, readings, baselines, alarms."
       ]
     ],
@@ -700,11 +700,11 @@ BW.register("rootcause", {
         "Vibration is a?",
         [
           "Cause",
-          "Symptom",
           "Contributing factor",
+          "Symptom",
           "Root"
         ],
-        1,
+        2,
         "Misalignment is a cause; a worn coupling absorbing it is a contributing factor."
       ]
     ],
@@ -713,22 +713,22 @@ BW.register("rootcause", {
         "In the seal example, the root cause was?",
         [
           "A bad seal",
-          "A pipe hanger removed during a modification with no change review, and no pipe strain step in the procedure",
           "Misalignment",
-          "Operator error"
+          "Operator error",
+          "A pipe hanger removed during a modification with no change review, and no pipe strain step in the procedure"
         ],
-        1,
+        3,
         "The pump flange had become the pipe support."
       ],
       [
         "In the guard example, why was the guard off?",
         [
-          "Laziness",
           "The weekly tension check needed it off and it took twenty minutes to refit",
+          "Laziness",
           "It was broken",
           "Nobody knows"
         ],
-        1,
+        0,
         "Designed without regard to the PM task."
       ]
     ],
@@ -750,22 +750,22 @@ BW.register("rootcause", {
         "Second failure, the first part was just replaced without reading it. First action?",
         [
           "Replace again",
-          "Preserve and read this one before the new part goes in",
           "Order two spares",
+          "Preserve and read this one before the new part goes in",
           "Blame the supplier"
         ],
-        1,
+        2,
         "A second failure without a mechanism is a coin flip on the third."
       ],
       [
         "Action taken, failure returned. Most likely?",
         [
           "Bad luck",
-          "The cause was a contributing factor, not the root, or there were two causes",
           "The part is defective",
-          "The action was too slow"
+          "The action was too slow",
+          "The cause was a contributing factor, not the root, or there were two causes"
         ],
-        1,
+        3,
         "Reopen with the new evidence and test the alternatives."
       ]
     ],
@@ -773,12 +773,12 @@ BW.register("rootcause", {
       [
         "A failed machine is?",
         [
-          "Safe because it stopped",
           "In an unknown state: isolate before evidence collection",
+          "Safe because it stopped",
           "Ready to restart for a test",
           "Harmless"
         ],
-        1,
+        0,
         "Never restart to see what happens."
       ]
     ]

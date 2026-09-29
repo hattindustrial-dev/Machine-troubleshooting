@@ -575,22 +575,22 @@ BW.register("compressors", {
         "Compressed air costs roughly how much more than electricity per unit of energy at the tool?",
         [
           "The same",
-          "2 times",
           "7 to 8 times",
+          "2 times",
           "20 times"
         ],
-        2,
+        1,
         "Most of the energy in goes out as heat."
       ],
       [
         "A compressor with 30% loaded hours is?",
         [
           "Correctly sized",
-          "Oversized and wasting power running unloaded",
           "Undersized",
+          "Oversized and wasting power running unloaded",
           "Efficient"
         ],
-        1,
+        2,
         "Unloaded still draws 25 to 40% of full power."
       ]
     ],
@@ -599,22 +599,22 @@ BW.register("compressors", {
         "Small reciprocating compressors are typically rated for?",
         [
           "100% duty",
-          "50 to 60% duty cycle",
           "10% duty",
-          "Continuous"
+          "Continuous",
+          "50 to 60% duty cycle"
         ],
-        1,
+        3,
         "Run continuously they overheat and carbon the valves."
       ],
       [
         "Which type is the industrial standard for continuous duty?",
         [
-          "Reciprocating",
           "Oil-flooded rotary screw",
+          "Reciprocating",
           "Scroll",
           "Vane"
         ],
-        1,
+        0,
         "5 to 500 kW, 100% duty."
       ],
       [
@@ -634,11 +634,11 @@ BW.register("compressors", {
         "A hot cylinder head with low output on a piston compressor?",
         [
           "Inlet filter",
-          "Leaking discharge valve",
           "Low oil",
+          "Leaking discharge valve",
           "Belt slip"
         ],
-        1,
+        2,
         "Compressed air leaks back into the cylinder."
       ],
       [
@@ -658,22 +658,22 @@ BW.register("compressors", {
         "Most common screw compressor fault?",
         [
           "Airend",
-          "Dirty cooler and a temperature trip",
           "Rotor wear",
-          "Wrong oil"
+          "Wrong oil",
+          "Dirty cooler and a temperature trip"
         ],
-        1,
+        3,
         "Blow it out from the clean side."
       ],
       [
         "The minimum pressure valve does what?",
         [
-          "Limits maximum pressure",
           "Holds the separator tank at minimum pressure so the separator works, and checks flow back",
+          "Limits maximum pressure",
           "Unloads the compressor",
           "Drains condensate"
         ],
-        1,
+        0,
         "Failed open: oil carryover at low plant pressure."
       ],
       [
@@ -691,11 +691,11 @@ BW.register("compressors", {
         "A separator element is replaced on?",
         [
           "Colour",
-          "Differential pressure or hours, whichever first",
           "Never",
+          "Differential pressure or hours, whichever first",
           "Oil level"
         ],
-        1,
+        2,
         "A collapsed separator sends oil down the line."
       ]
     ],
@@ -704,22 +704,22 @@ BW.register("compressors", {
         "Every extra bar of discharge pressure costs about?",
         [
           "1% power",
-          "7% power",
           "20% power",
-          "Nothing"
+          "Nothing",
+          "7% power"
         ],
-        1,
+        3,
         "And raises the leak rate."
       ],
       [
         "Typical load-unload pressure band?",
         [
-          "0.1 bar",
           "0.7 to 1 bar",
+          "0.1 bar",
           "3 bar",
           "5 bar"
         ],
-        1,
+        0,
         "Too narrow short-cycles."
       ]
     ],
@@ -739,22 +739,22 @@ BW.register("compressors", {
         "Compressor condensate goes?",
         [
           "Down the drain",
-          "Through an oil-water separator; it is a regulated waste",
           "On the floor",
+          "Through an oil-water separator; it is a regulated waste",
           "Into the receiver"
         ],
-        1,
+        2,
         "Oily on lubricated units."
       ],
       [
         "The aftercooler outlet should be within about?",
         [
           "50°C of ambient",
-          "10°C of ambient",
           "1°C of ambient",
-          "It does not matter"
+          "It does not matter",
+          "10°C of ambient"
         ],
-        1,
+        3,
         "That is where the water drops out."
       ]
     ],
@@ -762,12 +762,12 @@ BW.register("compressors", {
       [
         "First thing to read on a compressor fault?",
         [
-          "The oil",
           "The controller fault log",
+          "The oil",
           "The belts",
           "The receiver gauge"
         ],
-        1,
+        0,
         "The fault code is usually the diagnosis."
       ],
       [
@@ -787,33 +787,33 @@ BW.register("compressors", {
         "The separator tank after shutdown?",
         [
           "Is at zero",
-          "Holds pressure; vent it and check its own gauge before opening",
           "Is safe",
+          "Holds pressure; vent it and check its own gauge before opening",
           "Drains itself"
         ],
-        1,
+        2,
         "The minimum pressure valve keeps it there."
       ],
       [
         "The controller stop button is an isolation. True or false?",
         [
           "True",
-          "False: the disconnect is; the controller restarts on pressure",
           "True for screws",
-          "True if locked"
+          "True if locked",
+          "False: the disconnect is; the controller restarts on pressure"
         ],
-        1,
+        3,
         "A compressor starts by itself."
       ],
       [
         "The separator element grounding strap is?",
         [
-          "Optional",
           "A safety component: static ignition of oil mist has burned compressors",
+          "Optional",
           "Decorative",
           "For noise"
         ],
-        1,
+        0,
         "Fit it every time."
       ]
     ]
