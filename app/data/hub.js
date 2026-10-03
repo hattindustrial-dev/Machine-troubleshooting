@@ -432,6 +432,65 @@
         "standards": "Standards Cited"
       },
       "components": []
+    },
+    "simple": {
+      "num": "22",
+      "name": "Simple Machines and Leverage",
+      "file": "builtwright_simple_machines_v1.html",
+      "tabs": {
+        "overview": "Overview",
+        "incline": "Ramp",
+        "wedge": "Wedge",
+        "screw": "Screw",
+        "lever": "Lever",
+        "wheel": "Wheel and Axle",
+        "pulley": "Pulleys",
+        "compound": "Compound Machines",
+        "calc": "Calculators",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      },
+      "components": []
+    },
+    "mechanics": {
+      "num": "23",
+      "name": "Forces, Motion and Energy",
+      "file": "builtwright_forces_motion_v1.html",
+      "tabs": {
+        "overview": "Overview",
+        "statics": "Balance",
+        "motion": "Motion",
+        "torque": "Torque and Power",
+        "energy": "Energy",
+        "friction": "Friction",
+        "inertia": "Inertia",
+        "impact": "Impact and Shock",
+        "oscillation": "Oscillation",
+        "calc": "Calculators",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      },
+      "components": []
+    },
+    "materials": {
+      "num": "24",
+      "name": "Materials, Stress and Failure",
+      "file": "builtwright_materials_stress_v1.html",
+      "tabs": {
+        "overview": "Overview",
+        "stress": "Stress and Strain",
+        "curve": "The Curve",
+        "loads": "Loads",
+        "fatigue": "Fatigue",
+        "fasteners": "Bolted Joints",
+        "materials": "Materials",
+        "thermal": "Heat",
+        "wear": "Wear",
+        "calc": "Calculators",
+        "selfcheck": "Self-Check",
+        "safety": "Safety"
+      },
+      "components": []
     }
   },
   "nodes": {

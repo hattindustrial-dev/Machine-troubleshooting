@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuiltWright: Simple Machines and Leverage: Module 22</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a1a18">
+<link rel="apple-touch-icon" href="builtwright_icon_192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="bw.css">
+<link rel="stylesheet" href="bw-responsive.css">
+</head>
+<body>
+<div class="bw-wrap" id="bw-root"></div>
+<script src="bw-renderer.js"></script>
+<script src="data/modules/simple.js"></script>
+
+<script>
+// Specific to this page. The renderer covers the tabs, cards, tree and self-check.
+function prn(id){return parseFloat(document.getElementById(id).value)||0;}
+function prf(x,d){return isFinite(x)?x.toFixed(d===undefined?1:d):'n/a';}
+function prs(id,h){document.getElementById(id).innerHTML=h;}
+function calcLever(){var F=prn('lv_load'),a=prn('lv_la'),b=prn('lv_ea');if(a<=0||b<=0){prs('lv_out','Enter both arms.');return;}var E=F*a/b;prs('lv_out','Effort needed: '+prf(E,0)+' N ('+prf(E/9.81,1)+' kgf)<br>Ideal advantage: '+prf(b/a,2)+'<br>Effort moves '+prf(10*b/a,1)+' mm for each 10 mm the load moves<br>Moment about the pivot: '+prf(F*a/1000,1)+' N·m');}
+function calcRamp(){var m=prn('rp_m'),L=prn('rp_l'),h=prn('rp_h'),u=prn('rp_mu');if(L<=0||h<0||h>=L){prs('rp_out','The rise must be less than the length.');return;}var W=m*9.81,s=h/L,c=Math.sqrt(1-s*s),th=Math.asin(s)*180/Math.PI,ideal=W*s,real=W*(s+u*c);var hold=Math.tan(Math.asin(s))<=u;prs('rp_out','Slope: '+prf(th,1)+'° ('+prf(100*h/Math.sqrt(L*L-h*h),1)+'% grade)<br>Ideal push: '+prf(ideal,0)+' N<br>Push with friction: '+prf(real,0)+' N ('+prf(real/9.81,0)+' kgf)<br>Ideal advantage: '+prf(L/h,2)+'<br>Efficiency: '+prf(100*ideal/real,0)+'%<br>'+(hold?'The slope is shallower than the angle of friction, so the load stays put by itself if that coefficient is a static one.':'The slope is steeper than the angle of friction, so the load will run down unless it is held.'));}
+function calcScrew(){var r=prn('sj_r'),ld=prn('sj_lead'),f=prn('sj_f'),e=prn('sj_e')/100;if(ld<=0){prs('sj_out','Enter a lead.');return;}var ima=2*Math.PI*r/ld,ideal=f*ima,real=ideal*e;prs('sj_out','Ideal advantage: '+prf(ima,0)+'<br>Ideal load: '+prf(ideal/1000,1)+' kN<br>Real load: '+prf(real/1000,1)+' kN ('+prf(real/9810,2)+' tonnes-force)<br>Handle travel per mm of lift: '+prf(ima,0)+' mm (ideal)<br>'+(e<=0.5?'Efficiency is 50% or less, so the screw will hold the load by friction, though not reliably under vibration.':'Efficiency is above 50%, so this screw will run back under load unless held.'));}
+function calcTackle(){var m=prn('tk_m'),n=prn('tk_n'),s=prn('tk_s'),e=prn('tk_e')/100;if(n<1){prs('tk_out','Use at least one rope.');return;}var W=m*9.81,eta=Math.pow(e,s),ideal=W/n,real=ideal/eta;prs('tk_out','Ideal pull: '+prf(ideal,0)+' N<br>Efficiency of the tackle: '+prf(100*eta,0)+'%<br>Real pull: '+prf(real,0)+' N ('+prf(real/9.81,0)+' kgf)<br>Rope hauled per metre of lift: '+prf(n,0)+' m<br>Load on the overhead anchor: about '+prf(W+real,0)+' N plus the weight of the blocks');}
+function calcSling(){var m=prn('sl_m'),a=prn('sl_a');if(a<=0||a>90){prs('sl_out','Angle between 1 and 90 degrees.');return;}var W=m*9.81,T=W/(2*Math.sin(a*Math.PI/180));prs('sl_out','Tension in each leg: '+prf(T,0)+' N ('+prf(T/9.81,0)+' kgf)<br>As a multiple of the load: '+prf(T/W,2)+'<br>'+(a<30?'Below 30 degrees. Do not lift like this.':(a<45?'Below 45 degrees. Most rigging practice avoids this. Check the sling rating at this angle and the lift plan.':'Check the sling tag: the rating at this angle has to exceed this tension.')));}
+function calcWrench(){var t=prn('tw_t'),l=prn('tw_l'),e=prn('tw_e');if(l+e<=0||l<=0){prs('tw_out','Check the lengths.');return;}var set=t*l/(l+e);prs('tw_out','Set the wrench to: '+prf(set,1)+' N·m<br>If set to '+prf(t,0)+' N·m with this extension, the fastener would get '+prf(t*(l+e)/l,1)+' N·m');}
+</script>
+<script>BW.mountRegistered("simple", document.getElementById('bw-root'));</script>
+<script>
+// What this page runs once its markup is in place.
+calcLever();calcRamp();calcScrew();calcTackle();calcSling();calcWrench();
+</script>
+
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
+</body>
+</html>

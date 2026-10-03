@@ -474,19 +474,27 @@ for (const t of templateList) {
 // and have to stay that way.
 {
   const counts = [0, 0, 0, 0];
-  let n = 0, longest = 0;
+  let n = 0, clear = 0;
+  const worst = [];
   for (const mod of modules) {
     if (!mod.selfcheck) continue;
+    let modClear = 0;
     const perModule = [0, 0, 0, 0];
     let m = 0;
     for (const list of Object.values(mod.selfcheck)) {
       for (const [, options, correct] of list) {
         if (options.length !== 4) fail(mod.key, `a self-check question has ${options.length} options, expected 4`);
         counts[correct]++; perModule[correct]++; n++; m++;
-        const lens = options.map((o) => o.length);
-        const top = Math.max(...lens);
-        if (lens[correct] === top && lens.filter((x) => x === top).length === 1) longest++;
+        // A learner can pass on length alone when the right answer is plainly longer than every
+        // wrong one. A few characters either way proves nothing, so the line is 25 percent.
+        const wrongest = Math.max(...options.filter((_, i) => i !== correct).map((o) => o.length));
+        if (options[correct].length >= 1.25 * wrongest) { clear++; modClear++; }
       }
+    }
+    if (m >= 12) worst.push([mod.key, Math.round((100 * modClear) / m)]);
+    // A module can promise its wrong answers are as good as its right one. That is held.
+    if (mod.balancedChoices && m && modClear / m > 0.2) {
+      fail(mod.key, `${Math.round((100 * modClear) / m)}% of the correct answers are 25% longer than every wrong one; the module promises balanced choices`);
     }
     if (m >= 12 && Math.max(...perModule) / m > 0.6) {
       fail(mod.key, `${Math.round((100 * Math.max(...perModule)) / m)}% of the self-check answers sit in one position (${perModule.join(', ')})`);
@@ -495,10 +503,11 @@ for (const t of templateList) {
   if (n && Math.max(...counts) / n > 0.4) {
     fail('self-check', `${Math.round((100 * Math.max(...counts)) / n)}% of all correct answers sit in one position (${counts.join(', ')})`);
   }
-  // Not a failure: the wrong answers are mostly much shorter than the right one, which a
-  // learner can pass on without knowing anything. That needs the questions rewritten, so it
-  // is measured here rather than gated on.
-  if (n) notes.push(`self-check: the correct answer is the single longest option in ${Math.round((100 * longest) / n)}% of ${n} questions (chance is about 25%); the wrong answers need lengthening`);
+  // Not a failure for the older banks: in most of their questions the right answer is plainly
+  // the longest, so a learner can pass without knowing the subject. That needs the questions
+  // rewritten, so it is measured here. A module that sets balancedChoices is held to it.
+  worst.sort((x, y) => y[1] - x[1]);
+  if (n) notes.push(`self-check: the correct answer is 25% or more longer than every wrong one in ${Math.round((100 * clear) / n)}% of ${n} questions; worst modules: ${worst.slice(0, 5).map((w) => `${w[0]} ${w[1]}%`).join(', ')}`);
 }
 
 // ---- 7. Totals against the published index -------------------------------------

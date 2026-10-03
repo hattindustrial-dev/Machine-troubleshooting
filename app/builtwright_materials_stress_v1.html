@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuiltWright: Materials, Stress and Failure: Module 24</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a1a18">
+<link rel="apple-touch-icon" href="builtwright_icon_192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="bw.css">
+<link rel="stylesheet" href="bw-responsive.css">
+</head>
+<body>
+<div class="bw-wrap" id="bw-root"></div>
+<script src="bw-renderer.js"></script>
+<script src="data/modules/materials.js"></script>
+
+<script>
+// Specific to this page. The renderer covers the tabs, cards, tree and self-check.
+function prn(id){return parseFloat(document.getElementById(id).value)||0;}
+function prf(x,d){return isFinite(x)?x.toFixed(d===undefined?1:d):'n/a';}
+function prs(id,h){document.getElementById(id).innerHTML=h;}
+function calcTens(){var F=prn('te_f')*1000,d=prn('te_d'),L=prn('te_l')*1000,Y=prn('te_y');if(d<=0){prs('te_out','Enter a diameter.');return;}var A=Math.PI*d*d/4,s=F/A;prs('te_out','Area: '+prf(A,0)+' mm²<br>Stress: '+prf(s,1)+' MPa<br>Stretch: '+prf(s/207000*L,2)+' mm (E = 207 GPa)<br>Factor of safety on yield: '+prf(Y/s,2)+(Y/s<1.5?'<br>Low margin. Check the loading and the strength.':''));}
+function calcShaft(){var T=prn('sh_t'),M=prn('sh_m'),d=prn('sh_d')/1000;if(d<=0){prs('sh_out','Enter a diameter.');return;}var tau=16*T/(Math.PI*d*d*d)/1e6,sig=32*M/(Math.PI*d*d*d)/1e6,eq=Math.sqrt(sig*sig+3*tau*tau);prs('sh_out','Shear stress from torque: '+prf(tau,1)+' MPa<br>Bending stress: '+prf(sig,1)+' MPa (it reverses every turn on a rotating shaft)<br>Combined equivalent stress: '+prf(eq,1)+' MPa<br>Compare with the fatigue strength of the shaft at its worst notch, which can be a quarter of the ultimate strength or less.');}
+function calcCant(){var F=prn('ca_f'),L=prn('ca_l')/1000,d=prn('ca_d')/1000;if(d<=0){prs('ca_out','Enter a diameter.');return;}var I=Math.PI*Math.pow(d,4)/64,del=F*L*L*L/(3*207e9*I),sig=32*F*L/(Math.PI*d*d*d)/1e6;prs('ca_out','Bending moment: '+prf(F*L,0)+' N·m<br>Bending stress: '+prf(sig,1)+' MPa<br>Deflection at the load: '+prf(del*1000,3)+' mm<br>Twice the distance would give '+prf(sig*2,1)+' MPa and '+prf(del*8000,3)+' mm');}
+function calcBolt(){var d=prn('bo_d'),A=prn('bo_a'),g=prn('bo_g'),F=prn('bo_f')*1000,K=prn('bo_k');if(A<=0){prs('bo_out','Enter a stress area.');return;}prs('bo_out','Stress in the bolt: '+prf(F/A,0)+' MPa<br>Stretch: '+prf(F*g/(A*207000),3)+' mm<br>Torque to reach it: '+prf(K*d/1000*F,0)+' N·m (from T = K × d × F, which is only as good as K)<br>Only about a tenth of that torque goes into the stretch.');}
+function calcTherm(){var L=prn('th_l')*1000,dT=prn('th_t'),a=prn('th_a')*1e-6;prs('th_out','Free growth: '+prf(a*L*dT,1)+' mm<br>Stress if held at both ends: '+prf(207000*a*dT,0)+' MPa (using E = 207 GPa, steel)<br>A stress above the yield strength means the part will buckle or push its supports.');}
+function calcHoop(){var P=prn('ho_p')/10,d=prn('ho_d'),t=prn('ho_t');if(t<=0){prs('ho_out','Enter a wall thickness.');return;}prs('ho_out','Hoop stress: '+prf(P*d/(2*t),1)+' MPa<br>Axial stress: '+prf(P*d/(4*t),1)+' MPa<br>'+(t>d/20?'The wall is thick for this formula, which is only a guide here.':'Thin wall formula applies.')+'<br>Halve the wall and the stress doubles.');}
+function calcLife(){var C=prn('li_c'),P=prn('li_p'),n=prn('li_n'),e=prn('li_e')||3;if(P<=0||n<=0){prs('li_out','Enter a load and a speed.');return;}var L=Math.pow(C/P,e);prs('li_out','Basic rating life: '+prf(L,1)+' million revolutions<br>At this speed: '+prf(L*1e6/(60*n),0)+' hours<br>With a 20% higher load: '+prf(L*1e6/(60*n)*Math.pow(1/1.2,e),0)+' hours');}
+</script>
+<script>BW.mountRegistered("materials", document.getElementById('bw-root'));</script>
+<script>
+// What this page runs once its markup is in place.
+calcTens();calcShaft();calcCant();calcBolt();calcTherm();calcHoop();calcLife();
+</script>
+
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
+</body>
+</html>

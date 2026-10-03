@@ -471,6 +471,77 @@
    "self_check_questions": 0,
    "field_tips": 2,
    "has_safety_tab": false
+  },
+  {
+   "key": "simple",
+   "num": "22",
+   "name": "Simple Machines and Leverage",
+   "file": "builtwright_simple_machines_v1.html",
+   "tabs": {
+    "overview": "Overview",
+    "incline": "Ramp",
+    "wedge": "Wedge",
+    "screw": "Screw",
+    "lever": "Lever",
+    "wheel": "Wheel and Axle",
+    "pulley": "Pulleys",
+    "compound": "Compound Machines",
+    "calc": "Calculators",
+    "selfcheck": "Self-Check",
+    "safety": "Safety"
+   },
+   "diagnostic_results": 0,
+   "self_check_questions": 51,
+   "field_tips": 8,
+   "has_safety_tab": true
+  },
+  {
+   "key": "mechanics",
+   "num": "23",
+   "name": "Forces, Motion and Energy",
+   "file": "builtwright_forces_motion_v1.html",
+   "tabs": {
+    "overview": "Overview",
+    "statics": "Balance",
+    "motion": "Motion",
+    "torque": "Torque and Power",
+    "energy": "Energy",
+    "friction": "Friction",
+    "inertia": "Inertia",
+    "impact": "Impact and Shock",
+    "oscillation": "Oscillation",
+    "calc": "Calculators",
+    "selfcheck": "Self-Check",
+    "safety": "Safety"
+   },
+   "diagnostic_results": 0,
+   "self_check_questions": 50,
+   "field_tips": 9,
+   "has_safety_tab": true
+  },
+  {
+   "key": "materials",
+   "num": "24",
+   "name": "Materials, Stress and Failure",
+   "file": "builtwright_materials_stress_v1.html",
+   "tabs": {
+    "overview": "Overview",
+    "stress": "Stress and Strain",
+    "curve": "The Curve",
+    "loads": "Loads",
+    "fatigue": "Fatigue",
+    "fasteners": "Bolted Joints",
+    "materials": "Materials",
+    "thermal": "Heat",
+    "wear": "Wear",
+    "calc": "Calculators",
+    "selfcheck": "Self-Check",
+    "safety": "Safety"
+   },
+   "diagnostic_results": 0,
+   "self_check_questions": 48,
+   "field_tips": 9,
+   "has_safety_tab": true
   }
  ],
  "hub_routes": [
@@ -1156,10 +1227,10 @@
   "builtwright_curriculum_map_v1.html"
  ],
  "totals": {
-  "modules": 23,
+  "modules": 26,
   "diagnostic_results": 380,
-  "self_check_questions": 423,
-  "field_tips": 77,
+  "self_check_questions": 572,
+  "field_tips": 103,
   "hub_routes": 71
  }
 }

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuiltWright: Forces, Motion and Energy: Module 23</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a1a18">
+<link rel="apple-touch-icon" href="builtwright_icon_192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="bw.css">
+<link rel="stylesheet" href="bw-responsive.css">
+</head>
+<body>
+<div class="bw-wrap" id="bw-root"></div>
+<script src="bw-renderer.js"></script>
+<script src="data/modules/mechanics.js"></script>
+
+<script>
+// Specific to this page. The renderer covers the tabs, cards, tree and self-check.
+function prn(id){return parseFloat(document.getElementById(id).value)||0;}
+function prf(x,d){return isFinite(x)?x.toFixed(d===undefined?1:d):'n/a';}
+function prs(id,h){document.getElementById(id).innerHTML=h;}
+function calcRot(){var d=prn('ro_d')/1000,n=prn('ro_n');var w=2*Math.PI*n/60,v=w*d/2,a=w*w*d/2;prs('ro_out','Angular speed: '+prf(w,1)+' rad/s<br>Surface speed: '+prf(v,1)+' m/s ('+prf(v*196.85,0)+' ft/min)<br>Acceleration at the rim: '+prf(a,0)+' m/s² ('+prf(a/9.81,0)+' g)<br>Pull on each kilogram at the rim: '+prf(a,0)+' N<br>At twice the speed these figures: surface speed ×2, acceleration and force ×4');}
+function calcAff(){var s=prn('af_s')/100;prs('af_out','Flow: '+prf(100*s,0)+'% of full<br>Head or pressure: '+prf(100*s*s,0)+'%<br>Torque: '+prf(100*s*s,0)+'%<br>Power: '+prf(100*s*s*s,0)+'%<br>This holds for a centrifugal pump or fan on a system with no static head.');}
+function calcStart(){var I=prn('st_i'),n=prn('st_n'),T=prn('st_t');if(T<=0){prs('st_out','The motor has to make more torque than the load needs.');return;}var w=2*Math.PI*n/60;prs('st_out','Time to speed: '+prf(I*w/T,1)+' s<br>Energy stored at speed: '+prf(0.5*I*w*w/1000,1)+' kJ<br>A direct-on-line start of this inertia puts roughly the same energy again into the rotor as heat.');}
+function calcStop(){var v=prn('sp_v'),s=prn('sp_s'),u=prn('sp_u');if(s<=0){prs('sp_out','Enter a stopping distance.');return;}var a=v*v/(2*s),lim=u*9.81;prs('sp_out','Deceleration needed: '+prf(a,2)+' m/s² ('+prf(a/9.81,2)+' g)<br>Time to stop: '+prf(v/a,2)+' s<br>Most friction can hold: '+prf(lim,2)+' m/s²<br>'+(a>lim?'The load will slide forward. Lengthen the stop to at least '+prf(v*v/(2*lim),2)+' m.':'The load stays in place.'));}
+function calcTip(){var b=prn('ti_b'),h=prn('ti_h'),u=prn('ti_u');if(h<=0||b<=0){prs('ti_out','Enter both dimensions.');return;}var tipF=b/(2*h);prs('ti_out','Tilt angle at which it tips: '+prf(Math.atan(b/(2*h))*180/Math.PI,1)+'°<br>Push to tip it, as a fraction of its weight: '+prf(tipF,2)+'<br>Push to slide it: '+prf(u,2)+' of its weight<br>'+(u<tipF?'It slides before it tips.':'It tips before it slides. Fix it down, or keep pushes low and below the centre of gravity.'));}
+function calcDrop(){var W=prn('dr_w'),h=prn('dr_h')/1000,k=prn('dr_k')*1000;if(W<=0){prs('dr_out','Enter a load.');return;}var F=W*(1+Math.sqrt(1+2*h*k/W));prs('dr_out','Peak load: '+prf(F,1)+' kN<br>As a multiple of the weight: '+prf(F/W,1)+'<br>With no drop at all, a suddenly applied load gives '+prf(2*W,1)+' kN');}
+function calcNat(){var m=prn('na_m'),k=prn('na_k')*1000,n=prn('na_n');if(m<=0||k<=0){prs('na_out','Enter mass and stiffness.');return;}var f=Math.sqrt(k/m)/(2*Math.PI),r=(n/60)/f;prs('na_out','Static deflection: '+prf(m*9.81/k*1000,2)+' mm<br>Natural frequency: '+prf(f,1)+' Hz ('+prf(f*60,0)+' cpm)<br>Running speed over natural frequency: '+prf(r,2)+'<br>'+(Math.abs(r-1)<0.2?'Close to resonance. Expect strong amplification.':(r>1.41?'Above 1.41, so the mounts isolate.':'Between 0.8 and 1.41 away from resonance: little isolation and some amplification.')));}
+</script>
+<script>BW.mountRegistered("mechanics", document.getElementById('bw-root'));</script>
+<script>
+// What this page runs once its markup is in place.
+calcRot();calcAff();calcStart();calcStop();calcTip();calcDrop();calcNat();
+</script>
+
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
+</body>
+</html>
